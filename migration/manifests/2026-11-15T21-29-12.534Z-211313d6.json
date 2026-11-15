@@ -1,0 +1,218 @@
+{
+  "run": "2026-11-15T21-29-12.534Z-211313d6",
+  "kind": "skills",
+  "source": "C:\\Users\\kamil\\Documents\\Codex\\2026-11-15\\referenced-chatgpt-conversation-this-is-an-5\\work\\skills",
+  "files": [
+    {
+      "source": "cnt-ai-coordinator/agents/openai.yaml",
+      "destination": ".agents/skills/cnt-ai-coordinator/agents/openai.yaml",
+      "sha256": "1af264a83a439608aa7668fe707b3670c53259d70bbac8ee7139ef717bc844c3",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-ai-coordinator/references/coordination.md",
+      "destination": ".agents/skills/cnt-ai-coordinator/references/coordination.md",
+      "sha256": "ed8b4e6c0ae4be6f7a0b543e4adf6024a9d3b38e6fa8a4a52dcf7029ec134e5b",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-ai-coordinator/references/operations.md",
+      "destination": ".agents/skills/cnt-ai-coordinator/references/operations.md",
+      "sha256": "88cc0ba558e53f5396cef1a8d1fd307dec836d726ca7ffff0d50e78e90681ab5",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-ai-coordinator/references/stack.md",
+      "destination": ".agents/skills/cnt-ai-coordinator/references/stack.md",
+      "sha256": "67ee11df4b8515ffd4c73e0411d34dfd8f381ca024f8044ae9217f03431e297a",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-ai-coordinator/SKILL.md",
+      "destination": ".agents/skills/cnt-ai-coordinator/SKILL.md",
+      "sha256": "48f64a886dcb738ed1ab2881dbc593106ba10900858a69dfd9f3230f042abff9",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-culinary-expert/agents/openai.yaml",
+      "destination": ".agents/skills/cnt-culinary-expert/agents/openai.yaml",
+      "sha256": "f3fd708c8d033a3ed198e9493051da67d47230656be12c1c1758ade72220d41e",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-culinary-expert/references/culinary.md",
+      "destination": ".agents/skills/cnt-culinary-expert/references/culinary.md",
+      "sha256": "07c1eab3cd1c89264dd30e7c7c65d4abff3f654e45c610ac7080314b2f9e0428",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-culinary-expert/references/operations.md",
+      "destination": ".agents/skills/cnt-culinary-expert/references/operations.md",
+      "sha256": "88cc0ba558e53f5396cef1a8d1fd307dec836d726ca7ffff0d50e78e90681ab5",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-culinary-expert/references/stack.md",
+      "destination": ".agents/skills/cnt-culinary-expert/references/stack.md",
+      "sha256": "67ee11df4b8515ffd4c73e0411d34dfd8f381ca024f8044ae9217f03431e297a",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-culinary-expert/SKILL.md",
+      "destination": ".agents/skills/cnt-culinary-expert/SKILL.md",
+      "sha256": "651f9f6c094e72b8bae44b40e9406c008e72da349529bdc7ff0a1dcfb3036eec",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-mobile-developer/agents/openai.yaml",
+      "destination": ".agents/skills/cnt-mobile-developer/agents/openai.yaml",
+      "sha256": "0ea77161b650557589beac578978b63ba70767e16bbab7188de6c9471f26df01",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-mobile-developer/references/engineering.md",
+      "destination": ".agents/skills/cnt-mobile-developer/references/engineering.md",
+      "sha256": "156dcaedb20ff7eeac1eb0662192f04e9701a28367465645783949f72c8cae6c",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-mobile-developer/references/operations.md",
+      "destination": ".agents/skills/cnt-mobile-developer/references/operations.md",
+      "sha256": "88cc0ba558e53f5396cef1a8d1fd307dec836d726ca7ffff0d50e78e90681ab5",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-mobile-developer/references/stack.md",
+      "destination": ".agents/skills/cnt-mobile-developer/references/stack.md",
+      "sha256": "67ee11df4b8515ffd4c73e0411d34dfd8f381ca024f8044ae9217f03431e297a",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-mobile-developer/SKILL.md",
+      "destination": ".agents/skills/cnt-mobile-developer/SKILL.md",
+      "sha256": "8ec167c26c80fa9d0bcd49e28765a117fc8abba9e0811978876c04b437b10c24",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-mobile-release/agents/openai.yaml",
+      "destination": ".agents/skills/cnt-mobile-release/agents/openai.yaml",
+      "sha256": "ac2616b2aa3d00d0556fcec31218f344b6a3667b60a7d7eca372d54dca4be617",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-mobile-release/references/operations.md",
+      "destination": ".agents/skills/cnt-mobile-release/references/operations.md",
+      "sha256": "88cc0ba558e53f5396cef1a8d1fd307dec836d726ca7ffff0d50e78e90681ab5",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-mobile-release/references/release.md",
+      "destination": ".agents/skills/cnt-mobile-release/references/release.md",
+      "sha256": "db0d61d2d06fba9b5e424742566de7282b6881dffae67e0ee22642723380f6a4",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-mobile-release/references/stack.md",
+      "destination": ".agents/skills/cnt-mobile-release/references/stack.md",
+      "sha256": "67ee11df4b8515ffd4c73e0411d34dfd8f381ca024f8044ae9217f03431e297a",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-mobile-release/SKILL.md",
+      "destination": ".agents/skills/cnt-mobile-release/SKILL.md",
+      "sha256": "71aa1fb717918b8f0cfb5c681c00b16564c708445e2d7dc192f2dc0b28118fbb",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-quality-assurance/agents/openai.yaml",
+      "destination": ".agents/skills/cnt-quality-assurance/agents/openai.yaml",
+      "sha256": "358e068e96d537f01b657136d3472b0c74b59f7f8d65489fa8c22e8ef5bd8d63",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-quality-assurance/references/operations.md",
+      "destination": ".agents/skills/cnt-quality-assurance/references/operations.md",
+      "sha256": "88cc0ba558e53f5396cef1a8d1fd307dec836d726ca7ffff0d50e78e90681ab5",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-quality-assurance/references/qa.md",
+      "destination": ".agents/skills/cnt-quality-assurance/references/qa.md",
+      "sha256": "35f5610989c61990ed18eb703e26d0cc5b4676aa2fa02f38e705f065b26e3168",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-quality-assurance/references/stack.md",
+      "destination": ".agents/skills/cnt-quality-assurance/references/stack.md",
+      "sha256": "67ee11df4b8515ffd4c73e0411d34dfd8f381ca024f8044ae9217f03431e297a",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-quality-assurance/SKILL.md",
+      "destination": ".agents/skills/cnt-quality-assurance/SKILL.md",
+      "sha256": "3dce11907502e29e4dfe5f358901e905e14f5eb1df8147f19eeb3e802ae21bd7",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-store-promotions/agents/openai.yaml",
+      "destination": ".agents/skills/cnt-store-promotions/agents/openai.yaml",
+      "sha256": "3240f745fb5b00ccfffbdfb435341292cc91268e8493238a0524e3c67bd3ce67",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-store-promotions/references/offers.md",
+      "destination": ".agents/skills/cnt-store-promotions/references/offers.md",
+      "sha256": "48c443f937792b54f3c39fa1e38c9bf1e28cc09932bf9ced1f5f8711b037a538",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-store-promotions/references/operations.md",
+      "destination": ".agents/skills/cnt-store-promotions/references/operations.md",
+      "sha256": "88cc0ba558e53f5396cef1a8d1fd307dec836d726ca7ffff0d50e78e90681ab5",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-store-promotions/references/stack.md",
+      "destination": ".agents/skills/cnt-store-promotions/references/stack.md",
+      "sha256": "67ee11df4b8515ffd4c73e0411d34dfd8f381ca024f8044ae9217f03431e297a",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-store-promotions/SKILL.md",
+      "destination": ".agents/skills/cnt-store-promotions/SKILL.md",
+      "sha256": "4a4a3764911bdd4bd7bfa5d18e312c68b61f9cd060cfed0edeee20e1f61edbcf",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-ux-localization/agents/openai.yaml",
+      "destination": ".agents/skills/cnt-ux-localization/agents/openai.yaml",
+      "sha256": "ba5d002453fd3bd48a4c37b12bc997860f8c53ba7321b6b12a743ac46181c802",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-ux-localization/references/operations.md",
+      "destination": ".agents/skills/cnt-ux-localization/references/operations.md",
+      "sha256": "88cc0ba558e53f5396cef1a8d1fd307dec836d726ca7ffff0d50e78e90681ab5",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-ux-localization/references/stack.md",
+      "destination": ".agents/skills/cnt-ux-localization/references/stack.md",
+      "sha256": "67ee11df4b8515ffd4c73e0411d34dfd8f381ca024f8044ae9217f03431e297a",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-ux-localization/references/ux.md",
+      "destination": ".agents/skills/cnt-ux-localization/references/ux.md",
+      "sha256": "e25c76a7597e60b1c4c3d1fc668e55cb741bc69dd789b327534f5cd68ca1184f",
+      "status": "copied"
+    },
+    {
+      "source": "cnt-ux-localization/SKILL.md",
+      "destination": ".agents/skills/cnt-ux-localization/SKILL.md",
+      "sha256": "76163442a8b37234ab0f89f17609a126d076f2622d0d075ed7a6ec077eba594b",
+      "status": "copied"
+    }
+  ],
+  "skipped": []
+}

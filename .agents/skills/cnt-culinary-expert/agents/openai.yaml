@@ -1,0 +1,4 @@
+interface:
+  display_name: "CNT · Ekspert kulinarny"
+  short_description: "Przepisy, porcje, alergeny i jakość jadłospisu"
+  default_prompt: "Użyj $cnt-culinary-expert do oceny przepisów, porcji i ryzyka alergenów oraz przygotowania poprawek."

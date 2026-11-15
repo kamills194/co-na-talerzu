@@ -1,0 +1,178 @@
+{
+  "run": "2026-11-15T21-30-44.598Z-21eb4134",
+  "kind": "app",
+  "source": "C:\\Users\\kamil\\Documents\\Codex\\2026-11-15\\referenced-chatgpt-conversation-this-is-an-4\\outputs\\co-na-talerz",
+  "files": [
+    {
+      "source": ".gitignore",
+      "destination": "apps/web/.gitignore",
+      "sha256": "e161e23ee97879d4db3b4fd9eaa6f90b71db8f934f32624c7075a611a5bc32cb",
+      "status": "identical"
+    },
+    {
+      "source": "capacitor.config.json",
+      "destination": "apps/web/capacitor.config.json",
+      "sha256": "8ee93ec67f3a3ec6f8f4921f3e78a32dd1a151aabf9ffb25b5578ab39c8ad49c",
+      "status": "identical"
+    },
+    {
+      "source": "package.json",
+      "destination": "apps/web/package.json",
+      "sha256": "b5575aacb5adc5fa0f77d3d517aacb5da20a34301475565071c2e77aa24f79e2",
+      "status": "identical"
+    },
+    {
+      "source": "PLAN-WYDANIA.md",
+      "destination": "apps/web/PLAN-WYDANIA.md",
+      "sha256": "bd01b312af61f0a12d3a5bf50a1c6d193e63c8ec4bafa4f26ab0f6b5872ea282",
+      "status": "identical"
+    },
+    {
+      "source": "README.md",
+      "destination": "apps/web/README.md",
+      "sha256": "e7d984c55b1a44500b4385a294e54f18a0447fb4e59ac1905cb932381de0e61a",
+      "status": "identical"
+    },
+    {
+      "source": "reports/offers-bot.json",
+      "destination": "apps/web/reports/offers-bot.json",
+      "sha256": "9c0ae46b1a1f13a47f035232fd89993c7abbcaff5664b57944fa7c011f859cd6",
+      "status": "identical"
+    },
+    {
+      "source": "scripts/build.mjs",
+      "destination": "apps/web/scripts/build.mjs",
+      "sha256": "ad3b31d3f93e978cd099852ff63675776e9e66e1da4f3f1a8352e71f8d29cdf2",
+      "status": "identical"
+    },
+    {
+      "source": "scripts/icons.mjs",
+      "destination": "apps/web/scripts/icons.mjs",
+      "sha256": "c3e39617011fca3bf4afc58e97011971720c78a607d31881237baa86732127f3",
+      "status": "identical"
+    },
+    {
+      "source": "scripts/offer-parser.mjs",
+      "destination": "apps/web/scripts/offer-parser.mjs",
+      "sha256": "efe915ac2d812b382f3ec879b870a3021867d665f8d978e412d72f49c2a2dadd",
+      "status": "identical"
+    },
+    {
+      "source": "scripts/offers-bot.mjs",
+      "destination": "apps/web/scripts/offers-bot.mjs",
+      "sha256": "0c04724da3e10605b2ba831c5e1d8b32674e238dafcf639e1add10b7c58d9a94",
+      "status": "identical"
+    },
+    {
+      "source": "scripts/offers-watch.mjs",
+      "destination": "apps/web/scripts/offers-watch.mjs",
+      "sha256": "373fddd680b56dfcce3ab53fe3bfd33ce237f1f6de178ec8f43ce1ea908ffd63",
+      "status": "identical"
+    },
+    {
+      "source": "scripts/serve.mjs",
+      "destination": "apps/web/scripts/serve.mjs",
+      "sha256": "237eb01bebdc77cc257ead417e6866b7dd7b7bf13facdd73c9f8f435aa3a0bc3",
+      "status": "identical"
+    },
+    {
+      "source": "src/app.js",
+      "destination": "apps/web/src/app.js",
+      "sha256": "4a916d6b0f3c0e7e05dbf3dbdd09ceda5927c42ea8ead3ea44356e4382d63c15",
+      "status": "identical"
+    },
+    {
+      "source": "src/domain.js",
+      "destination": "apps/web/src/domain.js",
+      "sha256": "8cf8807a121d315c1e0b1d0fbb227b514cfddb7424140776700021c18a60eb0f",
+      "status": "identical"
+    },
+    {
+      "source": "src/i18n.js",
+      "destination": "apps/web/src/i18n.js",
+      "sha256": "28e63341329d365ca87bf0a0f5b6baa61ad7a3a20981193f4e04c064eb7cb814",
+      "status": "identical"
+    },
+    {
+      "source": "src/icon-192.png",
+      "destination": "apps/web/src/icon-192.png",
+      "sha256": "faa27bbe4c2c7618848a81017372ad38495ffe7b764f44ff9c23fd4a959875af",
+      "status": "identical"
+    },
+    {
+      "source": "src/icon-512.png",
+      "destination": "apps/web/src/icon-512.png",
+      "sha256": "2d702cf74019b7eda0229f8bfbf018872edabffdb066b74e826378dcfd4f71bf",
+      "status": "identical"
+    },
+    {
+      "source": "src/icon.svg",
+      "destination": "apps/web/src/icon.svg",
+      "sha256": "57d7228f12fcc78b05d4a4f18795efd42705343c841a3105336ce1d98e46a30c",
+      "status": "identical"
+    },
+    {
+      "source": "src/index.html",
+      "destination": "apps/web/src/index.html",
+      "sha256": "21c95984d61f52624d7f42f3d5b79ad0863a8cbcb4df203e61466d9cb332df6b",
+      "status": "identical"
+    },
+    {
+      "source": "src/manifest.webmanifest",
+      "destination": "apps/web/src/manifest.webmanifest",
+      "sha256": "a4f3f901f815c124257ba88f0e8c8051bd813735b897152aa6b52e7d01017ae8",
+      "status": "identical"
+    },
+    {
+      "source": "src/offers.json",
+      "destination": "apps/web/src/offers.json",
+      "sha256": "9c0ae46b1a1f13a47f035232fd89993c7abbcaff5664b57944fa7c011f859cd6",
+      "status": "identical"
+    },
+    {
+      "source": "src/recipes.pl.js",
+      "destination": "apps/web/src/recipes.pl.js",
+      "sha256": "5576d7bb9f0e34e5fbb4636c9ef709b6f114b7866ae78231743e1ac298d9ed95",
+      "status": "identical"
+    },
+    {
+      "source": "src/storage.js",
+      "destination": "apps/web/src/storage.js",
+      "sha256": "f5c348c55aeeb0484c85257505908c169afad7de7d8c75679d645c10a3c76c4c",
+      "status": "identical"
+    },
+    {
+      "source": "src/styles.css",
+      "destination": "apps/web/src/styles.css",
+      "sha256": "3cb8346c51a80053663e8f7c542aad09a2b80c016c27f5d1e17fbea8b6baba3e",
+      "status": "identical"
+    },
+    {
+      "source": "src/sw.js",
+      "destination": "apps/web/src/sw.js",
+      "sha256": "afe403a47949c7c60575d334b980e063042f967d2f83ea6f7be2b7a780d43e61",
+      "status": "identical"
+    },
+    {
+      "source": "tests/domain.test.mjs",
+      "destination": "apps/web/tests/domain.test.mjs",
+      "sha256": "c9b91b51d156564d7051e1338a54688988cf1e45be4e750ff0bd327e1bb4602d",
+      "status": "identical"
+    },
+    {
+      "source": "tests/shell.test.mjs",
+      "destination": "apps/web/tests/shell.test.mjs",
+      "sha256": "cafb24b4225f7d3a27cb875047981f8cf8a6edc435e20b8b88579e7c1e7b54ea",
+      "status": "identical"
+    },
+    {
+      "source": "TESTY.md",
+      "destination": "apps/web/TESTY.md",
+      "sha256": "f9e83f9398f3df8f3e4f8ecc582d66479e852c96bcb0a7cdd1705a158445d61e",
+      "status": "conflict"
+    }
+  ],
+  "skipped": [
+    "dist"
+  ]
+}

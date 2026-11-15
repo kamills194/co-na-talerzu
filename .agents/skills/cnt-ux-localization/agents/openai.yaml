@@ -1,0 +1,4 @@
+interface:
+  display_name: "CNT · UX/UI i lokalizacja"
+  short_description: "Przepływy mobilne, dostępność i polskie teksty"
+  default_prompt: "Użyj $cnt-ux-localization do poprawy przepływu mobilnego, dostępności i lokalizacji pl-PL."

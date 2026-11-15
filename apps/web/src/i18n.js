@@ -1,0 +1,24 @@
+// UI dictionaries and recipe translations are intentionally separate. Add a complete
+// dictionary + recipe catalog before exposing another locale; no mixed-language fallbacks.
+export const locale = 'pl-PL';
+export const messages = {
+  recipes:'Przepisy', favorites:'Ulubione', shopping:'Lista zakupów', offers:'Promocje',
+  all:'Wszystkie', breakfast:'Śniadania', snack:'Drugie śniadania', lunch:'Obiady', dinner:'Kolacje', dessert:'Desery', starter:'Przystawki',
+  anyDiet:'Bez preferencji', vegetarian:'Wegetariańska', vegan:'Wegańska',
+  gluten:'Gluten', milk:'Mleko', eggs:'Jaja', nuts:'Orzechy', fish:'Ryby', soy:'Soja', celery:'Seler', mustard:'Gorczyca', sesame:'Sezam',
+  heroLabel:'CODZIENNA KUCHNIA, MAŁE PRZYJEMNOŚCI', heroTitle:'Dziś coś dobrego.\nPo prostu, po domowemu.', heroText:'Znane składniki. Proste kroki. Pomysł na każdy apetyt.',
+  surprise:'Zaskocz mnie', surpriseText:'Wybierz, na co masz ochotę. My znajdziemy pomysł.', meal:'Rodzaj posiłku', time:'Maksymalny czas', diet:'Dieta', exclude:'Wyklucz składniki', search:'Szukaj przepisu lub składnika', searchPlaceholder:'Np. pomidorowa, ziemniaki, jabłko…',
+  noLimit:'Bez limitu', minutes:'min', noResults:'Nie ma przepisów pasujących do tych filtrów.', reset:'Wyczyść filtry', found:'Pomysły na domowy posiłek', result:'Propozycja dla Ciebie',
+  addFavorite:'Dodaj do ulubionych', removeFavorite:'Usuń z ulubionych', emptyFavorites:'Zapisz przepisy serduszkiem — będą tutaj czekać.',
+  portions:'Porcje', ingredients:'Składniki', steps:'Przygotowanie', allergens:'Alergeny', noAllergens:'Brak oznaczonych alergenów', allergenNote:'Sprawdź etykiety produktów i możliwe śladowe ilości alergenów. Filtry opierają się na składnikach przepisu.',
+  addShopping:'Dodaj składniki do listy', added:'Składniki dodane do listy zakupów.', close:'Zamknij', easy:'Prosty przepis',
+  shoppingTitle:'Zakupy bez zapominania', shoppingText:'Składniki z różnych przepisów łączymy w jedną listę.', emptyShopping:'Twoja lista jest pusta. Dodaj składniki z wybranego przepisu.', customItem:'Własny produkt', add:'Dodaj', remove:'Usuń', clearDone:'Usuń kupione', copy:'Kopiuj listę', copied:'Lista skopiowana.', copyFailed:'Kopiowanie niedostępne w tej przeglądarce.',
+  offersTitle:'Gotuj z tego, co w promocji', offersText:'Oferty ze źródeł sklepowych i Twoje notatki z gazetek. Podpowiemy pasujące przepisy.', offersNotice:'Bot odczytuje publiczne dane ALDI. To nie gwarantuje dostępności produktu. Sprawdź jednostkę ceny, termin, lokalizację i warunki w źródle. Własne wpisy poniżej są Twoimi notatkami.', product:'Produkt z przepisu', store:'Sklep', price:'Cena za opakowanie (zł)', until:'Ważna do', source:'Źródło (link lub opis gazetki)', offerAdd:'Zapisz ofertę', emptyOffers:'Nie masz zapisanych ofert. Dodaj pierwszą powyżej.', expired:'Oferta wygasła', matched:'Przepisy z tym składnikiem', invalidOffer:'Uzupełnij poprawnie wszystkie pola oferty.', offerSaved:'Zapisano ofertę.',
+  botTitle:'Oferty od bota', botDescription:'Bot uruchamiany na komputerze pobiera datowane oferty ALDI. Pokazujemy tylko trwające promocje dopasowane do składników. Cen nie używamy do wyliczania kosztu dania.', botEmpty:'Brak potwierdzonych aktualnych ofert. Uruchom bota, aby odświeżyć dane.', verifiedOffers:'ofert odczytanych ze źródła sklepowego', fetched:'Odczyt',
+  excludeProducts:'Pomiń konkretne produkty', allergensLabel:'Wyklucz alergeny',
+  privacyTitle:'Twoje dane zostają u Ciebie', privacyText:'Ulubione, zakupy i wpisane oferty zapisujemy tylko w pamięci tej przeglądarki. Nie ma kont, analityki ani synchronizacji. Wyczyszczenie danych przeglądarki usuwa te wpisy. Zapisz kopię, aby przenieść je na inne urządzenie.', export:'Pobierz kopię danych', import:'Wczytaj kopię danych', importNote:'Wczytanie kopii zastępuje lokalne ulubione, zakupy i oferty.', imported:'Wczytano kopię danych.', invalidBackup:'Nieprawidłowy plik kopii danych.', storageError:'Nie udało się zapisać danych. Pamięć przeglądarki może być niedostępna lub pełna.', noMatches:'Brak pasującego przepisu. Zmień filtry i spróbuj ponownie.', savedCount:'Zapisane przepisy', offline:'Działa także offline po pierwszym otwarciu.', importLabel:'Plik kopii danych',
+};
+export function t(key) { if (!(key in messages)) throw new Error(`Missing translation: ${key}`); return messages[key]; }
+export const categories = ['breakfast','snack','lunch','dinner','dessert','starter'];
+export const allergens = ['gluten','milk','eggs','nuts','fish','soy','celery','mustard','sesame'];
+

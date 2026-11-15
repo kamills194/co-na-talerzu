@@ -1,0 +1,13 @@
+{
+  "name": "co-na-talerzu",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "npm --prefix apps/web start",
+    "test": "npm --prefix apps/web test",
+    "build": "npm --prefix apps/web run build",
+    "offers": "npm --prefix apps/web run offers"
+  }
+}

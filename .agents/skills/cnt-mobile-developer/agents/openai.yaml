@@ -1,0 +1,4 @@
+interface:
+  display_name: "CNT · Programista"
+  short_description: "Kod PWA/Capacitor, migracje, testy i poprawki"
+  default_prompt: "Użyj $cnt-mobile-developer do wdrożenia zadania w kodzie, przetestowania i przygotowania PR."

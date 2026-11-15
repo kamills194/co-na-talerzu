@@ -1,0 +1,54 @@
+{
+  "displayName": "co na talerzu",
+  "application": "apps/web",
+  "skills": ".agents/skills",
+  "stack": "PWA / JavaScript modules / Node.js / Capacitor configuration",
+  "github": {
+    "repository": "kamills194/co-na-talerzu",
+    "url": "https://github.com/kamills194/co-na-talerzu",
+    "branch": "main",
+    "visibility": "private",
+    "status": "remote_configured"
+  },
+  "googleDrive": {
+    "folderId": "1PYHtPoRuIvv-wyi2jkawOwudBI7y1XbT",
+    "url": "https://drive.google.com/drive/folders/1PYHtPoRuIvv-wyi2jkawOwudBI7y1XbT",
+    "reportsFolderId": "1yM-GTPv_5wCaSezyMpSLpog7eCTNuyS9",
+    "versionsFolderId": "1cIYe65x3NkwzkZ9gZF1N4B6usRKKaga6",
+    "status": "folder_created",
+    "syncMode": "explicit connector upload of reports and version snapshots; GitHub main is canonical"
+  },
+  "sources": [
+    {
+      "threadId": "01a1e10a-c744-7f50-b6f3-b03bba431091",
+      "role": "application",
+      "observedStatus": "inProgress"
+    },
+    {
+      "threadId": "01a1e115-fff9-7fe2-8248-ee9a4574f951",
+      "role": "seven_skills",
+      "observedStatus": "inProgress"
+    }
+  ],
+  "site": {
+    "projectId": "appgprj_6af9a4afcdc48191983117b2bd390f22",
+    "url": "https://co-na-talerz-kamil.przestrze-ro-2040.chatgpt.site",
+    "latestSavedVersion": 7,
+    "latestSavedCommit": "2726b45b94e5454ff0bc673fb5f869c3a01971f1",
+    "status": "existing_site_preserved"
+  },
+  "importedSkills": [
+    "cnt-ai-coordinator",
+    "cnt-culinary-expert",
+    "cnt-mobile-developer",
+    "cnt-mobile-release",
+    "cnt-quality-assurance",
+    "cnt-store-promotions",
+    "cnt-ux-localization"
+  ],
+  "collaboration": {
+    "canonicalSource": "https://github.com/kamills194/co-na-talerzu/tree/main",
+    "rules": "docs/WORKFLOW.md",
+    "automaticDriveSync": false
+  }
+}

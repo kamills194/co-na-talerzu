@@ -1,0 +1,4 @@
+interface:
+  display_name: "CNT · Koordynator AI"
+  short_description: "Planowanie zadań, zależności i przekazania pracy"
+  default_prompt: "Użyj $cnt-ai-coordinator do rozpisania zadania na sprawdzalne etapy i raport gotowości."

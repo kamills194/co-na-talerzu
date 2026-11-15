@@ -1,0 +1,69 @@
+{
+  "date": "2026-11-15",
+  "scope": "skill packages only",
+  "skills": [
+    {
+      "name": "cnt-ai-coordinator",
+      "initializer": "init_skill.py: PASS",
+      "validator": "Skill is valid!",
+      "metadata_and_links": "PASS",
+      "zip_roundtrip": "PASS",
+      "files": 5,
+      "sha256": "8751f911cd02e6fcab78c0dcb156c0a5518336d1780517ae8f8c4b6f6d5bc528"
+    },
+    {
+      "name": "cnt-mobile-developer",
+      "initializer": "init_skill.py: PASS",
+      "validator": "Skill is valid!",
+      "metadata_and_links": "PASS",
+      "zip_roundtrip": "PASS",
+      "files": 5,
+      "sha256": "dbda4097df529532654231c297af9b0c60be3d22731cde3951bf9955e9c173b2"
+    },
+    {
+      "name": "cnt-culinary-expert",
+      "initializer": "init_skill.py: PASS",
+      "validator": "Skill is valid!",
+      "metadata_and_links": "PASS",
+      "zip_roundtrip": "PASS",
+      "files": 5,
+      "sha256": "2df79eec222d43b9dc93b4d13cb81c590e712cc332f42298a7cd3ef6fee32df2"
+    },
+    {
+      "name": "cnt-store-promotions",
+      "initializer": "init_skill.py: PASS",
+      "validator": "Skill is valid!",
+      "metadata_and_links": "PASS",
+      "zip_roundtrip": "PASS",
+      "files": 5,
+      "sha256": "193a4a23ecf2eb9369c71ae891adc9e9048996513ab583899b87f234c9fd67f5"
+    },
+    {
+      "name": "cnt-ux-localization",
+      "initializer": "init_skill.py: PASS",
+      "validator": "Skill is valid!",
+      "metadata_and_links": "PASS",
+      "zip_roundtrip": "PASS",
+      "files": 5,
+      "sha256": "053833a262ff2b3249e427e569138e220760045138c37881aeef2063f2467619"
+    },
+    {
+      "name": "cnt-quality-assurance",
+      "initializer": "init_skill.py: PASS",
+      "validator": "Skill is valid!",
+      "metadata_and_links": "PASS",
+      "zip_roundtrip": "PASS",
+      "files": 5,
+      "sha256": "16bc7d10c27824a4c056d157058e8e084be1aa1be690f89fd0c8f0b51f618dd2"
+    },
+    {
+      "name": "cnt-mobile-release",
+      "initializer": "init_skill.py: PASS",
+      "validator": "Skill is valid!",
+      "metadata_and_links": "PASS",
+      "zip_roundtrip": "PASS",
+      "files": 5,
+      "sha256": "d8c5ec7d053066b25080d8ec120e76ad6f09a1871ffa4489cf9690ee591bd3b3"
+    }
+  ]
+}

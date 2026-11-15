@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "updatedAt": "2026-11-15T21:21:43.185Z",
+  "offers": [
+    {
+      "id": "aldi-6173-1794697200",
+      "product": "cucumber",
+      "store": "ALDI",
+      "price": 6.99,
+      "until": "2026-11-15",
+      "from": "2026-11-15",
+      "source": "https://www.aldi.pl/produkty/owoce-i-warzywa/warzywa.html",
+      "fetchedAt": "2026-11-15T21:21:43.185Z",
+      "name": "Ogórki szklarniowe",
+      "unit": "Cena za kg",
+      "regularPrice": 14.99,
+      "validUntil": "2026-11-15T22:59:59.000Z",
+      "conditions": "53% TANIEJ · 14.99 zł to najniższa cena sprzed pierwszej obniżki.",
+      "evidence": "{\"priceValue\":6.99,\"strikePrice\":{\"strikePriceValue\":14.99},\"priceTagLabels\":{\"promoText1\":\"53% TANIEJ\",\"bestPricesWithin30daysText\":\"14.99 zł to najniższa cena sprzed pierwszej obniżki.\"},\"validFrom\":1794697200,\"validUntil\":1794783599}"
+    },
+    {
+      "id": "aldi-3791-1794697200",
+      "product": "tomato",
+      "store": "ALDI",
+      "price": 11.99,
+      "until": "2026-11-15",
+      "from": "2026-11-15",
+      "source": "https://www.aldi.pl/produkty/owoce-i-warzywa/warzywa.html",
+      "fetchedAt": "2026-11-15T21:21:43.185Z",
+      "name": "Pomidory malinowe",
+      "unit": "Cena za kg",
+      "regularPrice": 17.99,
+      "validUntil": "2026-11-15T22:59:59.000Z",
+      "conditions": "33% TANIEJ · 17.99 zł to najniższa cena sprzed pierwszej obniżki.",
+      "evidence": "{\"priceValue\":11.99,\"strikePrice\":{\"strikePriceValue\":17.99},\"priceTagLabels\":{\"promoText1\":\"33% TANIEJ\",\"bestPricesWithin30daysText\":\"17.99 zł to najniższa cena sprzed pierwszej obniżki.\"},\"validFrom\":1794697200,\"validUntil\":1794783599}"
+    }
+  ],
+  "sources": [
+    {
+      "source": "https://www.aldi.pl/produkty/owoce-i-warzywa/warzywa.html",
+      "status": "ok",
+      "productsSeen": 80,
+      "unmapped": 76
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/owoce-i-warzywa/owoce.html",
+      "status": "ok",
+      "productsSeen": 44,
+      "unmapped": 43
+    }
+  ]
+}

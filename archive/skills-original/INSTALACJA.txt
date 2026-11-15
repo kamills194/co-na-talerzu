@@ -1,0 +1,17 @@
+Co na talerz 2.0 — 7 niezależnych Skills
+
+Domyślny stos nowego projektu: Expo / React Native / TypeScript, Expo Router, Supabase, GitHub Actions i Expo/EAS. Istniejące repo oraz jawne wybory użytkownika mają pierwszeństwo.
+
+Każdy cnt-*.zip zawiera dokładnie jeden folder Skill z SKILL.md, agents/openai.yaml oraz trzema references. Zainstaluj wybrane Skills oddzielnie w środowisku obsługującym Skills. Przy instalacji z systemu plików rozpakuj folder cnt-... do katalogu Skills używanego przez dane środowisko (w Codex zwykle $CODEX_HOME/skills lub ~/.codex/skills). Przed aktualizacją istniejącego folderu zachowaj jego kopię. Jeżeli interfejs instalatora przyjmuje ZIP pojedynczego Skill, podaj jeden cnt-*.zip. Samo pobranie archiwum nie instaluje pakietu.
+
+Archiwum zbiorcze co-na-talerz-2-skills-bundle.zip to transport siedmiu oddzielnych ZIP-ów i dokumentacji. Instalacja wielu Skills z jednego ZIP nie jest wspierana. Najpierw rozpakuj zbiorcze archiwum, potem instaluj poszczególne Skills osobno. Nie podawaj bundle jako ZIP pojedynczego Skill.
+
+Wywołania: $cnt-ai-coordinator, $cnt-mobile-developer, $cnt-culinary-expert, $cnt-store-promotions, $cnt-ux-localization, $cnt-quality-assurance, $cnt-mobile-release.
+
+Do pierwszego zadania przekaż repo/ref, opis i kryteria, opcjonalnie folder ID Drive oraz oczekiwany zakres zapisów do GitHub i dystrybucji. Dostępne konektory GitHub/Drive lub odpowiednie narzędzia CLI muszą być uwierzytelnione; pakiety nie zawierają tokenów ani konfiguracji kont. Nie trzeba instalować pozostałych Skills, aby używać jednego.
+
+Przykład: Użyj $cnt-mobile-developer. W repo wskazanym w sesji napraw duplikowanie pozycji listy zakupów po reconnect. Dodaj test regresji i przygotuj diff oraz raport. Otwórz PR i zapisz raport w podanym folderze Drive tylko jeśli obejmuje to zakres tego zadania.
+
+Skills są zestawami instrukcji uruchamianymi w sesji. Nie tworzą automatycznie autonomicznego zespołu, harmonogramów, procesów w tle ani dostępów do kont. Nie uruchomiono agentów, buildów, testów aplikacji ani publikacji sklepów podczas przygotowania pakietów.
+
+WALIDACJA.json opisuje faktycznie wykonane kontrole struktury/YAML/linków i integralności ZIP. PRZEGLAD.txt opisuje przegląd scenariuszy instrukcji; nie jest wynikiem uruchomienia Skills na rzeczywistym projekcie. Wymagania sklepów trzeba zweryfikować ponownie na dzień wydania.

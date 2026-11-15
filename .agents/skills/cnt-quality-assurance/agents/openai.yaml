@@ -1,0 +1,4 @@
+interface:
+  display_name: "CNT · QA"
+  short_description: "Testy ryzyka, regresja i dowody jakości builda"
+  default_prompt: "Użyj $cnt-quality-assurance do sprawdzenia kandydata i raportu testów z dowodami oraz blokadami."

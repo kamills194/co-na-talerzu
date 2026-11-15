@@ -1,0 +1,8 @@
+{
+  "name": "co-na-talerz",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": { "start": "node scripts/serve.mjs", "build": "node scripts/build.mjs", "test": "node --test tests/*.test.mjs", "offers": "node scripts/offers-bot.mjs", "offers:watch": "node scripts/offers-watch.mjs" }
+}

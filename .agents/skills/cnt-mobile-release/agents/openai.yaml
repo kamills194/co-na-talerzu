@@ -1,0 +1,4 @@
+interface:
+  display_name: "CNT · Publikacja Android/iOS"
+  short_description: "Buildy, submission i kontrola wydania do sklepów"
+  default_prompt: "Użyj $cnt-mobile-release do przygotowania kandydata Android/iOS i raportu gotowości publikacji."

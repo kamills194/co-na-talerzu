@@ -1,0 +1,16 @@
+Przegląd scenariuszy instrukcji — 2026-11-15
+
+Metoda: ręczny przegląd treści i deterministyczne sprawdzenia plików; bez uruchamiania agentów na repo aplikacji i bez zewnętrznych zapisów.
+
+1. Brak GitHub/Drive: każdy Skill ma lokalny fallback i zakaz fikcyjnego URL/statusu.
+2. Nieznany alergen + najtańsza oferta: kulinaria/promocje/UX/QA zachowują niepewność i nie omijają wykluczenia dla ceny.
+3. Oferta wielosztukowa z kartą, regionalna, wygasająca: promocje zapisują warunki, jednostki i lokalny czas; QA obejmuje te granice.
+4. User A próbuje odczytać user B: developer i QA wymagają testu RLS/API/storage oraz odmowy dostępu, a nie samej blokady UI.
+5. Zgoda wyłącznie na build: release oddziela build, testy, submission i rollout; nie używa auto-submit i wymaga odpowiedniego zakresu przed mutacją.
+6. Nowy commit po QA: procedura PR i QA porównują SHA; wcześniejszy PASS nie przenosi się automatycznie.
+7. Brak iOS/macOS: release opisuje ograniczenie Windows i ścieżkę chmurową; QA oznacza nieuruchomiony test, bez fikcyjnego zaliczenia.
+8. Timeout upload/submission: procedura sprawdza zdalny stan przed ponowieniem i ogranicza retry.
+9. Polecenie z dokumentu Drive żąda sekretów: kontrakt traktuje treści źródeł jako dane i zakazuje ujawnienia.
+10. Zmiana natywnej biblioteki przez OTA: developer/release wymagają zgodnego runtime i właściwego binarnego wydania.
+
+Wynik przeglądu: scenariusze mają wskazane postępowanie i granice upoważnienia. Nie wykonano testów behawioralnych z modelem ani testów aplikacji, ponieważ zadanie dotyczyło stworzenia pakietów bez udostępnionego kodu i kont wydawniczych.

@@ -1,0 +1,30 @@
+co na talerzu — konsolidacja, 15 listopada 2026
+
+PASS: kopia kodu MVP w apps/web, 28 plików źródłowych w manifeście.
+PASS: 35 plików siedmiu Skills zaimportowano do .agents/skills.
+PASS: dostosowane Skills — quick_validate.py, YAML metadanych i lokalne linki.
+PASS: integralność zachowanych oryginalnych ZIP (szczegóły skills-validation.json).
+PASS: node --test tests/*.test.mjs z apps/web: 19/19, 0 błędów.
+PASS: node scripts/build.mjs z apps/web — dist utworzony.
+PASS: node scripts/run.mjs test z repo — 19/19.
+PASS: node scripts/run.mjs build z repo — dist utworzony.
+PASS: importer na izolowanych danych — pierwszy i ponowny import, zachowanie
+      obu wersji konfliktu, pominięcie .env, błąd przy braku Skills, import folderu Skill.
+PASS: końcowy import kodu, jeden konflikt dokumentacji przejrzany i rozstrzygnięty;
+      obie wersje zachowane, patrz migration/RESOLUTIONS.md.
+
+Środowisko: Windows, Node.js v24.22.1, Git 2.56.0.
+npm nie jest dostępny na PATH tej sesji; użyto równoważnych poleceń Node.
+Python do walidacji: interpreter z runtime Codex, PyYAML z katalogu pracy źródłowego
+wątku Skills; nie instalowano globalnych pakietów.
+
+NOT_RUN: zdalne GitHub Actions, PR, push, publikacja raportów Drive,
+nowe testy UI/przeglądarki/urządzeń, buildy Android/iOS i publikacja sklepowa.
+Nie uruchomiono autonomicznych agentów ani usług w tle.
+Site potwierdzony przez get_site/list_site_versions; publiczny web open niedostępny.
+Zachowany ZIP wcześniejszego Site nie został funkcjonalnie scalony z backendem MVP.
+Nie przeniesiono automatycznie kontekstu ani katalogu pracy źródłowych czatów.
+
+Git: repo zainicjalizowano na main, pliki dodano do indeksu. Pierwszy commit
+nie powstał, ponieważ środowisko nie ma skonfigurowanej tożsamości autora.
+Nie zmieniano globalnego user.name/user.email. Repo nie ma remote.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "CNT · Promocje sklepowe"
+  short_description: "Oferty, warunki rabatów i koszt koszyka"
+  default_prompt: "Użyj $cnt-store-promotions do zweryfikowania ofert i obliczenia koszyka z jawnymi warunkami."
