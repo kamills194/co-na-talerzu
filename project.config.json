@@ -8,15 +8,18 @@
     "url": "https://github.com/kamills194/co-na-talerzu",
     "branch": "main",
     "visibility": "private",
-    "status": "remote_configured"
+    "status": "connected_verified"
   },
   "googleDrive": {
     "folderId": "1PYHtPoRuIvv-wyi2jkawOwudBI7y1XbT",
     "url": "https://drive.google.com/drive/folders/1PYHtPoRuIvv-wyi2jkawOwudBI7y1XbT",
     "reportsFolderId": "1yM-GTPv_5wCaSezyMpSLpog7eCTNuyS9",
     "versionsFolderId": "1cIYe65x3NkwzkZ9gZF1N4B6usRKKaga6",
-    "status": "folder_created",
-    "syncMode": "explicit connector upload of reports and version snapshots; GitHub main is canonical"
+    "status": "connected_uploaded_verified",
+    "syncMode": "explicit connector upload of reports and version snapshots; GitHub main is canonical",
+    "snapshotFileId": "17Rr57wrYdaq69yehEHIbURC037sfvEqE",
+    "verificationReportFileId": "1mdhnKPWbSMQhhIm1JXsr6qmKkegPS2zf",
+    "skillsReportFileId": "1bHhBFRkUPRFtjaV0nnHRpvWLifKV-52E"
   },
   "sources": [
     {

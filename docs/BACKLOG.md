@@ -12,8 +12,8 @@ znane zadania z obu wątków; nie sugeruje importu nieistniejącego systemu Issu
 | CNT-005 | Kontynuować adapter ofert; zachować źródło, czas i ważność, nie pokazywać wygasłych cen | Promocje sklepowe | Adapter ALDI istnieje; dalszy rozwój |
 | CNT-006 | Odbiór telefonu, klawiatury i polskiego UI; każdy kolejny język kompletny | UX/UI i lokalizacja | Odbiór scalonej wersji do wykonania |
 | CNT-007 | Testy i build w nowym repo, raport z wynikiem i ograniczeniami | QA | Wynik w reports/verification.txt |
-| CNT-008 | Utworzyć/podłączyć właściwe repo GitHub, uruchomić CI i procedurę PR | Koordynator | Brak remote |
-| CNT-009 | Wyznaczyć folder Drive raportów i wpisać jego rzeczywisty ID | Koordynator | Brak folderId |
+| CNT-008 | Utworzyć/podłączyć właściwe repo GitHub, uruchomić CI i procedurę PR | Koordynator | Wykonane: prywatne kamills194/co-na-talerzu, push i CI PASS |
+| CNT-009 | Wyznaczyć folder Drive raportów i wpisać jego rzeczywisty ID | Koordynator | Wykonane: folder oraz raporty zweryfikowane, ID w project.config.json |
 | CNT-010 | Buildy natywne, podpisy i testy urządzeń według apps/web/PLAN-WYDANIA.md | Publikacja Android/iOS | Niewykonane |
 | CNT-011 | Porównać odzyskany Site z MVP; plan migracji danych przed wyborem backendu | Programista | Archiwum zachowane; migracja niewykonana |
 | CNT-012 | Po zakończeniu źródłowych wątków wykonać ponowny import i przegląd konfliktów | Koordynator | Otwarte |

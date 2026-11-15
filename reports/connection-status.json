@@ -1,0 +1,61 @@
+{
+  "date": "2026-11-15",
+  "github": {
+    "repository": "kamills194/co-na-talerzu",
+    "branch": "main",
+    "visibility": "private",
+    "verifiedInitialCommit": "d897cd7a2eb2c255106966ba26ea97f95e46017e",
+    "push": "PASS",
+    "connectorReadback": "PASS",
+    "ci": {
+      "runId": 43764617291,
+      "url": "https://github.com/kamills194/co-na-talerzu/actions/runs/43764617291",
+      "conclusion": "success",
+      "test": "PASS",
+      "build": "PASS",
+      "artifactUpload": "PASS"
+    }
+  },
+  "googleDrive": {
+    "folderUrl": "https://drive.google.com/drive/folders/1PYHtPoRuIvv-wyi2jkawOwudBI7y1XbT",
+    "folderId": "1PYHtPoRuIvv-wyi2jkawOwudBI7y1XbT",
+    "reportsFolderId": "1yM-GTPv_5wCaSezyMpSLpog7eCTNuyS9",
+    "versionsFolderId": "1cIYe65x3NkwzkZ9gZF1N4B6usRKKaga6",
+    "files": [
+      {
+        "id": "17Rr57wrYdaq69yehEHIbURC037sfvEqE",
+        "url": "https://drive.google.com/file/d/17Rr57wrYdaq69yehEHIbURC037sfvEqE/view?usp=drivesdk",
+        "role": "versioned source snapshot; ID may retain later revisions",
+        "initialSourceCommit": "d897cd7a2eb2c255106966ba26ea97f95e46017e",
+        "initialSha256": "ff08c1ba16036723924a0f15c2ff3e0be0741c8d7838ec7cc4b4ec34adb02210",
+        "metadataReadback": "PASS"
+      },
+      {
+        "id": "1mdhnKPWbSMQhhIm1JXsr6qmKkegPS2zf",
+        "role": "historical consolidation report",
+        "metadataReadback": "PASS"
+      },
+      {
+        "id": "1bHhBFRkUPRFtjaV0nnHRpvWLifKV-52E",
+        "role": "adapted Skills structural validation",
+        "metadataReadback": "PASS"
+      }
+    ]
+  },
+  "collaboration": {
+    "canonical": "GitHub main",
+    "drive": "versioned reports and source snapshots",
+    "automaticSync": false,
+    "collaboratorsAdded": false
+  },
+  "vercel": {
+    "matchingProjects": 0,
+    "deployed": false
+  },
+  "notes": [
+    "CI verification above concerns the initial commit. Later CI status is available in GitHub Actions.",
+    "Final snapshot name and the Drive connection report identify the exact latest exported commit.",
+    "No public access or new collaborators were added.",
+    "Existing Site and production data were not modified."
+  ]
+}
