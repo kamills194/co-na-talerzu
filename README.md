@@ -6,6 +6,9 @@ Google Drive: [co na talerzu](https://drive.google.com/drive/folders/1PYHtPoRuIv
 Wspólna wersja to gałąź `main` w GitHub; raporty na Drive wskazują SHA.
 Zasady pracy: [docs/WORKFLOW.md](docs/WORKFLOW.md).
 
+Zakres rozwoju: [sześć obszarów i pilotaż w Polsce](docs/PILOT-PL.md) —
+30 kompletnych przepisów oraz 30 realnych zdjęć z udokumentowanymi prawami.
+
 Stan integracji i ograniczenia: [docs/STAN-SCALENIA.md](docs/STAN-SCALENIA.md).
 
 Uruchom w terminalu w tym katalogu (Node.js 20 lub nowszy):
