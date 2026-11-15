@@ -1,5 +1,9 @@
 # Wspólny backlog
 
+Aktualny zakres produktu: [pilotaż PL i sześć obszarów](PILOT-PL.md).
+Cel: 30 kompletnych przepisów i 30 realnych zdjęć z potwierdzonymi prawami.
+Niemcy i Wielka Brytania są propozycjami kolejnego etapu, bez aktywacji.
+
 Identyfikatory CNT są wspólne dla kodu, Skills, PR i raportów. Ten wykaz konsoliduje
 znane zadania z obu wątków; nie sugeruje importu nieistniejącego systemu Issues.
 
@@ -17,6 +21,14 @@ znane zadania z obu wątków; nie sugeruje importu nieistniejącego systemu Issu
 | CNT-010 | Buildy natywne, podpisy i testy urządzeń według apps/web/PLAN-WYDANIA.md | Publikacja Android/iOS | Niewykonane |
 | CNT-011 | Porównać odzyskany Site z MVP; plan migracji danych przed wyborem backendu | Programista | Archiwum zachowane; migracja niewykonana |
 | CNT-012 | Po zakończeniu źródłowych wątków wykonać ponowny import i przegląd konfliktów | Koordynator | Otwarte |
+| CNT-013 | Zapisać sześć obszarów, zakres PL, kryteria 30 przepisów/zdjęć i status kolejnych regionów | Koordynacja produktu i integracja | Plan zapisany; realizacja pilotażu poniżej |
+| CNT-014 | Uzgodnić wspólne ID i schemat przepisu, zdjęcia, rynku i oferty, z kompatybilnością istniejących danych | Obszar 1 + programista | Planowane |
+| CNT-015 | Rozbudować katalog z 18 do 30 rekordów i odebrać kompletność wszystkich 30 według PILOT-PL.md | Obszar 2 + QA | Planowane; 18 rekordów nie oznacza 18 odebranych |
+| CNT-016 | Dodać do oferty zasięg sklepu/regionu, warunki i wygasanie; przetestować brak danych i granice dat | Obszar 3 + QA | Planowane; istnieje adapter ALDI |
+| CNT-017 | Ujednolicić kluczowe ekrany i wdrożyć przypisane fotografie z atrybucją oraz stanami błędu/offline | Obszar 4 + QA | Planowane |
+| CNT-018 | Wydzielić rynek od języka UI, waluty i jednostek; aktywować wyłącznie PL w pilotażu | Obszar 5 + QA | Planowane; DE/GB bez aktywacji |
+| CNT-019 | Pozyskać 30 realnych fotografii, powiązać z recipeId i zweryfikować źródła, licencje/zgody oraz atrybucję | Obszar 6 + ekspert kulinarny/QA | Planowane; w MVP brak przypisanych zdjęć |
+| CNT-020 | Odbiór integracyjny PL: 30/30 przepisów, 30/30 zdjęć i praw, ekrany, lokalizacja, oferty, testy/build | Koordynacja + QA | Po CNT-014–019 |
 
 Każde nowe zadanie: cel użytkownika, zakres plików, kryteria odbioru, odpowiedzialna
 rola, zależności i dowód wykonania. Nie przypisano rzeczywistych osób ani botów.
