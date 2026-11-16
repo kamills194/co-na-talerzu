@@ -6,7 +6,7 @@ import { normalize, filterRecipes, surprise, addIngredients, matchingOffers, val
 import { emptyState, validateState, load, save, KEY } from '../src/storage.js';
 import { parseAldi, robotsDisallows } from '../scripts/offer-parser.mjs';
 test('Katalog: unikalne ID, wszystkie kategorie, składniki i komplet instrukcji',()=>{
-  assert.equal(new Set(recipes.map(r=>r.id)).size,18);
+  assert.equal(recipes.length,30);assert.equal(new Set(recipes.map(r=>r.id)).size,30);
   for(const c of categories) assert.ok(recipes.some(r=>r.category===c));
   for(const r of recipes){assert.ok(r.steps.length>=3);assert.ok(r.minutes>0);assert.ok(r.servings>0);assert.ok(categories.includes(r.category));assert.ok(r.ingredients.every(i=>products[i.product]&&i.amount>0));assert.deepEqual([...r.allergens].sort(),[...new Set(r.ingredients.flatMap(i=>products[i.product][2]))].sort());if(r.vegan)assert.equal(r.vegetarian,true);}
   for(const a of allergens)assert.ok(t(a));
@@ -14,7 +14,7 @@ test('Katalog: unikalne ID, wszystkie kategorie, składniki i komplet instrukcji
 test('Wyszukiwanie ignoruje wielkość liter i polskie znaki',()=>{assert.equal(normalize(' ŁÓDŹ '),'lodz');assert.ok(filterRecipes(recipes,{query:'TWAROZEK'}).some(r=>r.id==='twarożek'));assert.ok(filterRecipes(recipes,{query:'ziemniaki'}).some(r=>r.id==='kurczak'));});
 test('Filtry czasu, kategorii, diety i alergenów działają łącznie',()=>{const list=filterRecipes(recipes,{category:'dinner',maxTime:15,diet:'vegan',excluded:['gluten']});assert.deepEqual(list.map(r=>r.id),['salatka']);});
 test('Wykluczenia obejmują także ukryty sezam w hummusie',()=>{assert.ok(!filterRecipes(recipes,{excluded:['sesame']}).some(r=>r.id==='hummus-kanapki'));});
-test('Wykluczenie zwykłego składnika obejmuje wyszukiwanie i losowanie',()=>{const f={category:'lunch',excludedProducts:['onion']};assert.deepEqual(filterRecipes(recipes,f).map(r=>r.id),['kurczak']);assert.equal(surprise(recipes,f,null,()=>0).id,'kurczak');});
+test('Wykluczenie zwykłego składnika obejmuje wyszukiwanie i losowanie',()=>{const f={category:'lunch',excludedProducts:['onion']};assert.deepEqual(filterRecipes(recipes,f).map(r=>r.id),['kurczak','leniwe']);assert.equal(surprise(recipes,f,null,()=>0).id,'kurczak');});
 test('Losowanie respektuje filtry i unika poprzedniego wyniku',()=>{const f={category:'dessert',maxTime:5};assert.equal(surprise(recipes,f,null,()=>0).id,'kakao');assert.equal(surprise(recipes,{category:'lunch',maxTime:5}),null);assert.notEqual(surprise(recipes,{},recipes[0].id,()=>0).id,recipes[0].id);});
 test('Lista sumuje składniki i skaluje porcje bez zmiany wejścia',()=>{const r=recipes[0];const first=addIngredients([],r,4);first[0].done=true;const second=addIngredients(first,r,2);assert.equal(first[0].amount,200);assert.equal(second[0].amount,300);assert.equal(second[0].done,false);assert.equal(second.length,r.ingredients.length);});
 test('Zapis i odczyt zachowują ulubione i stan zakupów',()=>{const memory=new Map(),storage={getItem:k=>memory.get(k),setItem:(k,v)=>memory.set(k,v)};const s=emptyState();s.favorites=['kakao'];s.shopping=addIngredients([],recipes[0],2);save(storage,s);assert.deepEqual(load(storage),s);memory.set(KEY,'{');assert.throws(()=>load(storage));});
