@@ -4,7 +4,7 @@ import { recipes, products } from '../src/recipes.pl.js';
 import { categories, allergens, t } from '../src/i18n.js';
 import { normalize, filterRecipes, surprise, addIngredients, matchingOffers, validOffer, localDate, isCurrentAutomaticOffer } from '../src/domain.js';
 import { emptyState, validateState, load, save, KEY } from '../src/storage.js';
-import { parseAldi } from '../scripts/offer-parser.mjs';
+import { parseAldi, robotsDisallows } from '../scripts/offer-parser.mjs';
 test('Katalog: unikalne ID, wszystkie kategorie, składniki i komplet instrukcji',()=>{
   assert.equal(new Set(recipes.map(r=>r.id)).size,18);
   for(const c of categories) assert.ok(recipes.some(r=>r.category===c));
@@ -30,3 +30,13 @@ test('Bot odczytuje cenę, jednostkę, daty i pochodzenie',()=>{const parsed=par
 test('Bot odrzuca przyszłe, wygasłe i niedatowane ceny oraz zwykłe ceny',()=>{for(const price of [{...p.currentPrice,validFrom:now.getTime()/1000+1},{...p.currentPrice,validUntil:now.getTime()/1000-1},{...p.currentPrice,validUntil:undefined},{...p.currentPrice,strikePrice:undefined}])assert.equal(parseAldi(html([{...p,currentPrice:price}]),{now}).offers.length,0);});
 test('Bot nie dopasowuje nieznanych produktów i wykrywa zmianę struktury',()=>{assert.equal(parseAldi(html([{...p,name:'Ogórki kiszone'}]),{now}).offers.length,0);assert.throws(()=>parseAldi('<html>Blokada</html>',{now}));});
 test('Bot usuwa duplikaty po ID produktu i dacie początku',()=>{assert.equal(parseAldi(html([p,p]),{now}).offers.length,1);});
+test('robots.txt: grupy agentów, wzorce * i $ oraz brak reguł dla innych botów',()=>{
+  const robots='User-agent: *\nUser-agent: InnyBot\nDisallow: /koszyk\nDisallow: /*.pdf$\n\nUser-agent: Obcy\nDisallow: /produkty/\n';
+  assert.ok(robotsDisallows(robots,'/koszyk/1'));assert.ok(robotsDisallows(robots,'/gazetka/plik.pdf'));assert.ok(!robotsDisallows(robots,'/gazetka/plik.pdf.html'));
+  assert.ok(!robotsDisallows(robots,'/produkty/owoce-i-warzywa/warzywa.html'));assert.ok(robotsDisallows('User-agent: *\nDisallow: /','/produkty/x.html'));assert.ok(!robotsDisallows('User-agent: *\nDisallow:','/produkty/x.html'));
+});
+test('Własny wpis nie może przejąć ID produktu, a nowe ilości są zaokrąglane',()=>{
+  assert.throws(()=>validateState({...emptyState(),shopping:[{id:'milk',name:'Mleko owsiane',done:false}]}));
+  const r={servings:3,ingredients:[{product:'milk',amount:100}]};assert.equal(addIngredients([],r,1)[0].amount,33.333);
+  const withCustom=addIngredients([{id:'local-1',name:'Mleko',done:true}],recipes[0],2);assert.equal(withCustom[0].done,true);assert.doesNotThrow(()=>validateState({...emptyState(),shopping:withCustom}));
+});

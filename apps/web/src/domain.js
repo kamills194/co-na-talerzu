@@ -13,9 +13,10 @@ export function addIngredients(list,recipe,servings) {
   const result=list.map(i=>({...i}));
   for (const item of recipe.ingredients) {
     const amount=item.amount*servings/recipe.servings;
+    // Match by product only; a custom (named) entry never absorbs recipe amounts.
     const found=result.find(i=>i.product===item.product);
     if(found) { found.amount=Math.round((found.amount+amount)*1000)/1000; found.done=false; }
-    else result.push({id:item.product,product:item.product,amount,done:false});
+    else result.push({id:item.product,product:item.product,amount:Math.round(amount*1000)/1000,done:false});
   }
   return result;
 }

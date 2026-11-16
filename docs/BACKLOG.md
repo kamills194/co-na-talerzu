@@ -29,6 +29,7 @@ znane zadania z obu wątków; nie sugeruje importu nieistniejącego systemu Issu
 | CNT-018 | Wydzielić rynek od języka UI, waluty i jednostek; aktywować wyłącznie PL w pilotażu | Obszar 5 + QA | Planowane; DE/GB bez aktywacji |
 | CNT-019 | Pozyskać 30 realnych fotografii, powiązać z recipeId i zweryfikować źródła, licencje/zgody oraz atrybucję | Obszar 6 + ekspert kulinarny/QA | Planowane; w MVP brak przypisanych zdjęć |
 | CNT-020 | Odbiór integracyjny PL: 30/30 przepisów, 30/30 zdjęć i praw, ekrany, lokalizacja, oferty, testy/build | Koordynacja + QA | Po CNT-014–019 |
+| CNT-021 | Przegląd kodu apps/web po przejęciu prac: poprawki błędów bez zmiany stacku, kluczy localStorage i identyfikatorów; testy i build PASS | Programista + QA | Wykonane na gałęzi cnt-021-przeglad-kodu; raport reports/CNT-021.md, PR do main |
 
 Każde nowe zadanie: cel użytkownika, zakres plików, kryteria odbioru, odpowiedzialna
 rola, zależności i dowód wykonania. Nie przypisano rzeczywistych osób ani botów.

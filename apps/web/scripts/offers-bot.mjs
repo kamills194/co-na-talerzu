@@ -1,5 +1,5 @@
 import { writeFile, rename, mkdir } from 'node:fs/promises';
-import { parseAldi } from './offer-parser.mjs';
+import { parseAldi, robotsDisallows } from './offer-parser.mjs';
 const sources=['https://www.aldi.pl/produkty/owoce-i-warzywa/warzywa.html','https://www.aldi.pl/produkty/owoce-i-warzywa/owoce.html'];
 const now=new Date(), report={version:1,updatedAt:now.toISOString(),offers:[],sources:[]};
 const headers={'User-Agent':'CoNaTalerzMVP/0.1 (public offers reader; no login)'};
@@ -12,11 +12,9 @@ async function get(url) {
 // Honor wildcard disallows; a robots read failure stops collection, no bypasses.
 try {
   const robots=await get('https://www.aldi.pl/robots.txt');
-  const denied=[];let applies=false;
-  for(const line of robots.split(/\r?\n/)){const m=line.replace(/#.*/,'').trim().match(/^(User-agent|Disallow):\s*(.*)$/i);if(!m)continue;if(m[1].toLowerCase()==='user-agent')applies=m[2]==='*';else if(applies&&m[2])denied.push(new RegExp('^'+m[2].split('*').map(v=>v.replace(/[.+?^${}()|[\]\\]/g,'\\$&')).join('.*')));}
   for(const source of sources) {
     try {
-      if(denied.some(r=>r.test(new URL(source).pathname)))throw Error('Odczyt wyłączony przez robots.txt');
+      if(robotsDisallows(robots,new URL(source).pathname))throw Error('Odczyt wyłączony przez robots.txt');
       const parsed=parseAldi(await get(source),{source,now});report.offers.push(...parsed.offers);report.sources.push({source,status:'ok',productsSeen:parsed.productsSeen,unmapped:parsed.unmapped});
     }catch(e){report.sources.push({source,status:'error',error:e.message});}
   }
