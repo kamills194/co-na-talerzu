@@ -24,3 +24,16 @@ export function parseAldi(html,{source,now=new Date()}={}) {
   }
   return {offers:[...output.values()],productsSeen:items.length,unmapped:skipped};
 }
+// robots.txt: consecutive User-agent lines form one group; rules after them apply to every agent
+// of that group. Only Disallow is honoured (Allow is ignored, which is the stricter reading).
+export function robotsDisallows(robots, path) {
+  const rules=[]; let applies=false, inAgents=false;
+  for (const raw of String(robots).split(/\r?\n/)) {
+    const m=raw.replace(/#.*/,'').trim().match(/^(User-agent|Disallow)\s*:\s*(.*)$/i);
+    if(!m) continue;
+    if(m[1].toLowerCase()==='user-agent') { if(!inAgents) applies=false; inAgents=true; if(m[2].trim()==='*') applies=true; }
+    else { inAgents=false; if(applies&&m[2]) rules.push(m[2].trim()); }
+  }
+  return rules.some(rule=>{ const anchored=rule.endsWith('$'); const body=anchored?rule.slice(0,-1):rule;
+    return new RegExp('^'+body.split('*').map(v=>v.replace(/[.+?^${}()|[\]\\]/g,'\\$&')).join('.*')+(anchored?'$':'')).test(path); });
+}
