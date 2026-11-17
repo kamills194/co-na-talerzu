@@ -1,0 +1,328 @@
+[
+  {
+    "url": "https://www.aldi.pl/oferty.html",
+    "robotsBlocked": false,
+    "status": 200,
+    "bytes": 162601,
+    "links": [],
+    "parseError": "Nie rozpoznano struktury produktów.",
+    "items": 0,
+    "reduced": []
+  },
+  {
+    "url": "https://www.aldi.pl/produkty/ryby.html",
+    "robotsBlocked": false,
+    "status": 200,
+    "bytes": 45916,
+    "links": [
+      "/produkty/ryby",
+      "/produkty/ryby/ryby-swieze",
+      "/produkty/ryby/ryby-mrozone",
+      "/produkty/ryby/ryby-wedzone",
+      "/produkty/ryby/owoce-morza",
+      "/produkty/ryby/konserwy-rybne--przetwory-rybne"
+    ],
+    "parseError": "Nie rozpoznano struktury produktów.",
+    "items": 0,
+    "reduced": []
+  },
+  {
+    "url": "https://www.aldi.pl/produkty/pieczywo.html",
+    "robotsBlocked": false,
+    "status": 200,
+    "bytes": 58085,
+    "links": [
+      "/produkty/pieczywo",
+      "/produkty/pieczywo/chleb",
+      "/produkty/pieczywo/bulki-i-bagietki",
+      "/produkty/pieczywo/slodkie-wypieki",
+      "/produkty/pieczywo/slone-wypieki",
+      "/produkty/pieczywo/pieczywo-tostowe",
+      "/produkty/pieczywo/pieczywo-chrupkie"
+    ],
+    "parseError": "Nie rozpoznano struktury produktów.",
+    "items": 0,
+    "reduced": []
+  },
+  {
+    "url": "https://www.aldi.pl/produkty/nabial-i-jaja.html",
+    "robotsBlocked": false,
+    "status": 200,
+    "bytes": 48692,
+    "links": [
+      "/produkty/nabial-i-jaja",
+      "/produkty/nabial-i-jaja/mleko",
+      "/produkty/nabial-i-jaja/smietana",
+      "/produkty/nabial-i-jaja/jogurty",
+      "/produkty/nabial-i-jaja/kefiry-i-maslanki",
+      "/produkty/nabial-i-jaja/napoje-mleczne",
+      "/produkty/nabial-i-jaja/serki-i-desery-mleczne",
+      "/produkty/nabial-i-jaja/maslo",
+      "/produkty/nabial-i-jaja/jaja"
+    ],
+    "parseError": "Nie rozpoznano struktury produktów.",
+    "items": 0,
+    "reduced": []
+  },
+  {
+    "url": "https://www.aldi.pl/produkty/wedliny-i-mieso.html",
+    "robotsBlocked": false,
+    "status": 200,
+    "bytes": 51484,
+    "links": [
+      "/produkty/wedliny-i-mieso",
+      "/produkty/wedliny-i-mieso/mieso-drobiowe",
+      "/produkty/wedliny-i-mieso/mieso-wieprzowe",
+      "/produkty/wedliny-i-mieso/mieso-wolowe",
+      "/produkty/wedliny-i-mieso/parowki",
+      "/produkty/wedliny-i-mieso/kielbasy-i-kaszanki",
+      "/produkty/wedliny-i-mieso/kabanosy-i-kielbasy-suche",
+      "/produkty/wedliny-i-mieso/szynki--wedzonki",
+      "/produkty/wedliny-i-mieso/wedliny--pasztety--wyroby-wedliniarskie",
+      "/produkty/wedliny-i-mieso/konserwy-miesne"
+    ],
+    "parseError": "Nie rozpoznano struktury produktów.",
+    "items": 0,
+    "reduced": []
+  },
+  {
+    "url": "https://www.aldi.pl/produkty/sery-i-twarogi.html",
+    "robotsBlocked": false,
+    "status": 200,
+    "bytes": 46952,
+    "links": [
+      "/produkty/sery-i-twarogi",
+      "/produkty/sery-i-twarogi/sery-zolte",
+      "/produkty/sery-i-twarogi/sery-plesniowe",
+      "/produkty/sery-i-twarogi/sery-topione",
+      "/produkty/sery-i-twarogi/sery-salatkowe-i-kanapkowe",
+      "/produkty/sery-i-twarogi/sery-kozie-i-owcze",
+      "/produkty/sery-i-twarogi/twarog",
+      "/produkty/sery-i-twarogi/serki-wiejskie"
+    ],
+    "parseError": "Nie rozpoznano struktury produktów.",
+    "items": 0,
+    "reduced": []
+  },
+  {
+    "url": "https://www.aldi.pl/produkty/mrozonki-i-dania-gotowe.html",
+    "robotsBlocked": false,
+    "status": 200,
+    "bytes": 53806,
+    "links": [
+      "/produkty/mrozonki-i-dania-gotowe",
+      "/produkty/mrozonki-i-dania-gotowe/mrozone-warzywa",
+      "/produkty/mrozonki-i-dania-gotowe/mrozone-owoce",
+      "/produkty/mrozonki-i-dania-gotowe/salatki-i-surowki",
+      "/produkty/mrozonki-i-dania-gotowe/gotowe-dania",
+      "/produkty/mrozonki-i-dania-gotowe/gotowe-zupy",
+      "/produkty/mrozonki-i-dania-gotowe/przystawki",
+      "/produkty/mrozonki-i-dania-gotowe/dania-instant",
+      "/produkty/mrozonki-i-dania-gotowe/pizza--zapiekanki",
+      "/produkty/mrozonki-i-dania-gotowe/frytki--ziemniaki"
+    ],
+    "parseError": "Nie rozpoznano struktury produktów.",
+    "items": 0,
+    "reduced": []
+  },
+  {
+    "url": "https://www.aldi.pl/produkty/produkty-sniadaniowe.html",
+    "robotsBlocked": false,
+    "status": 200,
+    "bytes": 45076,
+    "links": [
+      "/produkty/produkty-sniadaniowe",
+      "/produkty/produkty-sniadaniowe/musli",
+      "/produkty/produkty-sniadaniowe/platki",
+      "/produkty/produkty-sniadaniowe/batony-zbozowe",
+      "/produkty/produkty-sniadaniowe/pieczywo-dietetyczne--wafle"
+    ],
+    "parseError": "Nie rozpoznano struktury produktów.",
+    "items": 0,
+    "reduced": []
+  },
+  {
+    "url": "https://www.aldi.pl/produkty/produkty-sypkie-i-zbozowe.html",
+    "robotsBlocked": false,
+    "status": 200,
+    "bytes": 46566,
+    "links": [
+      "/produkty/produkty-sypkie-i-zbozowe",
+      "/produkty/produkty-sypkie-i-zbozowe/cukier",
+      "/produkty/produkty-sypkie-i-zbozowe/makarony",
+      "/produkty/produkty-sypkie-i-zbozowe/kasze",
+      "/produkty/produkty-sypkie-i-zbozowe/ryz",
+      "/produkty/produkty-sypkie-i-zbozowe/maka",
+      "/produkty/produkty-sypkie-i-zbozowe/straczki"
+    ],
+    "parseError": "Nie rozpoznano struktury produktów.",
+    "items": 0,
+    "reduced": []
+  },
+  {
+    "url": "https://www.aldi.pl/produkty/przetwory.html",
+    "robotsBlocked": false,
+    "status": 200,
+    "bytes": 39253,
+    "links": [
+      "/produkty/przetwory",
+      "/produkty/przetwory/dzemy--konfitury--powidla",
+      "/produkty/przetwory/miody",
+      "/produkty/przetwory/kremy",
+      "/produkty/przetwory/owoce-w-syropie",
+      "/produkty/przetwory/ogorki",
+      "/produkty/przetwory/oliwki",
+      "/produkty/przetwory/groszek--kukurydza--fasolka",
+      "/produkty/przetwory/inne-przetwory"
+    ],
+    "parseError": "Nie rozpoznano struktury produktów.",
+    "items": 0,
+    "reduced": []
+  },
+  {
+    "url": "https://www.aldi.pl/produkty/tluszcze-i-octy.html",
+    "robotsBlocked": false,
+    "status": 200,
+    "bytes": 48418,
+    "links": [
+      "/produkty/owoce-i-warzywa/warzywa.html",
+      "/produkty/tluszcze-i-octy",
+      "/produkty/tluszcze-i-octy/maslo--margaryna",
+      "/produkty/tluszcze-i-octy/olej",
+      "/produkty/tluszcze-i-octy/oliwa-z-oliwek",
+      "/produkty/tluszcze-i-octy/smalec",
+      "/produkty/tluszcze-i-octy/ocet"
+    ],
+    "parseError": "Nie rozpoznano struktury produktów.",
+    "items": 0,
+    "reduced": []
+  },
+  {
+    "url": "https://www.aldi.pl/produkty/przyprawy.html",
+    "robotsBlocked": false,
+    "status": 200,
+    "bytes": 45822,
+    "links": [
+      "/produkty/przyprawy",
+      "/produkty/przyprawy/sol--pieprz",
+      "/produkty/przyprawy/ziola--mieszanki-ziolowe",
+      "/produkty/przyprawy/buliony--kostki",
+      "/produkty/przyprawy/przyprawy-w-plynie",
+      "/produkty/przyprawy/inne-przyprawy"
+    ],
+    "parseError": "Nie rozpoznano struktury produktów.",
+    "items": 0,
+    "reduced": []
+  },
+  {
+    "url": "https://www.aldi.pl/produkty/sosy--dressingi-i-przeciery.html",
+    "robotsBlocked": false,
+    "status": 200,
+    "bytes": 47762,
+    "links": [
+      "/produkty/sosy--dressingi-i-przeciery",
+      "/produkty/sosy--dressingi-i-przeciery/ketchup",
+      "/produkty/sosy--dressingi-i-przeciery/majonez",
+      "/produkty/sosy--dressingi-i-przeciery/sosy--dressingi",
+      "/produkty/sosy--dressingi-i-przeciery/koncentraty--przeciery",
+      "/produkty/sosy--dressingi-i-przeciery/pesto",
+      "/produkty/sosy--dressingi-i-przeciery/musztarda",
+      "/produkty/sosy--dressingi-i-przeciery/chrzan--cwikla"
+    ],
+    "parseError": "Nie rozpoznano struktury produktów.",
+    "items": 0,
+    "reduced": []
+  },
+  {
+    "url": "https://www.aldi.pl/produkty/produkty-do-pieczenia.html",
+    "robotsBlocked": false,
+    "status": 200,
+    "bytes": 48841,
+    "links": [
+      "/produkty/produkty-do-pieczenia",
+      "/produkty/produkty-do-pieczenia/proszek-do-pieczenia--soda",
+      "/produkty/produkty-do-pieczenia/drozdze",
+      "/produkty/produkty-do-pieczenia/zelatyna--galaretki",
+      "/produkty/produkty-do-pieczenia/kisiele--budynie",
+      "/produkty/produkty-do-pieczenia/cukier-waniliowy--aromaty",
+      "/produkty/produkty-do-pieczenia/mak--platki-migdalowe--wiorki-kokosowe",
+      "/produkty/produkty-do-pieczenia/kakao"
+    ],
+    "parseError": "Nie rozpoznano struktury produktów.",
+    "items": 0,
+    "reduced": []
+  },
+  {
+    "url": "https://www.aldi.pl/produkty/owoce-i-warzywa.html",
+    "robotsBlocked": false,
+    "status": 200,
+    "bytes": 47152,
+    "links": [
+      "/produkty/owoce-i-warzywa",
+      "/produkty/owoce-i-warzywa/warzywa",
+      "/produkty/owoce-i-warzywa/grzyby",
+      "/produkty/owoce-i-warzywa/swieze-ziola-i-kielki",
+      "/produkty/owoce-i-warzywa/bakalie",
+      "/produkty/owoce-i-warzywa/owoce"
+    ],
+    "parseError": "Nie rozpoznano struktury produktów.",
+    "items": 0,
+    "reduced": []
+  },
+  {
+    "url": "https://www.aldi.pl/produkty/slodycze.html",
+    "robotsBlocked": false,
+    "status": 200,
+    "bytes": 51190,
+    "links": [
+      "/produkty/slodycze",
+      "/produkty/slodycze/batony--wafelki",
+      "/produkty/slodycze/czekolady",
+      "/produkty/slodycze/praliny--bombonierki",
+      "/produkty/slodycze/ciastka--pierniki",
+      "/produkty/slodycze/biszkopty--herbatniki",
+      "/produkty/slodycze/cukierki",
+      "/produkty/slodycze/gumy-do-zucia",
+      "/produkty/slodycze/zelki",
+      "/produkty/slodycze/inne-slodycze"
+    ],
+    "parseError": "Nie rozpoznano struktury produktów.",
+    "items": 0,
+    "reduced": []
+  },
+  {
+    "url": "https://www.aldi.pl/produkty/napoje-i-soki.html",
+    "robotsBlocked": false,
+    "status": 200,
+    "bytes": 46543,
+    "links": [
+      "/produkty/napoje-i-soki",
+      "/produkty/napoje-i-soki/woda-gazowana",
+      "/produkty/napoje-i-soki/woda-niegazowana",
+      "/produkty/napoje-i-soki/napoje-gazowane",
+      "/produkty/napoje-i-soki/napoje-niegazowane",
+      "/produkty/napoje-i-soki/soki--nektary-owocowe",
+      "/produkty/napoje-i-soki/syropy"
+    ],
+    "parseError": "Nie rozpoznano struktury produktów.",
+    "items": 0,
+    "reduced": []
+  },
+  {
+    "url": "https://www.aldi.pl/produkty/kawa.html",
+    "robotsBlocked": false,
+    "status": 200,
+    "bytes": 46817,
+    "links": [
+      "/produkty/kawa",
+      "/produkty/kawa/kawa-rozpuszczalna",
+      "/produkty/kawa/kawa-mielona",
+      "/produkty/kawa/kawa-zbozowa",
+      "/produkty/kawa/kawa-ziarnista",
+      "/produkty/kawa/dodatki-do-kawy"
+    ],
+    "parseError": "Nie rozpoznano struktury produktów.",
+    "items": 0,
+    "reduced": []
+  }
+]
