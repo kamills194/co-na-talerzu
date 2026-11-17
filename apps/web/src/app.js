@@ -3,7 +3,7 @@ import { t, tn, format, categories, allergens, cuisines, locale, language, langu
 import { filterRecipes, surprise, addIngredients, matchingOffers, localDate, validOffer, isDisplayableAutomaticOffer as isCurrentAutomaticOffer } from './domain.js'; import { market, marketDate, formatCurrency, currencySymbol, formatMarketDay, formatMarketDateTime } from './market.js';
 import { load, save, emptyState, validateState } from './storage.js';
 import { photoFor, safeLink } from './photos.js';
-import { nutritionPerServing } from './nutrition.js';
+import { nutritionPerServing, gramsPerUnit } from './nutrition.js';
 import { DIETS } from './domain.js';
 import { promoCoverage, rankByPromotions, ingredientOffers, pantryProducts } from './domain.js';
 import { weightedSurprise } from './domain.js';
@@ -37,7 +37,18 @@ const cuisineOf=r=>r.cuisine||'polish';
 // CNT-034: the card and the detail name the dish's cuisine ("Kuchnia włoska") instead of one shared "home cooking" label.
 function cuisineText(r) { const c=cuisineOf(r); return cuisines.includes(c)?t(`${c}Cuisine`):''; }
 function cuisineTabs(base) { const count=c=>base.filter(r=>cuisineOf(r)===c).length; if(cuisines.filter(c=>recipes.some(r=>cuisineOf(r)===c)).length<2||!base.length)return ''; return ['',...cuisines.filter(c=>count(c)||c===filters.cuisine)].map(c=>`<button data-cuisine="${esc(c)}" aria-pressed="${c===filters.cuisine}">${t(c||'allCuisines')} <span class="chip-count" title="${t('cuisineCount')}">${c?count(c):base.length}</span></button>`).join(''); }
-function amount(i,factor=1) { const n=i.amount*factor; return `${num(n)} ${unitLabel(products[i.product][1],n)}`; }
+// Amounts are shown by weight (owner's decision 17.11.2026): every unit except ml is converted to grams
+// with the same per-unit weights the nutrition estimate uses; pieces also get a "≈ N szt." hint.
+// Stored amounts and units never change — conversion happens only for display.
+function roundGrams(g) { return g<10 ? Math.round(g*2)/2 : g<100 ? Math.round(g) : Math.round(g/5)*5; }
+function amount(i,factor=1) {
+  const n=i.amount*factor, unit=products[i.product][1];
+  if(unit==='ml') return `${num(Math.round(n))} ${unitLabel('ml',n)}`;
+  const per=gramsPerUnit(i.product); if(!per) return `${num(n)} ${unitLabel(unit,n)}`;
+  const g=n*per; const shown=g<0.5?`< 1 ${unitLabel('g',1)}`:`${num(roundGrams(g))} ${unitLabel('g',g)}`;
+  if(unit!=='szt.') return shown;
+  const pieces=Math.max(0.5,Math.round(n*2)/2); return `${shown} (≈ ${num(pieces)} ${unitLabel(unit,pieces)})`;
+}
 // Recipe/product texts in the UI language. Search also matches them; a Polish fallback is marked lang="pl" for screen readers.
 const searchText=r=>language==='pl'?[]:[localizeRecipe(r).name,...r.ingredients.map(i=>productName(i.product))];
 const plLang=(id,field)=>language!=='pl'&&!hasRecipeText(id,field)?' lang="pl"':'';
