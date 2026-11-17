@@ -1,23 +1,38 @@
 import { writeFile, mkdir } from 'node:fs/promises';
-import { parseAldi, robotsDisallows } from '../apps/web/scripts/offer-parser.mjs';
-const H={'User-Agent':'CoNaTalerzMVP/0.1 (public offers reader; no login)','Accept-Language':'pl-PL,pl;q=0.9'};
-const deps=['ryby','pieczywo','nabial-i-jaja','wedliny-i-mieso','sery-i-twarogi','mrozonki-i-dania-gotowe','produkty-sniadaniowe','produkty-sypkie-i-zbozowe','przetwory','tluszcze-i-octy','przyprawy','sosy--dressingi-i-przeciery','produkty-do-pieczenia','owoce-i-warzywa','slodycze','napoje-i-soki','kawa'];
-const urls=['https://www.aldi.pl/oferty.html',...deps.map(d=>`https://www.aldi.pl/produkty/${d}.html`)];
+import { robotsDisallows } from '../apps/web/scripts/offer-parser.mjs';
+const H={'User-Agent':'Mozilla/5.0 (compatible; CoNaTalerzMVP/0.1; public offers reader; no login)','Accept-Language':'pl-PL,pl;q=0.9','Accept':'text/html,application/xhtml+xml,application/json;q=0.9,*/*;q=0.8'};
+const stores={
+  lidl:['https://www.lidl.pl/','https://www.lidl.pl/c/nasze-oferty/a10008785'],
+  biedronka:['https://www.biedronka.pl/pl','https://www.biedronka.pl/pl/oferta','https://www.biedronka.pl/pl/gazetki'],
+  kaufland:['https://www.kaufland.pl/','https://www.kaufland.pl/oferta/aktualny-tydzien.html','https://www.kaufland.pl/oferta/aktualny-tydzien/przeglad.html'],
+  netto:['https://www.netto.pl/','https://www.netto.pl/oferta/'],
+  carrefour:['https://www.carrefour.pl/','https://www.carrefour.pl/promocje'],
+  auchan:['https://www.auchan.pl/pl','https://zakupy.auchan.pl/promocje'],
+  dino:['https://marketdino.pl/','https://marketdino.pl/gazetka'],
+  stokrotka:['https://www.stokrotka.pl/','https://www.stokrotka.pl/oferta'],
+  penny:['https://www.penny.pl/','https://www.penny.pl/oferty'],
+  intermarche:['https://intermarche.pl/','https://intermarche.pl/promocje'],
+};
 await mkdir('diag',{recursive:true});
-const robots=await (await fetch('https://www.aldi.pl/robots.txt',{headers:H})).text();
-const now=new Date(), out=[];
-for(const u of urls){
-  const e={url:u,robotsBlocked:robotsDisallows(robots,new URL(u).pathname)};
-  try{const r=await fetch(u,{headers:H,signal:AbortSignal.timeout(25000)});const t=await r.text();e.status=r.status;e.bytes=t.length;
-    e.links=[...new Set([...t.matchAll(/"(\/(?:produkty|oferty)\/[^"\\\s<>?#]+)/g)].map(m=>m[1]))].slice(0,120);
-    try{const p=parseAldi(t,{source:u,now});e.productsSeen=p.productsSeen;e.unmapped=p.unmapped;e.offers=p.offers.map(o=>`${o.product}: ${o.name} ${o.price} (${o.from}–${o.until})`);}catch(x){e.parseError=String(x.message);}
-    // raw promo stats regardless of mapping
-    const m=t.match(/<script\b[^>]*\bid="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/i);
-    if(m){const items=[];(function w(x){if(!x||typeof x!=='object')return;if(x.objectID&&x.name)items.push(x);else for(const v of Object.values(x))w(v);})(JSON.parse(m[1]));
-      e.items=items.length;e.reduced=items.filter(i=>[i.currentPrice,...(i.promotionPrices||[])].some(p=>p&&p.strikePrice&&p.priceValue<p.strikePrice.strikePriceValue)).map(i=>i.name).slice(0,60);
-      e.totalHits=JSON.stringify(JSON.parse(m[1])).match(/"(nbHits|totalHits|total|totalCount)":\s*(\d+)/g)?.slice(0,5);}
-    if(u.endsWith('oferty.html'))await writeFile('diag/oferty.html.txt',t.slice(0,4e6));
-  }catch(x){e.error=String(x);}
-  out.push(e);
+const out={};
+for(const [store,urls] of Object.entries(stores)){
+  const origin=new URL(urls[0]).origin; const r={robots:null,pages:[]};
+  try{const x=await fetch(origin+'/robots.txt',{headers:H,signal:AbortSignal.timeout(20000)});r.robotsStatus=x.status;r.robots=(await x.text()).slice(0,3000);}catch(e){r.robotsError=String(e);}
+  for(const u of urls){
+    await new Promise(z=>setTimeout(z,1000));
+    const p={url:u,blocked:r.robots?robotsDisallows(r.robots,new URL(u).pathname):null};
+    try{const x=await fetch(u,{headers:H,signal:AbortSignal.timeout(25000)});const t=await x.text();
+      Object.assign(p,{status:x.status,final:x.url,type:x.headers.get('content-type'),bytes:t.length,
+        nextData:t.includes('__NEXT_DATA__'),nuxt:/__NUXT__|window\.__INITIAL_STATE__|__APOLLO_STATE__/.test(t),
+        ldjson:(t.match(/application\/ld\+json/g)||[]).length,offerLd:(t.match(/"@type"\s*:\s*"(Offer|Product|AggregateOffer)"/g)||[]).length,
+        prices:(t.match(/\d+[,.]\d{2}\s*(zł|PLN)/g)||[]).length,
+        blockedPage:/cf-chl|captcha|Access Denied|Request unsuccessful|Incapsula/i.test(t.slice(0,20000)),
+        links:[...new Set([...t.matchAll(/href="([^"]*(?:ofert|promoc|gazet|leaflet|produkt)[^"]*)"/gi)].map(m=>m[1]))].slice(0,40),
+        apis:[...new Set([...t.matchAll(/https?:\/\/[a-z0-9.-]+\/[^"'\s]*(?:api|graphql|algolia|search)[^"'\s]*/gi)].map(m=>m[0]))].slice(0,15)});
+      await writeFile(`diag/${store}-${urls.indexOf(u)}.txt`,t.slice(0,1.5e6));
+    }catch(e){p.error=String(e);}
+    r.pages.push(p);
+  }
+  out[store]=r;
 }
-await writeFile('diag/summary2.json',JSON.stringify(out,null,2));
+await writeFile('diag/stores.json',JSON.stringify(out,null,2));
