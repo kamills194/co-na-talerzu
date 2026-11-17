@@ -4,7 +4,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { recipes } from '../src/recipes.pl.js';
+import { recipes, products } from '../src/recipes.pl.js';
 import { pantryProducts } from '../src/domain.js';
 import { emptyState, validateState, KEY } from '../src/storage.js';
 
@@ -46,6 +46,10 @@ function runApp({saved,offers=fixture,script}) {
 }
 const defaultIds=recipes.map(r=>r.id);
 const matched=r=>new Set(r.ingredients.map(i=>i.product).filter(p=>!pantryProducts.includes(p)&&promoProducts.includes(p))).size;
+// CNT-039: karta wymienia produkty w promocji (kolejność składników, najwyżej 3, potem „+N”), bez znaku %.
+const promoIdsOf=(r,list=promoProducts)=>[...new Set(r.ingredients.map(i=>i.product))].filter(p=>!pantryProducts.includes(p)&&list.includes(p));
+const lower=id=>products[id][0].toLocaleLowerCase('pl-PL').replace(/\s*\([^)]*\)/g,'').replace(/\s*\d+(?:[.,]\d+)?\s*%/g,'').trim(); // „śmietana 18%” → „śmietana”
+const tagOf=ids=>`<p class="offer-tag">W promocji: ${ids.slice(0,3).map(lower).join(', ')}${ids.length>3?` <span aria-hidden="true">+${ids.length-3}</span><span class="sr-only">, ${ids.slice(3).map(lower).join(', ')}</span>`:''}</p>`;
 const cardOf=(html,id)=>{const start=html.indexOf(`<h3><button data-recipe="${id}">`);return html.slice(start,html.indexOf('</article>',start));};
 
 test('Kolejność domyślna bez zmian; „Najwięcej składników w promocji” stawia na początku dania z większą liczbą składników w promocji; wybór zapisany',()=>{
@@ -73,21 +77,24 @@ test('Wybrana kolejność przetrwa ponowne uruchomienie; bez aktualnych promocji
   assert.ok(none.html.includes('<p class="sort-hint">Brak aktualnych promocji — kolejność bez zmian</p>'));
   assert.ok(none.html.includes('<option value="promotions" selected '));assert.ok(!none.html.includes('offer-tag'));
 });
-test('Znacznik na karcie: liczba składników w promocji z poprawną odmianą (1 składnik, 2–4 składniki, 5+ składników); spiżarnia się nie liczy',()=>{
-  const out=runApp({script:`out.html=el('#results').innerHTML;`});
-  const seen=new Set();
+test('Znacznik na karcie (CNT-039): nazwy produktów w promocji zamiast liczby i znaku %; najwyżej 3, potem „+N”; spiżarnia się nie liczy',()=>{
+  const out=runApp({script:`out.html=el('#results').innerHTML;out.nav=el('#nav').innerHTML;`});
+  let more=0;
   for(const r of recipes){
-    const n=matched(r), card=plain(cardOf(out.html,r.id));
-    if(!n){assert.ok(!card.includes('offer-tag'),r.id);continue;}
-    const word=n===1?'składnik':n>=2&&n<=4?'składniki':'składników';seen.add(word);
-    assert.ok(card.includes(`<span class="offer-tag"><span aria-hidden="true">%</span> ${n} ${word} w promocji</span>`),`${r.id}: ${n}`);
+    const ids=promoIdsOf(r), card=plain(cardOf(out.html,r.id));
+    assert.equal(ids.length,matched(r));
+    if(!ids.length){assert.ok(!card.includes('offer-tag'),r.id);continue;}
+    assert.ok(card.includes(tagOf(ids)),`${r.id}: ${card.slice(card.indexOf('offer-tag')-10)}`);
+    const tag=card.slice(card.indexOf('<p class="offer-tag">'));assert.ok(!tag.slice(0,tag.indexOf('</p>')).includes('%')&&!/składnik(i|ów)? w promocji/.test(card),r.id);
+    if(ids.length>3)more++;
   }
-  assert.deepEqual([...seen].sort(),['składnik','składniki','składników']);
+  assert.ok(more>0,'jest karta z „+N”');
+  assert.ok(!out.nav.includes('>%<'),'nawigacja bez ikony %');
   // Notatka użytkownika nadal oznacza kartę (jak przed CNT-029).
   const note={id:'local-1',product:'banana',store:'Targ',price:3.5,until:'2026-11-18',source:'ulotka'};
   const noted=runApp({saved:{...emptyState(),offers:[note]},offers:[],script:`out.html=el('#results').innerHTML;`});
   const banana=recipes.find(r=>r.ingredients.some(i=>i.product==='banana'));
-  assert.ok(plain(cardOf(noted.html,banana.id)).includes('%</span> 1 składnik w promocji'));
+  assert.ok(plain(cardOf(noted.html,banana.id)).includes('<p class="offer-tag">W promocji: banan</p>'));
 });
 test('Szczegóły przepisu: cena z walutą, jednostka, sklep, „do” i link przy składnikach w promocji; nic przy spiżarni; niebezpieczny URL bez linku; wszystko escapowane',()=>{
   const r=recipes.find(x=>x.id==='jajecznica');
@@ -116,8 +123,8 @@ test('Wygasła oferta znika po chwili końca ważności bez nowego pobrania (kar
   assert.ok(out.before.includes('Pomidory malinowe'));assert.ok(out.edge.includes('Pomidory malinowe'),'w chwili validUntil jeszcze ważna');
   assert.ok(!out.after.includes('Pomidory malinowe'));assert.ok(out.after.includes('Masło extra'),'pozostałe oferty zostają');
   assert.equal(out.fetches,1);
-  // jajecznica: jajko, masło, (pomidor wygasł) → 2 składniki.
-  assert.ok(plain(cardOf(out.cards,'jajecznica')).includes('2 składniki w promocji'));
+  // jajecznica: jajko, masło, (pomidor wygasł) → dwa produkty na karcie.
+  assert.ok(plain(cardOf(out.cards,'jajecznica')).includes(tagOf(['egg','butter'])));
 });
 test('Lista zakupów: cena i link przy produktach z aktualną ofertą; własne pozycje bez ceny',()=>{
   const saved={...emptyState(),shopping:[{id:'tomato',product:'tomato',amount:2,done:false},{id:'bread',product:'bread',amount:4,done:false},{id:'local-x',name:`Pomidory ${evil}`,done:false}]};

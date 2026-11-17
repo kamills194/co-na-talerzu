@@ -1,4 +1,4 @@
-// CNT-035: tryb jasny/ciemny/automatyczny (theme-mode.js) oraz kontrakt arkusza theme.css.
+// CNT-035 / CNT-039: tylko dwa motywy, jasny i ciemny (theme-mode.js), oraz kontrakt arkusza theme.css.
 import { test, beforeEach } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
@@ -27,7 +27,7 @@ let html, meta, buttons, systemDark;
 function installDom({ stored, throwing = false, dark = false } = {}) {
   html = fakeElement();
   meta = fakeElement({ name: 'theme-color', content: '#000000' });
-  buttons = ['light', 'dark', 'auto'].map(m => fakeElement({ 'data-theme-mode': m, 'aria-pressed': 'false' }));
+  buttons = ['light', 'dark'].map(m => fakeElement({ 'data-theme-mode': m, 'aria-pressed': 'false' }));
   systemDark = dark;
   globalThis.document = {
     documentElement: html,
@@ -71,49 +71,77 @@ test('setThemeMode zapamiętuje wybór, a ponowne uruchomienie go odtwarza', () 
   assert.equal(html.getAttribute('data-theme'), 'light');
 });
 
-test('Tryb automatyczny usuwa atrybut i bierze kolor paska z ustawień systemu', () => {
-  installDom({ stored: 'dark', dark: true });
-  initThemeMode();
-  setThemeMode('auto');
-  assert.equal(html.hasAttribute('data-theme'), false);
-  assert.equal(localStorage.getItem(THEME_KEY), null);
+test('Pierwsza wizyta: motyw raz z prefers-color-scheme i zapisany; potem liczy się tylko wybór użytkownika', () => {
+  installDom({ dark: true });
+  assert.equal(initThemeMode(), 'dark');
+  assert.equal(localStorage.getItem(THEME_KEY), 'dark');
+  assert.equal(html.getAttribute('data-theme'), 'dark');
   assert.equal(meta.getAttribute('content'), THEME_COLORS.dark);
-  systemDark = false;
-  setThemeMode('auto');
-  assert.equal(meta.getAttribute('content'), THEME_COLORS.light);
+  systemDark = false; // system zmienia się później — zapisany wybór zostaje
+  assert.equal(initThemeMode(), 'dark');
+  setThemeMode('light');
+  systemDark = true;
+  assert.equal(initThemeMode(), 'light');
+  installDom({ dark: false });
+  assert.equal(initThemeMode(), 'light');
+  assert.equal(localStorage.getItem(THEME_KEY), 'light');
 });
 
-test('Nieprawidłowa zapisana wartość oznacza tryb automatyczny', () => {
-  for (const bad of ['purple', '', 'DARK', '{"x":1}']) {
-    installDom({ stored: bad });
-    html.setAttribute('data-theme', 'dark');
-    assert.equal(initThemeMode(), 'auto', bad);
-    assert.equal(html.hasAttribute('data-theme'), false, bad);
+test('Zapisane „auto” ze starszej wersji i nieprawidłowe wartości są migrowane do motywu systemu', () => {
+  for (const [bad, dark] of [['auto', true], ['auto', false], ['purple', true], ['', false], ['DARK', false], ['{"x":1}', true]]) {
+    installDom({ stored: bad, dark });
+    const want = dark ? 'dark' : 'light';
+    assert.equal(initThemeMode(), want, bad);
+    assert.equal(html.getAttribute('data-theme'), want, bad);
+    assert.equal(localStorage.getItem(THEME_KEY), want, bad);
   }
-  installDom();
-  assert.equal(setThemeMode('sepia'), 'auto');
+  installDom({ stored: 'dark' });
+  initThemeMode();
+  assert.equal(setThemeMode('auto'), 'dark', 'tryb auto już nie istnieje — nic się nie zmienia');
+  assert.equal(setThemeMode('sepia'), 'dark');
+  assert.equal(localStorage.getItem(THEME_KEY), 'dark');
 });
 
 test('Brak dostępu do localStorage nie psuje motywu', () => {
-  installDom({ throwing: true });
-  assert.equal(initThemeMode(), 'auto');
-  assert.equal(setThemeMode('dark'), 'dark');
-  assert.equal(html.getAttribute('data-theme'), 'dark');
+  installDom({ throwing: true, dark: true });
+  assert.equal(initThemeMode(), 'dark');
+  assert.equal(setThemeMode('light'), 'light');
+  assert.equal(html.getAttribute('data-theme'), 'light');
 });
 
-test('Przełącznik: trzy przyciski z aria-pressed, tłumaczenia z t() i polski zapas', () => {
+test('Przełącznik: dwa przyciski (Jasny, Ciemny) z aria-pressed, tłumaczenia z t() i polski zapas', () => {
   installDom({ stored: 'dark' });
   initThemeMode();
   const pl = themeToggleHTML(k => k); // t zwraca klucz = brak tłumaczenia
   assert.match(pl, /role="group" aria-label="Motyw"/);
-  for (const text of ['Jasny', 'Ciemny', 'Automatyczny']) assert.ok(pl.includes(text), text);
+  for (const text of ['Jasny', 'Ciemny']) assert.ok(pl.includes(text), text);
+  assert.ok(!pl.includes('Automatyczny') && !pl.includes('auto'));
   assert.match(pl, /data-theme-mode="dark" aria-pressed="true"/);
   assert.match(pl, /data-theme-mode="light" aria-pressed="false"/);
-  assert.equal((pl.match(/<button type="button"/g) || []).length, 3);
-  const en = themeToggleHTML(k => ({ themeLight: 'Light', themeDark: 'Dark', themeAuto: 'Auto', themeLabel: 'Theme <x>' })[k]);
+  assert.equal((pl.match(/<button type="button"/g) || []).length, 2);
+  const en = themeToggleHTML(k => ({ themeLight: 'Light', themeDark: 'Dark', themeLabel: 'Theme <x>' })[k]);
   assert.ok(en.includes('aria-label="Theme &lt;x&gt;"'));
-  assert.ok(en.includes('>Light<') && en.includes('>Auto<'));
-  assert.ok(themeToggleHTML().includes('Automatyczny'));
+  assert.ok(en.includes('>Light<') && en.includes('>Dark<'));
+  assert.ok(themeToggleHTML().includes('Ciemny'));
+});
+
+test('Skrypt w <head> index.html ustawia data-theme przed arkuszami (bez mignięcia) i migruje tak samo jak moduł', async () => {
+  const page = await readFile(new URL('../src/index.html', import.meta.url), 'utf8');
+  const script = page.match(/<script>([\s\S]*?)<\/script>/)[1];
+  assert.ok(page.indexOf('<script>') < page.indexOf('stylesheet'), 'skrypt przed arkuszami stylów');
+  const run = ({ stored, dark, throwing = false }) => {
+    installDom({ stored, dark, throwing });
+    const fn = new Function('localStorage', 'matchMedia', 'document', script);
+    let ls; try { ls = globalThis.localStorage; } catch { ls = { getItem() { throw new Error('x'); }, setItem() { throw new Error('x'); } }; }
+    fn(ls, globalThis.matchMedia, globalThis.document);
+    return html.getAttribute('data-theme');
+  };
+  assert.equal(run({ dark: true }), 'dark'); assert.equal(localStorage.getItem(THEME_KEY), 'dark');
+  assert.equal(run({ dark: false }), 'light'); assert.equal(localStorage.getItem(THEME_KEY), 'light');
+  assert.equal(run({ stored: 'auto', dark: true }), 'dark'); assert.equal(localStorage.getItem(THEME_KEY), 'dark');
+  assert.equal(run({ stored: 'light', dark: true }), 'light');
+  assert.equal(run({ stored: 'dark', dark: false }), 'dark'); assert.equal(meta.getAttribute('content'), THEME_COLORS.dark);
+  assert.equal(run({ dark: true, throwing: true }), 'dark');
 });
 
 test('bindThemeToggle przełącza tryb po kliknięciu i aktualizuje aria-pressed', () => {
@@ -147,16 +175,14 @@ const blockAfter = (source, start) => {
 const props = body => new Set([...body.matchAll(/(--[\w-]+)\s*:/g)].map(m => m[1]));
 const lightBody = blockAfter(css, css.indexOf(':root{'));
 const darkAttr = blockAfter(css, css.indexOf('html[data-theme="dark"]{'));
-const mediaStart = css.search(/@media\s*\(prefers-color-scheme:\s*dark\)\s*\{\s*:root:not\(\[data-theme\]\)\{/);
-const darkMedia = blockAfter(css, css.indexOf(':root:not([data-theme]){', mediaStart));
 
 test('Motyw jasny i ciemny definiują ten sam zestaw kolorów', () => {
-  assert.ok(mediaStart > 0, 'brak bloku prefers-color-scheme: dark dla trybu automatycznego');
+  // CNT-039: bez trybu automatycznego — data-theme ustawia zawsze skrypt w <head>, więc arkusz nie powiela ciemnego bloku.
+  assert.doesNotMatch(css, /prefers-color-scheme/);
+  assert.doesNotMatch(css, /--t-bunting/, 'girlanda z chorągiewek usunięta');
   const colors = [...props(lightBody)].filter(p => !['--t-sketch', '--t-card', '--t-wobble', '--t-shadow', '--t-serif', '--t-hand'].includes(p));
-  assert.ok(colors.length > 30);
+  assert.ok(colors.length > 20); // CNT-039: mniej zmiennych po usunięciu ozdobników (było > 30)
   assert.deepEqual(new Set(colors), props(darkAttr));
-  assert.deepEqual(props(darkAttr), props(darkMedia));
-  assert.equal(darkAttr.replace(/\s+/g, ''), darkMedia.replace(/\s+/g, ''), 'bloki ciemnego motywu muszą być identyczne');
   assert.match(lightBody, /color-scheme:\s*light/);
   assert.match(darkAttr, /color-scheme:\s*dark/);
   assert.match(css, /html\[data-theme="light"\]|:root\{/);
@@ -175,11 +201,16 @@ test('theme.css nie pobiera niczego z sieci', () => {
     assert.ok(inner.startsWith('data:image/svg+xml,'), `url() inny niż wbudowany SVG: ${inner.slice(0, 40)}`);
 });
 
-test('Dekoracje z pseudo-elementów nie przechwytują kliknięć i nie mają czytanego tekstu', () => {
-  for (const [, , body] of css.matchAll(/([^{}]*::?(?:before|after))\s*\{([^{}]*)\}/g)) {
-    if (/content\s*:/.test(body)) assert.match(body, /content\s*:\s*''/, `pseudo-element z tekstem: ${body.slice(0, 60)}`);
-    if (/position\s*:\s*absolute/.test(body)) assert.match(body, /pointer-events\s*:\s*none/, body.slice(0, 60));
-  }
+test('CNT-039 (uwaga nr 10): theme.css bez ozdobników — bez pseudo-elementów z grafiką, masek SVG, inicjału, falek i wzorków tła', () => {
+  assert.doesNotMatch(css, /::(before|after|first-letter)/, 'pseudo-elementy ozdobne usunięte (zostaje funkcjonalne h3 button:after — klikalna karta)');
+  assert.doesNotMatch(css, /mask(-image)?\s*:/);
+  assert.doesNotMatch(css, /data:image\/svg/);
+  assert.doesNotMatch(css, /text-decoration-style\s*:\s*wavy/);
+  assert.doesNotMatch(css, /--t-(bunting|doodle|star|dot|deco|hero-sky|hero-edge|hero-hill)\b/);
+  assert.doesNotMatch(css, /radial-gradient/, 'bez wzorków tła, słońc i łąk');
+  assert.match(css, /\.art-caption,\.art-note\{display:none\}/, 'wstążka i karteczka przy ilustracji ukryte');
+  // Brak „drukowanych” przesuniętych cieni (np. 6px 7px 0) na kartach, panelach i przyciskach.
+  assert.doesNotMatch(css, /box-shadow:\s*-?\d+px\s+-?\d+px\s+0\s/);
 });
 
 test('Selektory theme.css wskazują istniejące klasy', async () => {

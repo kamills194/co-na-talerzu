@@ -45,6 +45,7 @@ znane zadania z obu wątków; nie sugeruje importu nieistniejącego systemu Issu
 | CNT-034 | Poprawki po użyciu na telefonie (17.11): losowanie i porcje, 1 porcja z przyciskami −/+, język w prawym rogu, filtr czasu powyżej 60 min, kuchnia na kartach, wyszukiwarka wykluczeń, grupy alergenów, pełne czyszczenie filtrów | Programista + UX | Wykonane (reports/CNT-034.md) |
 | CNT-035 | Wygląd po uwagach z 17.11: motyw jasny/ciemny/automatyczny, mniejsza czcionka, więcej bajkowości, brak nakładania się elementów (także przy powiększeniu 150–200%); język ukraiński opisany „Українська — ukraiński”, plakietka UA | UX/UI | Wykonane (reports/CNT-035.md) |
 | CNT-036 | Ilości składników w gramach (ml dla płynów), przy sztukach podpowiedź „≈ N szt.”; decyzja właściciela 17.11.2026 | Programista | Wykonane: przeliczenie tylko przy wyświetlaniu, zapisane dane bez zmian |
+| CNT-039 | Poprawki z 17.11 (druga lista): większa losowość, czasy 15/30/60 min i pełne pół godziny, czyszczenie filtrów bez przeskoku, nazwy produktów w promocji bez %, flagi przy językach, dwa motywy, usunięte dekoracje | Programista + UX | Wykonane (reports/CNT-039.md) |
 
 Każde nowe zadanie: cel użytkownika, zakres plików, kryteria odbioru, odpowiedzialna
 rola, zależności i dowód wykonania. Nie przypisano rzeczywistych osób ani botów.

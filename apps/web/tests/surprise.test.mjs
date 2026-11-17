@@ -19,13 +19,13 @@ const byId=id=>recipes.find(r=>r.id===id);
 const offers=['egg','butter','tomato'].map(p=>offer(p));
 const count=(draw,n,ids)=>{const c=Object.fromEntries(ids.map(i=>[i,0]));for(let i=0;i<n;i++)c[draw().id]++;return c;};
 
-test('weightedSurprise: waga 1 + 2 × liczba składników w promocji (3 składniki ≈ 7× częściej niż 0)',()=>{
+test('weightedSurprise (CNT-039): waga min(3, 1 + 0,5 × liczba składników w promocji) — 3 składniki ≈ 2,5× częściej niż 0',()=>{
   const three=byId('jajecznica'), zero=byId('owsianka-wodna');
   assert.equal(promoCoverage(three,offers,NOW).count,3);assert.equal(promoCoverage(zero,offers,NOW).count,0);
   const random=seeded(2026);
   const c=count(()=>weightedSurprise([three,zero],offers,NOW,{random}),10000,[three.id,zero.id]);
   const ratio=c[three.id]/c[zero.id];
-  assert.ok(ratio>6&&ratio<8,`stosunek ${ratio.toFixed(2)} (${c[three.id]}:${c[zero.id]})`);
+  assert.ok(ratio>2.2&&ratio<2.8,`stosunek ${ratio.toFixed(2)} (${c[three.id]}:${c[zero.id]})`);
   assert.ok(c[zero.id]>0,'danie bez promocji zachowuje szansę');
   // Deterministycznie: to samo ziarno → ta sama sekwencja.
   const a=seeded(7),b=seeded(7);
@@ -78,8 +78,8 @@ test('„Wylosuj inne” jest tylko po „Zaskocz mnie”, losuje inne danie i o
   assert.equal(out.first.reroll,true);assert.equal(out.first.disabled,false);
   const ids=out.draws.map(idByName);assert.ok(ids.every(Boolean),JSON.stringify(out.draws));
   for(let i=1;i<ids.length;i++)assert.notEqual(ids[i],ids[i-1],`powtórka pod rząd: ${ids[i]}`);
-  // 86 kandydatów: w każdym oknie 6 kolejnych losowań brak powtórek (ostatnie 5 jest pomijane).
-  for(let i=0;i+6<=ids.length;i++)assert.equal(new Set(ids.slice(i,i+6)).size,6,ids.slice(i,i+6).join(','));
+  // CNT-039: duża pula — pomijane jest ostatnie 15 losowań, więc 13 kolejnych wyników jest różnych.
+  assert.equal(new Set(ids).size,ids.length,ids.join(','));
   assert.equal(out.focused.filter(s=>s==='#reroll').length,12,'fokus wraca na „Wylosuj inne” po każdym losowaniu');
   assert.equal(out.last.reroll,true);
 });

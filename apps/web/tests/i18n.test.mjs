@@ -189,14 +189,14 @@ test('Domyślnie polski, także gdy przeglądarka jest po angielsku; wybór zapi
   const b = out.before, a = out.after;
   assert.ok(b.results.includes('>Owsianka z jabłkiem i cynamonem<')); assert.equal(b.footer, 'Co na talerz · Twoja domowa kuchnia');
   assert.ok(b.lang.includes('<label for="language">')); assert.ok(b.lang.includes('Język / Language'));
-  assert.ok(b.lang.includes('<option value="pl" lang="pl" selected>Polski</option>'));
-  for (const l of languages) assert.ok(b.lang.includes(`<option value="${l.code}" lang="${l.code}"`) && b.lang.includes(`>${l.name}`), l.code);
-  // CNT-035: nazwa w języku interfejsu obok nazwy własnej, żeby każdy język był rozpoznawalny (np. ukraiński zapisany cyrylicą); plakietka UA zamiast ISO „UK”.
-  assert.ok(b.lang.includes('>Українська — ukraiński</option>')); assert.ok(b.lang.includes('>English — angielski</option>')); assert.ok(b.lang.includes('>Polski</option>'));
+  assert.ok(b.lang.includes('<option value="pl" lang="pl" selected>🇵🇱 Polski</option>'));
+  for (const l of languages) assert.ok(b.lang.includes(`<option value="${l.code}" lang="${l.code}"`) && b.lang.includes(`>${l.flag} ${l.name}</option>`), l.code);
+  // CNT-039: mała flaga + nazwa własna języka (bez tłumaczenia „— ukraiński” z CNT-035); plakietka przy globie to flaga SVG.
+  assert.ok(b.lang.includes('>🇺🇦 Українська</option>')); assert.ok(b.lang.includes('>🇬🇧 English</option>')); assert.ok(!b.lang.includes(' — '));
   assert.ok(b.lang.includes('id="lang-suggest" data-lang="en" lang="en"'), 'podpowiedź języka przeglądarki, bez przełączania');
   assert.ok(a.results.includes('>Porridge with apple and cinnamon<')); assert.ok(a.results.includes('rolled oats · milk · apple'));
   assert.ok(a.main.includes('Surprise me')); assert.equal(a.footer, 'Co na talerz · Your home kitchen'); assert.equal(a.navLabel, 'Main navigation');
-  assert.ok(a.nav.includes('Shopping list')); assert.ok(a.lang.includes('<option value="en" lang="en" selected>English</option>')); assert.ok(a.lang.includes('>Language<'));
+  assert.ok(a.nav.includes('Shopping list')); assert.ok(a.lang.includes('<option value="en" lang="en" selected>🇬🇧 English</option>')); assert.ok(a.lang.includes('>Language<'));
   assert.ok(!a.lang.includes('lang-suggest'), 'po wyborze podpowiedź znika');
   assert.deepEqual(out.html, { lang:'en', dir:'ltr' }); assert.equal(out.title, 'Co na talerz — home-cooking ideas');
   assert.equal(out.saved.settings.language, 'en');
@@ -226,5 +226,5 @@ test('Język zastępczy (pusty plik) pokazuje polskie teksty bez błędów; brak
     assert.ok(out.results.includes('<button data-recipe="owsianka" lang="pl">Owsianka z jabłkiem i cynamonem</button>'));
     assert.ok(out.detail.includes('<ol class="steps" lang="pl">'));
   }
-  assert.ok(out.lang.includes('<option value="de" lang="de" selected>Deutsch</option>'));
+  assert.ok(out.lang.includes('<option value="de" lang="de" selected>🇩🇪 Deutsch</option>'));
 });
