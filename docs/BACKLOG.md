@@ -39,7 +39,7 @@ znane zadania z obu wątków; nie sugeruje importu nieistniejącego systemu Issu
 | CNT-028 | Bot szuka promocji na jak najwięcej składników: pełna mapa produktów, kolejne działy i sklepy | Promocje sklepowe | Mapa 62/64 produktów, dodatkowe adresy działów jako argumenty bota; bot nieuruchamiany na żywo, inne sklepy do decyzji |
 | CNT-029 | Link do promocji i cena przy każdym składniku w przepisie i na liście zakupów | Promocje sklepowe + UX | Wykonane: cena, sklep, termin i link przy składnikach i na liście; „Wylosuj inne” (reports/CNT-029.md); brak aktualnych ofert do czasu uruchomienia bota |
 | CNT-030 | Wybór języka oraz tłumaczenia interfejsu i przepisów | UX/UI i lokalizacja | Planowane; języki i sposób tłumaczenia do decyzji |
-| CNT-031 | Nowa, bardziej bajkowa szata graficzna; najpierw warianty do wyboru | UX/UI | Planowane |
+| CNT-031 | Nowa, bardziej bajkowa szata graficzna; najpierw warianty do wyboru | UX/UI | Trzy warianty gotowe do wyboru: docs/design/cnt-031 (reports/CNT-031.md) |
 | CNT-032 | Realistyczne generowane zdjęcia 30 dań z opisem pochodzenia; zastępuje CNT-019 | UX/UI + ekspert kulinarny | Zablokowane: brak plików zdjęć; mechanizm wyświetlania gotowy |
 
 Każde nowe zadanie: cel użytkownika, zakres plików, kryteria odbioru, odpowiedzialna

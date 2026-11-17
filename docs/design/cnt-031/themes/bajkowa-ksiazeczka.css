@@ -1,0 +1,147 @@
+/* CNT-031 · wariant B „Bajkowa książeczka”
+   Wygląd ilustrowanej książeczki: kremowy papier w kropki, ręcznie „rysowane” obrysy,
+   girlanda chorągiewek, ramki jak w ilustracjach. Warstwa nakładana PO styles.css.
+   Tylko czcionki systemowe, grafiki jako gradienty i własne SVG w data URI (działa offline). */
+
+:root{
+  --green:#9a3824;          /* kolor główny: ceglana czerwień okładki */
+  --ink:#3a2a1d;            /* tekst i obrysy: sepia */
+  --paper:#fbf3e1;          /* papier */
+  --muted:#65513f;          /* tekst pomocniczy */
+  --border:#d9c6a3;         /* linie dekoracyjne */
+  --orange:#2c5875;         /* akcent: atramentowy błękit (nadtytuły) */
+  --white:#fffaf0;          /* karty, pola */
+  --t-primary-hover:#7f2b1a;
+  --t-ui-border:#3a2a1d;
+  --t-focus:#2c5875;
+  --t-mustard:#e3b341;--t-sky:#d7e6ee;--t-sage:#dfe7cc;--t-blush:#f3d9cc;--t-sand:#f1e2c2;
+  --t-sketch:255px 18px 225px 18px/18px 225px 18px 255px;   /* „ręcznie rysowany” owal przycisku */
+  --t-card:22px 30px 18px 34px/30px 18px 34px 22px;
+  --t-shadow:4px 5px 0 #3a2a1d24;
+  --t-serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua","URW Palladio L","TeX Gyre Pagella",Georgia,serif;
+  --t-hand:"Segoe Print","Bradley Hand","Chalkboard SE","Comic Sans MS",cursive;
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  color:var(--ink);background:var(--paper);
+}
+body{background:radial-gradient(circle,#e7d6b3 1px,transparent 1.6px) 0 0/22px 22px,var(--paper)}
+h1,h2,h3,.brand{font-family:var(--t-serif);font-weight:600;letter-spacing:-.3px}
+h1{letter-spacing:-.8px}
+.hero h1::first-letter,.page-title h1::first-letter{color:var(--green);font-size:1.18em}
+.eyebrow{color:var(--orange);letter-spacing:2px}
+.eyebrow::before{content:'❦ ';letter-spacing:0}
+
+/* nagłówek z girlandą chorągiewek */
+header{border-bottom:0;padding-bottom:42px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='132' height='26' viewBox='0 0 132 26'%3E%3Cpath d='M0 3Q33 9 66 3T132 3' fill='none' stroke='%233a2a1d' stroke-width='1.4' stroke-dasharray='3 3'/%3E%3Cpath d='M8 5l9 17 9-16z' fill='%239a3824'/%3E%3Cpath d='M40 6l9 18 9-18z' fill='%23e3b341'/%3E%3Cpath d='M74 6l9 18 9-18z' fill='%232c5875'/%3E%3Cpath d='M106 5l9 17 9-17z' fill='%2389a35a'/%3E%3C/svg%3E") 0 100%/132px 26px repeat-x}
+.brand-icon{color:var(--green);text-shadow:2px 2px 0 #e3b341}
+.brand small{color:var(--muted);font-family:var(--t-serif);font-style:italic;letter-spacing:.6px;font-size:12px}
+nav button{border-radius:var(--t-sketch);border:2px solid transparent;font-weight:600}
+nav button:hover{border-color:#3a2a1d55}
+nav button[aria-current]{background:var(--green);color:#fff;border-color:var(--ink);box-shadow:var(--t-shadow)}
+nav b{color:inherit}
+
+/* przyciski: obrys jak narysowany piórkiem */
+.primary{border:2px solid var(--ink);border-radius:var(--t-sketch);background:var(--green);color:#fff;box-shadow:var(--t-shadow);font-weight:700}
+.primary:hover{background:var(--t-primary-hover)}
+.secondary,.close{border:2px solid var(--t-ui-border);border-radius:var(--t-sketch);background:var(--white);color:var(--ink);font-weight:600}
+.close{border-radius:48% 52% 45% 55%/55% 45% 55% 45%}
+.text-button{color:var(--ink);text-decoration-style:wavy;text-decoration-color:var(--green);text-underline-offset:5px}
+
+/* bohater: ilustracja w owalnej ramce jak w starej książce */
+.hero>div>p:not(.eyebrow){color:var(--muted);font-family:var(--t-serif);font-size:17px}
+.offline{color:var(--muted)}
+.hero-art{border-radius:50%;background:
+  radial-gradient(circle at 50% 120%,#c9d8a6 0 34%,transparent 34.5%),
+  radial-gradient(ellipse at 50% 40%,#fffaf0 0 45%,#f4e6c6 75%);
+  border:3px solid var(--ink);box-shadow:inset 0 0 0 7px var(--paper),inset 0 0 0 9px var(--ink),6px 8px 0 #3a2a1d1f}
+.hero-art::before{content:'';position:absolute;inset:4% 6%;z-index:-1;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='240' viewBox='0 0 300 240'%3E%3Cg fill='%23e3b341' stroke='%233a2a1d' stroke-width='1.2' stroke-linejoin='round'%3E%3Cpath d='M48 30l4 9 10 1-7 7 2 10-9-5-9 5 2-10-7-7 10-1z'/%3E%3Cpath d='M250 52l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z'/%3E%3Cpath d='M262 170l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z'/%3E%3C/g%3E%3Cg fill='none' stroke='%233a2a1d' stroke-width='1.2' stroke-linecap='round'%3E%3Cpath d='M30 120q10-8 20 0t20 0'/%3E%3Cpath d='M228 112q10-8 20 0t20 0'/%3E%3C/g%3E%3Cg fill='%239a3824'%3E%3Ccircle cx='150' cy='14' r='3'/%3E%3Ccircle cx='60' cy='200' r='2.5'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat}
+.plate{background:#fffdf6;box-shadow:6px 9px 0 #3a2a1d22,inset 0 0 0 3px var(--ink),inset 0 0 0 14px #fffdf6,inset 0 0 0 16px #2c5875,inset 0 0 0 19px #fffdf6,inset 0 0 0 20px #2c587599}
+.food{border:2px solid var(--ink)}
+.food-1{background:#d79a49;border:2px solid var(--ink);outline:2px dashed #a8722d;outline-offset:-10px}
+.food-2{background:#f0d27a}.food-3{background:#f3dc95}
+.leaf{background:#7f9c4f;border:2px solid var(--ink)}.l2{background:#9ab565}.l3{background:#6a8a40}
+.tomato{background:#c8452a;border:2px solid var(--ink);box-shadow:inset 0 0 0 3px #e98a63}
+.art-caption{background:var(--green);color:#fff;border:2px solid var(--ink);border-radius:4px;box-shadow:var(--t-shadow);font-family:var(--t-serif);clip-path:polygon(0 0,100% 0,94% 50%,100% 100%,0 100%,6% 50%);padding:14px 30px}
+.art-note{z-index:2;color:var(--ink);font-family:var(--t-hand);font-style:normal;font-size:17px;background:var(--paper);padding:4px 12px;border:1.5px solid var(--ink);border-radius:var(--t-sketch);box-shadow:3px 3px 0 #3a2a1d22}
+
+/* panel inspiracji jak strona z przeszytą ramką */
+.inspiration{position:relative;border:2px solid var(--ink);border-radius:var(--t-card);background:var(--white);box-shadow:6px 7px 0 #3a2a1d1f}
+.inspiration::before{content:'';position:absolute;inset:9px;border:2px dashed #c8ad7f;border-radius:16px 24px 14px 26px/24px 14px 26px 16px;pointer-events:none}
+.inspiration>*{position:relative;z-index:1}
+label{color:var(--ink)}
+select,input:not([type=checkbox]):not([type=file]){border:2px solid var(--t-ui-border);border-radius:14px 18px 12px 20px/18px 12px 20px 14px;background:#fffdf7}
+.exclusions summary{font-weight:600}
+.muted,.section-heading p,.results-heading p{color:var(--muted)}
+
+/* wyszukiwarka, kuchnie, kategorie */
+.search{border-bottom:2px solid var(--ink)}
+.search input:not([type=checkbox]):not([type=file]){border:0;background:none;margin:0}
+.category-chips button,.cuisine-tabs button{border:2px solid var(--t-ui-border);border-radius:var(--t-sketch);background:var(--white);color:var(--ink);font-weight:600}
+.category-chips button[aria-pressed=true],.cuisine-tabs button[aria-pressed=true]{background:var(--green);color:#fff;border-color:var(--ink);box-shadow:3px 3px 0 #3a2a1d33}
+.chip-count{background:var(--t-sand);color:var(--ink);border:1px solid #3a2a1d55}
+.cuisine-tabs button[aria-pressed=true] .chip-count{background:#fffaf0;color:var(--green)}
+
+/* karty jak ilustrowane strony */
+.recipe-card{border:2px solid var(--ink);border-radius:var(--t-card);background:var(--white);box-shadow:6px 7px 0 #3a2a1d1f}
+.card-art{border-bottom:2px solid var(--ink)}
+.card-art::after{content:'';position:absolute;inset:0;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='90'%3E%3Cg fill='none' stroke='%233a2a1d' stroke-opacity='.35' stroke-width='1.2' stroke-linecap='round'%3E%3Cpath d='M10 70q8-6 16 0t16 0'/%3E%3Cpath d='M86 18l2 5 5 1-4 3 1 5-4-2-4 2 1-5-4-3 5-1z'/%3E%3C/g%3E%3C/svg%3E") 0 0/120px 90px repeat}
+.art-breakfast{background:radial-gradient(circle at 70% 20%,#fdeaa9 0 16%,transparent 17%),#f6e6bd}
+.art-lunch{background:radial-gradient(ellipse at 50% 115%,#b9cc8c 0 40%,transparent 41%),var(--t-sage)}
+.art-dinner{background:radial-gradient(circle at 78% 22%,#fff6d8 0 10%,transparent 11%),var(--t-sky)}
+.art-dessert{background:radial-gradient(circle at 25% 75%,#f8e5dc 0 22%,transparent 23%),var(--t-blush)}
+.art-snack{background:radial-gradient(circle at 80% 75%,#f6eccf 0 20%,transparent 21%),var(--t-sand)}
+.art-starter{background:radial-gradient(ellipse at 50% 115%,#cfd9ad 0 38%,transparent 39%),#ece4cf}
+.card-art>span:first-child{background:#fffdf6;border:2px solid var(--ink);box-shadow:5px 6px 0 #3a2a1d22;border-radius:50%}
+.category-label,.cuisine-label{z-index:1;background:#fffaf0;color:var(--ink);border:1.5px solid var(--ink);border-radius:var(--t-sketch);font-weight:600}
+.favorite{z-index:1;background:#fffaf0;color:var(--ink);border:2px solid var(--ink)}
+.favorite.active{color:var(--green)}
+.meta{color:var(--muted)}
+.card-body h3{font-size:25px}
+.card-body>p{color:var(--muted);font-family:var(--t-serif);font-style:italic;font-size:13px}
+.card-bottom{border-top:2px dashed #c8ad7f}
+.card-bottom span{color:var(--muted);font-family:var(--t-serif);font-style:italic;letter-spacing:.5px}
+.card-bottom button{color:var(--green)}
+.offer-tag{color:var(--green);font-weight:700}
+
+/* pozostałe ekrany */
+.page-title p:not(.eyebrow){color:var(--muted);font-family:var(--t-serif)}
+.panel{border:2px solid var(--ink);border-radius:var(--t-card);background:var(--white);box-shadow:6px 7px 0 #3a2a1d1f}
+.notice,.net-status{background:#f6e6bd;border:2px solid var(--ink);border-left-width:6px;border-radius:10px 16px 10px 16px;color:var(--ink)}
+.shopping-list li,.offer-row{border-top:2px dashed #c8ad7f}
+.empty-icon{color:var(--muted)}
+.allergen-note{background:#f6e6bd;border:2px dashed #b8955a;border-radius:14px}
+.steps li::marker{color:var(--green);font-family:var(--t-serif)}
+.ingredients li{border-bottom:2px dashed #d9c6a3}
+footer{border-top:2px dashed #c8ad7f;color:var(--muted);font-family:var(--t-serif);font-style:italic;font-size:13px}
+footer .text-button{font-style:normal}
+dialog{border:2px solid var(--ink);border-radius:var(--t-card);background:var(--paper);box-shadow:10px 12px 0 #3a2a1d40}
+dialog::backdrop{background:#2b1e14b3}
+.dialog-head{background:var(--paper);border-bottom:2px dashed #c8ad7f}
+#toast{background:var(--ink);color:#fffaf0;border-radius:var(--t-sketch);box-shadow:var(--t-shadow)}
+.skip{background:#fffaf0;color:var(--ink);border:2px solid var(--ink)}
+
+/* fokus: gruby atramentowy obrys */
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--t-focus);outline-offset:3px}
+.recipe-card:has(h3 button:focus-visible){outline:3px solid var(--t-focus);outline-offset:5px}
+
+@media(max-width:600px){
+  header{padding-bottom:36px}
+  .hero>div>p:not(.eyebrow){font-size:15px}
+  .art-caption{padding:12px 24px}
+  .art-note{font-size:14px}
+  .inspiration::before{inset:7px}
+}
+
+/* delikatny ruch tylko dla osób, które go nie wyłączyły */
+@media(prefers-reduced-motion:no-preference){
+  .primary,.secondary,nav button,.category-chips button,.cuisine-tabs button,.favorite,.card-bottom button,.close{transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease}
+  .primary:hover,.secondary:hover{transform:translate(-1px,-2px) rotate(-1deg);box-shadow:6px 7px 0 #3a2a1d33}
+  .primary:active,.secondary:active,nav button:active,.category-chips button:active,.cuisine-tabs button:active,.favorite:active,.close:active{transform:translate(2px,2px);box-shadow:1px 1px 0 #3a2a1d33}
+  .recipe-card{transition:transform .25s ease,box-shadow .25s ease}
+  .recipe-card:hover{transform:rotate(-.6deg) translateY(-3px);box-shadow:9px 11px 0 #3a2a1d26}
+  .hero-art::before{animation:cnt-book-twinkle 4s ease-in-out infinite alternate}
+  @keyframes cnt-book-twinkle{from{opacity:.75}to{opacity:1}}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-art::before{animation:none}
+  .recipe-card:hover,.primary:hover,.secondary:hover{transform:none}
+}
