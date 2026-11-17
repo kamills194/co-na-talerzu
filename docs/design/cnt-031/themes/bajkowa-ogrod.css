@@ -1,0 +1,149 @@
+/* CNT-031 · wariant C „Bajkowy ogród”
+   Miękkie zielenie, ciepłe słońce i terakota; listki, pagórki i kropkowane pnącza.
+   Warstwa nakładana PO styles.css. Tylko czcionki systemowe, grafiki jako gradienty
+   i własne SVG w data URI (działa offline). */
+
+:root{
+  --green:#2e6842;          /* kolor główny: liściasta zieleń */
+  --ink:#1f3a2b;            /* tekst */
+  --paper:#f4f8ee;          /* tło: jasna mięta */
+  --muted:#4c6354;          /* tekst pomocniczy */
+  --border:#d6e3cc;         /* linie dekoracyjne */
+  --orange:#9e4520;         /* akcent: terakota (nadtytuły, numery kroków) */
+  --white:#fffefa;          /* karty, pola */
+  --t-primary-hover:#24563a;
+  --t-ui-border:#6b8a74;    /* obrys kontrolek, min. 3:1 */
+  --t-focus:#b4531f;
+  --t-sun:#f6cf63;--t-sunlight:#fff5d9;--t-blossom:#f4c3cf;--t-moss:#dcebd0;--t-sage:#e6efdc;--t-apricot:#fde3cc;
+  --t-leaf:30px 8px 30px 8px;  /* kształt liścia */
+  --t-shadow:0 14px 30px -18px #2e684299,0 2px 6px -3px #1f3a2b26;
+  --t-serif:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;
+  font-family:"Avenir Next",Avenir,"Segoe UI",system-ui,-apple-system,sans-serif;
+  color:var(--ink);background:var(--paper);
+}
+body{background:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'%3E%3Cg fill='%23cfe2c1' opacity='.55'%3E%3Cpath d='M30 40c18-14 38-10 44 0-14 12-34 14-44 0z'/%3E%3Cpath d='M170 150c10-20 30-24 40-16-8 16-26 24-40 16z'/%3E%3Cpath d='M120 220c4-14 18-20 26-14-4 12-16 18-26 14z'/%3E%3C/g%3E%3Cg fill='%23f4c3cf' opacity='.6'%3E%3Ccircle cx='200' cy='40' r='3'/%3E%3Ccircle cx='60' cy='170' r='2.5'/%3E%3C/g%3E%3C/svg%3E") 0 0/240px 240px repeat,
+  linear-gradient(180deg,#e7f2df 0,#f6f9ef 520px,var(--paper) 1000px) no-repeat,var(--paper)}
+h1,h2,h3,.brand{font-family:var(--t-serif);font-weight:700;letter-spacing:-.4px}
+h1{letter-spacing:-1px}
+.hero h1{color:var(--ink)}
+.eyebrow{color:var(--orange);letter-spacing:1.8px}
+.eyebrow::before{content:'❀ ';letter-spacing:0}
+
+/* nagłówek z kropkowanym pnączem */
+header{border-bottom:0;padding-bottom:30px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='18' viewBox='0 0 96 18'%3E%3Cpath d='M0 9Q24 1 48 9T96 9' fill='none' stroke='%237aa17e' stroke-width='2' stroke-dasharray='1 5' stroke-linecap='round'/%3E%3Cpath d='M30 5c4-6 11-6 13-3-3 4-9 6-13 3z' fill='%2387b276'/%3E%3Cpath d='M70 12c4 5 10 6 12 3-3-4-8-6-12-3z' fill='%23a9c98f'/%3E%3C/svg%3E") 0 100%/96px 18px repeat-x}
+.brand-icon{color:transparent;width:42px;height:42px;overflow:hidden;line-height:1;border-radius:50%;background:radial-gradient(circle,#f6cf63 0 32%,#fffefa 33% 40%,#f4c3cf 41% 62%,#2e6842 63% 66%,transparent 67%)}
+.brand small{color:var(--muted)}
+nav{gap:6px}
+nav button{border-radius:999px;font-weight:600}
+nav button:hover{background:var(--t-moss)}
+nav button[aria-current],nav button[aria-current]:hover{background:var(--green);color:#fff;box-shadow:0 8px 18px -10px #2e6842cc}
+nav b{display:inline-block;min-width:20px;padding:1px 6px;border-radius:999px;background:var(--t-sun);color:var(--ink);text-align:center}
+
+/* przyciski */
+.primary{border:0;border-radius:999px;background:var(--green);color:#fff;box-shadow:0 10px 20px -12px #1f3a2bcc;font-weight:700}
+.primary:hover{background:var(--t-primary-hover)}
+.secondary,.close{border:2px solid var(--t-ui-border);border-radius:999px;background:var(--white);color:var(--ink);font-weight:600}
+.close{border-radius:50%}
+.text-button{color:var(--ink);text-decoration-color:var(--orange);text-decoration-thickness:2px}
+
+/* bohater: talerz na łące w słońcu */
+.hero>div>p:not(.eyebrow){color:var(--muted);font-size:16px}
+.offline{color:var(--muted)}
+.hero-art{border-radius:46% 54% 42% 58%/58% 44% 56% 42%;background:
+  radial-gradient(circle at 16% 20%,#fff3c4 0 7%,var(--t-sun) 7.5% 12%,#f6cf6355 12.5% 17%,transparent 17.5%),
+  radial-gradient(ellipse 80% 40% at 25% 100%,#a8cc8f 0 60%,transparent 61%),
+  radial-gradient(ellipse 80% 38% at 85% 104%,#8dbb78 0 60%,transparent 61%),
+  linear-gradient(180deg,#e3f1f4 0,#eef6e3 70%);
+  box-shadow:inset 0 0 0 8px #fffefa99}
+.hero-art::before{content:'';position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='280' viewBox='0 0 320 280'%3E%3Cg fill='%23ffffff' opacity='.9'%3E%3Ccircle cx='240' cy='120' r='12'/%3E%3Ccircle cx='256' cy='112' r='16'/%3E%3Ccircle cx='272' cy='120' r='11'/%3E%3Crect x='230' y='118' width='52' height='14' rx='7'/%3E%3C/g%3E%3Cg%3E%3Ccircle cx='40' cy='238' r='6' fill='%23f4c3cf'/%3E%3Ccircle cx='40' cy='238' r='2.5' fill='%23f6cf63'/%3E%3Ccircle cx='282' cy='250' r='6' fill='%23fffefa'/%3E%3Ccircle cx='282' cy='250' r='2.5' fill='%23f6cf63'/%3E%3Ccircle cx='250' cy='226' r='5' fill='%23f4c3cf'/%3E%3C/g%3E%3Cg fill='none' stroke='%232e6842' stroke-width='1.5' stroke-linecap='round'%3E%3Cpath d='M110 40q6-6 12 0M124 40q6-6 12 0'/%3E%3C/g%3E%3C/svg%3E") center/cover no-repeat}
+.plate{background:#fffefa;box-shadow:8px 16px 26px #1f3a2b33,inset 0 0 0 14px #f6f9ef,inset 0 0 0 17px #cfe2c1,inset 0 0 0 20px #fffefa,inset 0 0 0 22px #f4c3cf}
+.food-1{background:#d99a4e;border-color:#b97a33}
+.food-2{background:#f2d27a}.food-3{background:#f3dd9a}
+.leaf{background:#5d9a54}.l2{background:#82b768}.l3{background:#3f7b45}
+.tomato{background:#e0663f;border-color:#c4502c}
+.art-caption{background:var(--t-sunlight);color:var(--ink);border-radius:var(--t-leaf);box-shadow:var(--t-shadow);font-family:var(--t-serif)}
+.art-note{z-index:2;color:var(--ink);font-family:var(--t-serif);background:#fffefacc;padding:4px 12px;border-radius:999px}
+
+/* panel inspiracji: słoneczna grządka */
+.inspiration{position:relative;overflow:hidden;border:0;border-radius:36px 12px 36px 12px;background:linear-gradient(140deg,#fff7e2,#fffefa 60%,#eef6e6);box-shadow:var(--t-shadow),0 0 0 1px #e4ecd9}
+.inspiration::after{content:'';position:absolute;right:10px;bottom:6px;width:120px;height:70px;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='70'%3E%3Cpath d='M10 68Q40 40 60 52T118 30' fill='none' stroke='%237aa17e' stroke-width='2' stroke-dasharray='1 6' stroke-linecap='round'/%3E%3Cpath d='M44 48c6-12 18-14 22-8-6 8-14 12-22 8z' fill='%2387b276'/%3E%3Cpath d='M88 40c2-12 12-18 18-14-2 10-10 16-18 14z' fill='%23a9c98f'/%3E%3Ccircle cx='112' cy='22' r='6' fill='%23f4c3cf'/%3E%3Ccircle cx='112' cy='22' r='2.4' fill='%23f6cf63'/%3E%3C/svg%3E") right bottom/120px 70px no-repeat}
+.inspiration>*{position:relative;z-index:1}
+label{color:var(--ink)}
+select,input:not([type=checkbox]):not([type=file]){border:2px solid var(--t-ui-border);border-radius:16px 6px 16px 6px;background:var(--white)}
+.exclusions summary{font-weight:600}
+.muted,.section-heading p,.results-heading p{color:var(--muted)}
+
+/* wyszukiwarka, kuchnie, kategorie */
+.search{border:2px solid var(--t-ui-border);border-radius:999px;background:var(--white);padding:0 8px 0 16px}
+.search span{color:var(--green)}
+.search input:not([type=checkbox]):not([type=file]){border:0;border-radius:999px;background:none;margin:0;min-height:44px}
+.category-chips button,.cuisine-tabs button{border:2px solid var(--t-ui-border);border-radius:999px;background:var(--white);color:var(--ink);font-weight:600}
+.category-chips button[aria-pressed=true],.cuisine-tabs button[aria-pressed=true]{background:var(--green);border-color:var(--green);color:#fff}
+.category-chips button[aria-pressed=true]::before,.cuisine-tabs button[aria-pressed=true]::before{content:'';display:inline-block;width:9px;height:12px;margin-right:6px;vertical-align:-1px;border-radius:0 80% 0 80%;background:#bfe0a8}
+.chip-count{background:var(--t-moss);color:var(--ink)}
+.cuisine-tabs button[aria-pressed=true] .chip-count{background:#fffefa;color:var(--green)}
+
+/* karty w kształcie liścia */
+.recipe-card{border:0;border-radius:var(--t-leaf);background:var(--white);box-shadow:var(--t-shadow),0 0 0 1px #e1ead6}
+.card-art::after{content:'';position:absolute;left:0;right:0;bottom:0;height:34px;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='34' viewBox='0 0 200 34' preserveAspectRatio='none'%3E%3Cpath d='M0 34V20Q50 4 100 18T200 14V34z' fill='%23ffffff' opacity='.45'/%3E%3C/svg%3E") 0 100%/100% 34px no-repeat}
+.art-breakfast{background:radial-gradient(circle at 86% 84%,#fff3c4 0 9%,#f6cf6366 9.5% 15%,transparent 15.5%),var(--t-sunlight)}
+.art-lunch{background:radial-gradient(ellipse at 20% 110%,#c4dfb2 0 35%,transparent 36%),var(--t-moss)}
+.art-dinner{background:radial-gradient(circle at 80% 20%,#fffefa 0 7%,transparent 7.5%),#dfeceb}
+.art-dessert{background:radial-gradient(circle at 18% 22%,#fde6ec 0 14%,transparent 15%),#f7e0e3}
+.art-snack{background:radial-gradient(circle at 80% 78%,#fff0e1 0 16%,transparent 17%),var(--t-apricot)}
+.art-starter{background:radial-gradient(ellipse at 80% 110%,#cfe3bf 0 35%,transparent 36%),var(--t-sage)}
+.card-art>span:first-child{background:#fffefa;border-radius:50% 50% 46% 54%/54% 46% 54% 46%;box-shadow:0 0 0 8px #fffefa80,0 14px 22px -12px #1f3a2b55}
+.category-label,.cuisine-label{z-index:1;background:#fffefaf0;color:var(--ink);border-radius:999px;font-weight:600;box-shadow:0 3px 10px -6px #1f3a2b66}
+.favorite{z-index:1;background:#fffefa;color:var(--muted);box-shadow:0 6px 14px -8px #1f3a2b88}
+.favorite.active{color:#b03a4f}
+.meta{color:var(--muted)}
+.card-body>p{color:var(--muted)}
+.card-bottom{border-top:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='4'%3E%3Ccircle cx='2' cy='2' r='1.6' fill='%2390b48c'/%3E%3C/svg%3E") 0 0/12px 4px repeat-x;padding-top:12px}
+.card-bottom span{color:var(--muted)}
+.card-bottom button{color:var(--green);border-radius:50%}
+.offer-tag{color:var(--orange);font-weight:600}
+
+/* pozostałe ekrany */
+.page-title p:not(.eyebrow){color:var(--muted)}
+.panel{border:0;border-radius:32px 10px 32px 10px;background:var(--white);box-shadow:var(--t-shadow),0 0 0 1px #e1ead6}
+.notice,.net-status{background:var(--t-sunlight);border:0;border-left:6px solid #d39b1c;border-radius:6px 20px 20px 6px;color:var(--ink)}
+.shopping-list li,.offer-row{border-top:2px dotted #b9d0b0}
+.empty-icon{color:#6b8a74}
+.allergen-note{background:var(--t-sage);border-radius:18px 6px 18px 6px}
+.steps li::marker{color:var(--orange)}
+.ingredients li{border-bottom:2px dotted #c9dbc0}
+footer{border-top:2px dotted #b9d0b0;color:var(--muted)}
+dialog{border-radius:32px 12px 32px 12px;background:var(--paper);box-shadow:0 24px 70px #1f3a2b55}
+dialog::backdrop{background:#12271bb3}
+.dialog-head{background:var(--paper);border-bottom:2px dotted #b9d0b0}
+#toast{background:var(--green);color:#fff;border-radius:999px;box-shadow:0 12px 30px -10px #1f3a2b88}
+.skip{background:#fffefa;color:var(--ink);border-radius:0 0 16px 0}
+
+/* fokus: ciepły pomarańczowy obrys, widoczny na zieleni i na tle */
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--t-focus);outline-offset:3px}
+.recipe-card:has(h3 button:focus-visible){outline:3px solid var(--t-focus);outline-offset:4px}
+
+@media(max-width:600px){
+  header{padding-bottom:26px}
+  .hero>div>p:not(.eyebrow){font-size:14px}
+  .inspiration{border-radius:28px 10px 28px 10px}
+  .inspiration::after{width:96px;height:56px;background-size:96px 56px}
+  .art-note{font-size:14px}
+}
+
+/* delikatny ruch tylko dla osób, które go nie wyłączyły */
+@media(prefers-reduced-motion:no-preference){
+  .primary,.secondary,nav button,.category-chips button,.cuisine-tabs button,.favorite,.card-bottom button,.close{transition:transform .2s ease,background-color .2s ease,box-shadow .2s ease}
+  .primary:hover,.secondary:hover{transform:translateY(-2px)}
+  .primary:active,.secondary:active,nav button:active,.category-chips button:active,.cuisine-tabs button:active,.favorite:active,.card-bottom button:active,.close:active{transform:scale(.95)}
+  .favorite:hover{transform:rotate(-8deg) scale(1.06)}
+  .recipe-card{transition:transform .25s ease,box-shadow .25s ease}
+  .recipe-card:hover{transform:translateY(-4px);box-shadow:0 22px 38px -20px #2e6842aa,0 0 0 1px #d6e3cc}
+  .hero-art::before{animation:cnt-garden-sway 6s ease-in-out infinite alternate}
+  @keyframes cnt-garden-sway{from{transform:translateX(-3px)}to{transform:translateX(3px)}}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-art::before{animation:none}
+  .recipe-card:hover,.primary:hover,.secondary:hover,.favorite:hover{transform:none}
+}

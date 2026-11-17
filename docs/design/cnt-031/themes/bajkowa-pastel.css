@@ -1,0 +1,147 @@
+/* CNT-031 · wariant A „Bajkowa pastelowa”
+   Warstwa nakładana PO styles.css (osobny <link>). Nie zmienia struktury HTML ani działania aplikacji.
+   Tylko czcionki systemowe, grafiki jako gradienty i własne SVG w data URI (działa offline). */
+
+:root{
+  --green:#5b3f9e;          /* kolor główny: lawendowy fiolet (przyciski, aktywne zakładki) */
+  --ink:#33284f;            /* tekst */
+  --paper:#fdf8fc;          /* tło */
+  --muted:#62577a;          /* tekst pomocniczy */
+  --border:#e8def2;         /* linie dekoracyjne */
+  --orange:#a3325c;         /* akcent: malinowy (nadtytuły, numery kroków) */
+  --white:#fffdfe;          /* karty, pola */
+  --t-primary-hover:#4a3189;
+  --t-ui-border:#8d7bb3;    /* obrys kontrolek, min. 3:1 */
+  --t-focus:#c0306f;
+  --t-sky:#e8f0ff;--t-peach:#ffe8da;--t-mint:#ddf4ea;--t-lilac:#eee4fb;--t-butter:#fff2c7;--t-rose:#fde2ec;
+  --t-shadow:0 14px 34px -18px #5b3f9e66,0 2px 6px -2px #5b3f9e1f;
+  --t-round:ui-rounded,"SF Pro Rounded","Hiragino Maru Gothic ProN","Nunito","Segoe UI",system-ui,sans-serif;
+  font-family:ui-rounded,"SF Pro Rounded","Segoe UI",system-ui,-apple-system,sans-serif;
+  color:var(--ink);background:var(--paper);
+}
+body{
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='560' height='150' viewBox='0 0 560 150'%3E%3Cg fill='%23ffffff' opacity='.85'%3E%3Ccircle cx='70' cy='62' r='19'/%3E%3Ccircle cx='96' cy='50' r='26'/%3E%3Ccircle cx='124' cy='62' r='18'/%3E%3Crect x='56' y='60' width='84' height='22' rx='11'/%3E%3Ccircle cx='372' cy='104' r='14'/%3E%3Ccircle cx='392' cy='94' r='20'/%3E%3Ccircle cx='414' cy='104' r='13'/%3E%3Crect x='360' y='102' width='66' height='17' rx='8.5'/%3E%3C/g%3E%3Cg fill='%23c9b4f0'%3E%3Cpath d='M250 20c1 6 4 9 10 10-6 1-9 4-10 10-1-6-4-9-10-10 6-1 9-4 10-10z'/%3E%3Cpath d='M500 50c.7 4 2.6 6 6.5 6.5-3.9.6-5.8 2.6-6.5 6.5-.6-3.9-2.6-5.9-6.5-6.5 3.9-.5 5.9-2.5 6.5-6.5z'/%3E%3C/g%3E%3Cg fill='%23f4b7cf'%3E%3Ccircle cx='190' cy='118' r='3'/%3E%3Ccircle cx='300' cy='70' r='2.5'/%3E%3Ccircle cx='470' cy='130' r='2.5'/%3E%3C/g%3E%3C/svg%3E") 0 0/560px 150px repeat-x,
+    linear-gradient(180deg,#efe6fb 0,#fbeef5 420px,var(--paper) 980px) no-repeat,
+    var(--paper);
+}
+h1,h2,h3,.brand{font-family:var(--t-round);font-weight:700;letter-spacing:-.4px}
+h1{letter-spacing:-1px}
+.eyebrow{color:var(--orange);letter-spacing:1.6px}
+.eyebrow::before{content:'✦ ';color:#d16a9a}
+
+/* nagłówek i nawigacja */
+header{border-bottom:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='6'%3E%3Ccircle cx='3' cy='3' r='2' fill='%23c8b3e6'/%3E%3C/svg%3E") left bottom/16px 6px repeat-x}
+.brand-icon{color:transparent;background:radial-gradient(circle at 35% 35%,#fff 0 18%,#f7a8c8 19% 46%,#a98ae0 47% 70%,transparent 71%);width:42px;height:42px;line-height:1;overflow:hidden;border-radius:50%}
+.brand small{color:var(--muted)}
+nav{gap:6px}
+nav button{border-radius:999px;font-weight:600}
+nav button:hover{background:var(--t-lilac)}
+nav button[aria-current],nav button[aria-current]:hover{background:var(--green);color:#fff;box-shadow:0 8px 18px -8px #5b3f9eaa}
+nav b{display:inline-block;min-width:20px;padding:1px 6px;border-radius:999px;background:#fde2ec;color:#7d2148;text-align:center}
+nav button[aria-current] b{background:#fff;color:var(--green)}
+
+/* przyciski */
+.primary{border-radius:999px;border:0;background:var(--green);color:#fff;box-shadow:0 10px 22px -10px #5b3f9ebb}
+.primary:hover{background:var(--t-primary-hover)}
+.secondary,.close{border:2px solid var(--t-ui-border);background:var(--white);color:var(--ink);border-radius:999px;font-weight:600}
+.close{border-radius:50%}
+.text-button{color:var(--ink);text-decoration-color:#c0306f;text-decoration-thickness:2px}
+
+/* bohater i ilustracja */
+.hero>div>p:not(.eyebrow){color:var(--muted)}
+.offline{color:var(--muted)}
+.hero-art{border-radius:58% 42% 55% 45%/50% 56% 44% 50%;background:
+  radial-gradient(circle at 78% 22%,#fff6d6 0 9%,transparent 9.5%),
+  radial-gradient(circle at 30% 85%,#fde2ec 0 30%,transparent 60%),
+  linear-gradient(160deg,#e8f0ff,#efe4fb 60%,#fde8f1);
+  box-shadow:inset 0 0 0 10px #ffffff80}
+.hero-art::before{content:'';position:absolute;inset:6% 4%;z-index:-1;pointer-events:none;background:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='260' viewBox='0 0 300 260'%3E%3Cg fill='%23ffffff'%3E%3Ccircle cx='40' cy='60' r='14'/%3E%3Ccircle cx='60' cy='50' r='19'/%3E%3Ccircle cx='80' cy='60' r='13'/%3E%3Crect x='30' y='58' width='60' height='16' rx='8'/%3E%3Ccircle cx='230' cy='210' r='12'/%3E%3Ccircle cx='248' cy='201' r='16'/%3E%3Ccircle cx='266' cy='210' r='11'/%3E%3Crect x='220' y='208' width='56' height='14' rx='7'/%3E%3C/g%3E%3Cg fill='%23b79be8'%3E%3Cpath d='M250 30c1 7 4 10 11 11-7 1-10 4-11 11-1-7-4-10-11-11 7-1 10-4 11-11z'/%3E%3Cpath d='M30 190c.8 5 3 7 8 8-5 .8-7.2 3-8 8-.8-5-3-7.2-8-8 5-.8 7.2-3 8-8z'/%3E%3C/g%3E%3Cg fill='%23f29dc0'%3E%3Ccircle cx='150' cy='18' r='3'/%3E%3Ccircle cx='280' cy='120' r='3'/%3E%3Ccircle cx='12' cy='120' r='2.5'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat}
+.plate{background:#fffefe;box-shadow:10px 16px 30px #5b3f9e2e,inset 0 0 0 14px #f6efff,inset 0 0 0 17px #e2d4f6,inset 0 0 0 22px #fffefe,inset 0 0 0 24px #f9d3e3}
+.food-1{background:#f1b37a;border-color:#d99059}
+.food-2{background:#f8dc8c}.food-3{background:#f6e4a6}
+.leaf{background:#8fcfa9}.l2{background:#a9dcb8}.l3{background:#76bf96}
+.tomato{background:#f07f9c;border-color:#e0607f;box-shadow:inset 0 0 0 2px #fbc6d4}
+.art-caption{background:#fff2c7;color:var(--ink);border-radius:22px 22px 22px 6px;box-shadow:var(--t-shadow);font-family:var(--t-round);font-style:normal;font-weight:600}
+.art-note{color:#5c4c80;font-family:var(--t-round);font-style:normal}
+
+/* panel inspiracji */
+.inspiration{position:relative;overflow:hidden;border:0;border-radius:30px;background:linear-gradient(135deg,#f4edfd,#fdf0f5 55%,#fff6e6);box-shadow:var(--t-shadow)}
+.inspiration::after{content:'';position:absolute;right:-6px;bottom:-8px;width:150px;height:110px;pointer-events:none;opacity:.9;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='110'%3E%3Cg fill='%23ffffff'%3E%3Ccircle cx='60' cy='80' r='22'/%3E%3Ccircle cx='92' cy='66' r='30'/%3E%3Ccircle cx='126' cy='82' r='22'/%3E%3Crect x='40' y='80' width='110' height='30'/%3E%3C/g%3E%3Cpath d='M30 26c1 6 4 9 10 10-6 1-9 4-10 10-1-6-4-9-10-10 6-1 9-4 10-10z' fill='%23c9b4f0'/%3E%3C/svg%3E") right bottom/150px 110px no-repeat}
+.inspiration>*{position:relative;z-index:1}
+label{color:var(--ink)}
+select,input:not([type=checkbox]):not([type=file]){border:2px solid var(--t-ui-border);border-radius:16px;background:var(--white)}
+input[type=checkbox]{accent-color:var(--green)}
+.exclusions summary{font-weight:600}
+.muted,.section-heading p,.results-heading p{color:var(--muted)}
+
+/* wyszukiwarka, kuchnie, kategorie */
+.search{border:2px solid var(--t-ui-border);border-radius:999px;background:var(--white);padding:0 8px 0 16px}
+.search input:not([type=checkbox]):not([type=file]){min-height:44px;border:0;border-radius:999px;background:none;margin:0}
+.search span{color:var(--green)}
+.category-chips button,.cuisine-tabs button{border:2px solid var(--t-ui-border);border-radius:999px;background:var(--white);color:var(--ink);font-weight:600}
+.category-chips button[aria-pressed=true],.cuisine-tabs button[aria-pressed=true]{background:var(--green);border-color:var(--green);color:#fff;box-shadow:0 8px 18px -10px #5b3f9eaa}
+.chip-count{background:var(--t-lilac);color:var(--ink)}
+
+/* karty przepisów */
+.recipe-card{border:0;border-radius:26px;background:var(--white);box-shadow:var(--t-shadow),0 0 0 1px #ece3f6}
+.card-art{background:var(--t-lilac)}
+.card-art::after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:10px;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='10'%3E%3Cpath d='M0 10Q6 0 12 6Q18 0 24 10Z' fill='%23fffdfe'/%3E%3C/svg%3E") 0 100%/24px 10px repeat-x}
+.art-breakfast{background:radial-gradient(circle at 20% 20%,#fff9e3 0 22%,transparent 23%),var(--t-butter)}
+.art-lunch{background:radial-gradient(circle at 80% 25%,#f1fbf6 0 18%,transparent 19%),var(--t-mint)}
+.art-dinner{background:radial-gradient(circle at 18% 75%,#f6f9ff 0 20%,transparent 21%),var(--t-sky)}
+.art-dessert{background:radial-gradient(circle at 82% 70%,#fff3f7 0 20%,transparent 21%),var(--t-rose)}
+.art-snack{background:radial-gradient(circle at 25% 30%,#fff4ec 0 18%,transparent 19%),var(--t-peach)}
+.art-starter{background:radial-gradient(circle at 75% 30%,#f8f3fe 0 18%,transparent 19%),var(--t-lilac)}
+.card-art>span:first-child{background:#fffefe;box-shadow:0 0 0 8px #ffffff8c,0 12px 24px -10px #5b3f9e55}
+.category-label,.cuisine-label{z-index:1;background:#fffdfef0;color:var(--ink);border-radius:999px;box-shadow:0 4px 10px -6px #5b3f9e66;font-weight:600}
+.cuisine-label{bottom:16px}
+.favorite{z-index:1;background:#fffdfe;color:#62577a;box-shadow:0 6px 14px -8px #5b3f9e88}
+.favorite.active{color:#c0306f}
+.meta{color:var(--muted)}
+.card-body>p{color:var(--muted)}
+.card-bottom{border-top:2px dotted #d9caee}
+.card-bottom span{color:var(--muted)}
+.card-bottom button{border-radius:50%;color:var(--green)}
+.offer-tag{color:var(--orange)}
+
+/* pozostałe ekrany */
+.page-title p:not(.eyebrow){color:var(--muted)}
+.panel{border:0;border-radius:26px;box-shadow:var(--t-shadow),0 0 0 1px #ece3f6}
+.notice,.net-status{background:#fff2c7;border:2px dashed #c79a2c;border-radius:18px;color:var(--ink)}
+.shopping-list li,.offer-row{border-top:2px dotted #ddd0ef}
+.empty-icon{color:#9384b5}
+.allergen-note{background:var(--t-lilac);border-radius:18px}
+.steps li::marker{color:var(--orange)}
+.ingredients li{border-bottom:2px dotted #e3d8f0}
+footer{border-top:2px dotted #d9caee;color:var(--muted)}
+dialog{border-radius:30px;background:var(--paper);box-shadow:0 24px 70px #33284f55}
+dialog::backdrop{background:#2c2150b3}
+.dialog-head{background:var(--paper);border-bottom:2px dotted #ddd0ef}
+#toast{background:var(--green);color:#fff;border-radius:999px;box-shadow:0 12px 30px -10px #33284f88}
+.skip{background:#fff;color:var(--ink);border-radius:0 0 16px 0}
+
+/* fokus: wyraźny malinowy obrys na każdym tle */
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--t-focus);outline-offset:3px}
+.recipe-card:has(h3 button:focus-visible){outline:3px solid var(--t-focus);outline-offset:4px}
+
+@media(max-width:600px){
+  .inspiration{border-radius:24px}
+  .inspiration::after{width:110px;height:80px;background-size:110px 80px}
+}
+
+/* delikatny ruch tylko dla osób, które go nie wyłączyły */
+@media(prefers-reduced-motion:no-preference){
+  .primary,.secondary,nav button,.category-chips button,.cuisine-tabs button,.favorite,.card-bottom button,.close{transition:transform .18s ease,background-color .18s ease,box-shadow .18s ease}
+  .primary:hover,.secondary:hover{transform:translateY(-2px)}
+  .primary:active,.secondary:active,nav button:active,.category-chips button:active,.cuisine-tabs button:active,.favorite:active,.card-bottom button:active,.close:active{transform:scale(.95)}
+  .recipe-card{transition:transform .25s ease,box-shadow .25s ease}
+  .recipe-card:hover{transform:translateY(-4px);box-shadow:0 22px 40px -20px #5b3f9e88,0 0 0 1px #e2d6f3}
+  .hero-art::before{animation:cnt-pastel-float 7s ease-in-out infinite alternate}
+  @keyframes cnt-pastel-float{from{transform:translateY(-4px)}to{transform:translateY(4px)}}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-art::before{animation:none}
+  .recipe-card:hover,.primary:hover,.secondary:hover{transform:none}
+}
