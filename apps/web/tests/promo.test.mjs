@@ -40,9 +40,18 @@ const positive=[
   ['Kapusta kiszona','sauerkraut'],['Wino czerwone wytrawne','wine'],['Seler korzeniowy','celeriac'],['Pietruszka korzeń','parsleyroot'],['Por','leek'],
   ['Liść laurowy','bayleaf'],['Ziele angielskie','allspice'],['Musztarda sarepska','mustard'],['Ogórki konserwowe','gherkin'],['Korniszony','gherkin'],
   ['Drożdże świeże','yeast'],['Imbir','ginger'],['Przyprawa curry','curry'],
+  // CNT-038 ("Ogórki kiszone" moved here from the negative list: it is now a catalog product).
+  ['Schab wieprzowy bez kości','porkloin'],['Schab bez kości','porkloin'],['Bułka tarta','breadcrumbs'],['Ogórki kiszone','picklecucumber'],['Ogórek kiszony','picklecucumber'],
+  ['Zakwas na żurek','sourstarter'],['Kiełbasa biała surowa','whitesausage'],['Majeranek','marjoram'],['Parmezan','parmesan'],['Parmigiano Reggiano','parmesan'],
+  ['Makaron lasagne','lasagnesheets'],['Lasagne płaty','lasagnesheets'],['Mascarpone','mascarpone'],['Serek mascarpone','mascarpone'],['Biszkopty podłużne','ladyfingers'],
+  ['Biszkopty savoiardi','ladyfingers'],['Kawa rozpuszczalna','coffee'],['Mleczko kokosowe','coconutmilk'],['Kolendra świeża','coriander'],['Kumin mielony','cumin'],
+  ['Kmin rzymski mielony','cumin'],['Chili mielone','chili'],['Papryka chili mielona','chili'],['Kukurydza konserwowa','corn'],['Kukurydza słodka','corn'],
+  ['Tortille pszenne','tortilla'],['Awokado Hass','avocado'],['Limonki','lime'],['Bułki do burgerów','bun'],['Bułki hamburgerowe','bun'],['Sałata lodowa','lettuce'],
+  ['Czekolada gorzka 70%','chocolate'],['Czekolada deserowa','chocolate'],['Proszek do pieczenia','bakingpowder'],['Ser feta','feta'],['Feta','feta'],
+  ['Oliwki czarne bez pestek','olives'],['Oregano suszone','oregano'],['Chlebek pita','pita'],['Pita pszenna','pita'],['Tahini','tahini'],['Pasta sezamowa tahini','tahini'],
 ];
 const negative=[
-  'Sok pomidorowy','Pomidory suszone','Pomidory krojone w puszce','Koncentrat pomidorowy','Ketchup łagodny','Ogórki kiszone',
+  'Sok pomidorowy','Pomidory suszone','Pomidory krojone w puszce','Koncentrat pomidorowy','Ketchup łagodny','Ogórki małosolne',
   'Masło orzechowe','Masło shea','Mleko kokosowe','Mleko owsiane','Napój sojowy','Bulion z kurczaka','Kostka rosołowa z kurczaka','Pierś z kurczaka wędzona',
   'Twarożek ze szczypiorkiem','Ser topiony','Jogurt truskawkowy','Jogurt pitny naturalny','Jogurt bez cukru','Chleb chrupki','Ocet balsamiczny',
   'Mus jabłkowy','Sok jabłkowy','Chipsy bananowe','Makaron jajeczny','Makaron 4-jajeczny','Makaron ryżowy','Ryż preparowany wafle','Wafle ryżowe',
@@ -55,6 +64,11 @@ const negative=[
   'Mięso mielone wołowo-wieprzowe','Wołowina','Udka z kurczaka pieczone','Mięso mielone z indyka','Boczek parzony','Wino czerwone półsłodkie','Wino białe wytrawne',
   'Wino czerwone bezalkoholowe wytrawne','Seler naciowy','Sok z kiszonej kapusty','Musztarda w proszku','Sos musztardowy','Drożdże instant','Imbir mielony','Imbir marynowany',
   'Pasta curry','Tofu curry','Porcja rosołowa',
+  // CNT-038
+  'Schab wędzony','Schab pieczony','Kiełbasa biała parzona','Ogórki konserwowe krojone','Ogórki kiszone krojone','Zakwas na barszcz biały','Żurek',
+  'Ser sałatkowy typu feta','Feta z ziołami','Ser typu parmezan','Oliwki zielone','Oliwki czarne z pestką','Kolendra mielona','Kminek','Tortilla chips',
+  'Tortille kukurydziane','Kawa ziarnista','Kawa rozpuszczalna 3w1','Lasagne bolognese','Kukurydza w kolbach','Pasta z awokado','Sos chili słodki',
+  'Czekolada mleczna','Czekolada gorzka z orzechami','Bułki pszenne','Chałwa sezamowa','Mleczko kokosowe w proszku','Deser mascarpone','Majeranek świeży','Sałata masłowa',
 ];
 test(`Mapa: ${positive.length} nazw sklepowych trafia w produkt`,()=>{ for(const [name,id] of positive) assert.equal(matchProduct(name),id,name); });
 test(`Mapa: ${negative.length} nazw podobnych lub pochodnych nie trafia w żaden produkt`,()=>{ for(const name of negative) assert.equal(matchProduct(name),null,name); assert.equal(matchProduct(undefined),null); });
