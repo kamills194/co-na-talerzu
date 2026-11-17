@@ -39,7 +39,13 @@ jobs:
           git commit -qam "Redakcja: automatyczne poprawki tekstu ($(date -u +%Y-%m-%d))"
           git push -f origin "$branch"
           existing=$(gh pr list --head "$branch" --json number --jq '.[0].number')
-          if [ -z "$existing" ]; then
-            gh pr create --base main --head "$branch" --title "Redakcja: poprawki tekstu $(date -u +%Y-%m-%d)" \
-              --body "Bot redaktor poprawił drobne błędy edycyjne (spacje, interpunkcja, wielokropek). Ilości, czasy i alergeny nie są zmieniane. Testy przeszły. Szczegóły: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
-          fi
+          [ -n "$existing" ] && { echo "PR #$existing zaktualizowany"; exit 0; }
+          title="Redakcja: poprawki tekstu $(date -u +%Y-%m-%d)"
+          info="Bot redaktor poprawił drobne błędy edycyjne (spacje, interpunkcja, wielokropek). Ilości, czasy i alergeny nie są zmieniane. Testy przeszły. Przebieg: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          if gh pr create --base main --head "$branch" --title "$title" --body "$info"; then exit 0; fi
+          # Gdy repozytorium nie pozwala Actions zakładać PR (Settings → Actions → Workflow permissions),
+          # bot zostawia gałąź i link do utworzenia PR jednym kliknięciem w zgłoszeniu „bot: redakcja”.
+          url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/compare/main...${branch}?expand=1"
+          msg="✏️ Poprawki gotowe na gałęzi \`${branch}\` — [utwórz pull request]($url), przejrzyj i scal. $info"
+          num=$(gh issue list --label "bot: redakcja" --state open --json number --jq '.[0].number')
+          if [ -n "$num" ]; then gh issue comment "$num" --body "$msg"; else gh issue create --title "📝 $title" --label "bot: redakcja" --body "$msg"; fi
