@@ -207,7 +207,13 @@ export function parseAldi(html,{source,now=new Date()}={}) {
     if(!x||typeof x!=='object')return; if(x.objectID&&x.name)items.push(x); else for(const v of Object.values(x))walk(v);
   }
   walk(data);
-  if(!items.length)throw Error('Nie rozpoznano struktury produktów.');
+  if(!items.length) {
+    // CNT-040: pusta kategoria (wyniki Algolia z nbHits 0) to poprawny odczyt, nie zmiana struktury strony.
+    // Strona zostaje na liście źródeł; oferty pojawią się, gdy ALDI doda do niej produkty.
+    const results=Object.values(data?.props?.pageProps?.algoliaState?.initialResults||{}).flatMap(x=>Array.isArray(x?.results)?x.results:[]);
+    if(results.length&&results.every(r=>r&&r.nbHits===0&&Array.isArray(r.hits)&&!r.hits.length))return {offers:[],productsSeen:0,unmapped:0,empty:true};
+    throw Error('Nie rozpoznano struktury produktów.');
+  }
   const output=new Map(); let skipped=0;
   for(const item of items) {
     const product=matchProduct(item.name);
