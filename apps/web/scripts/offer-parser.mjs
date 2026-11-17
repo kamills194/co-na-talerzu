@@ -197,6 +197,38 @@ export function aldiDeal(p,item={}) {
   return null;
 }
 
+// ---------- CNT-041: every current food promotion ("deals") for the store view ----------
+// Product page URL: the diagnostic run saw `productSlug` values like "maslo-ekstra-497", but no product page was
+// opened, so the pattern https://www.aldi.pl/produkty/<slug>.html is NOT verified and could 404. Until someone
+// confirms it, deals carry url:null (the store dialog links to the ALDI leaflet instead). Flip the flag only after
+// checking real product pages.
+export const ALDI_PRODUCT_URL_VERIFIED=false;
+export function aldiProductUrl(slug,{verified=ALDI_PRODUCT_URL_VERIFIED}={}) {
+  return verified&&typeof slug==='string'&&slug.length<=200&&/^[a-z0-9-]+$/.test(slug)?`https://www.aldi.pl/produkty/${slug}.html`:null;
+}
+// Source department names (first path segment under /produkty/) for items without their own category.
+export const ALDI_DEPARTMENTS=Object.freeze({'owoce-i-warzywa':'Owoce i warzywa','nabial-i-jaja':'Nabiał i jaja','sery-i-twarogi':'Sery i twarogi',
+  'wedliny-i-mieso':'Wędliny i mięso','ryby':'Ryby','pieczywo':'Pieczywo','produkty-sypkie-i-zbozowe':'Produkty sypkie i zbożowe','produkty-sniadaniowe':'Produkty śniadaniowe',
+  'przetwory':'Przetwory','tluszcze-i-octy':'Tłuszcze i octy','przyprawy':'Przyprawy','sosy--dressingi-i-przeciery':'Sosy, dressingi i przeciery',
+  'produkty-do-pieczenia':'Produkty do pieczenia','mrozonki-i-dania-gotowe':'Mrożonki i dania gotowe','slodycze':'Słodycze','kawa':'Kawa'});
+export function departmentOf(source) {
+  let path; try{path=new URL(source).pathname;}catch{return null;}
+  const slug=path.match(/^\/produkty\/([a-z0-9-]+)\//)?.[1]; if(!slug) return null;
+  if(Object.hasOwn(ALDI_DEPARTMENTS,slug)) return ALDI_DEPARTMENTS[slug];
+  const name=slug.replace(/--/g,', ').replace(/-/g,' ').trim(); return name?name[0].toLocaleUpperCase('pl-PL')+name.slice(1):null;
+}
+// Category of a deal: the item's own top-level category (hierarchicalCategories.lvl0[0]), else the source
+// department, else "Inne".
+export function dealCategory(item,source) {
+  const lvl0=item?.hierarchicalCategories?.lvl0, own=Array.isArray(lvl0)?lvl0[0]:lvl0;
+  return text(own,'',100)||departmentOf(source)||'Inne';
+}
+// Only food goes to the store view. A category is non-food when it contains (case and diacritics ignored) a word
+// starting with: Dom (whole word), Ogród, Odzież, Zabawk…, Chemi…, Kosmetyk…, Artykuł…, Elektronik…, Zwierzę…/Zwierząt…, Higien….
+// Examples: "Dom i ogród", "Odzież i obuwie", "Chemia gospodarcza", "Artykuły dla zwierząt", "Higiena osobista".
+export const NON_FOOD_CATEGORY=/(?:^|[^a-z])(?:dom(?![a-z])|ogrod|odziez|zabawk|chemi|kosmetyk|artykul|elektronik|zwierz|higien)/;
+export const isFoodCategory=category=>!NON_FOOD_CATEGORY.test(normalize(category));
+
 export function parseAldi(html,{source,now=new Date()}={}) {
   const match=html.match(/<script\b[^>]*\bid="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/i);
   if(!match) throw Error('Brak publicznych danych __NEXT_DATA__; adapter wymaga aktualizacji.');
@@ -208,10 +240,12 @@ export function parseAldi(html,{source,now=new Date()}={}) {
   }
   walk(data);
   if(!items.length)throw Error('Nie rozpoznano struktury produktów.');
-  const output=new Map(); let skipped=0;
+  const output=new Map(), deals=new Map(); let skipped=0;
   for(const item of items) {
     const product=matchProduct(item.name);
-    if(!product){skipped++;continue;}
+    if(!product)skipped++;
+    const category=dealCategory(item,source), food=isFoodCategory(category);
+    if(!product&&!food)continue;
     const candidates=[item.currentPrice,...(Array.isArray(item.promotionPrices)?item.promotionPrices:[])].filter(Boolean);
     for(const p of candidates) {
       const deal=aldiDeal(p,item);
@@ -219,10 +253,15 @@ export function parseAldi(html,{source,now=new Date()}={}) {
       if(!deal||!Number.isFinite(p.validFrom)||!Number.isFinite(p.validUntil)||p.validFrom*1000>now.getTime()||p.validUntil*1000<now.getTime())continue;
       const {price,regular}=deal;
       const id=`aldi-${item.objectID}-${p.validFrom}`;
+      const name=text(item.name,'',200), unit=text(item.salesUnit,'Sprawdź jednostkę w źródle',100), conditions=text(deal.conditions,'Sprawdź warunki w sklepie',500);
+      if(food&&name)deals.set(id,{id,store:'ALDI',name,price,regularPrice:Number.isFinite(regular)?regular:null,currency:adapterMarket.currency,unit,conditions,
+        from:dateInMarket(p.validFrom),until:dateInMarket(p.validUntil),validUntil:new Date(p.validUntil*1000).toISOString(),category,url:aldiProductUrl(item.productSlug),fetchedAt:now.toISOString()});
+      if(!product)continue;
       output.set(id,{id,product,market:adapterMarket.id,currency:adapterMarket.currency,scope:{...ALDI_SCOPE},store:'ALDI',price,until:dateInMarket(p.validUntil),from:dateInMarket(p.validFrom),source,fetchedAt:now.toISOString(),name:text(item.name,'',200),unit:text(item.salesUnit,'Sprawdź jednostkę w źródle',100),regularPrice:regular,validUntil:new Date(p.validUntil*1000).toISOString(),conditions:text(deal.conditions,'Sprawdź warunki w sklepie',500),evidence:JSON.stringify(p)});
     }
   }
-  return {offers:[...output.values()],productsSeen:items.length,unmapped:skipped};
+  // `offers`: recipe-matched (unchanged contract); `deals` (CNT-041): every current reduced-price food item.
+  return {offers:[...output.values()],deals:[...deals.values()],productsSeen:items.length,unmapped:skipped};
 }
 // robots.txt: consecutive User-agent lines form one group; rules after them apply to every agent
 // of that group. Only Disallow is honoured (Allow is ignored, which is the stricter reading).

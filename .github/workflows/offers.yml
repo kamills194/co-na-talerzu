@@ -3,6 +3,7 @@ name: Promocje ALDI
 # spożywcze, z poszanowaniem robots.txt) i publikuje SAM plik offers.json na opublikowanych stronach:
 #  - GitHub Pages (gałąź gh-pages — wynik buildu, nie kod),
 #  - conatalerz.pl (nazwa.pl, SFTP), jeśli skonfigurowane sekrety jak w deploy-nazwa.yml.
+# CNT-041: plik zawiera też `deals` — wszystkie bieżące promocje spożywcze ALDI (widok sklepu), sprawdzane validDeal.
 # Gałąź main (kod) nie jest zmieniana. Aplikacja ukrywa oferty starsze niż 48 h, więc bot działa codziennie.
 on:
   schedule:
@@ -29,16 +30,19 @@ jobs:
         run: |
           node --input-type=module -e "
             import {readFileSync} from 'node:fs';
-            import {validAutomaticOffer} from './apps/web/src/domain.js';
+            import {validAutomaticOffer,validDeal} from './apps/web/src/domain.js';
             const d=JSON.parse(readFileSync('apps/web/src/offers.json','utf8'));
             if(d.version!==1||!Array.isArray(d.offers)) throw Error('Zły format offers.json');
             const bad=d.offers.filter(o=>!validAutomaticOffer(o)); if(bad.length) throw Error('Niepoprawne oferty: '+bad.length);
+            if(d.deals!==undefined&&!Array.isArray(d.deals)) throw Error('Zły format deals w offers.json');
+            const deals=d.deals||[], badDeals=deals.filter(x=>!validDeal(x)); if(badDeals.length) throw Error('Niepoprawne promocje sklepu: '+badDeals.length);
             const ok=d.sources.filter(s=>s.status==='ok').length, err=d.sources.length-ok;
-            console.log('Oferty:',d.offers.length,'| źródła OK:',ok,'| błędy:',err);
+            console.log('Oferty:',d.offers.length,'| promocje w widoku sklepu:',deals.length,'| źródła OK:',ok,'| błędy:',err);
             if(ok===0) throw Error('Żadne źródło nie zostało odczytane — nie publikuję.');
             for (const s of d.sources.filter(s=>s.status!=='ok')) console.log('::warning::'+s.source+': '+s.error);
           "
           echo "count=$(node -p "JSON.parse(require('fs').readFileSync('apps/web/src/offers.json','utf8')).offers.length")" >> "$GITHUB_OUTPUT"
+          echo "deals=$(node -p "(JSON.parse(require('fs').readFileSync('apps/web/src/offers.json','utf8')).deals||[]).length")" >> "$GITHUB_OUTPUT"
       - name: Opublikuj na GitHub Pages (gh-pages)
         run: |
           git fetch -q --depth=1 origin gh-pages
@@ -48,7 +52,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add offers.json
-          git commit -q -m "Promocje ALDI: ${{ steps.check.outputs.count }} ofert" || exit 0
+          git commit -q -m "Promocje ALDI: ${{ steps.check.outputs.count }} ofert, ${{ steps.check.outputs.deals }} promocji sklepu" || exit 0
           git push -q origin HEAD:gh-pages
       - name: Opublikuj na conatalerz.pl
         env:

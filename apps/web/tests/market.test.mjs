@@ -219,7 +219,7 @@ test('Wygasłe i nieświeże oferty znikają z rekomendacji bez nowego pobrania'
 });
 
 // ---------- C. Widok ofert (app.js z atrapą DOM, urządzenie w innej strefie) ----------
-test('Ekran promocji pokazuje zasięg, jednostkę, warunki, walutę i okres; ukrywa niepełne i wygasłe; escapuje dane',()=>{
+test('Ekran promocji pokazuje jednostkę, warunki, walutę i okres (bez zasięgu, CNT-041); ukrywa niepełne i wygasłe; escapuje dane',()=>{
   const evil='<img src=x onerror=alert(1)>';
   const mk=(id,patch)=>({...auto,id,...patch});
   const offers=[
@@ -252,15 +252,17 @@ test('Ekran promocji pokazuje zasięg, jednostkę, warunki, walutę i okres; ukr
     assert.ok(!page.includes('<img'),tz);assert.ok(page.includes('&lt;img src=x onerror=alert(1)&gt;'));
     assert.ok(page.includes('0,99 zł'));assert.ok(page.includes('Cena za kg'));assert.ok(page.includes('Warunki: Z kartą'));assert.ok(page.includes('Waluta: PLN'));
     assert.ok(page.includes('Ważna od: 14 lis 2026'));assert.ok(page.includes('Ważna do: 15 lis 2026'));assert.ok(page.includes('Odczyt: 15 lis 2026, 13:00'));
-    assert.ok(page.includes('Zasięg: niepotwierdzony: Niepotwierdzony'));assert.ok(page.includes('Zasięg: region: mazowieckie, &lt;img'));assert.ok(page.includes('Zasięg: cała Polska (według źródła)'));
+    // CNT-041: zasięg (region) nie jest nigdzie pokazywany — ani dla ofert bota, ani dla notatek użytkownika.
+    assert.ok(!/Zasięg|zasięg|mazowieckie|Niepotwierdzony/.test(page),tz);
     assert.ok(!/UKRYTA/.test(page),'niepełne, obcowalutowe, nieświeże i przyszłe oferty są ukryte');
     assert.ok(page.includes('3 ofert'));
     // Notatki użytkownika: stary rekord bez zasięgu i rekord wygasły wczoraj (czasu polskiego).
-    assert.ok(page.includes('2,49 zł / opakowanie'));assert.ok(page.includes('Zasięg: nie podano (własna notatka)'));assert.ok(page.includes('Zasięg: Krzyki &lt;img'));
+    assert.ok(page.includes('2,49 zł / opakowanie'));assert.ok(!page.includes('Krzyki'),'stary region notatki wczytany, ale niepokazany');
     assert.equal(page.split('Oferta wygasła').length-1,1,tz);
-    assert.ok(page.includes('Cena za opakowanie (zł)'));assert.ok(page.includes('min="2026-11-15"'),tz);assert.ok(page.includes('name="region"'));
+    assert.ok(page.includes('Cena za opakowanie (zł)'));assert.ok(page.includes('min="2026-11-15"'),tz);assert.ok(!page.includes('name="region"'),'formularz bez pola regionu');
     assert.ok(out.cards.includes('offer-tag'));
-    assert.deepEqual(out.saved.map(o=>o.store),['Sklep osiedlowy','Sklep osiedlowy','Targ']);assert.equal(out.saved[2].region,'Wrocław');assert.ok(!('region' in out.saved[0]));
+    assert.deepEqual(out.saved.map(o=>o.store),['Sklep osiedlowy','Sklep osiedlowy','Targ']);assert.ok(!('region' in out.saved[2]),'nowa notatka bez regionu');assert.ok(!('region' in out.saved[0]));
+    assert.equal(out.saved[1].region,`Krzyki ${evil}`,'stary region zostaje w danych (zgodność wstecz)');
     // Po północy w Polsce, bez nowego pobrania: brak ofert bota i brak rekomendacji z wygasłych wpisów.
     const later=plain(out.later);
     assert.ok(!later.includes('Pomidory'));assert.ok(later.includes(messages.botEmpty));assert.equal(later.split('Oferta wygasła').length-1,3,tz);assert.ok(later.includes('min="2026-11-16"'),tz);

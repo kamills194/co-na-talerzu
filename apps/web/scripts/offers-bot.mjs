@@ -1,6 +1,6 @@
 import { writeFile, rename, mkdir } from 'node:fs/promises';
 import { parseAldi, robotsDisallows, extraSources } from './offer-parser.mjs';
-import { validAutomaticOffer } from '../src/domain.js';
+import { validAutomaticOffer, validDeal } from '../src/domain.js';
 import { market } from '../src/market.js';
 // Sources confirmed by the CNT-040 diagnostic run in GitHub Actions (2026-11-17): the weekly offers
 // page plus the food sub-departments whose products appear in recipes. Top-level department pages
@@ -21,7 +21,7 @@ const sub=['owoce-i-warzywa/warzywa','owoce-i-warzywa/owoce','owoce-i-warzywa/gr
   'mrozonki-i-dania-gotowe/mrozone-warzywa','mrozonki-i-dania-gotowe/mrozone-owoce','slodycze/czekolady','slodycze/biszkopty--herbatniki','kawa/kawa-mielona'];
 const defaultSources=[`${base}/oferty.html`,...sub.map(p=>`${base}/produkty/${p}.html`)];
 const sources=[...new Set([...defaultSources,...extraSources(process.argv.slice(2))])];
-const now=new Date(), report={version:1,market:market.id,currency:market.currency,timeZone:market.timeZone,updatedAt:now.toISOString(),offers:[],sources:[]};
+const now=new Date(), report={version:1,market:market.id,currency:market.currency,timeZone:market.timeZone,updatedAt:now.toISOString(),offers:[],deals:[],sources:[]};
 const headers={'User-Agent':'CoNaTalerzMVP/0.1 (public offers reader; no login)'};
 async function get(url) {
   const r=await fetch(url,{headers,signal:AbortSignal.timeout(20000),redirect:'error'});
@@ -38,15 +38,19 @@ try {
       if(robotsDisallows(robots,new URL(source).pathname))throw Error('Odczyt wyłączony przez robots.txt');
       const parsed=parseAldi(await get(source),{source,now});
       // Quarantine: records that do not meet the full offer contract are counted, not published.
-      const accepted=parsed.offers.filter(validAutomaticOffer);report.offers.push(...accepted);report.sources.push({source,status:'ok',productsSeen:parsed.productsSeen,unmapped:parsed.unmapped,rejected:parsed.offers.length-accepted.length});
+      const accepted=parsed.offers.filter(validAutomaticOffer);report.offers.push(...accepted);
+      // CNT-041: every current food promotion for the store view, under its own contract.
+      const acceptedDeals=parsed.deals.filter(validDeal);report.deals.push(...acceptedDeals);
+      report.sources.push({source,status:'ok',productsSeen:parsed.productsSeen,unmapped:parsed.unmapped,rejected:parsed.offers.length-accepted.length,deals:acceptedDeals.length,rejectedDeals:parsed.deals.length-acceptedDeals.length});
     }catch(e){report.sources.push({source,status:'error',error:e.message});}
   }
 }catch(e){report.sources.push({source:'https://www.aldi.pl/robots.txt',status:'error',error:e.message});}
 report.offers=[...new Map(report.offers.map(o=>[o.id,o])).values()];
+report.deals=[...new Map(report.deals.map(d=>[d.id,d])).values()];
 const dest=new URL('../src/offers.json',import.meta.url), temp=new URL('../src/offers.json.tmp',import.meta.url);
 await writeFile(temp,JSON.stringify(report,null,2));await rename(temp,dest);
 await mkdir(new URL('../reports/',import.meta.url),{recursive:true});
 await writeFile(new URL('../reports/offers-bot.json',import.meta.url),JSON.stringify(report,null,2));
-console.log(JSON.stringify({updatedAt:report.updatedAt,offers:report.offers.length,sources:report.sources},null,2));
+console.log(JSON.stringify({updatedAt:report.updatedAt,offers:report.offers.length,deals:report.deals.length,sources:report.sources},null,2));
 // A single failing page must not discard the rest; the run fails only when nothing could be read.
 if(!report.sources.some(s=>s.status==='ok'))process.exitCode=1;
