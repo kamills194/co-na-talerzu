@@ -31,8 +31,8 @@ znane zadania z obu wątków; nie sugeruje importu nieistniejącego systemu Issu
 | CNT-020 | Odbiór integracyjny PL: 30/30 przepisów, 30/30 zdjęć i praw, ekrany, lokalizacja, oferty, testy/build | Koordynacja + QA | Po CNT-014–019 |
 | CNT-021 | Przegląd kodu apps/web po przejęciu prac: poprawki błędów bez zmiany stacku, kluczy localStorage i identyfikatorów; testy i build PASS | Programista + QA | Wykonane na gałęzi cnt-021-przeglad-kodu; raport reports/CNT-021.md, PR do main |
 | CNT-022 | Publikacja apps/web/dist na GitHub Pages po scaleniu do main i automatyczne odświeżanie zainstalowanej aplikacji po wykryciu nowej wersji | Programista + publikacja | Kod wykonany (reports/CNT-022.md); wymaga włączenia Pages w ustawieniach repo |
-| CNT-023 | Kolejne proste dania: z 30 do 50 przepisów, do 30 minut i do 8 składników | Ekspert kulinarny | Planowane |
-| CNT-024 | Kuchnie świata: pole kuchni w przepisie, zakładki kuchni i dania startowe | Ekspert kulinarny + UX | Planowane; wybór kuchni do decyzji |
+| CNT-023 | Kolejne proste dania: z 30 do 70 przepisów, do 30 minut i do 8 składników | Ekspert kulinarny | Wykonane: 70 rekordów (reports/CNT-023.md); bez próby kuchennej |
+| CNT-024 | Kuchnie świata: pole kuchni w przepisie, zakładki kuchni i dania startowe | Ekspert kulinarny + UX | Wykonane: polska, włoska, niemiecka, francuska, japońska (reports/CNT-024.md) |
 | CNT-025 | Uproszczone diety: krótka lista najpopularniejszych | Ekspert kulinarny + UX | Planowane; lista diet do decyzji |
 | CNT-026 | Kalorie i makroskładniki na porcję wyliczane ze składników, z możliwością ukrycia | Ekspert kulinarny + programista | Planowane; wymaga źródła wartości odżywczych i wag sztuk |
 | CNT-027 | Przepisy ułożone według liczby składników w aktualnej promocji | Promocje sklepowe + programista | Planowane; po CNT-016 |

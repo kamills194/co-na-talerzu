@@ -31,3 +31,10 @@ dialog{--dp:30px;padding:0 var(--dp) var(--dp);overscroll-behavior:contain}
 @media(max-width:600px){.brand{white-space:normal;min-width:0}.brand>span:last-child{min-width:0;overflow-wrap:anywhere}nav{flex-wrap:wrap}nav button{flex:1 1 auto}}
 
 .small{font-size:12px;line-height:1.5}
+
+/* CNT-024: zakładki kuchni — jeden przewijany poziomo rząd, etykieta kuchni na karcie */
+.cuisine-tabs{position:relative;display:flex;gap:8px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;-webkit-overflow-scrolling:touch;margin:20px -6px -14px;padding:6px 6px 10px;max-width:calc(100% + 12px)}.cuisine-tabs[hidden]{display:none}
+.cuisine-tabs button{flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:10px 16px;border:1px solid #c9cebf;border-radius:12px;background:var(--white);font-size:13px;font-weight:600;white-space:nowrap}
+.cuisine-tabs button[aria-pressed=true]{background:var(--green);border-color:var(--green);color:white}
+.chip-count{min-width:24px;padding:2px 7px;border-radius:20px;background:#e9ecdf;color:var(--ink);font-size:11px;font-weight:600;text-align:center}.cuisine-tabs button[aria-pressed=true] .chip-count{background:#fffefb;color:var(--green)}
+.cuisine-label{position:absolute;left:14px;bottom:12px;max-width:calc(100% - 28px);background:#fffcf1e8;padding:6px 10px;border-radius:30px;font-size:11px}
