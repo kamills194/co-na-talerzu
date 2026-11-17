@@ -34,17 +34,27 @@ const positive=[
   ['Cukinia','zucchini'],['Bakłażan','eggplant'],['Kapusta biała','cabbage'],['Pieczarki','mushroom'],['Pomarańcze','orange'],['Owoce leśne mrożone','berries'],
   ['Ocet jabłkowy','vinegar'],['Tuńczyk w sosie własnym','tuna'],['Mięso mielone wieprzowe','mincedpork'],['Szynka gotowana plastry','ham'],['Sos sojowy','soysauce'],
   ['Pasta miso','miso'],['Tofu naturalne','tofu'],['Nori arkusze','nori'],['Sezam łuskany','sesame'],['Płatki owsiane górskie','oats'],['Cynamon mielony','cinnamon'],
+  // CNT-033 (three names moved here from the negative list: they are now catalog products).
+  ['Wołowina gulaszowa','beef'],['Wołowina na zrazy','beefslices'],['Zrazy wołowe','beefslices'],['Mięso mielone wołowe','mincedbeef'],
+  ['Udka z kurczaka','chickenthigh'],['Podudzia z kurczaka','chickenthigh'],['Łopatka wieprzowa bez kości','porkshoulder'],['Boczek wędzony plastry','bacon'],
+  ['Kapusta kiszona','sauerkraut'],['Wino czerwone wytrawne','wine'],['Seler korzeniowy','celeriac'],['Pietruszka korzeń','parsleyroot'],['Por','leek'],
+  ['Liść laurowy','bayleaf'],['Ziele angielskie','allspice'],['Musztarda sarepska','mustard'],['Ogórki konserwowe','gherkin'],['Korniszony','gherkin'],
+  ['Drożdże świeże','yeast'],['Imbir','ginger'],['Przyprawa curry','curry'],
 ];
 const negative=[
-  'Sok pomidorowy','Pomidory suszone','Pomidory krojone w puszce','Koncentrat pomidorowy','Ketchup łagodny','Ogórki kiszone','Ogórki konserwowe',
+  'Sok pomidorowy','Pomidory suszone','Pomidory krojone w puszce','Koncentrat pomidorowy','Ketchup łagodny','Ogórki kiszone',
   'Masło orzechowe','Masło shea','Mleko kokosowe','Mleko owsiane','Napój sojowy','Bulion z kurczaka','Kostka rosołowa z kurczaka','Pierś z kurczaka wędzona',
   'Twarożek ze szczypiorkiem','Ser topiony','Jogurt truskawkowy','Jogurt pitny naturalny','Jogurt bez cukru','Chleb chrupki','Ocet balsamiczny',
   'Mus jabłkowy','Sok jabłkowy','Chipsy bananowe','Makaron jajeczny','Makaron 4-jajeczny','Makaron ryżowy','Ryż preparowany wafle','Wafle ryżowe',
   'Papryka marynowana','Papryka chili','Mąka pszenna pełnoziarnista','Cukier puder','Cukier wanilinowy','Napój kakaowy instant','Fasolka szparagowa',
   'Fasolka po bretońsku','Herbata z cytryną','Czosnek granulowany','Kasza gryczana niepalona','Kefir truskawkowy','Śmietana 30%','Makrela w pomidorach',
-  'Koper włoski','Pieprz czarny ziarnisty','Pesto z bazylią','Pietruszka korzeń','Kapusta kiszona','Kapusta pekińska','Pieczarki marynowane',
+  'Koper włoski','Pieprz czarny ziarnisty','Pesto z bazylią','Kapusta pekińska','Pieczarki marynowane',
   'Sok pomarańczowy','Tuńczyk w oleju','Mięso mielone wołowo-wieprzowe','Szynka parmeńska','Tofu wędzone','Karma dla kota z kurczakiem','Szampon jabłkowy',
   'Sałatka z tuńczykiem','Pizza z mozzarellą','Ser z czosnkiem','Pomidory i ogórki zestaw','Sól himalajska','Woda mineralna','Jabłka prażone','',
+  // CNT-033
+  'Mięso mielone wołowo-wieprzowe','Wołowina','Udka z kurczaka pieczone','Mięso mielone z indyka','Boczek parzony','Wino czerwone półsłodkie','Wino białe wytrawne',
+  'Wino czerwone bezalkoholowe wytrawne','Seler naciowy','Sok z kiszonej kapusty','Musztarda w proszku','Sos musztardowy','Drożdże instant','Imbir mielony','Imbir marynowany',
+  'Pasta curry','Tofu curry','Porcja rosołowa',
 ];
 test(`Mapa: ${positive.length} nazw sklepowych trafia w produkt`,()=>{ for(const [name,id] of positive) assert.equal(matchProduct(name),id,name); });
 test(`Mapa: ${negative.length} nazw podobnych lub pochodnych nie trafia w żaden produkt`,()=>{ for(const name of negative) assert.equal(matchProduct(name),null,name); assert.equal(matchProduct(undefined),null); });
