@@ -52,3 +52,8 @@ test('Nagłówki: kod aplikacji (sw.js, app.js, index.html) bez długiego cache 
   for (const f of ['sw.js', 'app.js', 'index.html', 'errors.js', 'styles.css', 'offers.json', 'manifest.webmanifest']) assert.equal(cc(f), 'no-cache', f);
   assert.match(cc('icon-512.png'), /max-age/);
 });
+
+test('Service worker instaluje nową wersję z pominięciem pamięci HTTP przeglądarki', async () => {
+  const sw = await readFile(new URL('../src/sw.js', import.meta.url), 'utf8');
+  assert.match(sw, /new Request\(u, \{ cache: 'reload' \}\)/);
+});
