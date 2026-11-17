@@ -1,0 +1,51 @@
+name: "Bot: redaktor treści"
+# Codziennie przegląda przepisy, tłumaczenia i oferty:
+#  - bezpieczne poprawki tekstu (spacje, interpunkcja, wielokropek) → pull request do przejrzenia,
+#  - braki tłumaczeń i uwagi redakcyjne → jedno zgłoszenie „bot: redakcja” (aktualizowane, zamykane, gdy pusto).
+on:
+  schedule:
+    - cron: '41 4 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+concurrency:
+  group: bot-editor
+  cancel-in-progress: false
+jobs:
+  edit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Przegląd i poprawki
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/bots/editor.mjs --fix --issue
+      - name: Pull request z poprawkami
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if git diff --quiet; then echo "Brak poprawek"; exit 0; fi
+          npm test
+          branch="bot/redakcja-$(date -u +%Y%m%d)"
+          git config user.name "conatalerz-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$branch"
+          git commit -qam "Redakcja: automatyczne poprawki tekstu ($(date -u +%Y-%m-%d))"
+          git push -f origin "$branch"
+          existing=$(gh pr list --head "$branch" --json number --jq '.[0].number')
+          [ -n "$existing" ] && { echo "PR #$existing zaktualizowany"; exit 0; }
+          title="Redakcja: poprawki tekstu $(date -u +%Y-%m-%d)"
+          info="Bot redaktor poprawił drobne błędy edycyjne (spacje, interpunkcja, wielokropek). Ilości, czasy i alergeny nie są zmieniane. Testy przeszły. Przebieg: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          if gh pr create --base main --head "$branch" --title "$title" --body "$info"; then exit 0; fi
+          # Gdy repozytorium nie pozwala Actions zakładać PR (Settings → Actions → Workflow permissions),
+          # bot zostawia gałąź i link do utworzenia PR jednym kliknięciem w zgłoszeniu „bot: redakcja”.
+          url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/compare/main...${branch}?expand=1"
+          msg="✏️ Poprawki gotowe na gałęzi \`${branch}\` — [utwórz pull request]($url), przejrzyj i scal. $info"
+          num=$(gh issue list --label "bot: redakcja" --state open --json number --jq '.[0].number')
+          if [ -n "$num" ]; then gh issue comment "$num" --body "$msg"; else gh issue create --title "📝 $title" --label "bot: redakcja" --body "$msg"; fi

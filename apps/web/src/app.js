@@ -4,6 +4,7 @@ import { filterRecipes, surprise, addIngredients, matchingOffers, localDate, val
 import { load, save, emptyState, validateState } from './storage.js';
 import { photoFor, safeLink } from './photos.js';
 import { nutritionPerServing, gramsPerUnit } from './nutrition.js';
+import { detectPlatform, isStandalone, sectionOrder, STEPS, BENEFITS } from './install.js';
 import { initThemeMode, themeToggleHTML, bindThemeToggle } from './theme-mode.js';
 import { DIETS } from './domain.js';
 import { promoCoverage, rankByPromotions, ingredientOffers, pantryProducts } from './domain.js';
@@ -22,7 +23,7 @@ if(state.settings?.language&&state.settings.language!=='pl') await setLanguage(s
 let tab='recipes', filters={query:'',category:'',cuisine:'',maxTime:0,minTime:0,diet:'',excluded:[],excludedProducts:[]}, servings=SERVINGS_DEFAULT, selected, autoOffers=[];
 function toast(message) { const d=$('#detail'), host=d.open?d:document.body; if($('#toast').parentNode!==host)host.append($('#toast')); $('#toast').textContent=message; $('#toast').classList.add('visible'); clearTimeout(toast.timer); toast.timer=setTimeout(()=>$('#toast').classList.remove('visible'),3500); }
 function persist() { try { save(localStorage,state); } catch { toast(t('storageError')); } }
-function nav() { $('#nav').innerHTML=['recipes','favorites','shopping','offers'].map((key,i)=>`<button data-tab="${key}" ${key===tab?'aria-current="page"':''}><span aria-hidden="true">${['⌂','♡','☷','🏷︎'][i]}</span> ${t(key)}${key==='shopping'&&state.shopping.length?` <b>${state.shopping.filter(i=>!i.done).length}</b>`:''}</button>`).join(''); }
+function nav() { $('#nav').innerHTML=['recipes','favorites','shopping','offers','app'].map((key,i)=>`<button data-tab="${key}" ${key===tab?'aria-current="page"':''}><span aria-hidden="true">${['⌂','♡','☷','🏷︎','▯'][i]}</span> ${t(key)}${key==='shopping'&&state.shopping.length?` <b>${state.shopping.filter(i=>!i.done).length}</b>`:''}</button>`).join(''); }
 const currentAuto=()=>autoOffers.filter(o=>isCurrentAutomaticOffer(o));
 // Re-rendering replaces the focused control; keyboard and screen-reader users must not lose their place.
 function refocus(selector) { document.querySelector(selector)?.focus({preventScroll:true}); }
@@ -198,7 +199,18 @@ async function chooseLanguage(code) {
   state.settings={...state.settings,language:code}; persist();
   await setLanguage(code); shell(); render(); refocus('#language');
 }
-function render() { nav(); netStatus(); if(tab==='shopping') shopping(); else if(tab==='offers') offers(); else catalog(); }
+// CNT-039: zakładka z aplikacją mobilną (PWA) i instrukcją instalacji na Android/iOS.
+let installPrompt=null;
+const platform=()=>detectPlatform(globalThis.navigator?.userAgent,globalThis.navigator?.maxTouchPoints||0);
+function appSection(os,mine) { return `<section class="panel app-os" aria-labelledby="app-${os}"><h2 id="app-${os}">${t(os==='ios'?'appIosTitle':'appAndroidTitle')}${mine?` <span class="badge">${t('appYourDevice')}</span>`:''}</h2><p class="app-browser">${t(os==='ios'?'appIosBrowser':'appAndroidBrowser')}</p><ol class="app-steps">${STEPS[os].map(k=>`<li>${t(k)}</li>`).join('')}</ol>${os==='ios'?`<p class="sort-hint">${t('appIosNote')}</p>`:''}</section>`; }
+function appPage() {
+  const os=platform(), installed=isStandalone();
+  const action=installed?`<p class="notice" role="status">${t('appInstalled')}</p>`:installPrompt?`<button class="primary" id="install-app">${t('appInstall')}</button>`:os==='other'?`<p class="notice">${t('appOpenOnPhone')}</p>`:'';
+  $('#main').innerHTML=`<section class="page-title"><p class="eyebrow">${t('appEyebrow')}</p><h1>${t('appTitle')}</h1><p>${t('appText')}</p>${action}</section><section class="panel app-benefits"><h2>${t('appBenefitsTitle')}</h2><ul>${BENEFITS.map(k=>`<li>${t(k)}</li>`).join('')}</ul></section><div class="app-guides">${sectionOrder(os).map(x=>appSection(x,x===os)).join('')}</div>`;
+}
+globalThis.addEventListener?.('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;if(tab==='app')appPage();});
+globalThis.addEventListener?.('appinstalled',()=>{installPrompt=null;toast(t('appInstallDone'));if(tab==='app')appPage();});
+function render() { nav(); netStatus(); if(tab==='shopping') shopping(); else if(tab==='offers') offers(); else if(tab==='app') appPage(); else catalog(); }
 // CNT-034: every recipe opens with 1 serving (amounts scale from recipe.servings); "Draw another" keeps the chosen number.
 function openRecipe(id,random=false,keepServings=false) { selected=recipes.find(r=>r.id===id); if(!selected)return; if(!keepServings)servings=SERVINGS_DEFAULT; detail(random); }
 function detail(random=false) {
@@ -211,6 +223,7 @@ document.addEventListener('click',async e=>{
   const b=e.target.closest('button,a,[role="option"]'); if(!b)return;
   if(b.id==='lang-suggest') {await chooseLanguage(b.dataset.lang);return;}
   if(b.dataset.tab) {tab=b.dataset.tab;render();window.scrollTo({top:0});}
+  if(b.id==='install-app'&&installPrompt){const p=installPrompt;installPrompt=null;try{await p.prompt();await p.userChoice;}catch{}appPage();return;}
   if(b.dataset.recipe)openRecipe(b.dataset.recipe);
   if(b.dataset.favorite) {const id=b.dataset.favorite;state.favorites=state.favorites.includes(id)?state.favorites.filter(x=>x!==id):[...state.favorites,id];persist();results();refocus(`[data-favorite="${CSS.escape(id)}"]`);}
   if(b.dataset.category!==undefined) {filters.category=b.dataset.category;catalog();refocus(`.category-chips [data-category="${CSS.escape(filters.category)}"]`);}
@@ -228,7 +241,7 @@ document.addEventListener('click',async e=>{
   if(b.id==='clear-done'){state.shopping=state.shopping.filter(i=>!i.done);persist();render();}
   if(b.id==='copy'){try{await navigator.clipboard.writeText(state.shopping.map(i=>`${i.done?'✓':'□'} ${i.product?productName(i.product):i.name}${i.product?' — '+amount(i):''}`).join('\n'));toast(t('copied'));}catch{toast(t('copyFailed'));}}
   if(b.dataset.offerRemove){state.offers=state.offers.filter(o=>o.id!==b.dataset.offerRemove);persist();offers();}
-  if(b.id==='privacy') {$('#detail').innerHTML=`<div class="dialog-head"><h2 id="detail-heading">${t('privacyTitle')}</h2><button class="close" data-close aria-label="${t('close')}">×</button></div><p>${t('privacyText')}</p><button class="primary" id="export">${t('export')}</button><p>${t('importNote')}</p><label class="file-label">${t('import')}<input type="file" id="import" accept="application/json,.json" aria-label="${t('importLabel')}"></label>`;$('#detail').showModal();}
+  if(b.id==='privacy') {$('#detail').innerHTML=`<div class="dialog-head"><h2 id="detail-heading">${t('privacyTitle')}</h2><button class="close" data-close aria-label="${t('close')}">×</button></div><p>${t('privacyText')}</p><p>${t('privacyErrors')}</p><button class="primary" id="export">${t('export')}</button><p>${t('importNote')}</p><label class="file-label">${t('import')}<input type="file" id="import" accept="application/json,.json" aria-label="${t('importLabel')}"></label>`;$('#detail').showModal();}
   if(b.id==='export'){const url=URL.createObjectURL(new Blob([JSON.stringify(state,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=`co-na-talerz-${localDate()}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 });
 document.addEventListener('input',e=>{

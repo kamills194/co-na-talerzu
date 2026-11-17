@@ -1,0 +1,49 @@
+name: "Bot: oferty promocyjne"
+# Co 6 godzin uruchamia bota ofert (apps/web/scripts/offers-bot.mjs: publiczne dane ALDI, z poszanowaniem robots.txt).
+# Gdy oferty się zmienią: zapisuje offers.json w main i uruchamia wdrożenie na conatalerz.pl.
+on:
+  schedule:
+    - cron: '23 3,9,15,21 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: bot-offers
+  cancel-in-progress: false
+jobs:
+  offers:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Odczyt ofert
+        id: bot
+        run: |
+          npm run offers || echo "::warning::Część źródeł ofert zwróciła błąd — szczegóły w apps/web/reports/offers-bot.json"
+          node -e "const r=require('./apps/web/reports/offers-bot.json');console.log('Ofert:',r.offers.length);for(const s of r.sources)console.log(s.status,s.source,s.error||'')"
+      - name: Zapisz i wdroż
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # updatedAt zmienia się przy każdym odczycie; zapisujemy, gdy zmieniły się oferty albo minęło 12 h.
+          changed=$(node -e "
+            const {execSync}=require('child_process');
+            const now=require('./apps/web/src/offers.json');
+            let old={offers:[],updatedAt:0};try{old=JSON.parse(execSync('git show HEAD:apps/web/src/offers.json'))}catch{}
+            const strip=o=>JSON.stringify(o.offers.map(({fetchedAt,...x})=>x));
+            console.log(strip(now)!==strip(old)||Date.parse(now.updatedAt)-Date.parse(old.updatedAt)>12*36e5?'yes':'no')")
+          if [ "$changed" != yes ]; then git checkout -- apps/web/src/offers.json; echo "Oferty bez zmian"; exit 0; fi
+          npm test
+          git config user.name "conatalerz-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add apps/web/src/offers.json
+          git commit -qm "Oferty: odczyt bota $(date -u +%Y-%m-%dT%H:%MZ)"
+          git pull -q --rebase origin main
+          git push -q origin HEAD:main
+          # Push tokenem Actions nie uruchamia innych workflow — wdrożenie uruchamiamy jawnie.
+          gh workflow run deploy-nazwa.yml --ref main
+          gh workflow run pages.yml --ref main || true

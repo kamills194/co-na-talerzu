@@ -60,9 +60,9 @@ jobs:
             cp /tmp/offers.json apps/web/src/offers.json; echo "Użyto ofert z gh-pages"; else echo "Brak ofert na gh-pages — używam pliku z repozytorium"; fi
       - run: npm run build
         if: steps.cfg.outputs.ready == 'true'
-      - name: Dodaj .htaccess
+      - name: Dodaj .htaccess i report.php
         if: steps.cfg.outputs.ready == 'true'
-        run: cp deploy/nazwa.pl/.htaccess apps/web/dist/.htaccess
+        run: cp deploy/nazwa.pl/.htaccess deploy/nazwa.pl/report.php apps/web/dist/
       - name: Wyślij na nazwa.pl (SFTP)
         if: steps.cfg.outputs.ready == 'true'
         env:
@@ -75,7 +75,7 @@ jobs:
           # Bez --delete: nie usuwa plików, których nie ma w dist (np. .well-known).
           lftp -c "set sftp:auto-confirm yes; set net:max-retries 3; set net:timeout 30; \
             open --env-password -u \"$USER\" sftp://$SERVER; \
-            mirror --reverse --verbose --parallel=4 --exclude-glob .git* ./apps/web/dist/ \"$DIR\""
+            mirror --reverse --verbose --parallel=4 --exclude-glob .git* --exclude _reports/ ./apps/web/dist/ \"$DIR\""
       - name: Sprawdź stronę
         if: steps.cfg.outputs.ready == 'true'
         run: |

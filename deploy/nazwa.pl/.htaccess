@@ -30,7 +30,7 @@ AddCharset utf-8 .js .css .json .webmanifest .html
   Header always set Strict-Transport-Security "max-age=31536000" env=HTTPS
 
   # Pliki, które muszą być zawsze świeże: powłoka, service worker, manifest, oferty
-  <FilesMatch "^(index\.html|sw\.js|manifest\.webmanifest|offers\.json)$">
+  <FilesMatch "^(index\.html|sw\.js|manifest\.webmanifest|offers\.json|errors\.js)$">
     Header set Cache-Control "no-cache, must-revalidate"
   </FilesMatch>
 
@@ -47,4 +47,6 @@ AddCharset utf-8 .js .css .json .webmanifest .html
 # Nie serwuj plików ukrytych (poza .well-known, np. dla certyfikatu SSL)
 <IfModule mod_rewrite.c>
   RewriteRule "(^|/)\.(?!well-known/)" - [F]
+  # Zgłoszenia błędów (report.php) — tylko dla bota przez SFTP
+  RewriteRule "^_reports(/|$)" - [F]
 </IfModule>
