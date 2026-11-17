@@ -61,7 +61,7 @@ test('Kolejność domyślna bez zmian; „Najwięcej składników w promocji” 
   assert.ok(counts[0]>=5);assert.notDeepEqual(out.promoIds,defaultIds);
   // Przepisy bez promocji zostają na końcu w pierwotnej kolejności.
   assert.deepEqual(out.promoIds.filter(id=>!matched(recipes.find(r=>r.id===id))),defaultIds.filter(id=>!matched(recipes.find(r=>r.id===id))));
-  assert.ok(out.promo.includes('<option value="promotions" selected>'));assert.ok(!out.promo.includes('sort-hint'));
+  assert.ok(out.promo.includes('<option value="promotions" selected '));assert.ok(!out.promo.includes('sort-hint'));
   assert.deepEqual(out.backIds,defaultIds);
   assert.equal(out.saved.settings.sort,'default');
 });
@@ -71,7 +71,7 @@ test('Wybrana kolejność przetrwa ponowne uruchomienie; bez aktualnych promocji
   const none=runApp({saved:{...emptyState(),settings:{sort:'promotions'}},offers:[],script:`out.html=el('#results').innerHTML;out.ids=ids(out.html);`});
   assert.deepEqual(none.ids,defaultIds);
   assert.ok(none.html.includes('<p class="sort-hint">Brak aktualnych promocji — kolejność bez zmian</p>'));
-  assert.ok(none.html.includes('<option value="promotions" selected>'));assert.ok(!none.html.includes('offer-tag'));
+  assert.ok(none.html.includes('<option value="promotions" selected '));assert.ok(!none.html.includes('offer-tag'));
 });
 test('Znacznik na karcie: liczba składników w promocji z poprawną odmianą (1 składnik, 2–4 składniki, 5+ składników); spiżarnia się nie liczy',()=>{
   const out=runApp({script:`out.html=el('#results').innerHTML;`});

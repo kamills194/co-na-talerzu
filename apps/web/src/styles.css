@@ -58,3 +58,6 @@ dialog{--dp:30px;padding:0 var(--dp) var(--dp);overscroll-behavior:contain}
 .promo-link{display:flex;width:fit-content;max-width:100%;align-items:center;min-height:44px;padding:0 4px 0 0;font-weight:600;color:var(--green);text-underline-offset:3px}
 .shopping-list li{flex-wrap:wrap;row-gap:0}.shopping-list .promo-line{padding:0 0 8px 27px}
 @media(max-width:600px){.sort-control{margin-left:0;width:100%;justify-content:space-between}.sort-control select{flex:1;min-width:0;font-size:16px}.sort-hint{text-align:left}}
+/* CNT-029 (rozszerzenie): „Wylosuj inne” w szczegółach przepisu wylosowanego */
+.reroll{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin:4px 0 18px}.reroll .secondary{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:10px 20px;border-color:var(--green);color:var(--green);font-size:14px;font-weight:600;background:var(--white)}.reroll .secondary:hover:not(:disabled){background:#eef1e8}.reroll .secondary:disabled{opacity:.55;cursor:not-allowed}.reroll p{margin:0}
+@media(max-width:600px){.reroll .secondary{width:100%;justify-content:center}}

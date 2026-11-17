@@ -27,6 +27,7 @@ export const messages = {
   sortLabel:'Kolejność', sortDefault:'Domyślna', sortPromotions:'Najwięcej składników w promocji', sortNoOffers:'Brak aktualnych promocji — kolejność bez zmian',
   promoOne:'składnik w promocji', promoFew:'składniki w promocji', promoMany:'składników w promocji',
   promoUntil:'do', promoLink:'Zobacz promocję', promoNewTab:'(otwiera się w nowej karcie)',
+  reroll:'Wylosuj inne', rerollSingle:'To jedyny przepis pasujący do wybranych filtrów.', sortPromotionsShort:'Promocje najpierw',
 };
 export function t(key) { if (!(key in messages)) throw new Error(`Missing translation: ${key}`); return messages[key]; }
 export const categories = ['breakfast','snack','lunch','dinner','dessert','starter'];
