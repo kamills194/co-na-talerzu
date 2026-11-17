@@ -231,10 +231,10 @@ test('Ekran promocji pokazuje zasięg, jednostkę, warunki, walutę i okres; ukr
   ];
   const saved={version:1,favorites:[],shopping:[],offers:[{...legacyUser,until:'2026-11-15'},{...legacyUser,id:'local-2',until:'2026-11-14',region:`Krzyki ${evil}`}]};
   const code=`const R=Date;let NOW=R.parse('2026-11-15T12:00:00Z');globalThis.Date=class extends R{constructor(...a){a.length?super(...a):super(NOW)}static now(){return NOW}};
-    const els=new Map(),el=s=>{if(!els.has(s))els.set(s,{innerHTML:'',textContent:'',classList:{add(){},remove(){}},showModal(){},close(){},focus(){}});return els.get(s);};
+    const els=new Map(),el=s=>{if(!els.has(s))els.set(s,{innerHTML:'',textContent:'',classList:{add(){},remove(){}},showModal(){},close(){},focus(){},addEventListener(){},removeEventListener(){},setAttribute(){},removeAttribute(){},hidden:false,style:{},dataset:{}});return els.get(s);};
     const handlers={},store=new Map([[${JSON.stringify(KEY)},${JSON.stringify(JSON.stringify(saved))}]]);
     globalThis.document={querySelector:el,querySelectorAll:()=>[],addEventListener:(n,f)=>handlers[n]=f};
-    globalThis.window={scrollTo(){}};globalThis.localStorage={getItem:k=>store.has(k)?store.get(k):null,setItem:(k,v)=>store.set(k,v)};
+    globalThis.window={scrollTo(){},addEventListener(){}};globalThis.localStorage={getItem:k=>store.has(k)?store.get(k):null,setItem:(k,v)=>store.set(k,v)};
     globalThis.fetch=async()=>({ok:true,json:async()=>({version:1,offers:${JSON.stringify(offers)}})});
     globalThis.FormData=class{constructor(t){this.t=t}get(k){return this.t.values[k]??null}};
     await import(${JSON.stringify(url('../src/app.js'))});await new Promise(r=>setTimeout(r,20));
