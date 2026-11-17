@@ -1,4 +1,4 @@
-/* CNT-035 · „Bajkowa książeczka” — motyw jasny (papier) i ciemny („nocna książeczka”).
+/* CNT-035 · „Bajkowa książeczka” — motyw jasny (papier) i ciemny (neutralna ciemna szarość).
    Warstwa nakładana PO styles.css. Właściciel: CNT-035 (pierwotnie CNT-031, wariant B).
    - Paleta w zmiennych CSS. Tryby: html[data-theme="light"], html[data-theme="dark"],
      brak atrybutu = zgodnie z prefers-color-scheme (patrz theme-mode.js).
@@ -63,97 +63,98 @@
   font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
   color:var(--ink);background:var(--paper);
 }
+/* Ciemny motyw: zwykła, neutralna ciemna szarość (decyzja właściciela 17.11 wieczorem — bez imitacji nocy, gwiazd i granatu). */
 html[data-theme="dark"]{
   color-scheme:dark;
-  --green:#f2b860;
-  --ink:#f3e9d2;
-  --paper:#1c1a33;
-  --muted:#cbbfa8;
-  --border:#4a4468;
-  --orange:#9cc9ea;
-  --white:#28254a;
-  --t-on-primary:#1c1a33;
-  --t-primary-hover:#ffcf85;
-  --t-ui-border:#a89a85;
+  --green:#e8846b;
+  --ink:#ececec;
+  --paper:#121212;
+  --muted:#b5b5b5;
+  --border:#3a3a3a;
+  --orange:#8fbfe0;
+  --white:#1e1e1e;
+  --t-on-primary:#121212;
+  --t-primary-hover:#f09a84;
+  --t-ui-border:#8a8a8a;
   --t-focus:#ffd27a;
-  --t-line:#5d5580;
-  --t-field:#221f3e;
+  --t-line:#4a4a4a;
+  --t-field:#181818;
   --t-shadow-c:#00000059;
   --t-shadow-strong:#00000080;
-  --t-notice:#3a3150;
-  --t-soft:#322e52;
-  --t-chip:#3a3557;
-  --t-label:#28254a;
-  --t-plate:#efe3c8;
-  --t-offer-bg:#3d2f3a;
-  --t-dot:#fff3c42e;
-  --t-star:#fff3c459;
-  --t-doodle:#f3e9d240;
-  --t-deco:#f2b860;
-  --t-toast-bg:#f3e9d2;
-  --t-toast-fg:#1c1a33;
-  --t-hero-sky:#2e2a55;
-  --t-hero-edge:#1f1d3a;
-  --t-hero-hill:#34483f;
-  --t-art-breakfast:#3b3350;
-  --t-art-breakfast-2:#5b4a5e;
-  --t-art-snack:#36304a;
-  --t-art-snack-2:#4a4060;
-  --t-art-lunch:#2a3a3c;
-  --t-art-lunch-2:#3f5a44;
-  --t-art-dinner:#222a52;
-  --t-art-dinner-2:#f7e7b8;
-  --t-art-dessert:#3d2c45;
-  --t-art-dessert-2:#56405e;
-  --t-art-starter:#2d3640;
-  --t-art-starter-2:#435745;
+  --t-notice:#2a2622;
+  --t-soft:#262626;
+  --t-chip:#2c2c2c;
+  --t-label:#1e1e1e;
+  --t-plate:#e4ded4;
+  --t-offer-bg:#33241f;
+  --t-dot:transparent;
+  --t-star:transparent;
+  --t-doodle:#ececec26;
+  --t-deco:#e8846b;
+  --t-toast-bg:#ececec;
+  --t-toast-fg:#121212;
+  --t-hero-sky:#1e1e1e;
+  --t-hero-edge:#181818;
+  --t-hero-hill:#2a2f2a;
+  --t-art-breakfast:#2a2622;
+  --t-art-breakfast-2:#3a332b;
+  --t-art-snack:#262428;
+  --t-art-snack-2:#353238;
+  --t-art-lunch:#232826;
+  --t-art-lunch-2:#313a33;
+  --t-art-dinner:#24262a;
+  --t-art-dinner-2:#3a3d42;
+  --t-art-dessert:#2a2426;
+  --t-art-dessert-2:#3b3236;
+  --t-art-starter:#242826;
+  --t-art-starter-2:#323a34;
   --t-bunting:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='132' height='26' viewBox='0 0 132 26'%3E%3Cpath d='M0 3Q33 9 66 3T132 3' fill='none' stroke='%23f3e9d299' stroke-width='1.4' stroke-dasharray='3 3'/%3E%3Cpath d='M8 5l9 17 9-16z' fill='%23f2b860'/%3E%3Cpath d='M40 6l9 18 9-18z' fill='%23d98fa8'/%3E%3Cpath d='M74 6l9 18 9-18z' fill='%239cc9ea'/%3E%3Cpath d='M106 5l9 17 9-17z' fill='%239fbf73'/%3E%3C/svg%3E");
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme]){
     color-scheme:dark;
-    --green:#f2b860;
-    --ink:#f3e9d2;
-    --paper:#1c1a33;
-    --muted:#cbbfa8;
-    --border:#4a4468;
-    --orange:#9cc9ea;
-    --white:#28254a;
-    --t-on-primary:#1c1a33;
-    --t-primary-hover:#ffcf85;
-    --t-ui-border:#a89a85;
+    --green:#e8846b;
+    --ink:#ececec;
+    --paper:#121212;
+    --muted:#b5b5b5;
+    --border:#3a3a3a;
+    --orange:#8fbfe0;
+    --white:#1e1e1e;
+    --t-on-primary:#121212;
+    --t-primary-hover:#f09a84;
+    --t-ui-border:#8a8a8a;
     --t-focus:#ffd27a;
-    --t-line:#5d5580;
-    --t-field:#221f3e;
+    --t-line:#4a4a4a;
+    --t-field:#181818;
     --t-shadow-c:#00000059;
     --t-shadow-strong:#00000080;
-    --t-notice:#3a3150;
-    --t-soft:#322e52;
-    --t-chip:#3a3557;
-    --t-label:#28254a;
-    --t-plate:#efe3c8;
-    --t-offer-bg:#3d2f3a;
-    --t-dot:#fff3c42e;
-    --t-star:#fff3c459;
-    --t-doodle:#f3e9d240;
-    --t-deco:#f2b860;
-    --t-toast-bg:#f3e9d2;
-    --t-toast-fg:#1c1a33;
-    --t-hero-sky:#2e2a55;
-    --t-hero-edge:#1f1d3a;
-    --t-hero-hill:#34483f;
-    --t-art-breakfast:#3b3350;
-    --t-art-breakfast-2:#5b4a5e;
-    --t-art-snack:#36304a;
-    --t-art-snack-2:#4a4060;
-    --t-art-lunch:#2a3a3c;
-    --t-art-lunch-2:#3f5a44;
-    --t-art-dinner:#222a52;
-    --t-art-dinner-2:#f7e7b8;
-    --t-art-dessert:#3d2c45;
-    --t-art-dessert-2:#56405e;
-    --t-art-starter:#2d3640;
-    --t-art-starter-2:#435745;
+    --t-notice:#2a2622;
+    --t-soft:#262626;
+    --t-chip:#2c2c2c;
+    --t-label:#1e1e1e;
+    --t-plate:#e4ded4;
+    --t-offer-bg:#33241f;
+    --t-dot:transparent;
+    --t-star:transparent;
+    --t-doodle:#ececec26;
+    --t-deco:#e8846b;
+    --t-toast-bg:#ececec;
+    --t-toast-fg:#121212;
+    --t-hero-sky:#1e1e1e;
+    --t-hero-edge:#181818;
+    --t-hero-hill:#2a2f2a;
+    --t-art-breakfast:#2a2622;
+    --t-art-breakfast-2:#3a332b;
+    --t-art-snack:#262428;
+    --t-art-snack-2:#353238;
+    --t-art-lunch:#232826;
+    --t-art-lunch-2:#313a33;
+    --t-art-dinner:#24262a;
+    --t-art-dinner-2:#3a3d42;
+    --t-art-dessert:#2a2426;
+    --t-art-dessert-2:#3b3236;
+    --t-art-starter:#242826;
+    --t-art-starter-2:#323a34;
     --t-bunting:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='132' height='26' viewBox='0 0 132 26'%3E%3Cpath d='M0 3Q33 9 66 3T132 3' fill='none' stroke='%23f3e9d299' stroke-width='1.4' stroke-dasharray='3 3'/%3E%3Cpath d='M8 5l9 17 9-16z' fill='%23f2b860'/%3E%3Cpath d='M40 6l9 18 9-18z' fill='%23d98fa8'/%3E%3Cpath d='M74 6l9 18 9-18z' fill='%239cc9ea'/%3E%3Cpath d='M106 5l9 17 9-17z' fill='%239fbf73'/%3E%3C/svg%3E");
   }
 }
@@ -391,8 +392,8 @@ dialog::backdrop{background:#2b1e14b3}
 @media (max-width:400px){dialog{--dp:clamp(12px,4vw,20px)}}
 #toast{background:var(--t-toast-bg);color:var(--t-toast-fg);border-radius:var(--t-sketch);box-shadow:var(--t-shadow);max-width:calc(100% - 24px)}
 .skip{background:var(--white);color:var(--ink);border:2px solid var(--ink)}
-html[data-theme="dark"] dialog::backdrop{background:#07061099}
-@media (prefers-color-scheme:dark){:root:not([data-theme]) dialog::backdrop{background:#07061099}}
+html[data-theme="dark"] dialog::backdrop{background:#000000a6}
+@media (prefers-color-scheme:dark){:root:not([data-theme]) dialog::backdrop{background:#000000a6}}
 
 /* ---------- 13. Noc: ilustracje lekko przygaszone, by nie raziły ---------- */
 html[data-theme="dark"] .plate{filter:brightness(.92)}
@@ -422,3 +423,6 @@ html[data-theme="dark"] #exclude-options li[aria-selected=true],html[data-theme=
   html:not([data-theme]) #servings[aria-invalid=true]{border-color:#ffb4a9}
   html:not([data-theme]) #exclude-options li[aria-selected=true],html:not([data-theme]) #exclude-options li:hover{color:var(--t-on-primary)}
 }
+/* Ciemny motyw bez gwiazdek i doodli na zdjęciach dań — ma być po prostu ciemny, nie nocny. */
+html[data-theme="dark"] .hero-art::before,html[data-theme="dark"] .card-art::after{display:none}
+@media (prefers-color-scheme: dark){html:not([data-theme]) .hero-art::before,html:not([data-theme]) .card-art::after{display:none}}
