@@ -60,3 +60,78 @@ export function isCurrentAutomaticOffer(o,now=new Date()) {
 }
 // What the UI may show and recommend: complete contract AND still current.
 export function isDisplayableAutomaticOffer(o,now=new Date()) { return validAutomaticOffer(o) && isCurrentAutomaticOffer(o,now); }
+// ---------- CNT-027 / CNT-029: recipes and ingredients by current promotions ----------
+// Pantry staples do not count towards the promotion share of a recipe. `pepper` in the catalog is a
+// fresh bell pepper (a real ingredient); the pantry pepper is `blackpepper`.
+export const pantryProducts = Object.freeze(['salt','water','blackpepper','oil']);
+// https only, no credentials and no characters that could break out of an HTML attribute; else null.
+export function safeOfferUrl(url) {
+  if(typeof url!=='string' || url.length>500 || !/^https:\/\/[^\s"'<>`]+$/.test(url)) return null;
+  try { const u=new URL(url); return u.protocol==='https:' && !u.username && !u.password ? u.href : null; } catch { return null; }
+}
+/**
+ * Display record of one offer for the UI (CNT-029). Built only from offers that pass
+ * isDisplayableAutomaticOffer (full CNT-016 contract and still current at `now`).
+ * @typedef {Object} OfferView
+ * @property {string} id         offer ID
+ * @property {string} product    catalog product ID
+ * @property {string} name       shop product name (plain text — escape before inserting into HTML)
+ * @property {number} price      gross price in `currency`, for `unit`
+ * @property {string} currency   ISO 4217, always the market currency (PLN)
+ * @property {string} unit       shop unit text, e.g. "Cena za kg"
+ * @property {string} store      shop name, e.g. "ALDI"
+ * @property {string} from       first valid day (YYYY-MM-DD, market time zone)
+ * @property {string} until      last valid day (YYYY-MM-DD, market time zone)
+ * @property {string} validUntil exact end instant (ISO)
+ * @property {?string} url       source URL if https (safe for href), otherwise null
+ * @property {{type:'nationwide'|'region'|'unverified', note?:string, regions?:string[]}} scope
+ * @property {string} conditions conditions text from the source
+ * @property {?number} regularPrice strike-through price from the source, if numeric
+ * @property {string} fetchedAt  read instant (ISO)
+ */
+function offerView(o) {
+  return { id:o.id, product:o.product, name:o.name, price:o.price, currency:o.currency, unit:o.unit, store:o.store, from:o.from, until:o.until, validUntil:o.validUntil, url:safeOfferUrl(o.source),
+    scope:o.scope.type==='region' ? {type:'region',regions:[...o.scope.regions]} : {type:o.scope.type,...(o.scope.note!==undefined?{note:o.scope.note}:{})},
+    conditions:o.conditions, regularPrice:Number.isFinite(o.regularPrice)?o.regularPrice:null, fetchedAt:o.fetchedAt };
+}
+// Best offer per product: lowest nominal price; on a tie the one valid longer (later validUntil),
+// then the smaller ID, so the result does not depend on the order of `offers`.
+// Prices are compared as given: unit texts ("za kg", "za szt.") are not converted.
+function bestOffers(offers,now) {
+  const best=new Map();
+  for(const o of Array.isArray(offers)?offers:[]) {
+    if(!isDisplayableAutomaticOffer(o,now)) continue;
+    const b=best.get(o.product);
+    if(!b || o.price<b.price || o.price===b.price && (Date.parse(o.validUntil)>Date.parse(b.validUntil) || Date.parse(o.validUntil)===Date.parse(b.validUntil) && o.id<b.id)) best.set(o.product,o);
+  }
+  return best;
+}
+const countableProducts=recipe=>[...new Set(recipe.ingredients.map(i=>i.product))].filter(p=>!pantryProducts.includes(p));
+function coverageFrom(recipe,best) {
+  const countable=countableProducts(recipe);
+  const matched=countable.filter(p=>best.has(p)).map(product=>({product,offer:offerView(best.get(product))}));
+  return { matched, count:matched.length, countable:countable.length, share:countable.length ? matched.length/countable.length : 0 };
+}
+/**
+ * Promotion coverage of a recipe at `now`.
+ * @returns {{matched:{product:string,offer:OfferView}[], count:number, countable:number, share:number}}
+ * `matched` follows ingredient order and holds only non-pantry products; `share` = count/countable (0 when
+ * nothing is countable). No basket total is returned: offer prices are per different units
+ * (kg, piece, pack) and are not converted to recipe amounts, so a sum would be a false price.
+ */
+export function promoCoverage(recipe,offers,now=new Date()) { return coverageFrom(recipe,bestOffers(offers,now)); }
+// Recipes ordered by promotions: more matched ingredients first, then higher share, then original
+// order (stable). Recipes without any match keep their original order after the others.
+export function rankByPromotions(recipes,offers,now=new Date()) {
+  const best=bestOffers(offers,now);
+  return recipes.map((recipe,index)=>({recipe,index,c:coverageFrom(recipe,best)}))
+    .sort((a,b)=>b.c.count-a.c.count || b.c.share-a.c.share || a.index-b.index).map(x=>x.recipe);
+}
+/**
+ * Per ingredient (recipe order, pantry included and flagged) the best current offer or null.
+ * @returns {{product:string, amount:number, pantry:boolean, offer:?OfferView}[]}
+ */
+export function ingredientOffers(recipe,offers,now=new Date()) {
+  const best=bestOffers(offers,now);
+  return recipe.ingredients.map(i=>({product:i.product,amount:i.amount,pantry:pantryProducts.includes(i.product),offer:best.has(i.product)?offerView(best.get(i.product)):null}));
+}

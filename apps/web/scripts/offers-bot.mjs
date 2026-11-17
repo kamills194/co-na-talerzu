@@ -1,8 +1,13 @@
 import { writeFile, rename, mkdir } from 'node:fs/promises';
-import { parseAldi, robotsDisallows } from './offer-parser.mjs';
+import { parseAldi, robotsDisallows, extraSources } from './offer-parser.mjs';
 import { validAutomaticOffer } from '../src/domain.js';
 import { market } from '../src/market.js';
-const sources=['https://www.aldi.pl/produkty/owoce-i-warzywa/warzywa.html','https://www.aldi.pl/produkty/owoce-i-warzywa/owoce.html'];
+// Department pages confirmed in earlier runs (reports/offers-bot.json). Further food departments of
+// the same site can be passed as arguments (`node apps/web/scripts/offers-bot.mjs https://www.aldi.pl/produkty/…html`)
+// after their address has been checked on the site; only https://www.aldi.pl/produkty/ pages are accepted,
+// each is still checked against robots.txt, and the same parser (__NEXT_DATA__) must recognise it.
+const defaultSources=['https://www.aldi.pl/produkty/owoce-i-warzywa/warzywa.html','https://www.aldi.pl/produkty/owoce-i-warzywa/owoce.html'];
+const sources=[...new Set([...defaultSources,...extraSources(process.argv.slice(2))])];
 const now=new Date(), report={version:1,market:market.id,currency:market.currency,timeZone:market.timeZone,updatedAt:now.toISOString(),offers:[],sources:[]};
 const headers={'User-Agent':'CoNaTalerzMVP/0.1 (public offers reader; no login)'};
 async function get(url) {
