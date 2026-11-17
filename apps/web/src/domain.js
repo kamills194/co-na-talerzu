@@ -1,10 +1,24 @@
 import { products } from './recipes.pl.js';
 import { market, marketDate } from './market.js';
+import { nutritionPerServing, MEAT_PRODUCTS } from './nutrition.js';
 export const normalize = s => String(s).toLocaleLowerCase('pl-PL').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ł/g,'l').trim();
+// Diets offered in the UI (CNT-025), in display order. The first five follow from ingredients,
+// the last three from the per-serving nutrition estimate (nutrition.js); without an estimate they fail closed.
+export const DIETS = ['vegetarian','vegan','pescatarian','glutenFree','dairyFree','highProtein','lowCarb','light'];
+const dietRules = {
+  pescatarian: r => !r.ingredients.some(i=>MEAT_PRODUCTS.includes(i.product)),
+  glutenFree: r => !r.allergens.includes('gluten'),
+  dairyFree: r => !r.allergens.includes('milk'),
+  highProtein: r => { const n=nutritionPerServing(r); return !!n && n.kcal>0 && n.protein>=20 && n.protein*4/n.kcal>=0.2; },
+  lowCarb: r => { const n=nutritionPerServing(r); return !!n && n.carbs<=20; },
+  light: r => { const n=nutritionPerServing(r); return !!n && n.kcal<=450; },
+};
+// '' = no preference; 'vegetarian'/'vegan' (and any other key) keep the original recipe-flag rule.
+export function matchesDiet(r, diet) { return !diet || (Object.hasOwn(dietRules,diet) ? dietRules[diet](r) : r[diet]===true); }
 export function filterRecipes(recipes, {query='',category='',cuisine='',maxTime=0,diet='',excluded=[],excludedProducts=[]}={}) {
   const q=normalize(query);
   // A recipe without `cuisine` belongs to the Polish catalog (records older than CNT-024).
-  return recipes.filter(r => (!category || r.category===category) && (!cuisine || (r.cuisine||'polish')===cuisine) && (!Number(maxTime) || r.minutes<=Number(maxTime)) && (!diet || r[diet]===true) && !r.allergens.some(a=>excluded.includes(a)) && !r.ingredients.some(i=>excludedProducts.includes(i.product)) && (!q || normalize([r.name,...r.ingredients.map(i=>products[i.product][0])].join(' ')).includes(q)));
+  return recipes.filter(r => (!category || r.category===category) && (!cuisine || (r.cuisine||'polish')===cuisine) && (!Number(maxTime) || r.minutes<=Number(maxTime)) && matchesDiet(r,diet) && !r.allergens.some(a=>excluded.includes(a)) && !r.ingredients.some(i=>excludedProducts.includes(i.product)) && (!q || normalize([r.name,...r.ingredients.map(i=>products[i.product][0])].join(' ')).includes(q)));
 }
 export function surprise(recipes, filters, previousId, rng=Math.random) {
   const matches=filterRecipes(recipes,filters);
