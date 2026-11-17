@@ -20,8 +20,11 @@ export const messages = {
   eyebrowIdea:'POMYSŁ NA DZIŚ', eyebrowCollection:'TWOJA KOLEKCJA', eyebrowShopping:'Z KUCHNI DO SKLEPU', cardSeries:'DOMOWA KUCHNIA', heroArtCaption:'smakuje jak w domu', heroArtNote:'odrobina inspiracji\nna każdy dzień',
   browseRecipes:'Przeglądaj przepisy', photoCredit:'Zdjęcie', photoLicense:'Licencja', photoChanges:'Zmiany',
   offlineNotice:'Jesteś offline. Przepisy, ulubione i lista zakupów działają dalej na tym urządzeniu.', offlineOffers:'Jesteś offline. Oferty ze sklepów wymagają połączenia z siecią — teraz ich nie pobierzemy. Twoje zapisane notatki o ofertach są nadal dostępne. Po odzyskaniu połączenia otwórz aplikację ponownie, aby odświeżyć oferty.', backOnline:'Znów jesteś online.',
+  cuisine:'Kuchnia', allCuisines:'Wszystkie kuchnie', polish:'Polska', italian:'Włoska', german:'Niemiecka', french:'Francuska', japanese:'Japońska', cuisineCount:'Liczba przepisów',
 };
 export function t(key) { if (!(key in messages)) throw new Error(`Missing translation: ${key}`); return messages[key]; }
 export const categories = ['breakfast','snack','lunch','dinner','dessert','starter'];
 export const allergens = ['gluten','milk','eggs','nuts','fish','soy','celery','mustard','sesame'];
+// Ordered cuisine tabs. A recipe without `cuisine` counts as 'polish'.
+export const cuisines = ['polish','italian','german','french','japanese'];
 
