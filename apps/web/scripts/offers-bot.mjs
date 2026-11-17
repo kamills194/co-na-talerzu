@@ -41,7 +41,7 @@ try {
       const accepted=parsed.offers.filter(validAutomaticOffer);report.offers.push(...accepted);
       // CNT-041: every current food promotion for the store view, under its own contract.
       const acceptedDeals=parsed.deals.filter(validDeal);report.deals.push(...acceptedDeals);
-      report.sources.push({source,status:'ok',productsSeen:parsed.productsSeen,unmapped:parsed.unmapped,rejected:parsed.offers.length-accepted.length,deals:acceptedDeals.length,rejectedDeals:parsed.deals.length-acceptedDeals.length});
+      report.sources.push({source,status:parsed.empty?'empty':'ok',productsSeen:parsed.productsSeen,unmapped:parsed.unmapped,rejected:parsed.offers.length-accepted.length,deals:acceptedDeals.length,rejectedDeals:parsed.deals.length-acceptedDeals.length});
     }catch(e){report.sources.push({source,status:'error',error:e.message});}
   }
 }catch(e){report.sources.push({source:'https://www.aldi.pl/robots.txt',status:'error',error:e.message});}

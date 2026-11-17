@@ -36,10 +36,10 @@ jobs:
             const bad=d.offers.filter(o=>!validAutomaticOffer(o)); if(bad.length) throw Error('Niepoprawne oferty: '+bad.length);
             if(d.deals!==undefined&&!Array.isArray(d.deals)) throw Error('Zły format deals w offers.json');
             const deals=d.deals||[], badDeals=deals.filter(x=>!validDeal(x)); if(badDeals.length) throw Error('Niepoprawne promocje sklepu: '+badDeals.length);
-            const ok=d.sources.filter(s=>s.status==='ok').length, err=d.sources.length-ok;
+            const ok=d.sources.filter(s=>s.status==='ok'||s.status==='empty').length, err=d.sources.length-ok;
             console.log('Oferty:',d.offers.length,'| promocje w widoku sklepu:',deals.length,'| źródła OK:',ok,'| błędy:',err);
             if(ok===0) throw Error('Żadne źródło nie zostało odczytane — nie publikuję.');
-            for (const s of d.sources.filter(s=>s.status!=='ok')) console.log('::warning::'+s.source+': '+s.error);
+            for (const s of d.sources.filter(s=>s.status!=='ok'&&s.status!=='empty')) console.log('::warning::'+s.source+': '+s.error);
           "
           echo "count=$(node -p "JSON.parse(require('fs').readFileSync('apps/web/src/offers.json','utf8')).offers.length")" >> "$GITHUB_OUTPUT"
           echo "deals=$(node -p "(JSON.parse(require('fs').readFileSync('apps/web/src/offers.json','utf8')).deals||[]).length")" >> "$GITHUB_OUTPUT"
