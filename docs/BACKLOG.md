@@ -35,8 +35,8 @@ znane zadania z obu wątków; nie sugeruje importu nieistniejącego systemu Issu
 | CNT-024 | Kuchnie świata: pole kuchni w przepisie, zakładki kuchni i dania startowe | Ekspert kulinarny + UX | Wykonane: polska, włoska, niemiecka, francuska, japońska (reports/CNT-024.md) |
 | CNT-025 | Uproszczone diety: krótka lista najpopularniejszych | Ekspert kulinarny + UX | Wykonane: 8 diet (reports/CNT-025-026.md) |
 | CNT-026 | Kalorie i makroskładniki na porcję wyliczane ze składników, z możliwością ukrycia | Ekspert kulinarny + programista | Wykonane: wartości szacunkowe z ogólnych tabel, widok do wyłączenia (reports/CNT-025-026.md) |
-| CNT-027 | Przepisy ułożone według liczby składników w aktualnej promocji | Promocje sklepowe + programista | Planowane; po CNT-016 |
-| CNT-028 | Bot szuka promocji na jak najwięcej składników: pełna mapa produktów, kolejne działy i sklepy | Promocje sklepowe | Planowane; wybór sklepów i serwer bota do decyzji |
+| CNT-027 | Przepisy ułożone według liczby składników w aktualnej promocji | Promocje sklepowe + programista | Logika wykonana: promoCoverage, rankByPromotions (reports/CNT-027-028.md); ekran w CNT-029 |
+| CNT-028 | Bot szuka promocji na jak najwięcej składników: pełna mapa produktów, kolejne działy i sklepy | Promocje sklepowe | Mapa 62/64 produktów, dodatkowe adresy działów jako argumenty bota; bot nieuruchamiany na żywo, inne sklepy do decyzji |
 | CNT-029 | Link do promocji i cena przy każdym składniku w przepisie i na liście zakupów | Promocje sklepowe + UX | Planowane; po CNT-027 i CNT-028 |
 | CNT-030 | Wybór języka oraz tłumaczenia interfejsu i przepisów | UX/UI i lokalizacja | Planowane; języki i sposób tłumaczenia do decyzji |
 | CNT-031 | Nowa, bardziej bajkowa szata graficzna; najpierw warianty do wyboru | UX/UI | Planowane |
