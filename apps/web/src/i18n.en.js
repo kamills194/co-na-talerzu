@@ -18,7 +18,7 @@ export const messages = {
   fetched:'Read', validFrom:'Valid from', scopeLabel:'Reach', scopeNationwide:'all of Poland (according to the source)', scopeRegion:'region', scopeUnverified:'unconfirmed', scopeNotGiven:'not given (your own note)', regionOptional:'Region or reach of the offer (optional)', conditionsLabel:'Conditions', conditionsUser:'check at the source', currencyLabel:'Currency', unitPackage:'pack',
   excludeProducts:'Leave out specific products', allergensLabel:'Exclude allergens',
   privacyTitle:'Your data stays with you', privacyText:'Favourites, shopping and the offers you enter are saved only in this browser’s storage. There are no accounts, analytics or syncing. Clearing the browser data deletes these entries. Save a copy to move them to another device.', export:'Download a copy of your data', import:'Load a copy of your data', importNote:'Loading a copy replaces the local favourites, shopping list and offers.', imported:'Copy of your data loaded.', invalidBackup:'Invalid data copy file.', storageError:'Could not save the data. The browser storage may be unavailable or full.', noMatches:'No matching recipe. Change the filters and try again.', savedCount:'Saved recipes', offline:'Also works offline after the first visit.', importLabel:'Data copy file',
-  eyebrowIdea:'AN IDEA FOR TODAY', eyebrowCollection:'YOUR COLLECTION', eyebrowShopping:'FROM KITCHEN TO SHOP', cardSeries:'HOME COOKING', heroArtCaption:'tastes like home', heroArtNote:'a little inspiration\nfor every day',
+  eyebrowIdea:'AN IDEA FOR TODAY', eyebrowCollection:'YOUR COLLECTION', eyebrowShopping:'FROM KITCHEN TO SHOP', heroArtCaption:'tastes like home', heroArtNote:'a little inspiration\nfor every day',
   browseRecipes:'Browse recipes', photoCredit:'Photo', photoLicense:'Licence', photoChanges:'Changes',
   offlineNotice:'You are offline. Recipes, favourites and the shopping list keep working on this device.', offlineOffers:'You are offline. Shop offers need a network connection — we cannot fetch them now. Your saved offer notes are still available. When you are back online, open the app again to refresh the offers.', backOnline:'You are back online.',
   cuisine:'Cuisine', allCuisines:'All cuisines', polish:'Polish', italian:'Italian', german:'German', french:'French', japanese:'Japanese', cuisineCount:'Number of recipes',
@@ -39,4 +39,10 @@ export const messages = {
   unitBunch_one:'bunch', unitBunch_other:'bunches',
   unitPinch_one:'pinch', unitPinch_other:'pinches',
   unitPot_one:'pot', unitPot_other:'pots',
+  // CNT-034: time ranges, cuisine names on cards, servings stepper, exclusion search, allergen groups, reset.
+  prepTime:'Preparation time', timeUpTo:'Up to {n} min', timeOver:'Over {n} min', polishCuisine:'Polish cuisine', italianCuisine:'Italian cuisine', germanCuisine:'German cuisine',
+  frenchCuisine:'French cuisine', japaneseCuisine:'Japanese cuisine', servingsDecrease:'Fewer servings', servingsIncrease:'More servings', servingsInvalid:'Enter a number from 1 to 20.', excludeSearch:'Exclude a product',
+  excludeSearchPlaceholder:'Type a name, e.g. onion', excludeNoMatch:'There is no such product in the recipes.', excludeHelp:'Up and down arrows choose, Enter adds, Esc closes.', excludedAdded:'Excluded: {name}', excludedRemoved:'Allowed again: {name}', removeExclusion:'Remove exclusion',
+  excludedSummary:'Excluded', clearExclusions:'Clear', clearExclusionsLabel:'Clear all exclusions', allergenExamples:'e.g. {list}', allergenNone:'not in the current recipes', filtersCleared:'All filters cleared.',
+  servingsCount_one:'{n} serving', servingsCount_other:'{n} servings', suggestions_one:'{n} suggestion', suggestions_other:'{n} suggestions',
 };

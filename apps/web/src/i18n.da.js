@@ -18,7 +18,7 @@ export const messages = {
   fetched:'Læst', validFrom:'Gælder fra', scopeLabel:'Dækning', scopeNationwide:'hele Polen (ifølge kilden)', scopeRegion:'region', scopeUnverified:'ikke bekræftet', scopeNotGiven:'ikke angivet (egen note)', regionOptional:'Tilbuddets region eller dækning (valgfrit)', conditionsLabel:'Betingelser', conditionsUser:'tjek i kilden', currencyLabel:'Valuta', unitPackage:'pakning',
   excludeProducts:'Udelad bestemte varer', allergensLabel:'Udelad allergener',
   privacyTitle:'Dine data bliver hos dig', privacyText:'Favoritter, indkøb og de tilbud, du indtaster, gemmes kun i denne browsers lager. Der er ingen konti, ingen statistik og ingen synkronisering. Hvis du rydder browserens data, slettes disse poster. Gem en kopi for at flytte dem til en anden enhed.', export:'Download en kopi af dine data', import:'Indlæs en kopi af dine data', importNote:'Når du indlæser en kopi, erstattes de lokale favoritter, indkøb og tilbud.', imported:'Kopien af dine data er indlæst.', invalidBackup:'Ugyldig fil med datakopi.', storageError:'Dataene kunne ikke gemmes. Browserens lager er måske utilgængeligt eller fuldt.', noMatches:'Ingen opskrift passer. Skift filtrene, og prøv igen.', savedCount:'Gemte opskrifter', offline:'Virker også offline efter første besøg.', importLabel:'Fil med datakopi',
-  eyebrowIdea:'DAGENS IDÉ', eyebrowCollection:'DIN SAMLING', eyebrowShopping:'FRA KØKKEN TIL BUTIK', cardSeries:'HJEMMELAVET MAD', heroArtCaption:'smager som derhjemme', heroArtNote:'lidt inspiration\ntil hver dag',
+  eyebrowIdea:'DAGENS IDÉ', eyebrowCollection:'DIN SAMLING', eyebrowShopping:'FRA KØKKEN TIL BUTIK', heroArtCaption:'smager som derhjemme', heroArtNote:'lidt inspiration\ntil hver dag',
   browseRecipes:'Se opskrifterne', photoCredit:'Foto', photoLicense:'Licens', photoChanges:'Ændringer',
   offlineNotice:'Du er offline. Opskrifter, favoritter og indkøbslisten virker stadig på denne enhed.', offlineOffers:'Du er offline. Butikstilbud kræver netforbindelse – vi kan ikke hente dem nu. Dine gemte noter om tilbud er stadig tilgængelige. Når du er online igen, så åbn appen på ny for at opdatere tilbuddene.', backOnline:'Du er online igen.',
   cuisine:'Køkken', allCuisines:'Alle køkkener', polish:'Polsk', italian:'Italiensk', german:'Tysk', french:'Fransk', japanese:'Japansk', cuisineCount:'Antal opskrifter',
@@ -39,4 +39,10 @@ export const messages = {
   unitBunch_one:'bundt', unitBunch_other:'bundter',
   unitPinch_one:'knivspids', unitPinch_other:'knivspidser',
   unitPot_one:'potte', unitPot_other:'potter',
+  // CNT-034: time ranges, cuisine names on cards, servings stepper, exclusion search, allergen groups, reset.
+  prepTime:'Tilberedningstid', timeUpTo:'Op til {n} min.', timeOver:'Over {n} min.', polishCuisine:'Polsk køkken', italianCuisine:'Italiensk køkken', germanCuisine:'Tysk køkken',
+  frenchCuisine:'Fransk køkken', japaneseCuisine:'Japansk køkken', servingsDecrease:'Færre portioner', servingsIncrease:'Flere portioner', servingsInvalid:'Indtast et tal fra 1 til 20.', excludeSearch:'Udelad et produkt',
+  excludeSearchPlaceholder:'Skriv et navn, f.eks. løg', excludeNoMatch:'Produktet findes ikke i opskrifterne.', excludeHelp:'Pil op og ned vælger, Enter tilføjer, Esc lukker.', excludedAdded:'Udeladt: {name}', excludedRemoved:'Tilladt igen: {name}', removeExclusion:'Fjern udeladelse',
+  excludedSummary:'Udeladt', clearExclusions:'Ryd', clearExclusionsLabel:'Ryd alle udeladelser', allergenExamples:'f.eks. {list}', allergenNone:'findes ikke i de nuværende opskrifter', filtersCleared:'Alle filtre er ryddet.',
+  servingsCount_one:'{n} portion', servingsCount_other:'{n} portioner', suggestions_one:'{n} forslag', suggestions_other:'{n} forslag',
 };
