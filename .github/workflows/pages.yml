@@ -23,6 +23,11 @@ jobs:
         with:
           node-version: '22'
       - run: npm test
+      - name: Najnowsze oferty z opublikowanej strony
+        run: |
+          if git fetch -q --depth=1 origin gh-pages 2>/dev/null && git show origin/gh-pages:offers.json > /tmp/offers.json 2>/dev/null \
+            && node -e "const d=JSON.parse(require('fs').readFileSync('/tmp/offers.json','utf8'));if(d.version!==1||!Array.isArray(d.offers))process.exit(1)"; then
+            cp /tmp/offers.json apps/web/src/offers.json; echo "Użyto ofert z gh-pages"; else echo "Brak ofert na gh-pages — używam pliku z repozytorium"; fi
       - run: npm run build
       - run: touch apps/web/dist/.nojekyll
       - uses: actions/upload-pages-artifact@v3

@@ -47,6 +47,7 @@ znane zadania z obu wątków; nie sugeruje importu nieistniejącego systemu Issu
 | CNT-036 | Ilości składników w gramach (ml dla płynów), przy sztukach podpowiedź „≈ N szt.”; decyzja właściciela 17.11.2026 | Programista | Wykonane: przeliczenie tylko przy wyświetlaniu, zapisane dane bez zmian |
 | CNT-038 | Lepiej dobrane ikony dań (35 zmian) i 24 popularne dania (m.in. pierogi ruskie, pizza margherita, kurczak curry, schabowy, żurek, lasagne, tiramisu, chili con carne, burger, gyros); nowe kuchnie: indyjska, meksykańska, amerykańska, śródziemnomorska | Ekspert kulinarny | Wykonane: 110 przepisów (reports/CNT-038.md); bez próby kuchennej |
 | CNT-039 | Poprawki z 17.11 (druga lista): większa losowość, czasy 15/30/60 min i pełne pół godziny, czyszczenie filtrów bez przeskoku, nazwy produktów w promocji bez %, flagi przy językach, dwa motywy, usunięte dekoracje | Programista + UX | Wykonane (reports/CNT-039.md) |
+| CNT-040 | Bot promocji na prawdziwych danych ALDI: oferty tygodnia i 58 podkategorii spożywczych, promocje wielosztukowe z warunkiem i limitem; uruchamiany w GitHub Actions dwa razy dziennie, publikuje sam plik ofert na GitHub Pages i conatalerz.pl bez zmian w main | Promocje sklepowe | Wykonane (reports/CNT-040.md) |
 
 Każde nowe zadanie: cel użytkownika, zakres plików, kryteria odbioru, odpowiedzialna
 rola, zależności i dowód wykonania. Nie przypisano rzeczywistych osób ani botów.

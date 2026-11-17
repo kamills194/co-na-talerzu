@@ -1,0 +1,63 @@
+name: Promocje ALDI
+# Bot promocji (CNT-040): dwa razy dziennie czyta publiczne strony ALDI (oferty tygodnia i działy
+# spożywcze, z poszanowaniem robots.txt) i publikuje SAM plik offers.json na opublikowanych stronach:
+#  - GitHub Pages (gałąź gh-pages — wynik buildu, nie kod),
+#  - conatalerz.pl (nazwa.pl, SFTP), jeśli skonfigurowane sekrety jak w deploy-nazwa.yml.
+# Gałąź main (kod) nie jest zmieniana. Aplikacja ukrywa oferty starsze niż 48 h, więc bot działa codziennie.
+on:
+  schedule:
+    - cron: '17 4 * * *'   # ok. 05:17 czasu polskiego (zimą)
+    - cron: '47 12 * * *'  # ok. 13:47 czasu polskiego (zimą)
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  offers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Uruchom bota
+        run: node apps/web/scripts/offers-bot.mjs | tee /tmp/bot.json
+      - name: Sprawdź wynik
+        id: check
+        run: |
+          node --input-type=module -e "
+            import {readFileSync} from 'node:fs';
+            import {validAutomaticOffer} from './apps/web/src/domain.js';
+            const d=JSON.parse(readFileSync('apps/web/src/offers.json','utf8'));
+            if(d.version!==1||!Array.isArray(d.offers)) throw Error('Zły format offers.json');
+            const bad=d.offers.filter(o=>!validAutomaticOffer(o)); if(bad.length) throw Error('Niepoprawne oferty: '+bad.length);
+            const ok=d.sources.filter(s=>s.status==='ok').length, err=d.sources.length-ok;
+            console.log('Oferty:',d.offers.length,'| źródła OK:',ok,'| błędy:',err);
+            if(ok===0) throw Error('Żadne źródło nie zostało odczytane — nie publikuję.');
+            for (const s of d.sources.filter(s=>s.status!=='ok')) console.log('::warning::'+s.source+': '+s.error);
+          "
+          echo "count=$(node -p "JSON.parse(require('fs').readFileSync('apps/web/src/offers.json','utf8')).offers.length")" >> "$GITHUB_OUTPUT"
+      - name: Opublikuj na GitHub Pages (gh-pages)
+        run: |
+          git fetch -q --depth=1 origin gh-pages
+          git worktree add -q /tmp/site origin/gh-pages
+          cp apps/web/src/offers.json /tmp/site/offers.json
+          cd /tmp/site
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add offers.json
+          git commit -q -m "Promocje ALDI: ${{ steps.check.outputs.count }} ofert" || exit 0
+          git push -q origin HEAD:gh-pages
+      - name: Opublikuj na conatalerz.pl
+        env:
+          SERVER: ${{ secrets.NAZWA_FTP_SERVER }}
+          USER: ${{ secrets.NAZWA_FTP_USERNAME }}
+          LFTP_PASSWORD: ${{ secrets.NAZWA_FTP_PASSWORD }}
+          DIR: ${{ vars.NAZWA_FTP_DIR }}
+        run: |
+          if [ -z "$SERVER" ] || [ -z "$USER" ] || [ -z "$LFTP_PASSWORD" ] || [ -z "$DIR" ]; then echo "::notice::nazwa.pl nieskonfigurowane — pomijam"; exit 0; fi
+          sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+          lftp -c "set sftp:auto-confirm yes; set net:max-retries 3; set net:timeout 30; \
+            open --env-password -u \"$USER\" sftp://$SERVER; cd \"$DIR\"; put apps/web/src/offers.json -o offers.json"
