@@ -6,7 +6,7 @@ import { normalize, filterRecipes, surprise, addIngredients, matchingOffers, val
 import { emptyState, validateState, load, save, KEY } from '../src/storage.js';
 import { parseAldi, robotsDisallows } from '../scripts/offer-parser.mjs';
 test('Katalog: unikalne ID, wszystkie kategorie, składniki i komplet instrukcji',()=>{
-  assert.equal(recipes.length,86);assert.equal(new Set(recipes.map(r=>r.id)).size,86);
+  assert.equal(recipes.length,110);assert.equal(new Set(recipes.map(r=>r.id)).size,110);
   for(const c of categories) assert.ok(recipes.some(r=>r.category===c));
   for(const r of recipes){assert.ok(r.steps.length>=3);assert.ok(r.minutes>0);assert.ok(r.servings>0);assert.ok(categories.includes(r.category));assert.ok(r.ingredients.every(i=>products[i.product]&&i.amount>0));assert.deepEqual([...r.allergens].sort(),[...new Set(r.ingredients.flatMap(i=>products[i.product][2]))].sort());if(r.vegan)assert.equal(r.vegetarian,true);}
   for(const a of allergens)assert.ok(t(a));
@@ -14,7 +14,7 @@ test('Katalog: unikalne ID, wszystkie kategorie, składniki i komplet instrukcji
 test('Wyszukiwanie ignoruje wielkość liter i polskie znaki',()=>{assert.equal(normalize(' ŁÓDŹ '),'lodz');assert.ok(filterRecipes(recipes,{query:'TWAROZEK'}).some(r=>r.id==='twarożek'));assert.ok(filterRecipes(recipes,{query:'ziemniaki'}).some(r=>r.id==='kurczak'));});
 test('Filtry czasu, kategorii, diety i alergenów działają łącznie',()=>{const list=filterRecipes(recipes,{category:'dinner',maxTime:15,diet:'vegan',excluded:['gluten']});assert.deepEqual(list.map(r=>r.id),['salatka']);});
 test('Wykluczenia obejmują także ukryty sezam w hummusie',()=>{assert.ok(!filterRecipes(recipes,{excluded:['sesame']}).some(r=>r.id==='hummus-kanapki'));});
-test('Wykluczenie zwykłego składnika obejmuje wyszukiwanie i losowanie',()=>{const f={category:'lunch',excludedProducts:['onion']};assert.deepEqual(filterRecipes(recipes,f).map(r=>r.id),['kurczak','leniwe','makaron-z-twarogiem','jajka-w-sosie-koperkowym','spaghetti-aglio-e-olio']);assert.equal(surprise(recipes,f,null,()=>0).id,'kurczak');});
+test('Wykluczenie zwykłego składnika obejmuje wyszukiwanie i losowanie',()=>{const f={category:'lunch',excludedProducts:['onion']};assert.deepEqual(filterRecipes(recipes,f).map(r=>r.id),['kurczak','leniwe','makaron-z-twarogiem','jajka-w-sosie-koperkowym','spaghetti-aglio-e-olio','kotlet-schabowy','carbonara','mac-and-cheese']);assert.equal(surprise(recipes,f,null,()=>0).id,'kurczak');});
 test('Losowanie respektuje filtry i unika poprzedniego wyniku',()=>{const f={category:'dessert',maxTime:15};// CNT-039: filtr czasu porównuje czas zaokrąglony (najmniej 15 min)
 assert.equal(surprise(recipes,f,null,()=>0).id,'kakao');assert.equal(surprise(recipes,{category:'lunch',maxTime:5}),null);assert.notEqual(surprise(recipes,{},recipes[0].id,()=>0).id,recipes[0].id);});
 test('Lista sumuje składniki i skaluje porcje bez zmiany wejścia',()=>{const r=recipes[0];const first=addIngredients([],r,4);first[0].done=true;const second=addIngredients(first,r,2);assert.equal(first[0].amount,200);assert.equal(second[0].amount,300);assert.equal(second[0].done,false);assert.equal(second.length,r.ingredients.length);});
@@ -29,7 +29,7 @@ const p={objectID:'1',name:'Pomidory malinowe',salesUnit:'Cena za kg',currentPri
 const html=items=>`<script id="__NEXT_DATA__" type="application/json">${JSON.stringify({props:{items}})}</script>`;
 test('Bot odczytuje cenę, jednostkę, daty i pochodzenie',()=>{const parsed=parseAldi(html([p]),{source:'https://www.aldi.pl/',now});assert.equal(parsed.offers.length,1);assert.equal(parsed.offers[0].product,'tomato');assert.equal(parsed.offers[0].price,5);assert.equal(parsed.offers[0].unit,'Cena za kg');assert.equal(parsed.offers[0].fetchedAt,now.toISOString());});
 test('Bot odrzuca przyszłe, wygasłe i niedatowane ceny oraz zwykłe ceny',()=>{for(const price of [{...p.currentPrice,validFrom:now.getTime()/1000+1},{...p.currentPrice,validUntil:now.getTime()/1000-1},{...p.currentPrice,validUntil:undefined},{...p.currentPrice,strikePrice:undefined}])assert.equal(parseAldi(html([{...p,currentPrice:price}]),{now}).offers.length,0);});
-test('Bot nie dopasowuje nieznanych produktów i wykrywa zmianę struktury',()=>{assert.equal(parseAldi(html([{...p,name:'Ogórki kiszone'}]),{now}).offers.length,0);assert.throws(()=>parseAldi('<html>Blokada</html>',{now}));});
+test('Bot nie dopasowuje nieznanych produktów i wykrywa zmianę struktury',()=>{assert.equal(parseAldi(html([{...p,name:'Ogórki małosolne'}]),{now}).offers.length,0);assert.throws(()=>parseAldi('<html>Blokada</html>',{now}));});
 test('Bot usuwa duplikaty po ID produktu i dacie początku',()=>{assert.equal(parseAldi(html([p,p]),{now}).offers.length,1);});
 test('robots.txt: grupy agentów, wzorce * i $ oraz brak reguł dla innych botów',()=>{
   const robots='User-agent: *\nUser-agent: InnyBot\nDisallow: /koszyk\nDisallow: /*.pdf$\n\nUser-agent: Obcy\nDisallow: /produkty/\n';
