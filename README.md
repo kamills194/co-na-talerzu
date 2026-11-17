@@ -9,6 +9,8 @@ Zasady pracy: [docs/WORKFLOW.md](docs/WORKFLOW.md).
 Zakres rozwoju: [sześć obszarów i pilotaż w Polsce](docs/PILOT-PL.md) —
 30 kompletnych przepisów oraz 30 realnych zdjęć z udokumentowanymi prawami.
 
+Hosting produkcyjny conatalerz.pl (nazwa.pl): [docs/HOSTING-NAZWA-PL.md](docs/HOSTING-NAZWA-PL.md).
+
 Stan integracji i ograniczenia: [docs/STAN-SCALENIA.md](docs/STAN-SCALENIA.md).
 
 Uruchom w terminalu w tym katalogu (Node.js 20 lub nowszy):
