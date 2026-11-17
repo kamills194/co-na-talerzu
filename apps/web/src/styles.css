@@ -53,8 +53,7 @@ dialog{--dp:30px;padding:0 var(--dp) var(--dp);overscroll-behavior:contain}
 .ingredients li{flex-wrap:wrap;row-gap:2px}
 .promo-line{flex-basis:100%;margin:0;font-size:12px;line-height:1.5;color:var(--muted);overflow-wrap:anywhere}
 .promo-price{color:var(--orange);font-weight:700}
-.promo-scope{color:var(--orange)}
-.promo-until,.promo-scope{white-space:nowrap}
+.promo-until{white-space:nowrap}
 .promo-link{display:flex;width:fit-content;max-width:100%;align-items:center;min-height:44px;padding:0 4px 0 0;font-weight:600;color:var(--green);text-underline-offset:3px}
 .shopping-list li{flex-wrap:wrap;row-gap:0}.shopping-list .promo-line{padding:0 0 8px 27px}
 @media(max-width:600px){.sort-control{margin-left:0;width:100%;justify-content:space-between}.sort-control select{flex:1;min-width:0;font-size:16px}.sort-hint{text-align:left}}
@@ -94,3 +93,19 @@ header .lang-picker{order:3;flex:none;margin-left:0;gap:6px;flex-wrap:nowrap}hea
 .exclude-chip{display:inline-flex;align-items:center;gap:6px;max-width:100%;min-height:44px;padding:6px 12px;border:1.5px solid var(--green);border-radius:22px;background:var(--white);color:var(--green);font-size:13px;font-weight:600;text-align:left;overflow-wrap:anywhere}.exclude-chip span{font-size:17px;line-height:1}
 .lang-suggest .suggest-short{display:none}@media(max-width:600px){.lang-suggest .suggest-long{display:none}.lang-suggest .suggest-short{display:inline}}
 @media(max-width:600px){header{column-gap:10px}header .brand{flex:1 1 0;min-width:0}}
+/* CNT-041: kafelki sklepów (neutralna plakietka z inicjałem — bez logotypów i kolorów sieci) i okno promocji sklepu */
+.stores-panel{margin-bottom:18px}.stores-panel h2{margin-top:0}
+.store-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,8.75rem),1fr));gap:8px;margin:14px 0 0;padding:0;list-style:none}
+.store-grid li{min-width:0;display:flex}
+.store-tile{display:flex;align-items:center;gap:8px;width:100%;min-width:0;min-height:56px;padding:8px 10px;border:1px solid var(--t-line,var(--border));border-radius:12px;background:var(--paper);color:var(--ink);font:inherit;text-align:left;text-decoration:none;cursor:pointer}
+.store-tile:hover{border-color:var(--t-ui-border,var(--ink))}
+.store-badge{flex:none;display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;border:1px solid var(--t-line,var(--border));background:var(--t-chip,var(--white));color:var(--ink);font-weight:700;font-size:15px;line-height:1}
+.store-text{display:flex;flex-direction:column;min-width:0}
+.store-name{font-weight:700;font-size:14px;overflow-wrap:anywhere}
+.store-line{font-size:12px;line-height:1.35;color:var(--muted);overflow-wrap:anywhere}
+.store-dialog-top{display:flex;flex-direction:column;gap:2px}.store-dialog-top p{margin:0}.store-empty{margin:0 0 4px}
+.deal-group h3{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:22px 0 6px;overflow-wrap:anywhere}
+.deal-list{margin:0;padding:0;list-style:none}
+.deal-list li{padding:10px 0;border-top:1px solid var(--t-line,var(--border));min-width:0;overflow-wrap:anywhere}
+.deal-name{display:block;font-weight:600;font-size:14px}
+.store-leaflet span[aria-hidden]{margin-left:.3em}

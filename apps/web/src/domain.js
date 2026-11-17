@@ -50,8 +50,8 @@ export function addIngredients(list,recipe,servings) {
 export function localDate(date=new Date()) { return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`; }
 const isDay=v=>typeof v==='string' && /^\d{4}-\d{2}-\d{2}$/.test(v) && !Number.isNaN(Date.parse(v)) && new Date(v).toISOString().slice(0,10)===v;
 const isText=(v,max)=>typeof v==='string' && !!v.trim() && v.length<=max;
-// Base contract shared by user notes and automatic offers. `region` is an optional free-text
-// scope of a user note; records saved before it existed stay valid.
+// Base contract shared by user notes and automatic offers. `region` is an optional free-text scope of a user note
+// saved by older versions (CNT-016). CNT-041: the app no longer asks for it nor shows it, but old data still loads.
 export function validOffer(o) { return !!o && typeof o.id==='string' && o.id.length<100 && o.product in products && typeof o.store==='string' && !!o.store.trim() && o.store.length<=100 && Number.isFinite(o.price) && o.price>0 && o.price<=100000 && typeof o.source==='string' && !!o.source.trim() && o.source.length<=500 && isDay(o.until) && (o.region===undefined || typeof o.region==='string' && o.region.length<=100); }
 // `until` is the last valid day, inclusive, in the market time zone.
 export function isOfferExpired(o,now=new Date()) { return !(o?.until>=marketDate(now)); }
@@ -77,12 +77,48 @@ export function validAutomaticOffer(o) {
 // Time rules only: read at most 48 h ago (inclusive), not read in the future, end instant not
 // passed (inclusive) and already started on the market calendar. Exact instants do not depend on
 // the device time zone; the start day is compared in the market time zone.
-export function isCurrentAutomaticOffer(o,now=new Date()) {
+function currentWindow(o,now) {
   const fetched=Date.parse(o?.fetchedAt), end=Date.parse(o?.validUntil);
-  return validOffer(o) && Number.isFinite(fetched) && Number.isFinite(end) && fetched<=now.getTime() && now.getTime()-fetched<=48*60*60*1000 && end>=now.getTime() && o.from<=marketDate(now);
+  return Number.isFinite(fetched) && Number.isFinite(end) && fetched<=now.getTime() && now.getTime()-fetched<=48*60*60*1000 && end>=now.getTime() && typeof o.from==='string' && o.from<=marketDate(now);
 }
+export function isCurrentAutomaticOffer(o,now=new Date()) { return validOffer(o) && currentWindow(o,now); }
 // What the UI may show and recommend: complete contract AND still current.
 export function isDisplayableAutomaticOffer(o,now=new Date()) { return validAutomaticOffer(o) && isCurrentAutomaticOffer(o,now); }
+// ---------- CNT-041: all current store promotions ("deals") for the store view ----------
+// A deal is any reduced-price food item the bot saw (not only those matched to recipe products). Contract
+// (offers.json `deals`, file version still 1; files without `deals` are valid):
+//   {id, store, name, price, regularPrice|null, currency, unit, conditions, from, until, validUntil, category, url|null, fetchedAt}
+// Fail closed on any gap: text lengths, positive prices, consistent market-zone days, market currency (and market,
+// when given), https-only url without credentials. Time rules are the same as for automatic offers.
+const isPrice=v=>Number.isFinite(v) && v>0 && v<=100000;
+export function validDeal(d) {
+  if(!d || typeof d!=='object' || Array.isArray(d)) return false;
+  if(!isText(d.id,99) || !isText(d.store,100) || !isText(d.name,200) || !isText(d.unit,100) || !isText(d.conditions,500) || !isText(d.category,100)) return false;
+  if(d.currency!==market.currency || (d.market!==undefined && d.market!==market.id)) return false;
+  if(!isPrice(d.price) || !(d.regularPrice===null || d.regularPrice===undefined || isPrice(d.regularPrice))) return false;
+  if(!(d.url===null || typeof d.url==='string' && safeOfferUrl(d.url)===d.url)) return false;
+  if(!isDay(d.from) || !isDay(d.until) || d.from>d.until || typeof d.fetchedAt!=='string' || typeof d.validUntil!=='string') return false;
+  const fetched=Date.parse(d.fetchedAt), end=Date.parse(d.validUntil);
+  return Number.isFinite(fetched) && Number.isFinite(end) && marketDate(new Date(end))===d.until;
+}
+// Time rules only (as isCurrentAutomaticOffer): read ≤ 48 h ago and not in the future, end instant not passed, started.
+export function isCurrentDeal(d,now=new Date()) { return !!d && typeof d==='object' && currentWindow(d,now); }
+export function isDisplayableDeal(d,now=new Date()) { return validDeal(d) && isCurrentDeal(d,now); }
+/**
+ * Deals of one store grouped by category for the store dialog. Only displayable deals at `now`; duplicates by id are
+ * dropped. Groups: more deals first, then category name (Polish collation); items inside a group by name.
+ * @returns {{category:string, deals:object[]}[]}
+ */
+export function groupDeals(deals,store,now=new Date()) {
+  const seen=new Set(), groups=new Map();
+  for(const d of Array.isArray(deals)?deals:[]) {
+    if(d?.store!==store || seen.has(d.id) || !isDisplayableDeal(d,now)) continue;
+    seen.add(d.id); if(!groups.has(d.category)) groups.set(d.category,[]); groups.get(d.category).push(d);
+  }
+  const byName=(a,b)=>a.localeCompare(b,'pl-PL');
+  return [...groups].map(([category,list])=>({category,deals:list.sort((a,b)=>byName(a.name,b.name)||byName(a.id,b.id))}))
+    .sort((a,b)=>b.deals.length-a.deals.length || byName(a.category,b.category));
+}
 // ---------- CNT-027 / CNT-029: recipes and ingredients by current promotions ----------
 // Pantry staples do not count towards the promotion share of a recipe. `pepper` in the catalog is a
 // fresh bell pepper (a real ingredient); the pantry pepper is `blackpepper`.

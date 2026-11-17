@@ -45,7 +45,7 @@ test('Własny wpis nie może przejąć ID produktu, a nowe ilości są zaokrągl
 // CNT-040: pusta kategoria ALDI (np. „Serki wiejskie” 18.11.2026: nbHits 0) nie jest błędem struktury.
 const algolia=results=>`<script id="__NEXT_DATA__" type="application/json">${JSON.stringify({props:{pageProps:{algoliaState:{initialResults:{an_prd_pl_pl_products2:{results}}}}}})}</script>`;
 test('Bot: pusta kategoria to poprawny odczyt z 0 produktów; brak wyników nadal jest błędem struktury',()=>{
-  assert.deepEqual(parseAldi(algolia([{hits:[],nbHits:0}]),{now}),{offers:[],productsSeen:0,unmapped:0,empty:true});
+  assert.deepEqual(parseAldi(algolia([{hits:[],nbHits:0}]),{now}),{offers:[],deals:[],productsSeen:0,unmapped:0,empty:true});
   assert.throws(()=>parseAldi(algolia([]),{now}),/Nie rozpoznano/);
   assert.throws(()=>parseAldi(algolia([{hits:[{foo:1}],nbHits:1}]),{now}),/Nie rozpoznano/);
   assert.throws(()=>parseAldi(algolia([{nbHits:0}]),{now}),/Nie rozpoznano/);

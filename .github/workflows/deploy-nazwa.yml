@@ -56,8 +56,9 @@ jobs:
         if: steps.cfg.outputs.ready == 'true'
         run: |
           if git fetch -q --depth=1 origin gh-pages 2>/dev/null && git show origin/gh-pages:offers.json > /tmp/offers.json 2>/dev/null \
-            && node -e "const d=JSON.parse(require('fs').readFileSync('/tmp/offers.json','utf8'));if(d.version!==1||!Array.isArray(d.offers))process.exit(1)"; then
-            cp /tmp/offers.json apps/web/src/offers.json; echo "Użyto ofert z gh-pages"; else echo "Brak ofert na gh-pages — używam pliku z repozytorium"; fi
+            && node -e "const fs=require('fs');const d=JSON.parse(fs.readFileSync('/tmp/offers.json','utf8'));let m={updatedAt:0};try{m=JSON.parse(fs.readFileSync('apps/web/src/offers.json','utf8'))}catch{}
+              if(d.version!==1||!Array.isArray(d.offers)||!(Date.parse(d.updatedAt)>(Date.parse(m.updatedAt)||0)))process.exit(1)"; then
+            cp /tmp/offers.json apps/web/src/offers.json; echo "Użyto nowszych ofert z gh-pages"; else echo "Oferty z repozytorium są nowsze lub brak ofert na gh-pages"; fi
       - run: npm run build
         if: steps.cfg.outputs.ready == 'true'
       - name: Dodaj .htaccess i report.php

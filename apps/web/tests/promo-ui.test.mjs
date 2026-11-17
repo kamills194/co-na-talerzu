@@ -105,12 +105,12 @@ test('Szczegóły przepisu: cena z walutą, jednostka, sklep, „do” i link pr
   const [egg,butter,tomato,bread,salt]=items;
   assert.ok(tomato.includes('<span class="promo-price">0,99 zł</span> · Cena za kg · ALDI: Pomidory malinowe · <span class="promo-until">do 17 lis 2026</span>'),tomato);
   assert.ok(tomato.includes('<a class="promo-link" href="https://www.aldi.pl/produkty/tomato.html" target="_blank" rel="noopener noreferrer">Zobacz promocję'));
-  assert.ok(tomato.includes('Zasięg: niepotwierdzony'));
+  assert.ok(!/Zasięg|niepotwierdzon/.test(d),'CNT-041: bez zasięgu w szczegółach');
   assert.ok(butter.includes('6,99 zł</span> · Cena za 200 g · ALDI: Masło extra · <span class="promo-until">do 20 lis 2026</span>'));
-  assert.ok(!butter.includes('<a '),'http:// nie daje linku');assert.ok(!butter.includes('niepotwierdzony'),'zasięg ogólnopolski bez uwagi');
+  assert.ok(!butter.includes('<a '),'http:// nie daje linku');
   assert.ok(egg.includes('12,49 zł'));assert.ok(!egg.includes('<a '),'URL ze znakami HTML nie daje linku');
   assert.ok(egg.includes('opak. 10 szt. &lt;img src=x onerror=alert(1)&gt;'));assert.ok(egg.includes('ALDI &lt;img'));assert.ok(egg.includes('Jaja &lt;img'));
-  assert.ok(egg.includes('title="Uwaga &lt;img src=x onerror=alert(1)&gt;"'));
+  assert.ok(!egg.includes('Uwaga'),'notatka zasięgu nie jest pokazywana');
   assert.ok(!bread.includes('promo-line'));assert.ok(!salt.includes('promo-line'),'sól (spiżarnia) bez ceny mimo oferty');
   assert.ok(!d.includes('<img src=x'));assert.ok(!/onerror=alert\(1\)>/.test(d.replace(/&gt;/g,'')));
   assert.ok(!/razem|suma/i.test(d),'brak wymyślonej sumy');

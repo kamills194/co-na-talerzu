@@ -268,7 +268,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,su
 .ingredients li{border-bottom:1px solid var(--t-line);gap:4px 16px}
 .ingredients strong{white-space:normal;text-align:right}
 .promo-line{color:var(--muted)}
-.promo-price,.promo-scope{color:var(--orange)}
+.promo-price{color:var(--orange)}
 .promo-link{color:var(--green)}
 .nutrition{background:var(--white);border:1px solid var(--t-line);border-radius:var(--t-wobble)}
 .nutrition dl{grid-template-columns:repeat(auto-fit,minmax(min(100%,6.5rem),1fr))}

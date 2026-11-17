@@ -83,7 +83,7 @@ export const products = {
   gdzie `many` dotyczy dużych okrągłych liczb, np. 1 000 000, i zwykle brzmi jak `_other`).
   Forma, której język nie ma, jest błędem w teście.
 - Klucze liczby mnogiej: `promo_*` (liczba składników w promocji na karcie), `verifiedOffers_*`
-  (liczba ofert bota), jednostki `unitPiece_* unitTsp_* unitSlice_* unitClove_* unitBunch_*
+  (liczba ofert bota), `storeDeals_*` (liczba promocji sklepu na kafelku i w oknie sklepu, CNT-041), jednostki `unitPiece_* unitTsp_* unitSlice_* unitClove_* unitBunch_*
   unitPinch_* unitPot_*`. `unitG` i `unitMl` nie mają form.
 - Ilości bywają ułamkowe (0,5 pęczka). Ułamki zwykle trafiają do kategorii `other` (w polskim
   „0,5 łyżeczki”, w angielskim „0.5 tsp”). Jednostki to tylko słowo — liczbę wstawia aplikacja.
