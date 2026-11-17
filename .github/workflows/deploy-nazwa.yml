@@ -1,14 +1,13 @@
 name: Deploy conatalerz.pl (nazwa.pl)
-# Każde scalenie do main: testy, build i wysłanie apps/web/dist przez FTPS
+# Każde scalenie do main: testy, build i wysłanie apps/web/dist przez SFTP
 # na hosting nazwa.pl dla domeny conatalerz.pl.
 #
 # Wymagane w Settings → Secrets and variables → Actions:
-#   secrets.NAZWA_FTP_SERVER    np. serwer123456.nazwa.pl
+#   secrets.NAZWA_FTP_SERVER    np. server705424.nazwa.pl
 #   secrets.NAZWA_FTP_USERNAME  login konta FTP z panelu nazwa.pl
 #   secrets.NAZWA_FTP_PASSWORD  hasło konta FTP
-#   vars.NAZWA_FTP_DIR          katalog domeny conatalerz.pl na serwerze, zakończony "/"
-#                               (np. /public_html/ albo /conatalerz.pl/) — patrz docs/HOSTING-NAZWA-PL.md
-# Opcjonalnie vars.NAZWA_FTP_PROTOCOL: ftps (domyślnie) albo ftp.
+#   vars.NAZWA_FTP_DIR          katalog domeny względem konta FTP, zakończony "/" (np. ./)
+#                               — patrz docs/HOSTING-NAZWA-PL.md
 on:
   push:
     branches: [main]
@@ -58,21 +57,19 @@ jobs:
       - name: Dodaj .htaccess
         if: steps.cfg.outputs.ready == 'true'
         run: cp deploy/nazwa.pl/.htaccess apps/web/dist/.htaccess
-      - name: Wyślij na nazwa.pl
+      - name: Wyślij na nazwa.pl (SFTP)
         if: steps.cfg.outputs.ready == 'true'
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.NAZWA_FTP_SERVER }}
-          username: ${{ secrets.NAZWA_FTP_USERNAME }}
-          password: ${{ secrets.NAZWA_FTP_PASSWORD }}
-          protocol: ${{ vars.NAZWA_FTP_PROTOCOL || 'ftps' }}
-          local-dir: ./apps/web/dist/
-          server-dir: ${{ vars.NAZWA_FTP_DIR }}
-          # Usuwa z serwera tylko pliki wcześniej wysłane tą akcją (stan w .ftp-deploy-sync-state.json)
-          dangerous-clean-slate: false
-          exclude: |
-            **/.git*
-            **/.git*/**
+        env:
+          SERVER: ${{ secrets.NAZWA_FTP_SERVER }}
+          USER: ${{ secrets.NAZWA_FTP_USERNAME }}
+          LFTP_PASSWORD: ${{ secrets.NAZWA_FTP_PASSWORD }}
+          DIR: ${{ vars.NAZWA_FTP_DIR }}
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+          # Bez --delete: nie usuwa plików, których nie ma w dist (np. .well-known).
+          lftp -c "set sftp:auto-confirm yes; set net:max-retries 3; set net:timeout 30; \
+            open --env-password -u \"$USER\" sftp://$SERVER; \
+            mirror --reverse --verbose --parallel=4 --exclude-glob .git* ./apps/web/dist/ \"$DIR\""
       - name: Sprawdź stronę
         if: steps.cfg.outputs.ready == 'true'
         run: |
