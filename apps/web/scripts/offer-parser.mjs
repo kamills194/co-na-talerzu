@@ -78,6 +78,30 @@ export const productRules = [
   ['tofu',{any:['tofu'],not:['wedzon','marynowan','ziol','bazyli','curry','pasta','jedwabist','sos']}],
   ['nori',{any:['nori'],not:['przekask','snack','pikantn']}],
   ['sesame',{any:['sezam'],not:['chalw','olej','pasta']}],
+  // CNT-033. Beef cuts are told apart by the cut name; plain "wołowina" is ambiguous and not mapped.
+  ['beef',{any:['wolowina gulaszowa','wolowina na gulasz','mieso gulaszowe wolowe'],not:['mielon','w sosie','konserw','w puszce','gotowan']}],
+  ['beefslices',{any:['wolowina na zrazy','wolowina zrazowa','zrazy wolowe','zrazowa wolowa'],not:['mielon','w sosie','gotowan','panierowan']}],
+  ['mincedbeef',{any:['mieso mielone','mielone'],all:['wolow'],not:['wieprz','drob','indyk','kurczak']}],
+  // Bone-in raw legs/thighs; breast fillets are product `chicken`.
+  ['chickenthigh',{any:['udk(?:a|o|i) z kurczaka','podudzi(?:a|e) z kurczaka','cwiartk(?:a|i) z kurczaka'],not:['bez kosci','bez skory','wedzon','pieczon','grillowan','panierowan','marynowan','gotowan','w przyprawach']}],
+  ['porkshoulder',{any:['lopatka wieprzowa'],not:['mielon','wedzon','gotowan','pieczon','w galarecie','z koscia','konserw']}],
+  // Raw smoked bacon only; scalded/baked bacon and bacon crisps are different products.
+  ['bacon',{any:['boczek'],all:['wedzon'],not:['parzon','pieczon','gotowan','chips','w kostce z']}],
+  ['sauerkraut',{any:['kapusta kiszona','kapusta kwaszona'],not:['bigos','z marchew']}],
+  // Dry red wine for braising; sweet, mulled, sparkling and alcohol-free wines are not the same ingredient.
+  ['wine',{any:['wino czerwone'],all:['wytrawn'],not:['polwytrawn','polslodk','slodk','bezalkohol','grzan','musujac','aromatyzowan']}],
+  // Celeriac (root); celery stalks ("seler naciowy") are a different vegetable.
+  ['celeriac',{any:['seler(?: korzeniowy)?'],not:['naciow','suszon','w zalewie','sol','tart']}],
+  ['parsleyroot',{any:['pietruszka korzen','korzen pietruszki','pietruszka korzeniowa'],not:['natka','suszon']}],
+  ['leek',{any:['por(?:y)?'],not:['suszon','mrozon']}],
+  ['bayleaf',{any:['lisc(?:ie)? laurow(?:y|e)']}],
+  ['allspice',{any:['ziele angielskie'],not:['mielon']}],
+  ['mustard',{any:['musztarda'],not:['w proszku','nasion','ziarn']}],
+  // Vinegar-pickled gherkins; lacto-fermented ("kiszone") cucumbers taste different and are not mapped.
+  ['gherkin',{any:['ogor(?:ek|ki) konserwow(?:y|e)','korniszon(?:y)?'],not:['kiszon','malosoln','krojon']}],
+  ['yeast',{any:['drozdze'],all:['swiez'],not:['instant','suszon','w proszku']}],
+  ['ginger',{any:['imbir'],not:['mielon','marynowan','kandyzowan','suszon','w syropie','piernik','pasta']}],
+  ['curry',{any:['curry'],all:['przypraw|mielon|w proszku'],not:['pasta','sos','tofu','kurczak','mleko','ketchup']}],
 ];
 // Catalog products for which an ordinary shop promotion is not looked up, with the reason.
 export const excludedProducts = new Map([

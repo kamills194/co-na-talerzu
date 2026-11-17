@@ -8,7 +8,7 @@ const ORIGINAL_IDS = ['owsianka','jajecznica','owsianka-wodna','twarożek','jogu
 // Product IDs of the pilot catalog. Shopping lists stored on users' devices refer to them.
 const ORIGINAL_PRODUCTS = ['oats','milk','apple','cinnamon','egg','butter','bread','tomato','cheese','yogurt','radish','cucumber','banana','carrot','hummus','rice','passata','water','oil','salt','potato','chicken','paprika','pasta','onion','lentils','chickpeas','pepper','flour','sugar','cocoa','beans','lemon','garlic'];
 // Products without a declared allergen that still exclude a diet. Extend when adding meat, fish or other animal products.
-const MEAT = ['chicken','ham','mincedpork'];
+const MEAT = ['chicken','ham','mincedpork','beef','beefslices','mincedbeef','chickenthigh','porkshoulder','bacon'];
 // Explicit on purpose: a new fish product must be added here by hand, the test below compares it with the allergen data.
 const FISH = ['mackerel','tuna'];
 // IDs of the 30 recipes published before CNT-023 (18 pilot + 12 from CNT-015).
@@ -18,11 +18,18 @@ const CATALOG_30_PRODUCTS = {oats:'g',milk:'ml',apple:'szt.',cinnamon:'łyżeczk
 // Pantry basics that do not count toward the limit of 8 ingredients of a simple dish.
 const UNCOUNTED = ['salt','water','oil','blackpepper'];
 const isNew = r => !CATALOG_30_IDS.includes(r.id);
+// The 40 simple dishes added in CNT-023. The "at most 30 minutes, at most 8 ingredients" rule applies to this batch only.
+const CNT023_IDS = ['chleb-w-jajku','kanapki-z-jajkiem-i-rzodkiewka','ryz-na-mleku','strammer-max','tamagoyaki','omlet-francuski','kanapki-z-serem-i-pomidorem','twarozek-z-bananem','onigiri-z-tunczykiem','croque-monsieur','salatka-makaronowa','zupa-ziemniaczana','makaron-z-twarogiem','jajka-w-sosie-koperkowym','spaghetti-aglio-e-olio','makaron-z-tunczykiem','frykadele','ratatouille','oyakodon','yakisoba','zapiekanki-z-pieczarkami','placki-z-cukinii','frittata-z-cukinia','bratkartoffeln','flammkuchen','salatka-nicejska','zupa-miso','omurice','racuszki-z-jablkami','budyn-kakaowy','omlet-biszkoptowy','rote-grutze','tosty-francuskie','macedonia','surowka-z-kapusty','caprese','bruschetta','kartoffelsalat','zupa-cebulowa','sunomono'];
+// The 16 longer dishes added in CNT-033 (over 60 minutes including passive time), with their cuisine.
+const CNT033 = {golabki:'polish',bigos:'polish',rosol:'polish',szarlotka:'polish','ragu-bolognese':'italian',focaccia:'italian',parmigiana:'italian',gulaschsuppe:'german',rinderrouladen:'german',apfelstrudel:'german','boeuf-bourguignon':'french','coq-au-vin':'french','tarte-tatin':'french',ramen:'japanese',gyoza:'japanese','kare-raisu':'japanese'};
+const CNT033_IDS = Object.keys(CNT033);
+// Product IDs available in CNT-023 (shopping lists stored on users' devices refer to them).
+const CATALOG_70_PRODUCTS = [...Object.keys(CATALOG_30_PRODUCTS),'yellowcheese','mozzarella','oliveoil','basil','parsley','zucchini','eggplant','cabbage','mushroom','orange','berries','potatostarch','vinegar','tuna','mincedpork','ham','sushirice','soysauce','miso','tofu','nori','sesame'];
 const ANIMAL_ALLERGENS = ['milk','eggs','fish'];
 const has = (r,ids) => r.ingredients.some(i=>ids.includes(i.product));
-test('Katalog ma 70 przepisów o unikalnych ID i zachowuje 18 pierwotnych ID',()=>{
-  assert.equal(recipes.length,70);
-  assert.equal(new Set(recipes.map(r=>r.id)).size,70);
+test('Katalog ma 86 przepisów o unikalnych ID i zachowuje 18 pierwotnych ID',()=>{
+  assert.equal(recipes.length,86);
+  assert.equal(new Set(recipes.map(r=>r.id)).size,86);
   assert.equal(ORIGINAL_IDS.length,18);
   for(const id of ORIGINAL_IDS) assert.ok(recipes.some(r=>r.id===id),`brak pierwotnego przepisu ${id}`);
 });
@@ -48,7 +55,8 @@ test('Jawna lista ryb zgadza się z alergenami produktów, a mięso nie jest ozn
   assert.ok(!MEAT.some(id=>FISH.includes(id)));
 });
 test('Produkty o ukrytych alergenach mają je oznaczone',()=>{
-  const expect={soysauce:['soy','gluten'],miso:['soy'],tofu:['soy'],sesame:['sesame'],hummus:['sesame'],tuna:['fish'],mackerel:['fish'],mozzarella:['milk'],yellowcheese:['milk'],ham:['soy','milk','celery','mustard']};
+  const expect={soysauce:['soy','gluten'],miso:['soy'],tofu:['soy'],sesame:['sesame'],hummus:['sesame'],tuna:['fish'],mackerel:['fish'],mozzarella:['milk'],yellowcheese:['milk'],ham:['soy','milk','celery','mustard'],
+    bacon:['gluten','soy','milk','celery','mustard'],celeriac:['celery'],mustard:['mustard'],gherkin:['mustard'],curry:['mustard','celery']};
   for(const [id,list] of Object.entries(expect)) for(const a of list) assert.ok(products[id][2].includes(a),`${id}: brak ${a}`);
   assert.deepEqual(products.nori[2],[]);
 });
@@ -64,18 +72,19 @@ test('Każdy przepis ma pochodzenie, stan przeglądu, pole zdjęcia i opis alter
     assert.ok(typeof r.photoAlt==='string'&&r.photoAlt.trim().length>=10,`${r.id}: photoAlt`);
     assert.ok(!/\.$/.test(r.photoAlt.trim()),`${r.id}: photoAlt bez kropki na końcu`);
   }
-  assert.equal(new Set(recipes.map(r=>r.photoAlt)).size,70);
+  assert.equal(new Set(recipes.map(r=>r.photoAlt)).size,86);
 });
+// Upper bound 180 minutes: the longest CNT-033 dish (bœuf bourguignon) braises for over two hours.
 test('Każdy przepis ma nazwę, 2 porcje, realny czas i co najmniej 3 niepuste kroki',()=>{
   for(const r of recipes){
     assert.ok(typeof r.name==='string'&&r.name.trim(),r.id);
     assert.equal(r.servings,2,r.id);
-    assert.ok(Number.isInteger(r.minutes)&&r.minutes>=5&&r.minutes<=120,r.id);
+    assert.ok(Number.isInteger(r.minutes)&&r.minutes>=5&&r.minutes<=180,r.id);
     assert.ok(r.steps.length>=3,r.id);
     assert.ok(r.steps.every(s=>typeof s==='string'&&s.trim().length>=15),r.id);
     assert.ok(r.ingredients.length>=2,r.id);
   }
-  assert.equal(new Set(recipes.map(r=>r.name)).size,70);
+  assert.equal(new Set(recipes.map(r=>r.name)).size,86);
 });
 test('Żaden przepis nie wymienia dwa razy tego samego produktu',()=>{
   for(const r of recipes) assert.equal(new Set(r.ingredients.map(i=>i.product)).size,r.ingredients.length,r.id);
@@ -125,7 +134,7 @@ test('Katalog zachowuje 30 wcześniejszych ID przepisów oraz ID i jednostki wcz
   assert.equal(CATALOG_30_IDS.length,30);
   assert.equal(new Set(CATALOG_30_IDS).size,30);
   for(const id of CATALOG_30_IDS) assert.ok(recipes.some(r=>r.id===id),`brak wcześniejszego przepisu ${id}`);
-  assert.equal(recipes.filter(isNew).length,40);
+  assert.equal(recipes.filter(isNew).length,56);
   assert.equal(Object.keys(CATALOG_30_PRODUCTS).length,42);
   for(const [id,unit] of Object.entries(CATALOG_30_PRODUCTS)){
     assert.ok(id in products,`brak wcześniejszego produktu ${id}`);
@@ -148,8 +157,10 @@ test('Klasyfikacja wcześniejszych przepisów: dania domowe pozostają w kuchni 
   assert.deepEqual(foreign,['makaron']);
   assert.equal(recipes.find(r=>r.id==='makaron').cuisine,'italian');
 });
-test('Nowe przepisy są proste: najwyżej 30 minut i najwyżej 8 liczonych składników',()=>{
-  for(const r of recipes.filter(isNew)){
+test('Przepisy z CNT-023 są proste: najwyżej 30 minut i najwyżej 8 liczonych składników',()=>{
+  assert.equal(CNT023_IDS.length,40);
+  assert.deepEqual(recipes.filter(r=>isNew(r)&&!CNT033_IDS.includes(r.id)).map(r=>r.id),CNT023_IDS);
+  for(const r of recipes.filter(r=>CNT023_IDS.includes(r.id))){
     assert.ok(r.minutes<=30,`${r.id}: ${r.minutes} min`);
     const counted=r.ingredients.filter(i=>!UNCOUNTED.includes(i.product)).length;
     assert.ok(counted>=2&&counted<=8,`${r.id}: ${counted} składników`);
@@ -169,4 +180,57 @@ test('Nowe dania mięsne i rybne nie trafiają do filtrów diety',()=>{
   for(const id of ['strammer-max','croque-monsieur','frykadele','oyakodon','onigiri-z-tunczykiem','makaron-z-tunczykiem','salatka-nicejska']) assert.ok(!vegetarian.includes(id),id);
   const vegan=filterRecipes(recipes,{diet:'vegan'}).map(r=>r.id);
   for(const id of ['spaghetti-aglio-e-olio','ratatouille','yakisoba','zupa-miso','macedonia','surowka-z-kapusty','bruschetta','kartoffelsalat','sunomono']) assert.ok(vegan.includes(id),id);
+});
+// ---------- CNT-033: dishes over 60 minutes and a more even cuisine split ----------
+test('CNT-033: 16 nowych dań trwa ponad 60 minut, ma najwyżej 12 składników, co najmniej 4 kroki i kompletny rekord',()=>{
+  assert.equal(CNT033_IDS.length,16);
+  for(const [id,cuisine] of Object.entries(CNT033)){
+    const r=recipes.find(x=>x.id===id);
+    assert.ok(r,`brak przepisu ${id}`);
+    assert.equal(r.cuisine,cuisine,id);
+    assert.ok(r.minutes>60&&r.minutes<=180,`${id}: ${r.minutes} min`);
+    assert.ok(r.ingredients.length<=12,`${id}: ${r.ingredients.length} składników`);
+    assert.ok(r.steps.length>=4,`${id}: ${r.steps.length} kroków`);
+    assert.equal(r.servings,2,id);
+    assert.equal(r.origin,'Autorski przepis redakcji Co na talerz',id);
+    assert.equal(r.review,'editorial',id);
+    assert.equal(r.photo,null,id);
+  }
+  // Appended at the end: the order of the earlier 70 recipes is unchanged.
+  assert.deepEqual(recipes.slice(70).map(r=>r.id),CNT033_IDS);
+  assert.deepEqual(recipes.slice(30,70).map(r=>r.id),CNT023_IDS);
+  // Mostly lunches and dinners, plus desserts and a baked snack.
+  const cats=new Set(CNT033_IDS.map(id=>recipes.find(r=>r.id===id).category));
+  for(const c of ['lunch','dinner','dessert','snack','starter']) assert.ok(cats.has(c),c);
+});
+test('CNT-033: każda kuchnia ma co najmniej 9 przepisów, a kuchnia polska poniżej 55% katalogu',()=>{
+  const count=c=>recipes.filter(r=>r.cuisine===c).length;
+  for(const c of cuisines) assert.ok(count(c)>=9,`${c}: ${count(c)}`);
+  assert.deepEqual(Object.fromEntries(cuisines.map(c=>[c,count(c)])),{polish:47,italian:11,german:9,french:9,japanese:10});
+  assert.ok(count('polish')/recipes.length<0.55,`udział kuchni polskiej ${count('polish')}/${recipes.length}`);
+  for(const c of cuisines.filter(c=>c!=='polish')) assert.ok(CNT033_IDS.filter(id=>CNT033[id]===c).length>=3,c);
+});
+test('CNT-033: wcześniejsze 64 produkty zachowują ID i jednostki, a nowe są w katalogu',()=>{
+  assert.equal(CATALOG_70_PRODUCTS.length,64);
+  for(const id of CATALOG_70_PRODUCTS) assert.ok(id in products,`brak produktu ${id}`);
+  const added={beef:'g',beefslices:'g',mincedbeef:'g',chickenthigh:'g',porkshoulder:'g',bacon:'g',sauerkraut:'g',wine:'ml',celeriac:'g',parsleyroot:'szt.',leek:'szt.',bayleaf:'szt.',allspice:'szt.',mustard:'g',gherkin:'szt.',yeast:'g',ginger:'g',curry:'łyżeczka'};
+  for(const [id,unit] of Object.entries(added)) assert.equal(products[id]?.[1],unit,id);
+  assert.deepEqual(Object.keys(products).sort(),[...CATALOG_70_PRODUCTS,...Object.keys(added)].sort());
+});
+test('CNT-033: alergeny i diety nowych dań są filtrowane',()=>{
+  const without=ex=>filterRecipes(recipes,{excluded:ex}).map(r=>r.id);
+  for(const id of ['rosol','ragu-bolognese','bigos','rinderrouladen','kare-raisu']) assert.ok(!without(['celery']).includes(id),`seler: ${id}`);
+  for(const id of ['rinderrouladen','bigos','kare-raisu']) assert.ok(!without(['mustard']).includes(id),`gorczyca: ${id}`);
+  for(const id of ['ramen','gyoza','kare-raisu','bigos','rinderrouladen']) assert.ok(!without(['soy']).includes(id),`soja: ${id}`);
+  assert.ok(!without(['sesame']).includes('ramen'));
+  assert.ok(!without(['eggs']).includes('szarlotka'));
+  // Dishes without the allergen stay visible.
+  for(const id of ['golabki','gulaschsuppe']) assert.ok(without(['gluten','milk','eggs','soy','celery','mustard','sesame']).includes(id),id);
+  assert.ok(without(['celery','mustard']).includes('boeuf-bourguignon'));
+  const vegetarian=filterRecipes(recipes,{diet:'vegetarian'}).map(r=>r.id);
+  for(const id of ['szarlotka','focaccia','parmigiana','apfelstrudel','tarte-tatin']) assert.ok(vegetarian.includes(id),id);
+  for(const id of ['golabki','bigos','rosol','ragu-bolognese','gulaschsuppe','rinderrouladen','boeuf-bourguignon','coq-au-vin','ramen','gyoza','kare-raisu']) assert.ok(!vegetarian.includes(id),id);
+  assert.deepEqual(filterRecipes(recipes,{diet:'vegan'}).map(r=>r.id).filter(id=>CNT033_IDS.includes(id)),['focaccia']);
+  // The 60-minute filter hides every new dish.
+  assert.ok(!filterRecipes(recipes,{maxTime:60}).some(r=>CNT033_IDS.includes(r.id)));
 });

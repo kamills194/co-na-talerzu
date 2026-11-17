@@ -23,6 +23,15 @@ export const NUTRITION = {
   vinegar:[21,0,0,0.9], tuna:[116,25.5,0.8,0], mincedpork:[263,16.9,21.2,0],
   ham:[115,18.0,4.0,1.5], sushirice:[360,6.5,0.6,80.0], soysauce:[53,8.1,0.6,4.9],
   miso:[199,12.8,6.0,26.5], tofu:[120,12.5,7.0,2.0], nori:[300,41.0,3.0,30.0], sesame:[573,17.7,49.7,23.4],
+  // CNT-033. chickenthigh: per 100 g AS BOUGHT, bone included (about 25% bone; edible part with skin ≈ 210 kcal).
+  // wine: kcal include alcohol (≈ 7 kcal/g), which has no macronutrient column, and part of the alcohol
+  // evaporates during long braising, so recipes with wine are rough estimates.
+  beef:[160,20.0,9.0,0], beefslices:[130,22.0,4.5,0], mincedbeef:[215,18.5,15.5,0],
+  chickenthigh:[158,12.8,11.6,0], porkshoulder:[200,17.0,14.5,0], bacon:[450,14.0,43.0,1.0],
+  sauerkraut:[19,0.9,0.1,4.3], wine:[85,0.1,0,2.6], celeriac:[42,1.5,0.3,9.2], parsleyroot:[45,2.6,0.5,9.0],
+  leek:[61,1.5,0.3,14.2], bayleaf:[313,7.6,8.4,75.0], allspice:[263,6.1,8.7,72.1],
+  mustard:[140,6.0,7.0,11.0], gherkin:[25,0.5,0.1,5.5], yeast:[105,8.4,1.9,18.1],
+  ginger:[80,1.8,0.8,17.8], curry:[325,14.3,14.0,55.8],
 };
 // Salt, water and a pinch of black pepper are counted as 0 kcal (negligible or none).
 export const ZERO_KCAL = ['water','salt','blackpepper'];
@@ -32,12 +41,15 @@ export const UNIT_GRAMS = {
   apple:160, cinnamon:2.5, egg:50, bread:35, tomato:150, radish:15, cucumber:300, banana:120, carrot:85,
   salt:6, paprika:2.5, onion:110, pepper:160, lemon:50, garlic:5, chives:25, dill:30, blackpepper:0.3,
   basil:20, parsley:30, zucchini:300, eggplant:300, orange:150, nori:2.5,
+  // CNT-033: parsley root and leek — edible part of a medium piece; bay leaf, allspice berry and a gherkin
+  // (medium pickled cucumber, drained); curry powder per teaspoon like other ground spices.
+  parsleyroot:80, leek:200, bayleaf:0.2, allspice:0.15, gherkin:50, curry:2.5,
 };
 // ml → g. Water-like liquids ≈ 1 g/ml; oils are lighter.
 export const DENSITY = { oil:0.92, oliveoil:0.91 };
 // Products that are meat (CNT-025). Products carry no meat marker, so the list is explicit; a test
 // fails when a product whose name suggests meat is missing here. Fish is detected by the fish allergen.
-export const MEAT_PRODUCTS = ['chicken','ham','mincedpork'];
+export const MEAT_PRODUCTS = ['chicken','ham','mincedpork','beef','beefslices','mincedbeef','chickenthigh','porkshoulder','bacon'];
 // Grams of one unit of a product, or null when unknown.
 export function gramsPerUnit(id) {
   const unit=products[id]?.[1];
