@@ -17,7 +17,7 @@ jobs:
       - name: Pobierz próbki
         run: node .github/diag-aldi.mjs
       - name: Uruchom bota
-        run: node apps/web/scripts/offers-bot.mjs > diag/bot-stdout.json 2> diag/bot-stderr.txt || echo "exit $?" >> diag/bot-stderr.txt
+        run: echo skip
       - name: Zapisz wyniki
         run: |
           cp apps/web/src/offers.json diag/offers.json || true
