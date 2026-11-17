@@ -1,4 +1,391 @@
-// Recipe and product texts: it. PLACEHOLDER — not translated yet; everything falls back to Polish (recipes.pl.js).
-// Fill according to docs/TLUMACZENIA.md: recipes { <recipeId>: { name, steps:[...], photoAlt } }, products { <productId>: name }.
-export const recipes = {};
-export const products = {};
+// Recipe and product texts: Italiano (it-IT). Text only — amounts, units, ids, allergens and flags come from
+// recipes.pl.js. Each recipe has exactly as many steps as in Polish. Format: docs/TLUMACZENIA.md.
+// Machine translation (CNT-030), not reviewed by a native speaker or tested in a kitchen.
+export const products = {
+  oats:'Fiocchi d’avena', milk:'Latte', apple:'Mela', cinnamon:'Cannella', egg:'Uovo', butter:'Burro', bread:'Pane', tomato:'Pomodoro',
+  cheese:'Quark (formaggio fresco polacco twaróg)', yogurt:'Yogurt bianco', radish:'Ravanello', cucumber:'Cetriolo', banana:'Banana', carrot:'Carota', hummus:'Hummus', rice:'Riso',
+  passata:'Passata di pomodoro', water:'Acqua', oil:'Olio di colza', salt:'Sale', potato:'Patate', chicken:'Petto di pollo', paprika:'Paprika dolce in polvere',
+  pasta:'Pasta di grano senza uova', onion:'Cipolla', lentils:'Lenticchie rosse secche', chickpeas:'Ceci in scatola, scolati', pepper:'Peperone fresco', flour:'Farina di grano tenero', sugar:'Zucchero',
+  cocoa:'Cacao in polvere', beans:'Fagioli in scatola, scolati', lemon:'Limone', garlic:'Aglio',
+  semolina:'Semolino', buckwheat:'Grano saraceno tostato', kefir:'Kefir', sourcream:'Panna acida 18%',
+  mackerel:'Sgombro affumicato, filetto', chives:'Erba cipollina', dill:'Aneto', blackpepper:'Pepe nero macinato',
+  yellowcheese:'Formaggio a pasta semidura (tipo Gouda)', mozzarella:'Mozzarella', oliveoil:'Olio d’oliva', basil:'Basilico fresco',
+  parsley:'Prezzemolo', zucchini:'Zucchina', eggplant:'Melanzana', cabbage:'Cavolo cappuccio bianco',
+  mushroom:'Funghi champignon', orange:'Arancia', berries:'Frutti di bosco surgelati', potatostarch:'Fecola di patate',
+  vinegar:'Aceto di mele', tuna:'Tonno al naturale, sgocciolato', mincedpork:'Carne macinata di maiale',
+  ham:'Prosciutto cotto a fette', sushirice:'Riso per sushi', soysauce:'Salsa di soia',
+  miso:'Pasta di miso', tofu:'Tofu al naturale', nori:'Alga nori, foglio', sesame:'Semi di sesamo',
+};
+export const recipes = {
+  'owsianka':{ name:'Porridge d’avena con mela e cannella', steps:[
+    'Versa i fiocchi d’avena in un pentolino, copri con il latte e porta a un leggero bollore.',
+    'Cuoci a fuoco basso per 5–7 minuti, mescolando, finché i fiocchi non si ammorbidiscono.',
+    'Lava la mela, elimina il torsolo e grattugiala. Aggiungila al porridge con la cannella e scalda per un minuto.'],
+    photoAlt:'Ciotola di porridge al latte con mela grattugiata e cannella' },
+  'jajecznica':{ name:'Uova strapazzate con pomodoro', steps:[
+    'Lava il pomodoro e taglialo a cubetti. Scalda il burro in padella.',
+    'Aggiungi il pomodoro e cuoci per 2 minuti. Rompi le uova, sala e mescola a fuoco basso finché non sono completamente rapprese.',
+    'Servi subito con il pane.'],
+    photoAlt:'Uova strapazzate con pezzetti di pomodoro nel piatto, accanto fette di pane' },
+  'owsianka-wodna':{ name:'Porridge alla banana cotto in acqua', steps:[
+    'Copri i fiocchi d’avena con l’acqua e cuoci per 5–7 minuti, mescolando.',
+    'Schiaccia una banana con una forchetta e incorporala ai fiocchi.',
+    'Taglia l’altra a rondelle. Disponile sul porridge e spolvera con la cannella.'],
+    photoAlt:'Ciotola di porridge con rondelle di banana spolverate di cannella' },
+  'pasta-jajeczna':{ name:'Tartine con crema di uova ed erba cipollina', steps:[
+    'Metti le uova in una pentola con acqua fredda, porta a bollore e cuoci per 10 minuti dall’ebollizione. Passale sotto l’acqua fredda e lasciale raffreddare per 5 minuti.',
+    'Lava l’erba cipollina, asciugala e tritala finemente. Sguscia le uova e schiacciale con una forchetta.',
+    'Mescola le uova con lo yogurt, l’erba cipollina, il sale e il pepe. Spalma la crema sulle fette di pane.'],
+    photoAlt:'Fette di pane con crema di uova cosparsa di erba cipollina' },
+  'kasza-manna':{ name:'Semolino al latte con purea di mele', steps:[
+    'Lava le mele, sbucciale, elimina il torsolo e tagliale a cubetti. Stufale in un pentolino con l’acqua e la cannella, con il coperchio, per 6–8 minuti finché non si ammorbidiscono, poi schiacciale con una forchetta.',
+    'In un secondo pentolino scalda il latte con lo zucchero. Quando inizia a bollire, abbassa la fiamma e versa il semolino a pioggia, mescolando continuamente perché non si formino grumi.',
+    'Cuoci per 2–3 minuti, mescolando, finché il semolino non si addensa. Distribuiscilo nelle ciotole e completa con la purea di mele.'],
+    photoAlt:'Ciotola di semolino con purea di mele sopra' },
+  'twarożek':{ name:'Crema di quark con ravanelli', steps:[
+    'Lava i ravanelli e tritali finemente.',
+    'Schiaccia il quark con lo yogurt, aggiungi i ravanelli e il sale.',
+    'Servi sulle fette di pane.'],
+    photoAlt:'Fette di pane con crema di formaggio fresco bianco e pezzetti di ravanello' },
+  'jogurt':{ name:'Yogurt con banana e fiocchi d’avena', steps:[
+    'Sbuccia le banane e tagliale a rondelle.',
+    'Dividi lo yogurt in due ciotole.',
+    'Aggiungi le banane e i fiocchi. Lascia riposare per 3 minuti, perché i fiocchi si ammorbidiscano.'],
+    photoAlt:'Ciotola di yogurt bianco con rondelle di banana e fiocchi d’avena' },
+  'hummus-kanapki':{ name:'Tartine con hummus e cetriolo', steps:[
+    'Lava il cetriolo e taglialo a fettine sottili.',
+    'Spalma il pane con l’hummus.',
+    'Disponi il cetriolo sulle tartine e servi.'],
+    photoAlt:'Tartine con hummus e fettine di cetriolo fresco' },
+  'pasta-z-makreli':{ name:'Crema di sgombro affumicato con erba cipollina', steps:[
+    'Togli la pelle ai filetti di sgombro. Sbriciola la polpa con le dita ed elimina con cura tutte le lische.',
+    'Lava l’erba cipollina e tritala finemente. Schiaccia il quark con una forchetta insieme allo yogurt.',
+    'Aggiungi lo sgombro, l’erba cipollina, il succo di limone e il pepe e mescola. Non aggiungere sale: il pesce affumicato è già salato. Servi sulle fette di pane.'],
+    photoAlt:'Fette di pane con crema di sgombro affumicato ed erba cipollina' },
+  'koktajl-kefirowy':{ name:'Frullato di kefir con banana e avena', steps:[
+    'Sbuccia le banane e spezzale a pezzi.',
+    'Metti nel frullatore le banane, i fiocchi d’avena e la cannella, poi versa il kefir.',
+    'Frulla per circa un minuto, finché il frullato non è liscio. Versalo in due bicchieri e servi subito.'],
+    photoAlt:'Due bicchieri di frullato chiaro di banana e kefir' },
+  'pomidorowa':{ name:'Zuppa di pomodoro casalinga con riso', steps:[
+    'Sbuccia la cipolla e la carota. Trita la cipolla e grattugia la carota.',
+    'Scalda l’olio in una pentola. Soffriggi le verdure per 4 minuti.',
+    'Aggiungi la passata, l’acqua e il sale. Porta a bollore, versa il riso e cuoci con il coperchio per circa 18 minuti, finché il riso non è tenero. Se serve, aggiungi altra acqua.'],
+    photoAlt:'Piatto di zuppa di pomodoro con riso' },
+  'kurczak':{ name:'Pollo al forno con patate', steps:[
+    'Preriscalda il forno a 200°C. Sbuccia le patate e le carote e tagliale a pezzetti.',
+    'Taglia il pollo a strisce spesse. In una teglia mescola la carne e le verdure con l’olio, la paprika e il sale. Dopo aver toccato la carne cruda, lava le mani e gli utensili.',
+    'Cuoci in forno per circa 35–40 minuti. Controlla che le verdure siano tenere e che la temperatura al cuore del pezzo di carne più spesso abbia raggiunto almeno 75°C.'],
+    photoAlt:'Teglia con pezzi di pollo, patate e carote' },
+  'makaron':{ name:'Pasta al pomodoro', steps:[
+    'Metti l’acqua sul fuoco e cuoci la pasta secondo le indicazioni sulla confezione. Prima di scolarla, tieni da parte mezzo bicchiere di acqua di cottura.',
+    'Nel frattempo sbuccia la cipolla e l’aglio, tritali e soffriggili nell’olio per 3 minuti.',
+    'Versa la passata, sala e cuoci per 10 minuti. Unisci la pasta; se serve, aggiungi un po’ di acqua di cottura.'],
+    photoAlt:'Piatto di pasta con sugo rosso di pomodoro' },
+  'soczewica':{ name:'Stufato di lenticchie rosse', steps:[
+    'Sbuccia la carota e la cipolla e tagliale a cubetti. Soffriggile nell’olio per 4 minuti.',
+    'Sciacqua le lenticchie. Aggiungile nella pentola con la passata, l’acqua, la paprika e il sale.',
+    'Cuoci per circa 20 minuti, mescolando, finché le lenticchie non sono tenere. Se serve, aggiungi altra acqua.'],
+    photoAlt:'Ciotola di stufato denso di lenticchie rosse con carote' },
+  'placki-ziemniaczane':{ name:'Frittelle di patate con panna acida', steps:[
+    'Sbuccia le patate e la cipolla, lavale e grattugiale con la grattugia a fori fini. Trasferisci in un colino e strizza il liquido in eccesso.',
+    'Mescola il composto grattugiato con l’uovo, la farina e il sale. Friggi subito, perché le patate non anneriscano.',
+    'Scalda parte dell’olio in padella. Versa il composto a cucchiaiate, appiattiscilo in frittelle sottili e cuoci a fuoco medio per 3–4 minuti per lato, finché non sono dorate e cotte all’interno. Ripeti con il resto del composto, aggiungendo olio.',
+    'Fai scolare le frittelle su carta da cucina e servile con la panna acida.'],
+    photoAlt:'Frittelle di patate dorate con un cucchiaio di panna acida' },
+  'leniwe':{ name:'Pierogi leniwe — gnocchetti di quark al burro', steps:[
+    'Metti sul fuoco una pentola grande di acqua salata. Schiaccia bene il quark con una forchetta, aggiungi l’uovo e mescola.',
+    'Aggiungi circa 100 g di farina e impasta brevemente fino a ottenere un impasto morbido. Con il resto della farina infarina il piano di lavoro.',
+    'Forma due cilindri spessi come un pollice, appiattiscili leggermente e tagliali in diagonale a pezzi lunghi circa 2 cm.',
+    'Cuoci gli gnocchetti a più riprese nell’acqua bollente. Cuocili per 2–3 minuti da quando vengono a galla e scolali con una schiumarola. Condiscili con il burro fuso e spolverali di zucchero.'],
+    photoAlt:'Piatto di gnocchetti di quark conditi con burro fuso e zucchero' },
+  'potrawka-z-kurczaka':{ name:'Fricassea di pollo con carote e riso', steps:[
+    'Sbuccia le carote e la cipolla. Trita la cipolla e taglia le carote a mezze rondelle. Taglia il pollo a cubetti di circa 2 cm. Dopo aver toccato la carne cruda, lava le mani, il tagliere e il coltello.',
+    'Scalda l’olio in una pentola. Rosola il pollo per 5 minuti, mescolando, finché non diventa bianco su tutti i lati. Aggiungi la cipolla e le carote e cuoci per altri 3 minuti.',
+    'Versa l’acqua, aggiungi il sale e il pepe. Cuoci con il coperchio a fuoco basso per 15 minuti, finché le carote non sono tenere. Nel frattempo cuoci il riso secondo le indicazioni sulla confezione.',
+    'In una tazza mescola la panna acida con la farina e 3 cucchiai di sugo caldo, versa nella pentola e cuoci per 2 minuti, mescolando, finché il sugo non si addensa. Controlla che la temperatura al cuore del pezzo di carne più spesso abbia raggiunto almeno 75°C e servi con il riso.'],
+    photoAlt:'Piatto di riso con pezzi di pollo e carote in salsa chiara' },
+  'salatka':{ name:'Insalata di ceci', steps:[
+    'Lava le verdure, elimina i semi dal peperone e taglia tutto a cubetti.',
+    'Sciacqua i ceci e scolali. Uniscili alle verdure.',
+    'Mescola l’olio con il succo di limone e il sale. Condisci l’insalata e mescola.'],
+    photoAlt:'Ciotola di insalata di ceci, pomodoro, cetriolo e peperone' },
+  'omlet':{ name:'Omelette ai peperoni', steps:[
+    'Lava il peperone, elimina il torsolo con i semi e taglialo a cubetti piccoli.',
+    'Soffriggi il peperone nell’olio per 4 minuti. Sbatti le uova con il sale.',
+    'Versa le uova in padella. Cuoci con il coperchio a fuoco basso per circa 6 minuti, finché le uova non sono completamente rapprese.'],
+    photoAlt:'Omelette con cubetti di peperone nel piatto' },
+  'grzanki':{ name:'Crostini caldi al pomodoro', steps:[
+    'Preriscalda il forno a 190°C. Lava i pomodori e tagliali a cubetti piccoli.',
+    'Irrora il pane con l’olio, strofinalo con l’aglio sbucciato e disponilo su una teglia.',
+    'Distribuisci sopra i pomodori, sala e cuoci in forno per 8–10 minuti.'],
+    photoAlt:'Fette di pane tostate in forno con cubetti di pomodoro' },
+  'kasza-z-jajkiem':{ name:'Grano saraceno con uovo all’occhio di bue e cipolla', steps:[
+    'Cuoci il grano saraceno con metà del sale secondo le indicazioni sulla confezione, di solito per circa 15 minuti.',
+    'Nel frattempo sbuccia la cipolla e tagliala a cubetti. Scalda metà del burro in padella e rosola la cipolla a fuoco medio per 5–6 minuti, finché non è dorata. Mescolala al grano saraceno cotto.',
+    'Nella stessa padella scalda il resto del burro. Rompi le uova, aggiungi il resto del sale e il pepe. Cuoci con il coperchio per 3–4 minuti, finché albume e tuorlo non sono rappresi. Disponi le uova sul grano saraceno.'],
+    photoAlt:'Piatto di grano saraceno con cipolla rosolata e uovo all’occhio di bue' },
+  'ziemniaki-z-gzikiem':{ name:'Patate con la buccia e gzik (crema di quark con ravanelli ed erba cipollina)', steps:[
+    'Scegli patate di dimensioni simili e spazzolale bene. Mettile con la buccia in una pentola, coprile con acqua fredda con metà del sale e cuocile per 20–25 minuti dal bollore, finché un coltello non entra senza resistenza.',
+    'Nel frattempo lava i ravanelli e l’erba cipollina e tritali finemente. Schiaccia il quark con una forchetta insieme alla panna acida, aggiungi i ravanelli, l’erba cipollina e il resto del sale.',
+    'Scola le patate e lasciale asciugare per un minuto nella pentola. Servile calde, con la buccia o sbucciate, con il gzik a parte.'],
+    photoAlt:'Patate con la buccia accanto a una ciotolina di quark con erba cipollina e ravanelli' },
+  'placuszki':{ name:'Pancake alla banana', steps:[
+    'Schiaccia le banane. Mescolale con le uova, il latte e la farina.',
+    'Scalda parte dell’olio in padella e versa l’impasto a cucchiaiate.',
+    'Cuoci i piccoli pancake a fuoco medio per 2–3 minuti per lato, finché non sono cotti all’interno. Ripeti con il resto dell’impasto.'],
+    photoAlt:'Pila di piccoli pancake alla banana nel piatto' },
+  'pieczone-jablka':{ name:'Mele al forno con cannella', steps:[
+    'Preriscalda il forno a 180°C. Lava le mele e svuotale del torsolo.',
+    'Mettile in una pirofila e riempi il centro con lo zucchero e la cannella. Versa l’acqua sul fondo.',
+    'Cuoci in forno per circa 25 minuti, finché non sono morbide. Lasciale intiepidire leggermente prima di servire.'],
+    photoAlt:'Due mele cotte al forno con cannella in una pirofila' },
+  'kakao':{ name:'Crema di banana e cacao', steps:[
+    'Sbuccia le banane mature e tagliale a pezzi.',
+    'Frullale con il cacao fino a ottenere una crema liscia, oppure schiacciale molto bene con una forchetta.',
+    'Distribuisci nelle ciotoline e servi subito.'],
+    photoAlt:'Ciotolina di crema scura di banane e cacao' },
+  'nalesniki-z-twarogiem':{ name:'Crêpes dolci al quark', steps:[
+    'Con una frusta mescola la farina, il latte, l’acqua, l’uovo e un cucchiaio di olio fino a ottenere una pastella liscia e senza grumi. Lascia riposare per 10 minuti.',
+    'Schiaccia il quark con una forchetta insieme allo yogurt e allo zucchero fino a ottenere una crema liscia.',
+    'Scalda una padella e ungila con un velo d’olio. Versa una porzione di pastella, distribuiscila sul fondo e cuoci per circa un minuto per lato, finché la crêpe non si rapprende e si dora. Prepara così circa 6 crêpes.',
+    'Spalma ogni crêpe con la crema di quark e arrotolala.'],
+    photoAlt:'Crêpes arrotolate con ripieno bianco di quark nel piatto' },
+  'marchewki':{ name:'Bastoncini di carota con salsa allo yogurt', steps:[
+    'Sbuccia le carote, lavale e tagliale a bastoncini.',
+    'Sbuccia l’aglio e grattugialo finemente. Mescolalo con lo yogurt e il sale.',
+    'Servi le carote con la salsa in una ciotolina a parte.'],
+    photoAlt:'Bastoncini di carota cruda accanto a una ciotolina di salsa allo yogurt' },
+  'pasta-fasolowa':{ name:'Crema di fagioli bianchi fatta in casa', steps:[
+    'Sciacqua i fagioli e scolali. Sbuccia l’aglio.',
+    'Frulla i fagioli con l’olio, il succo di limone, l’aglio e il sale. Se la crema è troppo densa, aggiungi un cucchiaio d’acqua.',
+    'Sbuccia le carote, lavale e tagliale a bastoncini. Servi la crema come salsa in cui intingere le carote.'],
+    photoAlt:'Ciotolina di crema chiara di fagioli bianchi con bastoncini di carota' },
+  'surowka-z-marchewki':{ name:'Insalata cruda di carote e mela', steps:[
+    'Sbuccia e lava le carote. Lava la mela ed elimina il torsolo.',
+    'Grattugia le carote e la mela con la grattugia a fori larghi. Irrora subito con il succo di limone, perché la mela non annerisca.',
+    'Aggiungi l’olio e lo zucchero, mescola e servi subito.'],
+    photoAlt:'Ciotolina di insalata di carota e mela grattugiate' },
+  'mizeria':{ name:'Mizeria — insalata di cetrioli con yogurt e aneto', steps:[
+    'Lava il cetriolo, sbuccialo e taglialo a fettine sottili. Salalo, mescola e lascialo riposare per 5 minuti, finché non rilascia l’acqua.',
+    'Lava l’aneto, asciugalo e tritalo finemente. Elimina il liquido del cetriolo.',
+    'Mescola il cetriolo con lo yogurt, l’aneto e il pepe. Servi subito.'],
+    photoAlt:'Ciotolina di fettine di cetriolo nello yogurt con aneto' },
+  'chleb-w-jajku':{ name:'Pane dorato all’uovo con erba cipollina', steps:[
+    'In un piatto fondo sbatti con una forchetta le uova con il latte e il sale. Lava l’erba cipollina e tritala finemente.',
+    'Immergi una alla volta le fette di pane nel composto di uova, girandole perché si impregnino da entrambi i lati.',
+    'Scalda il burro in padella. Cuoci le fette a fuoco medio per 2–3 minuti per lato, finché l’uovo non è completamente rappreso e dorato. Cospargi con l’erba cipollina.'],
+    photoAlt:'Fette di pane dorate nell’uovo, cosparse di erba cipollina' },
+  'kanapki-z-jajkiem-i-rzodkiewka':{ name:'Tartine con uova sode e ravanelli', steps:[
+    'Metti le uova in una pentola con acqua fredda, porta a bollore e cuoci per 10 minuti dall’ebollizione. Passale sotto l’acqua fredda e lasciale riposare per 5 minuti.',
+    'Lava i ravanelli e tagliali a fettine sottili. Lava l’erba cipollina e tritala. Sguscia le uova e tagliale a fette.',
+    'Spalma le fette di pane con il burro, disponi sopra le fette di uovo e di ravanello, sala e cospargi con l’erba cipollina.'],
+    photoAlt:'Tartine con fette di uovo sodo e ravanello' },
+  'ryz-na-mleku':{ name:'Riso al latte con mela e cannella', steps:[
+    'Sciacqua il riso in un colino. Versalo in un pentolino, coprilo con l’acqua e cuoci con il coperchio a fuoco basso per circa 10 minuti, finché non ha assorbito l’acqua.',
+    'Versa il latte, aggiungi lo zucchero e cuoci senza coperchio per 12–15 minuti, mescolando spesso perché il riso non si attacchi al fondo.',
+    'Lava la mela, elimina il torsolo e grattugiala con la grattugia a fori larghi. Incorporala al riso insieme alla cannella e scalda ancora per 2 minuti.'],
+    photoAlt:'Ciotola di cremoso riso al latte con mela grattugiata' },
+  'strammer-max':{ name:'Strammer Max — pane con prosciutto cotto e uovo all’occhio di bue', steps:[
+    'Spalma le fette di pane con un velo di metà del burro e disponi sopra le fette di prosciutto. Lava l’erba cipollina e tritala.',
+    'Scalda il resto del burro in padella. Rompi le uova e cuocile con il coperchio a fuoco basso per 3–4 minuti, finché albume e tuorlo non sono rappresi.',
+    'Metti un uovo all’occhio di bue su ogni fetta. Spolvera con il pepe e cospargi con l’erba cipollina.'],
+    photoAlt:'Fetta di pane con prosciutto cotto coperta da un uovo all’occhio di bue' },
+  'tamagoyaki':{ name:'Tamagoyaki — omelette giapponese arrotolata', steps:[
+    'In una ciotola sbatti le uova con l’acqua, la salsa di soia e lo zucchero, finché lo zucchero non si scioglie.',
+    'Scalda una padella a fuoco medio e ungila con un velo d’olio. Versa un terzo del composto. Quando si è rappreso, arrotolalo con una paletta e spostalo sul bordo della padella.',
+    'Ungi la parte libera della padella e versa un’altra porzione di composto, in modo che scorra sotto il rotolo. Quando si è rappresa, arrotolala attorno al rotolo. Ripeti con il resto del composto.',
+    'Cuoci il rotolo pronto per un altro minuto, girandolo, finché all’interno non c’è più uovo liquido. Lascialo riposare per 2 minuti e taglialo a fette spesse.'],
+    photoAlt:'Fette di omelette gialla arrotolata disposte su un piattino' },
+  'omlet-francuski':{ name:'Omelette alla francese con formaggio', steps:[
+    'Grattugia il formaggio. Lava l’erba cipollina e tritala. Sbatti le uova con il sale usando una forchetta, solo finché albumi e tuorli non si amalgamano.',
+    'Sciogli il burro in padella a fuoco medio. Versa le uova e per il primo minuto spingi con una paletta il composto che si rapprende dai bordi verso il centro.',
+    'Quando la superficie non è più liquida, cospargi l’omelette con il formaggio, piegala a metà e cuoci ancora per un minuto, finché il formaggio non fonde e le uova non sono completamente rapprese. Cospargi con l’erba cipollina.'],
+    photoAlt:'Omelette chiara piegata a metà con formaggio fuso all’interno' },
+  'kanapki-z-serem-i-pomidorem':{ name:'Tartine con formaggio e pomodoro', steps:[
+    'Lava il pomodoro e taglialo a fette. Lava l’erba cipollina e tritala.',
+    'Spalma le fette di pane con il burro e disponi sopra le fette di formaggio.',
+    'Sul formaggio metti le fette di pomodoro e cospargi con l’erba cipollina. Se le tartine devono aspettare, confeziona il pomodoro a parte.'],
+    photoAlt:'Tartine con fette di formaggio e pomodoro' },
+  'twarozek-z-bananem':{ name:'Quark dolce con banana', steps:[
+    'Schiaccia il quark con una forchetta insieme allo yogurt fino a ottenere una crema liscia.',
+    'Sbuccia una banana, schiacciala e incorporala alla crema.',
+    'Taglia l’altra banana a rondelle. Distribuisci la crema nelle ciotoline, disponi sopra le rondelle e spolvera con la cannella.'],
+    photoAlt:'Ciotolina di quark bianco con rondelle di banana e cannella' },
+  'onigiri-z-tunczykiem':{ name:'Onigiri al tonno (polpette di riso giapponesi)', steps:[
+    'Sciacqua il riso in un colino sotto l’acqua fredda, finché l’acqua non è quasi trasparente. Portalo a bollore nell’acqua misurata, abbassa la fiamma al minimo e cuoci con il coperchio per 12 minuti. Togli dal fuoco e lascia riposare con il coperchio per 5 minuti.',
+    'Sbriciola il tonno con una forchetta e mescolalo con la salsa di soia. Con le forbici taglia il foglio di nori in 4 strisce.',
+    'Mescola il riso con il sale e lascialo intiepidire per circa 5 minuti, così da poterlo prendere in mano. Bagnati le mani, prendi un quarto del riso, fai un incavo, metti dentro un cucchiaino di tonno e compatta il riso in una polpetta triangolare.',
+    'Forma così 4 onigiri e avvolgi la base di ciascuno con una striscia di nori. Consumali in giornata e fino ad allora conservali in frigorifero.'],
+    photoAlt:'Polpette di riso triangolari avvolte in strisce di nori' },
+  'croque-monsieur':{ name:'Croque-monsieur in padella', steps:[
+    'Taglia il formaggio a fette o grattugialo. Imburra tutte le fette di pane su un lato.',
+    'Disponi due fette con il lato imburrato verso il basso, mettici sopra metà del formaggio, il prosciutto e il resto del formaggio. Copri con le fette rimaste, con il lato imburrato verso l’alto.',
+    'Cuoci i toast in una padella asciutta a fuoco basso per 3–4 minuti per lato, premendo leggermente con una paletta, finché il pane non è dorato e il formaggio fuso. Tagliali a metà.'],
+    photoAlt:'Toast dorato con prosciutto cotto e formaggio filante' },
+  'salatka-makaronowa':{ name:'Pasta fredda con mozzarella e pomodori', steps:[
+    'Cuoci la pasta secondo le indicazioni sulla confezione. Scolala, passala sotto l’acqua fredda e sgocciolala bene.',
+    'Lava i pomodori e tagliali a cubetti. Scola la mozzarella dal liquido di governo e tagliala a cubetti. Sciacqua le foglie di basilico e spezzettale con le mani.',
+    'Mescola la pasta con i pomodori, la mozzarella, il basilico, l’olio e il sale. Servi subito oppure trasferisci in un contenitore e conserva in frigorifero.'],
+    photoAlt:'Ciotola di pasta con cubetti di pomodoro, mozzarella e foglie di basilico' },
+  'zupa-ziemniaczana':{ name:'Zuppa di patate all’aneto', steps:[
+    'Sbuccia e lava le patate, la carota e la cipolla. Taglia le patate a cubetti di circa 1,5 cm e la carota a mezze rondelle, trita la cipolla.',
+    'In una pentola sciogli il burro e soffriggi la cipolla con la carota per 3 minuti. Aggiungi le patate, l’acqua, il sale e il pepe. Cuoci con il coperchio per circa 15 minuti, finché le patate non sono tenere.',
+    'Schiaccia una parte delle patate nella pentola con uno schiacciapatate o una forchetta, perché la zuppa si addensi. In una tazza mescola la panna acida con 3 cucchiai di zuppa calda e versala nella pentola.',
+    'Lava l’aneto, tritalo e aggiungilo alla zuppa. Scalda per un minuto senza portare a bollore.'],
+    photoAlt:'Piatto di zuppa chiara di patate con carote e aneto' },
+  'makaron-z-twarogiem':{ name:'Pasta con quark e burro', steps:[
+    'Cuoci la pasta in acqua salata secondo le indicazioni sulla confezione e scolala.',
+    'Nella pentola vuota e ancora calda metti il burro e, quando si è sciolto, rimetti la pasta e mescola.',
+    'Sbriciola il quark con le dita o con una forchetta. Distribuisci la pasta nei piatti e cospargila con il quark e lo zucchero.'],
+    photoAlt:'Piatto di pasta cosparsa di quark bianco sbriciolato' },
+  'jajka-w-sosie-koperkowym':{ name:'Uova in salsa all’aneto con patate', steps:[
+    'Sbuccia le patate, lavale, tagliale a metà e cuocile in acqua con metà del sale per circa 20 minuti, finché non sono tenere. In un’altra pentola copri le uova con acqua fredda, porta a bollore e cuoci per 10 minuti dall’ebollizione, poi passale sotto l’acqua fredda.',
+    'In un pentolino sciogli il burro, aggiungi la farina e mescola per un minuto. Versa il latte poco alla volta, mescolando continuamente con la frusta, e cuoci per 3 minuti, finché la salsa non si addensa.',
+    'Lava l’aneto e tritalo. Aggiungilo alla salsa con il resto del sale. Sguscia le uova e tagliale a metà.',
+    'Scola le patate, distribuiscile nei piatti, disponi accanto le uova e coprile con la salsa.'],
+    photoAlt:'Mezze uova in salsa all’aneto verde chiaro accanto a patate lesse' },
+  'spaghetti-aglio-e-olio':{ name:'Spaghetti aglio e olio', steps:[
+    'Cuoci la pasta in acqua salata secondo le indicazioni sulla confezione. Prima di scolarla, tieni da parte mezzo bicchiere di acqua di cottura.',
+    'Nel frattempo sbuccia l’aglio e taglialo a fettine sottili. Lava il prezzemolo e tritalo. In una padella grande scalda l’olio con l’aglio a fuoco basso per 3–4 minuti, finché l’aglio non è leggermente dorato. Non lasciarlo scurire, altrimenti diventa amaro.',
+    'Trasferisci la pasta nella padella, aggiungi 4 cucchiai dell’acqua tenuta da parte e manteca sul fuoco per un minuto, finché l’olio non avvolge la pasta. Aggiungi il prezzemolo e il pepe.'],
+    photoAlt:'Piatto di spaghetti con fettine di aglio e prezzemolo tritato' },
+  'makaron-z-tunczykiem':{ name:'Pasta al tonno e pomodoro', steps:[
+    'Metti l’acqua sul fuoco e cuoci la pasta secondo le indicazioni sulla confezione.',
+    'Nel frattempo sbuccia la cipolla e l’aglio e tritali. Soffriggili nell’olio per 3 minuti, versa la passata, sala e cuoci a fuoco basso per 8 minuti.',
+    'Sbriciola il tonno con una forchetta, aggiungilo al sugo e scalda per 2 minuti. Condisci la pasta scolata con il sugo.'],
+    photoAlt:'Piatto di pasta al sugo di pomodoro con pezzi di tonno' },
+  'frykadele':{ name:'Frikadellen (polpette schiacciate di maiale) con patate', steps:[
+    'Sbuccia le patate, lavale, tagliale a metà e cuocile in acqua con parte del sale per circa 20 minuti, finché non sono tenere.',
+    'Sbriciola la fetta di pane in una ciotola e bagnala con l’acqua misurata. Sbuccia la cipolla e tritala molto finemente. Aggiungi la carne, l’uovo, la cipolla, il resto del sale e il pepe. Impasta con le mani e forma 6 polpette piatte. Dopo aver toccato la carne cruda, lava le mani, la ciotola e il tagliere.',
+    'Scalda l’olio in padella. Cuoci le polpette a fuoco medio per 5–6 minuti per lato. Tagliane una: la carne all’interno non deve essere rosa e il succo deve essere trasparente.',
+    'Servi le frikadellen con le patate scolate.'],
+    photoAlt:'Polpette piatte e dorate di carne macinata accanto a patate lesse' },
+  'ratatouille':{ name:'Ratatouille veloce in padella', steps:[
+    'Lava le verdure. Taglia la zucchina e la melanzana a cubetti di circa 1,5 cm. Elimina il torsolo con i semi dal peperone e taglialo allo stesso modo. Sbuccia la cipolla e l’aglio e tritali.',
+    'Scalda l’olio in una padella grande. Cuoci la cipolla con la melanzana per 5 minuti, mescolando. Aggiungi il peperone e la zucchina e cuoci per altri 5 minuti.',
+    'Aggiungi l’aglio, la passata e il sale. Stufa con il coperchio a fuoco basso per 12–15 minuti, finché le verdure non sono tenere ma non sfatte.',
+    'Servi calda con una fetta di pane.'],
+    photoAlt:'Padella di verdure stufate al sugo di pomodoro: zucchina, melanzana e peperone' },
+  'oyakodon':{ name:'Oyakodon — riso con pollo e uovo', steps:[
+    'Sciacqua il riso in un colino. Portalo a bollore in 200 ml d’acqua, abbassa la fiamma al minimo e cuoci con il coperchio per 12 minuti. Lascialo riposare con il coperchio per 5 minuti.',
+    'Nel frattempo sbuccia la cipolla e tagliala a spicchi sottili. Taglia il pollo a strisce sottili. Dopo aver toccato la carne cruda, lava le mani, il tagliere e il coltello.',
+    'In una padella porta a bollore il resto dell’acqua con la salsa di soia e lo zucchero. Aggiungi la cipolla e il pollo e cuoci con il coperchio per 8 minuti, finché la carne non è bianca all’interno, senza parti rosate.',
+    'Sbatti le uova con una forchetta e versale in modo uniforme sul pollo. Cuoci con il coperchio per 3–4 minuti, finché le uova non sono completamente rapprese. Distribuisci il riso nelle ciotole e fai scivolare sopra il pollo con le uova e il sugo.'],
+    photoAlt:'Ciotola di riso coperto di pollo, cipolla e uovo rappreso' },
+  'yakisoba':{ name:'Pasta saltata con verdure in stile yakisoba', steps:[
+    'Cuoci la pasta, meglio se a fili sottili o spaghetti, un minuto in meno rispetto alle indicazioni sulla confezione. Scolala.',
+    'Taglia il cavolo a strisce sottili. Sbuccia la carota e tagliala a bastoncini sottili. Sbuccia la cipolla e tagliala a spicchi sottili.',
+    'Scalda bene l’olio in una padella grande. Salta la cipolla e la carota per 3 minuti, aggiungi il cavolo e cuoci per altri 4 minuti, mescolando. Le verdure devono restare leggermente croccanti.',
+    'Aggiungi la pasta, la salsa di soia e lo zucchero. Salta per 2 minuti, mescolando continuamente, finché la pasta non assorbe la salsa.'],
+    photoAlt:'Piatto di pasta saltata con strisce di cavolo e carota' },
+  'zapiekanki-z-pieczarkami':{ name:'Fette di pane gratinate con funghi e formaggio', steps:[
+    'Preriscalda il forno a 200°C. Pulisci i funghi e tagliali a fettine. Sbuccia la cipolla e tritala. Grattugia il formaggio.',
+    'Sciogli il burro in padella. Cuoci la cipolla con i funghi per 6–7 minuti, finché la loro acqua non è evaporata. Insaporisci con sale e pepe.',
+    'Disponi le fette di pane su una teglia, distribuisci sopra i funghi e cospargi con il formaggio. Cuoci in forno per 8 minuti, finché il formaggio non fonde e si dora.'],
+    photoAlt:'Fette di pane gratinate con funghi sotto il formaggio fuso' },
+  'placki-z-cukinii':{ name:'Frittelle di zucchine con salsa all’aglio', steps:[
+    'Lava la zucchina e grattugiala con la buccia con la grattugia a fori larghi. Mescolala con metà del sale, lasciala riposare per 5 minuti e strizzala bene con le mani.',
+    'Sbuccia l’aglio, grattugialo finemente e mescolalo con lo yogurt e il resto del sale. Mescola la zucchina strizzata con l’uovo e la farina.',
+    'Scalda parte dell’olio in padella. Versa il composto a cucchiaiate, appiattiscilo e cuoci a fuoco medio per 3 minuti per lato, finché le frittelle non sono dorate e cotte all’interno. Ripeti con il resto del composto e servi con la salsa.'],
+    photoAlt:'Frittelle dorate di zucchina grattugiata accanto a una ciotolina di salsa allo yogurt' },
+  'frittata-z-cukinia':{ name:'Frittata di zucchine', steps:[
+    'Lava la zucchina e tagliala a mezze rondelle sottili. Sbuccia la cipolla e tritala. Grattugia il formaggio.',
+    'Scalda l’olio in padella. Cuoci la cipolla con la zucchina per 7–8 minuti, mescolando, finché non si ammorbidiscono e si dorano leggermente.',
+    'Sbatti le uova con il sale, il pepe e il formaggio, versale sulle verdure e scuoti la padella. Cuoci con il coperchio a fuoco basso per circa 8 minuti, finché la superficie non è completamente rappresa. Taglia a spicchi.'],
+    photoAlt:'Frittata alta con fettine di zucchina, tagliata a spicchi' },
+  'bratkartoffeln':{ name:'Bratkartoffeln (patate saltate alla tedesca) con uovo all’occhio di bue', steps:[
+    'Sbuccia le patate, lavale e tagliale a fette spesse circa 3 mm. Asciugale con carta da cucina. Sbuccia la cipolla e tagliala a cubetti.',
+    'Scalda la maggior parte dell’olio in una padella grande. Distribuisci le patate il più possibile in un solo strato e cuocile a fuoco medio per 15 minuti, girandole ogni pochi minuti. Aggiungi la cipolla e il sale e cuoci per altri 5 minuti, finché le patate non sono tenere e dorate.',
+    'Sposta le patate da un lato o usa una seconda padella. Nell’olio rimasto cuoci le uova all’occhio di bue con il coperchio per 3–4 minuti, finché albume e tuorlo non sono rappresi.',
+    'Distribuisci le patate nei piatti, metti sopra le uova, spolvera con il pepe e cospargi con l’erba cipollina tritata.'],
+    photoAlt:'Fette di patate saltate e dorate con cipolla e uovo all’occhio di bue sopra' },
+  'flammkuchen':{ name:'Schiacciata sottile con cipolla e panna acida in stile Flammkuchen', steps:[
+    'Preriscalda il forno a 250°C con la teglia all’interno. Mescola la farina con metà del sale, l’acqua e l’olio, poi impasta per 3 minuti fino a ottenere un impasto liscio.',
+    'Sbuccia la cipolla e tagliala a mezze rondelle molto sottili. Stendi l’impasto con il mattarello su un foglio di carta da forno in una sfoglia sottile, più o meno grande quanto la teglia.',
+    'Spalma la sfoglia con la panna acida, lasciando libero un bordo sottile. Distribuisci la cipolla, cospargi con il resto del sale e il pepe.',
+    'Fai scivolare la sfoglia con la carta sulla teglia calda e cuoci per 10–12 minuti, finché i bordi non sono dorati e croccanti. Cospargi con l’erba cipollina tritata.'],
+    photoAlt:'Schiacciata sottile e croccante con panna acida, cipolla ed erba cipollina' },
+  'salatka-nicejska':{ name:'Insalata nizzarda con tonno', steps:[
+    'Sbuccia le patate, lavale, tagliale a cubetti grandi e cuocile in acqua salata per circa 15 minuti, finché non sono tenere. In un’altra pentola copri le uova con acqua fredda, porta a bollore e cuoci per 10 minuti dall’ebollizione.',
+    'Scola le patate e lasciale intiepidire. Passa le uova sotto l’acqua fredda, sgusciale e tagliale in quarti. Lava i pomodori e il cetriolo e tagliali a spicchi.',
+    'Mescola l’olio con il succo di limone e il sale. Disponi nei piatti le patate, i pomodori e il cetriolo, sopra i pezzi di tonno e le uova, e condisci con la salsa.'],
+    photoAlt:'Piatto di insalata con patate, tonno, quarti di uovo e pomodoro' },
+  'zupa-miso':{ name:'Zuppa di miso semplice con tofu', steps:[
+    'Sbuccia la carota e tagliala a mezze rondelle sottilissime. Porta a bollore l’acqua, aggiungi la carota e cuoci per 5 minuti.',
+    'Taglia il tofu a cubetti di circa 1 cm. Con le forbici taglia la nori a strisce sottili. Lava l’erba cipollina e tritala. Aggiungi il tofu nella pentola e scalda per 2 minuti.',
+    'Togli la pentola dal fuoco. Stempera la pasta di miso in una tazza con qualche cucchiaio di brodo caldo e versala nella zuppa. Non farla più bollire, perché non perda sapore.',
+    'Versa la zuppa nelle ciotole, aggiungi le strisce di nori e l’erba cipollina.'],
+    photoAlt:'Ciotola di zuppa di miso torbida con cubetti di tofu e strisce di nori' },
+  'omurice':{ name:'Omurice — omelette con riso al pomodoro', steps:[
+    'Cuoci il riso secondo le indicazioni sulla confezione. Nel frattempo sbuccia la cipolla e la carota e tagliale a cubetti piccoli.',
+    'Sciogli metà del burro in padella. Cuoci la cipolla con la carota per 5 minuti. Aggiungi il riso, la passata e metà del sale e cuoci per 3 minuti, mescolando, finché il riso non si colora. Dividi il riso in due piatti e forma due cumuli allungati.',
+    'Pulisci la padella. Sbatti 2 uova con un pizzico di sale e cuoci in metà del burro rimasto un’omelette sottile, 2–3 minuti con il coperchio, finché non è completamente rappresa. Coprici un cumulo di riso.',
+    'Prepara allo stesso modo la seconda omelette con le uova e il burro rimasti e copri la seconda porzione.'],
+    photoAlt:'Cumulo allungato di riso al pomodoro coperto da una sottile omelette gialla' },
+  'racuszki-z-jablkami':{ name:'Frittelle di mele senza lievito', steps:[
+    'Con una frusta mescola la farina, il latte, l’uovo e metà dello zucchero fino a ottenere una pastella densa e liscia.',
+    'Lava le mele, sbucciale, elimina il torsolo e tagliale a cubetti piccoli. Incorporale alla pastella.',
+    'Scalda parte dell’olio in padella. Versa la pastella a cucchiaiate e cuoci a fuoco medio per 2–3 minuti per lato, finché le frittelle non sono dorate e cotte all’interno. Ripeti con il resto della pastella.',
+    'Mescola il resto dello zucchero con la cannella e spolveralo sulle frittelle calde.'],
+    photoAlt:'Piatto di piccole frittelle con pezzetti di mela, spolverate di zucchero e cannella' },
+  'budyn-kakaowy':{ name:'Budino al cacao fatto in casa', steps:[
+    'Versa mezzo bicchiere di latte freddo in una tazza e stempera bene la fecola di patate e il cacao, in modo che non restino grumi.',
+    'Porta a bollore il resto del latte con lo zucchero in un pentolino. Abbassa la fiamma e versa a filo il composto della tazza, mescolando energicamente con la frusta.',
+    'Cuoci per un minuto, mescolando continuamente, finché il budino non si addensa e comincia a sobbollire. Versalo nelle ciotoline e servilo caldo o freddo.'],
+    photoAlt:'Due ciotoline di budino al cacao denso e scuro' },
+  'omlet-biszkoptowy':{ name:'Omelette dolce soffice con frutti di bosco', steps:[
+    'Versa i frutti di bosco surgelati in un pentolino con metà dello zucchero. Porta a bollore e cuoci per 2 minuti, mescolando, poi metti da parte.',
+    'Separa gli albumi dai tuorli. Monta gli albumi a neve ben ferma con una frusta o uno sbattitore elettrico, aggiungendo alla fine il resto dello zucchero. Incorpora delicatamente i tuorli e poi la farina.',
+    'Sciogli il burro in padella, versa il composto e livellalo. Cuoci con il coperchio a fuoco basso per 5–6 minuti, finché la superficie non si rapprende. Gira l’omelette aiutandoti con un piatto e cuoci per altri 2 minuti.',
+    'Trasferisci l’omelette su un piatto, coprila con la frutta calda e tagliala a metà.'],
+    photoAlt:'Omelette soffice e chiara coperta di salsa rosso scuro ai frutti di bosco' },
+  'rote-grutze':{ name:'Rote Grütze — budino di frutti di bosco con yogurt', steps:[
+    'In una tazza stempera la fecola di patate con 4 cucchiai dell’acqua fredda misurata.',
+    'Versa i frutti di bosco surgelati in un pentolino, aggiungi il resto dell’acqua e lo zucchero. Porta a bollore e cuoci per 3 minuti.',
+    'Versa la fecola stemperata, mescolando continuamente, e cuoci ancora per un minuto, finché il dolce non si addensa e diventa lucido.',
+    'Versa nelle ciotoline e lascia intiepidire per almeno 5 minuti. Servi con un cucchiaio di yogurt sopra.'],
+    photoAlt:'Ciotolina di denso dolce rosso ai frutti di bosco con una cucchiaiata di yogurt' },
+  'tosty-francuskie':{ name:'French toast alla cannella', steps:[
+    'In un piatto fondo sbatti le uova con il latte, metà dello zucchero e la cannella.',
+    'Immergi le fette di pane, meglio se del giorno prima, nel composto per circa 20 secondi per lato, perché si impregnino bene.',
+    'Sciogli il burro in padella. Cuoci le fette a fuoco medio per 2–3 minuti per lato, finché non sono dorate e il composto di uova non è completamente rappreso. Cospargi con il resto dello zucchero.'],
+    photoAlt:'French toast dolci e dorati spolverati di zucchero' },
+  'macedonia':{ name:'Macedonia di frutta', steps:[
+    'Sbuccia un’arancia e tagliala a cubetti. Spremi l’altra in una ciotola, aggiungi il succo di limone e lo zucchero e mescola.',
+    'Lava la mela, elimina il torsolo e tagliala a cubetti. Sbuccia la banana e tagliala a rondelle. Metti subito la frutta nel succo, perché non annerisca.',
+    'Aggiungi l’arancia a cubetti, mescola e lascia riposare per 5 minuti, finché la frutta non rilascia il suo succo. Servi nelle coppette insieme al succo.'],
+    photoAlt:'Coppetta di frutta a pezzetti nel suo succo: arancia, mela e banana' },
+  'surowka-z-kapusty':{ name:'Insalata di cavolo cappuccio e carote', steps:[
+    'Taglia il cavolo a strisce il più possibile sottili. Salalo e massaggialo con le mani per 2 minuti, finché non si ammorbidisce e rilascia il liquido.',
+    'Sbuccia la carota e grattugiala con la grattugia a fori larghi. Lava l’aneto e tritalo.',
+    'Mescola il cavolo con la carota, l’aneto, il succo di limone, l’olio e lo zucchero. Lascia riposare per 5 minuti prima di servire.'],
+    photoAlt:'Ciotolina di insalata di cavolo cappuccio bianco tagliato sottile e carota' },
+  'caprese':{ name:'Insalata caprese', steps:[
+    'Lava i pomodori e tagliali a fette. Scola la mozzarella dal liquido di governo e tagliala a fette di spessore simile.',
+    'Disponi nel piatto le fette di pomodoro e di mozzarella, alternandole.',
+    'Sciacqua le foglie di basilico e distribuiscile sopra. Condisci con l’olio, il sale e il pepe appena prima di servire.'],
+    photoAlt:'Fette di pomodoro e mozzarella alternate con foglie di basilico' },
+  'bruschetta':{ name:'Bruschetta al pomodoro e basilico', steps:[
+    'Lava i pomodori, elimina i semi e taglia la polpa a cubetti piccoli. Sciacqua le foglie di basilico e spezzettale. Mescola i pomodori con il basilico, il sale e metà dell’olio.',
+    'Tosta le fette di pane in una padella asciutta per 2 minuti per lato, finché non sono croccanti.',
+    'Strofina le fette ancora calde con uno spicchio d’aglio tagliato a metà e condiscile con il resto dell’olio. Aggiungi i pomodori appena prima di servire, perché il pane non si inzuppi.'],
+    photoAlt:'Fette di pane croccanti con pomodori crudi e basilico' },
+  'kartoffelsalat':{ name:'Kartoffelsalat — insalata di patate alla tedesca', steps:[
+    'Sbuccia le patate, lavale e tagliale a fette spesse circa 5 mm. Cuocile in acqua salata per 10–12 minuti, finché non sono tenere ma ancora intere. Scolale con delicatezza.',
+    'Sbuccia la cipolla e tritala finemente. In un pentolino porta a bollore l’acqua misurata con la cipolla, l’aceto, lo zucchero, il sale e il pepe e fai bollire per 2 minuti.',
+    'Versa il condimento caldo sulle patate tiepide, aggiungi l’olio e mescola delicatamente. Lascia riposare per 10 minuti, perché le patate assorbano il liquido.',
+    'Lava l’erba cipollina, tritala e incorporala all’insalata. Servi tiepida.'],
+    photoAlt:'Ciotola di insalata di patate a fette con cipolla ed erba cipollina, senza maionese' },
+  'zupa-cebulowa':{ name:'Zuppa di cipolle con crostone al formaggio', steps:[
+    'Sbuccia le cipolle e tagliale a mezze rondelle sottili. In una pentola sciogli il burro e cuoci la cipolla con il sale a fuoco medio per 12–15 minuti, mescolando spesso, finché non è morbida e bruno-dorata.',
+    'Spolvera la cipolla con la farina e mescola per un minuto. Versa l’acqua, insaporisci con il pepe e cuoci con il coperchio per 8 minuti.',
+    'Nel frattempo grattugia il formaggio. Tosta le fette di pane in una padella asciutta per 2 minuti da un lato, girale, cospargile di formaggio e copri per 2 minuti, finché il formaggio non fonde.',
+    'Versa la zuppa nelle ciotole e metti su ciascuna un crostone al formaggio.'],
+    photoAlt:'Ciotola di zuppa di cipolle bruna con un crostone sotto il formaggio fuso' },
+  'sunomono':{ name:'Sunomono — insalata di cetrioli al sesamo', steps:[
+    'Lava il cetriolo e taglialo a fettine il più possibile sottili. Salalo, mescola e lascialo riposare per 5 minuti, poi strizzalo con le mani ed elimina il liquido.',
+    'Tosta il sesamo in una padella asciutta per 1–2 minuti, mescolando, finché non diventa profumato e leggermente dorato.',
+    'Mescola l’aceto con lo zucchero e la salsa di soia, finché lo zucchero non si scioglie. Versa sul cetriolo, mescola e cospargi con il sesamo.'],
+    photoAlt:'Ciotolina di fettine sottili di cetriolo in agrodolce, cosparse di sesamo' },
+};

@@ -1,4 +1,391 @@
-// Recipe and product texts: da. PLACEHOLDER — not translated yet; everything falls back to Polish (recipes.pl.js).
-// Fill according to docs/TLUMACZENIA.md: recipes { <recipeId>: { name, steps:[...], photoAlt } }, products { <productId>: name }.
-export const recipes = {};
-export const products = {};
+// Recipe and product texts: Danish (da-DK). Text only — amounts, units, ids, allergens and flags come from
+// recipes.pl.js. Each recipe has exactly as many steps as in Polish. Format: docs/TLUMACZENIA.md.
+// Machine translation (CNT-030), not reviewed by a native speaker or tested in a kitchen.
+export const products = {
+  oats:'Havregryn', milk:'Mælk', apple:'Æble', cinnamon:'Kanel', egg:'Æg', butter:'Smør', bread:'Brød', tomato:'Tomat',
+  cheese:'Kvark (polsk twaróg, fast friskost)', yogurt:'Yoghurt naturel', radish:'Radise', cucumber:'Agurk', banana:'Banan', carrot:'Gulerod', hummus:'Hummus', rice:'Ris',
+  passata:'Tomatpassata', water:'Vand', oil:'Rapsolie', salt:'Salt', potato:'Kartofler', chicken:'Kyllingebryst', paprika:'Stødt sød paprika',
+  pasta:'Hvedepasta uden æg', onion:'Løg', lentils:'Røde linser, tørrede', chickpeas:'Kikærter på dåse, afdryppede', pepper:'Peberfrugt', flour:'Hvedemel', sugar:'Sukker',
+  cocoa:'Kakao', beans:'Bønner på dåse, afdryppede', lemon:'Citron', garlic:'Hvidløg',
+  semolina:'Semuljegryn', buckwheat:'Ristede boghvedegryn', kefir:'Kefir', sourcream:'Cremefraiche 18%',
+  mackerel:'Røget makrelfilet', chives:'Purløg', dill:'Dild', blackpepper:'Stødt sort peber',
+  yellowcheese:'Skæreost (f.eks. Gouda)', mozzarella:'Mozzarella', oliveoil:'Olivenolie', basil:'Frisk basilikum',
+  parsley:'Bredbladet persille', zucchini:'Squash', eggplant:'Aubergine', cabbage:'Hvidkål',
+  mushroom:'Champignoner', orange:'Appelsin', berries:'Frosne skovbær', potatostarch:'Kartoffelmel',
+  vinegar:'Æblecidereddike', tuna:'Tun i vand, afdryppet', mincedpork:'Hakket svinekød',
+  ham:'Kogt skinke i skiver', sushirice:'Sushiris', soysauce:'Sojasauce',
+  miso:'Misopasta', tofu:'Tofu naturel', nori:'Noriark', sesame:'Sesamfrø',
+};
+export const recipes = {
+  'owsianka':{ name:'Havregrød med æble og kanel', steps:[
+    'Kom havregrynene i en lille gryde, hæld mælken over, og bring det langsomt i kog.',
+    'Kog grøden ved svag varme i 5–7 minutter under omrøring, til grynene er bløde.',
+    'Vask æblet, fjern kernehuset, og riv det. Kom det i grøden sammen med kanelen, og varm den i et minut.'],
+    photoAlt:'En skål havregrød kogt på mælk med revet æble og kanel' },
+  'jajecznica':{ name:'Røræg med tomat', steps:[
+    'Vask tomaten, og skær den i tern. Varm smørret op på en pande.',
+    'Tilsæt tomaten, og steg den i 2 minutter. Slå æggene ud på panden, salt, og rør ved svag varme, til æggene er helt stivnede.',
+    'Server straks med brød.'],
+    photoAlt:'Røræg med tomatstykker på en tallerken ved siden af brødskiver' },
+  'owsianka-wodna':{ name:'Havregrød med banan kogt på vand', steps:[
+    'Hæld vand over havregrynene, og kog dem i 5–7 minutter under omrøring.',
+    'Mos den ene banan med en gaffel, og rør den i grøden.',
+    'Skær den anden banan i skiver. Læg dem på grøden, og drys med kanel.'],
+    photoAlt:'En skål havregrød med bananskiver drysset med kanel' },
+  'pasta-jajeczna':{ name:'Brødskiver med æggesalat og purløg', steps:[
+    'Læg æggene i en gryde med koldt vand, bring det i kog, og kog dem i 10 minutter fra vandet koger. Skyl dem i koldt vand, og lad dem køle af i 5 minutter.',
+    'Vask purløget, dup det tørt, og hak det fint. Pil æggene, og mos dem med en gaffel.',
+    'Bland æggene med yoghurt, purløg, salt og peber. Fordel æggesalaten på brødskiverne.'],
+    photoAlt:'Brødskiver med æggesalat drysset med purløg' },
+  'kasza-manna':{ name:'Semuljegrød med æblemos', steps:[
+    'Vask og skræl æblerne, fjern kernehusene, og skær dem i tern. Lad dem simre under låg i en lille gryde med vandet og kanelen i 6–8 minutter, til de er bløde, og mos dem derefter med en gaffel.',
+    'Varm mælken op med sukkeret i en anden gryde. Når den begynder at koge, så skru ned for varmen, og drys semuljegrynene i en tynd stråle under konstant omrøring, så der ikke kommer klumper.',
+    'Kog grøden i 2–3 minutter under omrøring, til den tykner. Fordel den i skåle, og kom æblemosen ovenpå.'],
+    photoAlt:'En skål semuljegrød med æblemos på toppen' },
+  'twarożek':{ name:'Kvark med radiser', steps:[
+    'Vask radiserne, og hak dem fint.',
+    'Mos kvarken med yoghurten, og tilsæt radiser og salt.',
+    'Server på brødskiver.'],
+    photoAlt:'Brødskiver med hvid kvark og stykker af radise' },
+  'jogurt':{ name:'Yoghurt med banan og havregryn', steps:[
+    'Pil bananerne, og skær dem i skiver.',
+    'Fordel yoghurten i to skåle.',
+    'Tilsæt bananer og havregryn. Lad det stå i 3 minutter, så havregrynene bliver bløde.'],
+    photoAlt:'En skål yoghurt naturel med bananskiver og havregryn' },
+  'hummus-kanapki':{ name:'Brødskiver med hummus og agurk', steps:[
+    'Vask agurken, og skær den i tynde skiver.',
+    'Smør brødet med hummus.',
+    'Læg agurken på brødskiverne, og server.'],
+    photoAlt:'Brødskiver med hummus og skiver af frisk agurk' },
+  'pasta-z-makreli':{ name:'Røget makrelsalat med purløg', steps:[
+    'Tag skindet af makrelfileterne. Pil kødet i stykker med fingrene, og fjern omhyggeligt alle ben.',
+    'Vask purløget, og hak det fint. Mos kvarken med yoghurten med en gaffel.',
+    'Tilsæt makrel, purløg, citronsaft og peber, og bland. Tilsæt ikke salt, røget fisk er salt i forvejen. Server på brødskiver.'],
+    photoAlt:'Brødskiver med røget makrelsalat og purløg' },
+  'koktajl-kefirowy':{ name:'Banan-havre-smoothie med kefir', steps:[
+    'Pil bananerne, og bræk dem i stykker.',
+    'Kom bananer, havregryn og kanel i en blender, og hæld kefiren ved.',
+    'Blend i ca. et minut, til smoothien er glat. Hæld den i to glas, og server straks.'],
+    photoAlt:'To glas lys banansmoothie med kefir' },
+  'pomidorowa':{ name:'Hjemmelavet tomatsuppe med ris', steps:[
+    'Pil løget, og skræl guleroden. Hak løget, og riv guleroden.',
+    'Varm olien op i en gryde. Steg grøntsagerne i 4 minutter.',
+    'Tilsæt passata, vand og salt. Bring i kog, kom risene i, og kog under låg i ca. 18 minutter, til risene er møre. Tilsæt mere vand efter behov.'],
+    photoAlt:'En tallerken tomatsuppe med ris' },
+  'kurczak':{ name:'Ovnbagt kylling med kartofler', steps:[
+    'Tænd ovnen på 200°C. Skræl kartofler og gulerødder, og skær dem i små stykker.',
+    'Skær kyllingen i tykke strimler. Bland kød og grøntsager med olie, paprika og salt i et ovnfast fad. Vask hænder og redskaber efter kontakt med råt kød.',
+    'Bag i ca. 35–40 minutter. Tjek, at grøntsagerne er møre, og at temperaturen inde i det tykkeste stykke kød er mindst 75°C.'],
+    photoAlt:'Et ovnfast fad med kyllingestykker, kartofler og gulerødder' },
+  'makaron':{ name:'Pasta med tomatsauce', steps:[
+    'Sæt vand over, og kog pastaen efter anvisningen på pakken. Gem et halvt glas kogevand, inden du hælder pastaen fra.',
+    'Pil imens løg og hvidløg, hak dem, og steg dem i olien i 3 minutter.',
+    'Hæld passataen i, salt, og lad saucen simre i 10 minutter. Vend den med pastaen, og tilsæt kogevand efter behov.'],
+    photoAlt:'En tallerken pasta i rød tomatsauce' },
+  'soczewica':{ name:'Gryderet med røde linser', steps:[
+    'Skræl gulerod og løg, og skær dem i tern. Steg dem i olien i 4 minutter.',
+    'Skyl linserne. Kom dem i gryden sammen med passata, vand, paprika og salt.',
+    'Kog i ca. 20 minutter under omrøring, til linserne er møre. Tilsæt mere vand efter behov.'],
+    photoAlt:'En skål tyk gryderet af røde linser med gulerod' },
+  'placki-ziemniaczane':{ name:'Kartoffelpandekager med cremefraiche', steps:[
+    'Skræl og vask kartofler og løg, og riv dem fint. Kom massen i en si, og pres den overskydende saft ud.',
+    'Bland den revne masse med æg, mel og salt. Steg pandekagerne med det samme, så kartoflerne ikke bliver mørke.',
+    'Varm en del af olien op på en pande. Kom en skefuld masse på ad gangen, tryk den ud til tynde pandekager, og steg dem ved middel varme i 3–4 minutter på hver side, til de er gyldne og gennemstegte. Gentag med resten af massen, og tilsæt mere olie undervejs.',
+    'Lad de stegte pandekager dryppe af på køkkenrulle, og server dem med cremefraiche.'],
+    photoAlt:'Gyldne kartoffelpandekager med en skefuld cremefraiche' },
+  'leniwe':{ name:'Leniwe – polske kvarkdumplings med smør', steps:[
+    'Sæt en stor gryde vand med salt over. Mos kvarken grundigt med en gaffel, tilsæt ægget, og bland.',
+    'Drys ca. 100 g mel i, og ælt kort til en blød dej. Drys bordet med resten af melet.',
+    'Form to pølser så tykke som en tommelfinger, tryk dem lidt flade, og skær dem på skrå i stykker på ca. 2 cm.',
+    'Kom dumplingsene i det kogende vand lidt ad gangen. Kog dem i 2–3 minutter, efter at de er steget op til overfladen, og tag dem op med en hulske. Hæld smeltet smør over, og drys med sukker.'],
+    photoAlt:'En tallerken leniwe – kvarkdumplings med smeltet smør og drysset med sukker' },
+  'potrawka-z-kurczaka':{ name:'Kyllingefrikassé med gulerødder og ris', steps:[
+    'Skræl gulerødder og løg. Hak løget, og skær gulerødderne i halve skiver. Skær kyllingen i tern på ca. 2 cm. Vask hænder, skærebræt og kniv efter kontakt med råt kød.',
+    'Varm olien op i en gryde. Steg kyllingen i 5 minutter under omrøring, til den er hvid på alle sider. Tilsæt løg og gulerødder, og steg i yderligere 3 minutter.',
+    'Hæld vandet i, og tilsæt salt og peber. Lad det simre under låg ved svag varme i 15 minutter, til gulerødderne er møre. Kog imens risene efter anvisningen på pakken.',
+    'Rør cremefraichen sammen med melet og 3 spsk. af den varme sauce i et krus, hæld det i gryden, og kog i 2 minutter under omrøring, til saucen tykner. Tjek, at temperaturen inde i det tykkeste stykke kød er mindst 75°C, og server med risene.'],
+    photoAlt:'En tallerken ris med kylling og gulerødder i lys sauce' },
+  'salatka':{ name:'Kikærtesalat', steps:[
+    'Vask grøntsagerne, fjern kernerne fra peberfrugten, og skær det hele i tern.',
+    'Skyl kikærterne, og lad dem dryppe af. Bland dem med grøntsagerne.',
+    'Rør olien sammen med citronsaft og salt. Hæld dressingen over salaten, og vend den.'],
+    photoAlt:'En skål salat med kikærter, tomat, agurk og peberfrugt' },
+  'omlet':{ name:'Omelet med peberfrugt', steps:[
+    'Vask peberfrugten, fjern kernehuset, og skær den i små tern.',
+    'Steg peberfrugten i olien i 4 minutter. Pisk æggene sammen med salt.',
+    'Hæld æggene på panden. Steg omeletten under låg ved svag varme i ca. 6 minutter, til æggene er helt stivnede.'],
+    photoAlt:'En omelet med tern af peberfrugt på en tallerken' },
+  'grzanki':{ name:'Lune ristede brødskiver med tomat', steps:[
+    'Tænd ovnen på 190°C. Vask tomaterne, og skær dem i små tern.',
+    'Dryp brødet med olie, gnid det med et pillet hvidløgsfed, og læg det på en bageplade.',
+    'Fordel tomaterne ovenpå, drys med salt, og bag i 8–10 minutter.'],
+    photoAlt:'Ovnbagte brødskiver med tomattern' },
+  'kasza-z-jajkiem':{ name:'Boghvedegryn med spejlæg og løg', steps:[
+    'Kog boghvedegrynene med halvdelen af saltet efter anvisningen på pakken, typisk i ca. 15 minutter.',
+    'Pil imens løget, og skær det i tern. Varm halvdelen af smørret op på en pande, og steg løget ved middel varme i 5–6 minutter, til det er gyldent. Vend det i de kogte gryn.',
+    'Varm resten af smørret op på samme pande. Slå æggene ud, og tilsæt resten af saltet og peber. Steg under låg i 3–4 minutter, til hvide og blomme er stivnede. Læg æggene på grynene.'],
+    photoAlt:'En tallerken boghvedegryn med stegte løg og spejlæg' },
+  'ziemniaki-z-gzikiem':{ name:'Kartofler med skræl og gzik (kvark med radiser og purløg)', steps:[
+    'Vælg kartofler af nogenlunde samme størrelse, og skrub dem grundigt. Kom dem med skræl i en gryde, hæld koldt vand over, tilsæt halvdelen af saltet, og kog dem i 20–25 minutter fra vandet koger, til en kniv let glider igennem.',
+    'Vask imens radiser og purløg, og hak dem fint. Mos kvarken med cremefraichen med en gaffel, og tilsæt radiser, purløg og resten af saltet.',
+    'Hæld vandet fra kartoflerne, og lad dem dampe af i gryden i et minut. Server dem varme, med eller uden skræl, med gzik ved siden af.'],
+    photoAlt:'Kartofler med skræl ved siden af en skål kvark med purløg og radiser' },
+  'placuszki':{ name:'Små bananpandekager', steps:[
+    'Mos bananerne. Bland dem med æg, mælk og mel.',
+    'Varm en del af olien op på en pande, og kom en skefuld dej på ad gangen.',
+    'Steg de små pandekager ved middel varme i 2–3 minutter på hver side, til de er gennemstegte i midten. Gentag med resten af dejen.'],
+    photoAlt:'En stak små bananpandekager på en tallerken' },
+  'pieczone-jablka':{ name:'Bagte æbler med kanel', steps:[
+    'Tænd ovnen på 180°C. Vask æblerne, og udhul kernehusene.',
+    'Stil dem i et fad, og kom sukker og kanel i hullet. Hæld vandet i bunden af fadet.',
+    'Bag i ca. 25 minutter, til æblerne er bløde. Lad dem køle lidt af inden servering.'],
+    photoAlt:'To bagte æbler med kanel i et ovnfast fad' },
+  'kakao':{ name:'Banan-kakao-creme', steps:[
+    'Pil modne bananer, og skær dem i stykker.',
+    'Blend dem med kakaoen til en glat creme, eller mos dem meget grundigt med en gaffel.',
+    'Fordel cremen i skåle, og server straks.'],
+    photoAlt:'En skål mørk creme af banan og kakao' },
+  'nalesniki-z-twarogiem':{ name:'Pandekager med sødt kvarkfyld', steps:[
+    'Pisk mel, mælk, vand, æg og 1 spsk. olie sammen til en glat dej uden klumper. Lad den hvile i 10 minutter.',
+    'Mos kvarken med yoghurt og sukker med en gaffel til en glat creme.',
+    'Varm en pande op, og pensl den tyndt med olie. Hæld en portion dej på, fordel den over bunden, og steg pandekagen i ca. et minut på hver side, til den er stivnet og let gylden. Steg på den måde ca. 6 pandekager.',
+    'Smør kvarkcremen på hver pandekage, og rul dem sammen.'],
+    photoAlt:'Rullede pandekager med hvidt kvarkfyld på en tallerken' },
+  'marchewki':{ name:'Gulerodsstave med yoghurtdip', steps:[
+    'Skræl og vask gulerødderne, og skær dem i stave.',
+    'Pil hvidløget, og riv det fint. Bland det med yoghurt og salt.',
+    'Server gulerødderne med dippen i en skål ved siden af.'],
+    photoAlt:'Stave af rå gulerod ved siden af en skål yoghurtdip' },
+  'pasta-fasolowa':{ name:'Hjemmelavet dip af hvide bønner', steps:[
+    'Skyl bønnerne, og lad dem dryppe af. Pil hvidløget.',
+    'Blend bønnerne med olie, citronsaft, hvidløg og salt. Er dippen for tyk, så tilsæt 1 spsk. vand.',
+    'Skræl og vask gulerødderne, og skær dem i stave. Server dippen til gulerødderne.'],
+    photoAlt:'En skål lys dip af hvide bønner med gulerodsstave' },
+  'surowka-z-marchewki':{ name:'Råkost af gulerod og æble', steps:[
+    'Skræl og vask gulerødderne. Vask æblet, og fjern kernehuset.',
+    'Riv gulerødder og æble groft. Dryp straks med citronsaft, så æblet ikke bliver brunt.',
+    'Tilsæt olie og sukker, vend det hele, og server straks.'],
+    photoAlt:'En skål råkost af revet gulerod og æble' },
+  'mizeria':{ name:'Mizeria – agurkesalat med yoghurt og dild', steps:[
+    'Vask og skræl agurken, og skær den i tynde skiver. Drys med salt, vend, og lad den stå i 5 minutter, til den har afgivet saft.',
+    'Vask dilden, dup den tør, og hak den fint. Hæld agurkesaften fra.',
+    'Bland agurken med yoghurt, dild og peber. Server straks.'],
+    photoAlt:'En skål agurkeskiver i yoghurt med dild' },
+  'chleb-w-jajku':{ name:'Brød stegt i æg med purløg', steps:[
+    'Pisk æg, mælk og salt sammen med en gaffel i en dyb tallerken. Vask purløget, og hak det fint.',
+    'Dyp brødskiverne én ad gangen i æggemassen, og vend dem, så de suger på begge sider.',
+    'Varm smørret op på en pande. Steg skiverne ved middel varme i 2–3 minutter på hver side, til ægget er helt stivnet og gyldent. Drys med purløg.'],
+    photoAlt:'Gyldne brødskiver stegt i æg og drysset med purløg' },
+  'kanapki-z-jajkiem-i-rzodkiewka':{ name:'Brødskiver med hårdkogt æg og radiser', steps:[
+    'Læg æggene i en gryde med koldt vand, bring det i kog, og kog dem i 10 minutter fra vandet koger. Skyl dem i koldt vand, og lad dem stå i 5 minutter.',
+    'Vask radiserne, og skær dem i tynde skiver. Vask og hak purløget. Pil æggene, og skær dem i skiver.',
+    'Smør brødskiverne med smør, læg æg- og radiseskiver på, drys med salt, og strø purløg over.'],
+    photoAlt:'Brødskiver med skiver af hårdkogt æg og radiser' },
+  'ryz-na-mleku':{ name:'Risengrød med æble og kanel', steps:[
+    'Skyl risene i en si. Kom dem i en lille gryde, hæld vandet over, og kog dem under låg ved svag varme i ca. 10 minutter, til de har suget vandet.',
+    'Hæld mælken i, tilsæt sukkeret, og kog uden låg i 12–15 minutter under hyppig omrøring, så risene ikke brænder fast i bunden.',
+    'Vask æblet, fjern kernehuset, og riv det groft. Rør det i grøden sammen med kanelen, og varm den i yderligere 2 minutter.'],
+    photoAlt:'En skål cremet risengrød med revet æble' },
+  'strammer-max':{ name:'Strammer Max – brød med skinke og spejlæg', steps:[
+    'Smør brødskiverne tyndt med halvdelen af smørret, og læg skinkeskiverne på. Vask og hak purløget.',
+    'Varm resten af smørret op på en pande. Slå æggene ud, og steg dem under låg ved svag varme i 3–4 minutter, til hvide og blomme er stivnede.',
+    'Læg et spejlæg på hver brødskive. Drys med peber og purløg.'],
+    photoAlt:'En brødskive med skinke dækket af et spejlæg' },
+  'tamagoyaki':{ name:'Tamagoyaki – japansk rullet omelet', steps:[
+    'Pisk æggene i en skål med vand, sojasauce og sukker, til sukkeret er opløst.',
+    'Varm en pande op ved middel varme, og pensl den tyndt med olie. Hæld en tredjedel af æggemassen på. Når den er stivnet, så rul den sammen med en paletkniv, og skub rullen ud til kanten af panden.',
+    'Pensl den frie del af panden med olie, og hæld den næste portion æggemasse på, så den løber ind under rullen. Når den er stivnet, så rul den om rullen. Gentag med resten af massen.',
+    'Steg den færdige rulle i endnu et minut, og vend den, til der ikke er flydende æg i midten. Lad den hvile i 2 minutter, og skær den i tykke skiver.'],
+    photoAlt:'Skiver af rullet gul omelet anrettet på en lille tallerken' },
+  'omlet-francuski':{ name:'Fransk omelet med ost', steps:[
+    'Riv osten. Vask og hak purløget. Pisk æggene med salt med en gaffel, kun til hvider og blommer er blandet.',
+    'Smelt smørret på en pande ved middel varme. Hæld æggene på, og skub i det første minut den stivnende masse fra kanten ind mod midten med en paletkniv.',
+    'Når overfladen ikke længere er flydende, så drys osten på omeletten, fold den på midten, og steg den i endnu et minut, til osten er smeltet og æggene helt stivnede. Drys med purløg.'],
+    photoAlt:'En lys omelet foldet på midten med smeltet ost indeni' },
+  'kanapki-z-serem-i-pomidorem':{ name:'Brødskiver med ost og tomat', steps:[
+    'Vask tomaten, og skær den i skiver. Vask og hak purløget.',
+    'Smør brødskiverne med smør, og læg osteskiverne på.',
+    'Læg tomatskiverne på osten, og drys med purløg. Skal brødene vente, så pak tomaten for sig.'],
+    photoAlt:'Brødskiver med skiver af ost og tomat' },
+  'twarozek-z-bananem':{ name:'Sød kvark med banan', steps:[
+    'Mos kvarken med yoghurten med en gaffel til en glat creme.',
+    'Pil den ene banan, mos den, og rør den i kvarken.',
+    'Skær den anden banan i skiver. Fordel kvarken i skåle, læg bananskiverne ovenpå, og drys med kanel.'],
+    photoAlt:'En skål hvid kvark med bananskiver og kanel' },
+  'onigiri-z-tunczykiem':{ name:'Onigiri med tun', steps:[
+    'Skyl risene i en si under koldt vand, til vandet er næsten klart. Bring dem i kog i det afmålte vand, skru ned til laveste varme, og kog under låg i 12 minutter. Tag gryden af varmen, og lad den stå under låg i 5 minutter.',
+    'Mos tunen med en gaffel, og bland den med sojasaucen. Klip noriarket i 4 strimler med en saks.',
+    'Bland risene med saltet, og lad dem køle af i ca. 5 minutter, så du kan tage dem i hænderne. Fugt hænderne med vand, tag en fjerdedel af risene, lav en fordybning, kom 1 tsk. tun i, og pres risene sammen til en fast trekant.',
+    'Form på den måde 4 onigiri, og vikl en noristrimmel om bunden af hver. Spis dem samme dag, og opbevar dem i køleskabet indtil da.'],
+    photoAlt:'Trekantede riskugler viklet ind i noristrimler' },
+  'croque-monsieur':{ name:'Croque-monsieur på panden', steps:[
+    'Skær osten i skiver, eller riv den. Smør alle brødskiverne med smør på den ene side.',
+    'Læg to skiver med smørsiden nedad, og fordel halvdelen af osten, skinken og resten af osten på dem. Læg de sidste skiver ovenpå med smørsiden opad.',
+    'Steg sandwichene på en tør pande ved svag varme i 3–4 minutter på hver side, og tryk let med en paletkniv, til brødet er gyldent og osten smeltet. Skær dem over på midten.'],
+    photoAlt:'En gylden ristet sandwich med skinke og trådende ost' },
+  'salatka-makaronowa':{ name:'Pastasalat med mozzarella og tomater', steps:[
+    'Kog pastaen efter anvisningen på pakken. Hæld vandet fra, skyl pastaen i koldt vand, og lad den dryppe godt af.',
+    'Vask tomaterne, og skær dem i tern. Lad mozzarellaen dryppe af, og skær den i tern. Skyl basilikumbladene, og riv dem i stykker.',
+    'Bland pastaen med tomater, mozzarella, basilikum, olivenolie og salt. Server straks, eller kom salaten i en boks, og opbevar den i køleskabet.'],
+    photoAlt:'En skål pasta med tern af tomat og mozzarella og basilikumblade' },
+  'zupa-ziemniaczana':{ name:'Kartoffelsuppe med dild', steps:[
+    'Skræl og vask kartofler, gulerod og løg. Skær kartoflerne i tern på ca. 1,5 cm og guleroden i halve skiver, og hak løget.',
+    'Smelt smørret i en gryde, og steg løg og gulerod i 3 minutter. Tilsæt kartofler, vand, salt og peber. Kog under låg i ca. 15 minutter, til kartoflerne er møre.',
+    'Mos en del af kartoflerne i gryden med en kartoffelmoser eller gaffel, så suppen bliver tykkere. Rør cremefraichen sammen med 3 spsk. varm suppe i et krus, og hæld det i gryden.',
+    'Vask og hak dilden, og kom den i suppen. Varm suppen i et minut uden at lade den koge.'],
+    photoAlt:'En tallerken lys kartoffelsuppe med gulerod og dild' },
+  'makaron-z-twarogiem':{ name:'Pasta med kvark og smør', steps:[
+    'Kog pastaen i saltet vand efter anvisningen på pakken, og hæld vandet fra.',
+    'Kom smørret i den tomme, stadig varme gryde, og når det er smeltet, så kom pastaen tilbage, og vend den.',
+    'Smuldr kvarken med fingrene eller en gaffel. Fordel pastaen på tallerkener, og drys med kvark og sukker.'],
+    photoAlt:'En tallerken pasta drysset med smuldret hvid kvark' },
+  'jajka-w-sosie-koperkowym':{ name:'Æg i dildsauce med kartofler', steps:[
+    'Skræl og vask kartoflerne, skær dem i halve, og kog dem i vand med halvdelen af saltet i ca. 20 minutter, til de er møre. Læg æggene i en anden gryde med koldt vand, bring det i kog, kog dem i 10 minutter fra vandet koger, og skyl dem derefter i koldt vand.',
+    'Smelt smørret i en lille gryde, drys melet i, og rør i et minut. Hæld mælken i lidt ad gangen under konstant piskning, og kog i 3 minutter, til saucen tykner.',
+    'Vask og hak dilden. Kom den i saucen sammen med resten af saltet. Pil æggene, og skær dem over på midten.',
+    'Hæld vandet fra kartoflerne, fordel dem på tallerkener, læg æggene ved siden af, og hæld saucen over dem.'],
+    photoAlt:'Halve æg i lysegrøn dildsauce ved siden af kogte kartofler' },
+  'spaghetti-aglio-e-olio':{ name:'Spaghetti aglio e olio', steps:[
+    'Kog pastaen i saltet vand efter anvisningen på pakken. Gem et halvt glas kogevand, inden du hælder pastaen fra.',
+    'Pil imens hvidløget, og skær det i tynde skiver. Vask og hak persillen. Varm olivenolien med hvidløget op på en stor pande ved svag varme i 3–4 minutter, til hvidløget er let gyldent. Lad det ikke blive brunt, for så bliver det bittert.',
+    'Kom pastaen på panden, hæld 4 spsk. af det gemte kogevand i, og rør i et minut over varmen, til olien dækker pastaen. Tilsæt persille og peber.'],
+    photoAlt:'En tallerken spaghetti med hvidløgsskiver og hakket persille' },
+  'makaron-z-tunczykiem':{ name:'Pasta med tun og tomater', steps:[
+    'Sæt vand over, og kog pastaen efter anvisningen på pakken.',
+    'Pil og hak imens løg og hvidløg. Steg dem i olivenolien i 3 minutter, hæld passataen i, salt, og lad saucen simre ved svag varme i 8 minutter.',
+    'Mos tunen med en gaffel, kom den i saucen, og varm den i 2 minutter. Vend saucen med den afdryppede pasta.'],
+    photoAlt:'En tallerken pasta i tomatsauce med stykker af tun' },
+  'frykadele':{ name:'Frikadeller med kartofler', steps:[
+    'Skræl og vask kartoflerne, skær dem i halve, og kog dem i vand med en del af saltet i ca. 20 minutter, til de er møre.',
+    'Smuldr brødskiven i en skål, og hæld det afmålte vand over. Pil løget, og hak det meget fint. Tilsæt kød, æg, løg, resten af saltet og peber. Ælt farsen med hånden, og form 6 flade frikadeller. Vask hænder, skål og skærebræt efter kontakt med råt kød.',
+    'Varm olien op på en pande. Steg frikadellerne ved middel varme i 5–6 minutter på hver side. Skær én igennem: kødet i midten må ikke være lyserødt, og kødsaften skal være klar.',
+    'Server frikadellerne med de afdryppede kartofler.'],
+    photoAlt:'Flade, gyldenbrune frikadeller ved siden af kogte kartofler' },
+  'ratatouille':{ name:'Hurtig ratatouille på panden', steps:[
+    'Vask grøntsagerne. Skær squash og aubergine i tern på ca. 1,5 cm. Fjern kernehuset fra peberfrugten, og skær den på samme måde. Pil og hak løg og hvidløg.',
+    'Varm olivenolien op på en stor pande. Steg løg og aubergine i 5 minutter under omrøring. Tilsæt peberfrugt og squash, og steg i yderligere 5 minutter.',
+    'Tilsæt hvidløg, passata og salt. Lad det simre under låg ved svag varme i 12–15 minutter, til grøntsagerne er møre, men ikke udkogte.',
+    'Server lunt med en skive brød.'],
+    photoAlt:'En pande med grøntsager i tomatsauce: squash, aubergine og peberfrugt' },
+  'oyakodon':{ name:'Oyakodon – ris med kylling og æg', steps:[
+    'Skyl risene i en si. Bring dem i kog i 200 ml vand, skru ned til laveste varme, og kog under låg i 12 minutter. Lad dem stå under låg i 5 minutter.',
+    'Pil imens løget, og skær det i både. Skær kyllingen i tynde strimler. Vask hænder, skærebræt og kniv efter kontakt med råt kød.',
+    'Bring resten af vandet i kog på en pande med sojasauce og sukker. Tilsæt løg og kylling, og kog under låg i 8 minutter, til kødet er hvidt i midten uden lyserøde steder.',
+    'Pisk æggene med en gaffel, og hæld dem jævnt over kyllingen. Kog under låg i 3–4 minutter, til æggene er helt stivnede. Fordel risene i skåle, og lad kylling, æg og sauce glide ned over dem.'],
+    photoAlt:'En skål ris dækket af kylling, løg og stivnet æg' },
+  'yakisoba':{ name:'Stegte nudler med grøntsager i yakisoba-stil', steps:[
+    'Kog pastaen, helst tynde nudler eller spaghetti, et minut kortere end angivet på pakken. Hæld vandet fra.',
+    'Skær kålen i tynde strimler. Skræl guleroden, og skær den i tynde stave. Pil løget, og skær det i både.',
+    'Varm olien godt op på en stor pande. Steg løg og gulerod i 3 minutter, tilsæt kålen, og steg i yderligere 4 minutter under omrøring. Grøntsagerne skal stadig være lidt sprøde.',
+    'Tilsæt pasta, sojasauce og sukker. Steg i 2 minutter under konstant omrøring, til pastaen har suget saucen.'],
+    photoAlt:'En tallerken stegte nudler med strimler af kål og gulerod' },
+  'zapiekanki-z-pieczarkami':{ name:'Gratinerede brødskiver med champignoner og ost', steps:[
+    'Tænd ovnen på 200°C. Rens champignonerne, og skær dem i skiver. Pil og hak løget. Riv osten.',
+    'Smelt smørret på en pande. Steg løg og champignoner i 6–7 minutter, til vandet er fordampet fra svampene. Smag til med salt og peber.',
+    'Læg brødskiverne på en bageplade, fordel champignonerne på dem, og drys med ost. Bag i 8 minutter, til osten er smeltet og gylden.'],
+    photoAlt:'Gratinerede brødskiver med champignoner under smeltet ost' },
+  'placki-z-cukinii':{ name:'Squashfrikadeller med hvidløgsdip', steps:[
+    'Vask squashen, og riv den groft med skræl. Bland den med halvdelen af saltet, lad den stå i 5 minutter, og pres saften godt ud med hænderne.',
+    'Pil hvidløget, riv det fint, og bland det med yoghurten og resten af saltet. Bland den udpressede squash med æg og mel.',
+    'Varm en del af olien op på en pande. Kom en skefuld masse på ad gangen, tryk den flad, og steg ved middel varme i 3 minutter på hver side, til frikadellerne er gyldne og gennemstegte. Gentag med resten af massen, og server med dippen.'],
+    photoAlt:'Gyldne frikadeller af revet squash ved siden af en skål yoghurtdip' },
+  'frittata-z-cukinia':{ name:'Frittata med squash', steps:[
+    'Vask squashen, og skær den i tynde halve skiver. Pil og hak løget. Riv osten.',
+    'Varm olivenolien op på en pande. Steg løg og squash i 7–8 minutter under omrøring, til de er bløde og let gyldne.',
+    'Pisk æggene med salt, peber og ost, hæld dem over grøntsagerne, og ryst panden. Steg under låg ved svag varme i ca. 8 minutter, til overfladen er helt stivnet. Skær frittataen i trekanter.'],
+    photoAlt:'En tyk omelet med squashskiver skåret i trekanter' },
+  'bratkartoffeln':{ name:'Bratkartoffeln – stegte kartofler med spejlæg', steps:[
+    'Skræl og vask kartoflerne, og skær dem i skiver på ca. 3 mm. Dup dem tørre med køkkenrulle. Pil løget, og skær det i tern.',
+    'Varm det meste af olien op på en stor pande. Fordel kartoflerne så fladt som muligt, og steg dem ved middel varme i 15 minutter, og vend dem med få minutters mellemrum. Tilsæt løg og salt, og steg i yderligere 5 minutter, til kartoflerne er møre og gyldne.',
+    'Skub kartoflerne til side, eller brug en anden pande. Steg spejlæg i resten af olien under låg i 3–4 minutter, til hvide og blomme er stivnede.',
+    'Fordel kartoflerne på tallerkener, læg æggene ovenpå, drys med peber, og strø hakket purløg over.'],
+    photoAlt:'Gyldne skiver af stegte kartofler med løg og et spejlæg på toppen' },
+  'flammkuchen':{ name:'Fladbrød med løg og cremefraiche i Flammkuchen-stil', steps:[
+    'Tænd ovnen på 250°C, og lad bagepladen varme med. Bland melet med halvdelen af saltet, vand og olie, og ælt i 3 minutter til en glat dej.',
+    'Pil løget, og skær det i meget tynde halve skiver. Rul dejen ud på et stykke bagepapir til en tynd bund, cirka på størrelse med bagepladen.',
+    'Smør bunden med cremefraiche, og lad en smal kant være fri. Fordel løget, og drys med resten af saltet og peber.',
+    'Træk bunden med bagepapiret over på den varme bageplade, og bag i 10–12 minutter, til kanterne er gyldne og sprøde. Drys med hakket purløg.'],
+    photoAlt:'En tynd sprød bund med cremefraiche, løg og purløg' },
+  'salatka-nicejska':{ name:'Salade niçoise med tun', steps:[
+    'Skræl og vask kartoflerne, skær dem i store tern, og kog dem i saltet vand i ca. 15 minutter, til de er møre. Læg æggene i en anden gryde med koldt vand, bring det i kog, og kog dem i 10 minutter fra vandet koger.',
+    'Hæld vandet fra kartoflerne, og lad dem køle af. Skyl æggene i koldt vand, pil dem, og skær dem i kvarte. Vask tomater og agurk, og skær dem i både.',
+    'Rør olivenolien sammen med citronsaft og salt. Anret kartofler, tomater og agurk på tallerkener, læg stykker af tun og æg ovenpå, og hæld dressingen over.'],
+    photoAlt:'En tallerken salat med kartofler, tun, æggekvarte og tomat' },
+  'zupa-miso':{ name:'Enkel misosuppe med tofu', steps:[
+    'Skræl guleroden, og skær den i meget tynde halve skiver. Bring vandet i kog, kom guleroden i, og kog i 5 minutter.',
+    'Skær tofuen i tern på ca. 1 cm. Klip noriarket i tynde strimler med en saks. Vask og hak purløget. Kom tofuen i gryden, og varm den i 2 minutter.',
+    'Tag gryden af varmen. Rør misopastaen ud i et krus med et par spsk. af den varme bouillon, og hæld den i suppen. Lad ikke suppen koge mere, så den ikke mister smag.',
+    'Hæld suppen i skåle, og tilsæt noristrimler og purløg.'],
+    photoAlt:'En skål uklar misosuppe med tofutern og noristrimler' },
+  'omurice':{ name:'Omurice – omelet med tomatris', steps:[
+    'Kog risene efter anvisningen på pakken. Pil imens løg og gulerod, og skær dem i små tern.',
+    'Smelt halvdelen af smørret på en pande. Steg løg og gulerod i 5 minutter. Tilsæt ris, passata og halvdelen af saltet, og steg i 3 minutter under omrøring, til risene har fået farve. Fordel risene på to tallerkener, og form dem til aflange høje.',
+    'Tør panden af. Pisk 2 æg med en knivspids salt, og steg en tynd omelet i halvdelen af det resterende smør i 2–3 minutter under låg, til den er helt stivnet. Læg den over den ene rishøj.',
+    'Steg på samme måde den anden omelet af de resterende æg og smør, og læg den over den anden portion.'],
+    photoAlt:'En aflang høj af tomatris dækket af en tynd gul omelet' },
+  'racuszki-z-jablkami':{ name:'Racuszki – små tykke pandekager med æble, uden gær', steps:[
+    'Pisk mel, mælk, æg og halvdelen af sukkeret sammen til en tyk, glat dej.',
+    'Vask og skræl æblerne, fjern kernehusene, og skær dem i små tern. Rør dem i dejen.',
+    'Varm en del af olien op på en pande. Kom en skefuld dej på ad gangen, og steg ved middel varme i 2–3 minutter på hver side, til pandekagerne er gyldne og gennemstegte. Gentag med resten af dejen.',
+    'Bland resten af sukkeret med kanelen, og drys det over de varme pandekager.'],
+    photoAlt:'En tallerken små pandekager med æblestykker drysset med kanelsukker' },
+  'budyn-kakaowy':{ name:'Hjemmelavet kakaobudding', steps:[
+    'Hæld et halvt glas kold mælk i et krus, og rør kartoffelmel og kakao grundigt ud i den, så der ikke er klumper.',
+    'Bring resten af mælken i kog med sukkeret i en lille gryde. Skru ned for varmen, og hæld blandingen fra kruset i i en tynd stråle under kraftig piskning.',
+    'Kog i et minut under konstant omrøring, til buddingen tykner og begynder at boble. Hæld den i skåle, og server den lun eller kold.'],
+    photoAlt:'To skåle tyk mørk kakaobudding' },
+  'omlet-biszkoptowy':{ name:'Luftig dessertomelet med skovbær', steps:[
+    'Kom de frosne bær i en lille gryde med halvdelen af sukkeret. Bring det i kog, kog i 2 minutter under omrøring, og sæt gryden til side.',
+    'Skil æggene. Pisk hviderne stive med et piskeris eller en elpisker, og tilsæt resten af sukkeret til sidst. Vend forsigtigt blommerne og derefter melet i.',
+    'Smelt smørret på en pande, kom massen på, og glat den ud. Steg under låg ved svag varme i 5–6 minutter, til overfladen er stivnet. Vend omeletten ved hjælp af en tallerken, og steg den i yderligere 2 minutter.',
+    'Læg omeletten på en tallerken, hæld de varme bær over, og skær den over på midten.'],
+    photoAlt:'En luftig lys omelet med mørkerød sauce af skovbær' },
+  'rote-grutze':{ name:'Rote Grütze – tysk rødgrød af skovbær med yoghurt', steps:[
+    'Rør kartoffelmelet ud i et krus med 4 spsk. af det afmålte kolde vand.',
+    'Kom de frosne bær i en lille gryde, og tilsæt resten af vandet og sukkeret. Bring det i kog, og kog i 3 minutter.',
+    'Hæld det udrørte kartoffelmel i under konstant omrøring, og kog i endnu et minut, til grøden tykner og bliver blank.',
+    'Hæld den i skåle, og lad den køle af i mindst 5 minutter. Server med en skefuld yoghurt på toppen.'],
+    photoAlt:'En skål tyk rød dessert af skovbær med en klat yoghurt' },
+  'tosty-francuskie':{ name:'Arme riddere med kanel', steps:[
+    'Pisk æg, mælk, halvdelen af sukkeret og kanelen sammen i en dyb tallerken.',
+    'Læg brødskiverne, gerne af gårsdagens brød, i blød i massen i ca. 20 sekunder på hver side, så de suger godt.',
+    'Smelt smørret på en pande. Steg skiverne ved middel varme i 2–3 minutter på hver side, til de er gyldne og æggemassen er helt stivnet. Drys med resten af sukkeret.'],
+    photoAlt:'Gyldne søde arme riddere drysset med sukker' },
+  'macedonia':{ name:'Macedonia – italiensk frugtsalat', steps:[
+    'Skræl den ene appelsin, og skær den i tern. Pres saften af den anden ned i en skål, tilsæt citronsaft og sukker, og rør rundt.',
+    'Vask æblet, fjern kernehuset, og skær det i tern. Pil bananen, og skær den i skiver. Kom straks frugten i saften, så den ikke bliver brun.',
+    'Tilsæt den skårne appelsin, vend det hele, og lad det stå i 5 minutter, til frugten har afgivet saft. Server i skåle sammen med saften.'],
+    photoAlt:'En skål skåret frugt i saft: appelsin, æble og banan' },
+  'surowka-z-kapusty':{ name:'Råkost af hvidkål med gulerod', steps:[
+    'Snit kålen i så tynde strimler som muligt. Drys med salt, og ælt den med hånden i 2 minutter, til den bliver blød og afgiver saft.',
+    'Skræl guleroden, og riv den groft. Vask og hak dilden.',
+    'Bland kålen med gulerod, dild, citronsaft, olie og sukker. Lad den stå i 5 minutter inden servering.'],
+    photoAlt:'En skål råkost af snittet hvidkål og gulerod' },
+  'caprese':{ name:'Caprese-salat', steps:[
+    'Vask tomaterne, og skær dem i skiver. Lad mozzarellaen dryppe af, og skær den i skiver af samme tykkelse.',
+    'Læg tomat- og mozzarellaskiverne skiftevis på en tallerken.',
+    'Skyl basilikumbladene, og fordel dem ovenpå. Dryp med olivenolie, og drys med salt og peber lige inden servering.'],
+    photoAlt:'Skiftevis lagte skiver af tomat og mozzarella med basilikumblade' },
+  'bruschetta':{ name:'Bruschetta med tomater og basilikum', steps:[
+    'Vask tomaterne, fjern kernerne, og skær kødet i små tern. Skyl basilikumbladene, og riv dem i stykker. Bland tomaterne med basilikum, salt og halvdelen af olivenolien.',
+    'Rist brødskiverne på en tør pande i 2 minutter på hver side, til de er sprøde.',
+    'Gnid de varme brødskiver med et halveret hvidløgsfed, og dryp dem med resten af olivenolien. Kom tomaterne på lige inden servering, så brødet ikke bliver blødt.'],
+    photoAlt:'Sprøde ristede brødskiver med rå tomater og basilikum' },
+  'kartoffelsalat':{ name:'Kartoffelsalat – tysk kartoffelsalat med eddikelage', steps:[
+    'Skræl og vask kartoflerne, og skær dem i skiver på ca. 5 mm. Kog dem i saltet vand i 10–12 minutter, til de er møre, men ikke falder fra hinanden. Hæld forsigtigt vandet fra.',
+    'Pil løget, og hak det fint. Bring det afmålte vand i kog i en lille gryde med løg, eddike, sukker, salt og peber, og kog i 2 minutter.',
+    'Hæld den varme lage over de lune kartofler, tilsæt olien, og vend forsigtigt. Lad salaten stå i 10 minutter, så kartoflerne suger væden.',
+    'Vask og hak purløget, og vend det i salaten. Server den lun.'],
+    photoAlt:'En skål salat af kartoffelskiver med løg og purløg, uden mayonnaise' },
+  'zupa-cebulowa':{ name:'Løgsuppe med ostebrød', steps:[
+    'Pil løgene, og skær dem i tynde halve skiver. Smelt smørret i en gryde, og steg løget med saltet ved middel varme i 12–15 minutter under hyppig omrøring, til det er blødt og gyldenbrunt.',
+    'Drys melet over løget, og rør i et minut. Hæld vandet i, smag til med peber, og lad suppen simre under låg i 8 minutter.',
+    'Riv imens osten. Rist brødskiverne på en tør pande i 2 minutter på den ene side, vend dem, drys med ost, og læg låg på i 2 minutter, til osten er smeltet.',
+    'Hæld suppen i skåle, og læg et ostebrød på hver.'],
+    photoAlt:'En skål brun løgsuppe med et stykke brød under smeltet ost' },
+  'sunomono':{ name:'Sunomono – agurkesalat med sesam', steps:[
+    'Vask agurken, og skær den i så tynde skiver som muligt. Drys med salt, vend, og lad den stå i 5 minutter. Pres den derefter i hænderne, og hæld saften fra.',
+    'Rist sesamfrøene på en tør pande i 1–2 minutter under omrøring, til de dufter og er let gyldne.',
+    'Rør eddike, sukker og sojasauce sammen, til sukkeret er opløst. Hæld lagen over agurken, vend, og drys med sesamfrø.'],
+    photoAlt:'En skål tynde agurkeskiver i lage drysset med sesam' },
+};
