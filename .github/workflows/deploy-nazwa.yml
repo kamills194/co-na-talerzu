@@ -1,0 +1,82 @@
+name: Deploy conatalerz.pl (nazwa.pl)
+# Każde scalenie do main: testy, build i wysłanie apps/web/dist przez FTPS
+# na hosting nazwa.pl dla domeny conatalerz.pl.
+#
+# Wymagane w Settings → Secrets and variables → Actions:
+#   secrets.NAZWA_FTP_SERVER    np. serwer123456.nazwa.pl
+#   secrets.NAZWA_FTP_USERNAME  login konta FTP z panelu nazwa.pl
+#   secrets.NAZWA_FTP_PASSWORD  hasło konta FTP
+#   vars.NAZWA_FTP_DIR          katalog domeny conatalerz.pl na serwerze, zakończony "/"
+#                               (np. /public_html/ albo /conatalerz.pl/) — patrz docs/HOSTING-NAZWA-PL.md
+# Opcjonalnie vars.NAZWA_FTP_PROTOCOL: ftps (domyślnie) albo ftp.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: deploy-nazwa
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: nazwa-pl
+      url: https://conatalerz.pl
+    steps:
+      - name: Sprawdź konfigurację
+        id: cfg
+        env:
+          SERVER: ${{ secrets.NAZWA_FTP_SERVER }}
+          USER: ${{ secrets.NAZWA_FTP_USERNAME }}
+          PASS: ${{ secrets.NAZWA_FTP_PASSWORD }}
+          DIR: ${{ vars.NAZWA_FTP_DIR }}
+        run: |
+          missing=""
+          [ -z "$SERVER" ] && missing="$missing NAZWA_FTP_SERVER"
+          [ -z "$USER" ] && missing="$missing NAZWA_FTP_USERNAME"
+          [ -z "$PASS" ] && missing="$missing NAZWA_FTP_PASSWORD"
+          [ -z "$DIR" ] && missing="$missing NAZWA_FTP_DIR"
+          if [ -n "$missing" ]; then
+            echo "::warning::Pomijam wdrożenie na nazwa.pl — brak:$missing"
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            case "$DIR" in */) ;; *) echo "::error::NAZWA_FTP_DIR musi kończyć się na /"; exit 1;; esac
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@v4
+        if: steps.cfg.outputs.ready == 'true'
+      - uses: actions/setup-node@v4
+        if: steps.cfg.outputs.ready == 'true'
+        with:
+          node-version: '22'
+      - run: npm test
+        if: steps.cfg.outputs.ready == 'true'
+      - run: npm run build
+        if: steps.cfg.outputs.ready == 'true'
+      - name: Dodaj .htaccess
+        if: steps.cfg.outputs.ready == 'true'
+        run: cp deploy/nazwa.pl/.htaccess apps/web/dist/.htaccess
+      - name: Wyślij na nazwa.pl
+        if: steps.cfg.outputs.ready == 'true'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.NAZWA_FTP_SERVER }}
+          username: ${{ secrets.NAZWA_FTP_USERNAME }}
+          password: ${{ secrets.NAZWA_FTP_PASSWORD }}
+          protocol: ${{ vars.NAZWA_FTP_PROTOCOL || 'ftps' }}
+          local-dir: ./apps/web/dist/
+          server-dir: ${{ vars.NAZWA_FTP_DIR }}
+          # Usuwa z serwera tylko pliki wcześniej wysłane tą akcją (stan w .ftp-deploy-sync-state.json)
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+      - name: Sprawdź stronę
+        if: steps.cfg.outputs.ready == 'true'
+        run: |
+          sleep 5
+          code=$(curl -s -o /dev/null -w '%{http_code}' -L https://conatalerz.pl/ || true)
+          echo "https://conatalerz.pl/ → HTTP $code"
+          [ "$code" = "200" ] || echo "::warning::conatalerz.pl zwraca HTTP $code — sprawdź DNS/SSL/katalog domeny w panelu nazwa.pl"
