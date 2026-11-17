@@ -38,3 +38,9 @@ dialog{--dp:30px;padding:0 var(--dp) var(--dp);overscroll-behavior:contain}
 .cuisine-tabs button[aria-pressed=true]{background:var(--green);border-color:var(--green);color:white}
 .chip-count{min-width:24px;padding:2px 7px;border-radius:20px;background:#e9ecdf;color:var(--ink);font-size:11px;font-weight:600;text-align:center}.cuisine-tabs button[aria-pressed=true] .chip-count{background:#fffefb;color:var(--green)}
 .cuisine-label{position:absolute;left:14px;bottom:12px;max-width:calc(100% - 28px);background:#fffcf1e8;padding:6px 10px;border-radius:30px;font-size:11px}
+/* CNT-025/026: nutrition estimate and its toggle. */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.nutrition-toggle{display:inline-flex;align-items:center;gap:8px;margin-top:16px;min-height:44px;font-size:13px;cursor:pointer}
+.nutrition{margin-top:22px;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:14px 16px}.nutrition h3{margin:0 0 10px;font-size:19px}
+.nutrition dl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:0 0 10px}.nutrition dl div{background:#f0f0e7;border-radius:8px;padding:8px 10px}.nutrition dt{font-size:11px;color:var(--muted)}.nutrition dd{margin:2px 0 0;font-size:15px;font-weight:600;white-space:nowrap}.nutrition p{margin:0}
+@media(max-width:600px){.nutrition dl{grid-template-columns:repeat(2,minmax(0,1fr))}}
