@@ -45,4 +45,5 @@ export const messages = {
   excludeSearchPlaceholder:'Tapez un nom, p. ex. oignon', excludeNoMatch:'Ce produit ne figure dans aucune recette.', excludeHelp:'Les flèches haut et bas choisissent, Entrée ajoute, Échap ferme.', excludedAdded:'Exclu : {name}', excludedRemoved:'Autorisé à nouveau : {name}', removeExclusion:'Retirer l’exclusion',
   excludedSummary:'Exclus', clearExclusions:'Effacer', clearExclusionsLabel:'Effacer toutes les exclusions', allergenExamples:'p. ex. {list}', allergenNone:'absent des recettes actuelles', filtersCleared:'Tous les filtres ont été effacés.',
   servingsCount_one:'{n} portion', servingsCount_many:'{n} portions', servingsCount_other:'{n} portions', suggestions_one:'{n} suggestion', suggestions_many:'{n} suggestions', suggestions_other:'{n} suggestions',
+  themeLabel:'Thème', themeLight:'Clair', themeDark:'Sombre', themeAuto:'Automatique',
 };

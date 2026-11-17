@@ -43,6 +43,7 @@ znane zadania z obu wątków; nie sugeruje importu nieistniejącego systemu Issu
 | CNT-032 | Realistyczne generowane zdjęcia 30 dań z opisem pochodzenia; zastępuje CNT-019 | UX/UI + ekspert kulinarny | Zablokowane: brak plików zdjęć; mechanizm wyświetlania gotowy |
 | CNT-033 | 16 dań powyżej 60 minut, głównie z kuchni zagranicznych; katalog 86 przepisów, kuchnia polska poniżej 55% | Ekspert kulinarny | Wykonane (reports/CNT-033.md); bez próby kuchennej, tłumaczenia bez korekty rodzimych użytkowników |
 | CNT-034 | Poprawki po użyciu na telefonie (17.11): losowanie i porcje, 1 porcja z przyciskami −/+, język w prawym rogu, filtr czasu powyżej 60 min, kuchnia na kartach, wyszukiwarka wykluczeń, grupy alergenów, pełne czyszczenie filtrów | Programista + UX | Wykonane (reports/CNT-034.md) |
+| CNT-035 | Wygląd po uwagach z 17.11: motyw jasny/ciemny/automatyczny, mniejsza czcionka, więcej bajkowości, brak nakładania się elementów (także przy powiększeniu 150–200%); język ukraiński opisany „Українська — ukraiński”, plakietka UA | UX/UI | Wykonane (reports/CNT-035.md) |
 | CNT-036 | Ilości składników w gramach (ml dla płynów), przy sztukach podpowiedź „≈ N szt.”; decyzja właściciela 17.11.2026 | Programista | Wykonane: przeliczenie tylko przy wyświetlaniu, zapisane dane bez zmian |
 
 Każde nowe zadanie: cel użytkownika, zakres plików, kryteria odbioru, odpowiedzialna

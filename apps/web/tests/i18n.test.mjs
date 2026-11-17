@@ -190,7 +190,9 @@ test('Domyślnie polski, także gdy przeglądarka jest po angielsku; wybór zapi
   assert.ok(b.results.includes('>Owsianka z jabłkiem i cynamonem<')); assert.equal(b.footer, 'Co na talerz · Twoja domowa kuchnia');
   assert.ok(b.lang.includes('<label for="language">')); assert.ok(b.lang.includes('Język / Language'));
   assert.ok(b.lang.includes('<option value="pl" lang="pl" selected>Polski</option>'));
-  for (const l of languages) assert.ok(b.lang.includes(`<option value="${l.code}" lang="${l.code}"`) && b.lang.includes(`>${l.name}</option>`), l.code);
+  for (const l of languages) assert.ok(b.lang.includes(`<option value="${l.code}" lang="${l.code}"`) && b.lang.includes(`>${l.name}`), l.code);
+  // CNT-035: nazwa w języku interfejsu obok nazwy własnej, żeby każdy język był rozpoznawalny (np. ukraiński zapisany cyrylicą); plakietka UA zamiast ISO „UK”.
+  assert.ok(b.lang.includes('>Українська — ukraiński</option>')); assert.ok(b.lang.includes('>English — angielski</option>')); assert.ok(b.lang.includes('>Polski</option>'));
   assert.ok(b.lang.includes('id="lang-suggest" data-lang="en" lang="en"'), 'podpowiedź języka przeglądarki, bez przełączania');
   assert.ok(a.results.includes('>Porridge with apple and cinnamon<')); assert.ok(a.results.includes('rolled oats · milk · apple'));
   assert.ok(a.main.includes('Surprise me')); assert.equal(a.footer, 'Co na talerz · Your home kitchen'); assert.equal(a.navLabel, 'Main navigation');

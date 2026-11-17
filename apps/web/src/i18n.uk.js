@@ -46,4 +46,5 @@ export const messages = {
   excludedSummary:'Виключено', clearExclusions:'Очистити', clearExclusionsLabel:'Очистити всі виключення', allergenExamples:'напр. {list}', allergenNone:'немає в поточних рецептах', filtersCleared:'Усі фільтри очищено.',
   servingsCount_one:'{n} порція', servingsCount_few:'{n} порції', servingsCount_many:'{n} порцій', servingsCount_other:'{n} порції', suggestions_one:'{n} підказка', suggestions_few:'{n} підказки',
   suggestions_many:'{n} підказок', suggestions_other:'{n} підказки',
+  themeLabel:'Тема', themeLight:'Світла', themeDark:'Темна', themeAuto:'Автоматично',
 };
