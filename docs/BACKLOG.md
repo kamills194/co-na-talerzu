@@ -41,6 +41,7 @@ znane zadania z obu wątków; nie sugeruje importu nieistniejącego systemu Issu
 | CNT-030 | Wybór języka oraz tłumaczenia interfejsu i przepisów | UX/UI i lokalizacja | Wykonane: wybór języka i 7 tłumaczeń (en, de, uk, fr, da, es, it) wbudowanych offline (reports/CNT-030.md); bez korekty przez rodzimych użytkowników |
 | CNT-031 | Nowa, bardziej bajkowa szata graficzna; najpierw warianty do wyboru | UX/UI | Wykonane: wdrożony wariant „Bajkowa książeczka” (src/theme.css), decyzja właściciela 17.11.2026 |
 | CNT-032 | Realistyczne generowane zdjęcia 30 dań z opisem pochodzenia; zastępuje CNT-019 | UX/UI + ekspert kulinarny | Zablokowane: brak plików zdjęć; mechanizm wyświetlania gotowy |
+| CNT-034 | Poprawki po użyciu na telefonie (17.11): losowanie i porcje, 1 porcja z przyciskami −/+, język w prawym rogu, filtr czasu powyżej 60 min, kuchnia na kartach, wyszukiwarka wykluczeń, grupy alergenów, pełne czyszczenie filtrów | Programista + UX | Wykonane (reports/CNT-034.md) |
 
 Każde nowe zadanie: cel użytkownika, zakres plików, kryteria odbioru, odpowiedzialna
 rola, zależności i dowód wykonania. Nie przypisano rzeczywistych osób ani botów.

@@ -17,10 +17,12 @@ const dietRules = {
 export function matchesDiet(r, diet) { return !diet || (Object.hasOwn(dietRules,diet) ? dietRules[diet](r) : r[diet]===true); }
 // `extraText(recipe)` (optional, CNT-030) returns more searchable strings, e.g. the recipe and product names in
 // the UI language; the Polish names are always searched as well.
-export function filterRecipes(recipes, {query='',category='',cuisine='',maxTime=0,diet='',excluded=[],excludedProducts=[]}={}, {extraText}={}) {
+// `minTime` (CNT-034, optional): only recipes taking at least that many minutes (e.g. 61 = "over 60 min");
+// 0 or absent = no lower bound, so existing callers keep working.
+export function filterRecipes(recipes, {query='',category='',cuisine='',maxTime=0,minTime=0,diet='',excluded=[],excludedProducts=[]}={}, {extraText}={}) {
   const q=normalize(query);
   // A recipe without `cuisine` belongs to the Polish catalog (records older than CNT-024).
-  return recipes.filter(r => (!category || r.category===category) && (!cuisine || (r.cuisine||'polish')===cuisine) && (!Number(maxTime) || r.minutes<=Number(maxTime)) && matchesDiet(r,diet) && !r.allergens.some(a=>excluded.includes(a)) && !r.ingredients.some(i=>excludedProducts.includes(i.product)) && (!q || normalize([r.name,...r.ingredients.map(i=>products[i.product][0]),...(extraText?extraText(r):[])].join(' ')).includes(q)));
+  return recipes.filter(r => (!category || r.category===category) && (!cuisine || (r.cuisine||'polish')===cuisine) && (!Number(maxTime) || r.minutes<=Number(maxTime)) && (!Number(minTime) || r.minutes>=Number(minTime)) && matchesDiet(r,diet) && !r.allergens.some(a=>excluded.includes(a)) && !r.ingredients.some(i=>excludedProducts.includes(i.product)) && (!q || normalize([r.name,...r.ingredients.map(i=>products[i.product][0]),...(extraText?extraText(r):[])].join(' ')).includes(q)));
 }
 export function surprise(recipes, filters, previousId, rng=Math.random) {
   const matches=filterRecipes(recipes,filters);
@@ -29,6 +31,9 @@ export function surprise(recipes, filters, previousId, rng=Math.random) {
 }
 export function addIngredients(list,recipe,servings) {
   const result=list.map(i=>({...i}));
+  // CNT-034: an empty or invalid servings value (0, NaN, negative) must never add zero/negative amounts,
+  // which the storage contract rejects (every later save would fail). The list is returned unchanged.
+  if(!(Number.isFinite(servings) && servings>0)) return result;
   for (const item of recipe.ingredients) {
     const amount=item.amount*servings/recipe.servings;
     // Match by product only; a custom (named) entry never absorbs recipe amounts.
@@ -171,4 +176,33 @@ export function weightedSurprise(candidates,offers,now=new Date(),{random=Math.r
   let x=Math.min(Math.max(Number(random())||0,0),1)*total;
   for(let i=0;i<pool.length;i++){ x-=weights[i]; if(x<0) return pool[i]; }
   return pool[pool.length-1];
+}
+// ---------- CNT-034: servings, time ranges, ingredient exclusion search, allergen groups ----------
+export const SERVINGS_MIN = 1, SERVINGS_MAX = 20, SERVINGS_DEFAULT = 1;
+// Whole number of servings from user input in [1, 20], or null when the text is empty or not such a number.
+export function parseServings(value) {
+  const text=String(value??'').trim();
+  if(!/^\d+$/.test(text)) return null;
+  const n=Number(text);
+  return n>=SERVINGS_MIN && n<=SERVINGS_MAX ? n : null;
+}
+export const clampServings = n => Math.min(SERVINGS_MAX, Math.max(SERVINGS_MIN, Math.round(Number(n)) || SERVINGS_MIN));
+// Time filter options: value → {maxTime, minTime}. 'over60' selects dishes taking more than 60 minutes.
+export const TIME_OPTIONS = Object.freeze({ '0':{maxTime:0,minTime:0}, '15':{maxTime:15,minTime:0}, '30':{maxTime:30,minTime:0}, '60':{maxTime:60,minTime:0}, 'over60':{maxTime:0,minTime:61} });
+export function timeOption({maxTime=0,minTime=0}={}) { return Number(minTime)>60 ? 'over60' : Object.keys(TIME_OPTIONS).find(k=>TIME_OPTIONS[k].maxTime===Number(maxTime)&&!TIME_OPTIONS[k].minTime) ?? String(Number(maxTime)||0); }
+// Products carrying an allergen, in catalog order.
+export function allergenProducts(allergen) { return Object.keys(products).filter(id=>products[id][2].includes(allergen)); }
+// Suggestions for the exclusion search: products whose name (UI language via `nameOf`, and always Polish)
+// contains the query; names starting with it first. Skips `skip` ids. Returns ids.
+export function suggestProducts(query, {nameOf=id=>products[id][0], skip=[], limit=8}={}) {
+  const q=normalize(query); if(!q) return [];
+  const scored=[];
+  for(const id of Object.keys(products)) {
+    if(skip.includes(id)) continue;
+    const names=[nameOf(id),products[id][0]].filter(Boolean).map(normalize);
+    const words=names.flatMap(n=>n.split(/[\s,()-]+/));
+    const rank=names.some(n=>n.startsWith(q))?0:words.some(w=>w.startsWith(q))?1:names.some(n=>n.includes(q))?2:-1;
+    if(rank>=0) scored.push({id,rank,name:normalize(nameOf(id)||products[id][0])});
+  }
+  return scored.sort((a,b)=>a.rank-b.rank||a.name.localeCompare(b.name)).slice(0,limit).map(x=>x.id);
 }

@@ -198,7 +198,7 @@ test('Domyślnie polski, także gdy przeglądarka jest po angielsku; wybór zapi
   assert.ok(!a.lang.includes('lang-suggest'), 'po wyborze podpowiedź znika');
   assert.deepEqual(out.html, { lang:'en', dir:'ltr' }); assert.equal(out.title, 'Co na talerz — home-cooking ideas');
   assert.equal(out.saved.settings.language, 'en');
-  assert.ok(out.detail.includes('Wash the apple, remove the core and grate it.')); assert.ok(out.detail.includes('100 g')); assert.ok(out.detail.includes('0.5 tsp'));
+  assert.ok(out.detail.includes('Wash the apple, remove the core and grate it.')); assert.ok(out.detail.includes('50 g')); assert.ok(out.detail.includes('0.25 tsp')); // CNT-034: domyślnie 1 porcja (dane: 2)
   assert.ok(out.detail.includes('<h2 id="detail-heading">Porridge with apple and cinnamon</h2>'));
   assert.ok(out.shopping.includes('Shopping without forgetting'));
 });
