@@ -29,14 +29,15 @@ AddCharset utf-8 .js .css .json .webmanifest .html
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Strict-Transport-Security "max-age=31536000" env=HTTPS
 
-  # Pliki, które muszą być zawsze świeże: powłoka, service worker, manifest, oferty
-  <FilesMatch "^(index\.html|sw\.js|manifest\.webmanifest|offers\.json|errors\.js)$">
-    Header set Cache-Control "no-cache, must-revalidate"
+  # Kod aplikacji zawsze sprawdzany u źródła (ETag/Last-Modified — przy braku zmian 304 bez pobierania).
+  # Ważne przy CDN nazwa.pl: inaczej CDN serwuje stary sw.js/app.js do godziny po wdrożeniu,
+  # a nowy service worker mógłby zapisać w pamięci offline nieaktualne pliki.
+  <FilesMatch "\.(html|js|css|json|webmanifest|php)$">
+    Header set Cache-Control "no-cache"
   </FilesMatch>
-
-  # Pozostałe zasoby — krótki cache; wersjonowaniem zarządza service worker
-  <FilesMatch "\.(js|css|png|svg|jpg|jpeg|webp)$">
-    Header set Cache-Control "public, max-age=3600"
+  # Ikony i obrazy — dzień
+  <FilesMatch "\.(png|svg|jpg|jpeg|webp|ico)$">
+    Header set Cache-Control "public, max-age=86400"
   </FilesMatch>
 </IfModule>
 
