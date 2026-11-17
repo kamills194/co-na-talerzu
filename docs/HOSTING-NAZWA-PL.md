@@ -52,5 +52,6 @@ Potem Actions → *Deploy conatalerz.pl (nazwa.pl)* → **Run workflow**.
 ## Aktualna konfiguracja (2026-11-18)
 
 - Serwer: CloudHosting Start `server705424.nazwa.pl`, domena `conatalerz.pl` z certyfikatem SSL,
-  katalog WWW: katalog główny.
-- Konto FTP/SFTP: `server705424_conatalerz`, katalog: katalog główny → `NAZWA_FTP_DIR=./`.
+  katalog WWW domeny: `/conatalerz` (CloudHosting Panel → Domeny → Modyfikuj domenę).
+- Konto SFTP: `server705424_conatalerz`, ograniczone do katalogu `conatalerz/` → `NAZWA_FTP_DIR=./`.
+- Sekrety GitHub ustawione: `NAZWA_FTP_SERVER`, `NAZWA_FTP_USERNAME`, `NAZWA_FTP_PASSWORD`; zmienna `NAZWA_FTP_DIR`.
