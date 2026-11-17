@@ -1,4 +1,391 @@
-// Recipe and product texts: fr. PLACEHOLDER — not translated yet; everything falls back to Polish (recipes.pl.js).
-// Fill according to docs/TLUMACZENIA.md: recipes { <recipeId>: { name, steps:[...], photoAlt } }, products { <productId>: name }.
-export const recipes = {};
-export const products = {};
+// Recipe and product texts: French (fr-FR). Text only — amounts, units, ids, allergens and flags come from
+// recipes.pl.js. Each recipe has exactly as many steps as in Polish. Format: docs/TLUMACZENIA.md.
+// Machine translation (CNT-030), not reviewed by a native speaker or tested in a kitchen.
+export const products = {
+  oats:'Flocons d’avoine', milk:'Lait', apple:'Pomme', cinnamon:'Cannelle', egg:'Œuf', butter:'Beurre', bread:'Pain', tomato:'Tomate',
+  cheese:'Fromage blanc égoutté (twaróg polonais)', yogurt:'Yaourt nature', radish:'Radis', cucumber:'Concombre', banana:'Banane', carrot:'Carotte', hummus:'Houmous', rice:'Riz',
+  passata:'Coulis de tomates (passata)', water:'Eau', oil:'Huile de colza', salt:'Sel', potato:'Pommes de terre', chicken:'Blanc de poulet', paprika:'Paprika doux en poudre',
+  pasta:'Pâtes de blé sans œufs', onion:'Oignon', lentils:'Lentilles corail sèches', chickpeas:'Pois chiches en conserve, égouttés', pepper:'Poivron frais', flour:'Farine de blé', sugar:'Sucre',
+  cocoa:'Cacao en poudre', beans:'Haricots blancs en conserve, égouttés', lemon:'Citron', garlic:'Ail',
+  semolina:'Semoule de blé fine', buckwheat:'Kacha (sarrasin grillé)', kefir:'Kéfir', sourcream:'Crème aigre 18 %',
+  mackerel:'Filet de maquereau fumé', chives:'Ciboulette', dill:'Aneth', blackpepper:'Poivre noir moulu',
+  yellowcheese:'Fromage à pâte pressée (type gouda)', mozzarella:'Mozzarella', oliveoil:'Huile d’olive', basil:'Basilic frais',
+  parsley:'Persil plat', zucchini:'Courgette', eggplant:'Aubergine', cabbage:'Chou blanc',
+  mushroom:'Champignons de Paris', orange:'Orange', berries:'Fruits rouges surgelés', potatostarch:'Fécule de pomme de terre',
+  vinegar:'Vinaigre de cidre', tuna:'Thon au naturel, égoutté', mincedpork:'Porc haché',
+  ham:'Jambon cuit en tranches', sushirice:'Riz à sushi', soysauce:'Sauce soja',
+  miso:'Pâte miso', tofu:'Tofu nature', nori:'Feuille de nori', sesame:'Graines de sésame',
+};
+export const recipes = {
+  'owsianka':{ name:'Porridge à la pomme et à la cannelle', steps:[
+    'Versez les flocons dans une petite casserole, couvrez de lait et portez doucement à ébullition.',
+    'Faites cuire à feu doux 5–7 minutes en remuant, jusqu’à ce que les flocons ramollissent.',
+    'Lavez la pomme, retirez le trognon et râpez-la. Ajoutez-la au porridge avec la cannelle et faites chauffer une minute.'],
+    photoAlt:'Un bol de porridge au lait avec de la pomme râpée et de la cannelle' },
+  'jajecznica':{ name:'Œufs brouillés à la tomate', steps:[
+    'Lavez la tomate et coupez-la en dés. Faites chauffer le beurre dans une poêle.',
+    'Ajoutez la tomate et faites-la revenir 2 minutes. Cassez les œufs, salez et remuez à feu doux jusqu’à ce qu’ils soient bien pris.',
+    'Servez aussitôt avec le pain.'],
+    photoAlt:'Des œufs brouillés avec des morceaux de tomate dans une assiette, à côté de tranches de pain' },
+  'owsianka-wodna':{ name:'Porridge à la banane cuit à l’eau', steps:[
+    'Couvrez les flocons d’eau et faites cuire 5–7 minutes en remuant.',
+    'Écrasez une banane à la fourchette et incorporez-la aux flocons.',
+    'Coupez la seconde en rondelles. Disposez-les sur le porridge et saupoudrez de cannelle.'],
+    photoAlt:'Un bol de porridge garni de rondelles de banane saupoudrées de cannelle' },
+  'pasta-jajeczna':{ name:'Tartines aux œufs écrasés et à la ciboulette', steps:[
+    'Mettez les œufs dans une casserole d’eau froide, portez à ébullition et faites cuire 10 minutes à partir de l’ébullition. Passez-les sous l’eau froide et laissez-les refroidir 5 minutes.',
+    'Lavez la ciboulette, séchez-la et ciselez-la finement. Écalez les œufs et écrasez-les à la fourchette.',
+    'Mélangez les œufs avec le yaourt, la ciboulette, le sel et le poivre. Tartinez sur les tranches de pain.'],
+    photoAlt:'Des tranches de pain tartinées d’œufs écrasés et parsemées de ciboulette' },
+  'kasza-manna':{ name:'Semoule au lait et compote de pommes', steps:[
+    'Lavez les pommes, épluchez-les, retirez le trognon et coupez-les en dés. Faites-les cuire à l’étouffée dans une petite casserole avec l’eau et la cannelle, à couvert, 6–8 minutes jusqu’à ce qu’elles soient tendres, puis écrasez-les à la fourchette.',
+    'Dans une autre casserole, faites chauffer le lait avec le sucre. Dès qu’il commence à bouillir, baissez le feu et versez la semoule en pluie fine sans cesser de remuer pour éviter les grumeaux.',
+    'Faites cuire 2–3 minutes en remuant, jusqu’à ce que la semoule épaississe. Répartissez dans des bols et garnissez de compote de pommes.'],
+    photoAlt:'Un bol de semoule au lait surmontée de compote de pommes' },
+  'twarożek':{ name:'Fromage blanc aux radis sur tartines', steps:[
+    'Lavez les radis et hachez-les finement.',
+    'Écrasez le fromage blanc avec le yaourt, ajoutez les radis et le sel.',
+    'Servez sur des tranches de pain.'],
+    photoAlt:'Des tranches de pain garnies de fromage blanc et de morceaux de radis' },
+  'jogurt':{ name:'Yaourt à la banane et aux flocons d’avoine', steps:[
+    'Épluchez les bananes et coupez-les en rondelles.',
+    'Répartissez le yaourt dans deux bols.',
+    'Ajoutez les bananes et les flocons. Laissez reposer 3 minutes pour que les flocons ramollissent.'],
+    photoAlt:'Un bol de yaourt nature avec des rondelles de banane et des flocons d’avoine' },
+  'hummus-kanapki':{ name:'Tartines de houmous au concombre', steps:[
+    'Lavez le concombre et coupez-le en fines rondelles.',
+    'Tartinez le pain de houmous.',
+    'Disposez le concombre sur les tartines et servez.'],
+    photoAlt:'Des tartines de houmous garnies de rondelles de concombre frais' },
+  'pasta-z-makreli':{ name:'Rillettes de maquereau fumé à la ciboulette', steps:[
+    'Retirez la peau des filets de maquereau. Émiettez la chair avec les doigts et ôtez soigneusement toutes les arêtes.',
+    'Lavez la ciboulette et ciselez-la finement. Écrasez le fromage blanc à la fourchette avec le yaourt.',
+    'Ajoutez le maquereau, la ciboulette, le jus de citron et le poivre, puis mélangez. Ne salez pas, le poisson fumé est déjà salé. Servez sur des tranches de pain.'],
+    photoAlt:'Des tranches de pain tartinées de rillettes de maquereau fumé à la ciboulette' },
+  'koktajl-kefirowy':{ name:'Smoothie au kéfir, banane et flocons d’avoine', steps:[
+    'Épluchez les bananes et cassez-les en morceaux.',
+    'Mettez dans le blender les bananes, les flocons d’avoine et la cannelle, puis versez le kéfir.',
+    'Mixez environ une minute, jusqu’à obtenir un smoothie lisse. Versez dans deux verres et servez aussitôt.'],
+    photoAlt:'Deux verres de smoothie clair à la banane et au kéfir' },
+  'pomidorowa':{ name:'Soupe de tomates maison au riz', steps:[
+    'Épluchez l’oignon et la carotte. Hachez l’oignon, râpez la carotte.',
+    'Faites chauffer l’huile dans une casserole. Faites revenir les légumes 4 minutes.',
+    'Ajoutez la passata, l’eau et le sel. Portez à ébullition, versez le riz et laissez cuire à couvert environ 18 minutes, jusqu’à ce que le riz soit tendre. Ajoutez de l’eau si nécessaire.'],
+    photoAlt:'Une assiette de soupe de tomates au riz' },
+  'kurczak':{ name:'Poulet et pommes de terre au four', steps:[
+    'Préchauffez le four à 200°C. Épluchez les pommes de terre et les carottes et coupez-les en petits morceaux.',
+    'Coupez le poulet en lanières épaisses. Mélangez la viande et les légumes avec l’huile, le paprika et le sel dans un plat allant au four. Après avoir touché la viande crue, lavez-vous les mains et lavez les ustensiles.',
+    'Enfournez pour environ 35–40 minutes. Vérifiez que les légumes sont tendres et que la température à cœur du morceau de viande le plus épais atteint au moins 75°C.'],
+    photoAlt:'Un plat à four avec des morceaux de poulet, des pommes de terre et des carottes' },
+  'makaron':{ name:'Pâtes à la sauce tomate', steps:[
+    'Mettez l’eau à chauffer et faites cuire les pâtes selon les indications du paquet. Avant de les égoutter, réservez un demi-verre d’eau de cuisson.',
+    'Pendant ce temps, épluchez et hachez l’oignon et l’ail, puis faites-les revenir dans l’huile 3 minutes.',
+    'Versez la passata, salez et laissez cuire 10 minutes. Mélangez avec les pâtes ; ajoutez un peu d’eau de cuisson si nécessaire.'],
+    photoAlt:'Une assiette de pâtes à la sauce tomate rouge' },
+  'soczewica':{ name:'Ragoût de lentilles corail', steps:[
+    'Épluchez la carotte et l’oignon et coupez-les en dés. Faites-les revenir dans l’huile 4 minutes.',
+    'Rincez les lentilles. Ajoutez-les dans la casserole avec la passata, l’eau, le paprika et le sel.',
+    'Laissez cuire environ 20 minutes en remuant, jusqu’à ce que les lentilles soient tendres. Ajoutez de l’eau si nécessaire.'],
+    photoAlt:'Un bol de ragoût épais de lentilles corail aux carottes' },
+  'placki-ziemniaczane':{ name:'Galettes de pommes de terre à la crème aigre', steps:[
+    'Épluchez et lavez les pommes de terre et l’oignon, puis râpez-les finement. Mettez-les dans une passoire et pressez pour retirer l’excès de jus.',
+    'Mélangez la pâte râpée avec l’œuf, la farine et le sel. Faites cuire aussitôt pour que les pommes de terre ne noircissent pas.',
+    'Faites chauffer une partie de l’huile dans une poêle. Déposez des cuillerées de pâte, aplatissez-les en fines galettes et faites-les cuire à feu moyen 3–4 minutes de chaque côté, jusqu’à ce qu’elles soient dorées et cuites à cœur. Recommencez avec le reste de la pâte en rajoutant de l’huile.',
+    'Égouttez les galettes sur du papier absorbant et servez avec la crème aigre.'],
+    photoAlt:'Des galettes de pommes de terre dorées avec une cuillerée de crème aigre' },
+  'leniwe':{ name:'Leniwe — gnocchis polonais au fromage blanc et au beurre', steps:[
+    'Mettez à chauffer une grande casserole d’eau salée. Écrasez soigneusement le fromage blanc à la fourchette, ajoutez l’œuf et mélangez.',
+    'Ajoutez environ 100 g de farine et pétrissez brièvement une pâte souple. Farinez le plan de travail avec le reste de la farine.',
+    'Formez deux boudins de l’épaisseur d’un pouce, aplatissez-les légèrement et coupez-les en biais en morceaux d’environ 2 cm.',
+    'Plongez les gnocchis par fournées dans l’eau bouillante. Faites-les cuire 2–3 minutes après qu’ils sont remontés à la surface et retirez-les à l’écumoire. Arrosez de beurre fondu et saupoudrez de sucre.'],
+    photoAlt:'Une assiette de leniwe arrosés de beurre et saupoudrés de sucre' },
+  'potrawka-z-kurczaka':{ name:'Fricassée de poulet aux carottes et riz', steps:[
+    'Épluchez les carottes et l’oignon. Hachez l’oignon, coupez les carottes en demi-rondelles. Coupez le poulet en dés d’environ 2 cm. Après avoir touché la viande crue, lavez-vous les mains et lavez la planche et le couteau.',
+    'Faites chauffer l’huile dans une casserole. Faites revenir le poulet 5 minutes en remuant, jusqu’à ce qu’il blanchisse de tous les côtés. Ajoutez l’oignon et les carottes et faites revenir encore 3 minutes.',
+    'Versez l’eau, ajoutez le sel et le poivre. Laissez mijoter à couvert à feu doux 15 minutes, jusqu’à ce que les carottes soient tendres. Pendant ce temps, faites cuire le riz selon les indications du paquet.',
+    'Dans une tasse, mélangez la crème aigre avec la farine et 3 cuillerées à soupe de sauce chaude, versez dans la casserole et laissez cuire 2 minutes en remuant, jusqu’à ce que la sauce épaississe. Vérifiez que la température à cœur du morceau de viande le plus épais atteint au moins 75°C, puis servez avec le riz.'],
+    photoAlt:'Une assiette de riz avec des morceaux de poulet et de carottes dans une sauce claire' },
+  'salatka':{ name:'Salade de pois chiches', steps:[
+    'Lavez les légumes, épépinez le poivron et coupez le tout en dés.',
+    'Rincez et égouttez les pois chiches. Mélangez-les aux légumes.',
+    'Mélangez l’huile avec le jus de citron et le sel. Versez sur la salade et mélangez.'],
+    photoAlt:'Un saladier de salade de pois chiches, tomate, concombre et poivron' },
+  'omlet':{ name:'Omelette au poivron', steps:[
+    'Lavez le poivron, retirez les pépins et coupez-le en petits dés.',
+    'Faites revenir le poivron dans l’huile 4 minutes. Battez les œufs avec le sel.',
+    'Versez les œufs dans la poêle. Faites cuire à couvert à feu doux environ 6 minutes, jusqu’à ce que les œufs soient complètement pris.'],
+    photoAlt:'Une omelette aux dés de poivron dans une assiette' },
+  'grzanki':{ name:'Tartines chaudes à la tomate', steps:[
+    'Préchauffez le four à 190°C. Lavez les tomates et coupez-les en petits dés.',
+    'Arrosez le pain d’huile, frottez-le avec l’ail épluché et disposez-le sur une plaque.',
+    'Garnissez de tomates, salez et enfournez 8–10 minutes.'],
+    photoAlt:'Des tranches de pain gratinées garnies de dés de tomate' },
+  'kasza-z-jajkiem':{ name:'Kacha de sarrasin, œuf au plat et oignon', steps:[
+    'Faites cuire le sarrasin avec la moitié du sel selon les indications du paquet, en général environ 15 minutes.',
+    'Pendant ce temps, épluchez l’oignon et coupez-le en dés. Faites chauffer la moitié du beurre dans une poêle et faites revenir l’oignon à feu moyen 5–6 minutes, jusqu’à ce qu’il soit doré. Mélangez-le au sarrasin cuit.',
+    'Dans la même poêle, faites chauffer le reste du beurre. Cassez les œufs, ajoutez le reste du sel et le poivre. Faites cuire à couvert 3–4 minutes, jusqu’à ce que le blanc et le jaune soient pris. Posez les œufs sur le sarrasin.'],
+    photoAlt:'Une assiette de sarrasin avec de l’oignon revenu et un œuf au plat' },
+  'ziemniaki-z-gzikiem':{ name:'Pommes de terre en robe des champs et gzik (fromage blanc aux radis et à la ciboulette)', steps:[
+    'Choisissez des pommes de terre de taille similaire et brossez-les soigneusement. Mettez-les avec leur peau dans une casserole, couvrez d’eau froide additionnée de la moitié du sel et faites cuire 20–25 minutes à partir de l’ébullition, jusqu’à ce que la lame d’un couteau s’y enfonce sans résistance.',
+    'Pendant ce temps, lavez les radis et la ciboulette et hachez-les finement. Écrasez le fromage blanc à la fourchette avec la crème aigre, ajoutez les radis, la ciboulette et le reste du sel.',
+    'Égouttez les pommes de terre et laissez-les sécher une minute dans la casserole. Servez-les chaudes, avec ou sans la peau, accompagnées du gzik.'],
+    photoAlt:'Des pommes de terre en robe des champs à côté d’un bol de fromage blanc à la ciboulette et aux radis' },
+  'placuszki':{ name:'Petits pancakes à la banane', steps:[
+    'Écrasez les bananes. Mélangez-les avec les œufs, le lait et la farine.',
+    'Faites chauffer une partie de l’huile dans une poêle et déposez des cuillerées de pâte.',
+    'Faites cuire les petits pancakes à feu moyen 2–3 minutes de chaque côté, jusqu’à ce que le centre soit pris. Recommencez avec le reste de la pâte.'],
+    photoAlt:'Une pile de petits pancakes à la banane dans une assiette' },
+  'pieczone-jablka':{ name:'Pommes au four à la cannelle', steps:[
+    'Préchauffez le four à 180°C. Lavez les pommes et évidez-les.',
+    'Placez-les dans un plat, versez le sucre et la cannelle à l’intérieur. Versez l’eau au fond du plat.',
+    'Enfournez environ 25 minutes, jusqu’à ce qu’elles soient tendres. Laissez tiédir légèrement avant de servir.'],
+    photoAlt:'Deux pommes cuites à la cannelle dans un plat à four' },
+  'kakao':{ name:'Crème banane-cacao', steps:[
+    'Épluchez des bananes bien mûres et coupez-les en morceaux.',
+    'Mixez-les avec le cacao pour obtenir une crème lisse, ou écrasez-les très soigneusement à la fourchette.',
+    'Répartissez dans des bols et servez aussitôt.'],
+    photoAlt:'Un bol de crème foncée à la banane et au cacao' },
+  'nalesniki-z-twarogiem':{ name:'Crêpes sucrées au fromage blanc', steps:[
+    'Mélangez au fouet la farine, le lait, l’eau, l’œuf et une cuillerée à soupe d’huile pour obtenir une pâte lisse et sans grumeaux. Laissez reposer 10 minutes.',
+    'Écrasez le fromage blanc à la fourchette avec le yaourt et le sucre pour obtenir une crème lisse.',
+    'Faites chauffer une poêle et graissez-la légèrement d’huile. Versez une louche de pâte, étalez-la sur le fond et faites cuire environ une minute de chaque côté, jusqu’à ce que la crêpe soit prise et dorée. Faites ainsi environ 6 crêpes.',
+    'Tartinez chaque crêpe de crème au fromage blanc et roulez-la.'],
+    photoAlt:'Des crêpes roulées garnies de fromage blanc dans une assiette' },
+  'marchewki':{ name:'Bâtonnets de carotte et sauce au yaourt', steps:[
+    'Épluchez et lavez les carottes, puis coupez-les en bâtonnets.',
+    'Épluchez l’ail et râpez-le finement. Mélangez-le avec le yaourt et le sel.',
+    'Servez les carottes avec la sauce dans un bol à part.'],
+    photoAlt:'Des bâtonnets de carotte crue à côté d’un bol de sauce au yaourt' },
+  'pasta-fasolowa':{ name:'Tartinade maison de haricots blancs', steps:[
+    'Rincez et égouttez les haricots. Épluchez l’ail.',
+    'Mixez les haricots avec l’huile, le jus de citron, l’ail et le sel. Si la tartinade est trop épaisse, ajoutez une cuillerée à soupe d’eau.',
+    'Épluchez et lavez les carottes, puis coupez-les en bâtonnets. Servez la tartinade comme sauce pour les carottes.'],
+    photoAlt:'Un bol de tartinade claire de haricots blancs avec des bâtonnets de carotte' },
+  'surowka-z-marchewki':{ name:'Carottes râpées à la pomme', steps:[
+    'Épluchez et lavez les carottes. Lavez la pomme et retirez le trognon.',
+    'Râpez les carottes et la pomme avec une râpe à gros trous. Arrosez aussitôt de jus de citron pour que la pomme ne noircisse pas.',
+    'Ajoutez l’huile et le sucre, mélangez et servez aussitôt.'],
+    photoAlt:'Un bol de carottes et de pomme râpées' },
+  'mizeria':{ name:'Mizeria — salade de concombre au yaourt et à l’aneth', steps:[
+    'Lavez le concombre, épluchez-le et coupez-le en fines rondelles. Salez, mélangez et laissez reposer 5 minutes pour qu’il rende son jus.',
+    'Lavez l’aneth, séchez-le et ciselez-le finement. Jetez le jus du concombre.',
+    'Mélangez le concombre avec le yaourt, l’aneth et le poivre. Servez aussitôt.'],
+    photoAlt:'Un bol de rondelles de concombre au yaourt et à l’aneth' },
+  'chleb-w-jajku':{ name:'Pain doré salé à la ciboulette', steps:[
+    'Dans une assiette creuse, battez à la fourchette les œufs avec le lait et le sel. Lavez la ciboulette et ciselez-la finement.',
+    'Trempez les tranches de pain une à une dans le mélange aux œufs, en les retournant pour qu’elles s’imbibent des deux côtés.',
+    'Faites chauffer le beurre dans une poêle. Faites dorer les tranches à feu moyen 2–3 minutes de chaque côté, jusqu’à ce que l’œuf soit complètement pris et doré. Parsemez de ciboulette.'],
+    photoAlt:'Des tranches de pain dorées à l’œuf, parsemées de ciboulette' },
+  'kanapki-z-jajkiem-i-rzodkiewka':{ name:'Tartines à l’œuf dur et aux radis', steps:[
+    'Mettez les œufs dans une casserole d’eau froide, portez à ébullition et faites cuire 10 minutes à partir de l’ébullition. Passez-les sous l’eau froide et laissez reposer 5 minutes.',
+    'Lavez les radis et coupez-les en fines rondelles. Lavez la ciboulette et ciselez-la. Écalez les œufs et coupez-les en tranches.',
+    'Beurrez les tranches de pain, disposez dessus les tranches d’œuf et les radis, salez et parsemez de ciboulette.'],
+    photoAlt:'Des tartines garnies de tranches d’œuf dur et de radis' },
+  'ryz-na-mleku':{ name:'Riz au lait à la pomme et à la cannelle', steps:[
+    'Rincez le riz dans une passoire. Versez-le dans une petite casserole, couvrez d’eau et faites cuire à couvert à feu doux environ 10 minutes, jusqu’à ce qu’il ait absorbé l’eau.',
+    'Versez le lait, ajoutez le sucre et laissez cuire sans couvercle 12–15 minutes en remuant souvent, pour que le riz n’attache pas au fond.',
+    'Lavez la pomme, retirez le trognon et râpez-la avec une râpe à gros trous. Incorporez-la au riz avec la cannelle et faites chauffer encore 2 minutes.'],
+    photoAlt:'Un bol de riz au lait crémeux avec de la pomme râpée' },
+  'strammer-max':{ name:'Strammer Max — tartine au jambon et à l’œuf au plat', steps:[
+    'Beurrez finement les tranches de pain avec la moitié du beurre et disposez dessus les tranches de jambon. Lavez la ciboulette et ciselez-la.',
+    'Faites chauffer le reste du beurre dans une poêle. Cassez les œufs et faites-les cuire à couvert à feu doux 3–4 minutes, jusqu’à ce que le blanc et le jaune soient pris.',
+    'Posez un œuf au plat sur chaque tartine. Poivrez et parsemez de ciboulette.'],
+    photoAlt:'Une tranche de pain au jambon recouverte d’un œuf au plat' },
+  'tamagoyaki':{ name:'Tamagoyaki — omelette roulée japonaise', steps:[
+    'Battez les œufs dans un saladier avec l’eau, la sauce soja et le sucre, jusqu’à ce que le sucre soit dissous.',
+    'Faites chauffer une poêle à feu moyen et graissez-la légèrement d’huile. Versez un tiers du mélange. Quand il est pris, roulez-le à la spatule et poussez le rouleau sur le bord de la poêle.',
+    'Graissez la partie libre de la poêle et versez une nouvelle portion de mélange de façon qu’elle coule sous le rouleau. Une fois prise, enroulez-la autour du rouleau. Recommencez avec le reste du mélange.',
+    'Faites cuire le rouleau encore une minute en le retournant, jusqu’à ce qu’il ne reste plus d’œuf liquide à l’intérieur. Laissez reposer 2 minutes et coupez en tranches épaisses.'],
+    photoAlt:'Des tranches d’omelette jaune roulée disposées sur une petite assiette' },
+  'omlet-francuski':{ name:'Omelette au fromage', steps:[
+    'Râpez le fromage. Lavez la ciboulette et ciselez-la. Battez les œufs à la fourchette avec le sel, juste assez pour mélanger les blancs et les jaunes.',
+    'Faites fondre le beurre dans une poêle à feu moyen. Versez les œufs et, pendant la première minute, ramenez à la spatule les bords qui prennent vers le centre.',
+    'Quand le dessus n’est plus liquide, parsemez l’omelette de fromage, pliez-la en deux et laissez cuire encore une minute, jusqu’à ce que le fromage fonde et que les œufs soient complètement pris. Parsemez de ciboulette.'],
+    photoAlt:'Une omelette claire pliée en deux, garnie de fromage fondu' },
+  'kanapki-z-serem-i-pomidorem':{ name:'Tartines au fromage et à la tomate', steps:[
+    'Lavez la tomate et coupez-la en rondelles. Lavez la ciboulette et ciselez-la.',
+    'Beurrez les tranches de pain et disposez dessus les tranches de fromage.',
+    'Posez les rondelles de tomate sur le fromage et parsemez de ciboulette. Si les tartines doivent attendre, emballez la tomate à part.'],
+    photoAlt:'Des tartines garnies de tranches de fromage et de tomate' },
+  'twarozek-z-bananem':{ name:'Fromage blanc sucré à la banane', steps:[
+    'Écrasez le fromage blanc à la fourchette avec le yaourt pour obtenir une crème lisse.',
+    'Épluchez une banane, écrasez-la et incorporez-la au fromage blanc.',
+    'Coupez la seconde banane en rondelles. Répartissez le fromage blanc dans des bols, disposez les rondelles dessus et saupoudrez de cannelle.'],
+    photoAlt:'Un bol de fromage blanc avec des rondelles de banane et de la cannelle' },
+  'onigiri-z-tunczykiem':{ name:'Onigiri au thon (boulettes de riz japonaises)', steps:[
+    'Rincez le riz dans une passoire sous l’eau froide, jusqu’à ce que l’eau soit presque claire. Portez-le à ébullition dans l’eau mesurée, baissez le feu au minimum et faites cuire à couvert 12 minutes. Retirez du feu et laissez reposer à couvert 5 minutes.',
+    'Émiettez le thon à la fourchette et mélangez-le avec la sauce soja. Coupez la feuille de nori aux ciseaux en 4 bandes.',
+    'Mélangez le riz avec le sel et laissez-le tiédir environ 5 minutes pour pouvoir le prendre dans les mains. Mouillez-vous les mains, prenez un quart du riz, creusez-y un puits, mettez-y une cuillère à café de thon et façonnez le riz en un triangle bien compact.',
+    'Formez ainsi 4 onigiri et entourez la base de chacun d’une bande de nori. Consommez-les le jour même et gardez-les au réfrigérateur d’ici là.'],
+    photoAlt:'Des boulettes de riz triangulaires entourées de bandes de nori' },
+  'croque-monsieur':{ name:'Croque-monsieur à la poêle', steps:[
+    'Coupez le fromage en tranches ou râpez-le. Beurrez toutes les tranches de pain d’un seul côté.',
+    'Posez deux tranches côté beurré vers le bas, garnissez-les de la moitié du fromage, du jambon puis du reste du fromage. Couvrez avec les tranches restantes, côté beurré vers le haut.',
+    'Faites cuire les croques dans une poêle sans matière grasse à feu doux 3–4 minutes de chaque côté, en appuyant légèrement avec la spatule, jusqu’à ce que le pain soit doré et le fromage fondu. Coupez-les en deux.'],
+    photoAlt:'Un croque-monsieur doré au jambon et au fromage filant' },
+  'salatka-makaronowa':{ name:'Salade de pâtes à la mozzarella et aux tomates', steps:[
+    'Faites cuire les pâtes selon les indications du paquet. Égouttez-les, passez-les sous l’eau froide et égouttez-les bien.',
+    'Lavez les tomates et coupez-les en dés. Égouttez la mozzarella et coupez-la en dés. Rincez les feuilles de basilic et déchirez-les.',
+    'Mélangez les pâtes avec les tomates, la mozzarella, le basilic, l’huile d’olive et le sel. Servez aussitôt ou mettez dans une boîte et gardez au réfrigérateur.'],
+    photoAlt:'Un saladier de pâtes avec des dés de tomate, de mozzarella et des feuilles de basilic' },
+  'zupa-ziemniaczana':{ name:'Soupe de pommes de terre à l’aneth', steps:[
+    'Épluchez et lavez les pommes de terre, la carotte et l’oignon. Coupez les pommes de terre en dés d’environ 1,5 cm, la carotte en demi-rondelles et hachez l’oignon.',
+    'Faites fondre le beurre dans une casserole et faites revenir l’oignon et la carotte 3 minutes. Ajoutez les pommes de terre, l’eau, le sel et le poivre. Laissez cuire à couvert environ 15 minutes, jusqu’à ce que les pommes de terre soient tendres.',
+    'Écrasez une partie des pommes de terre dans la casserole au presse-purée ou à la fourchette pour épaissir la soupe. Dans une tasse, mélangez la crème aigre avec 3 cuillerées à soupe de soupe chaude et versez dans la casserole.',
+    'Lavez l’aneth, ciselez-le et ajoutez-le à la soupe. Faites chauffer une minute sans laisser bouillir.'],
+    photoAlt:'Une assiette de soupe claire aux pommes de terre, à la carotte et à l’aneth' },
+  'makaron-z-twarogiem':{ name:'Pâtes au fromage blanc et au beurre', steps:[
+    'Faites cuire les pâtes dans de l’eau salée selon les indications du paquet et égouttez-les.',
+    'Mettez le beurre dans la casserole vide encore chaude et, une fois fondu, remettez-y les pâtes et mélangez.',
+    'Émiettez le fromage blanc avec les doigts ou à la fourchette. Répartissez les pâtes dans les assiettes, parsemez de fromage blanc et de sucre.'],
+    photoAlt:'Une assiette de pâtes parsemées de fromage blanc émietté' },
+  'jajka-w-sosie-koperkowym':{ name:'Œufs durs sauce à l’aneth et pommes de terre', steps:[
+    'Épluchez et lavez les pommes de terre, coupez-les en deux et faites-les cuire dans l’eau avec la moitié du sel environ 20 minutes, jusqu’à ce qu’elles soient tendres. Dans une autre casserole, couvrez les œufs d’eau froide, portez à ébullition et faites cuire 10 minutes à partir de l’ébullition, puis passez-les sous l’eau froide.',
+    'Dans une petite casserole, faites fondre le beurre, ajoutez la farine et remuez une minute. Versez le lait petit à petit en fouettant sans cesse et laissez cuire 3 minutes, jusqu’à ce que la sauce épaississe.',
+    'Lavez l’aneth et ciselez-le. Ajoutez-le à la sauce avec le reste du sel. Écalez les œufs et coupez-les en deux.',
+    'Égouttez les pommes de terre, répartissez-les dans les assiettes, disposez les œufs à côté et nappez-les de sauce.'],
+    photoAlt:'Des moitiés d’œufs dans une sauce vert pâle à l’aneth à côté de pommes de terre cuites' },
+  'spaghetti-aglio-e-olio':{ name:'Spaghetti aglio e olio (à l’ail et à l’huile d’olive)', steps:[
+    'Faites cuire les pâtes dans de l’eau salée selon les indications du paquet. Avant de les égoutter, réservez un demi-verre d’eau de cuisson.',
+    'Pendant ce temps, épluchez l’ail et coupez-le en fines lamelles. Lavez le persil et ciselez-le. Dans une grande poêle, faites chauffer l’huile d’olive avec l’ail à feu doux 3–4 minutes, jusqu’à ce que l’ail soit légèrement doré. Ne le laissez pas brunir, il deviendrait amer.',
+    'Mettez les pâtes dans la poêle, versez 4 cuillerées à soupe de l’eau réservée et remuez une minute sur le feu, jusqu’à ce que l’huile enrobe les pâtes. Ajoutez le persil et le poivre.'],
+    photoAlt:'Une assiette de spaghetti aux lamelles d’ail et au persil ciselé' },
+  'makaron-z-tunczykiem':{ name:'Pâtes au thon et à la tomate', steps:[
+    'Mettez l’eau à chauffer et faites cuire les pâtes selon les indications du paquet.',
+    'Pendant ce temps, épluchez et hachez l’oignon et l’ail. Faites-les revenir dans l’huile d’olive 3 minutes, versez la passata, salez et laissez cuire à feu doux 8 minutes.',
+    'Émiettez le thon à la fourchette, ajoutez-le à la sauce et faites chauffer 2 minutes. Mélangez la sauce avec les pâtes égouttées.'],
+    photoAlt:'Une assiette de pâtes à la sauce tomate avec des morceaux de thon' },
+  'frykadele':{ name:'Frikadellen (boulettes de porc aplaties) et pommes de terre', steps:[
+    'Épluchez et lavez les pommes de terre, coupez-les en deux et faites-les cuire dans l’eau avec une partie du sel environ 20 minutes, jusqu’à ce qu’elles soient tendres.',
+    'Émiettez la tranche de pain dans un saladier et arrosez-la de l’eau mesurée. Épluchez l’oignon et hachez-le très finement. Ajoutez la viande, l’œuf, l’oignon, le reste du sel et le poivre. Pétrissez à la main et formez 6 galettes plates. Après avoir touché la viande crue, lavez-vous les mains et lavez le saladier et la planche.',
+    'Faites chauffer l’huile dans une poêle. Faites cuire les galettes à feu moyen 5–6 minutes de chaque côté. Coupez-en une : la viande ne doit pas être rosée à l’intérieur et le jus doit être clair.',
+    'Servez les frikadellen avec les pommes de terre égouttées.'],
+    photoAlt:'Des galettes de viande hachée plates et dorées à côté de pommes de terre cuites' },
+  'ratatouille':{ name:'Ratatouille express à la poêle', steps:[
+    'Lavez les légumes. Coupez la courgette et l’aubergine en dés d’environ 1,5 cm. Épépinez le poivron et coupez-le de la même façon. Épluchez et hachez l’oignon et l’ail.',
+    'Faites chauffer l’huile d’olive dans une grande poêle. Faites revenir l’oignon avec l’aubergine 5 minutes en remuant. Ajoutez le poivron et la courgette et poursuivez la cuisson 5 minutes.',
+    'Ajoutez l’ail, la passata et le sel. Laissez mijoter à couvert à feu doux 12–15 minutes, jusqu’à ce que les légumes soient tendres sans être trop cuits.',
+    'Servez chaud avec une tranche de pain.'],
+    photoAlt:'Une poêle de légumes mijotés à la sauce tomate : courgette, aubergine et poivron' },
+  'oyakodon':{ name:'Oyakodon — bol de riz au poulet et à l’œuf', steps:[
+    'Rincez le riz dans une passoire. Portez-le à ébullition dans 200 ml d’eau, baissez le feu au minimum et faites cuire à couvert 12 minutes. Laissez reposer à couvert 5 minutes.',
+    'Pendant ce temps, épluchez l’oignon et émincez-le en lamelles. Coupez le poulet en fines lanières. Après avoir touché la viande crue, lavez-vous les mains et lavez la planche et le couteau.',
+    'Dans une poêle, portez à ébullition le reste de l’eau avec la sauce soja et le sucre. Ajoutez l’oignon et le poulet et laissez cuire à couvert 8 minutes, jusqu’à ce que la viande soit blanche à cœur, sans partie rosée.',
+    'Battez les œufs à la fourchette et versez-les uniformément sur le poulet. Laissez cuire à couvert 3–4 minutes, jusqu’à ce que les œufs soient complètement pris. Répartissez le riz dans des bols et faites glisser dessus le poulet à l’œuf avec la sauce.'],
+    photoAlt:'Un bol de riz recouvert de poulet, d’oignon et d’œuf pris' },
+  'yakisoba':{ name:'Nouilles sautées aux légumes façon yakisoba', steps:[
+    'Faites cuire les pâtes, de préférence des vermicelles fins ou des spaghetti, une minute de moins que ce qu’indique le paquet. Égouttez-les.',
+    'Coupez le chou en fines lanières. Épluchez la carotte et coupez-la en fins bâtonnets. Épluchez l’oignon et émincez-le en lamelles.',
+    'Faites chauffer l’huile à feu vif dans une grande poêle. Faites sauter l’oignon et la carotte 3 minutes, ajoutez le chou et faites sauter encore 4 minutes en remuant. Les légumes doivent rester légèrement croquants.',
+    'Ajoutez les pâtes, la sauce soja et le sucre. Faites sauter 2 minutes sans cesser de remuer, jusqu’à ce que les pâtes absorbent la sauce.'],
+    photoAlt:'Une assiette de nouilles sautées avec des lanières de chou et de carotte' },
+  'zapiekanki-z-pieczarkami':{ name:'Tartines gratinées aux champignons et au fromage', steps:[
+    'Préchauffez le four à 200°C. Nettoyez les champignons et coupez-les en lamelles. Épluchez l’oignon et hachez-le. Râpez le fromage.',
+    'Faites fondre le beurre dans une poêle. Faites revenir l’oignon avec les champignons 6–7 minutes, jusqu’à ce que leur eau se soit évaporée. Salez et poivrez.',
+    'Disposez les tranches de pain sur une plaque, répartissez les champignons dessus et parsemez de fromage. Enfournez 8 minutes, jusqu’à ce que le fromage fonde et dore.'],
+    photoAlt:'Des tranches de pain gratinées aux champignons sous du fromage fondu' },
+  'placki-z-cukinii':{ name:'Galettes de courgette et sauce à l’ail', steps:[
+    'Lavez la courgette et râpez-la avec la peau, sur une râpe à gros trous. Mélangez-la avec la moitié du sel, laissez reposer 5 minutes et pressez-la fermement entre vos mains pour en extraire le jus.',
+    'Épluchez l’ail, râpez-le finement et mélangez-le avec le yaourt et le reste du sel. Mélangez la courgette pressée avec l’œuf et la farine.',
+    'Faites chauffer une partie de l’huile dans une poêle. Déposez des cuillerées de pâte, aplatissez-les et faites cuire à feu moyen 3 minutes de chaque côté, jusqu’à ce que les galettes soient dorées et cuites à cœur. Recommencez avec le reste de la pâte et servez avec la sauce.'],
+    photoAlt:'Des galettes dorées de courgette râpée à côté d’un bol de sauce au yaourt' },
+  'frittata-z-cukinia':{ name:'Frittata à la courgette', steps:[
+    'Lavez la courgette et coupez-la en fines demi-rondelles. Épluchez l’oignon et hachez-le. Râpez le fromage.',
+    'Faites chauffer l’huile d’olive dans une poêle. Faites revenir l’oignon avec la courgette 7–8 minutes en remuant, jusqu’à ce qu’ils soient tendres et légèrement dorés.',
+    'Battez les œufs avec le sel, le poivre et le fromage, versez-les sur les légumes et secouez la poêle. Faites cuire à couvert à feu doux environ 8 minutes, jusqu’à ce que le dessus soit complètement pris. Coupez en triangles.'],
+    photoAlt:'Une omelette épaisse aux rondelles de courgette coupée en triangles' },
+  'bratkartoffeln':{ name:'Bratkartoffeln (pommes de terre sautées à l’allemande) et œuf au plat', steps:[
+    'Épluchez et lavez les pommes de terre et coupez-les en rondelles d’environ 3 mm d’épaisseur. Séchez-les avec du papier absorbant. Épluchez l’oignon et coupez-le en dés.',
+    'Faites chauffer la plus grande partie de l’huile dans une grande poêle. Étalez les pommes de terre le plus à plat possible et faites-les sauter à feu moyen 15 minutes, en les retournant toutes les quelques minutes. Ajoutez l’oignon et le sel et poursuivez la cuisson 5 minutes, jusqu’à ce que les pommes de terre soient tendres et dorées.',
+    'Poussez les pommes de terre sur le côté ou utilisez une seconde poêle. Dans le reste de l’huile, faites cuire les œufs au plat à couvert 3–4 minutes, jusqu’à ce que le blanc et le jaune soient pris.',
+    'Répartissez les pommes de terre dans les assiettes, posez les œufs dessus, poivrez et parsemez de ciboulette ciselée.'],
+    photoAlt:'Des rondelles de pommes de terre sautées dorées avec de l’oignon et un œuf au plat dessus' },
+  'flammkuchen':{ name:'Pâte fine façon tarte flambée (Flammkuchen), oignon et crème', steps:[
+    'Préchauffez le four à 250°C avec la plaque à l’intérieur. Mélangez la farine avec la moitié du sel, l’eau et l’huile, puis pétrissez 3 minutes pour obtenir une pâte lisse.',
+    'Épluchez l’oignon et émincez-le en demi-rondelles très fines. Étalez la pâte au rouleau sur une feuille de papier cuisson en une galette fine, à peu près de la taille de la plaque.',
+    'Nappez la pâte de crème aigre en laissant une fine bordure. Répartissez l’oignon, parsemez du reste du sel et poivrez.',
+    'Faites glisser la galette avec le papier sur la plaque chaude et enfournez 10–12 minutes, jusqu’à ce que les bords soient dorés et croustillants. Parsemez de ciboulette ciselée.'],
+    photoAlt:'Une fine galette croustillante à la crème, à l’oignon et à la ciboulette' },
+  'salatka-nicejska':{ name:'Salade niçoise au thon', steps:[
+    'Épluchez et lavez les pommes de terre, coupez-les en gros dés et faites-les cuire dans de l’eau salée environ 15 minutes, jusqu’à ce qu’elles soient tendres. Dans une autre casserole, couvrez les œufs d’eau froide, portez à ébullition et faites cuire 10 minutes à partir de l’ébullition.',
+    'Égouttez les pommes de terre et laissez-les tiédir. Passez les œufs sous l’eau froide, écalez-les et coupez-les en quartiers. Lavez les tomates et le concombre et coupez-les en quartiers.',
+    'Mélangez l’huile d’olive avec le jus de citron et le sel. Disposez dans les assiettes les pommes de terre, les tomates et le concombre, ajoutez dessus le thon et les œufs, puis arrosez de vinaigrette.'],
+    photoAlt:'Une assiette de salade aux pommes de terre, thon, quartiers d’œuf et tomate' },
+  'zupa-miso':{ name:'Soupe miso simple au tofu', steps:[
+    'Épluchez la carotte et coupez-la en demi-rondelles très fines. Portez l’eau à ébullition, ajoutez la carotte et faites cuire 5 minutes.',
+    'Coupez le tofu en dés d’environ 1 cm. Coupez le nori aux ciseaux en fines lanières. Lavez la ciboulette et ciselez-la. Ajoutez le tofu dans la casserole et faites chauffer 2 minutes.',
+    'Retirez la casserole du feu. Délayez la pâte miso dans une tasse avec quelques cuillerées à soupe de bouillon chaud et versez dans la soupe. Ne la faites plus bouillir pour qu’elle garde son goût.',
+    'Versez la soupe dans des bols, ajoutez les lanières de nori et la ciboulette.'],
+    photoAlt:'Un bol de soupe miso trouble avec des dés de tofu et des lanières de nori' },
+  'omurice':{ name:'Omurice — omelette sur riz à la tomate', steps:[
+    'Faites cuire le riz selon les indications du paquet. Pendant ce temps, épluchez l’oignon et la carotte et coupez-les en petits dés.',
+    'Faites fondre la moitié du beurre dans une poêle. Faites revenir l’oignon et la carotte 5 minutes. Ajoutez le riz, la passata et la moitié du sel, et faites sauter 3 minutes en remuant, jusqu’à ce que le riz se colore. Répartissez le riz sur deux assiettes et formez des dômes allongés.',
+    'Essuyez la poêle. Battez 2 œufs avec une pincée de sel et faites cuire dans la moitié du beurre restant une omelette fine, 2–3 minutes à couvert, jusqu’à ce qu’elle soit complètement prise. Recouvrez-en un dôme de riz.',
+    'Faites de même une seconde omelette avec les œufs et le beurre restants et recouvrez-en la seconde portion.'],
+    photoAlt:'Un dôme allongé de riz à la tomate recouvert d’une fine omelette jaune' },
+  'racuszki-z-jablkami':{ name:'Beignets de pommes sans levure (racuszki)', steps:[
+    'Mélangez au fouet la farine, le lait, l’œuf et la moitié du sucre pour obtenir une pâte épaisse et lisse.',
+    'Lavez les pommes, épluchez-les, retirez le trognon et coupez-les en petits dés. Incorporez-les à la pâte.',
+    'Faites chauffer une partie de l’huile dans une poêle. Déposez des cuillerées de pâte et faites cuire à feu moyen 2–3 minutes de chaque côté, jusqu’à ce que les beignets soient dorés et cuits à cœur. Recommencez avec le reste de la pâte.',
+    'Mélangez le reste du sucre avec la cannelle et saupoudrez-en les beignets encore chauds.'],
+    photoAlt:'Une assiette de petits beignets aux morceaux de pomme saupoudrés de sucre à la cannelle' },
+  'budyn-kakaowy':{ name:'Crème dessert maison au cacao', steps:[
+    'Versez un demi-verre de lait froid dans une tasse et délayez-y soigneusement la fécule et le cacao pour éviter les grumeaux.',
+    'Portez le reste du lait à ébullition dans une petite casserole avec le sucre. Baissez le feu et versez le mélange de la tasse en filet, en fouettant énergiquement.',
+    'Laissez cuire une minute sans cesser de remuer, jusqu’à ce que la crème épaississe et commence à faire des bulles. Versez dans des bols et servez chaud ou froid.'],
+    photoAlt:'Deux bols de crème dessert épaisse et foncée au cacao' },
+  'omlet-biszkoptowy':{ name:'Omelette soufflée sucrée aux fruits rouges', steps:[
+    'Versez les fruits surgelés dans une petite casserole avec la moitié du sucre. Portez à ébullition et faites cuire 2 minutes en remuant, puis réservez.',
+    'Séparez les blancs des jaunes. Montez les blancs en neige ferme au fouet ou au batteur, en ajoutant le reste du sucre à la fin. Incorporez délicatement les jaunes, puis la farine.',
+    'Faites fondre le beurre dans une poêle, versez la préparation et lissez-la. Faites cuire à couvert à feu doux 5–6 minutes, jusqu’à ce que le dessus soit pris. Retournez l’omelette à l’aide d’une assiette et faites cuire encore 2 minutes.',
+    'Faites glisser l’omelette sur une assiette, nappez-la de fruits chauds et coupez-la en deux.'],
+    photoAlt:'Une omelette soufflée claire nappée d’un coulis rouge sombre de fruits rouges' },
+  'rote-grutze':{ name:'Rote Grütze — compote de fruits rouges liée, au yaourt', steps:[
+    'Dans une tasse, délayez la fécule avec 4 cuillerées à soupe de l’eau froide mesurée.',
+    'Versez les fruits surgelés dans une petite casserole, ajoutez le reste de l’eau et le sucre. Portez à ébullition et faites cuire 3 minutes.',
+    'Versez la fécule délayée sans cesser de remuer et faites cuire encore une minute, jusqu’à ce que le dessert épaississe et devienne translucide.',
+    'Versez dans des bols et laissez tiédir au moins 5 minutes. Servez avec une cuillerée de yaourt dessus.'],
+    photoAlt:'Un bol de dessert rouge épais aux fruits rouges avec une touche de yaourt' },
+  'tosty-francuskie':{ name:'Pain perdu à la cannelle', steps:[
+    'Dans une assiette creuse, battez les œufs avec le lait, la moitié du sucre et la cannelle.',
+    'Trempez les tranches de pain, de préférence rassis, dans le mélange environ 20 secondes de chaque côté, pour qu’elles s’imbibent bien.',
+    'Faites fondre le beurre dans une poêle. Faites dorer les tranches à feu moyen 2–3 minutes de chaque côté, jusqu’à ce qu’elles soient dorées et que l’œuf soit complètement pris. Saupoudrez du reste du sucre.'],
+    photoAlt:'Des tranches de pain perdu dorées saupoudrées de sucre' },
+  'macedonia':{ name:'Macedonia — salade de fruits à l’italienne', steps:[
+    'Épluchez une orange et coupez-la en dés. Pressez le jus de la seconde dans un saladier, ajoutez le jus de citron et le sucre, puis mélangez.',
+    'Lavez la pomme, retirez le trognon et coupez-la en dés. Épluchez la banane et coupez-la en rondelles. Mettez aussitôt les fruits dans le jus pour qu’ils ne noircissent pas.',
+    'Ajoutez l’orange coupée, mélangez et laissez reposer 5 minutes pour que les fruits rendent leur jus. Servez dans des coupes avec le jus.'],
+    photoAlt:'Une coupe de fruits coupés dans leur jus : orange, pomme et banane' },
+  'surowka-z-kapusty':{ name:'Salade de chou blanc à la carotte', steps:[
+    'Émincez le chou en lanières aussi fines que possible. Salez-le et malaxez-le à la main 2 minutes, jusqu’à ce qu’il ramollisse et rende son jus.',
+    'Épluchez la carotte et râpez-la avec une râpe à gros trous. Lavez l’aneth et ciselez-le.',
+    'Mélangez le chou avec la carotte, l’aneth, le jus de citron, l’huile et le sucre. Laissez reposer 5 minutes avant de servir.'],
+    photoAlt:'Un bol de salade de chou blanc émincé et de carotte' },
+  'caprese':{ name:'Salade caprese', steps:[
+    'Lavez les tomates et coupez-les en tranches. Égouttez la mozzarella et coupez-la en tranches d’épaisseur similaire.',
+    'Disposez dans une assiette en alternant les tranches de tomate et de mozzarella.',
+    'Rincez les feuilles de basilic et répartissez-les dessus. Arrosez d’huile d’olive, salez et poivrez juste avant de servir.'],
+    photoAlt:'Des tranches de tomate et de mozzarella en alternance avec des feuilles de basilic' },
+  'bruschetta':{ name:'Bruschetta aux tomates et au basilic', steps:[
+    'Lavez les tomates, retirez les pépins et coupez la chair en petits dés. Rincez les feuilles de basilic et déchirez-les. Mélangez les tomates avec le basilic, le sel et la moitié de l’huile d’olive.',
+    'Faites griller les tranches de pain dans une poêle sans matière grasse 2 minutes de chaque côté, jusqu’à ce qu’elles soient croustillantes.',
+    'Frottez les tranches chaudes avec une gousse d’ail coupée en deux et arrosez du reste de l’huile d’olive. Ajoutez les tomates juste avant de servir pour que le pain ne ramollisse pas.'],
+    photoAlt:'Des tranches de pain grillées garnies de tomates crues et de basilic' },
+  'kartoffelsalat':{ name:'Kartoffelsalat — salade de pommes de terre à l’allemande', steps:[
+    'Épluchez et lavez les pommes de terre et coupez-les en rondelles d’environ 5 mm d’épaisseur. Faites-les cuire dans de l’eau salée 10–12 minutes, jusqu’à ce qu’elles soient tendres mais ne se défassent pas. Égouttez-les délicatement.',
+    'Épluchez l’oignon et hachez-le finement. Dans une petite casserole, portez à ébullition l’eau mesurée avec l’oignon, le vinaigre, le sucre, le sel et le poivre, et laissez bouillir 2 minutes.',
+    'Versez cette marinade chaude sur les pommes de terre tièdes, ajoutez l’huile et mélangez délicatement. Laissez reposer 10 minutes pour que les pommes de terre absorbent le liquide.',
+    'Lavez la ciboulette, ciselez-la et incorporez-la à la salade. Servez tiède.'],
+    photoAlt:'Un saladier de rondelles de pommes de terre à l’oignon et à la ciboulette, sans mayonnaise' },
+  'zupa-cebulowa':{ name:'Soupe à l’oignon et croûtons au fromage', steps:[
+    'Épluchez les oignons et émincez-les en fines demi-rondelles. Faites fondre le beurre dans une casserole et faites revenir l’oignon avec le sel à feu moyen 12–15 minutes en remuant souvent, jusqu’à ce qu’il soit tendre et doré.',
+    'Saupoudrez l’oignon de farine et remuez une minute. Versez l’eau, poivrez et laissez cuire à couvert 8 minutes.',
+    'Pendant ce temps, râpez le fromage. Faites griller les tranches de pain dans une poêle sans matière grasse 2 minutes d’un côté, retournez-les, parsemez de fromage et couvrez 2 minutes, jusqu’à ce que le fromage fonde.',
+    'Versez la soupe dans des bols et posez un croûton au fromage sur chacun.'],
+    photoAlt:'Un bol de soupe à l’oignon brune avec un croûton sous du fromage fondu' },
+  'sunomono':{ name:'Sunomono — salade de concombre au sésame', steps:[
+    'Lavez le concombre et coupez-le en rondelles aussi fines que possible. Salez, mélangez et laissez reposer 5 minutes, puis pressez-le entre vos mains et jetez le jus.',
+    'Faites griller le sésame dans une poêle sans matière grasse 1–2 minutes en remuant, jusqu’à ce qu’il embaume et dore légèrement.',
+    'Mélangez le vinaigre avec le sucre et la sauce soja jusqu’à ce que le sucre soit dissous. Versez sur le concombre, mélangez et parsemez de sésame.'],
+    photoAlt:'Un bol de fines rondelles de concombre marinées, parsemées de sésame' },
+};
