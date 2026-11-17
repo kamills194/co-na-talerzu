@@ -45,5 +45,9 @@ export const messages = {
   excludeSearchPlaceholder:'Namen eingeben, z. B. Zwiebel', excludeNoMatch:'Dieses Produkt kommt in den Rezepten nicht vor.', excludeHelp:'Pfeiltasten hoch und runter wählen, Enter fügt hinzu, Esc schließt.', excludedAdded:'Ausgeschlossen: {name}', excludedRemoved:'Wieder erlaubt: {name}', removeExclusion:'Ausschluss entfernen',
   excludedSummary:'Ausgeschlossen', clearExclusions:'Leeren', clearExclusionsLabel:'Alle Ausschlüsse entfernen', allergenExamples:'z. B. {list}', allergenNone:'in den aktuellen Rezepten nicht enthalten', filtersCleared:'Alle Filter zurückgesetzt.',
   servingsCount_one:'{n} Portion', servingsCount_other:'{n} Portionen', suggestions_one:'{n} Vorschlag', suggestions_other:'{n} Vorschläge',
-  themeLabel:'Design', themeLight:'Hell', themeDark:'Dunkel', themeAuto:'Automatisch',
+  themeLabel:'Design', themeLight:'Hell', themeDark:'Dunkel',
+  // CNT-039
+  hours:'Std.', promoOn:'Im Angebot: {list}',
+  indian:'Indisch', mexican:'Mexikanisch', american:'Amerikanisch', mediterranean:'Mediterran', asian:'Asiatisch',
+  indianCuisine:'Indische Küche', mexicanCuisine:'Mexikanische Küche', americanCuisine:'Amerikanische Küche', mediterraneanCuisine:'Mediterrane Küche', asianCuisine:'Asiatische Küche',
 };

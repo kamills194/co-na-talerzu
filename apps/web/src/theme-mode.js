@@ -1,48 +1,42 @@
-// CNT-035: tryb motywu (jasny / ciemny / automatyczny). Samodzielny moduł bez zależności.
-// 'light' i 'dark' ustawiają html[data-theme]; 'auto' usuwa atrybut, a theme.css idzie za prefers-color-scheme.
-// Wybór jest zapisywany w localStorage (klucz poniżej); brak dostępu do pamięci nie psuje aplikacji.
+// CNT-035 / CNT-039: motyw jasny albo ciemny — tylko dwa tryby (decyzja właściciela 17.11). Samodzielny moduł bez zależności.
+// Tryb zawsze ustawia html[data-theme]. Przy pierwszej wizycie (nic nie zapisano) wybór jest brany RAZ z
+// prefers-color-scheme i zapisywany; potem liczy się tylko wybór użytkownika. Zapisane 'auto' ze starszej wersji
+// (albo inna nieznana wartość) jest migrowane tak samo: do motywu systemu w chwili migracji.
+// To samo robi mały skrypt w <head> index.html przed pierwszym malowaniem (bez mignięcia jasnego motywu).
 export const THEME_KEY = 'co-na-talerz:theme';
-export const THEME_MODES = ['light', 'dark', 'auto'];
+export const THEME_MODES = ['light', 'dark'];
 // Kolory paska przeglądarki (<meta name="theme-color">): jasny = okładka książeczki, ciemny = neutralna ciemna szarość.
 export const THEME_COLORS = { light: '#9a3824', dark: '#121212' };
 
-const FALLBACK = { themeLabel: 'Motyw', themeLight: 'Jasny', themeDark: 'Ciemny', themeAuto: 'Automatyczny' };
-const ICONS = { light: '☀︎', dark: '☾︎', auto: '◑' };
-const KEYS = { light: 'themeLight', dark: 'themeDark', auto: 'themeAuto' };
+const FALLBACK = { themeLabel: 'Motyw', themeLight: 'Jasny', themeDark: 'Ciemny' };
+const ICONS = { light: '☀︎', dark: '☾︎' };
+const KEYS = { light: 'themeLight', dark: 'themeDark' };
 
 const valid = mode => THEME_MODES.includes(mode);
 const doc = () => globalThis.document;
-const darkQuery = () => {
-  try { return globalThis.matchMedia ? globalThis.matchMedia('(prefers-color-scheme: dark)') : null; } catch { return null; }
-};
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
-let current = 'auto';
-let watching = null;
+let current = 'light';
+
+/** Motyw systemu (prefers-color-scheme): 'dark' albo 'light'. Używany tylko przy pierwszej wizycie i migracji. */
+export function systemTheme() {
+  try { return globalThis.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'dark' : 'light'; } catch { return 'light'; }
+}
 
 function readStored() {
-  try {
-    const value = globalThis.localStorage?.getItem(THEME_KEY);
-    return valid(value) ? value : 'auto';
-  } catch { return 'auto'; }
+  try { return globalThis.localStorage?.getItem(THEME_KEY) ?? null; } catch { return null; }
 }
 
 function store(mode) {
-  try {
-    if (mode === 'auto') globalThis.localStorage?.removeItem(THEME_KEY);
-    else globalThis.localStorage?.setItem(THEME_KEY, mode);
-  } catch { /* prywatny tryb / brak miejsca: motyw działa do końca sesji */ }
+  try { globalThis.localStorage?.setItem(THEME_KEY, mode); } catch { /* prywatny tryb / brak miejsca: motyw działa do końca sesji */ }
 }
 
-/** Motyw faktycznie widoczny: 'light' albo 'dark' (dla 'auto' według ustawień systemu). */
-export function resolvedTheme(mode = current) {
-  if (mode === 'light' || mode === 'dark') return mode;
-  return darkQuery()?.matches ? 'dark' : 'light';
-}
+/** Widoczny motyw: zawsze 'light' albo 'dark'. */
+export function resolvedTheme(mode = current) { return valid(mode) ? mode : 'light'; }
 
 function updateMetaColor() {
   const meta = doc()?.querySelector?.('meta[name="theme-color"]');
-  if (meta) meta.setAttribute('content', THEME_COLORS[resolvedTheme()]);
+  if (meta) meta.setAttribute('content', THEME_COLORS[current]);
 }
 
 function syncToggles() {
@@ -56,38 +50,30 @@ function apply(mode) {
   current = mode;
   const root = doc()?.documentElement;
   // A partial DOM (old browser, tests) must never stop the app from starting.
-  if (root && typeof root.setAttribute === 'function') {
-    if (mode === 'auto') root.removeAttribute?.('data-theme');
-    else root.setAttribute('data-theme', mode);
-  }
+  if (root && typeof root.setAttribute === 'function') root.setAttribute('data-theme', mode);
   updateMetaColor();
   syncToggles();
 }
 
-/** Odczytuje zapisany wybór i ustawia motyw. Wywołaj jak najwcześniej (przed pierwszym renderem). */
+/** Odczytuje zapisany wybór (albo raz ustala go z systemu i zapisuje) i ustawia motyw. Wywołaj przed pierwszym renderem. */
 export function initThemeMode() {
-  apply(readStored());
-  const query = darkQuery();
-  if (query && !watching) {
-    // W trybie automatycznym zmiana ustawień systemu zmienia też kolor paska przeglądarki.
-    watching = () => { if (current === 'auto') updateMetaColor(); };
-    if (query.addEventListener) query.addEventListener('change', watching);
-    else query.addListener?.(watching);
-  }
+  const stored = readStored();
+  if (valid(stored)) apply(stored);
+  else { const first = systemTheme(); store(first); apply(first); }
   return current;
 }
 
-/** Ustawia i zapamiętuje tryb; nieznana wartość = 'auto'. Zwraca ustawiony tryb. */
+/** Ustawia i zapamiętuje tryb 'light' albo 'dark'; nieznana wartość niczego nie zmienia. Zwraca bieżący tryb. */
 export function setThemeMode(mode) {
-  const next = valid(mode) ? mode : 'auto';
-  store(next);
-  apply(next);
-  return next;
+  if (!valid(mode)) return current;
+  store(mode);
+  apply(mode);
+  return current;
 }
 
 export function getThemeMode() { return current; }
 
-/** Markup przełącznika z trzema przyciskami (aria-pressed). `t` to funkcja tłumacząca aplikacji. */
+/** Markup przełącznika z dwoma przyciskami (aria-pressed). `t` to funkcja tłumacząca aplikacji. */
 export function themeToggleHTML(t) {
   const tr = key => {
     let text;

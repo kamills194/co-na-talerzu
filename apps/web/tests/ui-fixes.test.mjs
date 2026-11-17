@@ -127,7 +127,7 @@ test('Wybór języka: kompaktowy (glob + kod), etykieta dostępna dla czytników
   const out=runApp({script:`out.lang=el('#lang').innerHTML;`});
   assert.ok(out.lang.includes('<label for="language">'));
   assert.ok(out.lang.includes('<span class="sr-only">Język / Language</span>'));
-  assert.ok(out.lang.includes('<span class="lang-code" aria-hidden="true">PL</span>'));
+  assert.ok(out.lang.includes('<span class="lang-code" aria-hidden="true"><svg class="flag"'),'CNT-039: flaga SVG zamiast kodu „PL”');
   const css=await src('styles.css'), block=css.slice(css.indexOf('/* CNT-034'));
   assert.ok(block.length>100,'blok CSS CNT-034 na końcu styles.css');
   assert.match(block,/\.lang-select select\{[^}]*height:44px/);assert.match(block,/\.lang-select label\{[^}]*height:3[6-9]px|\.lang-select label\{[^}]*height:40px/);
@@ -161,7 +161,7 @@ test('Karty pokazują kuchnię dania (np. „Kuchnia włoska”), nie wspólną 
   assert.ok(card('owsianka').includes('<span class="card-cuisine">Kuchnia polska</span>'));
   assert.ok(card('tamagoyaki').includes('Kuchnia japońska'));
   for(const c of cuisines)assert.ok(messages[c+'Cuisine'],c);
-  assert.equal(out.hidden,false);for(const c of cuisines)assert.ok(out.tabs.includes(`data-cuisine="${c}"`),c);
+  assert.equal(out.hidden,false);for(const c of cuisines.filter(c=>recipes.some(r=>(r.cuisine||'polish')===c)))assert.ok(out.tabs.includes(`data-cuisine="${c}"`),c); // CNT-039: kuchnie bez przepisów nie mają zakładki
   assert.equal(out.favHidden,false);assert.ok(out.favTabs.includes('data-cuisine="italian"'));assert.ok(!out.favTabs.includes('data-cuisine="japanese"'));
   assert.deepEqual(out.fav,['makaron']);
   assert.ok(out.detail.includes('· Kuchnia włoska'));
@@ -246,7 +246,7 @@ test('„Wyczyść filtry”: zapytanie, posiłek, kuchnia, czas, dieta, alergen
   assert.ok(out.results.includes('<option value="default" selected>'));assert.ok(!out.results.includes('id="reset"'),'po wyczyszczeniu nie ma czego czyścić');
   assert.deepEqual(out.saved.settings,{showNutrition:false,sort:'default'},'kolejność zapisana jako domyślna, inne ustawienia bez zmian');
   assert.equal(out.toast,'Wyczyszczono wszystkie filtry.');
-  assert.ok(out.focused.includes('#search'));
+  assert.ok(!out.focused.includes('#search'),'CNT-039: czyszczenie nie przenosi fokusu do wyszukiwarki'); assert.ok(out.focused.includes('#reset')||out.focused.includes('#results-count'));
   // Bez wyników: przycisk w stanie pustym (jeden #reset).
   const none=runApp({script:`input({id:'search',value:'xyzxyz'});out.r=el('#results').innerHTML;`});
   assert.equal((none.r.match(/id="reset"/g)||[]).length,1);

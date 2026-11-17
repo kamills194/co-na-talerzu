@@ -45,5 +45,9 @@ export const messages = {
   excludeSearchPlaceholder:'Type a name, e.g. onion', excludeNoMatch:'There is no such product in the recipes.', excludeHelp:'Up and down arrows choose, Enter adds, Esc closes.', excludedAdded:'Excluded: {name}', excludedRemoved:'Allowed again: {name}', removeExclusion:'Remove exclusion',
   excludedSummary:'Excluded', clearExclusions:'Clear', clearExclusionsLabel:'Clear all exclusions', allergenExamples:'e.g. {list}', allergenNone:'not in the current recipes', filtersCleared:'All filters cleared.',
   servingsCount_one:'{n} serving', servingsCount_other:'{n} servings', suggestions_one:'{n} suggestion', suggestions_other:'{n} suggestions',
-  themeLabel:'Theme', themeLight:'Light', themeDark:'Dark', themeAuto:'Automatic',
+  themeLabel:'Theme', themeLight:'Light', themeDark:'Dark',
+  // CNT-039
+  hours:'h', promoOn:'On offer: {list}',
+  indian:'Indian', mexican:'Mexican', american:'American', mediterranean:'Mediterranean', asian:'Asian',
+  indianCuisine:'Indian cuisine', mexicanCuisine:'Mexican cuisine', americanCuisine:'American cuisine', mediterraneanCuisine:'Mediterranean cuisine', asianCuisine:'Asian cuisine',
 };
