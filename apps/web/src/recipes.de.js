@@ -1,4 +1,391 @@
-// Recipe and product texts: de. PLACEHOLDER — not translated yet; everything falls back to Polish (recipes.pl.js).
-// Fill according to docs/TLUMACZENIA.md: recipes { <recipeId>: { name, steps:[...], photoAlt } }, products { <productId>: name }.
-export const recipes = {};
-export const products = {};
+// Recipe and product texts: Deutsch (de-DE). Text only — amounts, units, ids, allergens and flags come from
+// recipes.pl.js. Each recipe has exactly as many steps as in Polish. Format: docs/TLUMACZENIA.md.
+// Machine translation (CNT-030), not reviewed by a native speaker or tested in a kitchen.
+export const products = {
+  oats:'Haferflocken', milk:'Milch', apple:'Apfel', cinnamon:'Zimt', egg:'Ei', butter:'Butter', bread:'Brot', tomato:'Tomate',
+  cheese:'Quark (polnischer Twaróg)', yogurt:'Naturjoghurt', radish:'Radieschen', cucumber:'Salatgurke', banana:'Banane', carrot:'Möhre', hummus:'Hummus', rice:'Reis',
+  passata:'Passierte Tomaten', water:'Wasser', oil:'Rapsöl', salt:'Salz', potato:'Kartoffeln', chicken:'Hähnchenbrust', paprika:'Paprikapulver, edelsüß',
+  pasta:'Weizennudeln ohne Ei', onion:'Zwiebel', lentils:'Rote Linsen, getrocknet', chickpeas:'Kichererbsen aus der Dose, abgetropft', pepper:'Paprikaschote', flour:'Weizenmehl', sugar:'Zucker',
+  cocoa:'Kakaopulver', beans:'Bohnen aus der Dose, abgetropft', lemon:'Zitrone', garlic:'Knoblauch',
+  semolina:'Weichweizengrieß', buckwheat:'Buchweizen, geröstet', kefir:'Kefir', sourcream:'Saure Sahne 18 %',
+  mackerel:'Geräucherte Makrele, Filet', chives:'Schnittlauch', dill:'Dill', blackpepper:'Schwarzer Pfeffer, gemahlen',
+  yellowcheese:'Schnittkäse (z. B. Gouda)', mozzarella:'Mozzarella', oliveoil:'Olivenöl', basil:'Basilikum, frisch',
+  parsley:'Glatte Petersilie', zucchini:'Zucchini', eggplant:'Aubergine', cabbage:'Weißkohl',
+  mushroom:'Champignons', orange:'Orange', berries:'Waldbeeren, tiefgekühlt', potatostarch:'Kartoffelstärke',
+  vinegar:'Apfelessig', tuna:'Thunfisch im eigenen Saft, abgetropft', mincedpork:'Schweinehackfleisch',
+  ham:'Kochschinken, in Scheiben', sushirice:'Sushireis', soysauce:'Sojasoße',
+  miso:'Misopaste', tofu:'Naturtofu', nori:'Nori, Blatt', sesame:'Sesamsaat',
+};
+export const recipes = {
+  'owsianka':{ name:'Haferbrei mit Apfel und Zimt', steps:[
+    'Die Haferflocken in einen kleinen Topf geben, mit der Milch übergießen und sanft aufkochen lassen.',
+    'Bei kleiner Hitze 5–7 Minuten unter Rühren köcheln lassen, bis die Flocken weich sind.',
+    'Den Apfel waschen, das Kerngehäuse entfernen und reiben. Mit dem Zimt zum Haferbrei geben und eine Minute erwärmen.'],
+    photoAlt:'Eine Schale Milchhaferbrei mit geriebenem Apfel und Zimt' },
+  'jajecznica':{ name:'Rührei mit Tomate', steps:[
+    'Die Tomate waschen und würfeln. Die Butter in einer Pfanne erhitzen.',
+    'Die Tomate dazugeben und 2 Minuten braten. Die Eier hineinschlagen, salzen und bei kleiner Hitze rühren, bis sie vollständig gestockt sind.',
+    'Sofort mit dem Brot servieren.'],
+    photoAlt:'Rührei mit Tomatenstücken auf einem Teller, daneben Brotscheiben' },
+  'owsianka-wodna':{ name:'Bananen-Haferbrei mit Wasser', steps:[
+    'Die Haferflocken mit dem Wasser übergießen und unter Rühren 5–7 Minuten kochen.',
+    'Eine Banane mit der Gabel zerdrücken und unter die Flocken rühren.',
+    'Die zweite in Scheiben schneiden. Auf dem Haferbrei verteilen und mit Zimt bestreuen.'],
+    photoAlt:'Eine Schale Haferbrei mit Bananenscheiben und Zimt' },
+  'pasta-jajeczna':{ name:'Brote mit Eiaufstrich und Schnittlauch', steps:[
+    'Die Eier in einen Topf mit kaltem Wasser legen, aufkochen und ab dem Sieden 10 Minuten kochen. Kalt abschrecken und 5 Minuten abkühlen lassen.',
+    'Den Schnittlauch waschen, trocken tupfen und fein schneiden. Die Eier schälen und mit der Gabel zerdrücken.',
+    'Die Eier mit Joghurt, Schnittlauch, Salz und Pfeffer verrühren. Den Aufstrich auf die Brotscheiben streichen.'],
+    photoAlt:'Brotscheiben mit Eiaufstrich, bestreut mit Schnittlauch' },
+  'kasza-manna':{ name:'Grießbrei mit Apfelmus', steps:[
+    'Die Äpfel waschen, schälen, das Kerngehäuse entfernen und würfeln. Mit Wasser und Zimt in einem kleinen Topf zugedeckt 6–8 Minuten dünsten, bis sie weich sind, dann mit der Gabel zerdrücken.',
+    'In einem zweiten Topf die Milch mit dem Zucker erhitzen. Sobald sie kocht, die Hitze reduzieren und den Grieß unter ständigem Rühren in dünnem Strahl einrieseln lassen, damit keine Klümpchen entstehen.',
+    'Unter Rühren 2–3 Minuten kochen, bis der Grieß eindickt. In Schalen füllen und das Apfelmus darauf geben.'],
+    photoAlt:'Eine Schale Grießbrei mit Apfelmus obendrauf' },
+  'twarożek':{ name:'Twarożek — Quark mit Radieschen', steps:[
+    'Die Radieschen waschen und fein hacken.',
+    'Den Quark mit dem Joghurt zerdrücken, Radieschen und Salz dazugeben.',
+    'Auf Brotscheiben servieren.'],
+    photoAlt:'Brotscheiben mit weißem Quark und Radieschenstückchen' },
+  'jogurt':{ name:'Joghurt mit Banane und Haferflocken', steps:[
+    'Die Bananen schälen und in Scheiben schneiden.',
+    'Den Joghurt auf zwei Schalen verteilen.',
+    'Bananen und Haferflocken dazugeben. 3 Minuten stehen lassen, damit die Flocken weich werden.'],
+    photoAlt:'Eine Schale Naturjoghurt mit Bananenscheiben und Haferflocken' },
+  'hummus-kanapki':{ name:'Brote mit Hummus und Gurke', steps:[
+    'Die Gurke waschen und in dünne Scheiben schneiden.',
+    'Das Brot mit Hummus bestreichen.',
+    'Die Gurke auf die Brote legen und servieren.'],
+    photoAlt:'Brote mit Hummus und Scheiben frischer Gurke' },
+  'pasta-z-makreli':{ name:'Aufstrich aus geräucherter Makrele mit Schnittlauch', steps:[
+    'Die Haut von den Makrelenfilets abziehen. Das Fleisch mit den Fingern zerpflücken und alle Gräten sorgfältig entfernen.',
+    'Den Schnittlauch waschen und fein schneiden. Den Quark mit dem Joghurt mit der Gabel zerdrücken.',
+    'Makrele, Schnittlauch, Zitronensaft und Pfeffer dazugeben und verrühren. Nicht nachsalzen, der Räucherfisch ist bereits salzig. Auf Brotscheiben servieren.'],
+    photoAlt:'Brotscheiben mit Aufstrich aus geräucherter Makrele und Schnittlauch' },
+  'koktajl-kefirowy':{ name:'Bananen-Hafer-Shake mit Kefir', steps:[
+    'Die Bananen schälen und in Stücke brechen.',
+    'Bananen, Haferflocken und Zimt in den Mixer geben und den Kefir angießen.',
+    'Etwa eine Minute mixen, bis der Shake glatt ist. Auf zwei Gläser verteilen und sofort servieren.'],
+    photoAlt:'Zwei Gläser heller Bananen-Shake mit Kefir' },
+  'pomidorowa':{ name:'Hausgemachte Tomatensuppe mit Reis (Pomidorowa)', steps:[
+    'Zwiebel und Möhre schälen. Die Zwiebel hacken, die Möhre reiben.',
+    'Das Öl in einem Topf erhitzen. Das Gemüse 4 Minuten anbraten.',
+    'Passierte Tomaten, Wasser und Salz dazugeben. Aufkochen, den Reis einstreuen und zugedeckt etwa 18 Minuten kochen, bis der Reis weich ist. Bei Bedarf Wasser nachgießen.'],
+    photoAlt:'Ein Teller Tomatensuppe mit Reis' },
+  'kurczak':{ name:'Hähnchen mit Kartoffeln aus dem Ofen', steps:[
+    'Den Backofen auf 200°C vorheizen. Kartoffeln und Möhren schälen und in kleine Stücke schneiden.',
+    'Das Hähnchen in dicke Streifen schneiden. Fleisch und Gemüse in einer Auflaufform mit Öl, Paprikapulver und Salz vermengen. Nach dem Kontakt mit rohem Fleisch Hände und Utensilien waschen.',
+    'Etwa 35–40 Minuten backen. Prüfen, ob das Gemüse weich ist und die Kerntemperatur im dicksten Fleischstück mindestens 75°C erreicht hat.'],
+    photoAlt:'Auflaufform mit Hähnchenstücken, Kartoffeln und Möhren' },
+  'makaron':{ name:'Nudeln in Tomatensoße', steps:[
+    'Wasser aufsetzen und die Nudeln nach Packungsanweisung kochen. Vor dem Abgießen ein halbes Glas Kochwasser abnehmen.',
+    'Inzwischen Zwiebel und Knoblauch schälen, hacken und 3 Minuten in Öl anbraten.',
+    'Die passierten Tomaten angießen, salzen und 10 Minuten köcheln lassen. Mit den Nudeln mischen, bei Bedarf etwas Kochwasser dazugeben.'],
+    photoAlt:'Ein Teller Nudeln in roter Tomatensoße' },
+  'soczewica':{ name:'Eintopf aus roten Linsen', steps:[
+    'Möhre und Zwiebel schälen und würfeln. 4 Minuten in Öl anbraten.',
+    'Die Linsen abspülen. Mit passierten Tomaten, Wasser, Paprikapulver und Salz in den Topf geben.',
+    'Unter Rühren etwa 20 Minuten kochen, bis die Linsen weich sind. Bei Bedarf Wasser nachgießen.'],
+    photoAlt:'Eine Schüssel dicker Eintopf aus roten Linsen mit Möhre' },
+  'placki-ziemniaczane':{ name:'Kartoffelpuffer mit saurer Sahne', steps:[
+    'Kartoffeln und Zwiebel schälen, waschen und fein reiben. In ein Sieb geben und überschüssige Flüssigkeit ausdrücken.',
+    'Die geriebene Masse mit Ei, Mehl und Salz verrühren. Sofort braten, damit die Kartoffeln nicht dunkel werden.',
+    'Einen Teil des Öls in einer Pfanne erhitzen. Jeweils einen Löffel Masse hineingeben, zu dünnen Puffern flach drücken und bei mittlerer Hitze 3–4 Minuten pro Seite braten, bis sie goldbraun und innen gar sind. Mit der restlichen Masse wiederholen und Öl nachgießen.',
+    'Die fertigen Puffer auf Küchenpapier abtropfen lassen und mit saurer Sahne servieren.'],
+    photoAlt:'Goldbraune Kartoffelpuffer mit einem Löffel saurer Sahne' },
+  'leniwe':{ name:'Pierogi leniwe — Quarknocken mit Butter', steps:[
+    'Einen großen Topf Salzwasser aufsetzen. Den Quark gründlich mit der Gabel zerdrücken, das Ei dazugeben und verrühren.',
+    'Etwa 100 g Mehl hinzufügen und kurz zu einem weichen Teig verkneten. Die Arbeitsfläche mit dem restlichen Mehl bestäuben.',
+    'Zwei daumendicke Rollen formen, leicht flach drücken und schräg in etwa 2 cm lange Stücke schneiden.',
+    'Die Nocken portionsweise ins kochende Wasser geben. Nach dem Aufsteigen 2–3 Minuten kochen und mit der Schaumkelle herausheben. Mit zerlassener Butter übergießen und mit Zucker bestreuen.'],
+    photoAlt:'Ein Teller Quarknocken mit Butter und Zucker' },
+  'potrawka-z-kurczaka':{ name:'Hühnerfrikassee mit Möhren und Reis', steps:[
+    'Möhren und Zwiebel schälen. Die Zwiebel hacken, die Möhren in Halbscheiben schneiden. Das Hähnchen in etwa 2 cm große Würfel schneiden. Nach dem Kontakt mit rohem Fleisch Hände, Brett und Messer waschen.',
+    'Das Öl in einem Topf erhitzen. Das Hähnchen unter Rühren 5 Minuten braten, bis es rundum weiß ist. Zwiebel und Möhren dazugeben und weitere 3 Minuten braten.',
+    'Das Wasser angießen, Salz und Pfeffer dazugeben. Zugedeckt bei kleiner Hitze 15 Minuten köcheln lassen, bis die Möhren weich sind. Inzwischen den Reis nach Packungsanweisung kochen.',
+    'Die saure Sahne in einem Becher mit dem Mehl und 3 Esslöffeln heißer Soße verrühren, in den Topf gießen und unter Rühren 2 Minuten kochen, bis die Soße eindickt. Prüfen, ob die Kerntemperatur im dicksten Fleischstück mindestens 75°C erreicht hat, und mit dem Reis servieren.'],
+    photoAlt:'Ein Teller Reis mit Hähnchen- und Möhrenstücken in heller Soße' },
+  'salatka':{ name:'Kichererbsensalat', steps:[
+    'Das Gemüse waschen, die Paprika entkernen und alles würfeln.',
+    'Die Kichererbsen abspülen und abtropfen lassen. Mit dem Gemüse mischen.',
+    'Öl mit Zitronensaft und Salz verrühren. Über den Salat gießen und mischen.'],
+    photoAlt:'Eine Schüssel Salat aus Kichererbsen, Tomate, Gurke und Paprika' },
+  'omlet':{ name:'Omelett mit Paprika', steps:[
+    'Die Paprika waschen, das Kerngehäuse entfernen und fein würfeln.',
+    'Die Paprika 4 Minuten in Öl anbraten. Die Eier mit Salz verquirlen.',
+    'Die Eier in die Pfanne gießen. Zugedeckt bei kleiner Hitze etwa 6 Minuten braten, bis die Eier vollständig gestockt sind.'],
+    photoAlt:'Ein Omelett mit Paprikawürfeln auf einem Teller' },
+  'grzanki':{ name:'Warme Röstbrote mit Tomate', steps:[
+    'Den Backofen auf 190°C vorheizen. Die Tomaten waschen und fein würfeln.',
+    'Das Brot mit Öl beträufeln, mit geschältem Knoblauch einreiben und auf ein Backblech legen.',
+    'Die Tomaten darauf verteilen, salzen und 8–10 Minuten backen.'],
+    photoAlt:'Überbackene Brotscheiben mit Tomatenwürfeln' },
+  'kasza-z-jajkiem':{ name:'Buchweizen mit Spiegelei und Zwiebeln', steps:[
+    'Den Buchweizen mit der Hälfte des Salzes nach Packungsanweisung kochen, meist etwa 15 Minuten.',
+    'Inzwischen die Zwiebel schälen und würfeln. Die Hälfte der Butter in einer Pfanne erhitzen und die Zwiebel bei mittlerer Hitze 5–6 Minuten goldgelb braten. Unter den gekochten Buchweizen mischen.',
+    'In derselben Pfanne die restliche Butter erhitzen. Die Eier hineinschlagen, mit dem restlichen Salz und Pfeffer würzen. Zugedeckt 3–4 Minuten braten, bis Eiweiß und Eigelb gestockt sind. Die Eier auf den Buchweizen legen.'],
+    photoAlt:'Ein Teller Buchweizen mit gebratenen Zwiebeln und Spiegelei' },
+  'ziemniaki-z-gzikiem':{ name:'Pellkartoffeln mit Gzik (Quarkdip mit Radieschen und Schnittlauch)', steps:[
+    'Möglichst gleich große Kartoffeln wählen und gründlich abbürsten. Mit Schale in einen Topf geben, mit kaltem Wasser und der Hälfte des Salzes bedecken und ab dem Aufkochen 20–25 Minuten garen, bis ein Messer leicht hineingleitet.',
+    'Inzwischen Radieschen und Schnittlauch waschen und fein hacken. Den Quark mit der sauren Sahne mit der Gabel zerdrücken, Radieschen, Schnittlauch und das restliche Salz dazugeben.',
+    'Die Kartoffeln abgießen und eine Minute im Topf ausdampfen lassen. Heiß servieren, mit Schale oder gepellt, den Gzik daneben.'],
+    photoAlt:'Pellkartoffeln neben einer Schale Quark mit Schnittlauch und Radieschen' },
+  'placuszki':{ name:'Kleine Bananenpfannkuchen', steps:[
+    'Die Bananen zerdrücken. Mit Eiern, Milch und Mehl verrühren.',
+    'Einen Teil des Öls in einer Pfanne erhitzen und jeweils einen Löffel Teig hineingeben.',
+    'Die kleinen Pfannkuchen bei mittlerer Hitze 2–3 Minuten pro Seite braten, bis sie innen gar sind. Mit dem restlichen Teig wiederholen.'],
+    photoAlt:'Ein Stapel kleiner Bananenpfannkuchen auf einem Teller' },
+  'pieczone-jablka':{ name:'Bratäpfel mit Zimt', steps:[
+    'Den Backofen auf 180°C vorheizen. Die Äpfel waschen und das Kerngehäuse ausstechen.',
+    'In eine Form stellen, Zucker und Zimt in die Mitte füllen. Das Wasser auf den Boden gießen.',
+    'Etwa 25 Minuten backen, bis sie weich sind. Vor dem Servieren etwas abkühlen lassen.'],
+    photoAlt:'Zwei gebackene Äpfel mit Zimt in einer Auflaufform' },
+  'kakao':{ name:'Bananen-Kakao-Creme', steps:[
+    'Reife Bananen schälen und in Stücke schneiden.',
+    'Mit dem Kakao zu einer glatten Creme pürieren oder sehr gründlich mit der Gabel zerdrücken.',
+    'Auf Schalen verteilen und sofort servieren.'],
+    photoAlt:'Eine Schale dunkle Creme aus Bananen und Kakao' },
+  'nalesniki-z-twarogiem':{ name:'Süße Pfannkuchen mit Quarkfüllung', steps:[
+    'Mehl, Milch, Wasser, Ei und einen Esslöffel Öl mit dem Schneebesen zu einem glatten, klümpchenfreien Teig verrühren. 10 Minuten ruhen lassen.',
+    'Den Quark mit Joghurt und Zucker mit der Gabel zu einer glatten Creme zerdrücken.',
+    'Eine Pfanne erhitzen und dünn mit Öl auspinseln. Eine Portion Teig hineingießen, über den Boden verteilen und etwa eine Minute pro Seite backen, bis der Pfannkuchen fest und leicht gebräunt ist. So etwa 6 Pfannkuchen backen.',
+    'Jeden Pfannkuchen mit der Quarkcreme bestreichen und aufrollen.'],
+    photoAlt:'Aufgerollte Pfannkuchen mit weißer Quarkfüllung auf einem Teller' },
+  'marchewki':{ name:'Möhrensticks mit Joghurtdip', steps:[
+    'Die Möhren schälen, waschen und in Stifte schneiden.',
+    'Den Knoblauch schälen und fein reiben. Mit Joghurt und Salz verrühren.',
+    'Die Möhren mit dem Dip in einer separaten Schale servieren.'],
+    photoAlt:'Rohe Möhrenstifte neben einer Schale Joghurtdip' },
+  'pasta-fasolowa':{ name:'Hausgemachter Aufstrich aus weißen Bohnen', steps:[
+    'Die Bohnen abspülen und abtropfen lassen. Den Knoblauch schälen.',
+    'Die Bohnen mit Öl, Zitronensaft, Knoblauch und Salz pürieren. Ist der Aufstrich zu dick, einen Esslöffel Wasser dazugeben.',
+    'Die Möhren schälen, waschen und in Stifte schneiden. Den Aufstrich als Dip zu den Möhren servieren.'],
+    photoAlt:'Eine Schale heller Aufstrich aus weißen Bohnen mit Möhrenstiften' },
+  'surowka-z-marchewki':{ name:'Möhren-Apfel-Rohkost', steps:[
+    'Die Möhren schälen und waschen. Den Apfel waschen und das Kerngehäuse entfernen.',
+    'Möhren und Apfel grob reiben. Sofort mit Zitronensaft beträufeln, damit der Apfel nicht braun wird.',
+    'Öl und Zucker dazugeben, mischen und sofort servieren.'],
+    photoAlt:'Eine Schale Rohkost aus geriebener Möhre und Apfel' },
+  'mizeria':{ name:'Mizeria — Gurkensalat mit Joghurt und Dill', steps:[
+    'Die Gurke waschen, schälen und in dünne Scheiben schneiden. Salzen, mischen und 5 Minuten ziehen lassen, bis sie Saft abgibt.',
+    'Den Dill waschen, trocken tupfen und fein hacken. Den Gurkensaft abgießen.',
+    'Die Gurke mit Joghurt, Dill und Pfeffer mischen. Sofort servieren.'],
+    photoAlt:'Eine Schale Gurkenscheiben in Joghurt mit Dill' },
+  'chleb-w-jajku':{ name:'In Ei gebratenes Brot mit Schnittlauch', steps:[
+    'In einem tiefen Teller die Eier mit Milch und Salz mit der Gabel verquirlen. Den Schnittlauch waschen und fein schneiden.',
+    'Die Brotscheiben nacheinander in die Eimasse tauchen und wenden, damit sie sich von beiden Seiten vollsaugen.',
+    'Die Butter in einer Pfanne erhitzen. Die Scheiben bei mittlerer Hitze 2–3 Minuten pro Seite braten, bis das Ei vollständig gestockt und gebräunt ist. Mit Schnittlauch bestreuen.'],
+    photoAlt:'Goldbraun in Ei gebratene Brotscheiben, bestreut mit Schnittlauch' },
+  'kanapki-z-jajkiem-i-rzodkiewka':{ name:'Brote mit hart gekochtem Ei und Radieschen', steps:[
+    'Die Eier in einen Topf mit kaltem Wasser legen, aufkochen und ab dem Sieden 10 Minuten kochen. Kalt abschrecken und 5 Minuten stehen lassen.',
+    'Die Radieschen waschen und in dünne Scheiben schneiden. Den Schnittlauch waschen und schneiden. Die Eier schälen und in Scheiben schneiden.',
+    'Die Brotscheiben mit Butter bestreichen, Ei- und Radieschenscheiben darauflegen, salzen und mit Schnittlauch bestreuen.'],
+    photoAlt:'Brote mit Scheiben von hart gekochtem Ei und Radieschen' },
+  'ryz-na-mleku':{ name:'Milchreis mit Apfel und Zimt', steps:[
+    'Den Reis in einem Sieb abspülen. In einen kleinen Topf geben, mit dem Wasser übergießen und zugedeckt bei kleiner Hitze etwa 10 Minuten kochen, bis er das Wasser aufgenommen hat.',
+    'Die Milch angießen, den Zucker dazugeben und ohne Deckel 12–15 Minuten kochen, dabei oft umrühren, damit der Reis nicht am Boden ansetzt.',
+    'Den Apfel waschen, das Kerngehäuse entfernen und grob reiben. Mit dem Zimt unter den Reis rühren und noch 2 Minuten erwärmen.'],
+    photoAlt:'Eine Schale cremiger Milchreis mit geriebenem Apfel' },
+  'strammer-max':{ name:'Strammer Max — Brot mit Schinken und Spiegelei', steps:[
+    'Die Brotscheiben dünn mit der Hälfte der Butter bestreichen und die Schinkenscheiben darauflegen. Den Schnittlauch waschen und schneiden.',
+    'Die restliche Butter in einer Pfanne erhitzen. Die Eier hineinschlagen und zugedeckt bei kleiner Hitze 3–4 Minuten braten, bis Eiweiß und Eigelb gestockt sind.',
+    'Auf jedes Brot ein Spiegelei legen. Mit Pfeffer würzen und mit Schnittlauch bestreuen.'],
+    photoAlt:'Eine Scheibe Brot mit Schinken, bedeckt von einem Spiegelei' },
+  'tamagoyaki':{ name:'Tamagoyaki — japanisches gerolltes Omelett', steps:[
+    'Die Eier in einer Schüssel mit Wasser, Sojasoße und Zucker verquirlen, bis sich der Zucker aufgelöst hat.',
+    'Eine Pfanne bei mittlerer Hitze erhitzen und dünn mit Öl auspinseln. Ein Drittel der Masse hineingießen. Sobald sie gestockt ist, mit dem Pfannenwender zu einer Rolle aufrollen und an den Pfannenrand schieben.',
+    'Den freien Teil der Pfanne mit Öl auspinseln und die nächste Portion Masse so hineingießen, dass sie unter die Rolle fließt. Nach dem Stocken auf die Rolle aufrollen. Mit der restlichen Masse wiederholen.',
+    'Die fertige Rolle noch eine Minute unter Wenden braten, bis innen kein flüssiges Ei mehr ist. 2 Minuten ruhen lassen und in dicke Scheiben schneiden.'],
+    photoAlt:'Scheiben eines gerollten gelben Omeletts auf einem kleinen Teller' },
+  'omlet-francuski':{ name:'Französisches Omelett mit Käse', steps:[
+    'Den Käse reiben. Den Schnittlauch waschen und schneiden. Die Eier mit Salz mit der Gabel verquirlen, nur bis sich Eiweiß und Eigelb verbunden haben.',
+    'Die Butter in einer Pfanne bei mittlerer Hitze zerlassen. Die Eier hineingießen und in der ersten Minute die stockende Masse mit dem Pfannenwender vom Rand zur Mitte schieben.',
+    'Sobald die Oberfläche nicht mehr flüssig ist, das Omelett mit Käse bestreuen, zur Hälfte zusammenklappen und noch eine Minute braten, bis der Käse geschmolzen und die Eier vollständig gestockt sind. Mit Schnittlauch bestreuen.'],
+    photoAlt:'Ein zusammengeklapptes helles Omelett mit geschmolzenem Käse in der Mitte' },
+  'kanapki-z-serem-i-pomidorem':{ name:'Brote mit Käse und Tomate', steps:[
+    'Die Tomate waschen und in Scheiben schneiden. Den Schnittlauch waschen und schneiden.',
+    'Die Brotscheiben mit Butter bestreichen und die Käsescheiben darauflegen.',
+    'Die Tomatenscheiben auf den Käse legen und mit Schnittlauch bestreuen. Sollen die Brote warten, die Tomate separat einpacken.'],
+    photoAlt:'Brote mit Scheiben Schnittkäse und Tomate' },
+  'twarozek-z-bananem':{ name:'Süßer Quark mit Banane', steps:[
+    'Den Quark mit dem Joghurt mit der Gabel zu einer glatten Creme zerdrücken.',
+    'Eine Banane schälen, zerdrücken und unter den Quark rühren.',
+    'Die zweite Banane in Scheiben schneiden. Den Quark auf Schalen verteilen, die Scheiben darauflegen und mit Zimt bestreuen.'],
+    photoAlt:'Eine Schale weißer Quark mit Bananenscheiben und Zimt' },
+  'onigiri-z-tunczykiem':{ name:'Onigiri mit Thunfisch', steps:[
+    'Den Reis in einem Sieb unter kaltem Wasser waschen, bis das Wasser fast klar ist. Im abgemessenen Wasser aufkochen, die Hitze auf die kleinste Stufe stellen und zugedeckt 12 Minuten garen. Vom Herd nehmen und zugedeckt 5 Minuten stehen lassen.',
+    'Den Thunfisch mit der Gabel zerpflücken und mit der Sojasoße mischen. Das Noriblatt mit der Schere in 4 Streifen schneiden.',
+    'Den Reis mit dem Salz mischen und etwa 5 Minuten abkühlen lassen, bis man ihn in die Hände nehmen kann. Die Hände mit Wasser befeuchten, ein Viertel des Reises nehmen, eine Mulde drücken, einen Teelöffel Thunfisch hineingeben und den Reis zu einem festen Dreieck formen.',
+    'So 4 Onigiri formen und jedes von unten mit einem Noristreifen umwickeln. Am selben Tag essen und bis dahin im Kühlschrank aufbewahren.'],
+    photoAlt:'Dreieckige Reisbällchen, umwickelt mit Noristreifen' },
+  'croque-monsieur':{ name:'Croque-monsieur aus der Pfanne', steps:[
+    'Den Käse in Scheiben schneiden oder reiben. Alle Brotscheiben auf einer Seite mit Butter bestreichen.',
+    'Zwei Scheiben mit der Butterseite nach unten legen, die Hälfte des Käses, den Schinken und den restlichen Käse darauf verteilen. Mit den übrigen Scheiben abdecken, Butterseite nach oben.',
+    'Die Sandwiches in einer trockenen Pfanne bei kleiner Hitze 3–4 Minuten pro Seite braten und dabei leicht mit dem Pfannenwender andrücken, bis das Brot gebräunt und der Käse geschmolzen ist. Halbieren.'],
+    photoAlt:'Ein goldbraunes überbackenes Sandwich mit Schinken und zerlaufendem Käse' },
+  'salatka-makaronowa':{ name:'Nudelsalat mit Mozzarella und Tomaten', steps:[
+    'Die Nudeln nach Packungsanweisung kochen. Abgießen, kalt abspülen und gut abtropfen lassen.',
+    'Die Tomaten waschen und würfeln. Den Mozzarella abtropfen lassen und würfeln. Die Basilikumblätter abspülen und zerzupfen.',
+    'Die Nudeln mit Tomaten, Mozzarella, Basilikum, Olivenöl und Salz mischen. Sofort servieren oder in eine Dose füllen und im Kühlschrank aufbewahren.'],
+    photoAlt:'Eine Schüssel Nudeln mit Tomaten- und Mozzarellawürfeln und Basilikumblättern' },
+  'zupa-ziemniaczana':{ name:'Kartoffelsuppe mit Dill', steps:[
+    'Kartoffeln, Möhre und Zwiebel schälen und waschen. Die Kartoffeln in etwa 1,5 cm große Würfel schneiden, die Möhre in Halbscheiben, die Zwiebel hacken.',
+    'Die Butter in einem Topf zerlassen und Zwiebel und Möhre 3 Minuten anbraten. Kartoffeln, Wasser, Salz und Pfeffer dazugeben. Zugedeckt etwa 15 Minuten kochen, bis die Kartoffeln weich sind.',
+    'Einen Teil der Kartoffeln im Topf mit dem Stampfer oder der Gabel zerdrücken, damit die Suppe sämiger wird. Die saure Sahne in einem Becher mit 3 Esslöffeln heißer Suppe verrühren und in den Topf gießen.',
+    'Den Dill waschen, hacken und in die Suppe geben. Eine Minute erwärmen, ohne sie aufkochen zu lassen.'],
+    photoAlt:'Ein Teller helle Kartoffelsuppe mit Möhre und Dill' },
+  'makaron-z-twarogiem':{ name:'Nudeln mit Quark und Butter', steps:[
+    'Die Nudeln in Salzwasser nach Packungsanweisung kochen und abgießen.',
+    'Die Butter in den leeren, noch warmen Topf geben, und sobald sie geschmolzen ist, die Nudeln zurückgeben und mischen.',
+    'Den Quark mit den Fingern oder der Gabel zerbröseln. Die Nudeln auf Teller verteilen, mit Quark und Zucker bestreuen.'],
+    photoAlt:'Ein Teller Nudeln, bestreut mit zerbröseltem weißem Quark' },
+  'jajka-w-sosie-koperkowym':{ name:'Eier in Dillsoße mit Kartoffeln', steps:[
+    'Die Kartoffeln schälen, waschen, halbieren und in Wasser mit der Hälfte des Salzes etwa 20 Minuten weich kochen. In einem zweiten Topf die Eier mit kaltem Wasser bedecken, aufkochen und ab dem Sieden 10 Minuten kochen, dann kalt abschrecken.',
+    'In einem kleinen Topf die Butter zerlassen, das Mehl einstreuen und eine Minute rühren. Die Milch nach und nach unter ständigem Rühren mit dem Schneebesen angießen und 3 Minuten kochen, bis die Soße eindickt.',
+    'Den Dill waschen und hacken. Mit dem restlichen Salz in die Soße geben. Die Eier schälen und halbieren.',
+    'Die Kartoffeln abgießen, auf Teller verteilen, die Eier daneben legen und mit der Soße übergießen.'],
+    photoAlt:'Eierhälften in hellgrüner Dillsoße neben gekochten Kartoffeln' },
+  'spaghetti-aglio-e-olio':{ name:'Spaghetti aglio e olio', steps:[
+    'Die Nudeln in Salzwasser nach Packungsanweisung kochen. Vor dem Abgießen ein halbes Glas Kochwasser abnehmen.',
+    'Inzwischen den Knoblauch schälen und in dünne Scheiben schneiden. Die Petersilie waschen und hacken. Das Olivenöl mit dem Knoblauch in einer großen Pfanne bei kleiner Hitze 3–4 Minuten erwärmen, bis der Knoblauch leicht goldgelb ist. Nicht braun werden lassen, sonst wird er bitter.',
+    'Die Nudeln in die Pfanne geben, 4 Esslöffel des abgenommenen Kochwassers angießen und eine Minute auf dem Herd rühren, bis das Öl die Nudeln überzieht. Petersilie und Pfeffer dazugeben.'],
+    photoAlt:'Ein Teller Spaghetti mit Knoblauchscheiben und gehackter Petersilie' },
+  'makaron-z-tunczykiem':{ name:'Nudeln mit Thunfisch und Tomaten', steps:[
+    'Wasser aufsetzen und die Nudeln nach Packungsanweisung kochen.',
+    'Inzwischen Zwiebel und Knoblauch schälen und hacken. 3 Minuten in Olivenöl anbraten, die passierten Tomaten angießen, salzen und bei kleiner Hitze 8 Minuten köcheln lassen.',
+    'Den Thunfisch mit der Gabel zerpflücken, zur Soße geben und 2 Minuten erwärmen. Die Soße mit den abgegossenen Nudeln mischen.'],
+    photoAlt:'Ein Teller Nudeln in Tomatensoße mit Thunfischstücken' },
+  'frykadele':{ name:'Frikadellen mit Kartoffeln', steps:[
+    'Die Kartoffeln schälen, waschen, halbieren und in Wasser mit einem Teil des Salzes etwa 20 Minuten weich kochen.',
+    'Die Brotscheibe in eine Schüssel bröckeln und mit dem abgemessenen Wasser übergießen. Die Zwiebel schälen und sehr fein hacken. Hackfleisch, Ei, Zwiebel, restliches Salz und Pfeffer dazugeben. Die Masse mit der Hand durchkneten und 6 flache Frikadellen formen. Nach dem Kontakt mit rohem Fleisch Hände, Schüssel und Brett waschen.',
+    'Das Öl in einer Pfanne erhitzen. Die Frikadellen bei mittlerer Hitze 5–6 Minuten pro Seite braten. Eine aufschneiden: Das Fleisch darf innen nicht rosa sein und der Saft muss klar sein.',
+    'Die Frikadellen mit den abgegossenen Kartoffeln servieren.'],
+    photoAlt:'Flache, goldbraune Frikadellen neben gekochten Kartoffeln' },
+  'ratatouille':{ name:'Schnelles Ratatouille aus der Pfanne', steps:[
+    'Das Gemüse waschen. Zucchini und Aubergine in etwa 1,5 cm große Würfel schneiden. Die Paprika entkernen und genauso schneiden. Zwiebel und Knoblauch schälen und hacken.',
+    'Das Olivenöl in einer großen Pfanne erhitzen. Zwiebel und Aubergine unter Rühren 5 Minuten braten. Paprika und Zucchini dazugeben und weitere 5 Minuten braten.',
+    'Knoblauch, passierte Tomaten und Salz dazugeben. Zugedeckt bei kleiner Hitze 12–15 Minuten schmoren, bis das Gemüse weich, aber nicht zerkocht ist.',
+    'Warm mit einer Scheibe Brot servieren.'],
+    photoAlt:'Eine Pfanne mit geschmortem Gemüse in Tomatensoße: Zucchini, Aubergine und Paprika' },
+  'oyakodon':{ name:'Oyakodon — Reis mit Hähnchen und Ei', steps:[
+    'Den Reis in einem Sieb abspülen. In 200 ml Wasser aufkochen, die Hitze auf die kleinste Stufe stellen und zugedeckt 12 Minuten garen. Zugedeckt 5 Minuten stehen lassen.',
+    'Inzwischen die Zwiebel schälen und in Spalten schneiden. Das Hähnchen in dünne Streifen schneiden. Nach dem Kontakt mit rohem Fleisch Hände, Brett und Messer waschen.',
+    'In einer Pfanne das restliche Wasser mit Sojasoße und Zucker aufkochen. Zwiebel und Hähnchen dazugeben und zugedeckt 8 Minuten garen, bis das Fleisch innen weiß und nirgends mehr rosa ist.',
+    'Die Eier mit der Gabel verquirlen und gleichmäßig über das Hähnchen gießen. Zugedeckt 3–4 Minuten garen, bis die Eier vollständig gestockt sind. Den Reis auf Schalen verteilen und Hähnchen mit Ei und Soße daraufgleiten lassen.'],
+    photoAlt:'Eine Schale Reis, bedeckt mit Hähnchen, Zwiebeln und gestocktem Ei' },
+  'yakisoba':{ name:'Gebratene Nudeln mit Gemüse nach Yakisoba-Art', steps:[
+    'Die Nudeln, am besten dünne Fadennudeln oder Spaghetti, eine Minute kürzer als auf der Packung angegeben kochen. Abgießen.',
+    'Den Kohl in dünne Streifen schneiden. Die Möhre schälen und in dünne Stifte schneiden. Die Zwiebel schälen und in Spalten schneiden.',
+    'Das Öl in einer großen Pfanne stark erhitzen. Zwiebel und Möhre 3 Minuten braten, den Kohl dazugeben und unter Rühren weitere 4 Minuten braten. Das Gemüse soll leicht knackig bleiben.',
+    'Nudeln, Sojasoße und Zucker dazugeben. Unter ständigem Rühren 2 Minuten braten, bis die Nudeln die Soße aufgenommen haben.'],
+    photoAlt:'Ein Teller gebratene Nudeln mit Kohl- und Möhrenstreifen' },
+  'zapiekanki-z-pieczarkami':{ name:'Überbackene Brote mit Champignons und Käse', steps:[
+    'Den Backofen auf 200°C vorheizen. Die Champignons putzen und in Scheiben schneiden. Die Zwiebel schälen und hacken. Den Käse reiben.',
+    'Die Butter in einer Pfanne zerlassen. Zwiebel und Champignons 6–7 Minuten braten, bis das Wasser verdampft ist. Mit Salz und Pfeffer würzen.',
+    'Die Brotscheiben auf ein Backblech legen, die Champignons darauf verteilen und mit Käse bestreuen. 8 Minuten backen, bis der Käse geschmolzen und gebräunt ist.'],
+    photoAlt:'Überbackene Brotscheiben mit Champignons unter geschmolzenem Käse' },
+  'placki-z-cukinii':{ name:'Zucchinipuffer mit Knoblauchdip', steps:[
+    'Die Zucchini waschen und mit Schale grob reiben. Mit der Hälfte des Salzes mischen, 5 Minuten stehen lassen und den Saft mit den Händen kräftig ausdrücken.',
+    'Den Knoblauch schälen, fein reiben und mit Joghurt und dem restlichen Salz verrühren. Die ausgedrückte Zucchini mit Ei und Mehl vermengen.',
+    'Einen Teil des Öls in einer Pfanne erhitzen. Jeweils einen Löffel Masse hineingeben, flach drücken und bei mittlerer Hitze 3 Minuten pro Seite braten, bis die Puffer goldbraun und innen gar sind. Mit der restlichen Masse wiederholen und mit dem Dip servieren.'],
+    photoAlt:'Goldbraune Puffer aus geriebener Zucchini neben einer Schale Joghurtdip' },
+  'frittata-z-cukinia':{ name:'Frittata mit Zucchini', steps:[
+    'Die Zucchini waschen und in dünne Halbscheiben schneiden. Die Zwiebel schälen und hacken. Den Käse reiben.',
+    'Das Olivenöl in einer Pfanne erhitzen. Zwiebel und Zucchini unter Rühren 7–8 Minuten braten, bis sie weich und leicht gebräunt sind.',
+    'Die Eier mit Salz, Pfeffer und Käse verquirlen, über das Gemüse gießen und die Pfanne leicht schwenken. Zugedeckt bei kleiner Hitze etwa 8 Minuten braten, bis die Oberfläche vollständig gestockt ist. In Dreiecke schneiden.'],
+    photoAlt:'Ein dickes Omelett mit Zucchinischeiben, in Dreiecke geschnitten' },
+  'bratkartoffeln':{ name:'Bratkartoffeln mit Spiegelei', steps:[
+    'Die Kartoffeln schälen, waschen und in etwa 3 mm dicke Scheiben schneiden. Mit Küchenpapier trocken tupfen. Die Zwiebel schälen und würfeln.',
+    'Den größten Teil des Öls in einer großen Pfanne erhitzen. Die Kartoffeln möglichst flach verteilen und bei mittlerer Hitze 15 Minuten braten, dabei alle paar Minuten wenden. Zwiebel und Salz dazugeben und weitere 5 Minuten braten, bis die Kartoffeln weich und goldbraun sind.',
+    'Die Kartoffeln zur Seite schieben oder eine zweite Pfanne nehmen. Im restlichen Öl zugedeckt Spiegeleier braten, 3–4 Minuten, bis Eiweiß und Eigelb gestockt sind.',
+    'Die Kartoffeln auf Teller verteilen, die Eier darauflegen, mit Pfeffer würzen und mit gehacktem Schnittlauch bestreuen.'],
+    photoAlt:'Goldbraune Bratkartoffelscheiben mit Zwiebeln und einem Spiegelei obendrauf' },
+  'flammkuchen':{ name:'Fladen nach Flammkuchen-Art mit Zwiebeln und saurer Sahne', steps:[
+    'Den Backofen zusammen mit dem Backblech auf 250°C vorheizen. Das Mehl mit der Hälfte des Salzes, dem Wasser und dem Öl mischen und 3 Minuten zu einem glatten Teig kneten.',
+    'Die Zwiebel schälen und in sehr dünne Halbringe schneiden. Den Teig auf einem Bogen Backpapier dünn ausrollen, etwa so groß wie das Backblech.',
+    'Den Fladen mit saurer Sahne bestreichen und dabei einen schmalen Rand frei lassen. Die Zwiebel verteilen und mit dem restlichen Salz und Pfeffer würzen.',
+    'Den Fladen mit dem Papier auf das heiße Blech ziehen und 10–12 Minuten backen, bis die Ränder gebräunt und knusprig sind. Mit gehacktem Schnittlauch bestreuen.'],
+    photoAlt:'Ein dünner knuspriger Fladen mit saurer Sahne, Zwiebeln und Schnittlauch' },
+  'salatka-nicejska':{ name:'Salat Niçoise mit Thunfisch', steps:[
+    'Die Kartoffeln schälen, waschen, grob würfeln und in Salzwasser etwa 15 Minuten weich kochen. In einem zweiten Topf die Eier mit kaltem Wasser bedecken, aufkochen und ab dem Sieden 10 Minuten kochen.',
+    'Die Kartoffeln abgießen und abkühlen lassen. Die Eier kalt abschrecken, schälen und vierteln. Tomaten und Gurke waschen und in Spalten schneiden.',
+    'Olivenöl mit Zitronensaft und Salz verrühren. Kartoffeln, Tomaten und Gurke auf Tellern anrichten, Thunfisch- und Eistücke darauflegen und mit dem Dressing beträufeln.'],
+    photoAlt:'Ein Teller Salat mit Kartoffeln, Thunfisch, Eivierteln und Tomate' },
+  'zupa-miso':{ name:'Einfache Misosuppe mit Tofu', steps:[
+    'Die Möhre schälen und in sehr dünne Halbscheiben schneiden. Das Wasser aufkochen, die Möhre hineingeben und 5 Minuten kochen.',
+    'Den Tofu in etwa 1 cm große Würfel schneiden. Das Nori mit der Schere in dünne Streifen schneiden. Den Schnittlauch waschen und schneiden. Den Tofu in den Topf geben und 2 Minuten erwärmen.',
+    'Den Topf vom Herd nehmen. Die Misopaste in einem Becher mit einigen Esslöffeln heißer Brühe glatt rühren und in die Suppe gießen. Nicht mehr kochen lassen, damit sie ihr Aroma nicht verliert.',
+    'Die Suppe in Schalen füllen, Noristreifen und Schnittlauch dazugeben.'],
+    photoAlt:'Eine Schale trübe Misosuppe mit Tofuwürfeln und Noristreifen' },
+  'omurice':{ name:'Omurice — Omelett mit Tomatenreis', steps:[
+    'Den Reis nach Packungsanweisung kochen. Inzwischen Zwiebel und Möhre schälen und fein würfeln.',
+    'Die Hälfte der Butter in einer Pfanne zerlassen. Zwiebel und Möhre 5 Minuten braten. Reis, passierte Tomaten und die Hälfte des Salzes dazugeben und unter Rühren 3 Minuten braten, bis sich der Reis färbt. Den Reis auf zwei Teller verteilen und zu länglichen Hügeln formen.',
+    'Die Pfanne auswischen. 2 Eier mit einer Prise Salz verquirlen und in der Hälfte der restlichen Butter zugedeckt 2–3 Minuten zu einem dünnen Omelett braten, bis es vollständig gestockt ist. Einen Reishügel damit bedecken.',
+    'Aus den übrigen Eiern und der Butter genauso ein zweites Omelett braten und die zweite Portion damit bedecken.'],
+    photoAlt:'Ein länglicher Hügel Tomatenreis, bedeckt mit einem dünnen gelben Omelett' },
+  'racuszki-z-jablkami':{ name:'Racuszki — Apfelküchlein ohne Hefe', steps:[
+    'Mehl, Milch, Ei und die Hälfte des Zuckers mit dem Schneebesen zu einem dicken, glatten Teig verrühren.',
+    'Die Äpfel waschen, schälen, das Kerngehäuse entfernen und fein würfeln. Unter den Teig heben.',
+    'Einen Teil des Öls in einer Pfanne erhitzen. Jeweils einen Löffel Teig hineingeben und bei mittlerer Hitze 2–3 Minuten pro Seite braten, bis die Küchlein goldbraun und innen gar sind. Mit dem restlichen Teig wiederholen.',
+    'Den restlichen Zucker mit dem Zimt mischen und über die warmen Küchlein streuen.'],
+    photoAlt:'Ein Teller kleiner Küchlein mit Apfelstücken, bestreut mit Zimtzucker' },
+  'budyn-kakaowy':{ name:'Hausgemachter Kakaopudding', steps:[
+    'Ein halbes Glas kalte Milch in einen Becher abgießen und Kartoffelstärke und Kakao darin gründlich verrühren, damit keine Klümpchen bleiben.',
+    'Die restliche Milch mit dem Zucker in einem kleinen Topf aufkochen. Die Hitze reduzieren und die Mischung aus dem Becher in dünnem Strahl unter kräftigem Rühren mit dem Schneebesen eingießen.',
+    'Unter ständigem Rühren eine Minute kochen, bis der Pudding eindickt und zu blubbern beginnt. In Schalen füllen und warm oder gekühlt servieren.'],
+    photoAlt:'Zwei Schalen dicker dunkler Kakaopudding' },
+  'omlet-biszkoptowy':{ name:'Biskuit-Omelett mit Waldbeeren', steps:[
+    'Die gefrorenen Beeren mit der Hälfte des Zuckers in einen kleinen Topf geben. Aufkochen und unter Rühren 2 Minuten kochen, dann beiseitestellen.',
+    'Die Eier trennen. Das Eiweiß mit dem Schneebesen oder Mixer steif schlagen und zum Schluss den restlichen Zucker einrieseln lassen. Die Eigelbe vorsichtig unterheben, danach das Mehl.',
+    'Die Butter in einer Pfanne zerlassen, die Masse hineingeben und glatt streichen. Zugedeckt bei kleiner Hitze 5–6 Minuten braten, bis die Oberfläche gestockt ist. Das Omelett mithilfe eines Tellers wenden und noch 2 Minuten braten.',
+    'Das Omelett auf einen Teller geben, mit den warmen Beeren übergießen und halbieren.'],
+    photoAlt:'Ein lockeres helles Omelett mit dunkelroter Waldbeersoße' },
+  'rote-grutze':{ name:'Rote Grütze mit Joghurt', steps:[
+    'Die Kartoffelstärke in einem Becher mit 4 Esslöffeln des abgemessenen kalten Wassers verrühren.',
+    'Die gefrorenen Beeren in einen kleinen Topf geben, das restliche Wasser und den Zucker dazugeben. Aufkochen und 3 Minuten kochen.',
+    'Die angerührte Stärke unter ständigem Rühren dazugießen und noch eine Minute kochen, bis die Grütze eindickt und glasig wird.',
+    'In Schalen füllen und mindestens 5 Minuten abkühlen lassen. Mit einem Löffel Joghurt obendrauf servieren.'],
+    photoAlt:'Eine Schale dicke rote Beerengrütze mit einem Klecks Joghurt' },
+  'tosty-francuskie':{ name:'Arme Ritter mit Zimt', steps:[
+    'In einem tiefen Teller die Eier mit Milch, der Hälfte des Zuckers und dem Zimt verquirlen.',
+    'Die Brotscheiben, am besten vom Vortag, etwa 20 Sekunden pro Seite in der Masse einweichen, damit sie sich gut vollsaugen.',
+    'Die Butter in einer Pfanne zerlassen. Die Scheiben bei mittlerer Hitze 2–3 Minuten pro Seite braten, bis sie goldbraun sind und die Eimasse vollständig gestockt ist. Mit dem restlichen Zucker bestreuen.'],
+    photoAlt:'Goldbraune süße Arme Ritter, bestreut mit Zucker' },
+  'macedonia':{ name:'Macedonia — italienischer Obstsalat', steps:[
+    'Eine Orange schälen und würfeln. Die zweite in eine Schüssel auspressen, Zitronensaft und Zucker dazugeben und verrühren.',
+    'Den Apfel waschen, das Kerngehäuse entfernen und würfeln. Die Banane schälen und in Scheiben schneiden. Das Obst sofort in den Saft geben, damit es nicht braun wird.',
+    'Die gewürfelte Orange dazugeben, mischen und 5 Minuten ziehen lassen, bis das Obst Saft abgibt. In Schalen mit dem Saft servieren.'],
+    photoAlt:'Eine Schale geschnittenes Obst im eigenen Saft: Orange, Apfel und Banane' },
+  'surowka-z-kapusty':{ name:'Weißkohl-Rohkost mit Möhre', steps:[
+    'Den Kohl in möglichst dünne Streifen hobeln. Salzen und 2 Minuten mit der Hand kneten, bis er weich wird und Saft abgibt.',
+    'Die Möhre schälen und grob reiben. Den Dill waschen und hacken.',
+    'Den Kohl mit Möhre, Dill, Zitronensaft, Öl und Zucker mischen. Vor dem Servieren 5 Minuten ziehen lassen.'],
+    photoAlt:'Eine Schale Rohkost aus fein gehobeltem Weißkohl und Möhre' },
+  'caprese':{ name:'Caprese-Salat', steps:[
+    'Die Tomaten waschen und in Scheiben schneiden. Den Mozzarella abtropfen lassen und in ähnlich dicke Scheiben schneiden.',
+    'Tomaten- und Mozzarellascheiben abwechselnd auf einem Teller anrichten.',
+    'Die Basilikumblätter abspülen und darauf verteilen. Kurz vor dem Servieren mit Olivenöl beträufeln, salzen und pfeffern.'],
+    photoAlt:'Abwechselnd angerichtete Tomaten- und Mozzarellascheiben mit Basilikumblättern' },
+  'bruschetta':{ name:'Bruschetta mit Tomaten und Basilikum', steps:[
+    'Die Tomaten waschen, entkernen und das Fruchtfleisch fein würfeln. Die Basilikumblätter abspülen und zerzupfen. Die Tomaten mit Basilikum, Salz und der Hälfte des Olivenöls mischen.',
+    'Die Brotscheiben in einer trockenen Pfanne 2 Minuten pro Seite rösten, bis sie knusprig sind.',
+    'Die heißen Röstbrote mit einer halbierten Knoblauchzehe einreiben und mit dem restlichen Olivenöl beträufeln. Die Tomaten erst kurz vor dem Servieren darauf verteilen, damit das Brot nicht aufweicht.'],
+    photoAlt:'Knusprige Röstbrote mit rohen Tomaten und Basilikum' },
+  'kartoffelsalat':{ name:'Kartoffelsalat mit Essig und Öl', steps:[
+    'Die Kartoffeln schälen, waschen und in etwa 5 mm dicke Scheiben schneiden. In Salzwasser 10–12 Minuten kochen, bis sie weich sind, aber nicht zerfallen. Vorsichtig abgießen.',
+    'Die Zwiebel schälen und fein hacken. In einem kleinen Topf das abgemessene Wasser mit Zwiebel, Essig, Zucker, Salz und Pfeffer aufkochen und 2 Minuten kochen.',
+    'Die heiße Marinade über die warmen Kartoffeln gießen, das Öl dazugeben und vorsichtig mischen. 10 Minuten ziehen lassen, damit die Kartoffeln die Flüssigkeit aufnehmen.',
+    'Den Schnittlauch waschen, schneiden und unter den Salat heben. Lauwarm servieren.'],
+    photoAlt:'Eine Schüssel Salat aus Kartoffelscheiben mit Zwiebeln und Schnittlauch, ohne Mayonnaise' },
+  'zupa-cebulowa':{ name:'Zwiebelsuppe mit Käsetoast', steps:[
+    'Die Zwiebeln schälen und in dünne Halbringe schneiden. Die Butter in einem Topf zerlassen und die Zwiebeln mit dem Salz bei mittlerer Hitze 12–15 Minuten unter häufigem Rühren braten, bis sie weich und goldbraun sind.',
+    'Die Zwiebeln mit dem Mehl bestäuben und eine Minute rühren. Das Wasser angießen, mit Pfeffer würzen und zugedeckt 8 Minuten köcheln lassen.',
+    'Inzwischen den Käse reiben. Die Brotscheiben in einer trockenen Pfanne 2 Minuten auf einer Seite rösten, wenden, mit Käse bestreuen und 2 Minuten zudecken, bis der Käse geschmolzen ist.',
+    'Die Suppe in Schalen füllen und auf jede einen Käsetoast legen.'],
+    photoAlt:'Eine Schale braune Zwiebelsuppe mit einem Toast unter geschmolzenem Käse' },
+  'sunomono':{ name:'Sunomono — Gurkensalat mit Sesam', steps:[
+    'Die Gurke waschen und in möglichst dünne Scheiben schneiden. Salzen, mischen und 5 Minuten ziehen lassen, dann mit den Händen ausdrücken und den Saft abgießen.',
+    'Den Sesam in einer trockenen Pfanne unter Rühren 1–2 Minuten rösten, bis er duftet und leicht goldgelb ist.',
+    'Den Essig mit Zucker und Sojasoße verrühren, bis sich der Zucker aufgelöst hat. Über die Gurke gießen, mischen und mit Sesam bestreuen.'],
+    photoAlt:'Eine Schale dünne Gurkenscheiben in Marinade, bestreut mit Sesam' },
+};
