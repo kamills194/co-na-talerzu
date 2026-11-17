@@ -1,0 +1,2503 @@
+
+
+<!-- TESTUJEMY TYTUŁ -->
+<!DOCTYPE html><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+            <title>Intermarche</title>
+    	<link rel="icon" type="image/x-icon" href="https://intermarche.pl/favicon-96x96.png">
+    <!--<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-194x194.png" sizes="194x194">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">-->
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+	
+    <meta name="apple-mobile-web-app-title" content="Intermarche">
+    <meta name="application-name" content="Intermarche">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    
+<!-- This site is optimized with the Yoast SEO plugin v5.8 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="Poznaj ofertę naszej sieci sklepów. Odkryj szeroki asortyment w niskich cenach. Świeżo i Tanio"/>
+<link rel="canonical" href="https://intermarche.pl/" />
+<meta property="og:locale" content="en_GB" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Intermarche - Poznaj ofertę naszej sieci sklepów. Odkryj szeroki asortyment w niskich cenach. Świeżo i Tanio" />
+<meta property="og:description" content="Poznaj ofertę naszej sieci sklepów. Odkryj szeroki asortyment w niskich cenach. Świeżo i Tanio" />
+<meta property="og:url" content="https://intermarche.pl/" />
+<meta property="og:site_name" content="Intermarche" />
+<meta property="og:image" content="https://intermarche.pl/wp-content/themes/intermarche/static/img/logo_intermarche.svg" />
+<meta property="og:image:secure_url" content="https://intermarche.pl/wp-content/themes/intermarche/static/img/logo_intermarche.svg" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:description" content="Poznaj ofertę naszej sieci sklepów. Odkryj szeroki asortyment w niskich cenach. Świeżo i Tanio" />
+<meta name="twitter:title" content="Intermarche - Poznaj ofertę naszej sieci sklepów. Odkryj szeroki asortyment w niskich cenach. Świeżo i Tanio" />
+<meta name="twitter:image" content="https://intermarche.pl/wp-content/themes/intermarche/static/img/logo_intermarche.svg" />
+<script type='application/ld+json'>{"@context":"http:\/\/schema.org","@type":"WebSite","@id":"#website","url":"https:\/\/intermarche.pl\/","name":"Intermarche","potentialAction":{"@type":"SearchAction","target":"https:\/\/intermarche.pl\/?s={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type='application/ld+json'>{"@context":"http:\/\/schema.org","@type":"Organization","url":"https:\/\/intermarche.pl\/","sameAs":["https:\/\/www.youtube.com\/channel\/UCibAd9ztP6mVWPb_N3-naUA","https:\/\/www.pinterest.com\/intermarchepol\/"],"@id":"#organization","name":"SCA PR POLSKA","logo":"https:\/\/intermarche.pl\/wp-content\/uploads\/2017\/02\/logo_intermarche.jpg"}</script>
+<!-- / Yoast SEO plugin. -->
+
+<link rel='dns-prefetch' href='//s.w.org' />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/intermarche.pl\/wp-includes\/js\/wp-emoji-release.min.js?ver=9b2e6a4b1cdf4e4d3d297267cca3b115"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='landing-core-css-css'  href='https://intermarche.pl/wp-content/uploads/wp-less/intermarche/landing/core-81bfacd861.css' type='text/css' media='all' />
+<link rel='stylesheet' id='intermarche_styles-css'  href='https://intermarche.pl/wp-content/themes/intermarche/css/main.css?ver=1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='intermarche_style-css'  href='https://intermarche.pl/wp-content/themes/intermarche/css/style.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='intermarche_tinyslider-css'  href='https://intermarche.pl/wp-content/themes/intermarche/css/tinyslider/tiny-slider.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='intermarche_customtinyslider-css'  href='https://intermarche.pl/wp-content/themes/intermarche/css/tinyslider/functions-tinyslider.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='intermarche_customszanujzywnosc-css'  href='https://intermarche.pl/wp-content/themes/intermarche/static/szanujzywnosc/css/style-szz.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='intermarche_styles_app-css'  href='https://intermarche.pl/wp-content/themes/intermarche/css/aplikacja.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='intermarche_customcenydyskontowe-css'  href='https://intermarche.pl/wp-content/themes/intermarche/static/ceny-dyskontowe/css/ceny-dys.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='intermarche_custominterkasa-css'  href='https://intermarche.pl/wp-content/themes/intermarche/css/style-interkasa.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='intermarche_custominterpunkty-css'  href='https://intermarche.pl/wp-content/themes/intermarche/css/style-interpunkty.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='intermarche_customgreenpan-css'  href='https://intermarche.pl/wp-content/themes/intermarche/css/style-greenpan.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='gazetki-css-css'  href='https://intermarche.pl/wp-content/themes/intermarche/css/gazetki.css' type='text/css' media='all' />
+<script type='text/javascript' src='https://intermarche.pl/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='https://intermarche.pl/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='https://intermarche.pl/wp-content/themes/intermarche/js/optimizations.js?ver=9b2e6a4b1cdf4e4d3d297267cca3b115'></script>
+<script type='text/javascript' src='https://intermarche.pl/wp-content/themes/intermarche/js/tinyslider/tiny-slider.js?ver=9b2e6a4b1cdf4e4d3d297267cca3b115'></script>
+<script type='text/javascript' src='https://intermarche.pl/wp-content/themes/intermarche/js/tinyslider/functions-tinyslider.js?ver=9b2e6a4b1cdf4e4d3d297267cca3b115'></script>
+<link rel='https://api.w.org/' href='https://intermarche.pl/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://intermarche.pl/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://intermarche.pl/wp-includes/wlwmanifest.xml" /> 
+
+<script type="text/javascript">
+(function(url){
+	if(/(?:Chrome\/26\.0\.1410\.63 Safari\/537\.31|WordfenceTestMonBot)/.test(navigator.userAgent)){ return; }
+	var addEvent = function(evt, handler) {
+		if (window.addEventListener) {
+			document.addEventListener(evt, handler, false);
+		} else if (window.attachEvent) {
+			document.attachEvent('on' + evt, handler);
+		}
+	};
+	var removeEvent = function(evt, handler) {
+		if (window.removeEventListener) {
+			document.removeEventListener(evt, handler, false);
+		} else if (window.detachEvent) {
+			document.detachEvent('on' + evt, handler);
+		}
+	};
+	var evts = 'contextmenu dblclick drag dragend dragenter dragleave dragover dragstart drop keydown keypress keyup mousedown mousemove mouseout mouseover mouseup mousewheel scroll'.split(' ');
+	var logHuman = function() {
+		if (window.wfLogHumanRan) { return; }
+		window.wfLogHumanRan = true;
+		var wfscr = document.createElement('script');
+		wfscr.type = 'text/javascript';
+		wfscr.async = true;
+		wfscr.src = url + '&r=' + Math.random();
+		(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(wfscr);
+		for (var i = 0; i < evts.length; i++) {
+			removeEvent(evts[i], logHuman);
+		}
+	};
+	for (var i = 0; i < evts.length; i++) {
+		addEvent(evts[i], logHuman);
+	}
+})('//intermarche.pl/?wordfence_lh=1&hid=456E4E332B76037B0283ADCC3D9A2338');
+</script>
+    <script>var base_url = "https://intermarche.pl/wp-content/themes/intermarche";</script>
+
+
+    
+    <script src="https://apis.google.com/js/platform.js" async defer>
+        {
+            lang: 'pl'
+        }
+    </script>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script>window.html5 || document.write('<script src="static/js/vendor/html5shiv.js"><\/script>')</script>
+    <![endif]-->
+
+    <script type="text/javascript" async="" src="//assets.pinterest.com/js/pinit_main.js" style="">
+        <script id="twitter-wjs" src="http://platform.twitter.com/widgets.js" >
+            <script id="facebook-jssdk" src="//connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v2.4">
+            <script defer="" async="" src="https://apis.google.com/js/platform.js" gapi_processed="true">
+            <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&callback=google.loader.callbacks.maps">
+            <script type="text/javascript" charset="UTF-8" src="http://maps.gstatic.com/maps-api-v3/api/js/21/10/common.js">
+            <script type="text/javascript" charset="UTF-8" src="http://maps.gstatic.com/maps-api-v3/api/js/21/10/map.js">
+            <script type="text/javascript" charset="UTF-8" src="http://maps.gstatic.com/maps-api-v3/api/js/21/10/util.js">
+            <script type="text/javascript" charset="UTF-8" src="http://maps.gstatic.com/maps-api-v3/api/js/21/10/marker.js">
+            <script type="text/javascript" charset="UTF-8" src="http://maps.gstatic.com/maps-api-v3/api/js/21/10/onion.js">
+            <script type="text/javascript" charset="UTF-8" src="http://maps.gstatic.com/maps-api-v3/api/js/21/10/controls.js">
+            <script type="text/javascript" charset="UTF-8" src="http://maps.gstatic.com/maps-api-v3/api/js/21/10/stats.js">
+            < script > (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v2.4";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+    <script type="text/javascript" async defer src="//assets.pinterest.com/js/pinit.js"></script>
+    <script>!function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+            if (!d.getElementById(id)) {
+                js = d.createElement(s);
+                js.id = id;
+                js.src = p + '://platform.twitter.com/widgets.js';
+                fjs.parentNode.insertBefore(js, fjs);
+            }
+        }(document, 'script', 'twitter-wjs');</script>
+
+    <div id="fb-root"></div>
+    <script>(function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v2.4";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+    <script type="text/javascript" async defer src="//assets.pinterest.com/js/pinit.js"></script>
+    <script>!function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+            if (!d.getElementById(id)) {
+                js = d.createElement(s);
+                js.id = id;
+                js.src = p + '://platform.twitter.com/widgets.js';
+                fjs.parentNode.insertBefore(js, fjs);
+            }
+        }(document, 'script', 'twitter-wjs');</script>
+
+            <!-- global page -->
+        <img src="//pl-gmtdmp.mookie1.com/t/v2/activity?tagid=V2_770705&src.rand=1794957605&" style="display:none;"/>
+    
+
+
+    	
+<!-- Google Tag Manager --> 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P98LBBS');</script>
+<!-- End Google Tag Manager --> 
+
+
+    	
+	
+	
+<meta name="facebook-domain-verification" content="psqj6qmyzg88esqwfnf06eyg778m7c" />
+
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="9d37fc24-6f85-481a-aa77-3d617fc01e7f" data-blockingmode="auto" type="text/javascript"></script>
+</head>
+
+<body>
+	<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '391089995000375');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=391089995000375&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code --> 
+	
+    <!-- Segment Pixel - Intermarche_RTG_grudzien - DO NOT MODIFY -->
+    <script src="https://ib.adnxs.com/seg?add=10833495&t=1" type="text/javascript"></script>
+    <!-- End of Segment Pixel -->
+
+
+    <!-- Segment Pixel - Intermarche_RTG_grudzien - DO NOT MODIFY -->
+    <img src="https://secure.adnxs.com/seg?add=10833495&t=2" width="1" height="1"/>
+    <!-- End of Segment Pixel -->
+	
+	
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98LBBS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+	
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-K3HG7W"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K3HG7W');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Analytics -->
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-50917655-1', 'intermarche.pl');
+    ga('send', 'pageview');
+
+    setTimeout("ga('send', 'event', 'read', '40 seconds')",40000);
+</script>
+<!-- End Google Analytics -->
+
+<div id="fb-root"></div>
+
+
+<script type="text/template" class="marker-details-template">
+    <div class="contact-box__head">
+        <span class="logo logo--intermarche">
+                    <span class="logo__link one<%- marker.pid %>">
+                        <span class="label">Intermarche</span>
+                    </span>
+        </span>
+        <a class="btn--close js-details-close" href="#"><span class="icon--close"></span></a>
+    </div>
+    <div class="contact-box__content">
+        <p class="contact-box__content__text">
+            <%- marker.street %>, <%- marker.zip %> <%- marker.city %>
+        </p>
+        <% if (marker.phone){ %>
+        <p class="contact-box__content__text">
+            <strong>Telefon </strong><%- marker.phone %>
+        </p>
+        <% } %>
+        <p class="contact-box__content__text contact-box__content__text--big">
+            Godziny otwarcia:
+        </p>
+        <p class="contact-box__content__text">
+            <strong>Pn-Pt</strong> <%- marker.open_mon_fri %> <br>
+            <strong>Sobota</strong> <%- marker.open_sat %> <br>
+            <strong>Niedziela handlowa</strong> <%- marker.open_sun %>
+        </p>
+    </div>
+    <div class="contact-box__foot">
+        <% if (marker.drive === '1'){ %>
+        <div class="quick-link quick-link--drive">
+                    <span href="<% marker.drive_link %>" class="quick-link__content">
+                        <span class="icon icon--drive" aria-label="drive"></span>
+                        <span class="label">drive</span>
+                    </span>
+        </div>
+        <% } %>
+        <% if (marker.petrol === '1'){ %>
+        <div class="quick-link quick-link--gasoil">
+                    <span href="#" class="quick-link__content">
+                        <span class="icon icon--gasoil" aria-label="Stacja paliw"></span>
+                        <span class="label">Stacja paliw</span>
+                    </span>
+        </div>
+        <% } %>
+		<% if (marker.wash === '1'){ %>
+        <div class="quick-link quick-link--gasoil">
+                    <span href="#" class="quick-link__content">
+                        <span class="icon icon--gasoil" aria-label="Myjnia"></span>
+                        <span class="label">Myjnia</span>
+                    </span>
+        </div>
+        <% } %>
+        <div class="contact-button">
+            <a href="#" class="btn--ellipse btn--change-store" aria-label="Wybierz sklep">
+                <span class="label">Wybierz sklep</span>
+            </a>
+        </div>
+        <% if (marker.website){ %>
+        <a href="<%- marker.www %>" class="store-link">Strona sklepu</a>
+        <% } %>
+    </div>
+</script>
+<div class="sec--market-select">
+    <a href="#" class="store-close"><span class="icon--close"></span></a>
+    <div class="store-head">
+        <h4 class="head-title store-head__title">
+            <span class="head-title__link">Wybierz lokalizację, aby zobaczyć ofertę dla swojego sklepu</span>
+        </h4>
+        <form class="store-head__form form--store-select">
+            <span class="form--store-select__error">Nie mamy sklepu w tym mieście.</span>
+            <select class="form--store-select__field">
+                <!-- this is populated using ajax (markers.json) -->
+            </select>
+            <button class="form--store-select__button js-search-store">
+                <span class="label">Szukaj</span>
+            </button>
+
+        </form>
+        <div class="store-head__find quick-link">
+            <a href="#" class="quick-link__content">
+                <span class="icon icon--marker"></span>
+                <span class="label">Znajdź sklep w mojej okolicy</span>
+            </a>
+        </div>
+    </div>
+    <div class="store-map-wrapper">
+        <div class="store-map" style="height: 100%"></div>
+    </div>
+</div>
+
+<header class="sec--head">
+	<div class="sec--head__row sec--head__row--main">
+		<div class="sec--head__inner">
+			<div class="sec--head__row__cont">
+				<h1 class="logo logo--intermarche">
+					<a href="/" class="logo__link" style="background: url('https://intermarche.pl/wp-content/themes/intermarche/static/img/logo_intermarche.svg')0 0 /100% auto" aria-label="Powr&#xF3;t do strony g&#x142;&#xF3;wnej">
+						<span class="label">Intermarche</span>
+					</a>
+				</h1>
+			</div>
+			<div class="sec--head__row__cont sec--head__row__cont--tools">
+<!--				<div class="app_download_header">-->
+<!--					<a href="/aplikacja-mobilna"><img src="--><!--/static/img/icons/icon_przegladaj.png"></a>-->
+<!--				</div>-->
+				<div class="market-selection">
+					<div class="market-selection__content">
+						<div class="market-selection__content__ico">
+							<span class="icon icon--marker"></span>
+						</div>
+						<div class="market-selection__content__info">
+							<p class="market-selection__content__info__title">
+								Nie wybrano lokalizacji
+							</p>
+							<p class="market-selection__content__info__add">
+								Wybierz swój sklep, aby zobaczyć pełną ofertę.
+							</p>
+						</div>
+						<div class="market-selection__content__actions">
+							<a href="#" class="trigger--market-selection js-trigger--market-selection">
+								<span class="label">Wybierz sklep</span>
+							</a>
+							<a href="#" class="trigger--market-selection--alt js-trigger--market-selection" aria-label="znajdź sklep">
+								<span class="icon icon--marker"></span>
+							</a>
+						</div>
+					</div>
+					<div class="market-selection__content hidden">
+						<div class="market-selection__content__choice">
+							<form class="form form--market-selection">
+								<fieldset class="form__fieldset">
+									<div class="form__fieldset__section">
+										<div class="field field--search">
+											<input class="input input--text" type="search" title="Search" name="search" id="search" placeholder="Szukaj">
+										</div>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+<!--				<div class="quick-links">-->
+<!--					<div class="quick-link quick-link--contact">-->
+<!--						<a href="/o-nas/kontakt/" class="quick-link__content">-->
+<!--							<span class="icon icon--chat" aria-label="Szybki kontakt"></span>-->
+<!--							<span class="label">Kontakt</span>-->
+<!--						</a>-->
+<!--					</div>-->
+<!--					<div class="quick-link quick-link--sign-in">-->
+<!--						<a href="#" class="quick-link__content">-->
+<!--							<span class="icon icon--person" aria-label="Logowanie do konta"></span>-->
+<!--							<span class="label">Zaloguj się</span>-->
+<!--						</a>-->
+<!--					</div>-->
+<!--				</div>-->
+			</div>
+		</div>
+	</div>
+	<div class="sec--head__row sec--head__row--comp">
+		<div class="sec--head__inner">
+			<div class="sec--head__row__cont sec--head__row__cont--nav">
+				<button type="button" class="trigger--nav-tablet js-trigger--nav-tablet tcon tcon-menu--xcross" aria-label="toggle menu">
+					<span class="tcon-menu__lines" aria-hidden="true"></span>
+					<span class="tcon-visuallyhidden">toggle menu</span>
+				</button>
+				<nav class="sec--head__row__nav">
+					<ul class="nav--main">
+						<li class="nav--main__item">
+							<h4 class="head-title">
+								<a href="/gazetki-promocyjne/" class="head-title__link" data-nav="newspaper">
+									<span class="icon icon--window"></span>
+									<span class="label">Gazetka</span>
+								</a>
+							</h4>
+						</li>
+
+						<li class="nav--main__item">
+							<h4 class="head-title">
+								<a href="/nowosci" class="head-title__link">
+									<span class="icon icon--bottle"></span>
+									<span class="label">Nowości</span>
+								</a>
+							</h4>
+						</li>
+						<li class="nav--main__item">
+							<h4 class="head-title">
+								<a href="/konkursy/" class="head-title__link" data-nav="competitions">
+									<span class="icon icon--order"></span>
+									<span class="label">Promocje i konkursy</span>
+								</a>
+							</h4>
+						</li>
+
+						<li class="nav--main__item">
+							<h4 class="head-title head-title--highlighted">
+								<a target="_blank" href="http://intermarche.pl/tanie-tankowanie" class="head-title__link">
+									<span class="icon icon--drive"></span>
+									<span class="label">E-ZAKUPY/DRIVE</span>
+								</a>
+							</h4>
+						</li>
+						<li class="nav--main__item">
+							<h4 class="head-title">
+								<a href="/o-nas/nasze-sklepy" class="head-title__link" data-nav="assets">
+									<span class="icon icon--star"></span>
+									<span class="label">SKLEPY</span>
+								</a>
+							</h4>
+						</li>
+						<li class="nav--main__item">
+							<h4 class="head-title">
+								<a href="/o-nas" class="head-title__link" data-nav="assets">
+									<span class="icon icon--person"></span>
+									<span class="label">O NAS</span>
+								</a>
+							</h4>
+						</li>
+						<li class="nav--main__item">
+							<h4 class="head-title">
+								<a href="http://franczyza.intermarche.pl/" target="_blank" class="head-title__link" data-nav="assets">
+									<span class="icon icon--chat"></span>
+									<span class="label">Franczyza</span>
+								</a>
+							</h4>
+						</li>
+
+
+						<li class="nav--main__item">
+							<h4 class="head-title head-title--highlighted">
+								<a href="/moje-intermarche/" class="head-title__link">
+									<span class="icon icon--drive"></span>
+									<span class="label">Moje Intermarche/Aplikacja mobilna</span>
+								</a>
+							</h4>
+						</li>
+
+                        <!--<li class="nav--main__item">
+							<h4 class="head-title">
+								<a href="https://irkamarsze.pl" class="head-title__link">
+									<span class="icon icon--drive"></span>
+									<span class="label">Irka Marsze</span>
+								</a>
+							</h4>
+						</li>-->
+						<li class="nav--main__item">
+							<h4 class="head-title">
+								<a href="https://intermarche.pl/szanujzywnosc/" class="head-title__link">
+									<span class="icon icon--person"></span>
+									<span class="label">Szanuj Żywność</span>
+								</a>
+							</h4>
+						</li>
+
+<!--						<li class="nav--main__item">-->
+<!--							<h4 class="head-title">-->
+<!--								<a href="/nasze-marki/" class="head-title__link js-nav-item" data-nav="brands">-->
+<!--									<span class="icon icon--bottle"></span>-->
+<!--									<span class="label">Nasze marki</span>-->
+<!--								</a>-->
+<!--							</h4>-->
+<!--						</li>-->
+
+
+<!--						<li class="nav--main__item">-->
+<!--							<h4 class="head-title">-->
+<!--								<a target="_blank" href="http://atelier.intermarche.pl/" class="head-title__link js-nav-item" data-nav="atelier">-->
+<!--									<span class="icon icon--fork"></span>-->
+<!--									<span class="label">Atelier</span>-->
+<!--								</a>-->
+<!--							</h4>-->
+<!--						</li>-->
+
+<!--						<li class="nav--main__item last">-->
+<!--							<h4 class="head-title">-->
+<!--								<a href="/18gwiazdek" class="head-title__link">-->
+<!--									<span class="icon icon--drive"></span>-->
+<!--									<span class="label">18 gwiazdek</span>-->
+<!--								</a>-->
+<!--							</h4>-->
+<!--						</li>-->
+
+<!--						<li class="nav--main__item nav--main__item--mobile">-->
+<!--							<h4 class="head-title head-title--highlighted">-->
+<!--								<a href="/o-nas/kontakt/" class="head-title__link js-nav-item">-->
+<!--									<span class="icon icon--chat"></span>-->
+<!--									<span class="label">Kontakt</span>-->
+<!--								</a>-->
+<!--							</h4>-->
+<!--						</li>-->
+						<li class="nav--main__item nav--main__item--mobile">
+<!--							<h4 class="head-title head-title--highlighted">-->
+<!--								<a href="#" class="head-title__link js-nav-item">-->
+<!--									<span class="icon icon--person"></span>-->
+<!--									<span class="label">Zaloguj się</span>-->
+<!--								</a>-->
+<!--							</h4>-->
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<div class="sec--head__row__cont sec--head__row__cont--tools">
+				<a href="#" class="trigger--search js-nav-item" data-nav="search" aria-label="szukaj w serwisie">
+					<span class="icon icon--search"></span>
+				</a>
+				<!--<a href="/moja-lista" class="trigger--my-list js-nav-item" aria-label="moja lista zakupów" data-nav="my-list-preview">
+					<span class="label">moja lista</span>
+					<span class="product-number">0</span>
+				</a>-->
+			</div>
+		</div>
+	</div>
+</header>
+<section class="sec--menu-popup">
+	<div class="sec--menu-popup__inner">
+
+<!--		// ważna kolejność !!!!!-->
+		<div class="popup-newspaper popup-section" data-nav="newspaper">
+	<a href="#" class="popup-section__close"><span class="icon--close"></span></a>
+	<ul class="popup-section__tabs">
+		<li class="popup-section__tabs__item active">
+			<a href="#offer-actual" class="tab-nav">Aktualna oferta</a>
+		</li>
+			</ul>
+	<div class="popup-section__tabs-items">
+		<div class="popup-section__tabs-items__tab" id="offer-actual">
+			<ul class="popup-section__list">
+														<li class="popup-section__list__item popup-section__list__item--two-quarts removeLast " style="">
+											<a href="https://intermarche.pl/gazetka/nowosci-12/" class="box box--h-big box--v-big">
+												<figure class="box__background">
+													<img src="" alt="Image">
+												</figure>
+												<div class="box__title">
+													<h4 class="label">Nowości</h4>
+												</div>
+											</a>
+										</li>
+																		<li class="popup-section__list__item popup-section__list__item--double">
+												        					<a href="https://intermarche.pl/gazetka/gazetka-promocyjna-od-12-18-11//artykuly-przemyslowe" class="box box--h-small box--v-small">
+											<figure class="box__background">
+												<img src="" alt="Image">
+											</figure>
+											<div class="box__title">
+												<h4 class="label">Artykuły przemysłowe</h4>
+											</div>
+										</a>
+																			<a href="https://intermarche.pl/gazetka/gazetka-promocyjna-od-12-18-11//drogeria" class="box box--h-small box--v-small">
+											<figure class="box__background">
+												<img src="" alt="Image">
+											</figure>
+											<div class="box__title">
+												<h4 class="label">Drogeria</h4>
+											</div>
+										</a>
+																		</li>
+												</ul>
+		</div>
+		<div class="popup-section__tabs-items__tab" id="offer-prev">
+			<ul class="popup-section__list">
+							</ul>
+		</div>
+	</div>
+</div>		<div class="popup-brand popup-section" data-nav="brands">
+	<div class="popup-section__head">
+		<a href="/nasze-marki/" class="show-all">Pokaż wszystkie</a>
+	</div>
+	<a href="#" class="popup-section__close"><span class="icon--close"></span></a>
+	<ul class="popup-section__list">
+				<li class="popup-section__list__item ">
+			<a href="https://intermarche.pl/nasze-marki/ulubione/" class="box box--h-small box--v-small">
+				<figure class="box__background">
+					<img src="https://intermarche.pl/wp-content/uploads/2017/12/ulubione_marka.png" alt="Image">
+				</figure>
+				<div class="box__title">
+					<h4 class="label">ULUBIONE</h4>
+				</div>
+			</a>
+		</li>
+				<li class="popup-section__list__item ">
+			<a href="https://intermarche.pl/nasze-marki/paturages/" class="box box--h-small box--v-small">
+				<figure class="box__background">
+					<img src="https://intermarche.pl/wp-content/uploads/2015/11/paturages.jpg" alt="Image">
+				</figure>
+				<div class="box__title">
+					<h4 class="label">Paturages</h4>
+				</div>
+			</a>
+		</li>
+				<li class="popup-section__list__item ">
+			<a href="https://intermarche.pl/nasze-marki/apta/" class="box box--h-small box--v-small">
+				<figure class="box__background">
+					<img src="https://intermarche.pl/wp-content/uploads/2015/11/apta.jpg" alt="Image">
+				</figure>
+				<div class="box__title">
+					<h4 class="label">Apta</h4>
+				</div>
+			</a>
+		</li>
+				<li class="popup-section__list__item last-in-row">
+			<a href="https://intermarche.pl/nasze-marki/labell/" class="box box--h-small box--v-small">
+				<figure class="box__background">
+					<img src="https://intermarche.pl/wp-content/uploads/2015/11/labell.jpg" alt="Image">
+				</figure>
+				<div class="box__title">
+					<h4 class="label">Labell</h4>
+				</div>
+			</a>
+		</li>
+				<li class="popup-section__list__item ">
+			<a href="https://intermarche.pl/nasze-marki/odyssee/" class="box box--h-small box--v-small">
+				<figure class="box__background">
+					<img src="https://intermarche.pl/wp-content/uploads/2015/11/odyssee.jpg" alt="Image">
+				</figure>
+				<div class="box__title">
+					<h4 class="label">Odyssee</h4>
+				</div>
+			</a>
+		</li>
+				<li class="popup-section__list__item ">
+			<a href="https://intermarche.pl/nasze-marki/paquito/" class="box box--h-small box--v-small">
+				<figure class="box__background">
+					<img src="https://intermarche.pl/wp-content/uploads/2015/11/paquito.jpg" alt="Image">
+				</figure>
+				<div class="box__title">
+					<h4 class="label">Paquito</h4>
+				</div>
+			</a>
+		</li>
+				<li class="popup-section__list__item ">
+			<a href="https://intermarche.pl/nasze-marki/reva/" class="box box--h-small box--v-small">
+				<figure class="box__background">
+					<img src="https://intermarche.pl/wp-content/uploads/2015/11/reva-tymczasowe.jpg" alt="Image">
+				</figure>
+				<div class="box__title">
+					<h4 class="label">Reva</h4>
+				</div>
+			</a>
+		</li>
+				<li class="popup-section__list__item last-in-row">
+			<a href="https://intermarche.pl/nasze-marki/domedia/" class="box box--h-small box--v-small">
+				<figure class="box__background">
+					<img src="https://intermarche.pl/wp-content/uploads/2015/11/domedia.png" alt="Image">
+				</figure>
+				<div class="box__title">
+					<h4 class="label">DOMEDIA</h4>
+				</div>
+			</a>
+		</li>
+			</ul>
+</div>		<div class="popup-assets popup-section" data-nav="assets">
+	<a href="#" class="popup-section__close"><span class="icon--close"></span></a>
+	<ul class="popup-section__list">
+				<li class="popup-section__list__item ">
+			<a href="https://intermarche.pl/nasze-atuty/kosmetyki-bio-chemia-ekologiczna/" class="box box--h-small box--v-small">
+				<figure class="box__background">
+					<img src="https://intermarche.pl/wp-content/uploads/2016/11/47_menu_bio.png" alt="Image">
+				</figure>
+				<div class="box__title">
+					<h4 class="label">BIO kosmetyki i produkty chemiczne EKO</h4>
+				</div>
+			</a>
+		</li>
+				<li class="popup-section__list__item ">
+			<a href="https://intermarche.pl/nasze-atuty/cukiernia/" class="box box--h-small box--v-small">
+				<figure class="box__background">
+					<img src="https://intermarche.pl/wp-content/uploads/2016/04/muffin_320-1.png" alt="Image">
+				</figure>
+				<div class="box__title">
+					<h4 class="label">Cukiernia</h4>
+				</div>
+			</a>
+		</li>
+				<li class="popup-section__list__item ">
+			<a href="https://intermarche.pl/nasze-atuty/warzywa-i-owoce/" class="box box--h-small box--v-small">
+				<figure class="box__background">
+					<img src="https://intermarche.pl/wp-content/uploads/2015/11/bg_menu_assets-04.jpg" alt="Image">
+				</figure>
+				<div class="box__title">
+					<h4 class="label">Warzywa i owoce</h4>
+				</div>
+			</a>
+		</li>
+				<li class="popup-section__list__item last-in-row">
+			<a href="https://intermarche.pl/nasze-atuty/piekarnia-tradycyjna/" class="box box--h-small box--v-small">
+				<figure class="box__background">
+					<img src="https://intermarche.pl/wp-content/uploads/2015/10/bg_menu_assets-011.jpg" alt="Image">
+				</figure>
+				<div class="box__title">
+					<h4 class="label">Pieczywo prosto z pieca</h4>
+				</div>
+			</a>
+		</li>
+			</ul>
+</div>		<div class="popup-competitions popup-section" data-nav="competitions">
+	<a class="popup-section__close"><span class="icon--close"></span></a>
+	<ul class="popup-section__list">
+		<li class="popup-section__list__item popup-section__list__item--two-quarts">
+			<a href="https://intermarche.pl/konkurs/konkurs-listerine/" class="box box--h-big box--v-big">
+				<figure class="box__background">
+					<img src="https://intermarche.pl/wp-content/uploads/2019/01/image-174.png" alt="Image">
+				</figure>
+				<div class="box__title">
+					<h4 class="label">21 dni dla pełnej ochrony jamy ustnej</h4>
+				</div>
+			</a>
+		</li>
+		<li class="popup-section__list__item popup-section__list__item--two-quarts last-in-row">
+			<a href="https://intermarche.pl/konkurs/konkurs-milka-4/" class="box box--h-big box--v-big">
+				<figure class="box__background">
+					<img src="https://intermarche.pl/wp-content/uploads/2019/02/image-93.png" alt="Image">
+				</figure>
+				<div class="box__title">
+					<h4 class="label">Kup produkt Milka i wygrywaj</h4>
+				</div>
+			</a>
+		</li>
+	</ul>
+</div>		<div class="popup-atelier popup-section" data-nav="atelier">
+	<a target="_blank" href="http://atelier.intermarche.pl/" class="popup-section__close"><span class="icon--close"></span></a>
+	<ul class="popup-section__list">
+				<li class="popup-section__list__item popup-section__list__item--one-third ">
+			<a href="http://atelier.intermarche.pl/inspiracja/batony-energetyczne" class="box box--h-medium box--v-big">
+				<figure class="box__background">
+					<img src="https://intermarche.pl/wp-content/uploads/2017/11/intermarche_przepis_batony_atelier-1.png" alt="Image">
+				</figure>
+				<div class="box__title">
+					<h4 class="label">Batony energetyczne</h4>
+				</div>
+			</a>
+		</li>
+			<li class="popup-section__list__item popup-section__list__item--one-third ">
+			<a href="http://atelier.intermarche.pl/polaczeniesmakowe/ciasteczka-francuskie-na-slono" class="box box--h-medium box--v-big">
+				<figure class="box__background">
+					<img src="https://intermarche.pl/wp-content/uploads/2015/12/ciasteczka-francuskie-na-slono.jpg" alt="Image">
+				</figure>
+				<div class="box__title">
+					<h4 class="label">CIASTECZKA FRANCUSKIE NA SŁONO</h4>
+				</div>
+			</a>
+		</li>
+			<li class="popup-section__list__item popup-section__list__item--one-third last-in-row">
+			<a href="http://atelier.intermarche.pl/inspiracja/kanapeczki-dla-dzieci" class="box box--h-medium box--v-big">
+				<figure class="box__background">
+					<img src="https://intermarche.pl/wp-content/uploads/2017/02/atelier_kanapki.jpg" alt="Image">
+				</figure>
+				<div class="box__title">
+					<h4 class="label">Kanapeczki dla dzieci</h4>
+				</div>
+			</a>
+		</li>
+		</ul>
+</div>		<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
+
+<div class="popup-search popup-section" data-nav="search">
+    <a href="#" class="popup-section__close"><span class="icon--close"></span></a>
+    <form class="form form--quick-search">
+        <fieldset class="quick-search">
+            <h3 class="quick-search__label">Szukaj w Intermarche</h3>
+            <input class="quick-search__field" id="autosearch" type="text" placeholder="Wpisz szukan&#x105; fraz&#x119;...">
+            <button class="quick-search__button" style="background:none; border:none;"><span class="quick-search__button__inner"></span></button>
+        </fieldset>
+        <results>
+            
+        </results>
+    </form>
+</div>
+
+<script type="text/javascript">
+// var availableTags = null;
+//     $( "#autosearch" ).autocomplete({
+//                         minLength: 0,
+//                         source: availableTags,
+//                         focus: function( event, ui ) {
+//                             $( "#autosearch" ).val( ui.item.value );
+//                             $( "#value_id" ).val( ui.item.id );
+//                             $( ".promo-teasers-list li" ).hide();
+//                             $("#"+ui.item.id).show();
+//                             return false;
+//                         },
+//                         select: function( event, ui ) {
+//                             $( "#autosearch" ).val( ui.item.value );
+//                             $( "#value_id" ).html( ui.item.id );
+//                             $( ".promo-teasers-list li" ).hide();
+//                             $("#"+ui.item.id).show();
+//                             return false;
+//                         },
+//                         change: function( event, ui ) {
+//                             var tag_value = $("#autosearch").val();
+//                             if(tag_value == "") {
+//                                 $( ".promo-teasers-list li" ).show();
+//                             }
+//                             return false;
+//                         }
+//                     })
+//                     .autocomplete( "instance" )._renderItem = function( ul, item ) {
+//                         return $( "<li>" )
+//                         .append( "<a>" + item.value + "</a>" )
+//                         .appendTo( ul );
+//                     };
+</script>
+
+		    <!--    <div class="popup-my-list-preview popup-section" data-nav="my-list-preview">-->
+    <!--        <a href="#" class="popup-section__close"><span class="icon--close"></span></a>-->
+    <!---->
+    <!--        <div class="popup-section__content">-->
+    <!--            <div class="my-list-preview">-->
+    <!--                <div class="my-list-preview__inner">-->
+    <!--                    <div class="my-list-preview__content">-->
+    <!--                        <div class="cta-teaser cta-teaser--alt">-->
+    <!--                            <a href="#" class="cta-teaser__content">-->
+    <!--                                <div class="cta-teaser__content__ico">-->
+    <!--                                    <span class="ico ico--shopping-list--alt"></span>-->
+    <!--                                </div>-->
+    <!--                                <div class="cta-teaser__content__head">-->
+    <!--                                    <h5 class="cta-teaser__content__head__title">-->
+    <!--                                        <span class="label">Przygotuj listę zakupów</span>-->
+    <!--                                    </h5>-->
+    <!--                                </div>-->
+    <!--                                <div class="cta-teaser__content__info">-->
+    <!--                                    <p>-->
+    <!--                                        Przeglądając produkty z gazetki, możesz zapisać je na liście.-->
+    <!--                                    </p>-->
+    <!---->
+    <!--                                    <p>-->
+    <!--                                        Gotową listę możesz zabrać ze sobą do sklepu lub wysłąć wybranej osobie na-->
+    <!--                                        maila.-->
+    <!--                                    </p>-->
+    <!--                                </div>-->
+    <!--                            </a>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+
+    <div class="popup-my-list-preview popup-section" data-nav="my-list-preview">
+        <a href="#" class="popup-section__close"><span class="icon--close"></span></a>
+
+        <div class="popup-section__content">
+            <div class="my-list-preview">
+                <div class="my-list-preview__inner">
+                    <div class="my-list-preview__head">
+                        <div class="my-list-preview__head__info">
+                            <h3 class="my-list-preview__head__info__title">
+                                <span class="label">Lista zakupów Intermarche:</span>
+                            </h3>
+
+                            <p class="my-list-preview__head__info__qty">
+                                <span class="label highlighted">
+                                    <span class="product-no">0</span> produktów
+                                </span>
+                            </p>
+                            <a href="/moja-lista/" class="btn--view-my-list">
+                                <span class="label">Zobacz pełen widok</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="my-list-preview__content">
+                        <p class="my-list-preview__content__title">
+                            <span class="label highlighted">Ostatnio dodane produkty:</span>
+                        </p>
+                        <ul class="product-label-list" id="smallLista">
+                                                    </ul>
+                    </div>
+                    <div class="my-list-preview__foot">
+                        <div class="incart-summary incart-summary--horizontal">
+                            <div class="incart-summary__row incart-summary__row--state">
+                                <div class="incart-summary__title">
+                                    <p>
+                                        Dzięki promocjom oszczędzasz:
+                                    </p>
+                                </div>
+                                <div class="incart-summary__price">
+                                    <div class="price">
+                                        <div class="price__content" id="sumPricePromo">
+                                            <p class="price__content__col">
+                                                <span class="price-int">0</span>
+                                            </p>
+
+                                            <p class="price__content__col">
+                                                <span class="price-dec">0</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="incart-summary__row incart-summary__row--savings">
+                                <div class="incart-summary__title">
+                                    <p>
+                                        Suma Twoich zakupów wynosi:
+                                    </p>
+                                </div>
+                                <div class="incart-summary__price">
+                                    <div class="price">
+                                        <div class="price__content" id="sumPrice">
+                                            <p class="price__content__col">
+                                                <span class="price-int">0</span>
+                                            </p>
+
+                                            <p class="price__content__col">
+                                                <span class="price-dec">0</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="incart-actions">
+                            <li class="setMail">
+                                <div class="form__section">
+                                    <div class="field field--text">
+                                        <input type="email" placeholder="Wpisz adres e-mail"
+                                               name="getEmail" class="input input--text">
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="incart-actions__item">
+                                <a href="#" onclick="return false" class="btn--my-list emailLink">
+                                    <span class="label">E-mail</span>
+                                </a>
+                            </li>
+                            <li class="incart-actions__item">
+                                <a href="#" onclick="return false" class="btn--my-list print">
+                                    <span class="label">drukuj</span>
+                                </a>
+                            </li>
+                            <li class="incart-actions__item">
+                                <a href="#" onclick="return false" class="btn--my-list save_img">
+                                    <span class="label">zapisz</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	</div>
+</section>
+
+<!-- Segment Pixel - PL_Intermarche_RTG - DO NOT MODIFY -->
+
+<img src="https://secure.adnxs.com/seg?add=18631003&t=2" width="1" height="1" />
+
+<!-- End of Segment Pixel -->
+
+<div class="wrapper-for-blocked-content">
+	<main class="sec--main">
+		<div class="hero">
+			<ul class="hero__slider js-slider">
+										<li class="hero__slider__item js-slider-item" data-desktop="https://intermarche.pl/wp-content/uploads/2026/11/slider-gazetka-308.jpg" data-mobile="https://intermarche.pl/wp-content/uploads/2024/10/mobile_gazetka.jpg" data-title="Gazetka">
+							<div class="slider-content">
+								<div class="category-teaser">
+									<div class="category-teaser__content">
+										<div class="category-teaser__content__head">
+											<div class="category-teaser__content__head__add">
+												<p class="decor-subtitle">
+													<span class="label">Oferta obowiązuje</br>od 12 do 18.11</span>
+												</p>
+											</div>
+											<div class="category-teaser__content__head__title">
+												<h2 class="decor-title">
+													<a href="#" class="decor-title__content">
+														<span class="decor decor--top"></span>
+														<span style="width: 100% !important" class="label">Gazetka</br>promocyjna</span>
+														<span class="decor decor--bottom"></span>
+													</a>
+												</h2>
+											</div>
+										</div>
+										<div class="category-teaser__content__actions">
+											<a href="https://intermarche.pl/g/gazetka-promocyjna-od-12-18-11/" class="btn--check" aria-label="button" >
+												<span class="label">Sprawdź</span>
+											</a>
+										</div>
+									</div>
+                                    <span class="rounded-corner rounded-corner--bottom--left">
+                                        <span class="rounded-corner__inner"></span>
+                                    </span>
+                                    <span class="rounded-corner rounded-corner--bottom--right">
+                                        <span class="rounded-corner__inner"></span>
+                                    </span>
+								</div>
+							</div>
+						</li>
+
+
+
+												<li class="hero__slider__item js-slider-item" data-desktop="https://intermarche.pl/wp-content/uploads/2026/11/slider-Start-tygodnia-234.jpg" data-mobile="https://intermarche.pl/wp-content/uploads/2024/10/mobile_gazetka.jpg" data-title="Intertani">
+							<div class="slider-content">
+								<div class="category-teaser">
+									<div class="category-teaser__content">
+										<div class="category-teaser__content__head">
+											<div class="category-teaser__content__head__add">
+												<p class="decor-subtitle">
+													<span class="label">16-18.11</span>
+												</p>
+											</div>
+											<div class="category-teaser__content__head__title">
+												<h2 class="decor-title">
+													<a href="#" class="decor-title__content">
+														<span class="decor decor--top"></span>
+														<span style="width: 100% !important" class="label">Intertani</br>start tygodnia</span>
+														<span class="decor decor--bottom"></span>
+													</a>
+												</h2>
+											</div>
+										</div>
+										<div class="category-teaser__content__actions">
+											<a href="https://intermarche.pl/g/gazetka-promocyjna-od-12-18-11/" class="btn--check" aria-label="button" >
+												<span class="label">Sprawdź</span>
+											</a>
+										</div>
+									</div>
+                                    <span class="rounded-corner rounded-corner--bottom--left">
+                                        <span class="rounded-corner__inner"></span>
+                                    </span>
+                                    <span class="rounded-corner rounded-corner--bottom--right">
+                                        <span class="rounded-corner__inner"></span>
+                                    </span>
+								</div>
+							</div>
+						</li>
+
+
+
+												<li class="hero__slider__item js-slider-item" data-desktop="https://intermarche.pl/wp-content/uploads/2026/09/slider-noze-Consigli.jpg" data-mobile="https://intermarche.pl/wp-content/uploads/2024/10/mobile_gazetka.jpg" data-title="Noże">
+							<div class="slider-content">
+								<div class="category-teaser">
+									<div class="category-teaser__content">
+										<div class="category-teaser__content__head">
+											<div class="category-teaser__content__head__add">
+												<p class="decor-subtitle">
+													<span class="label">Już za 1 zł</span>
+												</p>
+											</div>
+											<div class="category-teaser__content__head__title">
+												<h2 class="decor-title">
+													<a href="#" class="decor-title__content">
+														<span class="decor decor--top"></span>
+														<span style="width: 100% !important" class="label">Zbieraj znaczki</br>i odbieraj noże</span>
+														<span class="decor decor--bottom"></span>
+													</a>
+												</h2>
+											</div>
+										</div>
+										<div class="category-teaser__content__actions">
+											<a href="https://nozeconsigli.pl/" class="btn--check" aria-label="button" >
+												<span class="label">Sprawdź</span>
+											</a>
+										</div>
+									</div>
+                                    <span class="rounded-corner rounded-corner--bottom--left">
+                                        <span class="rounded-corner__inner"></span>
+                                    </span>
+                                    <span class="rounded-corner rounded-corner--bottom--right">
+                                        <span class="rounded-corner__inner"></span>
+                                    </span>
+								</div>
+							</div>
+						</li>
+
+
+
+												<li class="hero__slider__item js-slider-item" data-desktop="https://intermarche.pl/wp-content/uploads/2026/11/slider-zestawy-kosmetykow-2.jpg" data-mobile="https://intermarche.pl/wp-content/uploads/2024/10/mobile_gazetka.jpg" data-title="Kosmetyki">
+							<div class="slider-content">
+								<div class="category-teaser">
+									<div class="category-teaser__content">
+										<div class="category-teaser__content__head">
+											<div class="category-teaser__content__head__add">
+												<p class="decor-subtitle">
+													<span class="label"></span>
+												</p>
+											</div>
+											<div class="category-teaser__content__head__title">
+												<h2 class="decor-title">
+													<a href="#" class="decor-title__content">
+														<span class="decor decor--top"></span>
+														<span style="width: 100% !important" class="label">Zestawy</br>kosmetyków</span>
+														<span class="decor decor--bottom"></span>
+													</a>
+												</h2>
+											</div>
+										</div>
+										<div class="category-teaser__content__actions">
+											<a href="https://intermarche.pl/g/gazetka-promocyjna-od-12-18-11/" class="btn--check" aria-label="button" >
+												<span class="label">Sprawdź</span>
+											</a>
+										</div>
+									</div>
+                                    <span class="rounded-corner rounded-corner--bottom--left">
+                                        <span class="rounded-corner__inner"></span>
+                                    </span>
+                                    <span class="rounded-corner rounded-corner--bottom--right">
+                                        <span class="rounded-corner__inner"></span>
+                                    </span>
+								</div>
+							</div>
+						</li>
+
+
+
+												<li class="hero__slider__item js-slider-item" data-desktop="https://intermarche.pl/wp-content/uploads/2026/11/slider-nowosci-4.jpg" data-mobile="https://intermarche.pl/wp-content/uploads/2024/10/mobile_gazetka.jpg" data-title="Nowości">
+							<div class="slider-content">
+								<div class="category-teaser">
+									<div class="category-teaser__content">
+										<div class="category-teaser__content__head">
+											<div class="category-teaser__content__head__add">
+												<p class="decor-subtitle">
+													<span class="label"></span>
+												</p>
+											</div>
+											<div class="category-teaser__content__head__title">
+												<h2 class="decor-title">
+													<a href="#" class="decor-title__content">
+														<span class="decor decor--top"></span>
+														<span style="width: 100% !important" class="label">Nowości w </br>Intermarché</span>
+														<span class="decor decor--bottom"></span>
+													</a>
+												</h2>
+											</div>
+										</div>
+										<div class="category-teaser__content__actions">
+											<a href="https://intermarche.pl/g/gazetka-promocyjna-od-12-18-11/" class="btn--check" aria-label="button" >
+												<span class="label">Sprawdź</span>
+											</a>
+										</div>
+									</div>
+                                    <span class="rounded-corner rounded-corner--bottom--left">
+                                        <span class="rounded-corner__inner"></span>
+                                    </span>
+                                    <span class="rounded-corner rounded-corner--bottom--right">
+                                        <span class="rounded-corner__inner"></span>
+                                    </span>
+								</div>
+							</div>
+						</li>
+
+
+
+											
+			</ul>
+		</div>
+
+<!--		POLECANE		-->
+<section class="subsec subsec--recommended-products home" data-desktop="https://intermarche.pl/wp-content/uploads/2025/10/tlo-wszystko-czego-dzis-chesz2.jpg" data-mobile="https://intermarche.pl/wp-content/uploads/2024/10/tlo-wszystko-czego-dzis-chesz2.jpg" style="background-image: url(https://intermarche.pl/wp-content/uploads/2025/10/tlo-wszystko-czego-dzis-chesz2.jpg);">
+    <div class="subsec__inner">
+        <div class="subsec__head">
+            <h3 class="subsec__head__title subsec__head__title--default white">
+                Interokazje!            </h3>
+
+            <p class="subsec__head__add subsec__head__add--default white">
+                            </p>
+        </div>
+        <div class="subsec__content">
+            <ul class="teasers-list diff">
+                                    <li class="teasers-list__item Special">
+                        <div class="teaser teaser--promotion "
+                             style="background-image: url(https://intermarche.pl/wp-content/uploads/2026/11/modul-nieproduktowy-mleko-Z-Mlecznej-Drogi-24.png)">
+                                                            <a class="teaser__content" href="https://intermarche.pl/g/gazetka-promocyjna-od-12-18-11/">
+                                                                        <div class="teaser__content__head">
+                                    
+                                                                            </div>
+                                    <div class="teaser__content__actions">
+                                    <span class="btn--more">
+                                        <span class="label">
+                                                                                    </span>
+                                    </span>
+                                    </div>
+                                </a>
+                            
+
+                        </div>
+                    </li>
+                                        <li class="teasers-list__item Special">
+                        <div class="teaser teaser--promotion "
+                             style="background-image: url(https://intermarche.pl/wp-content/uploads/2026/11/modul-nieproduktowy-cytryna-31.png)">
+                                                            <a class="teaser__content" href="https://intermarche.pl/g/gazetka-promocyjna-od-12-18-11/">
+                                                                        <div class="teaser__content__head">
+                                    
+                                                                            </div>
+                                    <div class="teaser__content__actions">
+                                    <span class="btn--more">
+                                        <span class="label">
+                                                                                    </span>
+                                    </span>
+                                    </div>
+                                </a>
+                            
+
+                        </div>
+                    </li>
+                                        <li class="teasers-list__item Special">
+                        <div class="teaser teaser--promotion "
+                             style="background-image: url(https://intermarche.pl/wp-content/uploads/2026/11/modul-nieproduktowy-lopatka-wp-7.png)">
+                                                            <a class="teaser__content" href="https://intermarche.pl/g/gazetka-promocyjna-od-12-18-11/">
+                                                                        <div class="teaser__content__head">
+                                    
+                                                                            </div>
+                                    <div class="teaser__content__actions">
+                                    <span class="btn--more">
+                                        <span class="label">
+                                                                                    </span>
+                                    </span>
+                                    </div>
+                                </a>
+                            
+
+                        </div>
+                    </li>
+                                        <li class="teasers-list__item Special">
+                        <div class="teaser teaser--promotion "
+                             style="background-image: url(https://intermarche.pl/wp-content/uploads/2026/11/modul-nieproduktowy-pieczarka-26.png)">
+                                                            <a class="teaser__content" href="https://intermarche.pl/g/gazetka-promocyjna-od-12-18-11/">
+                                                                        <div class="teaser__content__head">
+                                    
+                                                                            </div>
+                                    <div class="teaser__content__actions">
+                                    <span class="btn--more">
+                                        <span class="label">
+                                                                                    </span>
+                                    </span>
+                                    </div>
+                                </a>
+                            
+
+                        </div>
+                    </li>
+                                </ul>
+        </div>
+        <div class="subsec__actions">
+            <a href="/gazetka/" class="btn--all-products">
+                <span class="label">Zobacz pozostałe produkty</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!--    <style>-->
+<!--        #html5-watermark {-->
+<!--            display: none !important;-->
+<!--        }-->
+<!--    </style>-->
+<!---->
+<!--    <div style="display:none">-->
+<!--        <a href="https://www.youtube.com/watch?v=3mUaADvAK9E&modestbranding=1&autohide=1&showinfo=0&controls=0&rel=0"-->
+<!--           class="wplightbox" data-width=960 data-height=544 data-autoopen="true" data-autoopendelay=1000-->
+<!--           data-autoclose="true">Click to open a YouTube video in a Lightbox</a>-->
+<!--    </div>-->
+
+
+<section class="subsec subsec--cta home" data-desktop="https://intermarche.pl/wp-content/uploads/2021/06/linki-img-bg-1.jpg" data-mobile="https://intermarche.pl/wp-content/uploads/2021/06/linki-img-bg-1.jpg" style="background: white url(https://intermarche.pl/wp-content/themes/intermarche/static/img/tlo.jpg) bottom center; background-size: cover;">
+    <!--			<div style="position: relative;width: 100%;margin: 0 auto;text-align: center;margin: 50px;">-->
+    <!--				<iframe style="max-width: 106vh; width: 100%;height: 60vh; min-height: 350px;" src="https://www.youtube.com/embed/FqsNWTQq-Es" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+    <!--			</div>-->
+    <div class="subsec__inner">
+        <div class="subsec__cta">
+            <ul class="cta-list">
+                <li class="cta-list__item">
+                    <div class="cta-teaser">
+                                                <a href="https://intermarche.pl/aplikacja-mobilna/" class="cta-teaser__content">
+                            <div class="cta-teaser__content__ico">
+                                <span class="icon icon--app"><img src="https://intermarche.pl/wp-content/themes/intermarche/static/img/ap.png" ></span>
+                            </div>
+                            <div class="cta-teaser__content__head">
+                                <h5 class="cta-teaser__content__head__title">
+                                    <span class="label">Aplikacja</span>
+                                </h5>
+                            </div>
+                            <div class="cta-teaser__content__info">
+                                <p>
+                                    Pobierz <br />
+aplikację mobilną                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+                <li class="cta-list__item">
+                    <div class="cta-teaser">
+                        <a target="_blank" href="https://www.facebook.com/intermarchepl/" class="cta-teaser__content">
+                            <div class="cta-teaser__content__ico">
+                                <!--                                <span class="icon icon--newsletter"></span>-->
+                                <span class="icon">
+                                    <img src="https://intermarche.pl/wp-content/themes/intermarche/static/img/fb.png" >
+                                </span>
+                            </div>
+                            <div class="cta-teaser__content__head">
+                                <h5 class="cta-teaser__content__head__title">
+                                    <span class="label">Facebook</span>
+                                </h5>
+                            </div>
+                            <div class="cta-teaser__content__info">
+                                <p>
+                                    Zainspiruj się<br />
+na naszym profilu                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+                <li class="cta-list__item">
+                    <div class="cta-teaser">
+                        <a target="_blank" href="https://www.instagram.com/intermarchepolska/" class="cta-teaser__content">
+                            <div class="cta-teaser__content__ico">
+                                <!--                                <span class="icon icon--ticket"></span>-->
+                                <span class="icon">
+                                    <img src="https://intermarche.pl/wp-content/themes/intermarche/static/img/inst.png" >
+                                </span>
+                            </div>
+                            <div class="cta-teaser__content__head">
+                                <h5 class="cta-teaser__content__head__title">
+                                    <span class="label">Instagram</span>
+                                </h5>
+                            </div>
+                            <div class="cta-teaser__content__info">
+                                <p>
+                                    Wyrusz <br />
+w kulinarną podróż                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+                <li class="cta-list__item">
+                    <div class="cta-teaser">
+                        <a target="_blank" href="/o-nas/nasze-sklepy/" class="cta-teaser__content">
+                            <div class="cta-teaser__content__ico">
+                                <span class="icon icon--shop"></span>
+                            </div>
+                            <div class="cta-teaser__content__head">
+                                <h5 class="cta-teaser__content__head__title">
+                                    <span class="label">Znajdź Sklep</span>
+                                </h5>
+                            </div>
+                            <div class="cta-teaser__content__info">
+                                <p>
+                                    Znajdź Intermarché<br />
+w swojej okolicy                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<section class="subsec subsec--recipes home" data-desktop="https://intermarche.pl/wp-content/uploads/2026/11/oferta-specjalna-1-warzywa-polskie.jpg" data-mobile="https://intermarche.pl/wp-content/uploads/2024/10/tlo-wszystko-czego-dzis-chesz2.jpg">
+    <div class="subsec__inner">
+        <div class="subsec__head">
+                            <h3 class="subsec__head__title subsec__head__title--default white">
+                    <font color=black>Zapraszamy do Intermarche!</font>                </h3>
+                                </div>
+        <div class="subsec__content">
+            <ul class="teasers-list">
+                                    <li class="teasers-list__item Special">
+                        <div class="teaser teaser--promotion "
+                             style="background-image: url(https://intermarche.pl/wp-content/uploads/2026/11/modul-nieproduktowy-marchew-11.png)">
+                                                            <a class="teaser__content" href="https://intermarche.pl/g/gazetka-promocyjna-od-12-18-11/">
+                                                                        <div class="teaser__content__head">
+                                    
+                                                                            </div>
+                                    <div class="teaser__content__actions">
+                                    <span class="btn--more">
+                                        <span class="label">
+                                                                                    </span>
+                                    </span>
+                                    </div>
+                                </a>
+                            
+
+                        </div>
+                    </li>
+                                        <li class="teasers-list__item Special">
+                        <div class="teaser teaser--promotion "
+                             style="background-image: url(https://intermarche.pl/wp-content/uploads/2026/11/modul-nieproduktowy-brukselka.png)">
+                                                            <a class="teaser__content" href="https://intermarche.pl/g/gazetka-promocyjna-od-12-18-11/">
+                                                                        <div class="teaser__content__head">
+                                    
+                                                                            </div>
+                                    <div class="teaser__content__actions">
+                                    <span class="btn--more">
+                                        <span class="label">
+                                                                                    </span>
+                                    </span>
+                                    </div>
+                                </a>
+                            
+
+                        </div>
+                    </li>
+                                        <li class="teasers-list__item Special">
+                        <div class="teaser teaser--promotion "
+                             style="background-image: url(https://intermarche.pl/wp-content/uploads/2026/11/modul-nieproduktowy-kalafior-16.png)">
+                                                            <a class="teaser__content" href="https://intermarche.pl/g/gazetka-promocyjna-od-12-18-11/">
+                                                                        <div class="teaser__content__head">
+                                    
+                                                                            </div>
+                                    <div class="teaser__content__actions">
+                                    <span class="btn--more">
+                                        <span class="label">
+                                                                                    </span>
+                                    </span>
+                                    </div>
+                                </a>
+                            
+
+                        </div>
+                    </li>
+                                        <li class="teasers-list__item Special">
+                        <div class="teaser teaser--promotion "
+                             style="background-image: url(https://intermarche.pl/wp-content/uploads/2026/11/modul-nieproduktowy-papryka-zielona-4.png)">
+                                                            <a class="teaser__content" href="https://intermarche.pl/g/gazetka-promocyjna-od-12-18-11/">
+                                                                        <div class="teaser__content__head">
+                                    
+                                                                            </div>
+                                    <div class="teaser__content__actions">
+                                    <span class="btn--more">
+                                        <span class="label">
+                                                                                    </span>
+                                    </span>
+                                    </div>
+                                </a>
+                            
+
+                        </div>
+                    </li>
+                                </ul>
+        </div>
+        <div class="subsec__actions">
+            <a href="/gazetka/" class="btn--all-products">
+                <span class="label">Zobacz pozostałe produkty</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- 		INSPIRACJE		-->
+<section class="subsec subsec--inspirations home" data-desktop="https://intermarche.pl/wp-content/uploads/2025/10/tlo-przepisy2.jpg" data-mobile="https://intermarche.pl/wp-content/uploads/2024/10/tlo-przepisy.jpg">
+    <div class="subsec__inner">
+                <div class="subsec__head subsec__head--space-between subsec__head--with-icon">
+            <h3 class="subsec__head__title subsec__head__title--alt">
+                <span class="highlihted">Przepisy i inspiracje</span>
+                <span class="regular"></span>
+            </h3>
+
+            <p class="subsec__head__add">
+                <a class="gotuje-img" href="https://www.instagram.com/intermarchepolska/">
+<img src="https://intermarche.pl/wp-content/uploads/2021/06/instagram-btn.png"/>
+</a>
+<a class="gotuje-img" href="https://www.facebook.com/intermarchepl/">
+<img src="https://intermarche.pl/wp-content/uploads/2021/06/facebook-btn.png"/>
+</a>            </p>
+            <span class="subsec__head__icon">
+                <span class="head-icon"
+                      style="background-image: url(https://intermarche.pl/wp-content/themes/intermarche/static/img/title_atelier.jpg);"
+                      aria-label="atelier intermarche"></span>
+            </span>
+        </div>
+        <div class="subsec__content">
+            <ul class="teasers-list inspiration">
+                                    <li class="teasers-list__item" style="margin-right: 1.2%">
+                        <div class="recipe-teaser">
+                            <div class="recipe-teaser__photo">
+                                <a href="https://www.instagram.com/p/B-G6I8vIAcm/" class="recipe-teaser__photo__link">
+                                    <img class="recipe-photo" alt="recipe photo"
+                                         src="https://intermarche.pl/wp-content/uploads/2021/11/IG-13_camembert-w-szynce_2.jpg">
+                                </a>
+                            </div>
+                            <div class="recipe-teaser__details">
+                                <div class="recipe-teaser__details__content">
+                                    <!--                                    <a href="#" class="recipe-category-ico">-->
+                                    <!--                                        -->                                    <!--                                    </a>-->
+                                    <h6 class="recipe-teaser__details__content__title">
+                                        <a href="#" class="recipe-teaser__details__content__title__link">
+                                            <span class="label">Camembert w szynce parmeńskiej</span>
+                                        </a>
+                                    </h6>
+                                </div>
+                                <div class="recipe-teaser__details__social" style="justify-content: center">
+                                    <div class="social-action social-action--facebook" style="width: 70%">
+                                        <div class="fb-like"
+                                             data-href="http://www.intermarche.pl/Camembert w szynce parmeńskiej"
+                                             data-layout="button_count" data-action="like" data-show-faces="true"
+                                             data-share="false"></div>
+                                    </div>
+
+                                    <div class="social-action social-action--pinterest">
+                                        <a href="//www.pinterest.com/pin/create/button/"
+                                           data-pin-do="buttonBookmark"><img
+                                                src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                                    <li class="teasers-list__item" style="margin-right: 1.2%">
+                        <div class="recipe-teaser">
+                            <div class="recipe-teaser__photo">
+                                <a href="https://www.instagram.com/p/ChHA2WZsCIm/?hl=pl" class="recipe-teaser__photo__link">
+                                    <img class="recipe-photo" alt="recipe photo"
+                                         src="https://intermarche.pl/wp-content/uploads/2022/08/burger.jpg">
+                                </a>
+                            </div>
+                            <div class="recipe-teaser__details">
+                                <div class="recipe-teaser__details__content">
+                                    <!--                                    <a href="#" class="recipe-category-ico">-->
+                                    <!--                                        -->                                    <!--                                    </a>-->
+                                    <h6 class="recipe-teaser__details__content__title">
+                                        <a href="#" class="recipe-teaser__details__content__title__link">
+                                            <span class="label">Burger z ketchupem śliwkowym</span>
+                                        </a>
+                                    </h6>
+                                </div>
+                                <div class="recipe-teaser__details__social" style="justify-content: center">
+                                    <div class="social-action social-action--facebook" style="width: 70%">
+                                        <div class="fb-like"
+                                             data-href="http://www.intermarche.pl/Burger z ketchupem śliwkowym"
+                                             data-layout="button_count" data-action="like" data-show-faces="true"
+                                             data-share="false"></div>
+                                    </div>
+
+                                    <div class="social-action social-action--pinterest">
+                                        <a href="//www.pinterest.com/pin/create/button/"
+                                           data-pin-do="buttonBookmark"><img
+                                                src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                                    <li class="teasers-list__item" style="margin-right: 1.2%">
+                        <div class="recipe-teaser">
+                            <div class="recipe-teaser__photo">
+                                <a href="https://www.instagram.com/p/DE61IEboANu/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="recipe-teaser__photo__link">
+                                    <img class="recipe-photo" alt="recipe photo"
+                                         src="https://intermarche.pl/wp-content/uploads/2025/01/deepdishpizza.jpg">
+                                </a>
+                            </div>
+                            <div class="recipe-teaser__details">
+                                <div class="recipe-teaser__details__content">
+                                    <!--                                    <a href="#" class="recipe-category-ico">-->
+                                    <!--                                        -->                                    <!--                                    </a>-->
+                                    <h6 class="recipe-teaser__details__content__title">
+                                        <a href="#" class="recipe-teaser__details__content__title__link">
+                                            <span class="label">Deep dish pizza</span>
+                                        </a>
+                                    </h6>
+                                </div>
+                                <div class="recipe-teaser__details__social" style="justify-content: center">
+                                    <div class="social-action social-action--facebook" style="width: 70%">
+                                        <div class="fb-like"
+                                             data-href="http://www.intermarche.pl/Deep dish pizza"
+                                             data-layout="button_count" data-action="like" data-show-faces="true"
+                                             data-share="false"></div>
+                                    </div>
+
+                                    <div class="social-action social-action--pinterest">
+                                        <a href="//www.pinterest.com/pin/create/button/"
+                                           data-pin-do="buttonBookmark"><img
+                                                src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                            </ul>
+        </div>
+        <div class="subsec__actions">
+            <a href="http://atelier.intermarche.pl/" class="btn--more-recipes">
+                <span class="label">Poznaj więcej przepisów</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="subsec subsec--healthy-nutrition home" data-desktop="https://intermarche.pl/wp-content/uploads/2026/11/oferta-specjalna-2-interhity-21.jpg" data-mobile="https://intermarche.pl/wp-content/uploads/2019/06/background_tablet-mobile_optim-1.jpg">
+    <div class="subsec__inner">
+        <div class="subsec__head">
+                                        <h3 class="subsec__head__title subsec__head__title--default white"
+                    style="border: 3px solid ; color:">
+                    Wszystko czego dziś chcę to ...                </h3>
+                                        <p class="subsec__head__add subsec__head__add--default white" style="color:">
+                    ... jeszcze więcej Interhitów!                </p>
+                    </div>
+        <div class="subsec__content">
+            <ul class="teasers-list">
+                                    <li class="teasers-list__item Special">
+                        <div class="teaser teaser--promotion"
+                             style="background-image: url(https://intermarche.pl/wp-content/uploads/2026/11/modul-nieproduktowy-ciastka-Hit-2.png)">
+                            <a class="teaser__content" href="https://intermarche.pl/g/gazetka-promocyjna-od-12-18-11/">
+                                                                <div class="teaser__content__head">
+
+                                                                                                    </div>
+                                <div class="teaser__content__actions">
+                                    <span class="btn--more">
+                                        <span class="label">
+                                                                                    </span>
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                                        <li class="teasers-list__item Special">
+                        <div class="teaser teaser--promotion"
+                             style="background-image: url(https://intermarche.pl/wp-content/uploads/2026/11/modul-nieproduktowy-jaja-z-Kurnika-7.png)">
+                            <a class="teaser__content" href="https://intermarche.pl/g/gazetka-promocyjna-od-12-18-11/">
+                                                                <div class="teaser__content__head">
+
+                                                                                                    </div>
+                                <div class="teaser__content__actions">
+                                    <span class="btn--more">
+                                        <span class="label">
+                                                                                    </span>
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                                        <li class="teasers-list__item Special">
+                        <div class="teaser teaser--promotion"
+                             style="background-image: url(https://intermarche.pl/wp-content/uploads/2026/11/modul-nieproduktowy-pralinki-Lindt-3.png)">
+                            <a class="teaser__content" href="https://intermarche.pl/g/gazetka-promocyjna-od-12-18-11/">
+                                                                <div class="teaser__content__head">
+
+                                                                                                    </div>
+                                <div class="teaser__content__actions">
+                                    <span class="btn--more">
+                                        <span class="label">
+                                                                                    </span>
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                                        <li class="teasers-list__item Special">
+                        <div class="teaser teaser--promotion"
+                             style="background-image: url(https://intermarche.pl/wp-content/uploads/2026/11/modul-nieproduktowy-koncenrtat-do-plukania-Mill.png)">
+                            <a class="teaser__content" href="https://intermarche.pl/g/gazetka-promocyjna-od-12-18-11/">
+                                                                <div class="teaser__content__head">
+
+                                                                                                    </div>
+                                <div class="teaser__content__actions">
+                                    <span class="btn--more">
+                                        <span class="label">
+                                                                                    </span>
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                                        <li class="teasers-list__item Special">
+                        <div class="teaser teaser--promotion"
+                             style="background-image: url(https://intermarche.pl/wp-content/uploads/2026/11/modul-nieproduktowy-plyn-do-spryskiwaczy-Domedia.png)">
+                            <a class="teaser__content" href="https://intermarche.pl/g/gazetka-promocyjna-od-12-18-11/">
+                                                                <div class="teaser__content__head">
+
+                                                                                                    </div>
+                                <div class="teaser__content__actions">
+                                    <span class="btn--more">
+                                        <span class="label">
+                                                                                    </span>
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                                        <li class="teasers-list__item Special">
+                        <div class="teaser teaser--promotion"
+                             style="background-image: url(https://intermarche.pl/wp-content/uploads/2026/11/modul-nieproduktowy-prostownik.png)">
+                            <a class="teaser__content" href="https://intermarche.pl/g/gazetka-promocyjna-od-12-18-11/">
+                                                                <div class="teaser__content__head">
+
+                                                                                                    </div>
+                                <div class="teaser__content__actions">
+                                    <span class="btn--more">
+                                        <span class="label">
+                                                                                    </span>
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                                        <li class="teasers-list__item Special">
+                        <div class="teaser teaser--promotion"
+                             style="background-image: url(https://intermarche.pl/wp-content/uploads/2026/11/modul-nieproduktowy-papier-Foxy-7.png)">
+                            <a class="teaser__content" href="https://intermarche.pl/g/gazetka-promocyjna-od-12-18-11/">
+                                                                <div class="teaser__content__head">
+
+                                                                                                    </div>
+                                <div class="teaser__content__actions">
+                                    <span class="btn--more">
+                                        <span class="label">
+                                                                                    </span>
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                                        <li class="teasers-list__item Special">
+                        <div class="teaser teaser--promotion"
+                             style="background-image: url(https://intermarche.pl/wp-content/uploads/2026/11/modul-nieproduktowy-sol-drogowa.png)">
+                            <a class="teaser__content" href="https://intermarche.pl/g/gazetka-promocyjna-od-12-18-11/">
+                                                                <div class="teaser__content__head">
+
+                                                                                                    </div>
+                                <div class="teaser__content__actions">
+                                    <span class="btn--more">
+                                        <span class="label">
+                                                                                    </span>
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                                </ul>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="subsec home">
+  <div class="slider-container">
+    <ul class="landing-slider-controls controls" aria-label="Carousel Navigation" tabindex="0">
+      <li class="prev" data-controls="prev" aria-controls="customize" tabindex="-1">
+        <i class="fa fa-chevron-left fa-5x"></i>
+      </li>
+      <li class="next" data-controls="next" aria-controls="customize" tabindex="-1">
+        <i class="fa fa-chevron-right fa-5x"></i>
+      </li>
+    </ul>
+    <div class="landing-slider">
+
+    
+          
+              <div class="slider-item">
+                <a href="https://intermarche.pl/gazetki-promocyjne/">
+                <img src="https://intermarche.pl/wp-content/uploads/2026/11/INTERMARCHE_DELMA_1920x600.jpg" alt="" />
+                <div class="card">
+                  <div class="subsec__inner">
+                    <div class="cta-teaser cta-teaser--alt">
+                      <div class="cta-teaser__content">
+                        <div class="cta-teaser__content__head">
+                          <h5 class="cta-teaser__content__head__title cta-teaser__content__head__title-big white">
+                            <span class="label"></span>
+                          </h5>
+                          <p class="cta-teaser__content__head__title red">
+                            <span class="label"></span>
+                          </p>
+                        </div>
+
+                                              </div>
+                    </div>
+                  </div>
+                </div>
+                </a>
+              </div>
+
+      
+          
+              <div class="slider-item">
+                <a href="https://intermarche.pl/gazetki-promocyjne/">
+                <img src="https://intermarche.pl/wp-content/uploads/2026/10/Multibrand_PL_1920x600.jpg" alt="" />
+                <div class="card">
+                  <div class="subsec__inner">
+                    <div class="cta-teaser cta-teaser--alt">
+                      <div class="cta-teaser__content">
+                        <div class="cta-teaser__content__head">
+                          <h5 class="cta-teaser__content__head__title cta-teaser__content__head__title-big white">
+                            <span class="label"></span>
+                          </h5>
+                          <p class="cta-teaser__content__head__title red">
+                            <span class="label"></span>
+                          </p>
+                        </div>
+
+                                              </div>
+                    </div>
+                  </div>
+                </div>
+                </a>
+              </div>
+
+      
+          
+              <div class="slider-item">
+                <a href="https://nozeconsigli.pl">
+                <img src="https://intermarche.pl/wp-content/uploads/2026/11/slider-1920-noze-Ptasie-Mleczko-kawa.jpg" alt="" />
+                <div class="card">
+                  <div class="subsec__inner">
+                    <div class="cta-teaser cta-teaser--alt">
+                      <div class="cta-teaser__content">
+                        <div class="cta-teaser__content__head">
+                          <h5 class="cta-teaser__content__head__title cta-teaser__content__head__title-big white">
+                            <span class="label"></span>
+                          </h5>
+                          <p class="cta-teaser__content__head__title red">
+                            <span class="label"></span>
+                          </p>
+                        </div>
+
+                                              </div>
+                    </div>
+                  </div>
+                </div>
+                </a>
+              </div>
+
+      
+          
+              <div class="slider-item">
+                <a href="https://nozeconsigli.pl">
+                <img src="https://intermarche.pl/wp-content/uploads/2026/11/slider-1920-noze-Finish-2.jpg" alt="" />
+                <div class="card">
+                  <div class="subsec__inner">
+                    <div class="cta-teaser cta-teaser--alt">
+                      <div class="cta-teaser__content">
+                        <div class="cta-teaser__content__head">
+                          <h5 class="cta-teaser__content__head__title cta-teaser__content__head__title-big white">
+                            <span class="label"></span>
+                          </h5>
+                          <p class="cta-teaser__content__head__title red">
+                            <span class="label"></span>
+                          </p>
+                        </div>
+
+                                              </div>
+                    </div>
+                  </div>
+                </div>
+                </a>
+              </div>
+
+      
+          
+              <div class="slider-item">
+                <a href="https://intermarche.pl/g/gazetka-promocyjna-od-12-18-11/">
+                <img src="https://intermarche.pl/wp-content/uploads/2026/11/slider-1920-wedzarnia-76.jpg" alt="" />
+                <div class="card">
+                  <div class="subsec__inner">
+                    <div class="cta-teaser cta-teaser--alt">
+                      <div class="cta-teaser__content">
+                        <div class="cta-teaser__content__head">
+                          <h5 class="cta-teaser__content__head__title cta-teaser__content__head__title-big white">
+                            <span class="label"></span>
+                          </h5>
+                          <p class="cta-teaser__content__head__title red">
+                            <span class="label"></span>
+                          </p>
+                        </div>
+
+                                              </div>
+                    </div>
+                  </div>
+                </div>
+                </a>
+              </div>
+
+      
+          
+              <div class="slider-item">
+                <a href="https://intermarche.pl/g/gazetka-promocyjna-od-12-18-11/">
+                <img src="https://intermarche.pl/wp-content/uploads/2026/11/slider-1920-Canaillou-6.jpg" alt="" />
+                <div class="card">
+                  <div class="subsec__inner">
+                    <div class="cta-teaser cta-teaser--alt">
+                      <div class="cta-teaser__content">
+                        <div class="cta-teaser__content__head">
+                          <h5 class="cta-teaser__content__head__title cta-teaser__content__head__title-big white">
+                            <span class="label"></span>
+                          </h5>
+                          <p class="cta-teaser__content__head__title red">
+                            <span class="label"></span>
+                          </p>
+                        </div>
+
+                                              </div>
+                    </div>
+                  </div>
+                </div>
+                </a>
+              </div>
+
+      
+          
+              <div class="slider-item">
+                <a href="https://intermarche.pl/g/gazetka-promocyjna-od-5-10-11/">
+                <img src="https://intermarche.pl/wp-content/uploads/2026/11/slider-1920-Valdinox-13.jpg" alt="" />
+                <div class="card">
+                  <div class="subsec__inner">
+                    <div class="cta-teaser cta-teaser--alt">
+                      <div class="cta-teaser__content">
+                        <div class="cta-teaser__content__head">
+                          <h5 class="cta-teaser__content__head__title cta-teaser__content__head__title-big white">
+                            <span class="label"></span>
+                          </h5>
+                          <p class="cta-teaser__content__head__title red">
+                            <span class="label"></span>
+                          </p>
+                        </div>
+
+                                              </div>
+                    </div>
+                  </div>
+                </div>
+                </a>
+              </div>
+
+      
+          
+              <div class="slider-item">
+                <a href="https://intermarche.pl/gazetki-promocyjne/">
+                <img src="https://intermarche.pl/wp-content/uploads/2026/09/baner-1920x600.jpg" alt="" />
+                <div class="card">
+                  <div class="subsec__inner">
+                    <div class="cta-teaser cta-teaser--alt">
+                      <div class="cta-teaser__content">
+                        <div class="cta-teaser__content__head">
+                          <h5 class="cta-teaser__content__head__title cta-teaser__content__head__title-big white">
+                            <span class="label"></span>
+                          </h5>
+                          <p class="cta-teaser__content__head__title red">
+                            <span class="label"></span>
+                          </p>
+                        </div>
+
+                                              </div>
+                    </div>
+                  </div>
+                </div>
+                </a>
+              </div>
+
+      
+          
+              <div class="slider-item">
+                <a href="https://intermarche.pl/gazetki-promocyjne/">
+                <img src="https://intermarche.pl/wp-content/uploads/2026/09/slider-1920-400-obnizek.jpg" alt="" />
+                <div class="card">
+                  <div class="subsec__inner">
+                    <div class="cta-teaser cta-teaser--alt">
+                      <div class="cta-teaser__content">
+                        <div class="cta-teaser__content__head">
+                          <h5 class="cta-teaser__content__head__title cta-teaser__content__head__title-big white">
+                            <span class="label"></span>
+                          </h5>
+                          <p class="cta-teaser__content__head__title red">
+                            <span class="label"></span>
+                          </p>
+                        </div>
+
+                                              </div>
+                    </div>
+                  </div>
+                </div>
+                </a>
+              </div>
+
+      
+          
+              <div class="slider-item">
+                <a href="https://nozeconsigli.pl/">
+                <img src="https://intermarche.pl/wp-content/uploads/2026/09/WEB_Bottom_Slider_1920x600px_V1-1.jpg" alt="" />
+                <div class="card">
+                  <div class="subsec__inner">
+                    <div class="cta-teaser cta-teaser--alt">
+                      <div class="cta-teaser__content">
+                        <div class="cta-teaser__content__head">
+                          <h5 class="cta-teaser__content__head__title cta-teaser__content__head__title-big white">
+                            <span class="label"></span>
+                          </h5>
+                          <p class="cta-teaser__content__head__title red">
+                            <span class="label"></span>
+                          </p>
+                        </div>
+
+                                              </div>
+                    </div>
+                  </div>
+                </div>
+                </a>
+              </div>
+
+      
+          
+              <div class="slider-item">
+                <a href="https://intermarche.pl/moje-intermarche/">
+                <img src="https://intermarche.pl/wp-content/uploads/2026/09/slider-1920-nowy-katalog-interki.jpg" alt="" />
+                <div class="card">
+                  <div class="subsec__inner">
+                    <div class="cta-teaser cta-teaser--alt">
+                      <div class="cta-teaser__content">
+                        <div class="cta-teaser__content__head">
+                          <h5 class="cta-teaser__content__head__title cta-teaser__content__head__title-big white">
+                            <span class="label"></span>
+                          </h5>
+                          <p class="cta-teaser__content__head__title red">
+                            <span class="label"></span>
+                          </p>
+                        </div>
+
+                                                <div class="cta-teaser__content__actions">
+                          <a href="https://intermarche.pl/moje-intermarche/" class="btn--ellipse btn--ellipse" aria-label="button">
+                            <span class="label">Sprawdź</span>
+                          </a>
+                        </div>
+                                              </div>
+                    </div>
+                  </div>
+                </div>
+                </a>
+              </div>
+
+      
+          
+              <div class="slider-item">
+                <a href="https://intermarche.pl/landingi/intermarche-najtanszym-supermarketem/">
+                <img src="https://intermarche.pl/wp-content/uploads/2026/08/slider-Najtanszy-supermarketdol.jpg" alt="" />
+                <div class="card">
+                  <div class="subsec__inner">
+                    <div class="cta-teaser cta-teaser--alt">
+                      <div class="cta-teaser__content">
+                        <div class="cta-teaser__content__head">
+                          <h5 class="cta-teaser__content__head__title cta-teaser__content__head__title-big white">
+                            <span class="label"></span>
+                          </h5>
+                          <p class="cta-teaser__content__head__title red">
+                            <span class="label"></span>
+                          </p>
+                        </div>
+
+                                              </div>
+                    </div>
+                  </div>
+                </div>
+                </a>
+              </div>
+
+      
+          
+              <div class="slider-item">
+                <a href="https://intermarche.pl/moje-intermarche/">
+                <img src="https://intermarche.pl/wp-content/uploads/2026/07/1920-x-600_Interki.jpg" alt="" />
+                <div class="card">
+                  <div class="subsec__inner">
+                    <div class="cta-teaser cta-teaser--alt">
+                      <div class="cta-teaser__content">
+                        <div class="cta-teaser__content__head">
+                          <h5 class="cta-teaser__content__head__title cta-teaser__content__head__title-big white">
+                            <span class="label"></span>
+                          </h5>
+                          <p class="cta-teaser__content__head__title red">
+                            <span class="label"></span>
+                          </p>
+                        </div>
+
+                                              </div>
+                    </div>
+                  </div>
+                </div>
+                </a>
+              </div>
+
+      
+          
+              <div class="slider-item">
+                <a href="https://youtu.be/dMLjszyW6b8?si=h2zUX4bWIlDFQpoT">
+                <img src="https://intermarche.pl/wp-content/uploads/2024/10/thumbnail_slider-1920-wszystko-czego-dzis-chce.jpg" alt="" />
+                <div class="card">
+                  <div class="subsec__inner">
+                    <div class="cta-teaser cta-teaser--alt">
+                      <div class="cta-teaser__content">
+                        <div class="cta-teaser__content__head">
+                          <h5 class="cta-teaser__content__head__title cta-teaser__content__head__title-big white">
+                            <span class="label"></span>
+                          </h5>
+                          <p class="cta-teaser__content__head__title red">
+                            <span class="label"></span>
+                          </p>
+                        </div>
+
+                                                <div class="cta-teaser__content__actions">
+                          <a href="https://youtu.be/dMLjszyW6b8?si=h2zUX4bWIlDFQpoT" class="btn--ellipse btn--ellipse" aria-label="button">
+                            <span class="label">Sprawdź</span>
+                          </a>
+                        </div>
+                                              </div>
+                    </div>
+                  </div>
+                </div>
+                </a>
+              </div>
+
+      
+          
+              <div class="slider-item">
+                <a href="https://intermarche.pl/o-nas/stacje-paliw/">
+                <img src="https://intermarche.pl/wp-content/uploads/2024/09/slider-1920-stacje-paliw-3.jpg" alt="" />
+                <div class="card">
+                  <div class="subsec__inner">
+                    <div class="cta-teaser cta-teaser--alt">
+                      <div class="cta-teaser__content">
+                        <div class="cta-teaser__content__head">
+                          <h5 class="cta-teaser__content__head__title cta-teaser__content__head__title-big white">
+                            <span class="label"></span>
+                          </h5>
+                          <p class="cta-teaser__content__head__title red">
+                            <span class="label"></span>
+                          </p>
+                        </div>
+
+                                              </div>
+                    </div>
+                  </div>
+                </div>
+                </a>
+              </div>
+
+      
+          
+              <div class="slider-item">
+                <a href="https://ankieta.intermarche.pl/">
+                <img src="https://intermarche.pl/wp-content/uploads/2023/09/slider-1920-badanie-NPS-1.jpg" alt="" />
+                <div class="card">
+                  <div class="subsec__inner">
+                    <div class="cta-teaser cta-teaser--alt">
+                      <div class="cta-teaser__content">
+                        <div class="cta-teaser__content__head">
+                          <h5 class="cta-teaser__content__head__title cta-teaser__content__head__title-big white">
+                            <span class="label"></span>
+                          </h5>
+                          <p class="cta-teaser__content__head__title red">
+                            <span class="label"></span>
+                          </p>
+                        </div>
+
+                                              </div>
+                    </div>
+                  </div>
+                </div>
+                </a>
+              </div>
+
+      
+          
+              <div class="slider-item">
+                <a href="https://franczyza.intermarche.pl/">
+                <img src="https://intermarche.pl/wp-content/uploads/2022/10/Intermarche_Slider2x.jpg" alt="" />
+                <div class="card">
+                  <div class="subsec__inner">
+                    <div class="cta-teaser cta-teaser--alt">
+                      <div class="cta-teaser__content">
+                        <div class="cta-teaser__content__head">
+                          <h5 class="cta-teaser__content__head__title cta-teaser__content__head__title-big white">
+                            <span class="label"></span>
+                          </h5>
+                          <p class="cta-teaser__content__head__title red">
+                            <span class="label"></span>
+                          </p>
+                        </div>
+
+                                              </div>
+                    </div>
+                  </div>
+                </div>
+                </a>
+              </div>
+
+          </div>
+  </div>
+</section>
+
+
+<footer class="sec--foot">
+	<div class="sec--foot__row">
+		<div class="sec--foot__inner">
+			<a href="#" class="trigger--page-up js-trigger--page-up" aria-label="przewi&#x144; do g&#xF3;ry">
+				<span class="icon icon--arrow-head--up"></span>
+			</a>
+			<div class="sec--foot__row__content sec--foot__row__content--main">
+				<div class="inner-navigation-mobile">
+					<select class="inner-navigation-mobile__select" onchange="getval(this);">
+						<option value="http://intermarche.pl" disabled selected data-href="">Wybierz</option>
+						<option value="http://intermarche.pl/o-nas" data-href="">O nas</option>
+						<option value="http://intermarche.pl/o-nas/centrala" data-href="">Centrala</option>
+						<option value="http://intermarche.pl/o-nas/kariera" data-href="">Kariera</option>
+						<option value="http://intermarche.pl/o-nas/nasze-sklepy" data-href="">Nasze sklepy</option>
+						<option value="http://intermarche.pl/o-nas/nowe-sklepy" data-href="">Nowe sklepy</option>
+						<option value="http://intermarche.pl/o-nas/nasze-dzialania" data-href="">Nasze działania</option>
+						<option value="http://intermarche.pl/o-nas/stacje-paliw" data-href="">Stacje Paliw</option>
+						<option value="http://intermarche.pl/gazetki-promocyjne" data-href="">Gazetka aktualna</option>
+					</select>
+				</div>
+				<ul class="foot-links-list">
+					<li class="foot-links-list__item">
+						<div class="pages-links">
+															<h4 class="pages-links__category">
+									<span class="pages-links__category__link">
+										Informacje									</span>
+								</h4>
+								<ul class="pages-links__list">
+																			<li class="pages-links__list__item">
+											<a class="page-link" href="/o-nas">O nas</a>
+										</li>
+																				<li class="pages-links__list__item">
+											<a class="page-link" href="/o-nas/centrala">Centrala</a>
+										</li>
+																				<li class="pages-links__list__item">
+											<a class="page-link" href="/o-nas/kariera">Kariera</a>
+										</li>
+																				<li class="pages-links__list__item">
+											<a class="page-link" href="/o-nas/nasze-sklepy">Nasze sklepy</a>
+										</li>
+																				<li class="pages-links__list__item">
+											<a class="page-link" href="/o-nas/nowe-sklepy">Otwarcia sklepów</a>
+										</li>
+																				<li class="pages-links__list__item">
+											<a class="page-link" href="/o-nas/stacje-paliw">Stacje paliw</a>
+										</li>
+																				<li class="pages-links__list__item">
+											<a class="page-link" href="https://intermarche.pl/wp-content/uploads/2023/01/Polityka_prywatnosci_konto_klienta_2.pdf">Polityka Prywatności Konta Klienta</a>
+										</li>
+																				<li class="pages-links__list__item">
+											<a class="page-link" href="https://intermarche.pl/wp-content/uploads/2024/10/REGULAMIN-PROGRAMU-„KONTO-KLIENTA”-obowiązujący-od-29.102024r.-i-do-28.10.pdf">Regulamin Konta Klienta</a>
+										</li>
+																				<li class="pages-links__list__item">
+											<a class="page-link" href="https://intermarche.pl/wp-content/uploads/2026/03/REGULAMIN-PROMOCJI-W-SKLEPACH-INTERMARCHE-2026.pdf">Regulamin promocji w sklepach Intermarche</a>
+										</li>
+																				<li class="pages-links__list__item">
+											<a class="page-link" href="https://intermarche.pl/o-nas/kontakt/">Kontakt</a>
+										</li>
+																				<li class="pages-links__list__item">
+											<a class="page-link" href="https://intermarche.pl/informacje-o-produktach/">Poznaj skład naszych produktów</a>
+										</li>
+																				<li class="pages-links__list__item">
+											<a class="page-link" href="https://intermarche.pl/wp-content/uploads/2024/01/REGULAMIN-AKCJI-PROMOCYJNEJ-Kupony-na-paragonie-zima-2024.pdf">Regulamin akcji „Kupony na produkty w niskiej cenie”</a>
+										</li>
+																				<li class="pages-links__list__item">
+											<a class="page-link" href="https://intermarche.pl/karta-duzej-rodziny/">Karta Dużej rodziny</a>
+										</li>
+																				<li class="pages-links__list__item">
+											<a class="page-link" href="https://intermarche.pl/wp-content/uploads/2026/06/Regulamin_programu_lojalnościowego_Moje_Intermarche_1_07_2026_final2.pdf">Regulamin programu lojalnościowego Moje Intermarche</a>
+										</li>
+																				<li class="pages-links__list__item">
+											<a class="page-link" href="https://intermarche.pl/wp-content/uploads/2025/12/Regulamin-kupon-25v2.pdf">Regulamin akcji kuponowej</a>
+										</li>
+																				<li class="pages-links__list__item">
+											<a class="page-link" href="https://intermarche.pl/wp-content/uploads/2026/06/REGULAMIN-AKCJI-kuponowej-na-niedzielę-handlową.pdf">Regulamin akcji kuponowej na niedzielę 28.06.2026</a>
+										</li>
+																				<li class="pages-links__list__item">
+											<a class="page-link" href="https://intermarche.pl/wp-content/uploads/2026/09/Consigli-regulamin-akcji-konsumeckiej-14.09-1.pdf">Regulamin Noże Consigli</a>
+										</li>
+																		</ul>
+														</div>
+					</li>
+					<li class="foot-links-list__item">
+						<div class="pages-links">
+															<h4 class="pages-links__category">
+									<span class="pages-links__category__link">
+										Gazetka									</span>
+								</h4>
+								<ul class="pages-links__list">
+																			<li class="pages-links__list__item">
+											<a class="page-link" href="/gazetka">Aktualna</a>
+										</li>
+																				<li class="pages-links__list__item">
+											<a class="page-link" href="/aplikacja-mobilna">Aplikacja mobilna</a>
+										</li>
+																		</ul>
+														</div>
+					</li>
+					<li class="foot-links-list__item">
+						<div class="pages-links">
+															<h4 class="pages-links__category">
+									<span class="pages-links__category__link">
+										Dołącz do nas									</span>
+								</h4>
+								<ul class="pages-links__list">
+																			<li class="pages-links__list__item">
+											<a class="page-link" target="_blank" href="https://www.facebook.com/intermarchepl">Facebook</a>
+										</li>
+																				<li class="pages-links__list__item">
+											<a class="page-link" target="_blank" href="http://www.youtube.com/channel/UCibAd9ztP6mVWPb_N3-naUA">Youtube</a>
+										</li>
+																				<li class="pages-links__list__item">
+											<a class="page-link" target="_blank" href="https://www.instagram.com/intermarchepolska/">Instagram</a>
+										</li>
+																		</ul>
+														</div>
+					</li>
+					<li class="foot-links-list__item">
+						<div class="pages-links">
+															<h4 class="pages-links__category">
+									<span class="pages-links__category__link">
+										Skontaktuj się z nami									</span>
+								</h4>
+								<ul class="pages-links__list">
+																			<li class="pages-links__list__item">
+											<a class="page-link" href="/o-nas/kontakt/?klient">Dla klientów</a>
+										</li>
+																				<li class="pages-links__list__item">
+											<a class="page-link" href="/o-nas/kontakt/?kontrahent">Dla kontrahentów</a>
+										</li>
+																				<li class="pages-links__list__item">
+											<a class="page-link" href="/o-nas/kontakt/?nieruchomosci">Nieruchomości</a>
+										</li>
+																				<li class="pages-links__list__item">
+											<a class="page-link" href="/o-nas/kontakt/?franczyza">Franczyza</a>
+										</li>
+																		</ul>
+														</div>
+					</li>
+				</ul>
+			</div>
+						<div class="sec--foot__row__content sec--foot__row__content--add">
+				<div class="sec--foot__row__content__info">
+					<p>Zdjęcia produktów umieszczone w serwisie intermarche.pl, wraz z ich cenami i opisem, służą wyłącznie prezentacji przykładowych produktów oferowanych w placówkach handlowych Intermarche, nie stanowią oferty w rozumieniu Kodeksu cywilnego i mogą nieznacznie odbiegać od prawdziwego wizerunku oraz cen w poszczególnych placówkach.</p>
+				</div>
+			</div>
+					</div>
+	</div>
+	<div class="sec--foot__row last">
+		<div class="sec--foot__inner">
+			<div class="sec--foot__row__content sec--foot__row__content--main">
+				<ul class="misc-list">
+					<li class="misc-list__item misc-list__item--privacy">
+						<a href="/o-nas/polityka-prywatnosci" class="foot-link">Polityka prywatności</a>
+					</li>
+					<li class="misc-list__item misc-list__item--copy">
+						<p class="copy">
+							Copyright <span class="regular">Inter</span><span class="highlihted">marche</span> 2015
+						</p>
+					</li>
+				</ul>
+			</div>
+			<div class="sec--foot__row__content sec--foot__row__content--add">
+				<span class="logo logo--intermarche">
+					<a href="/"  style="background: url('https://intermarche.pl/wp-content/themes/intermarche/static/img/logo_intermarche.jpg') repeat scroll 0 0 / 120px auto" class="logo__link" aria-label="Powr&#xF3;t do strony g&#x142;&#xF3;wnej">
+						<span class="label">Intermarche</span>
+					</a>
+				</span>
+			</div>
+		</div>
+	</div>
+</footer>
+</div>
+        <script type='text/javascript' src='https://intermarche.pl/wp-content/themes/intermarche/js/FileSaver.js?ver=1.0'></script>
+<script type='text/javascript' src='https://intermarche.pl/wp-content/themes/intermarche/js/html2canvas.js?ver=1.0'></script>
+<script type='text/javascript' src='https://intermarche.pl/wp-content/themes/intermarche/js/plugins.js?ver=1.0'></script>
+<script type='text/javascript' src='https://intermarche.pl/wp-content/themes/intermarche/js/main.js?ver=1.1'></script>
+<script type='text/javascript' src='https://intermarche.pl/wp-content/themes/intermarche/js/functions.js?ver=2.0'></script>
+<script type='text/javascript' src='https://intermarche.pl/wp-content/themes/intermarche/js/ga_events.js?ver=1.0'></script>
+<script type='text/javascript' src='https://intermarche.pl/wp-content/themes/intermarche/js/jquery.matchHeight.js?ver=1.0'></script>
+<script type='text/javascript' src='https://intermarche.pl/wp-content/themes/intermarche/js/jquery.maskedinput.min.js?ver=1.0'></script>
+<script type='text/javascript' src='https://intermarche.pl/wp-includes/js/wp-embed.min.js?ver=9b2e6a4b1cdf4e4d3d297267cca3b115'></script>
+<!--<div id="cookiePolicy">
+    <div class="cookieContent">
+        <p>Używamy cookies w celach świadczenia usług i w celach marketingowych. Korzystanie z witryny oznacza,
+            że pliki cookies będą umieszczane w Twoim urządzeniu. Szczegóły dotyczące plików cookies znajdziesz w <a href="https://intermarche.pl/o-nas/polityka-prywatnosci/" target="_blank">Polityce Prywatności.</a></p>
+        <div class="closeCookie"></div>
+    </div>
+</div> wykomentowane po zainstalowaniu cookiebota--><div id="mobile_app">
+    <div class="app_content_ios">
+        <div class="close_app">
+            <span>
+                X
+            </span>
+        </div>
+        <div class="app_img" style="background-image:url('https://intermarche.pl/wp-content/themes/intermarche/static/img/app_logo_gazetka.png'); background-size:100% 100%;"></div>
+        <div class="app_text">
+            <span style="font-weight:600; font-size:12px;">
+                Przeglądaj gazetki w aplikacji mobilnej<br>
+            </span>
+            <span style="font-size:10px;">
+                Intermarché<br>
+                POBIERZ w AppStore
+            </span>
+        </div>
+        <div class="app_link" data-href="https://itunes.apple.com/pl/app/intermarch%C3%A9-polska/id1212960383?l=pl&mt=8" onclick="ga('send', 'event', 'link', 'click', 'mobile app downloaded app store (top)');">
+            <span>
+                Pokaż
+            </span>
+        </div>
+    </div>
+    <div class="app_content_android">
+        <div class="close_app">
+            <span>
+                X
+            </span>
+        </div>
+        <div class="app_img" style="background-image:url('https://intermarche.pl/wp-content/themes/intermarche/static/img/app_logo_gazetka.png'); background-size:100% 100%;"></div>
+        <div class="app_text">
+            <span style="font-weight:600; font-size:12px;">
+                Przeglądaj gazetki w aplikacji mobilne<br>
+            </span>
+            <span style="font-size:10px;">
+                Intermarché<br>
+                POBIERZ w Google Play
+            </span>
+        </div>
+        <div class="app_link" data-href="https://play.google.com/store/apps/details?id=com.evokly.intermarche&hl=pl" onclick="ga('send', 'event', 'link', 'click', 'mobile app downloaded google play (top)');">
+            <span>
+                Pokaż
+            </span>
+        </div>
+    </div>
+</div>
+
+<!-- Kod tagu remarketingowego Google -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1014596002;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1014596002/?value=0&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+
+<img src="//pl-gmtdmp.mookie1.com/t/v2/activity?tagid=V2_186277&src.rand=[timestamp]" style="display:none;"/>
+<img src="https://secure-web.cisco.com/1H1ynP8EmkDmETG4aOOgi8RRAle8i41qhk3PF6Xn2QlTMnQQv9u5M0CfztmNnEdGiwfWkNg9OEwp8XyEdzGHsSJAio-MQVB-DyeONcbmuSKzjgEH9FFmp01I2jCIHtibL64aFDowbImLDjwo9cYCOKU4okgILE1_XTDh1HN_8cp25xZsg9g4BA0fFnzPSu9q03D3cA0Sc7t_CAANCJYgfLNAl3d3LZZq2r7Nn93oE94qIJ9aAhZlWAFN-CaGs7AiQP0ziE5ZhkD-_7wR5CL9aqtv4MuOJqY0xd5RJfFjjeGK3z4agixN4eR3uzqZ1U-Qw/https%3A%2F%2Ffarm-pl.plista.com%2Factivity2%3Bdomainid%3A243665%3Bcampaignid%3A255235%3Bevent%3A11" style="width:1px;height:1px;" alt="" />
+
+	
+</body>
+</html>

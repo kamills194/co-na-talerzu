@@ -1,0 +1,598 @@
+{
+  "lidl": {
+    "robots": "User-agent: *\nDisallow: /cc.js*\nDisallow: /cdn/assets/cwv/\nDisallow: /user-api/*\nDisallow: /cqe/*\nDisallow: *search?q=*\nDisallow: *?offset=*\nDisallow: *idsOnly=*\nDisallow: *productsOnly=*\nDisallow: *id=*\nDisallow: *pageId=*\nDisallow: *advisor=*\nDisallow: *sort=*\n\nSitemap: https://www.lidl.pl/static/sitemap.xml\n",
+    "pages": [
+      {
+        "url": "https://www.lidl.pl/",
+        "blocked": false,
+        "error": "TypeError: fetch failed"
+      },
+      {
+        "url": "https://www.lidl.pl/c/nasze-oferty/a10008785",
+        "blocked": false,
+        "error": "TypeError: fetch failed"
+      }
+    ],
+    "robotsStatus": 200
+  },
+  "biedronka": {
+    "robots": "User-agent: *\nDisallow: /front/search*\nDisallow: /pl/search*",
+    "pages": [
+      {
+        "url": "https://www.biedronka.pl/pl",
+        "blocked": false,
+        "status": 200,
+        "final": "https://www.biedronka.pl/pl",
+        "type": "text/html; charset=UTF-8",
+        "bytes": 147375,
+        "nextData": false,
+        "nuxt": false,
+        "ldjson": 0,
+        "offerLd": 0,
+        "prices": 0,
+        "blockedPage": false,
+        "links": [
+          "/pl/nowa-oferta",
+          "https://www.biedronka.pl/pl/gazetki",
+          "/pl/produkty-kraft",
+          "https://home.biedronka.pl/promocje/?utm_source=biedronkapl&amp;utm_medium=www&amp;utm_campaign=biedronka_home_menu",
+          "/pl/gazetki",
+          "https://www.biedronka.pl/pl/press,id,j35d8zcvl,title,codziennie-niskie-ceny-p-oferta-od-16-11",
+          "https://www.biedronka.pl/pl/press,id,j30zv5629,title,codziennie-niskie-ceny-p-oferta-od-12-11",
+          "/pl/promocja-nf",
+          "https://home.biedronka.pl/promocje/?utm_source=biedronka.pl&utm_medium=linkowanie+pod+drugimi+banerami&utm_campaign=promocjebiedronkahome",
+          "https://www.biedronka.pl/pl/oferta-z-karta-moja-biedronka"
+        ],
+        "apis": [
+          "https://static.biedronka.pl/img/svg/search.svg?v=1106129",
+          "https://static.biedronka.pl/img/ico-zapisz-newsletter-120x120.gif?v=1106129",
+          "https://static.biedronka.pl/img/ico-zapisz-newsletter-240x240.png",
+          "https://static.biedronka.pl/img/ico-zapisz-newsletter-120x120-start.gif?v=1106129",
+          "https://static.biedronka.pl/img/ico-zapisz-newsletter-120x120-end.gif?v=1106129"
+        ]
+      },
+      {
+        "url": "https://www.biedronka.pl/pl/oferta",
+        "blocked": false,
+        "status": 404,
+        "final": "https://www.biedronka.pl/pl/oferta",
+        "type": "text/html;charset=UTF-8",
+        "bytes": 89314,
+        "nextData": false,
+        "nuxt": false,
+        "ldjson": 0,
+        "offerLd": 0,
+        "prices": 0,
+        "blockedPage": false,
+        "links": [
+          "/pl/nowa-oferta",
+          "https://www.biedronka.pl/pl/gazetki",
+          "/pl/produkty-kraft",
+          "/pl/gazetki",
+          "https://www.biedronka.pl/pl/oferta-z-karta-moja-biedronka"
+        ],
+        "apis": [
+          "https://static.biedronka.pl/img/svg/search.svg?v=1106129",
+          "https://static.biedronka.pl/img/ico-zapisz-newsletter-120x120.gif?v=1106129",
+          "https://static.biedronka.pl/img/ico-zapisz-newsletter-240x240.png",
+          "https://static.biedronka.pl/img/ico-zapisz-newsletter-120x120-start.gif?v=1106129",
+          "https://static.biedronka.pl/img/ico-zapisz-newsletter-120x120-end.gif?v=1106129"
+        ]
+      },
+      {
+        "url": "https://www.biedronka.pl/pl/gazetki",
+        "blocked": false,
+        "status": 200,
+        "final": "https://www.biedronka.pl/pl/gazetki",
+        "type": "text/html; charset=UTF-8",
+        "bytes": 98482,
+        "nextData": false,
+        "nuxt": false,
+        "ldjson": 0,
+        "offerLd": 0,
+        "prices": 0,
+        "blockedPage": false,
+        "links": [
+          "/pl/nowa-oferta",
+          "https://www.biedronka.pl/pl/gazetki",
+          "/pl/produkty-kraft",
+          "https://home.biedronka.pl/promocje/?utm_source=biedronkapl&amp;utm_medium=www&amp;utm_campaign=biedronka_home_menu",
+          "/pl/gazetki",
+          "https://static.biedronka.pl/css/locationmap-gazetki-v2.css?v=1106129",
+          "/pl/gazetki-lada-tradycyjna",
+          "http://www.biedronka.pl/pl/nowy-gang/zobacz-produkty",
+          "https://www.biedronka.pl/pl/pressadult,id,1wq2jo79f,title,czas-na-toast-p-oferta-od-16-11",
+          "https://www.biedronka.pl/pl/dostawa?utm_source=biedronkapl&utm_medium=gazetki&utm_campaign=banner2",
+          "https://www.biedronka.pl/pl/press,id,j35d8zcvl,title,codziennie-niskie-ceny-p-oferta-od-16-11#page=1",
+          "https://www.biedronka.pl/pl/press,id,j30zv5629,title,codziennie-niskie-ceny-p-oferta-od-12-11",
+          "https://www.biedronka.pl/pl/oferta-z-karta-moja-biedronka"
+        ],
+        "apis": [
+          "https://static.biedronka.pl/img/svg/search.svg?v=1106129",
+          "https://static.biedronka.pl/img/ico-zapisz-newsletter-120x120.gif?v=1106129",
+          "https://static.biedronka.pl/img/ico-zapisz-newsletter-240x240.png",
+          "https://static.biedronka.pl/img/ico-zapisz-newsletter-120x120-start.gif?v=1106129",
+          "https://static.biedronka.pl/img/ico-zapisz-newsletter-120x120-end.gif?v=1106129"
+        ]
+      }
+    ],
+    "robotsStatus": 200
+  },
+  "kaufland": {
+    "robots": "<!DOCTYPE html><html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><title>Kaufland.pl - Wymagana weryfikacja</title><style>.tech-info[data-v-616788af]{flex-direction:row;justify-content:center;gap:1rem;font-size:small}.copy-btn[data-v-616788af],.tech-info[data-v-616788af]{align-items:center;display:flex}.copy-btn[data-v-616788af]{cursor:pointer;color:#888;background:#fff;border:none;border-radius:50%;outline:none;padding:.4rem;transition:color .2s,box-shadow .2s;box-shadow:0 2px 8px #0000001f}.copy-btn[data-v-616788af]:focus,.copy-btn[data-v-616788af]:hover{color:#333;box-shadow:0 4px 16px #0000002e}.copy-btn svg[data-v-616788af]{display:block}</style><style>header[data-v-a34e8876]{border-bottom:1px solid #f0f0f0;justify-content:space-between;padding-bottom:11px;display:flex}</style><style>footer[data-v-67c0c2e8]{border-top:1px solid #f0f0f0;padding-top:11px}</style><style>body{color:#424242;max-width:1200px;margin:0 auto;padding:0 33px;font-family:sans-serif}main{padding:11px 0}.page-content{max-width:100%;min-height:50vh}.subpage-content{flex-direction:column;margin-bottom:1em;display:flex}@media (width>=768px){.subpage-content{justify-content:center;align-items:center}}</style><style>.container[data-v-02602438]{gap:2rem;display:flex}@media (width<=767px){.container[data-v-02602438]{flex-direction:column;gap:1rem}}.column[data-v-02602438]{flex:1}</style><script type=\"speculationrules\">{\"prefetch\":[{\"where\":{\"href_matches\":\"/\"},\"eagerness\":\"moderate\"},{\"where\":{\"href_matches\":\"/de/captcha-box\"},\"eagerness\":\"moderate\"},{\"where\":{\"href_matches\":\"/sk/captcha-box\"},\"eagerness\":\"moderate\"},{\"where\":{\"href_matches\":\"/cz/captcha-box\"},\"eagerness\":\"moderate\"},{\"where\":{\"href_matches\":\"/pl/captcha-box\"},\"eagerness\":\"moderate\"},{\"where\":{\"href_matches\":\"/at/captcha-box\"},\"eagerness\":\"moderate\"},{\"where\":{\"href_matches\":\"/it/captcha-box\"},\"eagerness\":\"moderate\"},{\"where\":{\"href_matches\":\"/fr/captcha-box\"},\"eagerness\":\"moderate\"},{\"where\":{\"href_matches\":\"/es/captcha-box\"},\"eagerness\":\"moderate\"},{\"where\":{\"href_matches\":\"/nl/captcha-box\"},\"eagerness\":\"moderate\"},{\"where\":{\"href_matches\":\"/de/rate-limit\"},\"eagerness\":\"moderate\"},{\"where\":{\"href_matches\":\"/sk/rate-limit\"},\"eagerness\":\"moderate\"},{\"where\":{\"href_matches\":\"/cz/rate-limit\"},\"eagerness\":\"moderate\"},{\"where\":{\"href_matches\":\"/pl/rate-limit\"},\"eagerness\":\"moderate\"},{\"where\":{\"href_matches\":\"/at/rate-limit\"},\"eagerness\":\"moderate\"},{\"where\":{\"href_matches\":\"/it/rate-limit\"},\"eagerness\":\"moderate\"},{\"where\":{\"href_matches\":\"/fr/rate-limit\"},\"eagerness\":\"moderate\"},{\"where\":{\"href_matches\":\"/es/rate-limit\"},\"eagerness\":\"moderate\"},{\"where\":{\"href_matches\":\"/nl/rate-limit\"},\"eagerness\":\"moderate\"},{\"where\":{\"href_matches\":\"/de/under-attack\"},\"eagerness\":\"moderate\"},{\"where\":{\"href_matches\":\"/sk/under-attack\"},\"eagerness\":\"moderate\"},{\"where\":{\"href_matches\":\"/cz/under-attack\"},\"eagerness\":\"moderate\"},{\"where\":{\"href_matches\":\"/pl/under-attack\"},\"eager",
+    "pages": [
+      {
+        "url": "https://www.kaufland.pl/",
+        "blocked": false,
+        "status": 403,
+        "final": "https://www.kaufland.pl/",
+        "type": "text/html; charset=UTF-8",
+        "bytes": 17143,
+        "nextData": false,
+        "nuxt": false,
+        "ldjson": 0,
+        "offerLd": 0,
+        "prices": 0,
+        "blockedPage": true,
+        "links": [],
+        "apis": []
+      },
+      {
+        "url": "https://www.kaufland.pl/oferta/aktualny-tydzien.html",
+        "blocked": false,
+        "status": 403,
+        "final": "https://www.kaufland.pl/oferta/aktualny-tydzien.html",
+        "type": "text/html; charset=UTF-8",
+        "bytes": 17227,
+        "nextData": false,
+        "nuxt": false,
+        "ldjson": 0,
+        "offerLd": 0,
+        "prices": 0,
+        "blockedPage": true,
+        "links": [],
+        "apis": []
+      },
+      {
+        "url": "https://www.kaufland.pl/oferta/aktualny-tydzien/przeglad.html",
+        "blocked": false,
+        "status": 403,
+        "final": "https://www.kaufland.pl/oferta/aktualny-tydzien/przeglad.html",
+        "type": "text/html; charset=UTF-8",
+        "bytes": 17275,
+        "nextData": false,
+        "nuxt": false,
+        "ldjson": 0,
+        "offerLd": 0,
+        "prices": 0,
+        "blockedPage": true,
+        "links": [],
+        "apis": []
+      }
+    ],
+    "robotsStatus": 403
+  },
+  "netto": {
+    "robots": "User-Agent: *\nAllow: /\n\nSitemap: https://netto.pl/sitemap.xml\n",
+    "pages": [
+      {
+        "url": "https://www.netto.pl/",
+        "blocked": false,
+        "status": 200,
+        "final": "https://netto.pl/",
+        "type": "text/html; charset=utf-8",
+        "bytes": 371055,
+        "nextData": false,
+        "nuxt": false,
+        "ldjson": 0,
+        "offerLd": 0,
+        "prices": 0,
+        "blockedPage": false,
+        "links": [
+          "/gazetka-netto/",
+          "/oferty-pracy/",
+          "https://www.netto.pl/gazetka-netto/?leafletid=caj_ANjY&amp;page=26",
+          "https://www.netto.pl/gazetka-netto/?leafletid=Zr80I_pP&amp;page=7"
+        ],
+        "apis": []
+      },
+      {
+        "url": "https://www.netto.pl/oferta/",
+        "blocked": false,
+        "status": 200,
+        "final": "https://netto.pl/gazetka-netto/",
+        "type": "text/html; charset=utf-8",
+        "bytes": 290259,
+        "nextData": false,
+        "nuxt": false,
+        "ldjson": 0,
+        "offerLd": 0,
+        "prices": 0,
+        "blockedPage": false,
+        "links": [
+          "/gazetka-netto/",
+          "/oferty-pracy/"
+        ],
+        "apis": []
+      }
+    ],
+    "robotsStatus": 200
+  },
+  "carrefour": {
+    "robots": "# As a condition of accessing this website, you agree to abide by the following\n# content signals:\n\n# (a)  If a Content-Signal = yes, you may collect content for the corresponding\n#      use.\n# (b)  If a Content-Signal = no, you may not collect content for the\n#      corresponding use.\n# (c)  If the website operator does not include a Content-Signal for a\n#      corresponding use, the website operator neither grants nor restricts\n#      permission via Content-Signal with respect to the corresponding use.\n\n# The content signals and their meanings are:\n\n# search:   building a search index and providing search results (e.g., returning\n#           hyperlinks and short excerpts from your website's contents). Search does not\n#           include providing AI-generated search summaries.\n# ai-input: inputting content into one or more AI models (e.g., retrieval\n#           augmented generation, grounding, or other real-time taking of content for\n#           generative AI search answers).\n# ai-train: training or fine-tuning AI models.\n# use:      how AI systems may consume the content (immediate, reference, or full).\n\n# ANY RESTRICTIONS EXPRESSED VIA CONTENT SIGNALS ARE EXPRESS RESERVATIONS OF\n# RIGHTS UNDER ARTICLE 4 OF THE EUROPEAN UNION DIRECTIVE 2019/790 ON COPYRIGHT\n# AND RELATED RIGHTS IN THE DIGITAL SINGLE MARKET.\n\n# BEGIN Cloudflare Managed content\n\n\nUser-agent: *\nContent-Signal: search=yes,ai-train=no,use=reference\nAllow: /\n\n# Training crawlers\nUser-agent: Amazonbot\nDisallow: /\n\nUser-agent: Applebot-Extended\nDisallow: /\n\nUser-agent: Bytespider\nDisallow: /\n\nUser-agent: CCBot\nDisallow: /\n\nUser-agent: ClaudeBot\nDisallow: /\n\nUser-agent: Diffbot\nDisallow: /\n\nUser-agent: Google-Extended\nDisallow: /\n\nUser-agent: GPTBot\nDisallow: /\n\nUser-agent: omgili\nDisallow: /\n\nUser-agent: anthropic-ai\nDisallow: /\n\nUser-agent: Claude-Web\nDisallow: /\n\nUser-agent: cohere-ai\nDisallow: /\n\nUser-agent: MistralAI-Training\nDisallow: /\n\nUser-agent: meta-externalagent\nDisallow: /\n\nUser-agent: GoogleOther\nDisallow: /\n\nUser-agent: Baiduspider\nDisallow: /\n\nUser-agent: PetalBot\nDisallow: /\n\nUser-agent: AwarioSmartBot\nUser-agent: AwarioRssBot\nDisallow: /\n\nUser-agent: Google-CloudVertexBot\nDisallow: /\n\nUser-agent: QualifiedBot\nDisallow: /\n\nUser-agent: Cotoyogi\nDisallow: /\n\nUser-agent: ICC-Crawler\nDisallow: /\n\nUser-agent: atlassian-bot\nDisallow: /\n\nUser-agent: FishBot\nDisallow: /\n\nUser-agent: BorderxBot\nDisallow: /\n\nUser-agent: NavuBot\nDisallow: /\n\nUser-agent: SemrushBot-SWA\nDisallow: /\n\nUser-agent: WARDBot\nDisallow: /\n\nUser-agent: magpie-crawler\nDisallow: /\n\nUser-agent: KimiBot\nDisallow: /\n\nUser-agent: CitibotSiteCrawler\nDisallow: /\n\n# END Cloudflare Managed Content\n\nUser-agent: *\nSitemap: https://www.carrefour.pl/sitemap.xml\nDisallow: /szukaj\nDisallow: /moje-konto\nDisallow: /edytuj-dane\nDisallow: /historia-zamowien\nDisallow: /ulubione\nDisallow: /alerty-dostepnosci\nDisallow: /zmiana-hasla\nDisallow: /koszyk\nDisallow: /strona/regulamin\nDisallow: /pomoc\nDisallow: /rejestracja\nDisallow: /s",
+    "pages": [
+      {
+        "url": "https://www.carrefour.pl/",
+        "blocked": true,
+        "status": 403,
+        "final": "https://www.carrefour.pl/",
+        "type": "text/html; charset=UTF-8",
+        "bytes": 5946,
+        "nextData": false,
+        "nuxt": false,
+        "ldjson": 0,
+        "offerLd": 0,
+        "prices": 0,
+        "blockedPage": true,
+        "links": [],
+        "apis": []
+      },
+      {
+        "url": "https://www.carrefour.pl/promocje",
+        "blocked": true,
+        "status": 403,
+        "final": "https://www.carrefour.pl/promocje",
+        "type": "text/html; charset=UTF-8",
+        "bytes": 5946,
+        "nextData": false,
+        "nuxt": false,
+        "ldjson": 0,
+        "offerLd": 0,
+        "prices": 0,
+        "blockedPage": true,
+        "links": [],
+        "apis": []
+      }
+    ],
+    "robotsStatus": 200
+  },
+  "auchan": {
+    "robots": "###########\r\n#WORDPRESS#\r\n###########\r\n\r\nUser-agent: *\r\n\r\n#Disallow my account\r\nDisallow: /pl/create-account\r\nDisallow: /pl/login\r\nDisallow: /pl/account\r\n\r\n#404\r\nDisallow: /pl/nie-znaleziono\r\n\r\nAllow: /\r\n\r\n#SITEMAP\r\nSitemap: https://www.auchan.pl/sitemap.xml",
+    "pages": [
+      {
+        "url": "https://www.auchan.pl/pl",
+        "blocked": false,
+        "status": 200,
+        "final": "https://www.auchan.pl/pl",
+        "type": "text/html; charset=utf8",
+        "bytes": 2032,
+        "nextData": false,
+        "nuxt": false,
+        "ldjson": 0,
+        "offerLd": 0,
+        "prices": 0,
+        "blockedPage": false,
+        "links": [],
+        "apis": []
+      },
+      {
+        "url": "https://zakupy.auchan.pl/promocje",
+        "blocked": false,
+        "status": 404,
+        "final": "https://zakupy.auchan.pl/promocje",
+        "type": "text/html;charset=utf-8",
+        "bytes": 467693,
+        "nextData": false,
+        "nuxt": true,
+        "ldjson": 0,
+        "offerLd": 0,
+        "prices": 4,
+        "blockedPage": true,
+        "links": [
+          "https://zakupy.auchan.pl/promocje",
+          "https://www.auchan.pl/pl/dla-klienta/oferta-dla-biznesu",
+          "/shop-in-shop/produkty-z-tv?source=toptabs",
+          "https://zakupy.auchan.pl/content/promocja-na-start2",
+          "https://www.auchan.pl/pl/dla-klienta/prawny/regulaminy-akcji-promocyjnych",
+          "https://www.auchan.pl/pl/dla-klienta/wycofane-produkty"
+        ],
+        "apis": [
+          "https://4e8086612ef5.edge.captcha-sdk.awswaf.com/4e8086612ef5/jsapi.js"
+        ]
+      }
+    ],
+    "robotsStatus": 200
+  },
+  "dino": {
+    "robots": "User-Agent: *\nDisallow: /wyszukiwarka/\nDisallow: /listy-zakupowe\nDisallow: /trigger-error\n\nSitemap: https://marketdino.pl/sitemap.xml",
+    "pages": [
+      {
+        "url": "https://marketdino.pl/",
+        "blocked": false,
+        "status": 200,
+        "final": "https://marketdino.pl/",
+        "type": "text/html; charset=utf-8",
+        "bytes": 827844,
+        "nextData": false,
+        "nuxt": true,
+        "ldjson": 2,
+        "offerLd": 0,
+        "prices": 19,
+        "blockedPage": false,
+        "links": [
+          "/gazetki/lista/standard",
+          "/produkt/kielbasa-biesiadna?categoryName=&amp;categorySlug=",
+          "/produkt/ser-tarty-mozzarella-mlekpol-500g?categoryName=&amp;categorySlug=",
+          "/produkt/karkowka-wieprzowa-bez-kosci-schlodzona?categoryName=&amp;categorySlug=",
+          "/produkt/gruszka-kg-kli?categoryName=&amp;categorySlug=",
+          "/produkt/jablko-kg?categoryName=&amp;categorySlug=",
+          "/produkt/kawa-mielona-jacobs-kronung-550g?categoryName=&amp;categorySlug=",
+          "/produkt/napoj-gaz-pepsi-cola-2l?categoryName=&amp;categorySlug="
+        ],
+        "apis": [
+          "https://api.marketdino.pl/api/v1/",
+          "https://api.marketdino.pl/media/filer_public/ed/f8/edf84b31-0e77-4d26-8185-8f4fd1c1bbff/papier_toaletowy_miekki_i_wytzymay_lavenda_10rolek__220listkow_3warstwy.png",
+          "https://api.marketdino.pl/media/filer_public/23/48/2348d4a1-d1dd-49a6-8f98-81fc90489696/papier_toaletowy.webp",
+          "https://api.marketdino.pl/media/filer_public/d2/8e/d28ee8d1-0ab9-45e6-acfa-8a557790e07e/papier_toaletowy_miekki_i_wytzymay_lavenda_10rolek__220listkow_3warstwy.webp",
+          "https://api.marketdino.pl/media/filer_public/11/5c/115c580a-f3e5-4a0e-8484-c08f3f60569b/dino_papier_toaletowy_premium_10szt_wiz.png",
+          "https://api.marketdino.pl/media/filer_public/f7/bf/f7bfb1e1-43d8-4b26-b65f-83911b71d77d/papier_do_pieczenia_w_arkuszach_liff_5902884495659.png"
+        ]
+      },
+      {
+        "url": "https://marketdino.pl/gazetka",
+        "blocked": false,
+        "status": 404,
+        "final": "https://marketdino.pl/gazetka",
+        "type": "text/html;charset=utf-8",
+        "bytes": 726589,
+        "nextData": false,
+        "nuxt": true,
+        "ldjson": 1,
+        "offerLd": 0,
+        "prices": 0,
+        "blockedPage": false,
+        "links": [
+          "https://marketdino.pl/gazetka",
+          "/gazetki/lista/standard"
+        ],
+        "apis": [
+          "https://api.marketdino.pl/api/v1/",
+          "https://api.marketdino.pl/media/filer_public/ed/f8/edf84b31-0e77-4d26-8185-8f4fd1c1bbff/papier_toaletowy_miekki_i_wytzymay_lavenda_10rolek__220listkow_3warstwy.png",
+          "https://api.marketdino.pl/media/filer_public/23/48/2348d4a1-d1dd-49a6-8f98-81fc90489696/papier_toaletowy.webp",
+          "https://api.marketdino.pl/media/filer_public/d2/8e/d28ee8d1-0ab9-45e6-acfa-8a557790e07e/papier_toaletowy_miekki_i_wytzymay_lavenda_10rolek__220listkow_3warstwy.webp",
+          "https://api.marketdino.pl/media/filer_public/11/5c/115c580a-f3e5-4a0e-8484-c08f3f60569b/dino_papier_toaletowy_premium_10szt_wiz.png",
+          "https://api.marketdino.pl/media/filer_public/f7/bf/f7bfb1e1-43d8-4b26-b65f-83911b71d77d/papier_do_pieczenia_w_arkuszach_liff_5902884495659.png"
+        ]
+      }
+    ],
+    "robotsStatus": 200
+  },
+  "stokrotka": {
+    "robots": "User-agent: *\nDisallow: /IAJAX/\nDisallow: /IGETFILE/\nDisallow: /IENABLE_COOKIE/\nDisallow: /IPAYMENT/\nDisallow: /IAPI/\nDisallow: /raport/\nSitemap: https://stokrotka.pl/sitemap.xml",
+    "pages": [
+      {
+        "url": "https://www.stokrotka.pl/",
+        "blocked": false,
+        "status": 200,
+        "final": "https://stokrotka.pl/",
+        "type": "text/html; charset=UTF-8",
+        "bytes": 91581,
+        "nextData": false,
+        "nuxt": false,
+        "ldjson": 2,
+        "offerLd": 0,
+        "prices": 0,
+        "blockedPage": false,
+        "links": [
+          "https://stokrotka.pl/oferta/gazetki-promocyjne/",
+          "https://stokrotka.pl/oferta/akcje-promocyjne/",
+          "https://stokrotka.pl/oferta/",
+          "https://stokrotka.pl/oferta/konkursy-i-loterie/",
+          "https://stokrotka.pl/oferta/karty-podarunkowe/",
+          "https://stokrotka.pl/oferta/akcje-promocyjne/specjal-tygodnia/",
+          "https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html",
+          "https://stokrotka.pl/oferta/akcje-promocyjne/pozzi-milano/",
+          "https://stokrotka.pl/oferta/akcje-promocyjne/lego/",
+          "https://stokrotka.pl/oferta/gazetki-promocyjne/wlochy-od-kuchni-1458.html",
+          "https://stokrotka.pl/oferta/akcje-promocyjne/zwieger/",
+          "https://stokrotka.pl/oferta/gazetki-promocyjne/katalog-mikolajki-1069.html",
+          "https://stokrotka.pl/oferta/gazetki-promocyjne/express-1468.html",
+          "http://www.stokrotka.pl/oferta/akcje-promocyjne/pozzi-milano/",
+          "https://stokrotka.pl/oferta-rozszerzona/",
+          "https://stokrotka.pl/oferta-rozszerzona/talony-zakupowe/",
+          "https://mojagazetka.com/gazetka-promocyjna-stokrotka"
+        ],
+        "apis": [
+          "https://stokrotka.pl/wyszukaj/search.html?q=search_term_string",
+          "https://stokrotka.pl/wyszukaj/search.html"
+        ]
+      },
+      {
+        "url": "https://www.stokrotka.pl/oferta",
+        "blocked": false,
+        "status": 200,
+        "final": "https://stokrotka.pl/",
+        "type": "text/html; charset=UTF-8",
+        "bytes": 91581,
+        "nextData": false,
+        "nuxt": false,
+        "ldjson": 2,
+        "offerLd": 0,
+        "prices": 0,
+        "blockedPage": false,
+        "links": [
+          "https://stokrotka.pl/oferta/gazetki-promocyjne/",
+          "https://stokrotka.pl/oferta/akcje-promocyjne/",
+          "https://stokrotka.pl/oferta/",
+          "https://stokrotka.pl/oferta/konkursy-i-loterie/",
+          "https://stokrotka.pl/oferta/karty-podarunkowe/",
+          "https://stokrotka.pl/oferta/akcje-promocyjne/specjal-tygodnia/",
+          "https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html",
+          "https://stokrotka.pl/oferta/akcje-promocyjne/pozzi-milano/",
+          "https://stokrotka.pl/oferta/akcje-promocyjne/lego/",
+          "https://stokrotka.pl/oferta/gazetki-promocyjne/wlochy-od-kuchni-1458.html",
+          "https://stokrotka.pl/oferta/akcje-promocyjne/zwieger/",
+          "https://stokrotka.pl/oferta/gazetki-promocyjne/katalog-mikolajki-1069.html",
+          "https://stokrotka.pl/oferta/gazetki-promocyjne/express-1468.html",
+          "http://www.stokrotka.pl/oferta/akcje-promocyjne/pozzi-milano/",
+          "https://stokrotka.pl/oferta-rozszerzona/",
+          "https://stokrotka.pl/oferta-rozszerzona/talony-zakupowe/",
+          "https://mojagazetka.com/gazetka-promocyjna-stokrotka"
+        ],
+        "apis": [
+          "https://stokrotka.pl/wyszukaj/search.html?q=search_term_string",
+          "https://stokrotka.pl/wyszukaj/search.html"
+        ]
+      }
+    ],
+    "robotsStatus": 200
+  },
+  "penny": {
+    "robots": "User-agent: *\r\nDisallow: /wp-admin/\r\nAllow: /wp-admin/admin-ajax.php\r\n\r\nSitemap: https://penny.pl/sitemap_index.xml",
+    "pages": [
+      {
+        "url": "https://www.penny.pl/",
+        "blocked": false,
+        "status": 200,
+        "final": "https://penny.pl/",
+        "type": "text/html; charset=UTF-8",
+        "bytes": 120414,
+        "nextData": false,
+        "nuxt": false,
+        "ldjson": 1,
+        "offerLd": 0,
+        "prices": 0,
+        "blockedPage": false,
+        "links": [
+          "/produkty/",
+          "https://penny.pl/produkty/mechanizacja-i-automatyzacja-produkcji/",
+          "https://penny.pl/produkty/systemy-pakowania/",
+          "https://penny.pl/produkty/obrabiarki-do-drewna/",
+          "https://penny.pl/produkty/mechanizacje-tartakow-i-technologie-tartaczne/",
+          "https://penny.pl/produkty/pily-stellitowane/",
+          "https://penny.pl/produkty/pily-tarczowe-hm/",
+          "https://penny.pl/produkty/wskazniki-laserowe-produkty/",
+          "/produkty/obrabiarki-do-drewna/pilarki-wielotarczowe/",
+          "/produkty/obrabiarki-do-drewna/pilarki-do-ciecia-poprzecznego/",
+          "/produkty/obrabiarki-do-drewna/pilarki-optymalizujace/",
+          "/produkty/obrabiarki-do-drewna/maszyny-do-produkcji-palet/",
+          "/produkty/obrabiarki-do-drewna/ostrzarki/",
+          "/produkty/obrabiarki-do-drewna/traki-pryzmujace/",
+          "/produkty/mechanizacje-tartakow-i-technologie-tartaczne/",
+          "https://penny.pl/produkty/#katalogi"
+        ],
+        "apis": [
+          "https://www.google.com/recaptcha/api.js?render=6LdCmmIrAAAAAHhWgqb03agfmsTqpkoYBJCJavkI&#038;ver=3.0"
+        ]
+      },
+      {
+        "url": "https://www.penny.pl/oferty",
+        "blocked": false,
+        "status": 404,
+        "final": "https://penny.pl/oferty",
+        "type": "text/html; charset=UTF-8",
+        "bytes": 49024,
+        "nextData": false,
+        "nuxt": false,
+        "ldjson": 1,
+        "offerLd": 0,
+        "prices": 0,
+        "blockedPage": false,
+        "links": [
+          "/produkty/",
+          "https://penny.pl/produkty/mechanizacja-i-automatyzacja-produkcji/",
+          "https://penny.pl/produkty/systemy-pakowania/",
+          "https://penny.pl/produkty/obrabiarki-do-drewna/",
+          "https://penny.pl/produkty/mechanizacje-tartakow-i-technologie-tartaczne/",
+          "https://penny.pl/produkty/pily-stellitowane/",
+          "https://penny.pl/produkty/pily-tarczowe-hm/",
+          "https://penny.pl/produkty/wskazniki-laserowe-produkty/",
+          "https://penny.pl/produkty/#katalogi"
+        ],
+        "apis": [
+          "https://www.google.com/recaptcha/api.js?render=6LdCmmIrAAAAAHhWgqb03agfmsTqpkoYBJCJavkI&#038;ver=3.0"
+        ]
+      }
+    ],
+    "robotsStatus": 200
+  },
+  "intermarche": {
+    "robots": "User-agent: *\nDisallow: /wp-admin/\nDisallow: /wp-content/themes/intermarche/\n",
+    "pages": [
+      {
+        "url": "https://intermarche.pl/",
+        "blocked": false,
+        "status": 200,
+        "final": "https://intermarche.pl/",
+        "type": "text/html; charset=UTF-8",
+        "bytes": 130018,
+        "nextData": false,
+        "nuxt": false,
+        "ldjson": 2,
+        "offerLd": 0,
+        "prices": 0,
+        "blockedPage": false,
+        "links": [
+          "/gazetki-promocyjne/",
+          "https://intermarche.pl/gazetka/nowosci-12/",
+          "https://intermarche.pl/gazetka/gazetka-promocyjna-od-12-18-11//artykuly-przemyslowe",
+          "https://intermarche.pl/gazetka/gazetka-promocyjna-od-12-18-11//drogeria",
+          "https://intermarche.pl/g/gazetka-promocyjna-od-12-18-11/",
+          "/gazetka/",
+          "https://intermarche.pl/gazetki-promocyjne/",
+          "https://intermarche.pl/g/gazetka-promocyjna-od-5-10-11/",
+          "https://intermarche.pl/wp-content/uploads/2026/03/REGULAMIN-PROMOCJI-W-SKLEPACH-INTERMARCHE-2026.pdf",
+          "https://intermarche.pl/informacje-o-produktach/",
+          "https://intermarche.pl/wp-content/uploads/2024/01/REGULAMIN-AKCJI-PROMOCYJNEJ-Kupony-na-paragonie-zima-2024.pdf",
+          "/gazetka"
+        ],
+        "apis": [
+          "http://maps.googleapis.com/maps/api/js?v=3&callback=google.loader.callbacks.maps",
+          "http://maps.gstatic.com/maps-api-v3/api/js/21/10/common.js",
+          "http://maps.gstatic.com/maps-api-v3/api/js/21/10/map.js",
+          "http://maps.gstatic.com/maps-api-v3/api/js/21/10/util.js",
+          "http://maps.gstatic.com/maps-api-v3/api/js/21/10/marker.js",
+          "http://maps.gstatic.com/maps-api-v3/api/js/21/10/onion.js",
+          "http://maps.gstatic.com/maps-api-v3/api/js/21/10/controls.js",
+          "http://maps.gstatic.com/maps-api-v3/api/js/21/10/stats.js",
+          "https://intermarche.pl/wp-content/uploads/2026/11/modul-nieproduktowy-papier-Foxy-7.png)"
+        ]
+      },
+      {
+        "url": "https://intermarche.pl/promocje",
+        "blocked": false,
+        "status": 404,
+        "final": "https://intermarche.pl/promocje",
+        "type": "text/html; charset=UTF-8",
+        "bytes": 64227,
+        "nextData": false,
+        "nuxt": false,
+        "ldjson": 2,
+        "offerLd": 0,
+        "prices": 0,
+        "blockedPage": false,
+        "links": [
+          "/gazetki-promocyjne/",
+          "https://intermarche.pl/gazetka/nowosci-12/",
+          "https://intermarche.pl/gazetka/gazetka-promocyjna-od-12-18-11//artykuly-przemyslowe",
+          "https://intermarche.pl/gazetka/gazetka-promocyjna-od-12-18-11//drogeria",
+          "/gazetka",
+          "https://intermarche.pl/wp-content/uploads/2026/03/REGULAMIN-PROMOCJI-W-SKLEPACH-INTERMARCHE-2026.pdf",
+          "https://intermarche.pl/informacje-o-produktach/",
+          "https://intermarche.pl/wp-content/uploads/2024/01/REGULAMIN-AKCJI-PROMOCYJNEJ-Kupony-na-paragonie-zima-2024.pdf"
+        ],
+        "apis": [
+          "http://maps.googleapis.com/maps/api/js?v=3&callback=google.loader.callbacks.maps",
+          "http://maps.gstatic.com/maps-api-v3/api/js/21/10/common.js",
+          "http://maps.gstatic.com/maps-api-v3/api/js/21/10/map.js",
+          "http://maps.gstatic.com/maps-api-v3/api/js/21/10/util.js",
+          "http://maps.gstatic.com/maps-api-v3/api/js/21/10/marker.js",
+          "http://maps.gstatic.com/maps-api-v3/api/js/21/10/onion.js",
+          "http://maps.gstatic.com/maps-api-v3/api/js/21/10/controls.js",
+          "http://maps.gstatic.com/maps-api-v3/api/js/21/10/stats.js"
+        ]
+      }
+    ],
+    "robotsStatus": 200
+  }
+}

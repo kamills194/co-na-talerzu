@@ -1,0 +1,1875 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+	<head>
+		<title>Stokrotka - ogólnopolska sieć sklepów</title>
+		<link rel="shortcut icon" href="https://stokrotka.pl/template/default/favicon_stokrotka.ico">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+							<meta name="0" content="a:2:{s:11:"description";s:155:"Zapraszamy na zakupy do sklepów Stokrotka! Sprawdź szeroki wybór asortymentu, świeże produkty. Znajdź najbliższy sklep. Świeżość na uwadze MAMY!";s:8:"keywords";s:0:"";}" />		
+										<script  
+				 src="/data/domains/CACHE_SPEED/1/pl/JS/d5d418ed5455641b68367c29a440b44b.js?1794958256"
+				>
+				</script>				
+						
+				
+		
+		
+					<script src="/component/w_phone_preview/JS/w_phone_preview.js"></script>
+			
+					<script src="/lib/JS/jquery.dotdotdot.min.js"></script>
+			
+					<script src="/lib/JS/jq.matchheight.js"></script>
+			
+				<!--[if lt IE 9]>
+			<script src="/lib/JS/html5.js" type="text/javascript"></script>
+		<![endif]-->
+				<!-- START COOKIES -->      
+					
+				<script>
+					// Define dataLayer and the gtag function.
+					window.dataLayer = window.dataLayer || [];
+					function gtag(){dataLayer.push(arguments);}
+
+					gtag('consent', 'default', {
+						'ad_storage': 'denied',
+						'ad_user_data': 'denied',
+						'ad_personalization': 'denied',
+						'analytics_storage': 'denied',
+						'functionality_storage': 'denied',
+						'personalization_storage': 'denied',
+						'security_storage': 'denied',
+						'wait_for_update': 2000
+					});
+
+					gtag('consent', 'update', {
+			
+					});
+				</script>
+			
+				<!-- END COOKIES -->   
+
+		<!-- Google Tag Manager -->
+		
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+
+		})(window,document,'script','dataLayer','GTM-565MJ7Q');</script>
+		
+		<!-- End Google Tag Manager -->
+
+		<link rel="stylesheet" type="text/css" href="/ADMIN/module/m_rodo/VIEW/default/m_rodo.css">
+					<link rel="stylesheet" type="text/css" href="/data/domains/CACHE_SPEED/1/pl/STYLE/891ad99e9a8a10dc2607a419a23fb9f5.css?1794958256">
+							
+		
+		<script defer>
+			
+			var domainId = '1';
+			var s_lang = 'pl';
+			var ILANG = {"select_all":"Zaznacz wszystkie","unselect_all":"Odznacz wszystkie","_YES":"TAK","_NO":"NIE","textarea":"Pole tekstowe","remove":"Usu\u0144","user":"Login","password":"Has\u0142o","OK":"OK","save":"Zapisz","save_as_new":"Zapisz jako nowy","cancel":"Anuluj","processing":"Przetwarzanie...","getting_page":"Pobieranie strony...","switch_on":"W\u0142\u0105cz obszar","switch_off":"Wy\u0142\u0105cz obszar","system":"System","noTooltipContent":"Brak tre\u015bci podpowiedzi","do_you_want_to_continue":"Czy napewno chcesz kontynuowa\u0107?","del_picture":"Usu\u0144 zdj\u0119cie","del_file":"Usu\u0144 za\u0142\u0105cznik","do_you_want_to_delete_image":"Czy napewno chcesz usun\u0105\u0107 zdj\u0119cie <b>%s<\/b> ?","do_you_want_to_delete_file":"Czy napewno chcesz usun\u0105\u0107 za\u0142\u0105cznik <b>%s<\/b> ?","crop_image_question":"Aktualne zdj\u0119cie zostanie zamienione, czy chcesz kontynuowa\u0107 ?","form_error_message_title":"Dane formularza zawieraj\u0105 b\u0142\u0119dy","form_error_message_count":"Wype\u0142nij wszystkie pola formularza poprawnie i spr\u00f3buj ponownie.<br\/><br\/><b>Ilo\u015b\u0107 b\u0142\u0119d\u00f3w w formularzu:  %s.<\/b>","chars_left":"Pozosta\u0142o znak\u00f3w: <b>%s<\/b>","textarea_to_mach_chars":"Pole tekstowe nie mo\u017ce zawiera\u0107 wi\u0119cej ni\u017c <b>%s<\/b> znak\u00f3w.","rows_not_checked":"Nie zaznaczono \u017cadnego z wierszy.","not_supporter_broser":"System wykry\u0142 \u017ce u\u017cywasz starej wersji przegl\u0105darki Internet Explorer 6.0. Nie jest ona zalecana do pracy z systemem Imperial CMS, prosimy o aktaulizacj\u0119 przegl\u0105darki.<br\/><br\/><a href=http:\/\/www.mozilla-europe.org\/pl\/firefox\/>Pobierz zalecan\u0105 przegl\u0105dark\u0119<\/a>","saving":"Zapisywanie...","croping":"Przycinanie zdj\u0119cia...","crop_picture":"Przytnij zdj\u0119cie","change_add_desc":"Zmie\u0144\/dodaj opis","desc":"Opis","deleting":"Usuwanie...","loading_tree_struct":"\u0141adowanie drzewa katalog\u00f3w...","checkingSymbol":"Sprawdzanie symbolu...","searching":"Wyszukiwanie...","checkind_selected_place":"Sprawdzanie wybranego miejsca...","place_incorect":"To miejsce zawiera ju\u017c katalog o symbolu \u201e<b>%s<\/b>\u201d, wybierz inne miejsce lub zmie\u0144 \u201e<b>Symbol<\/b>\u201d.","select_place_in_service_structure":"Wybierz miejsce w <span class=BLUE>Strukturze katalog\u00f3w<\/span>, do kt\u00f3rego zostanie dodany katalog:","select_catalog":"Wybierz katalog:","type_phrase_to_search":"Znajd\u017a fraze...","phrase_to_search_empty":"Podaj fraz\u0119 do wyszukania.","select_publication_pleace":"Wybierz miejsce w kt\u00f3re chcesz umie\u015bci\u0107 katalog:","type_symbol_and_try_again":"Wype\u0142nij poprawnie pole \u201e<b>Symbol<\/b>\u201d i sprubuj ponownie.","unexpected_error":"Wyst\u0105pi\u0142 b\u0142\u0105d w systemie, sprubuj powt\u00f3rzy\u0107 operac\u0119 - je\u015bli b\u0142\u0105d si\u0119 powt\u00f3rzy skontaktu si\u0119 z administratorem.","service_struct_catalog_symbol_taken":"<p>Katalog nie mo\u017ce znajdowa\u0107 si\u0119 w tym miejscu poniwa\u017c na tym poziomie istenieje ju\u017c katalog o takim samym symbolu \u201e<b>%s<\/b>\u201d.<br\/>Zmie\u0144 symbol tego katalogu i sprubuj ponownie.<\/p>","service_struct_catalog_symbol_global_taken":"<p>Katalog kt\u00f3ry prubujesz przenie\u015b\u0107 nie mo\u017ce znajdowa\u0107 si\u0119 w tym miejscu, poniwa\u017c na poziomie 1 istenieje ju\u017c katalog o takim samym symbolu \u201e<b>%s<\/b>\u201d w tym lub innym menu.<br\/>Zmie\u0144 symbol tego katalogu i sprubuj ponownie.<\/p>","all_images_deleted":"Wszystkie zdj\u0119cia zosta\u0142y usuni\u0119te","all_files_deleted":"Wszystkie za\u0142\u0105czniki zosta\u0142y usuni\u0119te","login_to_vote":"Zaloguj si\u0119 by zag\u0142osowa\u0107 !","login_to_set_recomended":"Zaloguj si\u0119 by poleci\u0107 !","login_to_unset_recomended":"Zaloguj si\u0119 by usun\u0105\u0107 z polecanych !","go_to_login":"Zaloguj","sending_data":"Wysy\u0142ka danych, prosz\u0119 czeka\u0107...","session_end":"Twoja sesja wyga\u015bnie za %s sekund, czy chcesz j\u0105 przed\u0142u\u017cy\u0107 ?","renew":"Przed\u0142u\u017c","type_catalog_name":"Wpisz nazw\u0119 katalogu...","you_can_drop":"Mo\u017cesz upu\u015bci\u0107","you_cant_drop":"<span class=\"RED\">Nie mo\u017cesz upu\u015bci\u0107<\/span>","window_cant_by_in_area":"Okno nie mo\u017ce znajdowa\u0107 si\u0119 w tym obszarze.","saving_windows_failed":"Wyst\u0105pi\u0142 b\u0142\u0105d podczas zapisu okien.","saving_areas_failed":"Wyst\u0105pi\u0142 b\u0142\u0105d podczas zapisu obszar\u00f3w.","default_setting_failed":"Wyst\u0105pi\u0142 b\u0142\u0105d podczas przywracania ustawie\u0144 domy\u015blnych.","set_default_setting":"Przywracanie ustawie\u0144 domy\u015blnych, prosz\u0119 czeka\u0107...","trush_flushing":"Opr\u00f3\u017cnianie kosza, prosz\u0119 czeka\u0107...","remove_windows_failed":"Wyst\u0105pi\u0142 b\u0142\u0105d podczas opr\u00f3\u017cniania kosza, okna nie zosta\u0142y usuni\u0119te.","clear_trash":"Opr\u00f3\u017cnij kosz","clear_trash_question":"Czy napewno chcesz opr\u00f3\u017cni\u0107 kosz?<br\/><br\/>Wszystkie okna znajduj\u0105ce si\u0119 w koszu zostan\u0105 usuni\u0119te wraz z ich zawarto\u015bci\u0105.","trash_empty":"Kosz jest pusty.","getting_info":"Pobieranie informacji...","file_desc":"Dodaj opis...","file_selected":"Ten pliku(<b>$file<\/b>) ju\u017c zosta\u0142 wcze\u015bniej wybrany.","files_to_upload":"Pliki do wys\u0142ania","change_image":"Zamie\u0144 zdj\u0119cie","changing_image":"Zamiana zdj\u0119cia...","file_selected_to_upload":"Plik $file wybrany do wys\u0142ania.","filetype_validator":"Wybrany plik ma nieprawid\u0142owy typ <b>$ext<\/b>, wybierz inny plik.","filetype_validator_1":"Wybrany plik ma nieprawid\u0142owy typ <b>%s<\/b>, wybierz inny plik.","image_change_filesize_error":"Plik kt\u00f3ry wybra\u0142e\u015b do zamiany ma za du\u017cy rozmiar - wybierz inny plik.","image_change_fileexists_error":"Plik kt\u00f3ry wybra\u0142e\u015b do zamiany ju\u017c zosta\u0142 wcze\u015bniej dodany - wybierz inny plik.","upload_error":"Wyst\u0105pi\u0142 problem z wys\u0142aniem pliku na serwer - spr\u00f3buj ponownie."};
+			var isMobile = false;
+
+				$(document).ready(function () {
+					$.Imperial.init({
+						id_domain_group: '1',
+						id_domain: '1',
+						s_lang: 'pl',
+						sa_lang: 'pl',
+						base: 'https://stokrotka.pl/template/default/',
+						isAdmin:false,
+									isAdminApiRequest:false,
+												isLogged:false														});
+													});
+		</script>
+		
+		<!--search action -->
+					<script type="application/ld+json">
+				{
+					"@context": "http://schema.org",
+					"@type": "WebSite",
+					"name": "Stokrotka",
+					"url":"https://stokrotka.pl/",
+					"potentialAction":{
+						"@type":"SearchAction",
+						"target": "https://stokrotka.pl/wyszukaj/search.html?q=search_term_string",
+						"query-input": "required name=search_term_string"
+						}
+				}	
+			</script>
+		        
+        <div style="display:none;"><ul itemscope itemtype="http://www.schema.org/SiteNavigationElement">
+
+<li itemprop="name"><a itemprop="url" href="https://stokrotka.pl/oferta/gazetki-promocyjne/">Gazetki promocyjne</a></li>
+
+<li itemprop="name"><a itemprop="url" href="https://stokrotka.pl/oferta/akcje-promocyjne/">Akcje promocyjne</a></li>
+
+<li itemprop="name"><a itemprop="url" href="https://stokrotka.pl/formularz-kontaktowy-dla-klienta/">Kontakt</a></li>
+
+<li itemprop="name"><a itemprop="url" href="https://stokrotka.pl/nasze-sklepy/">Nasze sklepy</a></li>
+
+</ul></div>
+		
+		<!-- breadcrumbs -->
+		<script type="application/ld+json">{
+			"@context": "http://schema.org/", 
+			"@type": "BreadcrumbList", 
+			"itemListElement":[
+							{
+				"@type": "ListItem",
+				"position":1,
+				"item":{
+																							"@id":"https://stokrotka.pl/", 																																	"name":"Strona główna" 								}
+				}					
+			]
+			}
+		</script>
+		
+					
+
+
+
+						
+					<!-- Google Tag Manager -->
+<script>
+window._adftrack=Array.isArray(window._adftrack)?window._adftrack:window._adftrack?[window._adftrack]:[];window._adftrack.push({HttpHost:"a1.adform.net",pm:1982154,divider:encodeURIComponent("|"),pagename:encodeURIComponent("stokrotka.pl - Page Views"),order:{svn1:"https://stokrotka.pl.dev.agendo.pl/"}});
+(function(){var a=document.createElement("script");a.type="text/javascript";a.async=!0;a.src="https://s2.adform.net/banners/scripts/st/trackpoint-async.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();
+</script>
+<!-- End Google Tag Manager -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-7516720-1"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-7516720-1');
+</script>
+
+<!-- Facebook Pixel Code -->
+
+<script>
+
+  !function(f,b,e,v,n,t,s)
+
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+
+  n.queue=[];t=b.createElement(e);t.async=!0;
+
+  t.src=v;s=b.getElementsByTagName(e)[0];
+
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+
+  'https://connect.facebook.net/en_US/fbevents.js');
+
+  fbq('init', '1996779773920887');
+
+  fbq('track', 'PageView');
+
+</script>
+
+
+<!-- End Facebook Pixel Code -->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script>	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-7516720-1', 'auto');
+	ga('send', 'pageview');</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const acceptAllBtn = document.querySelector('.cookiePopup__button--submitAll');
+    if (acceptAllBtn) {
+      acceptAllBtn.addEventListener('click', function (e) {
+        try {
+          gtag('consent', 'update', {
+            'ad_storage': 'granted',
+            'analytics_storage': 'granted',
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted'
+          });
+          localStorage.setItem('ad_storage', 'granted');
+          localStorage.setItem('analytics_storage', 'granted');
+          localStorage.setItem('ad_user_data', 'granted');
+          localStorage.setItem('ad_personalization', 'granted');
+
+ 
+
+          // Reload with delay so consent is available to GTM
+          setTimeout(function () {
+            window.location.reload();
+          }, 300);
+        } catch (err) {
+          console.error('Consent update failed:', err);
+        }
+      });
+    }
+  });
+</script>
+				
+		
+	       
+
+	</head>
+	<body class="home">
+	
+	<!-- Google Tag Manager (noscript) -->
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-565MJ7Q"
+		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+
+		
+		
+											<div id="container-324">  </div> <!-- popout-->
+
+	<div class="main-wrapper">
+		<div class="over-header standard-border-color">
+			<div class="container container-1300">
+				<div class="over-header-inner">
+					<div class="small-menu left">
+						<div class="default-container" id="container-111"><div class="rel">
+	<ul class="wm standard-border-color" id="wm-111">
+			<li class="standard-border-color interactive">
+		<a  class="interactive" href="https://stokrotka.pl/otworz-swoj-sklep/">
+			<span title="Otwórz swój sklep" class="wm-ico"><i class="nc-icon-outline business_hierarchy-53"></i></span>			<span class="wm-text">Otwórz swój sklep</span>
+		</a>
+	</li>
+
+<li class="spacer"></li>	<li class="standard-border-color interactive">
+		<a  class="interactive" href="https://kariera.stokrotka.pl">
+			<span title="Kariera" class="wm-ico"><i class="nc-icon-outline users_man-23"></i></span>			<span class="wm-text">Kariera</span>
+		</a>
+	</li>
+
+<li class="spacer"></li>	<li class="standard-border-color interactive">
+		<a  class="interactive" href="https://stokrotka.pl/o-firmie/">
+			<span title="O firmie" class="wm-ico"><i class="nc-icon-outline business_board-28"></i></span>			<span class="wm-text">O firmie</span>
+		</a>
+	</li>
+
+<li class="spacer"></li>	<li class="standard-border-color interactive">
+		<a  class="interactive" href="https://stokrotka.pl/nieruchomosci/">
+			<span title="Nieruchomości" class="wm-ico"><i class="nc-icon-outline business_building"></i></span>			<span class="wm-text">Nieruchomości</span>
+		</a>
+	</li>
+
+<li class="spacer"></li>	<li class="standard-border-color interactive">
+		<a  class="interactive" href="https://stokrotka.pl/nasze-marki-i-uslugi/">
+			<span title="Nasze marki i usługi" class="wm-ico"><i class="nc-icon-outline nature_flower-05"></i></span>			<span class="wm-text">Nasze marki i usługi</span>
+		</a>
+	</li>
+
+
+	</ul>
+</div>
+<script>
+	$(document).ready(function () {
+		$('#wm-111').wMenu({});
+	});
+</script></div>
+					</div>
+											<div class="location-wrapper right">
+							<div id="container-142"><div class="rel">
+	<div class="wcl-location">
+					<div class="table">
+				<div class="wcl-main">
+					<span class="wcl-icon">
+						<i class="wcl green nc-icon-outline location_pin"></i>
+					</span>
+					<span class="wcl-text">
+						<span>Moja lokalizacja</span>
+						<a href="javascript:void(0)" class="wcl-current-location-wrapper">
+							<span class="wcl-current-location green">
+								<strong>
+																			<span class="wcl-current-location">Pobieram...</span>
+																	</strong>
+							</span>
+						</a>
+					</span>
+				</div>
+				<div class="wcl-change-locality-wrapper shadow interactive">
+					<a href="javascript:void(0);" class="wcl-change-locality interactive">
+						<span>
+							<i class="nc-icon-glyph arrows-1_triangle-up-19 interactive"></i>
+						</span>
+					</a>
+				</div>
+			</div>
+				<div class="wcl-locality-select-cont">
+			<div class="table">
+				<a href="javascript:void(0);" class="table-cell x-button red interactive"><span >&#10006;</span></a>
+				<input type="text" class="wcl-locality-city inline-block TEXT TEXT_WHITE" placeholder="Wprowadź miejscowość" value="" />
+				<button class="wcl-locality-confirm interactive BTN">Ustaw</button>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+		<div class="wcl-location-closest-point">
+			<!--			HTML HERE IS INSERTED BY JS FUNCTION-->
+		</div>
+	</div>
+</div>
+<script>
+	var current_location = null;
+	$(document).ready(function () {
+		current_location = $('.wcl-current-location').currentLocalization({
+			ajax: {
+				getDataByLatLon: '/IAJAX/Y25jd3N1dllJT0JselFiK1FjL0o1WEVVVlVoa280REszRm5jYVN4VVUxV014ZHgyMG90VW5FSGMxNjJoQmR1N3UwQlR4L0JaZHQvdlBzQU1BbWdOSnNqd3RBa3BFSkJrdDZyUVZwRkExMXF5Vm50OG9IQ0RiSW1QSEQxK0N3bXM6OrUzdySatPt4GXRjgAbzDuk-',
+				setLocalityData: '/IAJAX/Y3BhaE5QUUxlQktqL1JsTEtUWW9ka2xGSEhpNFlnaUFnRlZTaExPOG1ySmNXYjNVRGFyZXl4OHNyOWdtWERxUUhCWUxZNjEzYmRsUHI3b3NMQUhKdk1HbElPYzV6K0hKclBtSk8ydTNCRFZvZnU4eFNyRkl5RHVBY3gzSDhhWFQ6OqwkoJC10XxTE6jZvGo4z1E-',
+				getCities: '/IAJAX/aVhDeDlSNHllRWUyVyt0T1pwZDg5ZnJrOXU1UFBvczZWSXo5dmZySnkxR1dha0dZSklLYkU5VnZCbmR1L3BDL0I4bFZsYW0yVmEzeDhzZnBSemMvMzFGTEtMZkhwOG94cWdkOGRSbGtJaE40NmFWeXNheTZIZHdYcTc3VWo2MXU6OtUm_p9qEFLtTX.FnoLLZDQ-',
+				getObjects: '/IAJAX/MjhoeVhpclJYMko4emJFZ0dPV1RyTksrZFpwRk02MmRlamFQNHNwUkphbE5wMDJFR0tlRVQ1RmVYMUtvQUw1K1FWS3hpck1zT20vRFd4ZkhpZFc2a3VqcDZ6bGRnV3Q2ZFpZSHFsdVYxYm0vQ2tTOTUvM3NSZW1lRHkyUFpjZS86Ovo4qffwaE145.bIeUZ4f58-'
+			},
+			catalog: "nasze-sklepy",
+			getLocation:true,
+					});
+				});
+</script></div>
+						</div>
+									</div>
+			</div>
+		</div>
+	</div>
+<header>
+	<div class="main-wrapper rel">
+		<div class="container container-1300">
+			<section> 
+				<div class="table top-wrapper">
+					<div class="logo table-cell vertical-middle">
+													<a href="https://stokrotka.pl/">
+																									<img src="https://stokrotka.pl/template/default/gfx/logo.jpg" alt="logo"/></a>
+																	</div>
+					<div class="table-cell top-main-menu vertical-middle ROW-100">
+						<div class="table rel ROW-100 vertical-middle">
+							<div class="table-cell menu-wrapper"><div id="container-112"><div class="w-menu-wrapper ga-event-category" id="Menu_główne_-_rozwijane">
+	<button class="hamburger hamburger--spring" type="button">
+		<span class="hamburger-box">
+			<span class="hamburger-inner"></span>
+		</span>
+    </button>
+
+	<div class="clear"></div>
+	<ul class="dd-menu dd-menu-static" id="wddm-112">
+			<li class="branch branch_0">
+		<a data-ga-event-label="Aplikacja" class=" ga-clickable " href="https://www.naszastokrotka.pl/">
+							Aplikacja
+		</a>
+	</li>
+<li class="spacer "></li>	<li class="parent parent_1">
+					<a data-ga-event-label="Oferta" class="pa ga-clickable" href="https://stokrotka.pl/oferta/">Oferta</a>
+<a href="javascript:void(0);" class="dd-mobile-toggle">
+	<i class="nc-icon-glyph arrows-1_triangle-down-20 interactive"></i>
+</a>
+<ul class="tm-l2-2">
+		<li class="branch branch_0">
+		<a data-ga-event-label="Gazetki promocyjne" class=" ga-clickable " href="https://stokrotka.pl/oferta/gazetki-promocyjne/">
+							Gazetki promocyjne
+		</a>
+	</li>
+<li class="spacer "></li>	<li class="branch branch_1">
+		<a data-ga-event-label="Akcje promocyjne" class=" ga-clickable " href="https://stokrotka.pl/oferta/akcje-promocyjne/">
+							Akcje promocyjne
+		</a>
+	</li>
+<li class="spacer "></li>	<li class="branch branch_2">
+		<a data-ga-event-label="Konkursy i loterie" class=" ga-clickable " href="https://stokrotka.pl/oferta/konkursy-i-loterie/">
+							Konkursy i loterie
+		</a>
+	</li>
+<li class="spacer "></li>	<li class="branch branch_3">
+		<a data-ga-event-label="Karty podarunkowe" class=" ga-clickable " href="https://stokrotka.pl/oferta/karty-podarunkowe/">
+							Karty podarunkowe
+		</a>
+	</li>
+<li class="spacer last-spacer"></li>
+</ul>
+
+	</li>
+<li class="spacer "></li>	<li class="branch branch_2">
+		<a data-ga-event-label="Nasze sklepy" class=" ga-clickable " href="https://stokrotka.pl/nasze-sklepy/">
+							Nasze sklepy
+		</a>
+	</li>
+<li class="spacer "></li>	<li class="branch branch_3">
+		<a data-ga-event-label="Sklep online" class=" ga-clickable " href="https://sklep.stokrotka.pl/">
+							Sklep online
+		</a>
+	</li>
+<li class="spacer "></li>	<li class="parent parent_4">
+					<a data-ga-event-label="Inspiracje" class="pa ga-clickable" href="https://stokrotka.pl/inspiracje/">Inspiracje</a>
+<a href="javascript:void(0);" class="dd-mobile-toggle">
+	<i class="nc-icon-glyph arrows-1_triangle-down-20 interactive"></i>
+</a>
+<ul class="tm-l2-2">
+		<li class="branch branch_0">
+		<a data-ga-event-label="Specjał Tygodnia" class=" ga-clickable " href="https://stokrotka.pl/oferta/akcje-promocyjne/specjal-tygodnia/" target="_blank">
+							Specjał Tygodnia
+		</a>
+	</li>
+
+</ul>
+
+	</li>
+<li class="spacer "></li>	<li class="parent parent_0">
+					<a data-ga-event-label="Kontakt" class="pa ga-clickable" href="https://stokrotka.pl/kontakt-top/">Kontakt</a>
+<a href="javascript:void(0);" class="dd-mobile-toggle">
+	<i class="nc-icon-glyph arrows-1_triangle-down-20 interactive"></i>
+</a>
+<ul class="tm-l2-2">
+		<li class="branch branch_0">
+		<a data-ga-event-label="Biuro Obsługi Klienta" class=" ga-clickable " href="https://stokrotka.pl/formularz-kontaktowy-dla-klienta/#contact-2">
+							Biuro Obsługi Klienta
+		</a>
+	</li>
+<li class="spacer "></li>	<li class="branch branch_1">
+		<a data-ga-event-label="Nieruchomości" class=" ga-clickable " href="https://stokrotka.pl/formularz-kontaktowy-dla-klienta/#contact-3">
+							Nieruchomości
+		</a>
+	</li>
+<li class="spacer "></li>	<li class="branch branch_2">
+		<a data-ga-event-label="Franczyza - nawiąż współpracę" class=" ga-clickable " href="https://stokrotka.pl/formularz-kontaktowy-dla-klienta/#contact-5">
+							Franczyza - nawiąż współpracę
+		</a>
+	</li>
+<li class="spacer "></li>	<li class="branch branch_3">
+		<a data-ga-event-label="Dla mediów" class=" ga-clickable " href="https://stokrotka.pl/formularz-kontaktowy-dla-klienta/#contact-5">
+							Dla mediów
+		</a>
+	</li>
+<li class="spacer "></li>	<li class="branch branch_4">
+		<a data-ga-event-label="Praca" class=" ga-clickable " href="https://kariera.stokrotka.pl/kontakt/dane-kontaktowe/">
+							Praca
+		</a>
+	</li>
+<li class="spacer last-spacer"></li>
+</ul>
+
+	</li>
+<li class="spacer last-spacer"></li>
+	</ul>
+	<div class="clear"></div>
+
+</div>
+<script>
+	$(document).ready(function () {
+		$('#wddm-112').wDropDownMenu({});
+		var menuOver = $('.small-menu ul.wm').clone();
+		$('.top-wrapper .dd-menu').append(menuOver);
+		menuOver.wrap('<li class="over-menu">')
+
+	});
+</script></div></div>
+															<div class="table-cell vertical-middle show-over-header-wrapper hidden">
+									<div class="show-over-header">
+										<button class="show-over-header-button"><i class="nc-icon-glyph location_pin"></i></button>
+									</div>
+								</div>
+														<div class="top top_search table-cell vertical-middle right">
+								<div id="container-15">	<form action="https://stokrotka.pl/wyszukaj/search.html" id='window-search-form' class="main-stokrotka-form" method="get" class="hidden">
+		<div>
+			<input type="text" name="q" id='window-serach-input'  placeholder="Szukaj..." value="" class="WS_query rel" />
+		</div>
+	</form>
+
+	<a href="javascript:void(0)" id='window_search-icon' class="green interactive search-icon br-loup "><i class="nc-icon-glyph ui-1_zoom"></i></a>
+	<script>
+		$('.WS_query').wSearch({
+			ajax: {
+				autocomplete: '/IAJAX/SjhVb0htV21xTzB0VS9Ra0JIdmVuTTFhRzJ3RGVXbTRRdlVLUWo0RWlSZGJLRzA0eUlDMHpSeW1tL3B0ZTJGTjRWakQxWHZlamFCWHJtU3VHaHBHUWREWEg3em9wK0dzS0Zvd00yYlJjS289OjpKKuNzqAf2iwHrtzta9di5'
+			}
+		});
+		
+			if (window.matchMedia('(max-width: 1185px)').matches)
+			{
+				$(".top_search a#window_search-icon").click(function (e) {
+					let top_search_icon = $(".top_search a#window_search-icon");
+
+					top_search_icon.toggleClass('active');
+
+					if (top_search_icon.hasClass('active'))
+					{
+						$('.top_search form').show('slide', {
+							direction: 'right'
+						}, 1000, function () {
+							$(this).parent().find("form input").focus();
+						});
+
+					} else
+					{
+						$('#window-search-form').submit();
+					}
+				});
+			} else
+			{
+				$(".top_search a").click(function (e) {
+
+					if ($(this).hasClass('active')) {
+						$(this).removeClass("active");
+					}
+					$('#window-search-form').submit();
+					e.stopPropagation();
+				});
+			}
+			$("body").click(function (e) {
+				if ((!$(e.target).parent().attr("id") == 'window_search-icon' || !$(e.target).hasClass('ui-1_zoom')) && window.matchMedia('(max-width: 1185px)').matches) {
+					$(".top_search a").removeClass("active");
+					$('.top_search form').hide('slide', {
+						direction: 'right'
+					}, 1000);
+				}
+			});
+		
+
+	</script>
+
+
+</div>
+								<div class="clear"></div>
+							</div>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+	<div class="social-media-fixed ga-event-category" id="Przesuwane_ikony_mediów_społecznościowych">
+							</div>
+</header><main style='
+	  		  background-size: cover;
+		  		  		  		  		  	  	  '>
+	<div class="main-wrapper">
+		<div class="default-container" id="container-123"><div id="wprez-wrap-123" class="wprez wprez-big">
+			<div class="wprez-main" id="wprez-123">
+							<div class="container rel height-100">
+					<div class="wprez-prev-next wprez-prev circle interactive">
+						<a class="circle " href="javascript:void(0);">
+							<span class="table">
+								<i class="table-cell vertical-middle nc-icon-glyph arrows-1_bold-left"></i>
+							</span>
+						</a>
+					</div>
+					<div class="wprez-prev-next wprez-next interactive circle">
+						<a class="circle" href="javascript:void(0);">
+							<span class="table txt-center">
+								<i class="table-cell vertical-middle nc-icon-glyph arrows-1_bold-right"></i>
+							</span>
+						</a>
+					</div>
+				</div>
+			
+			<div class="ga-event-category" id="Prezentacja_główna">
+				<div class="wprez-cont" id="wprez-cont123">
+											<div onclick="javascript:location.href = 'https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html';"  data-ga-event-label="" data-iteration="1" data-href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" class="ga-clickable ga-slides wprez-cont-prez active clickable" data-image_main="/data/domains/1/pl/w_prezentation/123/9150/t46-cwiartka-mieso-paczkowane-glorius-1920x540.jpg" data-image_767="/data/domains/1/pl/w_prezentation/123//9150/6af1c2b6ac241.jpg" style="background-image: url(/data/domains/1/pl/w_prezentation/123//9150/t46-cwiartka-mieso-paczkowane-glorius-1920x540.jpg);">
+								<div class="main container rel">
+																			<div style="" 
+											 class="slider-button-corner">
+											Sprawdź ofertę!
+										</div>
+																									</div>
+						</div>
+											<div onclick="javascript:location.href = 'https://stokrotka.pl/oferta/akcje-promocyjne/pozzi-milano/';"  data-ga-event-label="" data-iteration="2" data-href="https://stokrotka.pl/oferta/akcje-promocyjne/pozzi-milano/" class="ga-clickable ga-slides wprez-cont-prez clickable" data-image_main="/data/domains/1/pl/w_prezentation/123/9091/stokrotka-pozzi26-glorius1920x540.png" data-image_767="/data/domains/1/pl/w_prezentation/123//9091/6ad8a801e350c.jpg" style="background-image: url(/data/domains/1/pl/w_prezentation/123//9091/stokrotka-pozzi26-glorius1920x540.png);">
+								<div class="main container rel">
+																			<div style="" 
+											 class="slider-button-corner">
+											Sprawdź szczegóły!
+										</div>
+																									</div>
+						</div>
+											<div onclick="javascript:location.href = 'https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html';"  data-ga-event-label="" data-iteration="3" data-href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" class="ga-clickable ga-slides wprez-cont-prez clickable" data-image_main="/data/domains/1/pl/w_prezentation/123/9147/glorius-1920x540-filet.jpg" data-image_767="/data/domains/1/pl/w_prezentation/123//9147/6af1c25f10c52.jpg" style="background-image: url(/data/domains/1/pl/w_prezentation/123//9147/glorius-1920x540-filet.jpg);">
+								<div class="main container rel">
+																			<div style="" 
+											 class="slider-button-corner">
+											Sprawdź ofertę!
+										</div>
+																									</div>
+						</div>
+											<div onclick="javascript:location.href = 'https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html';"  data-ga-event-label="" data-iteration="4" data-href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" class="ga-clickable ga-slides wprez-cont-prez clickable" data-image_main="/data/domains/1/pl/w_prezentation/123/9145/glorius-1920x540-jablka.jpg" data-image_767="/data/domains/1/pl/w_prezentation/123//9145/6af1c236348eb.jpg" style="background-image: url(/data/domains/1/pl/w_prezentation/123//9145/glorius-1920x540-jablka.jpg);">
+								<div class="main container rel">
+																			<div style="" 
+											 class="slider-button-corner">
+											Sprawdź ofertę!
+										</div>
+																									</div>
+						</div>
+											<div onclick="javascript:location.href = 'https://stokrotka.pl/oferta/akcje-promocyjne/lego/';"  data-ga-event-label="" data-iteration="5" data-href="https://stokrotka.pl/oferta/akcje-promocyjne/lego/" class="ga-clickable ga-slides wprez-cont-prez clickable" data-image_main="/data/domains/1/pl/w_prezentation/123/9128/stokrotka-www-1920x540px.jpg" data-image_767="/data/domains/1/pl/w_prezentation/123//9128/6aeb2c619caaf.jpg" style="background-image: url(/data/domains/1/pl/w_prezentation/123//9128/stokrotka-www-1920x540px.jpg);">
+								<div class="main container rel">
+																									</div>
+						</div>
+											<div onclick="javascript:location.href = 'https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html';"  data-ga-event-label="" data-iteration="6" data-href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" class="ga-clickable ga-slides wprez-cont-prez clickable" data-image_main="/data/domains/1/pl/w_prezentation/123/9144/glorius-1920x540-kurczak.jpg" data-image_767="/data/domains/1/pl/w_prezentation/123//9144/6af1c2108c5b5.jpg" style="background-image: url(/data/domains/1/pl/w_prezentation/123//9144/glorius-1920x540-kurczak.jpg);">
+								<div class="main container rel">
+																			<div style="" 
+											 class="slider-button-corner">
+											Sprawdź ofertę!
+										</div>
+																									</div>
+						</div>
+											<div onclick="javascript:location.href = 'https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html';"  data-ga-event-label="" data-iteration="7" data-href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" class="ga-clickable ga-slides wprez-cont-prez clickable" data-image_main="/data/domains/1/pl/w_prezentation/123/9146/glorius-1920x540-mleko.jpg" data-image_767="/data/domains/1/pl/w_prezentation/123//9146/6af1c249888ff.jpg" style="background-image: url(/data/domains/1/pl/w_prezentation/123//9146/glorius-1920x540-mleko.jpg);">
+								<div class="main container rel">
+																			<div style="" 
+											 class="slider-button-corner">
+											Sprawdź ofertę!
+										</div>
+																									</div>
+						</div>
+											<div onclick="javascript:location.href = 'https://stokrotka.pl/oferta/gazetki-promocyjne/wlochy-od-kuchni-1458.html';"  data-ga-event-label="" data-iteration="8" data-href="https://stokrotka.pl/oferta/gazetki-promocyjne/wlochy-od-kuchni-1458.html" class="ga-clickable ga-slides wprez-cont-prez clickable" data-image_main="/data/domains/1/pl/w_prezentation/123/9110/glorius-1920x540.jpg" data-image_767="/data/domains/1/pl/w_prezentation/123//9110/6ae1f72e8d43f.jpg" style="background-image: url(/data/domains/1/pl/w_prezentation/123//9110/glorius-1920x540.jpg);">
+								<div class="main container rel">
+																			<div style="" 
+											 class="slider-button-corner">
+											Sprawdź ofertę!
+										</div>
+																									</div>
+						</div>
+											<div onclick="javascript:location.href = 'https://karty.stokrotka.pl/karty-podarunkowe';"  data-ga-event-label="" data-iteration="9" data-href="https://karty.stokrotka.pl/karty-podarunkowe" class="ga-clickable ga-slides wprez-cont-prez clickable" data-image_main="/data/domains/1/pl/w_prezentation/123/8968/karty-pd-glorius-desktop-1920x540-1.jpg" data-image_767="/data/domains/1/pl/w_prezentation/123//8968/6ab0e48f6f447.jpg" style="background-image: url(/data/domains/1/pl/w_prezentation/123//8968/karty-pd-glorius-desktop-1920x540-1.jpg);">
+								<div class="main container rel">
+																			<div style="" 
+											 class="slider-button-corner">
+											Sprawdź szczegóły!
+										</div>
+																									</div>
+						</div>
+											<div onclick="javascript:location.href = 'https://karty.stokrotka.pl/karty-podarunkowe';"  data-ga-event-label="" data-iteration="10" data-href="https://karty.stokrotka.pl/karty-podarunkowe" class="ga-clickable ga-slides wprez-cont-prez clickable" data-image_main="/data/domains/1/pl/w_prezentation/123/8969/karty-pd-glorius-desktop-1920x540-2.jpg" data-image_767="/data/domains/1/pl/w_prezentation/123//8969/6ab0e4a8b3027.jpg" style="background-image: url(/data/domains/1/pl/w_prezentation/123//8969/karty-pd-glorius-desktop-1920x540-2.jpg);">
+								<div class="main container rel">
+																			<div style="" 
+											 class="slider-button-corner">
+											Sprawdź szczegóły! 
+										</div>
+																									</div>
+						</div>
+											<div onclick="javascript:location.href = 'https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html';"  data-ga-event-label="" data-iteration="11" data-href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" class="ga-clickable ga-slides wprez-cont-prez clickable" data-image_main="/data/domains/1/pl/w_prezentation/123/9149/glorius-1920x540-warzywa.jpg" data-image_767="/data/domains/1/pl/w_prezentation/123//9149/6af1c288c63bd.jpg" style="background-image: url(/data/domains/1/pl/w_prezentation/123//9149/glorius-1920x540-warzywa.jpg);">
+								<div class="main container rel">
+																			<div style="" 
+											 class="slider-button-corner">
+											Sprawdź ofertę!
+										</div>
+																									</div>
+						</div>
+											<div onclick="javascript:location.href = 'https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html';"  data-ga-event-label="" data-iteration="12" data-href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" class="ga-clickable ga-slides wprez-cont-prez clickable" data-image_main="/data/domains/1/pl/w_prezentation/123/9148/glorius-1920x540-plyn.jpg" data-image_767="/data/domains/1/pl/w_prezentation/123//9148/6af1c271e7664.jpg" style="background-image: url(/data/domains/1/pl/w_prezentation/123//9148/glorius-1920x540-plyn.jpg);">
+								<div class="main container rel">
+																			<div style="" 
+											 class="slider-button-corner">
+											Sprawdź ofertę!
+										</div>
+																									</div>
+						</div>
+											<div onclick="javascript:location.href = 'https://stokrotka.pl/oferta/akcje-promocyjne/zwieger/';"  data-ga-event-label="" data-iteration="13" data-href="https://stokrotka.pl/oferta/akcje-promocyjne/zwieger/" class="ga-clickable ga-slides wprez-cont-prez clickable" data-image_main="/data/domains/1/pl/w_prezentation/123/9035/glorius-www1920-x-540px.jpg" data-image_767="/data/domains/1/pl/w_prezentation/123//9035/glorius-www-767-x-767px.jpg" style="background-image: url(/data/domains/1/pl/w_prezentation/123//9035/glorius-www1920-x-540px.jpg);">
+								<div class="main container rel">
+																									</div>
+						</div>
+									</div>
+			</div>
+		</div>
+
+
+							<div class="wprez-navi" id="wprez-navi123">
+				<div class="wprez-navi-in ">
+											<a href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" data-index="0" class="rel circle  active">
+							<span class="circle interactive circle-inner"></span>
+							1
+						</a>
+											<a href="https://stokrotka.pl/oferta/akcje-promocyjne/pozzi-milano/" data-index="1" class="rel circle ">
+							<span class="circle interactive circle-inner"></span>
+							2
+						</a>
+											<a href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" data-index="2" class="rel circle ">
+							<span class="circle interactive circle-inner"></span>
+							3
+						</a>
+											<a href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" data-index="3" class="rel circle ">
+							<span class="circle interactive circle-inner"></span>
+							4
+						</a>
+											<a href="https://stokrotka.pl/oferta/akcje-promocyjne/lego/" data-index="4" class="rel circle ">
+							<span class="circle interactive circle-inner"></span>
+							5
+						</a>
+											<a href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" data-index="5" class="rel circle ">
+							<span class="circle interactive circle-inner"></span>
+							6
+						</a>
+											<a href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" data-index="6" class="rel circle ">
+							<span class="circle interactive circle-inner"></span>
+							7
+						</a>
+											<a href="https://stokrotka.pl/oferta/gazetki-promocyjne/wlochy-od-kuchni-1458.html" data-index="7" class="rel circle ">
+							<span class="circle interactive circle-inner"></span>
+							8
+						</a>
+											<a href="https://karty.stokrotka.pl/karty-podarunkowe" data-index="8" class="rel circle ">
+							<span class="circle interactive circle-inner"></span>
+							9
+						</a>
+											<a href="https://karty.stokrotka.pl/karty-podarunkowe" data-index="9" class="rel circle ">
+							<span class="circle interactive circle-inner"></span>
+							10
+						</a>
+											<a href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" data-index="10" class="rel circle ">
+							<span class="circle interactive circle-inner"></span>
+							11
+						</a>
+											<a href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" data-index="11" class="rel circle ">
+							<span class="circle interactive circle-inner"></span>
+							12
+						</a>
+											<a href="https://stokrotka.pl/oferta/akcje-promocyjne/zwieger/" data-index="12" class="rel circle ">
+							<span class="circle interactive circle-inner"></span>
+							13
+						</a>
+										<div class="clear"></div>
+				</div>
+			</div>
+		
+
+		<div class="CLEAR"></div>
+
+		<script>
+			$(document).ready(function () {
+				$(".stokrotka-shape p.subname").dotdotdot({
+					height: 90,
+					watch: "window"
+				})
+
+				var prezentation = $("#wprez-wrap-123").IPresentation({
+					classes: {
+						main: '.wprez-main', //value: string
+						cont: '.wprez-cont', //value: string
+						slide: '.wprez-cont-prez', //value: string
+						text: '.wprez-text-cont', //value: string
+						textToFit: '.wprez-text', //value: string
+						active: '.active', //value: string
+						navi: '.wprez-navi .wprez-navi-in', //value: string
+						naviEl: '.wprez-navi a', //value: string
+						naviNext: '.wprez-next', //value: string
+						naviPrev: '.wprez-prev', //value: string
+						timeline: '.wp-timeline' //value: string,
+					},
+					animationFreq: 0.5,
+					slideshow:true,
+								slideshowFreq:5										});
+									});
+		</script>
+	</div></div>
+	</div>
+	<div class="main-wrapper">
+		<section>
+			<div class="default-container" id="container-340"><div id="wprez-wrap-340" class="wprez wprez-big">
+			<div class="wprez-main" id="wprez-340">
+							<div class="container rel height-100">
+					<div class="wprez-prev-next wprez-prev circle interactive">
+						<a class="circle " href="javascript:void(0);">
+							<span class="table">
+								<i class="table-cell vertical-middle nc-icon-glyph arrows-1_bold-left"></i>
+							</span>
+						</a>
+					</div>
+					<div class="wprez-prev-next wprez-next interactive circle">
+						<a class="circle" href="javascript:void(0);">
+							<span class="table txt-center">
+								<i class="table-cell vertical-middle nc-icon-glyph arrows-1_bold-right"></i>
+							</span>
+						</a>
+					</div>
+				</div>
+			
+			<div class="ga-event-category" id="glorius-test">
+				<div class="wprez-cont" id="wprez-cont340">
+											<div onclick="javascript:location.href = 'https://stokrotka.pl/stokrotne-okazje/';"  data-ga-event-label="" data-iteration="1" data-href="https://stokrotka.pl/stokrotne-okazje/" class="ga-clickable ga-slides wprez-cont-prez active clickable" data-image_main="/data/domains/1/pl/w_prezentation/340/6755/t14-pasek-desktop-stokrotne-okazje.jpg" data-image_767="/data/domains/1/pl/w_prezentation/340//6755/660d607aa2c4c.jpg" style="background-image: url(/data/domains/1/pl/w_prezentation/340//6755/t14-pasek-desktop-stokrotne-okazje.jpg);">
+								<div class="main container rel">
+																									</div>
+						</div>
+											<div onclick="javascript:location.href = 'https://stokrotka.pl/';"  data-ga-event-label="" data-iteration="2" data-href="https://stokrotka.pl/" class="ga-clickable ga-slides wprez-cont-prez clickable" data-image_main="/data/domains/1/pl/w_prezentation/340/6068/1920x249-bannery-aplikacyjne.jpg" data-image_767="/data/domains/1/pl/w_prezentation/340//6068/64f9d2d9c7718.jpg" style="background-image: url(/data/domains/1/pl/w_prezentation/340//6068/1920x249-bannery-aplikacyjne.jpg);">
+								<div class="main container rel">
+																									</div>
+						</div>
+									</div>
+			</div>
+		</div>
+
+
+							<div class="wprez-navi" id="wprez-navi340">
+				<div class="wprez-navi-in ">
+											<a href="https://stokrotka.pl/stokrotne-okazje/" data-index="0" class="rel circle  active">
+							<span class="circle interactive circle-inner"></span>
+							1
+						</a>
+											<a href="https://stokrotka.pl/" data-index="1" class="rel circle ">
+							<span class="circle interactive circle-inner"></span>
+							2
+						</a>
+										<div class="clear"></div>
+				</div>
+			</div>
+		
+
+		<div class="CLEAR"></div>
+
+		<script>
+			$(document).ready(function () {
+				$(".stokrotka-shape p.subname").dotdotdot({
+					height: 90,
+					watch: "window"
+				})
+
+				var prezentation = $("#wprez-wrap-340").IPresentation({
+					classes: {
+						main: '.wprez-main', //value: string
+						cont: '.wprez-cont', //value: string
+						slide: '.wprez-cont-prez', //value: string
+						text: '.wprez-text-cont', //value: string
+						textToFit: '.wprez-text', //value: string
+						active: '.active', //value: string
+						navi: '.wprez-navi .wprez-navi-in', //value: string
+						naviEl: '.wprez-navi a', //value: string
+						naviNext: '.wprez-next', //value: string
+						naviPrev: '.wprez-prev', //value: string
+						timeline: '.wp-timeline' //value: string,
+					},
+					animationFreq: 0.5,
+					slideshow:false,
+								slideshowFreq:0										});
+									});
+		</script>
+	</div></div>
+		</section>
+	</div>
+			<div class="main-wrapper overflow-hidden">
+			<div style='
+				 				 '>
+				<section>
+					<div class="container">
+						<div class="home-page block-grid">
+
+							<div class="box full-width-box column-12" id="glorius-sect-banner">
+								
+							</div>
+							<div class="box full-width-box column-12">
+								<section id="container-278" class="stokrotka-divider-no-title">
+	<div class="section-divider rel">
+		<img src="https://stokrotka.pl/template/default/gfx/section-divider.png" alt="section divider">
+	</div>
+	<div >	<div class="wdw-rows-wrap">
+					<div class="wdw-row" id="p27">
+													<div class="layout-1"><h2 style="color: #82b437; font-size: 28px; padding: 10px; text-align: center; margin-top: -60px;">Stokrotka - supermarkety, markety w Twojej okolicy!​</h2></div>																				<div class="clear"></div>
+
+
+											</div>
+
+						</div>
+	</div>
+</section>
+							</div>
+
+														
+
+							<div class="box column-6 small-column-12">
+								<div id="container-139"><div class="box-content shadow-box interactive ga-event-category" id="Gazetka">
+			<div class="CGP_MAIN CGP_IN_ROW CGP_IN_ROW rel" id="carousel">
+							<a title="Supermarket" data-ga-event-label="Supermarket" data-iteration="1" href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" class="ga-clickable wbp-item">
+					<span class="element" data-content='10-11-2026 r. - 18-11-2026 r.'>
+						<span class="element-inner">
+							<img class="" src="/data/domains/1/pl/c_browser_press_online/214/1470/01-supermarket-46-26-www.jpg" alt="Supermarket" class="carousel-image CSC_PICT">
+							<span class="rel bottom-shadow">&nbsp;</span>
+						</span>
+						<span class="CTA-button-press">
+							Kliknij i sprawdź gazetkę
+						</span>
+					</span>
+				</a>
+				<div class="textbox rel">
+					<p>
+													10-11-2026 r. - 18-11-2026 r.
+											</p>
+				</div>
+							<a title="Katalog Mikołajki!" data-ga-event-label="Katalog Mikołajki!" data-iteration="2" href="https://stokrotka.pl/oferta/gazetki-promocyjne/katalog-mikolajki-1069.html" class="ga-clickable wbp-item">
+					<span class="element" data-content='10-11-2026 r. -  2-12-2026 r.'>
+						<span class="element-inner">
+							<img class="" src="/data/domains/1/pl/c_browser_press_online/214/1069/mikolajki-2026-001.jpg" alt="Katalog Mikołajki!" class="carousel-image CSC_PICT">
+							<span class="rel bottom-shadow">&nbsp;</span>
+						</span>
+						<span class="CTA-button-press">
+							Kliknij i sprawdź gazetkę
+						</span>
+					</span>
+				</a>
+				<div class="textbox rel">
+					<p>
+											</p>
+				</div>
+							<a title="Express" data-ga-event-label="Express" data-iteration="3" href="https://stokrotka.pl/oferta/gazetki-promocyjne/express-1468.html" class="ga-clickable wbp-item">
+					<span class="element" data-content='10-11-2026 r. - 18-11-2026 r.'>
+						<span class="element-inner">
+							<img class="" src="/data/domains/1/pl/c_browser_press_online/214/1468/se-46-www-693-1083.jpg" alt="Express" class="carousel-image CSC_PICT">
+							<span class="rel bottom-shadow">&nbsp;</span>
+						</span>
+						<span class="CTA-button-press">
+							Kliknij i sprawdź gazetkę
+						</span>
+					</span>
+				</a>
+				<div class="textbox rel">
+					<p>
+											</p>
+				</div>
+					</div>
+		<div class="bottom-box-divider">
+			<div class="rel table ROW-100">
+				<hr/>
+				<div class="wbp-navi table-cell txt-center">
+					<button id="carousel-left"  class="interactive circle">
+						<i class="nc-icon-glyph arrows-1_triangle-left-18"></i>
+					</button>
+					<button id="carousel-right"  class="interactive circle">
+						<i class="nc-icon-glyph arrows-1_triangle-right-17"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="ribbon">
+			<div class="rel shadow-trinagle"></div>
+			<h2 class="ribbon-text">
+				Gazetka
+			</h2>
+		</div>
+		<div class="CLEAR"></div>
+			</div>
+
+<script>
+$( document ).ready(function() {
+    $('.wbp-navi').on('click', function()
+	{
+		$('.CTA-button-press').each(function()
+		{
+			if($(this).parent().css('z-index') == '5' || $(this).parent().css('z-index') == '2' )
+			{
+				$(this).fadeIn(500);
+			}else
+			{
+				$(this).fadeOut(50);
+			}
+		})
+	});
+	$('.wbp-navi').click();
+});
+</script></div>
+							</div>
+							<div class="box column-6 small-column-12">
+								<div class="promapp-container" id="container-35"><div class="box-content shadow-box interactive">
+	<div id="wprez-wrap-35" class="wprez wprez-product">
+		<div class="ribbon">
+			<div class="rel shadow-trinagle"></div>
+			<h2 class="ribbon-text">
+				PROMOCJE W APLIKACJI
+			</h2>
+		</div>
+					<div class="wprez-main" id="wprez-35">
+									<div class="next-prev-wrapper">
+						<div class="wprez-prev-next wprez-prev circle interactive">
+							<a class="circle interactive" href="javascript:void(0);">
+								<span class="table">
+									<i class="fa table-cell vertical-middle fa-angle-left"></i>
+								</span>
+							</a>
+						</div>
+						<div class="wprez-prev-next wprez-next interactive circle">
+							<a class="circle interactive" href="javascript:void(0);">
+								<span class="table">
+									<i class="fa table-cell vertical-middle fa-angle-right"></i>
+								</span>
+							</a>
+						</div>
+					</div>
+								<div class="ga-event-category" id="PROMOCJE W APLIKACJI">
+					<div class="wprez-cont wprez-cont-product" id="wprez-cont35">
+													<div data-ga-event-label="" class=" ga-clickable ga-slides wprez-cont-prez active table " onclick="javascript:location.href = 'https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html';" data-gaEventLabel="" data-iteration="1"  data-href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" data-src=" /data/domains/1/pl/w_prezentation/35//9152/m_t46-jpeg-www-v2-1.jpg " style="background-image: url(  /data/domains/1/pl/w_prezentation/35//9152/m_t46-jpeg-www-v2-1.jpg  );">
+																	<div class="main rel vertical-bottom  hidden ">
+										<div class="wprez-text rel">
+											<div class="block-grid wprez-text-inner">
+																																			</div>
+										</div>
+									</div>
+															</div>
+													<div data-ga-event-label="" class=" ga-clickable ga-slides wprez-cont-prez table " onclick="javascript:location.href = 'https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html';" data-gaEventLabel="" data-iteration="2"  data-href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" data-src=" /data/domains/1/pl/w_prezentation/35//9154/m_t46-jpeg-www-v13.jpg " style="background-image: url(  /data/domains/1/pl/w_prezentation/35//9154/m_t46-jpeg-www-v13.jpg  );">
+																	<div class="main rel vertical-bottom  hidden ">
+										<div class="wprez-text rel">
+											<div class="block-grid wprez-text-inner">
+																																			</div>
+										</div>
+									</div>
+															</div>
+													<div data-ga-event-label="" class=" ga-clickable ga-slides wprez-cont-prez table " onclick="javascript:location.href = 'https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html';" data-gaEventLabel="" data-iteration="3"  data-href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" data-src=" /data/domains/1/pl/w_prezentation/35//9155/m_t46-jpeg-www-v15.jpg " style="background-image: url(  /data/domains/1/pl/w_prezentation/35//9155/m_t46-jpeg-www-v15.jpg  );">
+																	<div class="main rel vertical-bottom  hidden ">
+										<div class="wprez-text rel">
+											<div class="block-grid wprez-text-inner">
+																																			</div>
+										</div>
+									</div>
+															</div>
+													<div data-ga-event-label="" class=" ga-clickable ga-slides wprez-cont-prez table " onclick="javascript:location.href = 'https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html';" data-gaEventLabel="" data-iteration="4"  data-href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" data-src=" /data/domains/1/pl/w_prezentation/35//9156/m_t46-jpeg-www-v16.jpg " style="background-image: url(  /data/domains/1/pl/w_prezentation/35//9156/m_t46-jpeg-www-v16.jpg  );">
+																	<div class="main rel vertical-bottom  hidden ">
+										<div class="wprez-text rel">
+											<div class="block-grid wprez-text-inner">
+																																			</div>
+										</div>
+									</div>
+															</div>
+													<div data-ga-event-label="" class=" ga-clickable ga-slides wprez-cont-prez table " onclick="javascript:location.href = 'https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html';" data-gaEventLabel="" data-iteration="5"  data-href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" data-src=" /data/domains/1/pl/w_prezentation/35//9159/m_t46-jpeg-www-v19.jpg " style="background-image: url(  /data/domains/1/pl/w_prezentation/35//9159/m_t46-jpeg-www-v19.jpg  );">
+																	<div class="main rel vertical-bottom  hidden ">
+										<div class="wprez-text rel">
+											<div class="block-grid wprez-text-inner">
+																																			</div>
+										</div>
+									</div>
+															</div>
+													<div data-ga-event-label="" class=" ga-clickable ga-slides wprez-cont-prez table " onclick="javascript:location.href = 'https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html';" data-gaEventLabel="" data-iteration="6"  data-href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" data-src=" /data/domains/1/pl/w_prezentation/35//9160/m_t46-jpeg-www-v110.jpg " style="background-image: url(  /data/domains/1/pl/w_prezentation/35//9160/m_t46-jpeg-www-v110.jpg  );">
+																	<div class="main rel vertical-bottom  hidden ">
+										<div class="wprez-text rel">
+											<div class="block-grid wprez-text-inner">
+																																			</div>
+										</div>
+									</div>
+															</div>
+													<div data-ga-event-label="" class=" ga-clickable ga-slides wprez-cont-prez table " onclick="javascript:location.href = 'https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html';" data-gaEventLabel="" data-iteration="7"  data-href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" data-src=" /data/domains/1/pl/w_prezentation/35//9161/m_t46-jpeg-www-v111.jpg " style="background-image: url(  /data/domains/1/pl/w_prezentation/35//9161/m_t46-jpeg-www-v111.jpg  );">
+																	<div class="main rel vertical-bottom  hidden ">
+										<div class="wprez-text rel">
+											<div class="block-grid wprez-text-inner">
+																																			</div>
+										</div>
+									</div>
+															</div>
+													<div data-ga-event-label="" class=" ga-clickable ga-slides wprez-cont-prez table " onclick="javascript:location.href = 'https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html';" data-gaEventLabel="" data-iteration="8"  data-href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" data-src=" /data/domains/1/pl/w_prezentation/35//9162/m_t46-jpeg-www-v112.jpg " style="background-image: url(  /data/domains/1/pl/w_prezentation/35//9162/m_t46-jpeg-www-v112.jpg  );">
+																	<div class="main rel vertical-bottom  hidden ">
+										<div class="wprez-text rel">
+											<div class="block-grid wprez-text-inner">
+																																			</div>
+										</div>
+									</div>
+															</div>
+											</div>
+				</div>
+			</div>
+										<div class="wprez-navi navi-product" id="wprez-navi35">
+					<div class="wprez-navi-in ">
+													<a href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" data-index="0" class="rel circle  active">
+								<span class="circle interactive circle-inner"></span>
+								1
+							</a>
+													<a href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" data-index="1" class="rel circle ">
+								<span class="circle interactive circle-inner"></span>
+								2
+							</a>
+													<a href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" data-index="2" class="rel circle ">
+								<span class="circle interactive circle-inner"></span>
+								3
+							</a>
+													<a href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" data-index="3" class="rel circle ">
+								<span class="circle interactive circle-inner"></span>
+								4
+							</a>
+													<a href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" data-index="4" class="rel circle ">
+								<span class="circle interactive circle-inner"></span>
+								5
+							</a>
+													<a href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" data-index="5" class="rel circle ">
+								<span class="circle interactive circle-inner"></span>
+								6
+							</a>
+													<a href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" data-index="6" class="rel circle ">
+								<span class="circle interactive circle-inner"></span>
+								7
+							</a>
+													<a href="https://stokrotka.pl/oferta/gazetki-promocyjne/supermarket-1470.html" data-index="7" class="rel circle ">
+								<span class="circle interactive circle-inner"></span>
+								8
+							</a>
+												<div class="clear"></div>
+					</div>
+				</div>
+						<div class="CLEAR"></div>
+
+			<script>
+				$(document).ready(function () {
+					$(".box:not(.full-width-box) .dot-dot-dot").dotdotdot({
+						height: 75,
+						watch: "window"
+					});
+
+					$("h2.no-subname, .title-no-subname").dotdotdot({
+						height: $(".wprez-text-inner").height(),
+						watch: "window"
+					});
+
+					var prezentation = $("#wprez-wrap-35").IPresentation({
+						classes: {
+							main: '.wprez-main', //value: string
+							cont: '.wprez-cont', //value: string
+							slide: '.wprez-cont-prez', //value: string
+							text: '.wprez-text-cont', //value: string
+							textToFit: '.wprez-text', //value: string
+							active: '.active', //value: string
+							navi: '.wprez-navi .wprez-navi-in', //value: string
+							naviEl: '.wprez-navi a', //value: string
+							naviNext: '.wprez-next', //value: string
+							naviPrev: '.wprez-prev', //value: string
+							timeline: '.wp-timeline' //value: string,
+						},
+						animationFreq: 0.5,
+						slideshow:true,
+									slideshowFreq:5											});
+										});
+			</script>
+			</div>
+</div></div>
+							</div>
+							<div class="box full-width-box column-12">
+								<div class="default-container" id="container-272">	<div class="wdw-rows-wrap">
+					<div class="wdw-row" id="p23">
+													<div class="wdwl--banner-wrapper swap">
+	<div class="wdwl--banner-inner ">
+		<div class='first-side vertical-middle'>
+						<span class='banner-header vertical-middle'>
+				<p>Dołącz do Newslettera</p>
+			</span>
+									<span class='banner-text vertical-middle'>
+				<p>Dowiedz się pierwszy o nowych promocjach!</p>
+			</span>
+					</div>
+		<div class='second-side vertical-middle'>
+			<div class='vertical-middle'>
+				<a class='BTN' href='/newsletter/'>ZAPISZ SIĘ >></a>
+			</div>
+		</div>
+	</div>
+</div>
+			
+<script>
+
+$( document ).ready(function() {
+	//CHANGE POSITION OF NEWSLETTER BUTTON FOR MOBILE
+	if (document.getElementById('Gazetki_promocyjne')) { 
+		var gazetka = $('#Gazetki_promocyjne').find('div:nth-of-type(2)');
+		var swapped_el_first_position = $('.swap').closest('.wdw-row');
+		//Swap places of first and second ftsl-box'es
+		$(window).on("resize", function(){
+			if (window.matchMedia("(max-width: 768px)").matches) {
+			$('.swap').each(function(i, el) {
+
+				$(el).insertAfter(gazetka);
+			});
+			} else if (window.matchMedia("(min-width: 768px)").matches) {
+				$('.swap').each(function(i, el) {
+					$(el).insertAfter(swapped_el_first_position);
+				});
+			}
+		});
+		$(window).resize();
+	}
+});
+
+</script>
+																				<div class="clear"></div>
+
+
+											</div>
+
+						</div>
+	</div>
+							</div>
+							<div class="box column-6 small-column-12">
+								
+							</div>
+							<div class="box column-6 small-column-12">
+								
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+		
+	<div class="main-wrapper txt-center rel overflow-hidden">
+					
+			
+			</div>
+
+	<div class="main-wrapper overflow-hidden">
+		<section>
+			<section id="container-271" class="stokrotka-divider-no-title">
+	<div class="section-divider rel">
+		<img src="https://stokrotka.pl/template/default/gfx/section-divider.png" alt="section divider">
+	</div>
+	<div ><div class="" style='
+		 			'>
+	<div class="container">
+		<div class="WB_MAIN WB271 wb-wrapper ROW-100">
+			<div class="block-grid">
+									<div class="column-6 ga-event-category" id="dwa_bannery_2_44">
+		<div class="ga-clickable" data-ga-event-label="LEGO">
+							<a href="https://stokrotka.pl/oferta/akcje-promocyjne/lego/" class="interactive" ><img class="RESP-IMAGE shadow-box interactive" src="/data/domains/1/pl/w_window_banner/271/44/stokrotka-www-720x260px.jpg" alt="banner" width="3000"   height="1083"  /></a>
+						</div>
+	</div>
+									<div class="column-6 ga-event-category" id="dwa_bannery_2_31">
+		<div class="ga-clickable" data-ga-event-label="Zwieger">
+							<a href="https://stokrotka.pl/oferta/akcje-promocyjne/zwieger/" class="interactive" ><img class="RESP-IMAGE shadow-box interactive" src="/data/domains/1/pl/w_window_banner/271/31/bannerwww-720x260.jpg" alt="banner" width="720"   height="260"  /></a>
+						</div>
+	</div>
+									<div class="column-6 ga-event-category" id="dwa_bannery_2_43">
+		<div class="ga-clickable" data-ga-event-label="Pozzi Milano">
+							<a href="http://www.stokrotka.pl/oferta/akcje-promocyjne/pozzi-milano/" class="interactive"  target="_blank"><img class="RESP-IMAGE shadow-box interactive" src="/data/domains/1/pl/w_window_banner/271/43/stokrotka-pozzi26-720x260.png" alt="banner" width="720"   height="260"  /></a>
+						</div>
+	</div>
+						</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.WB271').rotateBanners({
+			ajaxUrl:{
+				getBanner:'/IAJAX/cXlNcVhldS9OUDJuUzl3Mk5Oa2o1UCtZdVZjeFk2aGZnZ0VYN0h2Rit5eVpMWVkzQVRCdGdJWHVZU08yQ3d5amc3eGVLeUhBaTUzMVM2MGRXenlIbVAyL01lWXN3L1M3SUFhN2QrMVpvRTg9Ojq4t.a_eIPkVfCDyHTYH9eO?w_id=271'
+			},
+			rotate:0,
+			rotateFrequency:0,
+			activeId:44
+		});
+	});
+</script>
+</div>
+</section>
+		</section>
+	</div>
+	<div class="main-wrapper  overflow-hidden">
+		<div class="block-grid grey-container"
+			 style='
+			 			 '
+			 >
+			<div class="container">
+				<div class="table rel">
+					<div id="container-122"><div>
+	<div id="phone-wrapper" class="inline-block">
+		<div class="phone view_3" id="phone_1" style='background-image: url("https://stokrotka.pl/template/default/gfx/iphone-shape.png")'>
+			<a href='https://www.naszastokrotka.pl/' target="_blank">
+				<img class="lazy"   data-src="/data/domains/1/pl/w_phone_preview/122/stokrotka-mobile-v2.jpg"  id="frame_1" alt="phone">
+			</a>
+		</div>
+	</div>
+
+	</div>
+<script>
+	$(document).ready(function () {
+		$("#phone-wrapper").wPhonePreview();
+	});
+</script></div>
+					<section id="container-284" class="stokrotka-divider-no-title">
+	<div class="section-divider rel">
+		<img src="https://stokrotka.pl/template/default/gfx/section-divider.png" alt="section divider">
+	</div>
+	<div ><div class="container">
+			<div class="wbi-cont wbi-type-2 ga-event-category" id="Okno_z_grafikami_social_media">
+	<div class="main rel">
+		<div class="block-grid  align-center ">
+							<div class="column-4 medium-column-6 small-column-12">
+					<div>
+						<a data-ga-event-label="" href="https://www.facebook.com/sklepy.stokrotka/" class="rel block txt-center overflow-hidden">
+							<img class="RESP-IMAGE wbi-img-height" src="/data/domains/1/pl/w_multiple_box_informations/284/3333/zaslepka-fb-2-1.jpg" width="263" height="400" alt="">
+													</a>
+					</div>
+				</div>
+							<div class="column-4 medium-column-6 small-column-12">
+					<div>
+						<a data-ga-event-label="" href="https://www.instagram.com/sklepy.stokrotka/" class="rel block txt-center overflow-hidden">
+							<img class="RESP-IMAGE wbi-img-height" src="/data/domains/1/pl/w_multiple_box_informations/284/3334/zaslepka-ig-2.jpg" width="263" height="400" alt="">
+													</a>
+					</div>
+				</div>
+							<div class="column-4 medium-column-6 small-column-12">
+					<div>
+						<a data-ga-event-label="" href="https://www.tiktok.com/@sklepy.stokrotka" class="rel block txt-center overflow-hidden">
+							<img class="RESP-IMAGE wbi-img-height" src="/data/domains/1/pl/w_multiple_box_informations/284/3335/zaslepka-tiktok.jpg" width="263" height="400" alt="">
+													</a>
+					</div>
+				</div>
+					</div>
+		<div class="clear"></div>
+	</div>
+</div>	</div>
+</div>
+</section>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="main-wrapper overflow-hidden descriptive-window">
+		<section id="container-127" class="stokrotka-divider-no-title">
+	<div class="section-divider rel">
+		<img src="https://stokrotka.pl/template/default/gfx/section-divider.png" alt="section divider">
+	</div>
+	<div ><div class="container">
+					<div class="wbi-cont ga-event-category" id="Boksy_kariera,wspolpraca...">
+	<div class="main rel">
+		<div class="block-grid ">
+							<div class="column-3 medium-column-4 small-column-6">
+					<div>
+						<a href="/otworz-swoj-sklep/" data-ga-event-label="Otwórz swój sklep" class="rel block txt-center overflow-hidden ga-clickable">
+							<img class="RESP-IMAGE wbi-img-height" src="/data/domains/1/pl/w_multiple_box_informations/127/28/bottom-box-2.jpg" width="350" height="350" alt="Otwórz swój sklep">
+							<span class="table hide interactive txt-center ROW-100 center-absolute">
+								<span class="table-cell vertical-middle">
+									<i class="nc-icon-outline business_hierarchy-53 wbi-padding block "></i>
+									<span onclick='location.href = "/otworz-swoj-sklep/"' class="more wbi-padding  BTN read-more ">Otwórz swój sklep</span>
+								</span>
+							</span>
+
+							<span class="table txt-center ROW-100 center-absolute on-hover">
+								<span class="vertical-middle">
+									<i class="nc-icon-outline business_hierarchy-53 wbi-padding block "></i>
+									<span class="block wbi-padding wbi-h3">Otwórz swój sklep</span
+									<span class="wbi-cont-hr block txt-center"></span>
+									<span class="block wbi-p">Zależy Ci na budowaniu satysfakcjonujących relacji biznesowych? Dla producent&oacute;w i dostawc&oacute;w mamy szereg dogodnych rozwiązań. Możesz...</span>
+								</span>
+							</span>
+						</a>
+					</div>
+				</div>
+							<div class="column-3 medium-column-4 small-column-6">
+					<div>
+						<a href="https://kariera.stokrotka.pl/" data-ga-event-label="Kariera" class="rel block txt-center overflow-hidden ga-clickable">
+							<img class="RESP-IMAGE wbi-img-height" src="/data/domains/1/pl/w_multiple_box_informations/127/27/zdjecie-2.jpg" width="350" height="350" alt="Kariera">
+							<span class="table hide interactive txt-center ROW-100 center-absolute">
+								<span class="table-cell vertical-middle">
+									<i class="nc-icon-outline users_man-23 wbi-padding block "></i>
+									<span onclick='location.href = "https://kariera.stokrotka.pl/"' class="more wbi-padding  BTN read-more ">Kariera</span>
+								</span>
+							</span>
+
+							<span class="table txt-center ROW-100 center-absolute on-hover">
+								<span class="vertical-middle">
+									<i class="nc-icon-outline users_man-23 wbi-padding block "></i>
+									<span class="block wbi-padding wbi-h3">Kariera</span
+									<span class="wbi-cont-hr block txt-center"></span>
+									<span class="block wbi-p">W Stokrotce oferujemy liczne drogi kariery. Poszukujemy os&oacute;b do pracy w naszej centrali, logistyce i sklepach. Dołącz do nas!
+</span>
+								</span>
+							</span>
+						</a>
+					</div>
+				</div>
+							<div class="column-3 medium-column-4 small-column-6">
+					<div>
+						<a href="/formularz-nieruchomosci/" data-ga-event-label="Nieruchomości" class="rel block txt-center overflow-hidden ga-clickable">
+							<img class="RESP-IMAGE wbi-img-height" src="/data/domains/1/pl/w_multiple_box_informations/127/29/slider-dolacz-do-nas.jpg" width="350" height="350" alt="Nieruchomości">
+							<span class="table hide interactive txt-center ROW-100 center-absolute">
+								<span class="table-cell vertical-middle">
+									<i class="nc-icon-outline travel_hotel wbi-padding block "></i>
+									<span onclick='location.href = "/formularz-nieruchomosci/"' class="more wbi-padding  BTN read-more ">Nieruchomości</span>
+								</span>
+							</span>
+
+							<span class="table txt-center ROW-100 center-absolute on-hover">
+								<span class="vertical-middle">
+									<i class="nc-icon-outline travel_hotel wbi-padding block "></i>
+									<span class="block wbi-padding wbi-h3">Nieruchomości</span
+									<span class="wbi-cont-hr block txt-center"></span>
+									<span class="block wbi-p">Prowadzisz lub chciałbyś prowadzić własny sklep? Podzielimy się z Tobą naszym doświadczeniem. Zapewnimy Ci wsparcie i możliwość rozwijania...</span>
+								</span>
+							</span>
+						</a>
+					</div>
+				</div>
+							<div class="column-3 medium-column-4 small-column-6">
+					<div>
+						<a href="/o-firmie/" data-ga-event-label="O firmie" class="rel block txt-center overflow-hidden ga-clickable">
+							<img class="RESP-IMAGE wbi-img-height" src="/data/domains/1/pl/w_multiple_box_informations/127/30/2b7b0018.jpg" width="350" height="350" alt="O firmie">
+							<span class="table hide interactive txt-center ROW-100 center-absolute">
+								<span class="table-cell vertical-middle">
+									<i class="nc-icon-outline business_board-28 wbi-padding block "></i>
+									<span onclick='location.href = "/o-firmie/"' class="more wbi-padding  BTN read-more ">O firmie</span>
+								</span>
+							</span>
+
+							<span class="table txt-center ROW-100 center-absolute on-hover">
+								<span class="vertical-middle">
+									<i class="nc-icon-outline business_board-28 wbi-padding block "></i>
+									<span class="block wbi-padding wbi-h3">O firmie</span
+									<span class="wbi-cont-hr block txt-center"></span>
+									<span class="block wbi-p">Dowiedz się więcej o naszej historii i o tym jak rozwijaliśmy się na przestrzeni lat.
+</span>
+								</span>
+							</span>
+						</a>
+					</div>
+				</div>
+					</div>
+		<div class="clear"></div>
+	</div>
+</div>	</div>
+</div>
+</section>
+	</div>
+	</main>
+
+<footer class="rel">
+	<div class="txt-center">
+		<a href="#top" id="go-top" class="circle interactive"
+		   style='
+						'
+		   >
+			<i class="nc-icon-outline arrows-1_tail-triangle-up"></i>
+		</a>
+	</div>
+	
+	<div class="main-wrapper">
+
+		<div class="lazy" style='background-image: url("https://stokrotka.pl/data/domains/1/m_site_backgrounds/5/59ae48d83e98f.jpg")' >
+			<div class="container rel">
+				<div class="block-grid">
+					<div>
+					<div id="container-129"><div class="column-2 ga-event-category" id="Oferta">
+	<div class="rel">
+		<div class="wm-footer-inner">
+			<ul class="wm-footer standard-border-color" id="wm-129">
+				<li class='inline-block txt-left'>
+								<span class="table ROW-100 match-height-footer match-height">
+	<span class="table-cell vertical-middle">
+		<span class="footer-h2">
+			<a class="interactive ga-clickable"  data-ga-event-label="Oferta" href="https://stokrotka.pl/oferta-rozszerzona/">
+				Oferta
+			</a>
+		</span>
+	</span>
+</span>
+
+<ul class="wm-l1">
+		<li class="standard-border-color interactive">
+		<a data-ga-event-label="Gazetki promocyjne"   class="ga-clickable interactive" href="https://stokrotka.pl/oferta/gazetki-promocyjne/">
+						<span class="wm-text">Gazetki promocyjne</span>
+		</a>
+	</li>
+	<li class="standard-border-color interactive">
+		<a data-ga-event-label="Akcje promocyjne"   class="ga-clickable interactive" href="https://stokrotka.pl/oferta/akcje-promocyjne/">
+						<span class="wm-text">Akcje promocyjne</span>
+		</a>
+	</li>
+	<li class="standard-border-color interactive">
+		<a data-ga-event-label="Konkursy i loterie"   class="ga-clickable interactive" href="https://stokrotka.pl/oferta/konkursy-i-loterie/">
+						<span class="wm-text">Konkursy i loterie</span>
+		</a>
+	</li>
+	<li class="standard-border-color interactive">
+		<a data-ga-event-label="Talony zakupowe"   class="ga-clickable interactive" href="https://stokrotka.pl/oferta-rozszerzona/talony-zakupowe/">
+						<span class="wm-text">Talony zakupowe</span>
+		</a>
+	</li>
+
+</ul>
+	
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<script>
+	$(document).ready(function () {
+		$('#wm-129').wMenu({});
+	});
+</script></div><div class="default-container" id="container-277">	<div class="wdw-rows-wrap">
+					<div class="wdw-row" id="p26">
+													<div class="layout-1"><ul class="wm-footer">
+<li class="standard-border-color interactive"><a title="Gazetka promocyjna Stokrotka" href="https://blix.pl/sklep/stokrotka/" target="_blank"><img src="/data/domains/1/pl/filemanager_files/logo-blix-2-1.png" alt="" width="70" />&nbsp;</a></li>
+<li class="standard-border-color interactive"><a class="ga-clickable interactive" href="https://mojagazetka.com/gazetka-promocyjna-stokrotka" data-ga-event-label="Konkursy i loterie"><img src="/data/domains/1/pl/filemanager_files/mg-logo-negatyw-alpha.png" alt="" width="100" />&nbsp;</a></li>
+</ul>
+<p><a class="ga-clickable interactive" href="https://mojagazetka.com/gazetka-promocyjna-stokrotka" data-ga-event-label="Konkursy i loterie">&nbsp;</a></p></div>																				<div class="clear"></div>
+
+
+											</div>
+
+						</div>
+	</div>
+					</div>
+					<div class="default-container" id="container-132"><div class="column-2 ga-event-category" id="O_nas">
+	<div class="rel">
+		<div class="wm-footer-inner">
+			<ul class="wm-footer standard-border-color" id="wm-132">
+				<li class='inline-block txt-left'>
+								<span class="table ROW-100 match-height-footer match-height">
+	<span class="table-cell vertical-middle">
+		<span class="footer-h2">
+			<a class="interactive ga-clickable"  data-ga-event-label="O nas" href="https://stokrotka.pl/o-nas/">
+				O nas
+			</a>
+		</span>
+	</span>
+</span>
+
+<ul class="wm-l1">
+		<li class="standard-border-color interactive">
+		<a data-ga-event-label="Aktualności"   class="ga-clickable interactive" href="https://stokrotka.pl/aktualnosci/">
+						<span class="wm-text">Aktualności</span>
+		</a>
+	</li>
+	<li class="standard-border-color interactive">
+		<a data-ga-event-label="Nasze sklepy"   class="ga-clickable interactive" href="https://stokrotka.pl/nasze-sklepy/">
+						<span class="wm-text">Nasze sklepy</span>
+		</a>
+	</li>
+	<li class="standard-border-color interactive">
+		<a data-ga-event-label="O firmie"   class="ga-clickable interactive" href="https://stokrotka.pl/o-firmie/">
+						<span class="wm-text">O firmie</span>
+		</a>
+	</li>
+	<li class="standard-border-color interactive">
+		<a data-ga-event-label="Polityka równych szans i różnorodności"   class="ga-clickable interactive" href="https://stokrotka.pl/o-nas/polityka-rownych-szans-i-roznorodnosci/">
+						<span class="wm-text">Polityka równych szans i różnorodności</span>
+		</a>
+	</li>
+	<li class="standard-border-color interactive">
+		<a data-ga-event-label="Polityka Prywatności"   class="ga-clickable interactive" href="https://stokrotka.pl/o-nas/polityka-prywatnosci/">
+						<span class="wm-text">Polityka Prywatności</span>
+		</a>
+	</li>
+	<li class="standard-border-color interactive">
+		<a data-ga-event-label="Niemarnowanie żywności"   class="ga-clickable interactive" href="https://stokrotka.pl/o-nas/niemarnowanie-zywnosci/">
+						<span class="wm-text">Niemarnowanie żywności</span>
+		</a>
+	</li>
+	<li class="standard-border-color interactive">
+		<a data-ga-event-label="Informacja o realizowanej strategii podatkowej"   class="ga-clickable interactive" href="https://stokrotka.pl/o-nas/informacja-o-realizowanej-strategii-podatkowej/">
+						<span class="wm-text">Informacja o realizowanej strategii podatkowej</span>
+		</a>
+	</li>
+	<li class="standard-border-color interactive">
+		<a data-ga-event-label="Karty charakterystyki"   class="ga-clickable interactive" href="https://stokrotka.pl/karty-charakterystyki/">
+						<span class="wm-text">Karty charakterystyki</span>
+		</a>
+	</li>
+	<li class="standard-border-color interactive">
+		<a data-ga-event-label="Butelkomaty"   class="ga-clickable interactive" href="https://stokrotka.pl/o-nas/butelkomaty/">
+						<span class="wm-text">Butelkomaty</span>
+		</a>
+	</li>
+
+</ul>
+	
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<script>
+	$(document).ready(function () {
+		$('#wm-132').wMenu({});
+	});
+</script></div>
+					<div class="default-container" id="container-281">	<div class="wdw-rows-wrap">
+					<div class="wdw-row" id="kontakt">
+													<h2>Kontakt</h2><div class="layout-1"><ul>
+<li>Stokrotka Sp. z o.o.</li>
+</ul>
+<p>ul. Projektowa 1</p>
+<p>20-209 Lublin</p>
+<ul>
+<li>&nbsp;(81) 746 07 25</li>
+<li>stokrotka@stokrotka.pl</li>
+</ul></div>																				<div class="clear"></div>
+
+
+											</div>
+
+						</div>
+	</div>
+					<div class="default-container" id="container-133"><div class="column-2 ga-event-category" id="Zobacz_więcej">
+	<div class="rel">
+		<div class="wm-footer-inner">
+			<ul class="wm-footer standard-border-color" id="wm-133">
+				<li class='inline-block txt-left'>
+								<span class="table ROW-100 match-height-footer match-height">
+	<span class="table-cell vertical-middle">
+		<span class="footer-h2">
+			<a class="interactive ga-clickable"  data-ga-event-label="Zobacz więcej" href="https://stokrotka.pl/zobacz-wiecej/">
+				Zobacz więcej
+			</a>
+		</span>
+	</span>
+</span>
+
+<ul class="wm-l1">
+		<li class="standard-border-color interactive">
+		<a data-ga-event-label="Polityka antykorupcyjna"   class="ga-clickable interactive" href="https://stokrotka.pl/zobacz-wiecej/polityka-antykorupcyjna-i-kodeks-postepowania-dostawcow-spolek-grupy-maxima/">
+						<span class="wm-text">Polityka antykorupcyjna</span>
+		</a>
+	</li>
+	<li class="standard-border-color interactive">
+		<a data-ga-event-label="Aplikacja Nasza Stokrotka - regulamin i obowiązek informacyjny"   class="ga-clickable interactive" href="https://stokrotka.pl/zobacz-wiecej/reg/">
+						<span class="wm-text">Aplikacja Nasza Stokrotka - regulamin i obowiązek informacyjny</span>
+		</a>
+	</li>
+	<li class="standard-border-color interactive">
+		<a data-ga-event-label="Ochrona danych osobowych"   class="ga-clickable interactive" href="https://stokrotka.pl/ochrona-danych-osobowych/">
+						<span class="wm-text">Ochrona danych osobowych</span>
+		</a>
+	</li>
+	<li class="standard-border-color interactive">
+		<a data-ga-event-label="Regulamin serwisu"   class="ga-clickable interactive" href="https://stokrotka.pl/regulamin-serwisu/">
+						<span class="wm-text">Regulamin serwisu</span>
+		</a>
+	</li>
+			<span class="table ROW-100 match-height-footer match-height">
+	<span class="table-cell vertical-middle">
+		<span class="footer-h2">
+			<a class="interactive ga-clickable"  data-ga-event-label="Polityka antykorupcyjna i Kodeks Postępowania Dostawców Spółek Grupy Maxima" href="https://stokrotka.pl/zobacz-wiecej/polityka-antykorupcyjna-i-kodeks-postepowania-dostawcow-spolek-grupy-maxima/">
+				Polityka antykorupcyjna i Kodeks Postępowania Dostawców Spółek Grupy Maxima
+			</a>
+		</span>
+	</span>
+</span>
+
+<ul class="wm-l2">
+		<li class="standard-border-color interactive">
+		<a data-ga-event-label="Polityka zrównoważonego rozwoju"   class="ga-clickable interactive" href="https://stokrotka.pl/zobacz-wiecej/polityka-antykorupcyjna-i-kodeks-postepowania-dostawcow-spolek-grupy-maxima/polityka-zrownowazonego-rozwoju/">
+						<span class="wm-text">Polityka zrównoważonego rozwoju</span>
+		</a>
+	</li>
+
+</ul>
+		<li class="standard-border-color interactive">
+		<a data-ga-event-label="Regulamin dotyczący pakowania wyrobów garmażeryjnych na wagę"   class="ga-clickable interactive" href="https://stokrotka.pl/zobacz-wiecej/regulamin-dotyczacy-pakowania-wyrobow-garmazeryjnych-na-wage/">
+						<span class="wm-text">Regulamin dotyczący pakowania wyrobów garmażeryjnych na wagę</span>
+		</a>
+	</li>
+	<li class="standard-border-color interactive">
+		<a data-ga-event-label="Procedura zgłoszeń wewnętrznych naruszeń prawa"   class="ga-clickable interactive" href="https://stokrotka.pl/zobacz-wiecej/procedura-zgloszen-wewnetrznych-narusze-prawa/">
+						<span class="wm-text">Procedura zgłoszeń wewnętrznych naruszeń prawa</span>
+		</a>
+	</li>
+
+</ul>
+	
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<script>
+	$(document).ready(function () {
+		$('#wm-133').wMenu({});
+	});
+</script></div>
+					<section class="footer_description" id="container-274">
+	
+	<div class="content">	<div class="wdw-rows-wrap area-24">
+					<div class="wdw-row area-24" id="biuro-obslugi-klienta">
+													<h2>BIURO OBSŁUGI KLIENTA</h2><div class="layout-1"><ul>
+<li><a href="/zwroty-towarow-pelnowartosciowych/">Zwroty towar&oacute;w przemysłowych</a></li>
+<li><a href="/faq/">Pytania i odpowiedzi (FAQ)</a></li>
+<li><a href="/formularz-kontaktowy-dla-klienta/">Kontakt z Biurem Obsługi Klienta</a></li>
+</ul></div>																<div class="clear"></div>
+
+
+											</div>
+
+						</div>
+	</div>
+</section>
+									</div>
+			</div>
+		</div>
+	</div>
+	<div class='under-footer'>
+		<div class="container">
+			<div class="table ROW-100">
+				<div class="table-cell vertical-middle">
+					Copyright &copy; 2026 Stokrotka wszystkie prawa zastrzeżone.
+				</div>
+				<div class="table-cell right">
+					<a href="https://stokrotka.pl/" class='right'>
+											<img class="lazy" data-src="https://stokrotka.pl/template/default/gfx/logo.png" alt="logo"/></a>
+									</div>	
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<script>
+	$( document ).ready(function() {
+		$("#go-top").click(function() {
+			$("html, body").animate({ scrollTop: 0 }, "slow");
+			return false;
+		});
+        
+        $(function() {
+            $('.lazy').Lazy({
+				effect: 'fadeIn',
+				visibleOnly: true
+			});
+        });
+	});
+</script>									<img src="http:///IAJAX/VDd3YyttblBrU0lNWmc3Q0NGRHlNZzNHVGo0SnRXYnBHeWpQZ2wyc0M2WFlvSk5CdFhQa2VyQ094MHBJeWJSN2Rxcyt1VWVtMWQxVFljVTNoaFZpWVE9PTo6.Dx4eU1pbVpDl8oYzTW51A--?ISREQID=SSsyem9Gdm1EUUdJRUVYSHNIakc4c0VkU3ZHVkMxWU1UVERWQ2JId0phcz06OjVipa3goUSGuebwSuh9Fkk-" alt="" style="display:none;" />				<!-- START COOKIES -->      
+										
+									<!-- m_rodo -->
+					<div class="cookie-privacy-content">
+    <div class="cookie-privacy-top">
+        <div class="cookie-privacy-text">
+            <p><span style="text-align: center;">W ramach serwisu stosujemy pliki cookies by umożliwić Ci wygodne korzystanie z serwisu. Jeśli nie zmienisz ustawień dotyczących cookies w Twojej przeglądarce, będą one umieszczane na Twoim komputerze. W każdej chwili możesz zmienić swoje ustawienia. Dowiedz się więcej w naszej&nbsp;</span><a style="text-decoration-line: underline; font-weight: bold; text-align: center;" href="/polityka-prywatnosci/">Polityce Prywatności</a></p>
+        </div>
+    </div>
+    <div class="cookie-privacy-bottom">
+        <div class="cookie-privacy-left">
+            <div class="cookie-privacy-title">
+                <p class="cookie-privacy-more-info">
+                    Dostosuj wybór
+                </p>
+            </div> 
+            <div class="cookie-privacy-text">
+                <p>Możesz dobrowolnie w dowolnym momencie zdecydować, na który rodzaj przetwarzania danych chciałbyś zezwolić.</p>
+            </div>
+        </div>
+        <div class="cookie-privacy-right">
+            <a href="javascript:void(0);" class="cookie-privacy-accept BTN">Akceptuje wszystkie</a>
+        </div>    
+    </div>
+</div>
+<div class="user-setting hide">
+    <div class="user-setting-info">
+        <span class='user-setting-window-title'>
+            Zarządzaj ustawieniami dotyczącymi prywatności
+        </span>
+        <div class='user-setting-exit'>
+            <i class="nc-icon-glyph ui-1_bold-remove"></i>
+        </div>
+    </div>
+    <div class="user-setting-bottom">
+        <div class="user-setting-category-groups">
+        </div>
+        <div class="user-setting-category-list">
+            <div class="user-setting-left">
+                                    <div class="cookie-category-name" data-symbol="functional" data-id="1">
+                        Funkcjonalne pliki cookies
+                    </div>
+                                    <div class="cookie-category-name" data-symbol="marketing" data-id="2">
+                        Marketingowe pliki cookies
+                    </div>
+                                    <div class="cookie-category-name" data-symbol="analytical" data-id="3">
+                        Analityczne pliki cookies
+                    </div>
+                            </div>
+            <div class="user-setting-right">
+                                    <div class="cookie-category-desc" data-symbol="functional" data-id="1">
+                        <div class="cookie-desc-top">
+                        <p class="cookie-desc-name">
+                            Funkcjonalne pliki cookies
+                        </p>
+                                                    <span class="always-active" data-symbol="functional" data-id="1">
+                                Zawsze aktywne
+                            </span>
+                                                </div>
+                        <div class="cookie-desc-bottom">
+                            <p><span>Funkcjonalne pliki cookies pomagają naszej stronie działać poprawnie, ponieważ umożliwiają utworzenie konta, logowanie się i zarządzanie rezerwacjami. Zapamiętują one r&oacute;wnież Twoją walutę i język, poprzednie wyszukiwania oraz inne preferencje. Te pliki techniczne są konieczne, aby korzystanie z naszej strony i usług było możliwe.</span></p>
+                            <span class="cookie-see-more" data-symbol="functional" data-id="1">
+                                Pliki cookies wykorzystywane przez nas
+                            </span>
+                        </div>
+                    </div>
+                                    <div class="cookie-category-desc" data-symbol="marketing" data-id="2">
+                        <div class="cookie-desc-top">
+                        <p class="cookie-desc-name">
+                            Marketingowe pliki cookies
+                        </p>
+                                                    <label class="switch">
+                                <input type="checkbox" data-symbol="marketing" data-id="2">
+                                <span class="slider round"></span>
+                            </label>
+                                                </div>
+                        <div class="cookie-desc-bottom">
+                            <p><span>Ta strona oraz strony innych zaufanych partner&oacute;w wykorzystują r&oacute;wnież pliki cookies stron trzecich. Pliki te są wykorzystywane w celu wyświetlania spersonalizowanych reklam zar&oacute;wno na tej stronie, jak i na innych stronach. Reklamy te opierają się na Twojej historii przeglądania i wyszukiwanych przez Ciebie miejscach, obiektach i przeglądanych cenach. Umożliwiają one także integrację kanał&oacute;w społecznościowych na naszej stronie, pozwalając na lajkowanie oraz udostępnianie naszych stron i produkt&oacute;w na tych właśnie kanałach.</span></p>
+                            <span class="cookie-see-more" data-symbol="marketing" data-id="2">
+                                Pliki cookies wykorzystywane przez nas
+                            </span>
+                        </div>
+                    </div>
+                                    <div class="cookie-category-desc" data-symbol="analytical" data-id="3">
+                        <div class="cookie-desc-top">
+                        <p class="cookie-desc-name">
+                            Analityczne pliki cookies
+                        </p>
+                                                    <label class="switch">
+                                <input type="checkbox" data-symbol="analytical" data-id="3">
+                                <span class="slider round"></span>
+                            </label>
+                                                </div>
+                        <div class="cookie-desc-bottom">
+                            <p><span>Analityczne pliki cookies pomagają nam zrozumieć, w jaki spos&oacute;b klienci tacy jak Ty korzystają z tej strony. Dzięki temu możemy usprawnić naszą stronę i nasze aplikacje, zoptymalizować komunikację oraz nadal przekazywać Ci interesujące i odpowiednie dla Ciebie treści.</span></p>
+                            <span class="cookie-see-more" data-symbol="analytical" data-id="3">
+                                Pliki cookies wykorzystywane przez nas
+                            </span>
+                        </div>
+                    </div>
+                            </div>
+        </div>
+    </div>
+    <div class="user-setting-footer">
+        <button class="save-preference-btn-handler BTN">
+             Potwierdź wybór
+        </button>
+        <button class="save-all-preference-btn BTN">
+            Zezwolenie na wszystkie
+        </button>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $('.cookie-privacy-content').mRodo({
+            ajax:{
+                load_list:'/IAJAX/UDgvVHZ6WjZxMElKdFFOdDdvdUxxblhYcjV5Snd1ZHNUMjlzdzQ5MHQrZHhITmh4blB4dmZHSmRucFN2OTdLSHVDUjZaZFl5VmZ5UFN5QWpRbWw4M3VKeVlGZ3BoUHRlZGRrU2VvTk9ZQTVENE4rWlBpMmQ0Z1Y4QUg3d0xGdEI4N3paVjJ3VG1KMk10VHY1dGlGTjJnPT06Om460a0TpwTxm7pNAYj2358-?id_module=153&user_guest=1',
+                get_data_after_accept:'/IAJAX/elZJS0dyOEJod2pOVStEZnhUS3dueEFyekRzaWlEQjdVN1ljQ3ZobG5PK25Wc0R3ZTQ5eTFBNnBLdmprc2puTnpSUC9HakgyVG9XVWZRVWRpb2NaUnpOVFYrL3d5c1pVVjRJNUNuZkdvbnc9Ojq2L2jli08A43ZDnR80pJfz?id_module=153&user_guest=1'
+            }
+        });
+    });
+</script>
+
+									<!-- END COOKIES -->      
+		<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MFV9PHM" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MLX5LPR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<script type="text/javascript">
+    var _smid = "rvn7e9mx66yj22x4";
+    (function(w, r, a, sm, s ) {
+        w['SalesmanagoObject'] = r;
+        w[r] = w[r] || function () 
+        {
+          ( w[r].q = w[r].q || [] ).push(arguments)
+        };
+        sm = document.createElement('script'); sm.type = 'text/javascript'; sm.async = true; sm.src = a;
+        s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(sm, s);
+    })(window, 'sm', ('https:' == document.location.protocol ? 'https://' : 'http://') + 'www.salesmanago.pl/static/sm.js');
+</script>
+
+<noscript><img height="1" width="1" style="display:none" alt="fb-script"  src="https://www.facebook.com/tr?id=298687990544273&ev=PageView&noscript=1" /></noscript>
+				
+		<script type="text/javascript">
+			var _smid = 'd128e996facf4cdd';
+			var _smapp = 2;
+			(function(w, r, a, sm, s ) {
+				w['SalesmanagoObject'] = r;
+				w[r] = w[r] || function () {( w[r].q = w[r].q || [] ).push(arguments)};
+				sm = document.createElement('script');
+				sm.type = 'text/javascript'; sm.async = true; sm.src = a;
+				s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(sm, s);
+			})(window, 'sm', ('https:' == document.location.protocol ? 'https://' : 'http://')
+			+ 'app2.salesmanago.pl/static/sm.js');
+		</script>
+		
+		
+	</body>
+</html>
