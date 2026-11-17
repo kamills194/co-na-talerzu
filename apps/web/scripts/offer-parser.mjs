@@ -102,6 +102,39 @@ export const productRules = [
   ['yeast',{any:['drozdze'],all:['swiez'],not:['instant','suszon','w proszku']}],
   ['ginger',{any:['imbir'],not:['mielon','marynowan','kandyzowan','suszon','w syropie','piernik','pasta']}],
   ['curry',{any:['curry'],all:['przypraw|mielon|w proszku'],not:['pasta','sos','tofu','kurczak','mleko','ketchup']}],
+  // CNT-038. Raw pork loin only (smoked/cooked loin is a cold cut); white sausage only raw ("surowa"), the scalded
+  // kind is a different product; lacto-fermented cucumbers ≠ fresh, vinegar-pickled or low-salt ("małosolne").
+  ['porkloin',{any:['schab(?: wieprzowy)?'],not:['wedzon','pieczon','gotowan','z koscia','marynowan','w galarecie','konserw','mielon']}],
+  ['breadcrumbs',{any:['bulka tarta'],not:['z przyprawami','czosnkow']}],
+  ['picklecucumber',{any:['ogor(?:ek|ki) kiszon(?:y|e)'],not:['malosoln','krojon','plastr','sok']}],
+  // Liquid starter for żurek; ready soup ("żurek" in a pouch) and starters for other soups are not mapped.
+  ['sourstarter',{any:['zakwas'],all:['zur'],not:['chleb','barszcz','buracz','w proszku','instant']}],
+  ['whitesausage',{any:['kielbasa biala'],all:['surow'],not:['parzon','wedzon','pieczon','gotowan','grill']}],
+  ['marjoram',{any:['majeranek'],not:['swiez']}],
+  ['parmesan',{any:['parmezan','parmigiano(?: reggiano)?'],not:['typu','wiork','chips','krakers']}],
+  // Dried sheets; ready lasagne meals fall under the global "danie/gotowe" exclusion or the `not` list.
+  ['lasagnesheets',{any:['(?:makaron )?lasagne','(?:makaron )?lazania'],not:['bolognese','mrozon','szpinak','z mies','wege','sos']}],
+  ['mascarpone',{any:['mascarpone'],not:['tiramisu','deser','z owoc']}],
+  ['ladyfingers',{any:['biszkopty (?:podluzne|savoiardi|do tiramisu)','savoiardi']}],
+  ['coffee',{any:['kawa rozpuszczalna'],not:['cappuccino','latte','3 ?w ?1','zbozow','mrozon','mix','z mlekiem','smakow']}],
+  ['coconutmilk',{any:['mleczko kokosowe'],not:['w proszku','light','do picia']}],
+  ['coriander',{any:['kolendra(?: swieza)?'],not:['mielon','nasion','ziarn','suszon','liofilizowan']}],
+  ['cumin',{any:['kumin','kmin rzymski'],not:['ziarn','w ziarnach','nasion','cal']}],
+  ['chili',{any:['chil+i'],all:['mielon|w proszku|sproszkowan'],not:['sos','pasta','olej','ketchup','platk','ziarn','con carne','fasol']}],
+  ['corn',{any:['kukurydza (?:konserwowa|w puszce|slodka)'],not:['kolb','mrozon','maka','prazon','popcorn','chrupk','platki']}],
+  ['tortilla',{any:['tortill(?:a|e|i)'],all:['pszenn'],not:['chips','kukurydz','pelnoziarn','nachos']}],
+  ['avocado',{any:['awokado'],not:['pasta','guacamole','olej','sos','mrozon']}],
+  ['lime',{any:['limonk(?:a|i)'],not:['skork','kaffir','lisc']}],
+  ['bun',{any:['bulk(?:a|i)'],all:['(?:ham)?burger'],not:['tarta','gotow','wege']}],
+  ['lettuce',{any:['salata lodowa'],not:['mix','krojon','mieszank']}],
+  ['chocolate',{any:['czekolada (?:gorzka|deserowa)'],not:['nadziew','orzech','mleczn','pitn','do picia','malin','pomarancz','miet','chili','karmel','solon','migdal','bakali']}],
+  ['bakingpowder',{any:['proszek do pieczenia']}],
+  // Feta only; "ser sałatkowy typu feta" is a different (often cow-milk) cheese.
+  ['feta',{any:['(?:ser )?feta'],not:['salatkow','typu','w zalewie','ziol','marynowan','w oleju','pomidor','oliwk']}],
+  ['olives',{any:['oliwki'],all:['czarn'],not:['nadziewan','pasta','tapenad','z pestk','zielon','w oleju']}],
+  ['oregano',{any:['oregano'],not:['swiez','olej']}],
+  ['pita',{any:['(?:chlebek |chlebki )?pit(?:a|y)'],not:['chips','pizza','krakers']}],
+  ['tahini',{any:['tahini','pasta sezamowa'],not:['chalw','sos']}],
 ];
 // Catalog products for which an ordinary shop promotion is not looked up, with the reason.
 export const excludedProducts = new Map([

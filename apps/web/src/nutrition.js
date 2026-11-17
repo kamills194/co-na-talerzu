@@ -32,6 +32,15 @@ export const NUTRITION = {
   leek:[61,1.5,0.3,14.2], bayleaf:[313,7.6,8.4,75.0], allspice:[263,6.1,8.7,72.1],
   mustard:[140,6.0,7.0,11.0], gherkin:[25,0.5,0.1,5.5], yeast:[105,8.4,1.9,18.1],
   ginger:[80,1.8,0.8,17.8], curry:[325,14.3,14.0,55.8],
+  // CNT-038. sourstarter: liquid rye starter for żurek (about 8% rye flour). coconutmilk: canned, full fat.
+  // corn: canned, drained. chocolate: 70% cocoa solids.
+  porkloin:[143,21.0,6.5,0], breadcrumbs:[380,12.5,4.5,72.0], picklecucumber:[12,0.5,0.1,2.0], sourstarter:[27,0.8,0.2,5.5],
+  whitesausage:[270,14.5,23.0,1.0], marjoram:[271,12.7,7.0,60.6], parmesan:[392,35.8,25.8,3.2], lasagnesheets:[360,12.5,1.5,73.0],
+  mascarpone:[420,4.8,43.0,3.6], ladyfingers:[385,8.5,4.0,77.0], coffee:[240,12.0,0.5,42.0], coconutmilk:[190,1.8,19.5,2.8],
+  coriander:[23,2.1,0.5,3.7], cumin:[375,17.8,22.3,44.2], chili:[282,13.5,14.3,49.7], corn:[80,2.7,1.2,15.5],
+  tortilla:[310,8.5,7.5,51.0], avocado:[160,2.0,14.7,8.5], lime:[25,0.4,0.1,8.4], bun:[280,9.0,5.0,49.0],
+  lettuce:[14,0.9,0.1,3.0], chocolate:[570,8.0,41.0,36.0], bakingpowder:[53,0,0,27.7], feta:[264,14.2,21.3,4.1],
+  olives:[115,0.8,10.7,6.3], oregano:[265,9.0,4.3,69.0], pita:[275,9.1,1.2,55.7], tahini:[595,17.0,53.8,21.2],
 };
 // Salt, water and a pinch of black pepper are counted as 0 kcal (negligible or none).
 export const ZERO_KCAL = ['water','salt','blackpepper'];
@@ -44,12 +53,17 @@ export const UNIT_GRAMS = {
   // CNT-033: parsley root and leek — edible part of a medium piece; bay leaf, allspice berry and a gherkin
   // (medium pickled cucumber, drained); curry powder per teaspoon like other ground spices.
   parsleyroot:80, leek:200, bayleaf:0.2, allspice:0.15, gherkin:50, curry:2.5,
+  // CNT-038: a medium lacto-fermented cucumber, dried herbs ≈ 1 g per teaspoon, ground spices like curry,
+  // a 20–25 cm wheat tortilla, edible part of a medium avocado, juice of one lime, one burger bun, a head
+  // of iceberg lettuce, one pita, baking powder per teaspoon.
+  picklecucumber:80, marjoram:1, coriander:25, cumin:2, chili:2.5, tortilla:45, avocado:150, lime:30, bun:75,
+  lettuce:500, bakingpowder:4, oregano:1, pita:60,
 };
 // ml → g. Water-like liquids ≈ 1 g/ml; oils are lighter.
 export const DENSITY = { oil:0.92, oliveoil:0.91 };
 // Products that are meat (CNT-025). Products carry no meat marker, so the list is explicit; a test
 // fails when a product whose name suggests meat is missing here. Fish is detected by the fish allergen.
-export const MEAT_PRODUCTS = ['chicken','ham','mincedpork','beef','beefslices','mincedbeef','chickenthigh','porkshoulder','bacon'];
+export const MEAT_PRODUCTS = ['chicken','ham','mincedpork','beef','beefslices','mincedbeef','chickenthigh','porkshoulder','bacon','porkloin','whitesausage'];
 // Grams of one unit of a product, or null when unknown.
 export function gramsPerUnit(id) {
   const unit=products[id]?.[1];
