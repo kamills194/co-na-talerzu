@@ -45,5 +45,9 @@ export const messages = {
   excludeSearchPlaceholder:'Skriv et navn, f.eks. løg', excludeNoMatch:'Produktet findes ikke i opskrifterne.', excludeHelp:'Pil op og ned vælger, Enter tilføjer, Esc lukker.', excludedAdded:'Udeladt: {name}', excludedRemoved:'Tilladt igen: {name}', removeExclusion:'Fjern udeladelse',
   excludedSummary:'Udeladt', clearExclusions:'Ryd', clearExclusionsLabel:'Ryd alle udeladelser', allergenExamples:'f.eks. {list}', allergenNone:'findes ikke i de nuværende opskrifter', filtersCleared:'Alle filtre er ryddet.',
   servingsCount_one:'{n} portion', servingsCount_other:'{n} portioner', suggestions_one:'{n} forslag', suggestions_other:'{n} forslag',
-  themeLabel:'Tema', themeLight:'Lyst', themeDark:'Mørkt', themeAuto:'Automatisk',
+  themeLabel:'Tema', themeLight:'Lyst', themeDark:'Mørkt',
+  // CNT-039
+  hours:'t.', promoOn:'På tilbud: {list}',
+  indian:'Indisk', mexican:'Mexicansk', american:'Amerikansk', mediterranean:'Middelhavet', asian:'Asiatisk',
+  indianCuisine:'Indisk køkken', mexicanCuisine:'Mexicansk køkken', americanCuisine:'Amerikansk køkken', mediterraneanCuisine:'Middelhavskøkken', asianCuisine:'Asiatisk køkken',
 };

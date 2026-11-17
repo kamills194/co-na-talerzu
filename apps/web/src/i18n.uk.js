@@ -46,5 +46,9 @@ export const messages = {
   excludedSummary:'Виключено', clearExclusions:'Очистити', clearExclusionsLabel:'Очистити всі виключення', allergenExamples:'напр. {list}', allergenNone:'немає в поточних рецептах', filtersCleared:'Усі фільтри очищено.',
   servingsCount_one:'{n} порція', servingsCount_few:'{n} порції', servingsCount_many:'{n} порцій', servingsCount_other:'{n} порції', suggestions_one:'{n} підказка', suggestions_few:'{n} підказки',
   suggestions_many:'{n} підказок', suggestions_other:'{n} підказки',
-  themeLabel:'Тема', themeLight:'Світла', themeDark:'Темна', themeAuto:'Автоматично',
+  themeLabel:'Тема', themeLight:'Світла', themeDark:'Темна',
+  // CNT-039
+  hours:'год', promoOn:'В акції: {list}',
+  indian:'Індійська', mexican:'Мексиканська', american:'Американська', mediterranean:'Середземноморська', asian:'Азійська',
+  indianCuisine:'Індійська кухня', mexicanCuisine:'Мексиканська кухня', americanCuisine:'Американська кухня', mediterraneanCuisine:'Середземноморська кухня', asianCuisine:'Азійська кухня',
 };

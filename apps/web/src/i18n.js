@@ -53,12 +53,16 @@ export const messages = {
   excludedSummary:'Wykluczone', clearExclusions:'Wyczyść', clearExclusionsLabel:'Wyczyść wszystkie wykluczenia', allergenExamples:'np. {list}', allergenNone:'brak w obecnych przepisach', filtersCleared:'Wyczyszczono wszystkie filtry.',
   servingsCount_one:'{n} porcja', servingsCount_few:'{n} porcje', servingsCount_many:'{n} porcji', servingsCount_other:'{n} porcji', suggestions_one:'{n} podpowiedź', suggestions_few:'{n} podpowiedzi',
   suggestions_many:'{n} podpowiedzi', suggestions_other:'{n} podpowiedzi',
-  themeLabel:'Motyw', themeLight:'Jasny', themeDark:'Ciemny', themeAuto:'Automatyczny',
+  themeLabel:'Motyw', themeLight:'Jasny', themeDark:'Ciemny',
+  // CNT-039: time in hours (above 60 min), products on promotion listed on the card, new cuisines (labels ready before data).
+  hours:'h', promoOn:'W promocji: {list}',
+  indian:'Indyjska', mexican:'Meksykańska', american:'Amerykańska', mediterranean:'Śródziemnomorska', asian:'Azjatycka',
+  indianCuisine:'Kuchnia indyjska', mexicanCuisine:'Kuchnia meksykańska', americanCuisine:'Kuchnia amerykańska', mediterraneanCuisine:'Kuchnia śródziemnomorska', asianCuisine:'Kuchnia azjatycka',
 };
 export const categories = ['breakfast','snack','lunch','dinner','dessert','starter'];
 export const allergens = ['gluten','milk','eggs','nuts','fish','soy','celery','mustard','sesame'];
 // Ordered cuisine tabs. A recipe without `cuisine` counts as 'polish'.
-export const cuisines = ['polish','italian','german','french','japanese'];
+export const cuisines = ['polish','italian','german','french','japanese','indian','mexican','american','mediterranean','asian'];
 
 
 // Stored product unit (recipes.pl.js) → message key. Keys ending in a plural form are looked up with tn().
@@ -67,17 +71,18 @@ export const UNIT_KEYS = Object.freeze({ 'g':'unitG', 'ml':'unitMl', 'szt.':'uni
 // ---------- CNT-030: language layer ----------
 // Every language is pre-registered here, so adding one means only filling its two files.
 // `locale` formats dates and numbers; prices keep the currency of the store market (CNT-018). `keepCase`: the
-// language capitalises nouns, so ingredient lists on cards are not lower-cased.
+// language capitalises nouns, so ingredient lists on cards are not lower-cased. `flag` (CNT-039): emoji flag shown
+// before the native name in the picker options (the header badge draws an SVG flag instead).
 export const SOURCE_LANGUAGE = 'pl';
 export const languages = Object.freeze([
-  { code:'pl', name:'Polski', locale:'pl-PL', dir:'ltr' },
-  { code:'en', name:'English', locale:'en-GB', dir:'ltr' },
-  { code:'de', name:'Deutsch', locale:'de-DE', dir:'ltr', keepCase:true },
-  { code:'uk', name:'Українська', locale:'uk-UA', dir:'ltr' },
-  { code:'fr', name:'Français', locale:'fr-FR', dir:'ltr' },
-  { code:'da', name:'Dansk', locale:'da-DK', dir:'ltr' },
-  { code:'es', name:'Español', locale:'es-ES', dir:'ltr' },
-  { code:'it', name:'Italiano', locale:'it-IT', dir:'ltr' },
+  { code:'pl', flag:'🇵🇱', name:'Polski', locale:'pl-PL', dir:'ltr' },
+  { code:'en', flag:'🇬🇧', name:'English', locale:'en-GB', dir:'ltr' },
+  { code:'de', flag:'🇩🇪', name:'Deutsch', locale:'de-DE', dir:'ltr', keepCase:true },
+  { code:'uk', flag:'🇺🇦', name:'Українська', locale:'uk-UA', dir:'ltr' },
+  { code:'fr', flag:'🇫🇷', name:'Français', locale:'fr-FR', dir:'ltr' },
+  { code:'da', flag:'🇩🇰', name:'Dansk', locale:'da-DK', dir:'ltr' },
+  { code:'es', flag:'🇪🇸', name:'Español', locale:'es-ES', dir:'ltr' },
+  { code:'it', flag:'🇮🇹', name:'Italiano', locale:'it-IT', dir:'ltr' },
 ].map(Object.freeze));
 export const languageCodes = Object.freeze(languages.map(l => l.code));
 export const languageInfo = (code = language) => languages.find(l => l.code === code) || languages[0];

@@ -19,10 +19,12 @@ export function matchesDiet(r, diet) { return !diet || (Object.hasOwn(dietRules,
 // the UI language; the Polish names are always searched as well.
 // `minTime` (CNT-034, optional): only recipes taking at least that many minutes (e.g. 61 = "over 60 min");
 // 0 or absent = no lower bound, so existing callers keep working.
+// CNT-039: both bounds compare the displayed (bucketed) time, timeBucket(r.minutes).minutes, so "Do 30 min"
+// shows exactly the dishes labelled 15 or 30 min. Stored minutes never change.
 export function filterRecipes(recipes, {query='',category='',cuisine='',maxTime=0,minTime=0,diet='',excluded=[],excludedProducts=[]}={}, {extraText}={}) {
   const q=normalize(query);
   // A recipe without `cuisine` belongs to the Polish catalog (records older than CNT-024).
-  return recipes.filter(r => (!category || r.category===category) && (!cuisine || (r.cuisine||'polish')===cuisine) && (!Number(maxTime) || r.minutes<=Number(maxTime)) && (!Number(minTime) || r.minutes>=Number(minTime)) && matchesDiet(r,diet) && !r.allergens.some(a=>excluded.includes(a)) && !r.ingredients.some(i=>excludedProducts.includes(i.product)) && (!q || normalize([r.name,...r.ingredients.map(i=>products[i.product][0]),...(extraText?extraText(r):[])].join(' ')).includes(q)));
+  return recipes.filter(r => (!category || r.category===category) && (!cuisine || (r.cuisine||'polish')===cuisine) && (!Number(maxTime) || timeBucket(r.minutes).minutes<=Number(maxTime)) && (!Number(minTime) || timeBucket(r.minutes).minutes>=Number(minTime)) && matchesDiet(r,diet) && !r.allergens.some(a=>excluded.includes(a)) && !r.ingredients.some(i=>excludedProducts.includes(i.product)) && (!q || normalize([r.name,...r.ingredients.map(i=>products[i.product][0]),...(extraText?extraText(r):[])].join(' ')).includes(q)));
 }
 export function surprise(recipes, filters, previousId, rng=Math.random) {
   const matches=filterRecipes(recipes,filters);
@@ -156,26 +158,53 @@ export function ingredientOffers(recipe,offers,now=new Date()) {
   const best=bestOffers(offers,now);
   return recipe.ingredients.map(i=>({product:i.product,amount:i.amount,pantry:pantryProducts.includes(i.product),offer:best.has(i.product)?offerView(best.get(i.product)):null}));
 }
-// ---------- CNT-029 (rozszerzenie): losowanie ważone promocjami ----------
+// ---------- CNT-029 (rozszerzenie) / CNT-039: losowanie ważone promocjami, większa różnorodność ----------
+// Uniform number in [0, 1) from crypto.getRandomValues when available (better spread than Math.random on some
+// engines); falls back to Math.random. `source` is injectable for tests.
+export function secureRandom(source=globalThis.crypto) {
+  try { if(typeof source?.getRandomValues==='function'){ const a=new Uint32Array(1); source.getRandomValues(a); return a[0]/4294967296; } } catch { /* fall through */ }
+  return Math.random();
+}
+// Promotion bias, softened in CNT-039 (was 1 + 2 × matched): weight = min(3, 1 + 0.5 × matched).
+// 0 matched → 1, 1 → 1.5, 2 → 2, 3 → 2.5, 4 or more → 3 (cap). Every dish keeps a real chance.
+export const PROMO_WEIGHT_STEP = 0.5, PROMO_WEIGHT_MAX = 3;
+export const promoWeight = matched => Math.min(PROMO_WEIGHT_MAX, 1 + PROMO_WEIGHT_STEP * Math.max(0, Number(matched) || 0));
+// How many recently drawn dishes to avoid: 15, or about 40% of the candidates when the pool is small
+// (at least 1, so with two candidates the draw alternates).
+export const RECENT_MAX = 15;
+export const recentWindow = poolSize => Math.max(1, Math.min(RECENT_MAX, Math.floor(Math.max(0, Number(poolSize) || 0) * 0.4)));
 /**
- * Draws one recipe from `candidates` (already filtered, e.g. by filterRecipes), favouring dishes with
- * ingredients on a current promotion. Weight of a recipe = 1 + 2 × promoCoverage(recipe, offers, now).count
- * (0 matched → 1, 1 → 3, 3 → 7): every dish keeps a chance, and with no current offers the draw is uniform.
- * Recipes whose id is in `exclude` are skipped; returns null when nothing is left.
+ * Draws one recipe from `candidates` (already filtered, e.g. by filterRecipes), mildly favouring dishes with
+ * ingredients on a current promotion: weight = promoWeight(promoCoverage(recipe, offers, now).count).
+ * With no current offers the draw is uniform. Recipes whose id is in `exclude` are skipped; null when nothing is left.
  * @param {object[]} candidates
  * @param {object[]} offers   automatic offers; only those displayable at `now` count
  * @param {Date} [now]
- * @param {{random?:()=>number, exclude?:string[]}} [options] `random` returns a number in [0, 1)
+ * @param {{random?:()=>number, exclude?:string[]}} [options] `random` returns a number in [0, 1) (default secureRandom)
  * @returns {?object} one of `candidates` (same object) or null
  */
-export function weightedSurprise(candidates,offers,now=new Date(),{random=Math.random,exclude=[]}={}) {
+export function weightedSurprise(candidates,offers,now=new Date(),{random=secureRandom,exclude=[]}={}) {
   const pool=(Array.isArray(candidates)?candidates:[]).filter(r=>!exclude.includes(r.id));
   if(!pool.length) return null;
   const best=bestOffers(offers,now); // computed once; per recipe identical to promoCoverage(r,offers,now).count
-  const weights=pool.map(r=>1+2*coverageFrom(r,best).count), total=weights.reduce((a,b)=>a+b,0);
+  const weights=pool.map(r=>promoWeight(coverageFrom(r,best).count)), total=weights.reduce((a,b)=>a+b,0);
   let x=Math.min(Math.max(Number(random())||0,0),1)*total;
   for(let i=0;i<pool.length;i++){ x-=weights[i]; if(x<0) return pool[i]; }
   return pool[pool.length-1];
+}
+// ---------- CNT-039: preparation time shown in uniform buckets ----------
+/**
+ * Displayed preparation time: ≤15 → 15 min, ≤30 → 30 min, ≤60 → 60 min, above 60 rounded UP to the next
+ * full 30 minutes and shown in hours (90 → 1.5 h, 120 → 2 h, 150 → 2.5 h …).
+ * @returns {{minutes:number, unit:'min'|'h', value:number}} `minutes` is the bucketed value used for filtering.
+ */
+export function timeBucket(minutes) {
+  const m=Math.max(0, Number(minutes) || 0);
+  if(m<=15) return {minutes:15,unit:'min',value:15};
+  if(m<=30) return {minutes:30,unit:'min',value:30};
+  if(m<=60) return {minutes:60,unit:'min',value:60};
+  const rounded=Math.ceil(m/30)*30;
+  return {minutes:rounded,unit:'h',value:rounded/60};
 }
 // ---------- CNT-034: servings, time ranges, ingredient exclusion search, allergen groups ----------
 export const SERVINGS_MIN = 1, SERVINGS_MAX = 20, SERVINGS_DEFAULT = 1;
