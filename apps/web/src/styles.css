@@ -44,3 +44,20 @@ dialog{--dp:30px;padding:0 var(--dp) var(--dp);overscroll-behavior:contain}
 .nutrition{margin-top:22px;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:14px 16px}.nutrition h3{margin:0 0 10px;font-size:19px}
 .nutrition dl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:0 0 10px}.nutrition dl div{background:#f0f0e7;border-radius:8px;padding:8px 10px}.nutrition dt{font-size:11px;color:var(--muted)}.nutrition dd{margin:2px 0 0;font-size:15px;font-weight:600;white-space:nowrap}.nutrition p{margin:0}
 @media(max-width:600px){.nutrition dl{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* CNT-027/029: kolejność według promocji, cena i link promocji przy składniku i na liście zakupów */
+.results-heading{flex-wrap:wrap;gap:8px 18px}
+.sort-control{display:flex;align-items:center;gap:10px;margin-left:auto;font-size:12px}.sort-control select{width:auto;max-width:100%;min-height:44px;margin-top:0;padding:8px 12px;font-size:13px}
+.sort-hint{flex-basis:100%;order:3;margin:0;font-size:12px;color:var(--muted);text-align:right}
+.offer-tag{display:inline-block;margin-top:10px;padding:4px 10px;border-radius:20px;background:#f6e6dc;font-size:12px;font-weight:600}
+.ingredients li{flex-wrap:wrap;row-gap:2px}
+.promo-line{flex-basis:100%;margin:0;font-size:12px;line-height:1.5;color:var(--muted);overflow-wrap:anywhere}
+.promo-price{color:var(--orange);font-weight:700}
+.promo-scope{color:var(--orange)}
+.promo-until,.promo-scope{white-space:nowrap}
+.promo-link{display:flex;width:fit-content;max-width:100%;align-items:center;min-height:44px;padding:0 4px 0 0;font-weight:600;color:var(--green);text-underline-offset:3px}
+.shopping-list li{flex-wrap:wrap;row-gap:0}.shopping-list .promo-line{padding:0 0 8px 27px}
+@media(max-width:600px){.sort-control{margin-left:0;width:100%;justify-content:space-between}.sort-control select{flex:1;min-width:0;font-size:16px}.sort-hint{text-align:left}}
+/* CNT-029 (rozszerzenie): „Wylosuj inne” w szczegółach przepisu wylosowanego */
+.reroll{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin:4px 0 18px}.reroll .secondary{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:10px 20px;border-color:var(--green);color:var(--green);font-size:14px;font-weight:600;background:var(--white)}.reroll .secondary:hover:not(:disabled){background:#eef1e8}.reroll .secondary:disabled{opacity:.55;cursor:not-allowed}.reroll p{margin:0}
+@media(max-width:600px){.reroll .secondary{width:100%;justify-content:center}}
