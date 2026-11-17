@@ -198,7 +198,7 @@ test('Domyślnie polski, także gdy przeglądarka jest po angielsku; wybór zapi
   assert.ok(!a.lang.includes('lang-suggest'), 'po wyborze podpowiedź znika');
   assert.deepEqual(out.html, { lang:'en', dir:'ltr' }); assert.equal(out.title, 'Co na talerz — home-cooking ideas');
   assert.equal(out.saved.settings.language, 'en');
-  assert.ok(out.detail.includes('Wash the apple, remove the core and grate it.')); assert.ok(out.detail.includes('50 g')); assert.ok(out.detail.includes('0.25 tsp')); // CNT-034: domyślnie 1 porcja (dane: 2)
+  assert.ok(out.detail.includes('Wash the apple, remove the core and grate it.')); assert.ok(out.detail.includes('50 g')); assert.ok(out.detail.includes('0.5 g')); // CNT-034: domyślnie 1 porcja (dane: 2); CNT-036: w gramach
   assert.ok(out.detail.includes('<h2 id="detail-heading">Porridge with apple and cinnamon</h2>'));
   assert.ok(out.shopping.includes('Shopping without forgetting'));
 });
@@ -209,7 +209,7 @@ test('Zapisany język działa od startu; stare dane bez języka i przeglądarka 
     await click({dataset:{tab:'offers'}});out.offers=el('#main').innerHTML;await click({dataset:{tab:'recipes'}});input({id:'search',value:'porridge'});out.searchEn=el('#results').innerHTML;input({id:'search',value:'owsianka'});out.searchPl=el('#results').innerHTML;` });
   assert.deepEqual(out.html, { lang:'en', dir:'ltr' });
   assert.ok(out.results.includes('Porridge with apple and cinnamon'));
-  assert.ok(out.shopping.includes('<span>Bread</span><strong>4 slices</strong>')); assert.ok(out.shopping.includes('<span>Garlic</span><strong>1 clove</strong>'));
+  assert.ok(out.shopping.includes('<span>Bread</span><strong>140 g</strong>')); assert.ok(out.shopping.includes('<span>Garlic</span><strong>5 g</strong>'));
   assert.ok(out.offers.includes('SPEND LESS, EAT WELL')); assert.ok(out.offers.includes('Price per pack (PLN)'), 'waluta rynku (PLN) niezależnie od języka');
   assert.ok(out.searchEn.includes('data-recipe="owsianka"')); assert.ok(out.searchPl.includes('data-recipe="owsianka"'));
   assert.deepEqual(out.saved.settings, { language:'en', sort:'default' });

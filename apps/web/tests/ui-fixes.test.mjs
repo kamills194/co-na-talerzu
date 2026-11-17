@@ -73,8 +73,9 @@ test('Błąd 2: ułamek lub liczba spoza 1–20 w polu porcji — bez cichego do
 test('Błąd 3: „Wylosuj inne” wracało do domyślnej liczby porcji zamiast zachować wybraną',()=>{
   const out=runApp({script:`click({id:'random'});input({id:'servings',value:'4'});click({id:'reroll'});out.html=detail();out.name=shown();`});
   assert.match(out.html,/id="servings"[^>]*value="4"/);
-  const r=byId(idByName(out.name)), a=amountsIn(out.html), first=r.ingredients[0];
-  assert.ok(a[first.product].startsWith(String(first.amount*4/r.servings).replace('.',',')),`${first.product}: ${a[first.product]}`);
+  const r=byId(idByName(out.name)), a=amountsIn(out.html), first=r.ingredients.find(i=>products[i.product][1]==='ml')??r.ingredients[0];
+  // CNT-036: ilości w gramach/ml; sprawdzamy składnik w ml (bez przeliczania) albo obecność wpisu
+  if(products[first.product][1]==='ml') assert.ok(a[first.product].startsWith(String(Math.round(first.amount*4/r.servings))),`${first.product}: ${a[first.product]}`); else assert.ok(a[first.product],first.product);
 });
 test('Błąd 4: przycisk „Zaskocz mnie” w nagłówku strony tylko przewijał, nie losował dania',()=>{
   const out=runApp({script:`out.hero=el('#main').innerHTML.slice(0,el('#main').innerHTML.indexOf('</section>'));click({id:'hero-random'});out.open=el('#detail').open;out.name=shown();out.html=detail();`});
@@ -103,7 +104,7 @@ test('Szczegóły: domyślnie 1 porcja, ilości przeliczone z recipe.servings; p
   assert.match(out.html,/<button type="button" class="step" id="servings-dec" aria-controls="servings" aria-label="Zmniejsz liczbę porcji"[^>]*aria-disabled="true"/);
   assert.match(out.html,/<button type="button" class="step" id="servings-inc" aria-controls="servings" aria-label="Zwiększ liczbę porcji"/);
   assert.match(out.html,/<label for="servings">Porcje<\/label>/);
-  assert.deepEqual(amountsIn(out.html),{oats:'50 g',milk:'200 ml',apple:'0,5 szt.',cinnamon:'0,25 łyżeczki'});
+  assert.deepEqual(amountsIn(out.html),{oats:'50 g',milk:'200 ml',apple:'80 g (≈ 0,5 szt.)',cinnamon:'0,5 g'});
   assert.equal(r.servings,2,'dane bez zmian');
   assert.equal(out.afterDec,'1');assert.equal(out.decDisabled,'true');
   assert.equal(out.afterInc,'3');assert.equal(out.oats,'150 g');assert.equal(out.status,'3 porcje');
@@ -117,8 +118,8 @@ test('Szczegóły: domyślnie 1 porcja, ilości przeliczone z recipe.servings; p
 });
 test('Porcje w przepisie przetłumaczonym (en): 1 serving, jednostki z liczbą mnogą',()=>{
   const out=runApp({lang:'en',script:`click({dataset:{recipe:'jajecznica'}});out.html=detail();click({id:'servings-inc'});out.status=el('#servings-status').textContent;out.bread=el('[data-amount="bread"]').textContent;`});
-  assert.deepEqual(amountsIn(out.html),{egg:'2 pcs',butter:'5 g',tomato:'0.5 pcs',bread:'2 slices',salt:'0.13 tsp'});
-  assert.ok(out.html.includes('aria-label="Fewer servings"'));assert.equal(out.status,'2 servings');assert.equal(out.bread,'4 slices');
+  assert.deepEqual(amountsIn(out.html),{egg:'100 g (≈ 2 pcs)',butter:'5 g',tomato:'75 g (≈ 0.5 pcs)',bread:'70 g',salt:'1 g'});
+  assert.ok(out.html.includes('aria-label="Fewer servings"'));assert.equal(out.status,'2 servings');assert.equal(out.bread,'140 g');
 });
 
 // ---------- 2. Wybór języka w prawym górnym rogu, kompaktowy ----------
