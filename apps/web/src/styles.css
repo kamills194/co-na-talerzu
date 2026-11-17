@@ -61,3 +61,6 @@ dialog{--dp:30px;padding:0 var(--dp) var(--dp);overscroll-behavior:contain}
 /* CNT-029 (rozszerzenie): „Wylosuj inne” w szczegółach przepisu wylosowanego */
 .reroll{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin:4px 0 18px}.reroll .secondary{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:10px 20px;border-color:var(--green);color:var(--green);font-size:14px;font-weight:600;background:var(--white)}.reroll .secondary:hover:not(:disabled){background:#eef1e8}.reroll .secondary:disabled{opacity:.55;cursor:not-allowed}.reroll p{margin:0}
 @media(max-width:600px){.reroll .secondary{width:100%;justify-content:center}}
+/* CNT-030: language picker in the header (globe + "Język / Language", native names). */
+.lang-picker{display:flex;align-items:center;gap:8px;margin-left:auto;min-width:0}.lang-picker label{display:flex;align-items:center;gap:6px;margin:0;font-size:11px;font-weight:600;white-space:nowrap}.lang-picker .globe{flex:none}.lang-picker select{width:auto;max-width:100%;min-height:44px;margin-top:0;padding:8px 10px;font-size:14px}.lang-suggest{min-height:44px;padding:8px 12px;border:1px dashed var(--border);border-radius:22px;background:var(--white);color:inherit;font-size:13px;cursor:pointer}
+@media(max-width:600px){.lang-picker{flex-wrap:wrap;max-width:100%}.lang-picker select{font-size:16px;min-width:0}}
