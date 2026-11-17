@@ -1,9 +1,10 @@
 import { products } from './recipes.pl.js';
 import { market, marketDate } from './market.js';
 export const normalize = s => String(s).toLocaleLowerCase('pl-PL').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ł/g,'l').trim();
-export function filterRecipes(recipes, {query='',category='',maxTime=0,diet='',excluded=[],excludedProducts=[]}={}) {
+export function filterRecipes(recipes, {query='',category='',cuisine='',maxTime=0,diet='',excluded=[],excludedProducts=[]}={}) {
   const q=normalize(query);
-  return recipes.filter(r => (!category || r.category===category) && (!Number(maxTime) || r.minutes<=Number(maxTime)) && (!diet || r[diet]===true) && !r.allergens.some(a=>excluded.includes(a)) && !r.ingredients.some(i=>excludedProducts.includes(i.product)) && (!q || normalize([r.name,...r.ingredients.map(i=>products[i.product][0])].join(' ')).includes(q)));
+  // A recipe without `cuisine` belongs to the Polish catalog (records older than CNT-024).
+  return recipes.filter(r => (!category || r.category===category) && (!cuisine || (r.cuisine||'polish')===cuisine) && (!Number(maxTime) || r.minutes<=Number(maxTime)) && (!diet || r[diet]===true) && !r.allergens.some(a=>excluded.includes(a)) && !r.ingredients.some(i=>excludedProducts.includes(i.product)) && (!q || normalize([r.name,...r.ingredients.map(i=>products[i.product][0])].join(' ')).includes(q)));
 }
 export function surprise(recipes, filters, previousId, rng=Math.random) {
   const matches=filterRecipes(recipes,filters);
