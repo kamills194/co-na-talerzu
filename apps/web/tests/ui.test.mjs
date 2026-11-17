@@ -47,7 +47,7 @@ test('Każde zdjęcie przypisane w katalogu ma kompletny wpis praw i opis altern
 });
 test('Teksty ekranów przeniesione z app.js są w słowniku, nie w szablonach', async () => {
   const app = await src('app.js');
-  const moved = { eyebrowIdea:'POMYSŁ NA DZIŚ', eyebrowCollection:'TWOJA KOLEKCJA', eyebrowShopping:'Z KUCHNI DO SKLEPU', cardSeries:'DOMOWA KUCHNIA', heroArtCaption:'smakuje jak w domu', heroArtNote:'odrobina inspiracji\nna każdy dzień' };
+  const moved = { eyebrowIdea:'POMYSŁ NA DZIŚ', eyebrowCollection:'TWOJA KOLEKCJA', eyebrowShopping:'Z KUCHNI DO SKLEPU', heroArtCaption:'smakuje jak w domu', heroArtNote:'odrobina inspiracji\nna każdy dzień' };
   for (const [key, text] of Object.entries(moved)) {
     assert.equal(messages[key], text);
     assert.ok(app.includes(`t('${key}')`), key);

@@ -18,7 +18,7 @@ export const messages = {
   fetched:'Зчитано', validFrom:'Дійсна від', scopeLabel:'Охоплення', scopeNationwide:'уся Польща (за джерелом)', scopeRegion:'регіон', scopeUnverified:'не підтверджено', scopeNotGiven:'не вказано (власна нотатка)', regionOptional:'Регіон або охоплення пропозиції (необов’язково)', conditionsLabel:'Умови', conditionsUser:'перевірте в джерелі', currencyLabel:'Валюта', unitPackage:'упаковка',
   excludeProducts:'Пропустити певні продукти', allergensLabel:'Виключити алергени',
   privacyTitle:'Ваші дані залишаються у вас', privacyText:'Улюблене, покупки та введені пропозиції ми зберігаємо лише в пам’яті цього браузера. Немає облікових записів, аналітики чи синхронізації. Очищення даних браузера видаляє ці записи. Збережіть копію, щоб перенести їх на інший пристрій.', export:'Завантажити копію даних', import:'Імпортувати копію даних', importNote:'Імпорт копії замінює локальні улюблені рецепти, покупки та пропозиції.', imported:'Копію даних імпортовано.', invalidBackup:'Неправильний файл копії даних.', storageError:'Не вдалося зберегти дані. Пам’ять браузера може бути недоступною або заповненою.', noMatches:'Немає відповідного рецепта. Змініть фільтри та спробуйте ще раз.', savedCount:'Збережені рецепти', offline:'Працює й офлайн після першого відкриття.', importLabel:'Файл копії даних',
-  eyebrowIdea:'ІДЕЯ НА СЬОГОДНІ', eyebrowCollection:'ВАША КОЛЕКЦІЯ', eyebrowShopping:'З КУХНІ ДО МАГАЗИНУ', cardSeries:'ДОМАШНЯ КУХНЯ', heroArtCaption:'смакує як удома', heroArtNote:'трохи натхнення\nна кожен день',
+  eyebrowIdea:'ІДЕЯ НА СЬОГОДНІ', eyebrowCollection:'ВАША КОЛЕКЦІЯ', eyebrowShopping:'З КУХНІ ДО МАГАЗИНУ', heroArtCaption:'смакує як удома', heroArtNote:'трохи натхнення\nна кожен день',
   browseRecipes:'Переглянути рецепти', photoCredit:'Фото', photoLicense:'Ліцензія', photoChanges:'Зміни',
   offlineNotice:'Ви офлайн. Рецепти, улюблене та список покупок і далі працюють на цьому пристрої.', offlineOffers:'Ви офлайн. Пропозиції магазинів потребують з’єднання з мережею — зараз ми не можемо їх завантажити. Ваші збережені нотатки про пропозиції й надалі доступні. Коли з’єднання відновиться, відкрийте застосунок знову, щоб оновити пропозиції.', backOnline:'Ви знову онлайн.',
   cuisine:'Кухня', allCuisines:'Усі кухні', polish:'Польська', italian:'Італійська', german:'Німецька', french:'Французька', japanese:'Японська', cuisineCount:'Кількість рецептів',
@@ -39,4 +39,11 @@ export const messages = {
   unitBunch_one:'пучок', unitBunch_few:'пучки', unitBunch_many:'пучків', unitBunch_other:'пучка',
   unitPinch_one:'дрібка', unitPinch_few:'дрібки', unitPinch_many:'дрібок', unitPinch_other:'дрібки',
   unitPot_one:'горщик', unitPot_few:'горщики', unitPot_many:'горщиків', unitPot_other:'горщика',
+  // CNT-034: time ranges, cuisine names on cards, servings stepper, exclusion search, allergen groups, reset.
+  prepTime:'Час приготування', timeUpTo:'До {n} хв', timeOver:'Понад {n} хв', polishCuisine:'Польська кухня', italianCuisine:'Італійська кухня', germanCuisine:'Німецька кухня',
+  frenchCuisine:'Французька кухня', japaneseCuisine:'Японська кухня', servingsDecrease:'Менше порцій', servingsIncrease:'Більше порцій', servingsInvalid:'Введіть число від 1 до 20.', excludeSearch:'Виключити продукт',
+  excludeSearchPlaceholder:'Введіть назву, напр. цибуля', excludeNoMatch:'Такого продукту немає в рецептах.', excludeHelp:'Стрілки вгору й униз вибирають, Enter додає, Esc закриває.', excludedAdded:'Виключено: {name}', excludedRemoved:'Знову дозволено: {name}', removeExclusion:'Прибрати виключення',
+  excludedSummary:'Виключено', clearExclusions:'Очистити', clearExclusionsLabel:'Очистити всі виключення', allergenExamples:'напр. {list}', allergenNone:'немає в поточних рецептах', filtersCleared:'Усі фільтри очищено.',
+  servingsCount_one:'{n} порція', servingsCount_few:'{n} порції', servingsCount_many:'{n} порцій', servingsCount_other:'{n} порції', suggestions_one:'{n} підказка', suggestions_few:'{n} підказки',
+  suggestions_many:'{n} підказок', suggestions_other:'{n} підказки',
 };
