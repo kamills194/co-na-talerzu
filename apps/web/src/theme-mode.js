@@ -3,8 +3,8 @@
 // Wybór jest zapisywany w localStorage (klucz poniżej); brak dostępu do pamięci nie psuje aplikacji.
 export const THEME_KEY = 'co-na-talerz:theme';
 export const THEME_MODES = ['light', 'dark', 'auto'];
-// Kolory paska przeglądarki (<meta name="theme-color">): jasny = okładka książeczki, ciemny = nocny papier.
-export const THEME_COLORS = { light: '#9a3824', dark: '#1c1a33' };
+// Kolory paska przeglądarki (<meta name="theme-color">): jasny = okładka książeczki, ciemny = neutralna ciemna szarość.
+export const THEME_COLORS = { light: '#9a3824', dark: '#121212' };
 
 const FALLBACK = { themeLabel: 'Motyw', themeLight: 'Jasny', themeDark: 'Ciemny', themeAuto: 'Automatyczny' };
 const ICONS = { light: '☀︎', dark: '☾︎', auto: '◑' };
