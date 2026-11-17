@@ -45,4 +45,5 @@ export const messages = {
   excludeSearchPlaceholder:'Scrivi un nome, ad es. cipolla', excludeNoMatch:'Questo prodotto non compare nelle ricette.', excludeHelp:'Le frecce su e giù scelgono, Invio aggiunge, Esc chiude.', excludedAdded:'Escluso: {name}', excludedRemoved:'Di nuovo consentito: {name}', removeExclusion:'Rimuovi esclusione',
   excludedSummary:'Esclusi', clearExclusions:'Cancella', clearExclusionsLabel:'Cancella tutte le esclusioni', allergenExamples:'ad es. {list}', allergenNone:'non presente nelle ricette attuali', filtersCleared:'Tutti i filtri sono stati cancellati.',
   servingsCount_one:'{n} porzione', servingsCount_many:'{n} porzioni', servingsCount_other:'{n} porzioni', suggestions_one:'{n} suggerimento', suggestions_many:'{n} suggerimenti', suggestions_other:'{n} suggerimenti',
+  themeLabel:'Tema', themeLight:'Chiaro', themeDark:'Scuro', themeAuto:'Automatico',
 };

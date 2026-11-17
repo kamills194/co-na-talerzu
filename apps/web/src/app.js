@@ -4,6 +4,7 @@ import { filterRecipes, surprise, addIngredients, matchingOffers, localDate, val
 import { load, save, emptyState, validateState } from './storage.js';
 import { photoFor, safeLink } from './photos.js';
 import { nutritionPerServing, gramsPerUnit } from './nutrition.js';
+import { initThemeMode, themeToggleHTML, bindThemeToggle } from './theme-mode.js';
 import { DIETS } from './domain.js';
 import { promoCoverage, rankByPromotions, ingredientOffers, pantryProducts } from './domain.js';
 import { weightedSurprise } from './domain.js';
@@ -15,6 +16,8 @@ const num=n=>formatNumber(n);
 let state=emptyState(), storageWarning=false;
 try { state=load(localStorage); } catch { storageWarning=true; }
 // CNT-030: the UI language is only what the user chose (settings.language); without a choice it stays Polish.
+// CNT-035: jasny / ciemny / automatyczny motyw — przed pierwszym renderem, żeby nie mignął niewłaściwy kolor.
+initThemeMode(); bindThemeToggle(document);
 if(state.settings?.language&&state.settings.language!=='pl') await setLanguage(state.settings.language);
 let tab='recipes', filters={query:'',category:'',cuisine:'',maxTime:0,minTime:0,diet:'',excluded:[],excludedProducts:[]}, servings=SERVINGS_DEFAULT, selected, autoOffers=[];
 function toast(message) { const d=$('#detail'), host=d.open?d:document.body; if($('#toast').parentNode!==host)host.append($('#toast')); $('#toast').textContent=message; $('#toast').classList.add('visible'); clearTimeout(toast.timer); toast.timer=setTimeout(()=>$('#toast').classList.remove('visible'),3500); }
@@ -133,12 +136,18 @@ function offers() { $('#main').innerHTML=`<section class="page-title"><p class="
 // CNT-030: page shell texts, <html lang/dir> and the language picker follow the UI language.
 const pickerLabel=()=>t('language')==='Language'?'Language':`${t('language')} / Language`;
 const globe='<svg class="globe" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M2.5 12h19M12 2.5c2.6 2.7 3.9 5.9 3.9 9.5s-1.3 6.8-3.9 9.5c-2.6-2.7-3.9-5.9-3.9-9.5s1.3-6.8 3.9-9.5z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>';
+// Language list: native name plus the name in the current UI language ("Українська — ukraiński"), so every
+// option is recognisable; the badge uses country-style codes people know (UA, DK) instead of ISO "UK", "DA".
+const BADGE={uk:'UA',da:'DK',en:'EN'};
+function langBadge(code){return BADGE[code]||code.toUpperCase();}
+function langOptionLabel(l){let local='';try{local=new Intl.DisplayNames([locale],{type:'language'}).of(l.code)||'';}catch{}
+  return local&&local.toLocaleLowerCase(locale)!==l.name.toLocaleLowerCase(locale)?`${l.name} — ${local}`:l.name;}
 function picker() {
   const el=$('#lang'); if(!el)return;
   const hint=!state.settings?.language&&language==='pl'?suggestLanguage(globalThis.navigator?.languages?.length?navigator.languages:[globalThis.navigator?.language]):null;
   // CNT-034: compact picker in the top-right corner — a small globe with the language code; the native select lies
   // over it (44 px hit area) and keeps the full accessible label.
-  el.innerHTML=`${hint?`<button class="lang-suggest" id="lang-suggest" data-lang="${esc(hint)}" lang="${esc(hint)}" aria-label="${esc(pickerLabel())}: ${esc(languageInfo(hint).name)}"><span class="suggest-long">${esc(languageInfo(hint).name)}?</span><span class="suggest-short" aria-hidden="true">${esc(hint.toUpperCase())}?</span></button>`:''}<div class="lang-select"><label for="language">${globe}<span class="sr-only">${esc(pickerLabel())}</span><span class="lang-code" aria-hidden="true">${esc(language.toUpperCase())}</span></label><select id="language">${languages.map(l=>`<option value="${esc(l.code)}" lang="${esc(l.code)}" ${l.code===language?'selected':''}>${esc(l.name)}</option>`).join('')}</select></div>`;
+  el.innerHTML=`${hint?`<button class="lang-suggest" id="lang-suggest" data-lang="${esc(hint)}" lang="${esc(hint)}" aria-label="${esc(pickerLabel())}: ${esc(languageInfo(hint).name)}"><span class="suggest-long">${esc(languageInfo(hint).name)}?</span><span class="suggest-short" aria-hidden="true">${esc(langBadge(hint))}?</span></button>`:''}${themeToggleHTML(t)}<div class="lang-select"><label for="language">${globe}<span class="sr-only">${esc(pickerLabel())}</span><span class="lang-code" aria-hidden="true">${esc(langBadge(language))}</span></label><select id="language">${languages.map(l=>`<option value="${esc(l.code)}" lang="${esc(l.code)}" ${l.code===language?'selected':''}>${esc(langOptionLabel(l))}</option>`).join('')}</select></div>`;
 }
 function shell() {
   const info=languageInfo(), root=document.documentElement;

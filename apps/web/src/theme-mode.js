@@ -55,8 +55,9 @@ function syncToggles() {
 function apply(mode) {
   current = mode;
   const root = doc()?.documentElement;
-  if (root) {
-    if (mode === 'auto') root.removeAttribute('data-theme');
+  // A partial DOM (old browser, tests) must never stop the app from starting.
+  if (root && typeof root.setAttribute === 'function') {
+    if (mode === 'auto') root.removeAttribute?.('data-theme');
     else root.setAttribute('data-theme', mode);
   }
   updateMetaColor();

@@ -45,4 +45,5 @@ export const messages = {
   excludeSearchPlaceholder:'Escribe un nombre, p. ej. cebolla', excludeNoMatch:'Ese producto no aparece en las recetas.', excludeHelp:'Las flechas arriba y abajo eligen, Intro añade, Esc cierra.', excludedAdded:'Excluido: {name}', excludedRemoved:'Permitido de nuevo: {name}', removeExclusion:'Quitar exclusión',
   excludedSummary:'Excluidos', clearExclusions:'Borrar', clearExclusionsLabel:'Borrar todas las exclusiones', allergenExamples:'p. ej. {list}', allergenNone:'no aparece en las recetas actuales', filtersCleared:'Se han borrado todos los filtros.',
   servingsCount_one:'{n} ración', servingsCount_many:'{n} raciones', servingsCount_other:'{n} raciones', suggestions_one:'{n} sugerencia', suggestions_many:'{n} sugerencias', suggestions_other:'{n} sugerencias',
+  themeLabel:'Tema', themeLight:'Claro', themeDark:'Oscuro', themeAuto:'Automático',
 };

@@ -53,6 +53,7 @@ export const messages = {
   excludedSummary:'Wykluczone', clearExclusions:'Wyczyść', clearExclusionsLabel:'Wyczyść wszystkie wykluczenia', allergenExamples:'np. {list}', allergenNone:'brak w obecnych przepisach', filtersCleared:'Wyczyszczono wszystkie filtry.',
   servingsCount_one:'{n} porcja', servingsCount_few:'{n} porcje', servingsCount_many:'{n} porcji', servingsCount_other:'{n} porcji', suggestions_one:'{n} podpowiedź', suggestions_few:'{n} podpowiedzi',
   suggestions_many:'{n} podpowiedzi', suggestions_other:'{n} podpowiedzi',
+  themeLabel:'Motyw', themeLight:'Jasny', themeDark:'Ciemny', themeAuto:'Automatyczny',
 };
 export const categories = ['breakfast','snack','lunch','dinner','dessert','starter'];
 export const allergens = ['gluten','milk','eggs','nuts','fish','soy','celery','mustard','sesame'];

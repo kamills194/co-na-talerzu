@@ -412,3 +412,13 @@ html[data-theme="dark"] .plate{filter:brightness(.92)}
   .hero-art::before{animation:none}
   .recipe-card:hover,.primary:hover,.secondary:hover{transform:none}
 }
+
+/* CNT-035 po scaleniu z CNT-034: kolory zapisane na sztywno w bloku CNT-034 (styles.css) czytelne w trybie ciemnym. */
+html[data-theme="dark"] .field-error{color:#ffb4a9}
+html[data-theme="dark"] #servings[aria-invalid=true]{border-color:#ffb4a9}
+html[data-theme="dark"] #exclude-options li[aria-selected=true],html[data-theme="dark"] #exclude-options li:hover{color:var(--t-on-primary)}
+@media (prefers-color-scheme: dark){
+  html:not([data-theme]) .field-error{color:#ffb4a9}
+  html:not([data-theme]) #servings[aria-invalid=true]{border-color:#ffb4a9}
+  html:not([data-theme]) #exclude-options li[aria-selected=true],html:not([data-theme]) #exclude-options li:hover{color:var(--t-on-primary)}
+}
