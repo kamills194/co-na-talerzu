@@ -78,7 +78,7 @@ test('„Wylosuj inne” jest tylko po „Zaskocz mnie”, losuje inne danie i o
   assert.equal(out.first.reroll,true);assert.equal(out.first.disabled,false);
   const ids=out.draws.map(idByName);assert.ok(ids.every(Boolean),JSON.stringify(out.draws));
   for(let i=1;i<ids.length;i++)assert.notEqual(ids[i],ids[i-1],`powtórka pod rząd: ${ids[i]}`);
-  // 70 kandydatów: w każdym oknie 6 kolejnych losowań brak powtórek (ostatnie 5 jest pomijane).
+  // 86 kandydatów: w każdym oknie 6 kolejnych losowań brak powtórek (ostatnie 5 jest pomijane).
   for(let i=0;i+6<=ids.length;i++)assert.equal(new Set(ids.slice(i,i+6)).size,6,ids.slice(i,i+6).join(','));
   assert.equal(out.focused.filter(s=>s==='#reroll').length,12,'fokus wraca na „Wylosuj inne” po każdym losowaniu');
   assert.equal(out.last.reroll,true);
