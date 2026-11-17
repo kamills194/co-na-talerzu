@@ -24,6 +24,10 @@ export const messages = {
   pescatarian:'Z rybami, bez mięsa', glutenFree:'Bezglutenowa', dairyFree:'Bez nabiału', highProtein:'Wysokobiałkowa', lowCarb:'Niskowęglowodanowa', light:'Lekka (mniej kalorii)',
   nutritionTitle:'Wartości odżywcze na porcję (szacunkowo)', nutritionEnergy:'Energia', nutritionProtein:'Białko', nutritionFat:'Tłuszcz', nutritionCarbs:'Węglowodany', kcal:'kcal', grams:'g',
   nutritionNote:'Szacunek z ogólnych tabel składu żywności dla typowych produktów, nie z etykiet. Rzeczywiste wartości zależą od marki i wielkości produktów.', nutritionMissing:'Brak pełnych danych o wartościach odżywczych tego przepisu.', showNutrition:'Pokazuj kalorie', approxKcal:'około',
+  sortLabel:'Kolejność', sortDefault:'Domyślna', sortPromotions:'Najwięcej składników w promocji', sortNoOffers:'Brak aktualnych promocji — kolejność bez zmian',
+  promoOne:'składnik w promocji', promoFew:'składniki w promocji', promoMany:'składników w promocji',
+  promoUntil:'do', promoLink:'Zobacz promocję', promoNewTab:'(otwiera się w nowej karcie)',
+  reroll:'Wylosuj inne', rerollSingle:'To jedyny przepis pasujący do wybranych filtrów.', sortPromotionsShort:'Promocje najpierw',
 };
 export function t(key) { if (!(key in messages)) throw new Error(`Missing translation: ${key}`); return messages[key]; }
 export const categories = ['breakfast','snack','lunch','dinner','dessert','starter'];

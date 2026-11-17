@@ -149,3 +149,24 @@ export function ingredientOffers(recipe,offers,now=new Date()) {
   const best=bestOffers(offers,now);
   return recipe.ingredients.map(i=>({product:i.product,amount:i.amount,pantry:pantryProducts.includes(i.product),offer:best.has(i.product)?offerView(best.get(i.product)):null}));
 }
+// ---------- CNT-029 (rozszerzenie): losowanie ważone promocjami ----------
+/**
+ * Draws one recipe from `candidates` (already filtered, e.g. by filterRecipes), favouring dishes with
+ * ingredients on a current promotion. Weight of a recipe = 1 + 2 × promoCoverage(recipe, offers, now).count
+ * (0 matched → 1, 1 → 3, 3 → 7): every dish keeps a chance, and with no current offers the draw is uniform.
+ * Recipes whose id is in `exclude` are skipped; returns null when nothing is left.
+ * @param {object[]} candidates
+ * @param {object[]} offers   automatic offers; only those displayable at `now` count
+ * @param {Date} [now]
+ * @param {{random?:()=>number, exclude?:string[]}} [options] `random` returns a number in [0, 1)
+ * @returns {?object} one of `candidates` (same object) or null
+ */
+export function weightedSurprise(candidates,offers,now=new Date(),{random=Math.random,exclude=[]}={}) {
+  const pool=(Array.isArray(candidates)?candidates:[]).filter(r=>!exclude.includes(r.id));
+  if(!pool.length) return null;
+  const best=bestOffers(offers,now); // computed once; per recipe identical to promoCoverage(r,offers,now).count
+  const weights=pool.map(r=>1+2*coverageFrom(r,best).count), total=weights.reduce((a,b)=>a+b,0);
+  let x=Math.min(Math.max(Number(random())||0,0),1)*total;
+  for(let i=0;i<pool.length;i++){ x-=weights[i]; if(x<0) return pool[i]; }
+  return pool[pool.length-1];
+}
