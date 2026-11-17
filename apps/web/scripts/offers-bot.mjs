@@ -38,7 +38,7 @@ try {
       if(robotsDisallows(robots,new URL(source).pathname))throw Error('Odczyt wyłączony przez robots.txt');
       const parsed=parseAldi(await get(source),{source,now});
       // Quarantine: records that do not meet the full offer contract are counted, not published.
-      const accepted=parsed.offers.filter(validAutomaticOffer);report.offers.push(...accepted);report.sources.push({source,status:'ok',productsSeen:parsed.productsSeen,unmapped:parsed.unmapped,rejected:parsed.offers.length-accepted.length});
+      const accepted=parsed.offers.filter(validAutomaticOffer);report.offers.push(...accepted);report.sources.push({source,status:parsed.empty?'empty':'ok',productsSeen:parsed.productsSeen,unmapped:parsed.unmapped,rejected:parsed.offers.length-accepted.length});
     }catch(e){report.sources.push({source,status:'error',error:e.message});}
   }
 }catch(e){report.sources.push({source:'https://www.aldi.pl/robots.txt',status:'error',error:e.message});}

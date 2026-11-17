@@ -60,7 +60,7 @@ try {
   const age = (Date.now() - Date.parse(o.updatedAt)) / 36e5;
   if (!o.offers?.length) offersNote.push('Brak aktualnych ofert w offers.json.');
   if (!(age < 30)) offersNote.push(`Oferty odczytano ${Number.isFinite(age) ? Math.round(age) + ' h temu' : 'nie wiadomo kiedy'} — sprawdź bota ofert.`);
-  for (const s of o.sources || []) if (s.status !== 'ok') offersNote.push(`Źródło ofert z błędem: ${s.source} — ${s.error}`);
+  for (const s of o.sources || []) if (s.status === 'error') offersNote.push(`Źródło ofert z błędem: ${s.source} — ${s.error}`);
 } catch (e) { offersNote.push('Nie można odczytać offers.json: ' + e.message); }
 
 if (fix) for (const [file, src] of files) await writeFile(new URL(file, SRC), src);
