@@ -1,7 +1,14 @@
 import { normalize } from '../src/domain.js';
+import { markets, marketDate } from '../src/market.js';
 // Explicit mappings only. Similar products are not silently treated as identical.
 const mappings = new Map([['ogorki szklarniowe','cucumber'],['pomidory malinowe','tomato'],['ziemniaki jadalne salatkowe','potato'],['marchew','carrot'],['cebula','onion'],['banany','banana'],['jablka','apple']]);
-function dateWarsaw(epoch) { return new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Warsaw',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(epoch*1000)); }
+// Adapter facts: aldi.pl is the shop's nationwide site for the PL market, prices are in the market
+// currency. The page does not state in which regions/shops an offer applies, so the scope is
+// reported as unverified — never as nationwide and never with invented regions.
+const adapterMarket=markets.PL;
+const ALDI_SCOPE=Object.freeze({type:'unverified',note:'Oferta ze strony ogólnopolskiej sklepu; dostępność regionalna niepotwierdzona'});
+const dateInMarket=epoch=>marketDate(new Date(epoch*1000),adapterMarket);
+const text=(v,fallback,max)=>(typeof v==='string'&&v.trim()?v.trim():fallback).slice(0,max);
 export function parseAldi(html,{source,now=new Date()}={}) {
   const match=html.match(/<script\b[^>]*\bid="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/i);
   if(!match) throw Error('Brak publicznych danych __NEXT_DATA__; adapter wymaga aktualizacji.');
@@ -19,7 +26,7 @@ export function parseAldi(html,{source,now=new Date()}={}) {
       // Fail closed: price reduction, explicit validity window and active NOW required.
       if(!Number.isFinite(price)||!Number.isFinite(regular)||price<=0||price>=regular||!Number.isFinite(p.validFrom)||!Number.isFinite(p.validUntil)||p.validFrom*1000>now.getTime()||p.validUntil*1000<now.getTime())continue;
       const id=`aldi-${item.objectID}-${p.validFrom}`;
-      output.set(id,{id,product,store:'ALDI',price,until:dateWarsaw(p.validUntil),from:dateWarsaw(p.validFrom),source,fetchedAt:now.toISOString(),name:item.name,unit:item.salesUnit||'Sprawdź jednostkę w źródle',regularPrice:regular,validUntil:new Date(p.validUntil*1000).toISOString(),conditions:Object.values(p.priceTagLabels||{}).filter(v=>typeof v==='string').join(' · ')||'Sprawdź warunki w sklepie',evidence:JSON.stringify(p)});
+      output.set(id,{id,product,market:adapterMarket.id,currency:adapterMarket.currency,scope:{...ALDI_SCOPE},store:'ALDI',price,until:dateInMarket(p.validUntil),from:dateInMarket(p.validFrom),source,fetchedAt:now.toISOString(),name:text(item.name,'',200),unit:text(item.salesUnit,'Sprawdź jednostkę w źródle',100),regularPrice:regular,validUntil:new Date(p.validUntil*1000).toISOString(),conditions:text(Object.values(p.priceTagLabels||{}).filter(v=>typeof v==='string'&&v.trim()).join(' · '),'Sprawdź warunki w sklepie',500),evidence:JSON.stringify(p)});
     }
   }
   return {offers:[...output.values()],productsSeen:items.length,unmapped:skipped};

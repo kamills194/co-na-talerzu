@@ -54,7 +54,7 @@ UI pokazuje nazwę produktu sklepowego, jednostkę ceny, odczytane warunki, term
 - `src/storage.js` — wersjonowany lokalny zapis i walidacja kopii danych.
 - `src/app.js`, `src/styles.css` — dostępne semantyczne widoki, modal, klawiatura i układ mobilny.
 - `scripts/offer-parser.mjs`, `scripts/offers-bot.mjs` — oddzielona ekstrakcja i pobieranie, gotowe do kolejnych adapterów.
-- `src/sw.js` — atomowy cache powłoki offline, osobny od danych użytkownika. Przy zmianie plików powłoki zwiększ nazwę cache.
+- `src/sw.js` — atomowy cache powłoki offline, osobny od danych użytkownika. Build nadaje pamięci podręcznej nazwę z hasha treści; zainstalowana aplikacja sama pobiera nową wersję i odświeża się, gdy użytkownik nie pisze i nie ma otwartego okna.
 - `capacitor.config.json` — punkt startowy opakowania mobilnego, `webDir: dist`.
 
 Ulubione, zakupy i własne oferty zapisują się w localStorage. Dane nie synchronizują się między urządzeniami. „Dane i kopia zapasowa” umożliwia eksport/import walidowanego JSON. Wczytanie zastępuje lokalny stan. Dane z formularzy i kopii są escapowane przed wstawieniem do HTML. Alergeny odnoszą się do receptury; etykiety produktów i zanieczyszczenia krzyżowe wymagają osobnego sprawdzenia.

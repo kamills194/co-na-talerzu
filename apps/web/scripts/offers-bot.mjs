@@ -1,7 +1,9 @@
 import { writeFile, rename, mkdir } from 'node:fs/promises';
 import { parseAldi, robotsDisallows } from './offer-parser.mjs';
+import { validAutomaticOffer } from '../src/domain.js';
+import { market } from '../src/market.js';
 const sources=['https://www.aldi.pl/produkty/owoce-i-warzywa/warzywa.html','https://www.aldi.pl/produkty/owoce-i-warzywa/owoce.html'];
-const now=new Date(), report={version:1,updatedAt:now.toISOString(),offers:[],sources:[]};
+const now=new Date(), report={version:1,market:market.id,currency:market.currency,timeZone:market.timeZone,updatedAt:now.toISOString(),offers:[],sources:[]};
 const headers={'User-Agent':'CoNaTalerzMVP/0.1 (public offers reader; no login)'};
 async function get(url) {
   const r=await fetch(url,{headers,signal:AbortSignal.timeout(20000),redirect:'error'});
@@ -15,7 +17,9 @@ try {
   for(const source of sources) {
     try {
       if(robotsDisallows(robots,new URL(source).pathname))throw Error('Odczyt wyłączony przez robots.txt');
-      const parsed=parseAldi(await get(source),{source,now});report.offers.push(...parsed.offers);report.sources.push({source,status:'ok',productsSeen:parsed.productsSeen,unmapped:parsed.unmapped});
+      const parsed=parseAldi(await get(source),{source,now});
+      // Quarantine: records that do not meet the full offer contract are counted, not published.
+      const accepted=parsed.offers.filter(validAutomaticOffer);report.offers.push(...accepted);report.sources.push({source,status:'ok',productsSeen:parsed.productsSeen,unmapped:parsed.unmapped,rejected:parsed.offers.length-accepted.length});
     }catch(e){report.sources.push({source,status:'error',error:e.message});}
   }
 }catch(e){report.sources.push({source:'https://www.aldi.pl/robots.txt',status:'error',error:e.message});}
