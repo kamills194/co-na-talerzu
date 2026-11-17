@@ -1,4 +1,391 @@
-// Recipe and product texts: es. PLACEHOLDER — not translated yet; everything falls back to Polish (recipes.pl.js).
-// Fill according to docs/TLUMACZENIA.md: recipes { <recipeId>: { name, steps:[...], photoAlt } }, products { <productId>: name }.
-export const recipes = {};
-export const products = {};
+// Recipe and product texts: Spanish (es-ES). Text only — amounts, units, ids, allergens and flags come from
+// recipes.pl.js. Each recipe has exactly as many steps as in Polish. Format: docs/TLUMACZENIA.md.
+// Machine translation (CNT-030), not reviewed by a native speaker or tested in a kitchen.
+export const products = {
+  oats:'Copos de avena', milk:'Leche', apple:'Manzana', cinnamon:'Canela', egg:'Huevo', butter:'Mantequilla', bread:'Pan', tomato:'Tomate',
+  cheese:'Requesón (queso fresco polaco twaróg)', yogurt:'Yogur natural', radish:'Rábano', cucumber:'Pepino', banana:'Plátano', carrot:'Zanahoria', hummus:'Hummus', rice:'Arroz',
+  passata:'Tomate triturado (passata)', water:'Agua', oil:'Aceite de colza', salt:'Sal', potato:'Patatas', chicken:'Pechuga de pollo', paprika:'Pimentón dulce',
+  pasta:'Pasta de trigo sin huevo', onion:'Cebolla', lentils:'Lentejas rojas secas', chickpeas:'Garbanzos en conserva, escurridos', pepper:'Pimiento', flour:'Harina de trigo', sugar:'Azúcar',
+  cocoa:'Cacao en polvo', beans:'Alubias en conserva, escurridas', lemon:'Limón', garlic:'Ajo',
+  semolina:'Sémola de trigo', buckwheat:'Trigo sarraceno tostado (kasha)', kefir:'Kéfir', sourcream:'Nata agria 18 %',
+  mackerel:'Caballa ahumada, filete', chives:'Cebollino', dill:'Eneldo', blackpepper:'Pimienta negra molida',
+  yellowcheese:'Queso semicurado (tipo gouda)', mozzarella:'Mozzarella', oliveoil:'Aceite de oliva', basil:'Albahaca fresca',
+  parsley:'Perejil fresco', zucchini:'Calabacín', eggplant:'Berenjena', cabbage:'Repollo blanco',
+  mushroom:'Champiñones', orange:'Naranja', berries:'Frutos del bosque congelados', potatostarch:'Fécula de patata',
+  vinegar:'Vinagre de manzana', tuna:'Atún al natural, escurrido', mincedpork:'Carne picada de cerdo',
+  ham:'Jamón cocido, en lonchas', sushirice:'Arroz para sushi', soysauce:'Salsa de soja',
+  miso:'Pasta de miso', tofu:'Tofu natural', nori:'Alga nori, lámina', sesame:'Sésamo en grano',
+};
+export const recipes = {
+  'owsianka':{ name:'Gachas de avena con manzana y canela', steps:[
+    'Pon los copos de avena en un cazo, cúbrelos con la leche y lleva a ebullición suave.',
+    'Cuece a fuego lento 5–7 minutos, removiendo, hasta que los copos estén blandos.',
+    'Lava la manzana, quítale el corazón y rállala. Añádela a las gachas con la canela y calienta un minuto.'],
+    photoAlt:'Cuenco de gachas de avena con leche, manzana rallada y canela' },
+  'jajecznica':{ name:'Huevos revueltos con tomate', steps:[
+    'Lava el tomate y córtalo en dados. Calienta la mantequilla en una sartén.',
+    'Añade el tomate y sofríe 2 minutos. Casca los huevos, sala y remueve a fuego lento hasta que cuajen por completo.',
+    'Sirve enseguida con el pan.'],
+    photoAlt:'Huevos revueltos con trozos de tomate en un plato, con rebanadas de pan al lado' },
+  'owsianka-wodna':{ name:'Gachas de avena con agua y plátano', steps:[
+    'Cubre los copos con el agua y cuécelos 5–7 minutos, removiendo.',
+    'Aplasta un plátano con un tenedor y mézclalo con los copos.',
+    'Corta el otro en rodajas. Colócalas sobre las gachas y espolvorea con canela.'],
+    photoAlt:'Cuenco de gachas de avena con rodajas de plátano espolvoreadas con canela' },
+  'pasta-jajeczna':{ name:'Tostas con crema de huevo y cebollino', steps:[
+    'Pon los huevos en una olla con agua fría, llévala a ebullición y cuece 10 minutos desde que hierva. Pásalos por agua fría y déjalos 5 minutos para que se enfríen.',
+    'Lava el cebollino, sécalo y pícalo fino. Pela los huevos y aplástalos con un tenedor.',
+    'Mezcla los huevos con el yogur, el cebollino, la sal y la pimienta. Unta la crema sobre las rebanadas de pan.'],
+    photoAlt:'Rebanadas de pan con crema de huevo espolvoreada con cebollino' },
+  'kasza-manna':{ name:'Sémola con leche y compota de manzana', steps:[
+    'Lava las manzanas, pélalas, quítales el corazón y córtalas en dados. Cuécelas tapadas en un cazo con el agua y la canela 6–8 minutos, hasta que estén blandas, y luego aplástalas con un tenedor.',
+    'En otro cazo calienta la leche con el azúcar. Cuando empiece a hervir, baja el fuego y añade la sémola en forma de lluvia, sin dejar de remover, para que no se formen grumos.',
+    'Cuece 2–3 minutos, removiendo, hasta que la sémola espese. Repártela en cuencos y pon encima la compota de manzana.'],
+    photoAlt:'Cuenco de sémola con compota de manzana por encima' },
+  'twarożek':{ name:'Twarożek: requesón con rábanos sobre pan', steps:[
+    'Lava los rábanos y pícalos finos.',
+    'Aplasta el requesón con el yogur, añade los rábanos y la sal.',
+    'Sírvelo sobre rebanadas de pan.'],
+    photoAlt:'Rebanadas de pan con requesón blanco y trocitos de rábano' },
+  'jogurt':{ name:'Yogur con plátano y copos de avena', steps:[
+    'Pela los plátanos y córtalos en rodajas.',
+    'Reparte el yogur en dos cuencos.',
+    'Añade los plátanos y los copos. Deja reposar 3 minutos para que los copos se ablanden.'],
+    photoAlt:'Cuenco de yogur natural con rodajas de plátano y copos de avena' },
+  'hummus-kanapki':{ name:'Bocadillos de hummus y pepino', steps:[
+    'Lava el pepino y córtalo en rodajas finas.',
+    'Unta el pan con el hummus.',
+    'Coloca el pepino sobre el pan y sirve.'],
+    photoAlt:'Rebanadas de pan con hummus y rodajas de pepino fresco' },
+  'pasta-z-makreli':{ name:'Paté de caballa ahumada con cebollino', steps:[
+    'Quita la piel a los filetes de caballa. Desmenuza la carne con los dedos y retira con cuidado todas las espinas.',
+    'Lava el cebollino y pícalo fino. Aplasta el requesón con el yogur con un tenedor.',
+    'Añade la caballa, el cebollino, el zumo de limón y la pimienta, y mezcla. No añadas sal: el pescado ahumado ya es salado. Sírvelo sobre rebanadas de pan.'],
+    photoAlt:'Rebanadas de pan con paté de caballa ahumada y cebollino' },
+  'koktajl-kefirowy':{ name:'Batido de kéfir con plátano y avena', steps:[
+    'Pela los plátanos y pártelos en trozos.',
+    'Pon en la batidora los plátanos, los copos de avena y la canela, y vierte el kéfir.',
+    'Bate alrededor de un minuto, hasta que el batido quede fino. Sírvelo en dos vasos y tómalo enseguida.'],
+    photoAlt:'Dos vasos de batido claro de plátano con kéfir' },
+  'pomidorowa':{ name:'Sopa casera de tomate con arroz', steps:[
+    'Pela la cebolla y la zanahoria. Pica la cebolla y ralla la zanahoria.',
+    'Calienta el aceite en una olla. Sofríe las verduras 4 minutos.',
+    'Añade la passata, el agua y la sal. Lleva a ebullición, echa el arroz y cuece tapado unos 18 minutos, hasta que el arroz esté tierno. Si hace falta, añade más agua.'],
+    photoAlt:'Plato de sopa de tomate con arroz' },
+  'kurczak':{ name:'Pollo al horno con patatas', steps:[
+    'Precalienta el horno a 200°C. Pela las patatas y las zanahorias y córtalas en trozos pequeños.',
+    'Corta el pollo en tiras gruesas. Mezcla la carne y las verduras con el aceite, el pimentón y la sal en una fuente de horno. Después de tocar la carne cruda, lávate las manos y los utensilios.',
+    'Hornea unos 35–40 minutos. Comprueba que las verduras estén tiernas y que el interior del trozo de carne más grueso haya alcanzado al menos 75°C.'],
+    photoAlt:'Fuente de horno con trozos de pollo, patatas y zanahoria' },
+  'makaron':{ name:'Pasta con salsa de tomate', steps:[
+    'Pon agua a hervir y cuece la pasta según las instrucciones del paquete. Antes de escurrirla, reserva medio vaso del agua de cocción.',
+    'Mientras tanto, pela la cebolla y el ajo, pícalos y sofríelos en el aceite durante 3 minutos.',
+    'Vierte la passata, sala y cuece 10 minutos. Mezcla con la pasta; si hace falta, añade agua de cocción.'],
+    photoAlt:'Plato de pasta con salsa roja de tomate' },
+  'soczewica':{ name:'Guiso de lentejas rojas', steps:[
+    'Pela la zanahoria y la cebolla y córtalas en dados. Sofríelas en el aceite durante 4 minutos.',
+    'Enjuaga las lentejas. Añádelas a la olla con la passata, el agua, el pimentón y la sal.',
+    'Cuece unos 20 minutos, removiendo, hasta que las lentejas estén tiernas. Si hace falta, añade más agua.'],
+    photoAlt:'Cuenco de guiso espeso de lentejas rojas con zanahoria' },
+  'placki-ziemniaczane':{ name:'Tortitas de patata con nata agria', steps:[
+    'Pela las patatas y la cebolla, lávalas y rállalas con el rallador fino. Pásalas a un colador y escurre el exceso de líquido.',
+    'Mezcla la masa rallada con el huevo, la harina y la sal. Fríe enseguida para que las patatas no se oscurezcan.',
+    'Calienta parte del aceite en una sartén. Pon cucharadas de masa, aplánalas en tortitas finas y fríelas a fuego medio 3–4 minutos por cada lado, hasta que estén doradas y hechas por dentro. Repite con el resto de la masa, añadiendo aceite.',
+    'Escurre las tortitas fritas sobre papel de cocina y sírvelas con la nata agria.'],
+    photoAlt:'Tortitas de patata doradas con una cucharada de nata agria' },
+  'leniwe':{ name:'Leniwe: ñoquis polacos de requesón con mantequilla', steps:[
+    'Pon a hervir una olla grande de agua con sal. Aplasta bien el requesón con un tenedor, añade el huevo y mezcla.',
+    'Incorpora unos 100 g de harina y amasa brevemente una masa blanda. Enharina la encimera con el resto de la harina.',
+    'Forma dos cilindros del grosor de un pulgar, aplánalos un poco y córtalos en diagonal en trozos de unos 2 cm.',
+    'Echa los ñoquis por tandas en el agua hirviendo. Cuécelos 2–3 minutos desde que suban a la superficie y sácalos con una espumadera. Rocíalos con mantequilla derretida y espolvoréalos con azúcar.'],
+    photoAlt:'Plato de ñoquis de requesón regados con mantequilla y espolvoreados con azúcar' },
+  'potrawka-z-kurczaka':{ name:'Fricasé de pollo con zanahoria y arroz', steps:[
+    'Pela la zanahoria y la cebolla. Pica la cebolla y corta la zanahoria en medias rodajas. Corta el pollo en dados de unos 2 cm. Después de tocar la carne cruda, lávate las manos y lava la tabla y el cuchillo.',
+    'Calienta el aceite en una olla. Sofríe el pollo 5 minutos, removiendo, hasta que se ponga blanco por todos lados. Añade la cebolla y la zanahoria y sofríe 3 minutos más.',
+    'Vierte el agua y añade la sal y la pimienta. Cuece tapado a fuego lento 15 minutos, hasta que la zanahoria esté tierna. Mientras tanto, cuece el arroz según las instrucciones del paquete.',
+    'En una taza, mezcla la nata agria con la harina y 3 cucharadas de la salsa caliente, viértelo en la olla y cuece 2 minutos, removiendo, hasta que la salsa espese. Comprueba que el interior del trozo de carne más grueso haya alcanzado al menos 75°C y sirve con el arroz.'],
+    photoAlt:'Plato de arroz con trozos de pollo y zanahoria en salsa clara' },
+  'salatka':{ name:'Ensalada de garbanzos', steps:[
+    'Lava las verduras, quita las semillas al pimiento y córtalo todo en dados.',
+    'Enjuaga y escurre los garbanzos. Mézclalos con las verduras.',
+    'Mezcla el aceite con el zumo de limón y la sal. Aliña la ensalada y remueve.'],
+    photoAlt:'Ensaladera con garbanzos, tomate, pepino y pimiento' },
+  'omlet':{ name:'Tortilla francesa con pimiento', steps:[
+    'Lava el pimiento, quítale las semillas y córtalo en dados pequeños.',
+    'Sofríe el pimiento en el aceite durante 4 minutos. Bate los huevos con la sal.',
+    'Vierte los huevos en la sartén. Cocina tapado a fuego lento unos 6 minutos, hasta que los huevos cuajen por completo.'],
+    photoAlt:'Tortilla con dados de pimiento en un plato' },
+  'grzanki':{ name:'Tostas calientes de tomate', steps:[
+    'Precalienta el horno a 190°C. Lava los tomates y córtalos en dados pequeños.',
+    'Rocía el pan con aceite, frótalo con el ajo pelado y colócalo en la bandeja.',
+    'Pon encima los tomates, sala y hornea 8–10 minutos.'],
+    photoAlt:'Rebanadas de pan gratinadas con dados de tomate' },
+  'kasza-z-jajkiem':{ name:'Trigo sarraceno con huevo frito y cebolla', steps:[
+    'Cuece el trigo sarraceno con la mitad de la sal según las instrucciones del paquete, normalmente unos 15 minutos.',
+    'Mientras tanto, pela la cebolla y córtala en dados. Calienta la mitad de la mantequilla en una sartén y sofríe la cebolla a fuego medio 5–6 minutos, hasta que se dore. Mézclala con el trigo sarraceno cocido.',
+    'En la misma sartén calienta el resto de la mantequilla. Casca los huevos y añade el resto de la sal y la pimienta. Fríelos tapados 3–4 minutos, hasta que la clara y la yema cuajen. Coloca los huevos sobre el trigo sarraceno.'],
+    photoAlt:'Plato de trigo sarraceno con cebolla sofrita y un huevo frito' },
+  'ziemniaki-z-gzikiem':{ name:'Patatas con piel y gzik (crema de requesón, rábano y cebollino)', steps:[
+    'Elige patatas de tamaño parecido y frótalas bien. Ponlas con piel en una olla, cúbrelas con agua fría con la mitad de la sal y cuécelas 20–25 minutos desde que hierva, hasta que el cuchillo entre sin resistencia.',
+    'Mientras tanto, lava los rábanos y el cebollino y pícalos finos. Aplasta el requesón con la nata agria con un tenedor y añade los rábanos, el cebollino y el resto de la sal.',
+    'Escurre las patatas y deja que suelten el vapor un minuto en la olla. Sírvelas calientes, con piel o peladas, con el gzik al lado.'],
+    photoAlt:'Patatas con piel junto a un cuenco de requesón con cebollino y rábano' },
+  'placuszki':{ name:'Tortitas de plátano', steps:[
+    'Aplasta los plátanos. Mézclalos con los huevos, la leche y la harina.',
+    'Calienta parte del aceite en una sartén y pon cucharadas de masa.',
+    'Fríe las tortitas pequeñas a fuego medio 2–3 minutos por cada lado, hasta que estén hechas por dentro. Repite con el resto de la masa.'],
+    photoAlt:'Montón de tortitas pequeñas de plátano en un plato' },
+  'pieczone-jablka':{ name:'Manzanas asadas con canela', steps:[
+    'Precalienta el horno a 180°C. Lava las manzanas y vacíales el corazón.',
+    'Colócalas en una fuente y rellena el hueco con el azúcar y la canela. Vierte el agua en el fondo.',
+    'Hornea unos 25 minutos, hasta que estén blandas. Deja que se templen un poco antes de servir.'],
+    photoAlt:'Dos manzanas asadas con canela en una fuente de horno' },
+  'kakao':{ name:'Crema de plátano y cacao', steps:[
+    'Pela los plátanos maduros y córtalos.',
+    'Tritúralos con el cacao hasta obtener una crema fina, o aplástalos muy bien con un tenedor.',
+    'Reparte en cuencos y sirve enseguida.'],
+    photoAlt:'Cuenco de crema oscura de plátano y cacao' },
+  'nalesniki-z-twarogiem':{ name:'Crepes dulces de requesón', steps:[
+    'Mezcla con varillas la harina, la leche, el agua, el huevo y una cucharada de aceite hasta obtener una masa fina y sin grumos. Déjala reposar 10 minutos.',
+    'Aplasta el requesón con el yogur y el azúcar con un tenedor hasta formar una crema fina.',
+    'Calienta una sartén y úntala con una capa fina de aceite. Vierte una porción de masa, extiéndela por el fondo y cocina alrededor de un minuto por cada lado, hasta que la crepe cuaje y se dore. Haz así unas 6 crepes.',
+    'Unta cada crepe con la crema de requesón y enróllala.'],
+    photoAlt:'Crepes enrolladas con relleno blanco de requesón en un plato' },
+  'marchewki':{ name:'Bastones de zanahoria con salsa de yogur', steps:[
+    'Pela la zanahoria, lávala y córtala en bastones.',
+    'Pela el ajo y rállalo fino. Mézclalo con el yogur y la sal.',
+    'Sirve las zanahorias con la salsa en un cuenco aparte.'],
+    photoAlt:'Bastones de zanahoria cruda junto a un cuenco de salsa de yogur' },
+  'pasta-fasolowa':{ name:'Crema casera de alubias blancas', steps:[
+    'Enjuaga y escurre las alubias. Pela el ajo.',
+    'Tritura las alubias con el aceite, el zumo de limón, el ajo y la sal. Si la crema queda demasiado espesa, añade una cucharada de agua.',
+    'Pela la zanahoria, lávala y córtala en bastones. Sirve la crema para mojar las zanahorias.'],
+    photoAlt:'Cuenco de crema clara de alubias blancas con bastones de zanahoria' },
+  'surowka-z-marchewki':{ name:'Ensalada de zanahoria y manzana', steps:[
+    'Pela y lava la zanahoria. Lava la manzana y quítale el corazón.',
+    'Ralla la zanahoria y la manzana con el rallador grueso. Rocíalas enseguida con el zumo de limón para que la manzana no se oscurezca.',
+    'Añade el aceite y el azúcar, mezcla y sirve enseguida.'],
+    photoAlt:'Cuenco de ensalada de zanahoria y manzana ralladas' },
+  'mizeria':{ name:'Mizeria: ensalada de pepino con yogur y eneldo', steps:[
+    'Lava el pepino, pélalo y córtalo en rodajas finas. Sálalo, mézclalo y déjalo reposar 5 minutos hasta que suelte el jugo.',
+    'Lava el eneldo, sécalo y pícalo fino. Escurre el jugo del pepino.',
+    'Mezcla el pepino con el yogur, el eneldo y la pimienta. Sirve enseguida.'],
+    photoAlt:'Cuenco de rodajas de pepino en yogur con eneldo' },
+  'chleb-w-jajku':{ name:'Pan rebozado en huevo con cebollino', steps:[
+    'En un plato hondo, bate con un tenedor los huevos con la leche y la sal. Lava el cebollino y pícalo fino.',
+    'Pasa las rebanadas de pan una a una por la mezcla de huevo, dándoles la vuelta para que se empapen por ambos lados.',
+    'Calienta la mantequilla en una sartén. Fríe las rebanadas a fuego medio 2–3 minutos por cada lado, hasta que el huevo cuaje por completo y se doren. Espolvorea con el cebollino.'],
+    photoAlt:'Rebanadas de pan doradas fritas en huevo, espolvoreadas con cebollino' },
+  'kanapki-z-jajkiem-i-rzodkiewka':{ name:'Tostas de huevo duro y rábano', steps:[
+    'Pon los huevos en una olla con agua fría, llévala a ebullición y cuece 10 minutos desde que hierva. Pásalos por agua fría y déjalos 5 minutos.',
+    'Lava los rábanos y córtalos en rodajas finas. Lava el cebollino y pícalo. Pela los huevos y córtalos en rodajas.',
+    'Unta las rebanadas con mantequilla, coloca encima las rodajas de huevo y de rábano, sala y espolvorea con el cebollino.'],
+    photoAlt:'Rebanadas de pan con rodajas de huevo duro y rábano' },
+  'ryz-na-mleku':{ name:'Arroz con leche con manzana y canela', steps:[
+    'Enjuaga el arroz en un colador. Ponlo en un cazo, cúbrelo con el agua y cuécelo tapado a fuego lento unos 10 minutos, hasta que absorba el agua.',
+    'Vierte la leche, añade el azúcar y cuece sin tapar 12–15 minutos, removiendo a menudo para que el arroz no se pegue al fondo.',
+    'Lava la manzana, quítale el corazón y rállala con el rallador grueso. Incorpórala al arroz junto con la canela y calienta 2 minutos más.'],
+    photoAlt:'Cuenco de arroz con leche cremoso con manzana rallada' },
+  'strammer-max':{ name:'Strammer Max: pan con jamón y huevo frito', steps:[
+    'Unta las rebanadas de pan con una capa fina de la mitad de la mantequilla y coloca encima las lonchas de jamón. Lava el cebollino y pícalo.',
+    'Calienta el resto de la mantequilla en una sartén. Casca los huevos y fríelos tapados a fuego lento 3–4 minutos, hasta que la clara y la yema cuajen.',
+    'Pon un huevo frito sobre cada tosta. Espolvorea con pimienta y cebollino.'],
+    photoAlt:'Rebanada de pan con jamón cubierta con un huevo frito' },
+  'tamagoyaki':{ name:'Tamagoyaki: tortilla japonesa enrollada', steps:[
+    'Bate los huevos en un bol con el agua, la salsa de soja y el azúcar, hasta que el azúcar se disuelva.',
+    'Calienta una sartén a fuego medio y úntala con una capa fina de aceite. Vierte un tercio de la mezcla. Cuando cuaje, enróllala con la espátula y desplázala al borde de la sartén.',
+    'Unta con aceite la parte libre de la sartén y vierte otra porción de mezcla de modo que pase por debajo del rollo. Cuando cuaje, enróllala alrededor del rollo. Repite con el resto de la mezcla.',
+    'Cocina el rollo terminado un minuto más, dándole vueltas, hasta que no quede huevo líquido en el interior. Déjalo reposar 2 minutos y córtalo en rodajas gruesas.'],
+    photoAlt:'Rodajas de tortilla amarilla enrollada en un platito' },
+  'omlet-francuski':{ name:'Tortilla francesa con queso', steps:[
+    'Ralla el queso. Lava el cebollino y pícalo. Bate los huevos con la sal con un tenedor, solo hasta mezclar las claras con las yemas.',
+    'Derrite la mantequilla en una sartén a fuego medio. Vierte los huevos y durante el primer minuto lleva con la espátula la mezcla que va cuajando desde los bordes hacia el centro.',
+    'Cuando la superficie deje de estar líquida, espolvorea el queso sobre la tortilla, dóblala por la mitad y cocina un minuto más, hasta que el queso se funda y los huevos cuajen por completo. Espolvorea con el cebollino.'],
+    photoAlt:'Tortilla clara doblada por la mitad con queso fundido en el interior' },
+  'kanapki-z-serem-i-pomidorem':{ name:'Tostas de queso y tomate', steps:[
+    'Lava el tomate y córtalo en rodajas. Lava el cebollino y pícalo.',
+    'Unta las rebanadas de pan con mantequilla y coloca encima las lonchas de queso.',
+    'Pon las rodajas de tomate sobre el queso y espolvorea con el cebollino. Si las tostas van a esperar, guarda el tomate aparte.'],
+    photoAlt:'Rebanadas de pan con lonchas de queso y rodajas de tomate' },
+  'twarozek-z-bananem':{ name:'Requesón dulce con plátano', steps:[
+    'Aplasta el requesón con el yogur con un tenedor hasta formar una crema fina.',
+    'Pela un plátano, aplástalo y mézclalo con el requesón.',
+    'Corta el otro plátano en rodajas. Reparte el requesón en cuencos, coloca encima las rodajas y espolvorea con canela.'],
+    photoAlt:'Cuenco de requesón blanco con rodajas de plátano y canela' },
+  'onigiri-z-tunczykiem':{ name:'Onigiri de atún (bolas de arroz)', steps:[
+    'Lava el arroz en un colador bajo el agua fría hasta que el agua salga casi transparente. Llévalo a ebullición con el agua medida, baja el fuego al mínimo y cuece tapado 12 minutos. Retira del fuego y déjalo tapado 5 minutos.',
+    'Desmenuza el atún con un tenedor y mézclalo con la salsa de soja. Corta la lámina de nori con unas tijeras en 4 tiras.',
+    'Mezcla el arroz con la sal y deja que se temple unos 5 minutos, para poder cogerlo con las manos. Mójate las manos con agua, toma una cuarta parte del arroz, haz un hueco, pon una cucharadita de atún y da al arroz forma de triángulo compacto.',
+    'Forma así 4 onigiri y envuelve la base de cada uno con una tira de nori. Cómelos el mismo día y, hasta entonces, guárdalos en la nevera.'],
+    photoAlt:'Bolas triangulares de arroz envueltas en tiras de nori' },
+  'croque-monsieur':{ name:'Croque-monsieur a la sartén', steps:[
+    'Corta el queso en lonchas o rállalo. Unta todas las rebanadas con mantequilla por un lado.',
+    'Coloca dos rebanadas con la mantequilla hacia abajo y pon encima la mitad del queso, el jamón y el resto del queso. Cúbrelas con las otras rebanadas, con la mantequilla hacia arriba.',
+    'Dora los sándwiches en una sartén sin aceite a fuego lento 3–4 minutos por cada lado, presionando ligeramente con la espátula, hasta que el pan se dore y el queso se funda. Córtalos por la mitad.'],
+    photoAlt:'Sándwich caliente dorado con jamón y queso fundido' },
+  'salatka-makaronowa':{ name:'Ensalada de pasta con mozzarella y tomate', steps:[
+    'Cuece la pasta según las instrucciones del paquete. Escúrrela, pásala por agua fría y escúrrela bien.',
+    'Lava los tomates y córtalos en dados. Escurre la mozzarella del líquido y córtala en dados. Enjuaga las hojas de albahaca y trocéalas con las manos.',
+    'Mezcla la pasta con los tomates, la mozzarella, la albahaca, el aceite de oliva y la sal. Sírvela enseguida o pásala a un táper y guárdala en la nevera.'],
+    photoAlt:'Cuenco de pasta con dados de tomate, mozzarella y hojas de albahaca' },
+  'zupa-ziemniaczana':{ name:'Sopa de patata con eneldo', steps:[
+    'Pela y lava las patatas, la zanahoria y la cebolla. Corta las patatas en dados de unos 1,5 cm, la zanahoria en medias rodajas y pica la cebolla.',
+    'Derrite la mantequilla en una olla y sofríe la cebolla con la zanahoria 3 minutos. Añade las patatas, el agua, la sal y la pimienta. Cuece tapado unos 15 minutos, hasta que las patatas estén tiernas.',
+    'Aplasta parte de las patatas en la olla con un pasapurés o un tenedor para que la sopa espese. En una taza, mezcla la nata agria con 3 cucharadas de la sopa caliente y viértela en la olla.',
+    'Lava el eneldo, pícalo y añádelo a la sopa. Calienta un minuto sin que llegue a hervir.'],
+    photoAlt:'Plato de sopa clara de patata con zanahoria y eneldo' },
+  'makaron-z-twarogiem':{ name:'Pasta con requesón y mantequilla', steps:[
+    'Cuece la pasta en agua con sal según las instrucciones del paquete y escúrrela.',
+    'Pon la mantequilla en la olla vacía y aún caliente; cuando se derrita, vuelve a echar la pasta y mezcla.',
+    'Desmenuza el requesón con los dedos o con un tenedor. Reparte la pasta en los platos y espolvorea con el requesón y el azúcar.'],
+    photoAlt:'Plato de pasta espolvoreada con requesón blanco desmenuzado' },
+  'jajka-w-sosie-koperkowym':{ name:'Huevos en salsa de eneldo con patatas', steps:[
+    'Pela las patatas, lávalas, córtalas por la mitad y cuécelas en agua con la mitad de la sal unos 20 minutos, hasta que estén tiernas. En otra olla, cubre los huevos con agua fría, lleva a ebullición y cuece 10 minutos desde que hierva; después pásalos por agua fría.',
+    'Derrite la mantequilla en un cazo, añade la harina y remueve un minuto. Vierte la leche poco a poco, sin dejar de remover con las varillas, y cuece 3 minutos, hasta que la salsa espese.',
+    'Lava el eneldo y pícalo. Añádelo a la salsa con el resto de la sal. Pela los huevos y córtalos por la mitad.',
+    'Escurre las patatas, repártelas en los platos, coloca al lado los huevos y cúbrelos con la salsa.'],
+    photoAlt:'Mitades de huevo en salsa verde clara de eneldo junto a patatas cocidas' },
+  'spaghetti-aglio-e-olio':{ name:'Espaguetis aglio e olio (ajo y aceite)', steps:[
+    'Cuece la pasta en agua con sal según las instrucciones del paquete. Antes de escurrirla, reserva medio vaso del agua de cocción.',
+    'Mientras tanto, pela el ajo y córtalo en láminas finas. Lava el perejil y pícalo. En una sartén grande, calienta el aceite de oliva con el ajo a fuego lento 3–4 minutos, hasta que el ajo se dore ligeramente. No dejes que se tueste, porque amargaría.',
+    'Pasa la pasta a la sartén, añade 4 cucharadas del agua reservada y remueve un minuto al fuego, hasta que el aceite envuelva la pasta. Añade el perejil y la pimienta.'],
+    photoAlt:'Plato de espaguetis con láminas de ajo y perejil picado' },
+  'makaron-z-tunczykiem':{ name:'Pasta con atún y tomate', steps:[
+    'Pon agua a hervir y cuece la pasta según las instrucciones del paquete.',
+    'Mientras tanto, pela y pica la cebolla y el ajo. Sofríelos en el aceite de oliva 3 minutos, vierte la passata, sala y cuece a fuego lento 8 minutos.',
+    'Desmenuza el atún con un tenedor, añádelo a la salsa y calienta 2 minutos. Mezcla la salsa con la pasta escurrida.'],
+    photoAlt:'Plato de pasta con salsa de tomate y trozos de atún' },
+  'frykadele':{ name:'Frikadellen (filetes rusos de cerdo) con patatas', steps:[
+    'Pela las patatas, lávalas, córtalas por la mitad y cuécelas en agua con parte de la sal unos 20 minutos, hasta que estén tiernas.',
+    'Desmiga la rebanada de pan en un bol y cúbrela con el agua medida. Pela la cebolla y pícala muy fina. Añade la carne, el huevo, la cebolla, el resto de la sal y la pimienta. Amasa con la mano y forma 6 filetes planos. Después de tocar la carne cruda, lávate las manos y lava el bol y la tabla.',
+    'Calienta el aceite en una sartén. Fríe los filetes a fuego medio 5–6 minutos por cada lado. Corta uno: la carne del interior no debe estar rosada y el jugo debe salir transparente.',
+    'Sirve las frikadellen con las patatas escurridas.'],
+    photoAlt:'Filetes de carne picada planos y dorados junto a patatas cocidas' },
+  'ratatouille':{ name:'Ratatouille rápido a la sartén', steps:[
+    'Lava las verduras. Corta el calabacín y la berenjena en dados de unos 1,5 cm. Quita las semillas al pimiento y córtalo igual. Pela y pica la cebolla y el ajo.',
+    'Calienta el aceite de oliva en una sartén grande. Sofríe la cebolla con la berenjena 5 minutos, removiendo. Añade el pimiento y el calabacín y sofríe 5 minutos más.',
+    'Añade el ajo, la passata y la sal. Rehoga tapado a fuego lento 12–15 minutos, hasta que las verduras estén tiernas pero no deshechas.',
+    'Sirve caliente con una rebanada de pan.'],
+    photoAlt:'Sartén con verduras guisadas en salsa de tomate: calabacín, berenjena y pimiento' },
+  'oyakodon':{ name:'Oyakodon: arroz con pollo y huevo', steps:[
+    'Enjuaga el arroz en un colador. Llévalo a ebullición en 200 ml de agua, baja el fuego al mínimo y cuece tapado 12 minutos. Déjalo tapado 5 minutos.',
+    'Mientras tanto, pela la cebolla y córtala en juliana. Corta el pollo en tiras finas. Después de tocar la carne cruda, lávate las manos y lava la tabla y el cuchillo.',
+    'En una sartén, lleva a ebullición el resto del agua con la salsa de soja y el azúcar. Añade la cebolla y el pollo y cuece tapado 8 minutos, hasta que la carne esté blanca por dentro, sin zonas rosadas.',
+    'Bate los huevos con un tenedor y viértelos de forma uniforme sobre el pollo. Cuece tapado 3–4 minutos, hasta que los huevos cuajen por completo. Reparte el arroz en cuencos y desliza encima el pollo con el huevo y la salsa.'],
+    photoAlt:'Cuenco de arroz cubierto de pollo, cebolla y huevo cuajado' },
+  'yakisoba':{ name:'Fideos salteados con verduras al estilo yakisoba', steps:[
+    'Cuece la pasta, mejor fideos finos o espaguetis, un minuto menos de lo que indica el paquete. Escúrrela.',
+    'Corta el repollo en tiras finas. Pela la zanahoria y córtala en bastoncitos finos. Pela la cebolla y córtala en juliana.',
+    'Calienta bien el aceite en una sartén grande. Saltea la cebolla y la zanahoria 3 minutos, añade el repollo y saltea 4 minutos más, removiendo. Las verduras deben quedar ligeramente crujientes.',
+    'Añade la pasta, la salsa de soja y el azúcar. Saltea 2 minutos sin dejar de remover, hasta que la pasta absorba la salsa.'],
+    photoAlt:'Plato de fideos salteados con tiras de repollo y zanahoria' },
+  'zapiekanki-z-pieczarkami':{ name:'Tostas gratinadas de champiñones y queso', steps:[
+    'Precalienta el horno a 200°C. Limpia los champiñones y córtalos en láminas. Pela y pica la cebolla. Ralla el queso.',
+    'Derrite la mantequilla en una sartén. Sofríe la cebolla con los champiñones 6–7 minutos, hasta que se evapore su agua. Salpimienta.',
+    'Coloca las rebanadas en la bandeja, reparte encima los champiñones y espolvorea con el queso. Hornea 8 minutos, hasta que el queso se funda y se dore.'],
+    photoAlt:'Rebanadas de pan gratinadas con champiñones bajo queso fundido' },
+  'placki-z-cukinii':{ name:'Tortitas de calabacín con salsa de ajo', steps:[
+    'Lava el calabacín y rállalo con piel con el rallador grueso. Mézclalo con la mitad de la sal, déjalo reposar 5 minutos y escúrrelo bien con las manos.',
+    'Pela el ajo, rállalo fino y mézclalo con el yogur y el resto de la sal. Mezcla el calabacín escurrido con el huevo y la harina.',
+    'Calienta parte del aceite en una sartén. Pon cucharadas de masa, aplánalas y fríelas a fuego medio 3 minutos por cada lado, hasta que las tortitas estén doradas y hechas por dentro. Repite con el resto de la masa y sirve con la salsa.'],
+    photoAlt:'Tortitas doradas de calabacín rallado junto a un cuenco de salsa de yogur' },
+  'frittata-z-cukinia':{ name:'Frittata de calabacín', steps:[
+    'Lava el calabacín y córtalo en medias rodajas finas. Pela y pica la cebolla. Ralla el queso.',
+    'Calienta el aceite de oliva en una sartén. Sofríe la cebolla con el calabacín 7–8 minutos, removiendo, hasta que se ablanden y se doren ligeramente.',
+    'Bate los huevos con la sal, la pimienta y el queso, viértelos sobre las verduras y mueve la sartén. Cocina tapado a fuego lento unos 8 minutos, hasta que la superficie cuaje por completo. Corta en triángulos.'],
+    photoAlt:'Tortilla gruesa con rodajas de calabacín cortada en triángulos' },
+  'bratkartoffeln':{ name:'Bratkartoffeln (patatas salteadas a la alemana) con huevo frito', steps:[
+    'Pela las patatas, lávalas y córtalas en rodajas de unos 3 mm de grosor. Sécalas con papel de cocina. Pela la cebolla y córtala en dados.',
+    'Calienta la mayor parte del aceite en una sartén grande. Extiende las patatas lo más planas posible y fríelas a fuego medio 15 minutos, dándoles la vuelta cada pocos minutos. Añade la cebolla y la sal y fríe 5 minutos más, hasta que las patatas estén tiernas y doradas.',
+    'Aparta las patatas a un lado o usa otra sartén. Con el resto del aceite, fríe los huevos tapados 3–4 minutos, hasta que la clara y la yema cuajen.',
+    'Reparte las patatas en los platos, coloca encima los huevos, espolvorea con pimienta y con el cebollino picado.'],
+    photoAlt:'Rodajas de patata fritas y doradas con cebolla y un huevo frito encima' },
+  'flammkuchen':{ name:'Coca fina de cebolla y nata agria al estilo Flammkuchen', steps:[
+    'Precalienta el horno a 250°C con la bandeja dentro. Mezcla la harina con la mitad de la sal, el agua y el aceite, y amasa 3 minutos hasta obtener una masa lisa.',
+    'Pela la cebolla y córtala en medias rodajas muy finas. Extiende la masa con el rodillo sobre una hoja de papel de horno hasta formar una base fina, más o menos del tamaño de la bandeja.',
+    'Unta la base con la nata agria, dejando un borde estrecho. Reparte la cebolla y espolvorea con el resto de la sal y la pimienta.',
+    'Desliza la base con el papel sobre la bandeja caliente y hornea 10–12 minutos, hasta que los bordes estén dorados y crujientes. Espolvorea con el cebollino picado.'],
+    photoAlt:'Base fina y crujiente con nata agria, cebolla y cebollino' },
+  'salatka-nicejska':{ name:'Ensalada nizarda con atún', steps:[
+    'Pela las patatas, lávalas, córtalas en dados grandes y cuécelas en agua con sal unos 15 minutos, hasta que estén tiernas. En otra olla, cubre los huevos con agua fría, lleva a ebullición y cuece 10 minutos desde que hierva.',
+    'Escurre las patatas y deja que se enfríen. Pasa los huevos por agua fría, pélalos y córtalos en cuartos. Lava los tomates y el pepino y córtalos en gajos.',
+    'Mezcla el aceite de oliva con el zumo de limón y la sal. Coloca en los platos las patatas, los tomates y el pepino, pon encima trozos de atún y de huevo, y aliña con la vinagreta.'],
+    photoAlt:'Plato de ensalada con patatas, atún, cuartos de huevo y tomate' },
+  'zupa-miso':{ name:'Sopa de miso sencilla con tofu', steps:[
+    'Pela la zanahoria y córtala en medias rodajas muy finas. Lleva el agua a ebullición, echa la zanahoria y cuece 5 minutos.',
+    'Corta el tofu en dados de unos 1 cm. Corta el nori con unas tijeras en tiras finas. Lava el cebollino y pícalo. Añade el tofu a la olla y calienta 2 minutos.',
+    'Retira la olla del fuego. Disuelve la pasta de miso en una taza con unas cucharadas del caldo caliente y viértela en la sopa. No vuelvas a hervirla para que no pierda sabor.',
+    'Sirve la sopa en cuencos y añade las tiras de nori y el cebollino.'],
+    photoAlt:'Cuenco de sopa de miso turbia con dados de tofu y tiras de nori' },
+  'omurice':{ name:'Omurice: tortilla sobre arroz con tomate', steps:[
+    'Cuece el arroz según las instrucciones del paquete. Mientras tanto, pela la cebolla y la zanahoria y córtalas en dados pequeños.',
+    'Derrite la mitad de la mantequilla en una sartén. Sofríe la cebolla con la zanahoria 5 minutos. Añade el arroz, la passata y la mitad de la sal, y saltea 3 minutos, removiendo, hasta que el arroz tome color. Reparte el arroz en dos platos y dale forma de montoncitos alargados.',
+    'Limpia la sartén. Bate 2 huevos con una pizca de sal y haz una tortilla fina con la mitad de la mantequilla restante, 2–3 minutos tapada, hasta que cuaje por completo. Cubre con ella uno de los montoncitos de arroz.',
+    'Haz igual la segunda tortilla con el resto de los huevos y de la mantequilla y cubre con ella la segunda ración.'],
+    photoAlt:'Montoncito alargado de arroz con tomate cubierto con una tortilla amarilla fina' },
+  'racuszki-z-jablkami':{ name:'Tortitas de manzana sin levadura', steps:[
+    'Mezcla con varillas la harina, la leche, el huevo y la mitad del azúcar hasta obtener una masa espesa y lisa.',
+    'Lava las manzanas, pélalas, quítales el corazón y córtalas en dados pequeños. Incorpóralas a la masa.',
+    'Calienta parte del aceite en una sartén. Pon cucharadas de masa y fríelas a fuego medio 2–3 minutos por cada lado, hasta que las tortitas estén doradas y hechas por dentro. Repite con el resto de la masa.',
+    'Mezcla el resto del azúcar con la canela y espolvorea las tortitas calientes.'],
+    photoAlt:'Plato de tortitas pequeñas con trozos de manzana espolvoreadas con azúcar y canela' },
+  'budyn-kakaowy':{ name:'Natillas caseras de cacao', steps:[
+    'Separa medio vaso de leche fría en una taza y disuelve bien en ella la fécula de patata y el cacao, para que no queden grumos.',
+    'Lleva a ebullición el resto de la leche con el azúcar en un cazo. Baja el fuego y vierte la mezcla de la taza en un hilo fino, removiendo enérgicamente con las varillas.',
+    'Cuece un minuto sin dejar de remover, hasta que las natillas espesen y empiecen a borbotear. Repártelas en cuencos y sírvelas calientes o frías.'],
+    photoAlt:'Dos cuencos de natillas espesas y oscuras de cacao' },
+  'omlet-biszkoptowy':{ name:'Tortilla esponjosa dulce con frutos del bosque', steps:[
+    'Pon los frutos congelados en un cazo con la mitad del azúcar. Lleva a ebullición y cuece 2 minutos, removiendo; después retira del fuego.',
+    'Separa las claras de las yemas. Monta las claras a punto de nieve firme con varillas o batidora, añadiendo al final el resto del azúcar. Incorpora con cuidado las yemas y después la harina.',
+    'Derrite la mantequilla en una sartén, vierte la mezcla y alísala. Cocina tapado a fuego lento 5–6 minutos, hasta que la superficie cuaje. Da la vuelta a la tortilla con ayuda de un plato y cocina 2 minutos más.',
+    'Pasa la tortilla a un plato, cúbrela con la fruta caliente y córtala por la mitad.'],
+    photoAlt:'Tortilla clara y esponjosa cubierta con salsa roja oscura de frutos del bosque' },
+  'rote-grutze':{ name:'Rote Grütze: postre de frutos rojos espesado con yogur', steps:[
+    'En una taza, disuelve la fécula de patata en 4 cucharadas del agua fría medida.',
+    'Pon los frutos congelados en un cazo y añade el resto del agua y el azúcar. Lleva a ebullición y cuece 3 minutos.',
+    'Vierte la fécula disuelta sin dejar de remover y cuece un minuto más, hasta que el postre espese y se vuelva brillante.',
+    'Repártelo en cuencos y deja que se temple al menos 5 minutos. Sírvelo con una cucharada de yogur por encima.'],
+    photoAlt:'Cuenco de postre rojo y espeso de frutos del bosque con una cucharada de yogur' },
+  'tosty-francuskie':{ name:'Torrijas a la francesa con canela (french toast)', steps:[
+    'En un plato hondo, bate los huevos con la leche, la mitad del azúcar y la canela.',
+    'Empapa las rebanadas de pan, mejor si es del día anterior, unos 20 segundos por cada lado en la mezcla, para que se impregnen bien.',
+    'Derrite la mantequilla en una sartén. Fríe las rebanadas a fuego medio 2–3 minutos por cada lado, hasta que estén doradas y el huevo cuaje por completo. Espolvorea con el resto del azúcar.'],
+    photoAlt:'Tostadas francesas doradas y dulces espolvoreadas con azúcar' },
+  'macedonia':{ name:'Macedonia: ensalada de frutas italiana', steps:[
+    'Pela una naranja y córtala en dados. Exprime la otra en un bol, añade el zumo de limón y el azúcar, y mezcla.',
+    'Lava la manzana, quítale el corazón y córtala en dados. Pela el plátano y córtalo en rodajas. Echa la fruta enseguida en el zumo para que no se oscurezca.',
+    'Añade la naranja troceada, mezcla y deja reposar 5 minutos, hasta que la fruta suelte su jugo. Sirve en cuencos con el jugo.'],
+    photoAlt:'Cuenco de fruta troceada en su jugo: naranja, manzana y plátano' },
+  'surowka-z-kapusty':{ name:'Ensalada de repollo blanco y zanahoria', steps:[
+    'Corta el repollo en tiras lo más finas posible. Espolvoréalo con la sal y amásalo con la mano 2 minutos, hasta que se ablande y suelte jugo.',
+    'Pela la zanahoria y rállala con el rallador grueso. Lava el eneldo y pícalo.',
+    'Mezcla el repollo con la zanahoria, el eneldo, el zumo de limón, el aceite y el azúcar. Deja reposar 5 minutos antes de servir.'],
+    photoAlt:'Cuenco de ensalada de repollo blanco en juliana y zanahoria' },
+  'caprese':{ name:'Ensalada caprese', steps:[
+    'Lava los tomates y córtalos en rodajas. Escurre la mozzarella del líquido y córtala en rodajas de un grosor parecido.',
+    'Coloca en un plato rodajas de tomate y de mozzarella alternadas.',
+    'Enjuaga las hojas de albahaca y repártelas por encima. Justo antes de servir, rocía con aceite de oliva, sala y espolvorea con pimienta.'],
+    photoAlt:'Rodajas alternadas de tomate y mozzarella con hojas de albahaca' },
+  'bruschetta':{ name:'Bruschetta de tomate y albahaca', steps:[
+    'Lava los tomates, quítales las semillas y corta la pulpa en dados pequeños. Enjuaga las hojas de albahaca y trocéalas con las manos. Mezcla los tomates con la albahaca, la sal y la mitad del aceite de oliva.',
+    'Tuesta las rebanadas de pan en una sartén sin aceite 2 minutos por cada lado, hasta que estén crujientes.',
+    'Frota las tostadas calientes con un diente de ajo partido por la mitad y rocíalas con el resto del aceite de oliva. Pon los tomates justo antes de servir, para que el pan no se reblandezca.'],
+    photoAlt:'Tostadas crujientes con tomate crudo y albahaca' },
+  'kartoffelsalat':{ name:'Kartoffelsalat: ensalada alemana de patata', steps:[
+    'Pela las patatas, lávalas y córtalas en rodajas de unos 5 mm de grosor. Cuécelas en agua con sal 10–12 minutos, hasta que estén tiernas pero sin deshacerse. Escúrrelas con cuidado.',
+    'Pela la cebolla y pícala fina. En un cazo, lleva a ebullición el agua medida con la cebolla, el vinagre, el azúcar, la sal y la pimienta, y cuece 2 minutos.',
+    'Vierte el aliño caliente sobre las patatas templadas, añade el aceite y mezcla con cuidado. Deja reposar 10 minutos para que las patatas absorban el líquido.',
+    'Lava el cebollino, pícalo e incorpóralo a la ensalada. Sírvela templada.'],
+    photoAlt:'Ensaladera con rodajas de patata, cebolla y cebollino, sin mayonesa' },
+  'zupa-cebulowa':{ name:'Sopa de cebolla con tostada de queso', steps:[
+    'Pela las cebollas y córtalas en medias rodajas finas. Derrite la mantequilla en una olla y sofríe la cebolla con la sal a fuego medio 12–15 minutos, removiendo a menudo, hasta que esté blanda y de color dorado oscuro.',
+    'Espolvorea la cebolla con la harina y remueve un minuto. Vierte el agua, sazona con la pimienta y cuece tapado 8 minutos.',
+    'Mientras tanto, ralla el queso. Tuesta las rebanadas de pan en una sartén sin aceite 2 minutos por un lado, dales la vuelta, espolvoréalas con el queso y tapa 2 minutos, hasta que el queso se funda.',
+    'Sirve la sopa en cuencos y pon una tostada con queso sobre cada uno.'],
+    photoAlt:'Cuenco de sopa de cebolla oscura con una tostada bajo queso fundido' },
+  'sunomono':{ name:'Sunomono: ensalada de pepino con sésamo', steps:[
+    'Lava el pepino y córtalo en rodajas lo más finas posible. Sálalo, mézclalo y déjalo reposar 5 minutos; después escúrrelo con las manos y desecha el jugo.',
+    'Tuesta el sésamo en una sartén sin aceite 1–2 minutos, removiendo, hasta que huela y se dore ligeramente.',
+    'Mezcla el vinagre con el azúcar y la salsa de soja hasta que el azúcar se disuelva. Aliña el pepino, mezcla y espolvorea con el sésamo.'],
+    photoAlt:'Cuenco de rodajas finas de pepino en aliño, espolvoreadas con sésamo' },
+};
