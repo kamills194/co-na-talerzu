@@ -43,3 +43,12 @@ test('Wdrożenie: report.php i blokada _reports; strona ładuje errors.js przed 
   const errors = await readFile(new URL('../src/errors.js', import.meta.url), 'utf8');
   assert.match(errors, /conatalerz\.pl/); assert.match(errors, /MAX = 5/);
 });
+
+test('Nagłówki: kod aplikacji (sw.js, app.js, index.html) bez długiego cache — CDN nie może serwować starej wersji', async () => {
+  const ht = await root('deploy/nazwa.pl/.htaccess');
+  const blocks = [...ht.matchAll(/<FilesMatch "([^"]+)">\s*Header set Cache-Control "([^"]+)"/g)].map(m => [new RegExp(m[1]), m[2]]);
+  // Ostatni pasujący blok wygrywa (Apache) — sprawdzamy wynik dla każdego pliku.
+  const cc = f => blocks.filter(([r]) => r.test(f)).pop()?.[1] || '';
+  for (const f of ['sw.js', 'app.js', 'index.html', 'errors.js', 'styles.css', 'offers.json', 'manifest.webmanifest']) assert.equal(cc(f), 'no-cache', f);
+  assert.match(cc('icon-512.png'), /max-age/);
+});
