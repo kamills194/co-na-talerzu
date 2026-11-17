@@ -170,11 +170,42 @@ const adapterMarket=markets.PL;
 const ALDI_SCOPE=Object.freeze({type:'unverified',note:'Oferta ze strony ogólnopolskiej sklepu; dostępność regionalna niepotwierdzona'});
 const dateInMarket=epoch=>marketDate(new Date(epoch*1000),adapterMarket);
 const text=(v,fallback,max)=>(typeof v==='string'&&v.trim()?v.trim():fallback).slice(0,max);
+// ALDI price tags. Supported reductions (anything else is skipped, fail closed):
+//  - strike price: regular price crossed out, `priceValue` is the new unit price;
+//  - "-N% PRZY ZAKUPIE K SZT.": `priceValue` is the unit price when buying K pieces;
+//  - "-N% CO DRUGA SZT.": the second piece costs `priceValue` → average unit price over 2 pieces;
+//  - "A+B GRATIS": pay for A, get A+B → average unit price over A+B pieces.
+// For multi-buy deals `price` is the AVERAGE unit price when the condition is met; the condition is
+// always stated in `conditions` (plus the per-customer limit), so the app never hides it.
+// Regular price for multi-buys comes from "Cena regularna: X zł" in the price tag text.
+function plNumber(s){ const n=Number(String(s).replace(/\s/g,'').replace(',','.')); return Number.isFinite(n)?n:NaN; }
+export function aldiDeal(p,item={}) {
+  const price=p?.priceValue; if(!Number.isFinite(price)||price<=0) return null;
+  const labels=p.priceTagLabels||{}, promo=String(labels.promoText1||'').replace(/\s+/g,' ').trim();
+  const info=(p.basePrice||[]).map(b=>b?.basePriceAdditionalInformation||'').join(' ');
+  const limit=String(item.shortDescription||'').match(/Limit:[^\n]*/i)?.[0]?.trim().replace(/\.$/,'');
+  const join=(...a)=>a.filter(Boolean).join(' · ');
+  const strike=p.strikePrice?.strikePriceValue;
+  if(Number.isFinite(strike)) return price<strike?{price,regular:strike,conditions:join(promo,labels.bestPricesWithin30daysText,limit)}:null;
+  const regular=plNumber(info.match(/cena regularna:\s*([\d\s]+,\d{2})\s*zł/i)?.[1]);
+  if(!Number.isFinite(regular)||regular<=0) return null;
+  const round=v=>Math.round(v*100)/100;
+  let m;
+  if((m=promo.match(/PRZY ZAKUPIE\s+(\d+)\s+SZT/i))&&price<regular) return {price,regular,conditions:join(`Cena przy zakupie ${m[1]} szt.`,promo,limit)};
+  if(/CO DRUGA SZT/i.test(promo)&&price<regular) return {price:round((regular+price)/2),regular,conditions:join(`Średnio przy zakupie 2 szt. (druga za ${String(price.toFixed(2)).replace('.',',')} zł)`,promo,limit)};
+  if((m=promo.match(/^(\d+)\s*\+\s*(\d+)\s+GRATIS/i))){ const a=+m[1],b=+m[2]; if(a>0&&b>0) return {price:round(regular*a/(a+b)),regular,conditions:join(`Średnio przy zakupie ${a+b} szt. (${a}+${b} gratis)`,limit)}; }
+  return null;
+}
+
 export function parseAldi(html,{source,now=new Date()}={}) {
   const match=html.match(/<script\b[^>]*\bid="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/i);
   if(!match) throw Error('Brak publicznych danych __NEXT_DATA__; adapter wymaga aktualizacji.');
   const data=JSON.parse(match[1]), items=[];
-  function walk(x) {if(!x||typeof x!=='object')return;if(x.objectID&&x.name)items.push(x);else for(const v of Object.values(x))walk(v);}
+  // Product lists may be nested as JSON text inside other fields (e.g. pageProps.apiData on /oferty.html).
+  function walk(x) {
+    if(typeof x==='string'){ if(x.length>50&&/^\s*[\[{]/.test(x)&&x.includes('objectID')){ try{walk(JSON.parse(x));}catch{} } return; }
+    if(!x||typeof x!=='object')return; if(x.objectID&&x.name)items.push(x); else for(const v of Object.values(x))walk(v);
+  }
   walk(data);
   if(!items.length)throw Error('Nie rozpoznano struktury produktów.');
   const output=new Map(); let skipped=0;
@@ -183,11 +214,12 @@ export function parseAldi(html,{source,now=new Date()}={}) {
     if(!product){skipped++;continue;}
     const candidates=[item.currentPrice,...(Array.isArray(item.promotionPrices)?item.promotionPrices:[])].filter(Boolean);
     for(const p of candidates) {
-      const price=p.priceValue,regular=p.strikePrice?.strikePriceValue;
-      // Fail closed: price reduction, explicit validity window and active NOW required.
-      if(!Number.isFinite(price)||!Number.isFinite(regular)||price<=0||price>=regular||!Number.isFinite(p.validFrom)||!Number.isFinite(p.validUntil)||p.validFrom*1000>now.getTime()||p.validUntil*1000<now.getTime())continue;
+      const deal=aldiDeal(p,item);
+      // Fail closed: a real price reduction, explicit validity window and active NOW required.
+      if(!deal||!Number.isFinite(p.validFrom)||!Number.isFinite(p.validUntil)||p.validFrom*1000>now.getTime()||p.validUntil*1000<now.getTime())continue;
+      const {price,regular}=deal;
       const id=`aldi-${item.objectID}-${p.validFrom}`;
-      output.set(id,{id,product,market:adapterMarket.id,currency:adapterMarket.currency,scope:{...ALDI_SCOPE},store:'ALDI',price,until:dateInMarket(p.validUntil),from:dateInMarket(p.validFrom),source,fetchedAt:now.toISOString(),name:text(item.name,'',200),unit:text(item.salesUnit,'Sprawdź jednostkę w źródle',100),regularPrice:regular,validUntil:new Date(p.validUntil*1000).toISOString(),conditions:text(Object.values(p.priceTagLabels||{}).filter(v=>typeof v==='string'&&v.trim()).join(' · '),'Sprawdź warunki w sklepie',500),evidence:JSON.stringify(p)});
+      output.set(id,{id,product,market:adapterMarket.id,currency:adapterMarket.currency,scope:{...ALDI_SCOPE},store:'ALDI',price,until:dateInMarket(p.validUntil),from:dateInMarket(p.validFrom),source,fetchedAt:now.toISOString(),name:text(item.name,'',200),unit:text(item.salesUnit,'Sprawdź jednostkę w źródle',100),regularPrice:regular,validUntil:new Date(p.validUntil*1000).toISOString(),conditions:text(deal.conditions,'Sprawdź warunki w sklepie',500),evidence:JSON.stringify(p)});
     }
   }
   return {offers:[...output.values()],productsSeen:items.length,unmapped:skipped};
@@ -210,7 +242,7 @@ export function robotsDisallows(robots, path) {
 export function extraSources(args) {
   const out=[];
   for(const a of args) { let u; try{u=new URL(a);}catch{throw Error(`Nieprawidłowy adres źródła: ${a}`);}
-    if(u.protocol!=='https:'||u.hostname!=='www.aldi.pl'||u.username||u.password||!u.pathname.startsWith('/produkty/'))throw Error(`Źródło spoza https://www.aldi.pl/produkty/: ${a}`);
+    if(u.protocol!=='https:'||u.hostname!=='www.aldi.pl'||u.username||u.password||!(u.pathname.startsWith('/produkty/')||u.pathname==='/oferty.html'))throw Error(`Źródło spoza https://www.aldi.pl/produkty/ i /oferty.html: ${a}`);
     u.hash='';out.push(u.href); }
   return out;
 }
