@@ -1,5 +1,6 @@
 import { writeFile, rename, mkdir } from 'node:fs/promises';
 import { parseAldi, robotsDisallows, extraSources } from './offer-parser.mjs';
+import { lidlList, lidlFlyer, kaufland, carrefour, biedronka, textCards, mainLeaflet, NON_FOOD } from './store-leaflets.mjs';
 import { extractPageTexts, parseLeafletTexts, leafletPages, ipaperUrl, leafletTitle, isFoodLeaflet, isRecentLeaflet } from './leaflet-parser.mjs';
 import { validAutomaticOffer } from '../src/domain.js';
 import { market } from '../src/market.js';
@@ -22,7 +23,7 @@ const sub=['owoce-i-warzywa/warzywa','owoce-i-warzywa/owoce','owoce-i-warzywa/gr
   'mrozonki-i-dania-gotowe/mrozone-warzywa','mrozonki-i-dania-gotowe/mrozone-owoce','slodycze/czekolady','slodycze/biszkopty--herbatniki','kawa/kawa-mielona'];
 const defaultSources=[`${base}/oferty.html`,...sub.map(p=>`${base}/produkty/${p}.html`)];
 const sources=[...new Set([...defaultSources,...extraSources(process.argv.slice(2))])];
-const now=new Date(), report={version:1,market:market.id,currency:market.currency,timeZone:market.timeZone,updatedAt:now.toISOString(),offers:[],sources:[],leaflets:[]};
+const now=new Date(), report={version:1,market:market.id,currency:market.currency,timeZone:market.timeZone,updatedAt:now.toISOString(),offers:[],sources:[],leaflets:[],stores:[]};
 const headers={'User-Agent':'CoNaTalerzMVP/0.1 (public offers reader; no login)'};
 async function get(url) {
   const r=await fetch(url,{headers,signal:AbortSignal.timeout(20000),redirect:'error'});
@@ -66,6 +67,42 @@ try {
     }catch(e){report.sources.push({source:page,status:'error',kind:'leaflet',error:e.message});}
   }
 }catch(e){report.sources.push({source:'https://www.aldi.pl/gazetki.html',status:'error',kind:'leaflet',error:e.message});}
+// CNT-042: okres aktualnej gazetki każdej sieci (kafelki w zakładce Promocje).
+const robotsCache=new Map();
+async function allowed(url) {
+  const u=new URL(url);
+  if(!robotsCache.has(u.origin)) robotsCache.set(u.origin, await fetch(`${u.origin}/robots.txt`,{headers,signal:AbortSignal.timeout(15000),redirect:'follow'}).then(r=>r.ok?r.text():(r.status===404||r.status===410?'':Promise.reject(Error(`robots.txt: HTTP ${r.status}`)))));
+  return !robotsDisallows(robotsCache.get(u.origin),u.pathname);
+}
+const STORE_SOURCES=[
+  {id:'biedronka',url:'https://www.biedronka.pl/pl/gazetki',parse:h=>biedronka(h,now)},
+  {id:'lidl',url:'https://www.lidl.pl/c/nasze-gazetki/s10008614',parse:async h=>{
+    const out=[];
+    for(const f of lidlList(h).filter(f=>!NON_FOOD.test(`${f.title} ${f.id}`)).slice(0,4)) {
+      const api=`https://endpoints.leaflets.schwarz/v4/flyer?flyer_identifier=${encodeURIComponent(f.id)}&region_id=0&region_code=0`;
+      if(!await allowed(api))continue; await new Promise(r=>setTimeout(r,800));
+      const r=lidlFlyer(JSON.parse(await get(api))); if(r)out.push({title:f.title,url:f.url,from:r.from,until:r.until});
+    }
+    return out;
+  }},
+  {id:'kaufland',url:'https://sklep.kaufland.pl/gazeta-reklamowa.html',parse:h=>kaufland(h)},
+  {id:'carrefour',url:'https://www.carrefour.pl/gazetka-handlowa',parse:h=>carrefour(h,now)},
+  {id:'netto',url:'https://netto.pl/gazetka-netto/',parse:h=>textCards(h,{base:'https://netto.pl/gazetka-netto/',link:/netto\.pl\/gazetka-netto\/./,now})},
+  {id:'dino',url:'https://marketdino.pl/gazetki/lista/standard',parse:h=>textCards(h,{base:'https://marketdino.pl/gazetki/lista/standard',link:/marketdino\.pl\/gazetki\/(?!lista)/,now})},
+  {id:'intermarche',url:'https://intermarche.pl/gazetki-promocyjne/',parse:h=>textCards(h,{base:'https://intermarche.pl/gazetki-promocyjne/',link:/intermarche\.pl\/g\//,now})},
+  {id:'stokrotka',url:'https://stokrotka.pl/oferta/gazetki-promocyjne/',parse:h=>textCards(h,{base:'https://stokrotka.pl/oferta/gazetki-promocyjne/',link:/gazetki-promocyjne\/[a-z0-9-]+\.html/,now})},
+];
+for(const src of STORE_SOURCES) {
+  await new Promise(r=>setTimeout(r,1200));
+  try {
+    if(!await allowed(src.url))throw Error('Odczyt wyłączony przez robots.txt');
+    const list=await src.parse(await get(src.url)), main=mainLeaflet(list,now);
+    if(main)report.stores.push({store:src.id,title:main.title,url:main.url,...(main.from?{from:main.from}:{}),...(main.until?{until:main.until}:{})});
+    report.sources.push({source:src.url,status:main?'ok':'empty',kind:'store-leaflet',store:src.id,leaflets:list.length});
+  }catch(e){report.sources.push({source:src.url,status:'error',kind:'store-leaflet',store:src.id,error:e.message});}
+}
+{ const aldi=mainLeaflet(report.leaflets.map(l=>({title:l.title,url:l.viewer||l.url,from:l.from,until:l.until})),now);
+  if(aldi)report.stores.push({store:'aldi',title:aldi.title,url:aldi.url,...(aldi.from?{from:aldi.from}:{}),...(aldi.until?{until:aldi.until}:{})}); }
 // Ta sama promocja ze strony sklepu i z gazetki: zostaje rekord ze strony (pełniejsze dane o cenie).
 const key=o=>`${o.product}|${o.price}|${o.until}`, fromWeb=new Set(report.offers.filter(o=>o.origin!=='leaflet').map(key));
 report.offers=report.offers.filter(o=>o.origin!=='leaflet'||!fromWeb.has(key(o)));

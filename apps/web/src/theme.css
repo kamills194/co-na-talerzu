@@ -325,8 +325,13 @@ html[data-theme="dark"] #exclude-options li[aria-selected=true],html[data-theme=
 #install-app{margin-top:12px}
 .page-title .notice{margin-top:12px;padding:10px 14px}
 
-/* ---------- CNT-041: gazetki ---------- */
-.leaflet-list{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:10px}
-.leaflet-list li{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;border:1px solid var(--t-line);border-radius:10px}
-.leaflet-list li>div{display:grid;gap:2px;min-width:0}
-.leaflet-open{display:inline-flex;align-items:center;min-height:44px;padding:8px 16px;border-radius:var(--t-sketch);text-decoration:none;font-weight:600}
+/* ---------- CNT-042: kafelki gazetek sklepów ---------- */
+.store-tiles{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,150px),1fr));gap:12px}
+.store-tile{display:flex;flex-direction:column;height:100%;min-height:96px;border-radius:14px;overflow:hidden;text-decoration:none;color:var(--ink);background:var(--t-surface,var(--paper));border:1px solid var(--t-line)}
+.store-tile:hover,.store-tile:focus-visible{box-shadow:0 6px 18px rgb(0 0 0 / .14)}
+.store-tile:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+.store-name{background:var(--store);color:var(--store-ink);font-weight:800;font-size:1.05rem;letter-spacing:.01em;padding:12px 14px}
+.store-period{flex:1;display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:12px 14px;font-weight:700;font-variant-numeric:tabular-nums;font-size:1rem}
+.store-tile.no-period .store-period{font-weight:500;font-size:.85rem;color:var(--muted)}
+.store-soon{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 8px;border-radius:1em;background:var(--t-chip);color:var(--ink)}
+@media (prefers-reduced-motion: no-preference){.store-tile{transition:transform .15s ease,box-shadow .15s ease}.store-tile:hover,.store-tile:focus-visible{transform:translateY(-2px)}}
