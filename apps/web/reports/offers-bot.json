@@ -3,7 +3,7 @@
   "market": "PL",
   "currency": "PLN",
   "timeZone": "Europe/Warsaw",
-  "updatedAt": "2026-11-17T23:38:01.530Z",
+  "updatedAt": "2026-11-18T04:18:20.953Z",
   "offers": [
     {
       "id": "aldi-497-1794783600",
@@ -19,7 +19,7 @@
       "until": "2026-11-21",
       "from": "2026-11-16",
       "source": "https://www.aldi.pl/produkty/nabial-i-jaja/maslo.html",
-      "fetchedAt": "2026-11-17T23:38:01.530Z",
+      "fetchedAt": "2026-11-18T04:18:20.953Z",
       "name": "Masło ekstra",
       "unit": "Opak. 200 g",
       "regularPrice": 5.99,
@@ -41,7 +41,7 @@
       "until": "2026-11-21",
       "from": "2026-11-16",
       "source": "https://www.aldi.pl/produkty/nabial-i-jaja/jaja.html",
-      "fetchedAt": "2026-11-17T23:38:01.530Z",
+      "fetchedAt": "2026-11-18T04:18:20.953Z",
       "name": "Jaja z wolnego wybiegu L",
       "unit": "Opak. 10 szt.",
       "regularPrice": 12.99,
@@ -63,7 +63,7 @@
       "until": "2026-11-21",
       "from": "2026-11-16",
       "source": "https://www.aldi.pl/produkty/owoce-i-warzywa/warzywa.html",
-      "fetchedAt": "2026-11-17T23:38:01.530Z",
+      "fetchedAt": "2026-11-18T04:18:20.953Z",
       "name": "Pomidory malinowe",
       "unit": "Cena za kg",
       "regularPrice": 17.99,
@@ -85,7 +85,7 @@
       "until": "2026-11-21",
       "from": "2026-11-16",
       "source": "https://www.aldi.pl/produkty/owoce-i-warzywa/warzywa.html",
-      "fetchedAt": "2026-11-17T23:38:01.530Z",
+      "fetchedAt": "2026-11-18T04:18:20.953Z",
       "name": "Ogórki szklarniowe",
       "unit": "Cena za kg",
       "regularPrice": 14.99,
@@ -107,7 +107,7 @@
       "until": "2026-11-18",
       "from": "2026-11-15",
       "source": "https://www.aldi.pl/produkty/owoce-i-warzywa/owoce.html",
-      "fetchedAt": "2026-11-17T23:38:01.530Z",
+      "fetchedAt": "2026-11-18T04:18:20.953Z",
       "name": "Cytryny",
       "unit": "Opak. 500 g",
       "regularPrice": 5.99,
@@ -129,7 +129,7 @@
       "until": "2026-11-21",
       "from": "2026-11-16",
       "source": "https://www.aldi.pl/produkty/owoce-i-warzywa/owoce.html",
-      "fetchedAt": "2026-11-17T23:38:01.530Z",
+      "fetchedAt": "2026-11-18T04:18:20.953Z",
       "name": "Awokado",
       "unit": "Sztuka",
       "regularPrice": 5.99,
@@ -151,7 +151,7 @@
       "until": "2026-11-21",
       "from": "2026-11-16",
       "source": "https://www.aldi.pl/oferty.html",
-      "fetchedAt": "2026-11-17T23:38:01.530Z",
+      "fetchedAt": "2026-11-18T04:18:20.953Z",
       "name": "Ser Rycki Edam",
       "unit": "Opak. 135 g",
       "regularPrice": 6.19,
@@ -173,7 +173,7 @@
       "until": "2026-11-21",
       "from": "2026-11-16",
       "source": "https://www.aldi.pl/oferty.html",
-      "fetchedAt": "2026-11-17T23:38:01.530Z",
+      "fetchedAt": "2026-11-18T04:18:20.953Z",
       "name": "Kawa rozpuszczalna Cronat Gold",
       "unit": "Słoik 200 g",
       "regularPrice": 37.89,
@@ -276,8 +276,10 @@
     },
     {
       "source": "https://www.aldi.pl/produkty/sery-i-twarogi/sery-salatkowe-i-kanapkowe.html",
-      "status": "error",
-      "error": "Nie rozpoznano struktury produktów."
+      "status": "empty",
+      "productsSeen": 0,
+      "unmapped": 0,
+      "rejected": 0
     },
     {
       "source": "https://www.aldi.pl/produkty/sery-i-twarogi/twarog.html",
@@ -288,8 +290,10 @@
     },
     {
       "source": "https://www.aldi.pl/produkty/sery-i-twarogi/serki-wiejskie.html",
-      "status": "error",
-      "error": "Nie rozpoznano struktury produktów."
+      "status": "empty",
+      "productsSeen": 0,
+      "unmapped": 0,
+      "rejected": 0
     },
     {
       "source": "https://www.aldi.pl/produkty/wedliny-i-mieso/mieso-drobiowe.html",
@@ -461,8 +465,10 @@
     },
     {
       "source": "https://www.aldi.pl/produkty/tluszcze-i-octy/maslo--margaryna.html",
-      "status": "error",
-      "error": "Nie rozpoznano struktury produktów."
+      "status": "empty",
+      "productsSeen": 0,
+      "unmapped": 0,
+      "rejected": 0
     },
     {
       "source": "https://www.aldi.pl/produkty/tluszcze-i-octy/olej.html",
@@ -508,8 +514,10 @@
     },
     {
       "source": "https://www.aldi.pl/produkty/sosy--dressingi-i-przeciery/koncentraty--przeciery.html",
-      "status": "error",
-      "error": "Nie rozpoznano struktury produktów."
+      "status": "empty",
+      "productsSeen": 0,
+      "unmapped": 0,
+      "rejected": 0
     },
     {
       "source": "https://www.aldi.pl/produkty/sosy--dressingi-i-przeciery/pesto.html",
