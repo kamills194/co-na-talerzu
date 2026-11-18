@@ -18,6 +18,7 @@ export const messages = {
   heroLabel:'CODZIENNA KUCHNIA, MAŁE PRZYJEMNOŚCI', heroTitle:'Dziś coś dobrego.\nPo prostu, po domowemu.', heroText:'Znane składniki. Proste kroki. Pomysł na każdy apetyt.',
   surprise:'Zaskocz mnie', surpriseText:'Wybierz, na co masz ochotę. My znajdziemy pomysł.', meal:'Rodzaj posiłku', time:'Maksymalny czas', diet:'Dieta', exclude:'Wyklucz składniki', search:'Szukaj przepisu lub składnika', searchPlaceholder:'Np. pomidorowa, ziemniaki, jabłko…',
   noLimit:'Bez limitu', minutes:'min', noResults:'Nie ma przepisów pasujących do tych filtrów.', reset:'Wyczyść filtry', found:'Pomysły na domowy posiłek', result:'Propozycja dla Ciebie',
+  brandName:'Co na talerz', variantsTitle:'Inne wersje tego dania', favoriteAdded:'Dodano do ulubionych', favoriteRemoved:'Usunięto z ulubionych',
   addFavorite:'Dodaj do ulubionych', removeFavorite:'Usuń z ulubionych', emptyFavorites:'Zapisz przepisy serduszkiem — będą tutaj czekać.',
   portions:'Porcje', ingredients:'Składniki', steps:'Przygotowanie', allergens:'Alergeny', noAllergens:'Brak oznaczonych alergenów', allergenNote:'Sprawdź etykiety produktów i możliwe śladowe ilości alergenów. Filtry opierają się na składnikach przepisu.',
   addShopping:'Dodaj składniki do listy', added:'Składniki dodane do listy zakupów.', close:'Zamknij', easy:'Prosty przepis',

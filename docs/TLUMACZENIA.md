@@ -42,7 +42,8 @@ export const messages = {
 - Dozwolone: zwykłe znaki, typograficzne cudzysłowy („ ” « » „ “), apostrof `'` (w JS zapisz jako
   `’` albo `\'`). **Niedozwolone: `<`, `>`, `"`, `&`** — teksty trafiają do HTML i atrybutów.
 - `\n` występuje tylko tam, gdzie w polskim (np. `heroTitle`, `heroArtNote`) — tyle samo podziałów.
-- Nazwa marki „Co na talerz” zostaje bez zmian (np. w `docTitle`, `brandHome`, `footerText`).
+- Nazwa marki „Co na talerz” zostaje bez zmian w `docTitle`, `brandHome` i `footerText`. Wyjątek (CNT-043): `brandName` — nazwa
+  w nagłówku strony — jest tłumaczona na język interfejsu (decyzja właściciela 18.11.2026).
 - `language` to słowo „Język” w Twoim języku; etykieta wybieracza to „<słowo> / Language”.
 
 ### `apps/web/src/recipes.<kod>.js` — przepisy i produkty

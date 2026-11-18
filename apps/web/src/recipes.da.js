@@ -679,4 +679,40 @@ export const recipes = {
     'Form cirka 12 kugler med våde hænder og tryk dem let flade. Varm olien op på en pande og steg falaflerne portionsvis i 3–4 minutter på hver side, til de er brune. Lad dem dryppe af på køkkenrulle.',
     'Sovs: Rør tahin med citronsaft og det afmålte vand til en glat, hældbar sovs. Server falaflerne med sovsen over.'],
     photoAlt:'Brune falafler på en tallerken med lys tahinsovs over' },
+  // CNT-043: other versions of popular dishes. Machine translation, not reviewed by a native speaker.
+  'pierogi-z-miesem':{ name:'Pierogi med kød — polske dumplings med svinekødsfyld', steps:[
+    'Pil løget, og skær det i tern. Varm resten af olien på en pande, og svits halvdelen af løget, tilsæt derefter kødet, og steg det i 10–12 minutter, mens du deler det med en paletkniv, til det ikke længere er lyserødt. Vask hænder og redskaber efter kontakt med råt kød.',
+    'Lad kødet køle af, og hak det i kødhakker eller fint med en kniv, så fyldet hænger sammen. Smag til med merian, peber og en knivspids salt, og bland.',
+    'Bland melet med en knivspids salt, og hæld det lune vand og en spiseskefuld olie i. Ælt i cirka 5 minutter, til dejen er glat og elastisk, og dæk den derefter med en skål i 15 minutter.',
+    'Rul dejen tyndt ud, og stik cirkler ud med et glas. Læg en teskefuld fyld på hver, fold dem på midten, og luk kanterne godt. Det giver cirka 24 dumplings.',
+    'Kog dumplingsene portionsvis i en stor gryde letsaltet vand i 3–4 minutter, efter at de er steget op. Brun resten af løget i smørret, og hæld det over dumplingsene.'],
+    photoAlt:'En tallerken pierogi med kød, overhældt med smør og brunede løg' },
+  'pierogi-z-kapusta-i-grzybami':{ name:'Pierogi med surkål og champignon — polske dumplings', steps:[
+    'Pres saften ud af surkålen; er den meget sur, så skyl den i koldt vand. Kom den i en gryde med lidt vand, og kog den under låg i 20 minutter, til den er mør. Lad den dryppe af, køle af, og hak den fint.',
+    'Pil og hak løget, rens champignonerne, og skær dem i små tern. Varm 2 spiseskefulde olie på en pande, og steg løg og champignon i 8–10 minutter, til vandet er fordampet. Bland med surkålen, og smag til med peber og en knivspids salt.',
+    'Bland melet med en knivspids salt, og hæld det lune vand og en spiseskefuld olie i. Ælt i cirka 5 minutter, til dejen er glat og elastisk, og dæk den derefter med en skål i 15 minutter.',
+    'Rul dejen tyndt ud, og stik cirkler ud med et glas. Læg en teskefuld fyld på hver, fold dem på midten, og luk kanterne godt. Det giver cirka 24 dumplings.',
+    'Kog dumplingsene portionsvis i en stor gryde saltet vand i 2–3 minutter, efter at de er steget op. Tag dem op med en hulske, og server dem dryppet med lidt olie eller stegt på panden.'],
+    photoAlt:'En tallerken pierogi med surkål og svampe, let stegt på panden' },
+  'pierogi-z-owocami':{ name:'Pierogi med skovbær og sød creme — polske dumplings med frugt', steps:[
+    'Tø bærrene op i en si, og lad dem dryppe godt af, så fyldet ikke gør dejen våd. Bland dem med kartoffelmelet.',
+    'Bland melet med en knivspids salt, og hæld det lune vand og en spiseskefuld olie i. Ælt i cirka 5 minutter, til dejen er glat og elastisk, og dæk den derefter med en skål i 15 minutter.',
+    'Rul dejen tyndt ud, og stik cirkler ud med et glas. Læg en teskefuld bær på hver, fold dem på midten, og luk kanterne meget omhyggeligt. Det giver cirka 24 dumplings.',
+    'Kog dumplingsene portionsvis i en stor gryde let saltet vand i 3 minutter, efter at de er steget op, til frugten indeni er varm.',
+    'Rør cremefraichen sammen med sukkeret. Tag dumplingsene op med en hulske, og server dem straks med den søde creme over.'],
+    photoAlt:'Pierogi med skovbær og sød creme med lilla saft på tallerkenen' },
+  'pizza-funghi':{ name:'Hjemmelavet pizza funghi med champignon', steps:[
+    'Smuldr gæren i en skål, tilsæt sukker og lunt, men ikke varmt, vand, og rør rundt. Tilsæt mel og salt, og hæld halvdelen af olivenolien i. Ælt i 8–10 minutter, til dejen er glat og elastisk, dæk med et viskestykke, og lad den hæve et lunt sted i cirka en time.',
+    'Rens champignonerne, og skær dem i tynde skiver. Bland passataen med oregano og en knivspids salt. Lad mozzarellaen dryppe af, og riv den i stykker.',
+    'Forvarm ovnen til 250°C med bagepladen i. Træk dejen ud med hænderne på bagepapir til en bund på cirka 30 cm i diameter.',
+    'Smør saucen på dejen, fordel mozzarella og champignon, og dryp med resten af olivenolien.',
+    'Træk pizzaen med papiret over på den varme plade, og bag den i 12–14 minutter, til kanterne er gyldne, og osten er smeltet. Server straks.'],
+    photoAlt:'En rund pizza med tomatsauce, mozzarella og champignonskiver' },
+  'pizza-z-szynka':{ name:'Hjemmelavet pizza med skinke og champignon', steps:[
+    'Smuldr gæren i en skål, tilsæt sukker og lunt, men ikke varmt, vand, og rør rundt. Tilsæt mel og salt, og hæld halvdelen af olivenolien i. Ælt i 8–10 minutter, til dejen er glat og elastisk, dæk med et viskestykke, og lad den hæve et lunt sted i cirka en time.',
+    'Rens champignonerne, og skær dem i tynde skiver; skær skinken i strimler. Bland passataen med oregano og en knivspids salt. Lad mozzarellaen dryppe af, og riv den i stykker.',
+    'Forvarm ovnen til 250°C med bagepladen i. Træk dejen ud med hænderne på bagepapir til en bund på cirka 30 cm i diameter.',
+    'Smør saucen på dejen, fordel mozzarella, skinke og champignon, og dryp med resten af olivenolien.',
+    'Træk pizzaen med papiret over på den varme plade, og bag den i 12–14 minutter, til kanterne er gyldne, og osten er smeltet. Server straks.'],
+    photoAlt:'En rund pizza med mozzarella, skinkestrimler og champignonskiver' },
 };

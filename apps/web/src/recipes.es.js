@@ -679,4 +679,40 @@ export const recipes = {
     'Con las manos mojadas forma unas 12 bolitas y aplánalas ligeramente. Calienta el aceite en una sartén y fríe los faláfel por tandas 3–4 minutos por cada lado, hasta que estén dorados. Escúrrelos sobre papel de cocina.',
     'Salsa: mezcla el tahini con el zumo de limón y el agua medida hasta obtener una salsa lisa y fluida. Sirve los faláfel con la salsa por encima.'],
     photoAlt:'Faláfel dorados en un plato con salsa tahini clara por encima' },
+  // CNT-043: other versions of popular dishes. Machine translation, not reviewed by a native speaker.
+  'pierogi-z-miesem':{ name:'Pierogi de carne — empanadillas polacas rellenas de cerdo', steps:[
+    'Pela la cebolla y córtala en dados. Calienta el resto del aceite en una sartén y pocha la mitad de la cebolla; luego añade la carne y fríela 10–12 minutos, deshaciéndola con la espátula, hasta que deje de estar rosada. Lávate las manos y los utensilios después de tocar la carne cruda.',
+    'Deja enfriar la carne y luego pícala con picadora o muy fina con cuchillo para que el relleno quede compacto. Sazona con la mejorana, la pimienta y una pizca de sal y mezcla.',
+    'Mezcla la harina con una pizca de sal, vierte el agua templada y una cucharada de aceite. Amasa unos 5 minutos, hasta que la masa esté lisa y elástica, y luego tápala con un bol durante 15 minutos.',
+    'Extiende la masa fina y corta círculos con un vaso. Pon una cucharadita de relleno en cada uno, dóblalo por la mitad y sella bien los bordes. Saldrán unas 24 empanadillas.',
+    'Cuece las empanadillas por tandas en una olla grande de agua con sal, 3–4 minutos más desde que suban a la superficie. Dora el resto de la cebolla en la mantequilla y viértela sobre las empanadillas.'],
+    photoAlt:'Un plato de pierogi de carne con mantequilla y cebolla dorada' },
+  'pierogi-z-kapusta-i-grzybami':{ name:'Pierogi de chucrut y champiñones — empanadillas polacas', steps:[
+    'Escurre el chucrut apretándolo; si está muy ácido, acláralo con agua fría. Ponlo en una olla con un poco de agua y cuécelo tapado 20 minutos, hasta que esté tierno. Escúrrelo, déjalo enfriar y pícalo fino.',
+    'Pela y pica la cebolla, limpia los champiñones y córtalos en dados pequeños. Calienta 2 cucharadas de aceite en una sartén y fríe la cebolla con los champiñones 8–10 minutos, hasta que se evapore el agua. Mézclalo con el chucrut y sazona con pimienta y una pizca de sal.',
+    'Mezcla la harina con una pizca de sal, vierte el agua templada y una cucharada de aceite. Amasa unos 5 minutos, hasta que la masa esté lisa y elástica, y luego tápala con un bol durante 15 minutos.',
+    'Extiende la masa fina y corta círculos con un vaso. Pon una cucharadita de relleno en cada uno, dóblalo por la mitad y sella bien los bordes. Saldrán unas 24 empanadillas.',
+    'Cuece las empanadillas por tandas en una olla grande de agua con sal, 2–3 minutos más desde que suban a la superficie. Sácalas con una espumadera y sírvelas con un chorrito de aceite o doradas en la sartén.'],
+    photoAlt:'Un plato de pierogi de chucrut y champiñones ligeramente dorados en la sartén' },
+  'pierogi-z-owocami':{ name:'Pierogi de frutos del bosque con nata dulce — empanadillas polacas de fruta', steps:[
+    'Descongela los frutos en un colador y escúrrelos bien para que el relleno no empape la masa. Mézclalos con la fécula de patata.',
+    'Mezcla la harina con una pizca de sal, vierte el agua templada y una cucharada de aceite. Amasa unos 5 minutos, hasta que la masa esté lisa y elástica, y luego tápala con un bol durante 15 minutos.',
+    'Extiende la masa fina y corta círculos con un vaso. Pon una cucharadita de fruta en cada uno, dóblalo por la mitad y sella los bordes con mucho cuidado. Saldrán unas 24 empanadillas.',
+    'Cuece las empanadillas por tandas en una olla grande de agua ligeramente salada, 3 minutos más desde que suban a la superficie, hasta que la fruta esté caliente por dentro.',
+    'Mezcla la nata agria con el azúcar. Saca las empanadillas con una espumadera y sírvelas enseguida cubiertas de nata dulce.'],
+    photoAlt:'Pierogi de frutos del bosque con nata dulce y jugo morado en el plato' },
+  'pizza-funghi':{ name:'Pizza funghi casera con champiñones', steps:[
+    'Desmenuza la levadura en un bol, añade el azúcar y el agua templada, pero no caliente, y remueve. Añade la harina y la sal y vierte la mitad del aceite de oliva. Amasa 8–10 minutos hasta que la masa esté lisa y elástica, tápala con un paño y déjala en un lugar cálido durante una hora aproximadamente.',
+    'Limpia los champiñones y córtalos en láminas finas. Mezcla la passata con el orégano y una pizca de sal. Escurre la mozzarella y desgárrala en trozos.',
+    'Precalienta el horno a 250°C con la bandeja dentro. Estira la masa con las manos sobre papel de horno hasta formar un disco de unos 30 cm de diámetro.',
+    'Unta la masa con la salsa, reparte la mozzarella y los champiñones y rocía con el resto del aceite de oliva.',
+    'Pasa la pizza con el papel a la bandeja caliente y hornéala 12–14 minutos, hasta que los bordes se doren y el queso se funda. Sírvela enseguida.'],
+    photoAlt:'Una pizza redonda con salsa de tomate, mozzarella y láminas de champiñón' },
+  'pizza-z-szynka':{ name:'Pizza casera de jamón y champiñones', steps:[
+    'Desmenuza la levadura en un bol, añade el azúcar y el agua templada, pero no caliente, y remueve. Añade la harina y la sal y vierte la mitad del aceite de oliva. Amasa 8–10 minutos hasta que la masa esté lisa y elástica, tápala con un paño y déjala en un lugar cálido durante una hora aproximadamente.',
+    'Limpia los champiñones y córtalos en láminas finas; corta el jamón en tiras. Mezcla la passata con el orégano y una pizca de sal. Escurre la mozzarella y desgárrala en trozos.',
+    'Precalienta el horno a 250°C con la bandeja dentro. Estira la masa con las manos sobre papel de horno hasta formar un disco de unos 30 cm de diámetro.',
+    'Unta la masa con la salsa, reparte la mozzarella, el jamón y los champiñones y rocía con el resto del aceite de oliva.',
+    'Pasa la pizza con el papel a la bandeja caliente y hornéala 12–14 minutos, hasta que los bordes se doren y el queso se funda. Sírvela enseguida.'],
+    photoAlt:'Una pizza redonda con mozzarella, tiras de jamón y láminas de champiñón' },
 };
