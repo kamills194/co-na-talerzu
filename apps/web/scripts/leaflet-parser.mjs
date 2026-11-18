@@ -91,7 +91,8 @@ export function parseLeafletTexts(pageTexts, { source, leafletUrl, now = new Dat
   const slug = (id || String(leafletUrl || source).replace(/\/+$/, '').split('/').pop() || 'gazetka').replace(/[^a-z0-9_-]/gi, '').slice(0, 40);
   const out = new Map(); let seen = 0, unmapped = 0, skipped = 0;
   pageTexts.forEach((text, page) => {
-    const t = String(text).replace(/\s+/g, ' ');
+    // Zniekształcony tekst z grafik (np. „p w opar k o od w u a k n t iu”): ≥3 kolejne 1–2-literowe słowa → granica „*”.
+    const t = String(text).replace(/\s+/g, ' ').replace(/(?:(?<=^|\s)\p{Ll}{1,2}(?=\s)\s*){3,}/gu, ' * ');
     const pageRanges = ranges(t, yw.year);
     let last = 0;
     for (const m of t.matchAll(PRICE)) {
@@ -142,6 +143,13 @@ export function ipaperUrl(html) {
   return m ? m[0] : null;
 }
 // Czytelny tytuł gazetki z adresu (np. 2026_cw47_mo_special_26k47g07_wykwintne-smaki → „Wykwintne smaki”).
+// Gazetka do pokazania: ma okres obowiązywania albo jest z ostatnich 12 tygodni (wg nazwy RRRR_cwNN).
+export function isRecentLeaflet(url, range, now = new Date()) {
+  if (range?.until) return range.until >= marketDate(now);
+  const yw = leafletYearWeek(url); if (!yw) return false;
+  const weekStart = Date.UTC(yw.year, 0, 4) + (yw.week - 1) * 7 * 864e5;
+  return now.getTime() - weekStart <= 12 * 7 * 864e5;
+}
 export function leafletTitle(url) {
   const name = String(url).split('/').pop().replace(/\.html$/, '');
   const special = /_special_[a-z0-9]+_([a-z-]+)$/i.exec(name);
@@ -151,4 +159,4 @@ export function leafletTitle(url) {
   if (/promotion/i.test(name)) return 'Gazetka tygodniowa';
   return 'Gazetka';
 }
-export const isFoodLeaflet = url => !/non-food|zabawk|prezent|dekorac/i.test(url);
+export const isFoodLeaflet = url => !/non-food|zabawk|prezent|dekorac|ogrod|textil|tekstyl/i.test(url);
