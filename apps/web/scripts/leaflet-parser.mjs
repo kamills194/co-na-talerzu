@@ -129,7 +129,9 @@ const safeUrl = u => (typeof u === 'string' && /^https:\/\/[^\s"'<>`]+$/.test(u)
 // ---------- Lista gazetek ----------
 // Adresy gazetek z https://www.aldi.pl/gazetki.html (kolejność jak na stronie, bez duplikatów).
 export function leafletPages(html, base = 'https://www.aldi.pl') {
-  const urls = [...String(html).matchAll(/href="((?:https:\/\/www\.aldi\.pl)?\/gazetki\/[a-z0-9_.-]+\.html)"/gi)].map(m => new URL(m[1], base).href);
+  // Linki są w HTML (href) albo w danych strony (__NEXT_DATA__, także z ucieczką \/), względne lub pełne.
+  const text = String(html).replace(/\\\//g, '/');
+  const urls = [...text.matchAll(/(?<![a-z0-9.-])((?:https:\/\/www\.aldi\.pl)?\/gazetki\/[a-z0-9_.-]+\.html)/gi)].map(m => new URL(m[1], base).href);
   return [...new Set(urls)].filter(u => !/raport|marnowanie/i.test(u));
 }
 // Adres przeglądarki iPaper ze strony gazetki na aldi.pl.
