@@ -1,6 +1,6 @@
 import { writeFile, rename, mkdir } from 'node:fs/promises';
 import { parseAldi, robotsDisallows, extraSources } from './offer-parser.mjs';
-import { extractPageTexts, parseLeafletTexts, leafletPages, ipaperUrl, leafletTitle, isFoodLeaflet } from './leaflet-parser.mjs';
+import { extractPageTexts, parseLeafletTexts, leafletPages, ipaperUrl, leafletTitle, isFoodLeaflet, isRecentLeaflet } from './leaflet-parser.mjs';
 import { validAutomaticOffer } from '../src/domain.js';
 import { market } from '../src/market.js';
 // Sources confirmed by the CNT-040 diagnostic run in GitHub Actions (2026-11-17): the weekly offers
@@ -61,7 +61,7 @@ try {
       const parsed=parseLeafletTexts(texts,{source:page,leafletUrl:viewer,now});
       const accepted=parsed.offers.filter(validAutomaticOffer);
       report.offers.push(...accepted);
-      report.leaflets.push({store:'ALDI',title:leafletTitle(page),url:page,viewer,...(parsed.range||{}),pages:texts.length,offers:accepted.length});
+      if(isRecentLeaflet(page,parsed.range,now))report.leaflets.push({store:'ALDI',title:leafletTitle(page),url:page,viewer,...(parsed.range||{}),pages:texts.length,offers:accepted.length});
       report.sources.push({source:viewer,status:'ok',kind:'leaflet',pages:texts.length,productsSeen:parsed.productsSeen,unmapped:parsed.unmapped,skipped:parsed.skipped,rejected:parsed.offers.length-accepted.length});
     }catch(e){report.sources.push({source:page,status:'error',kind:'leaflet',error:e.message});}
   }
@@ -69,6 +69,8 @@ try {
 // Ta sama promocja ze strony sklepu i z gazetki: zostaje rekord ze strony (pełniejsze dane o cenie).
 const key=o=>`${o.product}|${o.price}|${o.until}`, fromWeb=new Set(report.offers.filter(o=>o.origin!=='leaflet').map(key));
 report.offers=report.offers.filter(o=>o.origin!=='leaflet'||!fromWeb.has(key(o)));
+// Ta sama promocja w kilku gazetkach (np. tygodniowa i weekendowa): zostaje pierwsza.
+{ const seen=new Set(); report.offers=report.offers.filter(o=>{ if(o.origin!=='leaflet')return true; const k=key(o); if(seen.has(k))return false; seen.add(k); return true; }); }
 report.offers=[...new Map(report.offers.map(o=>[o.id,o])).values()];
 const dest=new URL('../src/offers.json',import.meta.url), temp=new URL('../src/offers.json.tmp',import.meta.url);
 await writeFile(temp,JSON.stringify(report,null,2));await rename(temp,dest);
