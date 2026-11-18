@@ -11,6 +11,7 @@ export const messages = {
   heroLabel:'COCINA DE CADA DÍA, PEQUEÑOS PLACERES', heroTitle:'Hoy, algo rico.\nSencillo y casero.', heroText:'Ingredientes conocidos. Pasos sencillos. Una idea para cada apetito.',
   surprise:'Sorpréndeme', surpriseText:'Elige lo que te apetece. Nosotros buscamos la idea.', meal:'Tipo de comida', time:'Tiempo máximo', diet:'Dieta', exclude:'Excluir ingredientes', search:'Buscar receta o ingrediente', searchPlaceholder:'P. ej., sopa de tomate, patatas, manzana…',
   noLimit:'Sin límite', minutes:'min', noResults:'No hay recetas que coincidan con estos filtros.', reset:'Borrar filtros', found:'Ideas de comida casera', result:'Una propuesta para ti',
+  brandName:'Qué hay en el plato', variantsTitle:'Otras versiones de este plato', favoriteAdded:'Añadida a favoritas', favoriteRemoved:'Quitada de favoritas',
   addFavorite:'Añadir a favoritas', removeFavorite:'Quitar de favoritas', emptyFavorites:'Guarda recetas con el corazón: te esperarán aquí.',
   portions:'Raciones', ingredients:'Ingredientes', steps:'Preparación', allergens:'Alérgenos', noAllergens:'Sin alérgenos indicados', allergenNote:'Revisa las etiquetas de los productos y las posibles trazas de alérgenos. Los filtros se basan en los ingredientes de la receta.',
   addShopping:'Añadir ingredientes a la lista', added:'Ingredientes añadidos a la lista de la compra.', close:'Cerrar', easy:'Receta fácil',

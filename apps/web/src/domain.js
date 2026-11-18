@@ -1,4 +1,4 @@
-import { products } from './recipes.pl.js';
+import { products, recipes as catalog } from './recipes.pl.js';
 import { market, marketDate } from './market.js';
 import { nutritionPerServing, MEAT_PRODUCTS } from './nutrition.js';
 export const normalize = s => String(s).toLocaleLowerCase('pl-PL').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ł/g,'l').trim();
@@ -234,4 +234,17 @@ export function suggestProducts(query, {nameOf=id=>products[id][0], skip=[], lim
     if(rank>=0) scored.push({id,rank,name:normalize(nameOf(id)||products[id][0])});
   }
   return scored.sort((a,b)=>a.rank-b.rank||a.name.localeCompare(b.name)).slice(0,limit).map(x=>x.id);
+}
+// CNT-043: wersje jednego dania. Okno przepisu pokazuje pozostałe wersje z tej samej grupy
+// (np. pierogi ruskie → z mięsem, z kapustą i grzybami, z owocami).
+export const VARIANT_GROUPS = [
+  ['pierogi-ruskie','pierogi-z-miesem','pierogi-z-kapusta-i-grzybami','pierogi-z-owocami'],
+  ['pizza-margherita','pizza-funghi','pizza-z-szynka'],
+];
+// Dania bota „kucharz” wskazują danie bazowe polem `variantOf`; dołączają do jego grupy (albo tworzą nową).
+export function variantsOf(id, recipes=catalog) {
+  const base=recipes.find(r=>r.id===id)?.variantOf ?? id;
+  const group=VARIANT_GROUPS.find(g=>g.includes(base)) ?? [base];
+  const all=new Set([...group, ...recipes.filter(r=>r.variantOf&&group.includes(r.variantOf)).map(r=>r.id)].filter(x=>recipes.some(r=>r.id===x)));
+  all.delete(id); return [...all];
 }

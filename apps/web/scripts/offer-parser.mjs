@@ -58,7 +58,7 @@ export const productRules = [
   ['blackpepper',{any:['pieprz czarny'],not:['ziarnist','w ziarnach','w ziarnie','ziarno','kolorow','ziolow','cayenne','mlynek']}],
   ['yellowcheese',{any:['ser(?:y)? zolty','gouda','edam(?:ski)?','ser morski','ser tylzycki','ser salami','ser krolewski','ser podlaski','radamer'],not:['topion','plesni']}],
   ['mozzarella',{any:['mozzarell(?:a|i)'],not:['paluszk','w panierce']}],
-  ['oliveoil',{any:['oliwa'],not:['w sprayu','z wytloczyn','smakow','z czosnkiem','z chili']}],
+  ['oliveoil',{any:['oliwa'],not:['w sprayu','z wytloczyn','smakow','z czosnkiem','z chili','z przyprawami','z rozmarynem','z ziolami','truflow']}],
   ['basil',{any:['bazylia'],not:['suszon','pesto','mrozon','liofilizowan']}],
   // Plain "pietruszka" is ambiguous (root or leaves) and is not mapped.
   ['parsley',{any:['natka pietruszki','natka','pietruszka natka'],not:['suszon','korzen','seler','liofilizowan']}],
@@ -66,7 +66,7 @@ export const productRules = [
   ['eggplant',{any:['baklazan(?:y)?'],not:['pasta','grillowan','marynowan']}],
   ['cabbage',{any:['kapusta(?: biala)?'],not:['kiszon','kwaszon','pekinsk','czerwon','wloska','surowk','bigos','golabk','pak choi','modra']}],
   ['mushroom',{any:['pieczark(?:i|a)'],not:['marynowan','konserwow','suszon','w zalewie','duszon']}],
-  ['orange',{any:['pomarancz(?:a|e)'],not:['kandyzowan','skork']}],
+  ['orange',{any:['pomarancz(?:a|e)'],not:['kandyzowan','skork','suszon','w plastrach']}],
   ['berries',{any:['owoce lesne','mieszanka owocow lesnych'],all:['mrozon']}],
   ['potatostarch',{any:['maka ziemniaczana','skrobia ziemniaczana']}],
   ['vinegar',{any:['ocet jablkowy']}],

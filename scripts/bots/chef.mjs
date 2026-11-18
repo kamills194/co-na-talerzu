@@ -16,6 +16,7 @@
 // Opcje: --dry (nic nie zapisuje), --batch N (dań w tym przebiegu), --region kuchnia.
 import { readFile, writeFile, appendFile } from 'node:fs/promises';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { VARIANT_GROUPS } from '../../apps/web/src/domain.js';
 import { validateCandidate, acceptedSources, pickRegion, mergeAccepted, LANGS, KINDS, kindOf } from './chef-validate.mjs';
 
 const ROOT = fileURLToPath(new URL('../../', import.meta.url));
@@ -151,7 +152,8 @@ function catalogBrief(ctx) {
 function generatorPrompt(ctx, region, n, base, rejected) {
   const inRegion = ctx.recipes.filter(r => r.cuisine === region);
   const cats = Object.fromEntries(ctx.categories.map(c => [c, inRegion.filter(r => r.category === c).length]));
-  const variants = base ? ctx.recipes.filter(r => r.variantOf === base.id || r.id === base.id) : [];
+  const group = base ? (VARIANT_GROUPS.find(g => g.includes(base.id)) ?? [base.id]) : [];
+  const variants = base ? ctx.recipes.filter(r => group.includes(r.id) || group.includes(r.variantOf)) : [];
   return `Jesteś redaktorem kulinarnym polskiej aplikacji z przepisami „Co na talerz”. Zaproponuj ${n} dań z regionu „${region}” (${REGION_NOTES[region] ?? region}).
 ${base ? `Dodatkowo zaproponuj 2 warianty dania „${base.name}” (id ${base.id}, kuchnia ${base.cuisine}) — inne tradycyjne nadzienia lub wersje tej samej potrawy, np. obok pierogów ruskich pierogi z mięsem czy z jagodami. Warianty mają pole variantOf="${base.id}" i kuchnię ${base.cuisine}. Istniejące wersje: ${variants.map(r => r.name).join('; ')}.` : ''}
 
@@ -266,8 +268,8 @@ async function main() {
   while (allAccepted.length < want && rounds < Math.ceil(want / 5) + 3) {
     const region = arg('--region') ?? pickRegion(ctx.cuisines, ctx.recipes);
     // Warianty popularnego dania (pierogi z mięsem obok ruskich itd.) w pierwszej rundzie dnia.
-    const variantCount = id => ctx.recipes.filter(r => r.variantOf === id).length;
-    const bases = ctx.recipes.filter(r => !r.variantOf && variantCount(r.id) < 3 && r.category !== 'snack');
+    const variantCount = id => ctx.recipes.filter(r => r.variantOf === id).length + Math.max(0, (VARIANT_GROUPS.find(g => g.includes(id))?.length ?? 1) - 1);
+    const bases = ctx.recipes.filter(r => !r.variantOf && !VARIANT_GROUPS.some(g => g.slice(1).includes(r.id)) && variantCount(r.id) < 3 && r.category !== 'snack');
     const base = rounds === 0 && bases.length ? bases[Math.floor(Math.random() * bases.length)] : null;
     const n = Math.min(5, want - allAccepted.length);
     rounds++;

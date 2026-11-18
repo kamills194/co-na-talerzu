@@ -11,6 +11,7 @@ export const messages = {
   heroLabel:'CUCINA DI OGNI GIORNO, PICCOLI PIACERI', heroTitle:'Oggi qualcosa di buono.\nSemplice, fatto in casa.', heroText:'Ingredienti familiari. Passaggi semplici. Un’idea per ogni appetito.',
   surprise:'Sorprendimi', surpriseText:'Scegli cosa ti va. Noi troviamo l’idea giusta.', meal:'Tipo di pasto', time:'Tempo massimo', diet:'Dieta', exclude:'Escludi ingredienti', search:'Cerca una ricetta o un ingrediente', searchPlaceholder:'Es. zuppa di pomodoro, patate, mela…',
   noLimit:'Nessun limite', minutes:'min', noResults:'Nessuna ricetta corrisponde a questi filtri.', reset:'Azzera i filtri', found:'Idee per un pasto fatto in casa', result:'Una proposta per te',
+  brandName:'Cosa c’è nel piatto', variantsTitle:'Altre versioni di questo piatto', favoriteAdded:'Aggiunto ai preferiti', favoriteRemoved:'Rimosso dai preferiti',
   addFavorite:'Aggiungi ai preferiti', removeFavorite:'Rimuovi dai preferiti', emptyFavorites:'Salva le ricette con il cuore: ti aspetteranno qui.',
   portions:'Porzioni', ingredients:'Ingredienti', steps:'Preparazione', allergens:'Allergeni', noAllergens:'Nessun allergene segnalato', allergenNote:'Controlla le etichette dei prodotti e le possibili tracce di allergeni. I filtri si basano sugli ingredienti della ricetta.',
   addShopping:'Aggiungi gli ingredienti alla lista', added:'Ingredienti aggiunti alla lista della spesa.', close:'Chiudi', easy:'Ricetta facile',

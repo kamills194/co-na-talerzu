@@ -122,3 +122,12 @@ test('Dania bota mają tłumaczenia we wszystkich językach z tą samą liczbą 
     for (const id of Object.keys(bot.products)) assert.ok(data.products[id], `${l}: produkt ${id}`);
   }
 });
+test('Wersje dań: danie bota z variantOf dołącza do grupy dania bazowego', async () => {
+  const { variantsOf } = await import('../src/domain.js');
+  const list = [...recipes, { id: 'pierogi-z-jagodami-bot', variantOf: 'pierogi-ruskie' }, { id: 'lecso-bot', variantOf: 'lecso-base' }, { id: 'lecso-base' }];
+  assert.ok(variantsOf('pierogi-ruskie', list).includes('pierogi-z-jagodami-bot'));
+  assert.ok(variantsOf('pierogi-z-jagodami-bot', list).includes('pierogi-z-miesem'));
+  assert.deepEqual(variantsOf('lecso-base', list), ['lecso-bot']);
+  assert.deepEqual(variantsOf('lecso-bot', list), ['lecso-base']);
+  assert.deepEqual(variantsOf('owsianka'), []);
+});

@@ -11,6 +11,7 @@ export const messages = {
   heroLabel:'EVERYDAY COOKING, LITTLE PLEASURES', heroTitle:'Something good today.\nSimple and homemade.', heroText:'Familiar ingredients. Simple steps. An idea for every appetite.',
   surprise:'Surprise me', surpriseText:'Choose what you fancy. We will find an idea.', meal:'Type of meal', time:'Maximum time', diet:'Diet', exclude:'Exclude ingredients', search:'Search for a recipe or ingredient', searchPlaceholder:'E.g. tomato soup, potatoes, apple…',
   noLimit:'No limit', minutes:'min', noResults:'No recipes match these filters.', reset:'Clear filters', found:'Home-cooking ideas', result:'A suggestion for you',
+  brandName:'What’s on the plate', variantsTitle:'Other versions of this dish', favoriteAdded:'Added to favourites', favoriteRemoved:'Removed from favourites',
   addFavorite:'Add to favourites', removeFavorite:'Remove from favourites', emptyFavorites:'Save recipes with the heart — they will wait for you here.',
   portions:'Servings', ingredients:'Ingredients', steps:'Method', allergens:'Allergens', noAllergens:'No allergens marked', allergenNote:'Check product labels and possible traces of allergens. The filters are based on the recipe ingredients.',
   addShopping:'Add ingredients to the list', added:'Ingredients added to the shopping list.', close:'Close', easy:'Easy recipe',

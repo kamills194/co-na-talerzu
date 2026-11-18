@@ -679,6 +679,42 @@ export const recipes = {
     'Con le mani bagnate forma circa 12 palline e schiacciale leggermente. Scalda l’olio in una padella e friggi i falafel a gruppi per 3–4 minuti per lato, finché sono dorati. Scolali su carta da cucina.',
     'Salsa: mescola la tahina con il succo di limone e l’acqua misurata fino a ottenere una salsa liscia e fluida. Servi i falafel con la salsa sopra.'],
     photoAlt:'Falafel dorati in un piatto con una salsa tahina chiara sopra' },
+  // CNT-043: other versions of popular dishes. Machine translation, not reviewed by a native speaker.
+  'pierogi-z-miesem':{ name:'Pierogi di carne — ravioli polacchi ripieni di maiale', steps:[
+    'Sbuccia la cipolla e tagliala a dadini. Scalda il resto dell’olio in una padella e fai appassire metà della cipolla, poi aggiungi la carne e rosolala per 10–12 minuti, sgranandola con la spatola, finché non è più rosa. Dopo aver toccato la carne cruda lava le mani e gli utensili.',
+    'Lascia raffreddare la carne, poi tritala con il tritacarne o finemente con il coltello, così che il ripieno resti compatto. Condisci con la maggiorana, il pepe e un pizzico di sale e mescola.',
+    'Mescola la farina con un pizzico di sale, versa l’acqua tiepida e un cucchiaio d’olio. Impasta per circa 5 minuti, finché l’impasto è liscio ed elastico, poi coprilo con una ciotola per 15 minuti.',
+    'Stendi l’impasto sottile e ritaglia dei dischi con un bicchiere. Metti un cucchiaino di ripieno su ciascuno, piega a metà e sigilla bene i bordi. Verranno circa 24 ravioli.',
+    'Cuoci i ravioli a porzioni in una pentola grande di acqua salata, ancora 3–4 minuti da quando vengono a galla. Fai dorare la cipolla rimasta nel burro e versala sui ravioli.'],
+    photoAlt:'Un piatto di pierogi di carne conditi con burro e cipolla dorata' },
+  'pierogi-z-kapusta-i-grzybami':{ name:'Pierogi con crauti e champignon — ravioli polacchi', steps:[
+    'Strizza i crauti; se sono molto acidi, sciacquali in acqua fredda. Mettili in una pentola con poca acqua e cuocili coperti per 20 minuti, finché sono morbidi. Scolali, lasciali raffreddare e tritali finemente.',
+    'Sbuccia e trita la cipolla, pulisci i funghi e tagliali a dadini. Scalda 2 cucchiai d’olio in una padella e rosola la cipolla con i funghi per 8–10 minuti, finché l’acqua è evaporata. Mescola con i crauti e condisci con pepe e un pizzico di sale.',
+    'Mescola la farina con un pizzico di sale, versa l’acqua tiepida e un cucchiaio d’olio. Impasta per circa 5 minuti, finché l’impasto è liscio ed elastico, poi coprilo con una ciotola per 15 minuti.',
+    'Stendi l’impasto sottile e ritaglia dei dischi con un bicchiere. Metti un cucchiaino di ripieno su ciascuno, piega a metà e sigilla bene i bordi. Verranno circa 24 ravioli.',
+    'Cuoci i ravioli a porzioni in una pentola grande di acqua salata, ancora 2–3 minuti da quando vengono a galla. Scolali con la schiumarola e servili con un filo d’olio o ripassati in padella.'],
+    photoAlt:'Un piatto di pierogi con crauti e funghi leggermente dorati in padella' },
+  'pierogi-z-owocami':{ name:'Pierogi ai frutti di bosco con panna dolce — ravioli polacchi alla frutta', steps:[
+    'Scongela i frutti in un colino e sgocciolali bene, così che il ripieno non inzuppi l’impasto. Mescolali con la fecola di patate.',
+    'Mescola la farina con un pizzico di sale, versa l’acqua tiepida e un cucchiaio d’olio. Impasta per circa 5 minuti, finché l’impasto è liscio ed elastico, poi coprilo con una ciotola per 15 minuti.',
+    'Stendi l’impasto sottile e ritaglia dei dischi con un bicchiere. Metti un cucchiaino di frutti su ciascuno, piega a metà e sigilla i bordi con molta cura. Verranno circa 24 ravioli.',
+    'Cuoci i ravioli a porzioni in una pentola grande di acqua leggermente salata, ancora 3 minuti da quando vengono a galla, finché la frutta all’interno è calda.',
+    'Mescola la panna acida con lo zucchero. Scola i ravioli con la schiumarola e servili subito con la panna dolce.'],
+    photoAlt:'Pierogi ai frutti di bosco con panna dolce e succo viola nel piatto' },
+  'pizza-funghi':{ name:'Pizza ai funghi fatta in casa con champignon', steps:[
+    'Sbriciola il lievito in una ciotola, aggiungi lo zucchero e l’acqua tiepida, ma non calda, e mescola. Aggiungi la farina e il sale e versa metà dell’olio d’oliva. Impasta per 8–10 minuti finché l’impasto è liscio ed elastico, copri con un canovaccio e lascia lievitare in un luogo caldo per circa un’ora.',
+    'Pulisci i funghi e affettali sottilmente. Mescola la passata con l’origano e un pizzico di sale. Sgocciola la mozzarella e spezzettala.',
+    'Preriscalda il forno a 250°C con la teglia dentro. Allarga l’impasto con le mani su carta forno in un disco di circa 30 cm di diametro.',
+    'Spalma la salsa sull’impasto, distribuisci la mozzarella e i funghi e irrora con il resto dell’olio d’oliva.',
+    'Trasferisci la pizza con la carta sulla teglia calda e cuoci per 12–14 minuti, finché i bordi sono dorati e il formaggio è fuso. Servi subito.'],
+    photoAlt:'Una pizza rotonda con salsa di pomodoro, mozzarella e fettine di funghi' },
+  'pizza-z-szynka':{ name:'Pizza prosciutto e funghi fatta in casa', steps:[
+    'Sbriciola il lievito in una ciotola, aggiungi lo zucchero e l’acqua tiepida, ma non calda, e mescola. Aggiungi la farina e il sale e versa metà dell’olio d’oliva. Impasta per 8–10 minuti finché l’impasto è liscio ed elastico, copri con un canovaccio e lascia lievitare in un luogo caldo per circa un’ora.',
+    'Pulisci i funghi e affettali sottilmente, taglia il prosciutto cotto a listarelle. Mescola la passata con l’origano e un pizzico di sale. Sgocciola la mozzarella e spezzettala.',
+    'Preriscalda il forno a 250°C con la teglia dentro. Allarga l’impasto con le mani su carta forno in un disco di circa 30 cm di diametro.',
+    'Spalma la salsa sull’impasto, distribuisci la mozzarella, il prosciutto e i funghi e irrora con il resto dell’olio d’oliva.',
+    'Trasferisci la pizza con la carta sulla teglia calda e cuoci per 12–14 minuti, finché i bordi sono dorati e il formaggio è fuso. Servi subito.'],
+    photoAlt:'Una pizza rotonda con mozzarella, listarelle di prosciutto e fettine di funghi' },
 };
 // Dania dodane przez bota „kucharz” (docs/BOTY.md). Ręczne tłumaczenia powyżej mają pierwszeństwo.
 import { data as bot } from './recipes.bot.it.js';

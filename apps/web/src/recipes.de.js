@@ -679,6 +679,42 @@ export const recipes = {
     'Mit nassen Händen etwa 12 Bällchen formen und leicht flach drücken. Öl in einer Pfanne erhitzen und die Falafel portionsweise 3–4 Minuten pro Seite braun braten. Auf Küchenpapier abtropfen lassen.',
     'Soße: Tahini mit Zitronensaft und dem abgemessenen Wasser zu einer glatten, flüssigen Soße verrühren. Falafel mit der Soße beträufelt servieren.'],
     photoAlt:'Gebräunte Falafel auf einem Teller mit heller Tahini-Soße' },
+  // CNT-043: other versions of popular dishes. Machine translation, not reviewed by a native speaker.
+  'pierogi-z-miesem':{ name:'Pierogi mit Fleisch — polnische Teigtaschen mit Schweinefleischfüllung', steps:[
+    'Die Zwiebel schälen und würfeln. Das restliche Öl in einer Pfanne erhitzen, die Hälfte der Zwiebel glasig dünsten, dann das Fleisch zugeben und 10–12 Minuten braten, dabei mit dem Pfannenwender zerteilen, bis es nicht mehr rosa ist. Nach dem Kontakt mit rohem Fleisch Hände und Utensilien waschen.',
+    'Das Fleisch abkühlen lassen und durch den Fleischwolf drehen oder fein hacken, damit die Füllung zusammenhält. Mit Majoran, Pfeffer und einer Prise Salz würzen und vermischen.',
+    'Das Mehl mit einer Prise Salz mischen, das warme Wasser und einen Esslöffel Öl zugießen. Etwa 5 Minuten kneten, bis der Teig glatt und elastisch ist, dann 15 Minuten unter einer Schüssel ruhen lassen.',
+    'Den Teig dünn ausrollen und mit einem Glas Kreise ausstechen. Auf jeden einen Teelöffel Füllung geben, zur Hälfte falten und die Ränder gut zusammendrücken. Es werden etwa 24 Teigtaschen.',
+    'Die Teigtaschen portionsweise in einem großen Topf mit Salzwasser kochen, ab dem Aufsteigen noch 3–4 Minuten. Die restliche Zwiebel in der Butter bräunen und über die Teigtaschen geben.'],
+    photoAlt:'Ein Teller Pierogi mit Fleisch, mit Butter und gebräunten Zwiebeln' },
+  'pierogi-z-kapusta-i-grzybami':{ name:'Pierogi mit Sauerkraut und Champignons — polnische Teigtaschen', steps:[
+    'Das Sauerkraut ausdrücken; ist es sehr sauer, mit kaltem Wasser abspülen. Mit etwas Wasser in einen Topf geben und zugedeckt 20 Minuten weich kochen. Abtropfen lassen, abkühlen und fein hacken.',
+    'Die Zwiebel schälen und hacken, die Champignons putzen und fein würfeln. 2 Esslöffel Öl in einer Pfanne erhitzen und Zwiebel mit Champignons 8–10 Minuten braten, bis das Wasser verdampft ist. Mit dem Sauerkraut mischen und mit Pfeffer und einer Prise Salz würzen.',
+    'Das Mehl mit einer Prise Salz mischen, das warme Wasser und einen Esslöffel Öl zugießen. Etwa 5 Minuten kneten, bis der Teig glatt und elastisch ist, dann 15 Minuten unter einer Schüssel ruhen lassen.',
+    'Den Teig dünn ausrollen und mit einem Glas Kreise ausstechen. Auf jeden einen Teelöffel Füllung geben, zur Hälfte falten und die Ränder gut zusammendrücken. Es werden etwa 24 Teigtaschen.',
+    'Die Teigtaschen portionsweise in einem großen Topf mit Salzwasser kochen, ab dem Aufsteigen noch 2–3 Minuten. Mit dem Schaumlöffel herausheben und mit etwas Öl beträufelt oder in der Pfanne angebraten servieren.'],
+    photoAlt:'Ein Teller Pierogi mit Sauerkraut und Pilzen, leicht in der Pfanne angebraten' },
+  'pierogi-z-owocami':{ name:'Pierogi mit Waldbeeren und süßer Sahne — polnische Obst-Teigtaschen', steps:[
+    'Die Beeren in einem Sieb auftauen und gut abtropfen lassen, damit die Füllung den Teig nicht aufweicht. Mit der Kartoffelstärke mischen.',
+    'Das Mehl mit einer Prise Salz mischen, das warme Wasser und einen Esslöffel Öl zugießen. Etwa 5 Minuten kneten, bis der Teig glatt und elastisch ist, dann 15 Minuten unter einer Schüssel ruhen lassen.',
+    'Den Teig dünn ausrollen und mit einem Glas Kreise ausstechen. Auf jeden einen Teelöffel Beeren geben, zur Hälfte falten und die Ränder sehr sorgfältig zusammendrücken. Es werden etwa 24 Teigtaschen.',
+    'Die Teigtaschen portionsweise in einem großen Topf mit leicht gesalzenem Wasser kochen, ab dem Aufsteigen noch 3 Minuten, bis das Obst innen heiß ist.',
+    'Die saure Sahne mit dem Zucker verrühren. Die Teigtaschen mit dem Schaumlöffel herausheben und sofort mit der süßen Sahne servieren.'],
+    photoAlt:'Pierogi mit Waldbeeren und süßer Sahne, mit violettem Saft auf dem Teller' },
+  'pizza-funghi':{ name:'Hausgemachte Pizza Funghi mit Champignons', steps:[
+    'Die Hefe in eine Schüssel bröckeln, Zucker und warmes, nicht heißes Wasser zugeben und verrühren. Mehl und Salz zugeben, die Hälfte des Olivenöls zugießen. 8–10 Minuten kneten, bis der Teig glatt und elastisch ist, mit einem Tuch abdecken und etwa eine Stunde an einem warmen Ort gehen lassen.',
+    'Die Champignons putzen und in dünne Scheiben schneiden. Die Passata mit Oregano und einer Prise Salz verrühren. Den Mozzarella abtropfen lassen und in Stücke zupfen.',
+    'Den Ofen mit dem Blech auf 250°C vorheizen. Den Teig auf Backpapier mit den Händen zu einem Fladen von etwa 30 cm Durchmesser ziehen.',
+    'Den Teig mit der Soße bestreichen, Mozzarella und Champignons verteilen und mit dem restlichen Olivenöl beträufeln.',
+    'Die Pizza mit dem Papier auf das heiße Blech ziehen und 12–14 Minuten backen, bis die Ränder gebräunt sind und der Käse geschmolzen ist. Sofort servieren.'],
+    photoAlt:'Eine runde Pizza mit Tomatensoße, Mozzarella und Champignonscheiben' },
+  'pizza-z-szynka':{ name:'Hausgemachte Pizza mit Schinken und Champignons', steps:[
+    'Die Hefe in eine Schüssel bröckeln, Zucker und warmes, nicht heißes Wasser zugeben und verrühren. Mehl und Salz zugeben, die Hälfte des Olivenöls zugießen. 8–10 Minuten kneten, bis der Teig glatt und elastisch ist, mit einem Tuch abdecken und etwa eine Stunde an einem warmen Ort gehen lassen.',
+    'Die Champignons putzen und in dünne Scheiben schneiden, den Schinken in Streifen schneiden. Die Passata mit Oregano und einer Prise Salz verrühren. Den Mozzarella abtropfen lassen und in Stücke zupfen.',
+    'Den Ofen mit dem Blech auf 250°C vorheizen. Den Teig auf Backpapier mit den Händen zu einem Fladen von etwa 30 cm Durchmesser ziehen.',
+    'Den Teig mit der Soße bestreichen, Mozzarella, Schinken und Champignons verteilen und mit dem restlichen Olivenöl beträufeln.',
+    'Die Pizza mit dem Papier auf das heiße Blech ziehen und 12–14 Minuten backen, bis die Ränder gebräunt sind und der Käse geschmolzen ist. Sofort servieren.'],
+    photoAlt:'Eine runde Pizza mit Mozzarella, Schinkenstreifen und Champignonscheiben' },
 };
 // Dania dodane przez bota „kucharz” (docs/BOTY.md). Ręczne tłumaczenia powyżej mają pierwszeństwo.
 import { data as bot } from './recipes.bot.de.js';

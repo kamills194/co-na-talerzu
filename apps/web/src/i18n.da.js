@@ -11,6 +11,7 @@ export const messages = {
   heroLabel:'HVERDAGSMAD OG SMÅ GLÆDER', heroTitle:'Noget godt i dag.\nEnkelt og hjemmelavet.', heroText:'Kendte råvarer. Enkle trin. En idé til enhver appetit.',
   surprise:'Overrask mig', surpriseText:'Vælg, hvad du har lyst til. Vi finder en idé.', meal:'Type måltid', time:'Maksimal tid', diet:'Kost', exclude:'Udelad ingredienser', search:'Søg efter en opskrift eller ingrediens', searchPlaceholder:'F.eks. tomatsuppe, kartofler, æble…',
   noLimit:'Ingen grænse', minutes:'min.', noResults:'Ingen opskrifter passer til disse filtre.', reset:'Nulstil filtre', found:'Idéer til hjemmelavet mad', result:'Et forslag til dig',
+  brandName:'Hvad skal på tallerkenen', variantsTitle:'Andre udgaver af denne ret', favoriteAdded:'Føjet til favoritter', favoriteRemoved:'Fjernet fra favoritter',
   addFavorite:'Føj til favoritter', removeFavorite:'Fjern fra favoritter', emptyFavorites:'Gem opskrifter med hjertet – så venter de på dig her.',
   portions:'Portioner', ingredients:'Ingredienser', steps:'Fremgangsmåde', allergens:'Allergener', noAllergens:'Ingen markerede allergener', allergenNote:'Tjek varernes etiketter og mulige spor af allergener. Filtrene bygger på opskriftens ingredienser.',
   addShopping:'Føj ingredienserne til listen', added:'Ingredienserne er føjet til indkøbslisten.', close:'Luk', easy:'Nem opskrift',

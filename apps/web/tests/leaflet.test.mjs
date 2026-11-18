@@ -1,7 +1,7 @@
 // CNT-041: odczyt promocji z gazetki ALDI (tekst stron iPaper). Fragmenty w formacie gazetki z 16–21.11.2026.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { extractPageTexts, parseLeafletTexts, nameAndUnit, endOfMarketDay, leafletPages, ipaperUrl, leafletTitle, isFoodLeaflet, leafletYearWeek } from '../scripts/leaflet-parser.mjs';
+import { isRecentLeaflet, extractPageTexts, parseLeafletTexts, nameAndUnit, endOfMarketDay, leafletPages, ipaperUrl, leafletTitle, isFoodLeaflet, leafletYearWeek } from '../scripts/leaflet-parser.mjs';
 import { validAutomaticOffer, isDisplayableAutomaticOffer } from '../src/domain.js';
 
 const PAGES = [
@@ -66,6 +66,17 @@ test('Gazetka: tekst stron z HTML iPaper, lista gazetek i tytuły', () => {
   assert.equal(leafletTitle('https://www.aldi.pl/gazetki/2026_cw47_mo_promotion_26k47g01.html'), 'Gazetka tygodniowa');
   assert.equal(leafletTitle('https://www.aldi.pl/gazetki/2026_cw47_we_promotion_non-food_26k47g02.html'), 'Artykuły przemysłowe i tekstylia');
   assert.equal(leafletTitle('https://www.aldi.pl/gazetki/2026_cw47_th_promotion_weekend_26k47g03.html'), 'Okazje na weekend');
+  assert.equal(leafletTitle('https://www.aldi.pl/gazetki/2026_cw38_mo_special_26k38g07_ceny-w-dol.html'), 'Ceny w dół');
   assert.ok(!isFoodLeaflet('https://www.aldi.pl/gazetki/2026_cw44_mo_special_26k44g07_zabawki.html'));
   assert.deepEqual(leafletYearWeek(URL_), { year: 2026, week: 47 });
+});
+
+test('Gazetka: zniekształcony tekst z grafik nie trafia do nazw; stare gazetki bez dat są ukrywane', () => {
+  const { offers } = parse(['pon. 16.11 – sob. 21.11 Kapusta Cena za kg 16% 4 , 99 5,99 * p w opar k o od w u a k n t iu Cebula żółta Cena za kg 14% 2 , 99 3,49 *']);
+  assert.equal(offers.find(o => o.product === 'onion')?.name, 'Cebula żółta');
+  const now = new Date('2026-11-18T10:00:00Z');
+  assert.ok(isRecentLeaflet('https://www.aldi.pl/gazetki/2026_cw38_mo_special_26k38g07_ceny-w-dol.html', null, now));
+  assert.ok(!isRecentLeaflet('https://www.aldi.pl/gazetki/2026_cw09_mo_special_26k09g07_katalog_ogrodowy.html', null, now));
+  assert.ok(isRecentLeaflet('x', { until: '2026-11-21' }, now)); assert.ok(!isRecentLeaflet('x', { until: '2026-11-14' }, now));
+  assert.ok(!isFoodLeaflet('https://www.aldi.pl/gazetki/2026_cw09_mo_special_26k09g07_katalog_ogrodowy.html'));
 });

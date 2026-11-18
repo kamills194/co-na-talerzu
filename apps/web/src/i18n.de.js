@@ -11,6 +11,7 @@ export const messages = {
   heroLabel:'ALLTAGSKÜCHE, KLEINE FREUDEN', heroTitle:'Heute etwas Gutes.\nEinfach und hausgemacht.', heroText:'Bekannte Zutaten. Einfache Schritte. Eine Idee für jeden Appetit.',
   surprise:'Überrasch mich', surpriseText:'Wähle, worauf du Lust hast. Wir finden eine Idee.', meal:'Mahlzeit', time:'Maximale Zeit', diet:'Ernährung', exclude:'Zutaten ausschließen', search:'Rezept oder Zutat suchen', searchPlaceholder:'Z. B. Tomatensuppe, Kartoffeln, Apfel…',
   noLimit:'Ohne Limit', minutes:'Min.', noResults:'Keine Rezepte passen zu diesen Filtern.', reset:'Filter zurücksetzen', found:'Ideen für die Hausmannskost', result:'Ein Vorschlag für dich',
+  brandName:'Was kommt auf den Teller', variantsTitle:'Weitere Varianten dieses Gerichts', favoriteAdded:'Zu Favoriten hinzugefügt', favoriteRemoved:'Aus Favoriten entfernt',
   addFavorite:'Zu Favoriten hinzufügen', removeFavorite:'Aus Favoriten entfernen', emptyFavorites:'Speichere Rezepte mit dem Herz — sie warten dann hier auf dich.',
   portions:'Portionen', ingredients:'Zutaten', steps:'Zubereitung', allergens:'Allergene', noAllergens:'Keine Allergene gekennzeichnet', allergenNote:'Prüfe die Produktetiketten und mögliche Spuren von Allergenen. Die Filter beruhen auf den Zutaten des Rezepts.',
   addShopping:'Zutaten auf die Liste setzen', added:'Zutaten zur Einkaufsliste hinzugefügt.', close:'Schließen', easy:'Einfaches Rezept',
