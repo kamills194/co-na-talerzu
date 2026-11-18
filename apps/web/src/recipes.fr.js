@@ -716,3 +716,7 @@ export const recipes = {
     'Faites glisser la pizza avec le papier sur la plaque chaude et faites cuire 12–14 minutes, jusqu’à ce que les bords soient dorés et le fromage fondu. Servez aussitôt.'],
     photoAlt:'Une pizza ronde à la mozzarella, aux lanières de jambon et aux lamelles de champignons' },
 };
+// Dania dodane przez bota „kucharz” (docs/BOTY.md). Ręczne tłumaczenia powyżej mają pierwszeństwo.
+import { data as bot } from './recipes.bot.fr.js';
+for (const [id, name] of Object.entries(bot.products)) if (!(id in products)) products[id] = name;
+for (const [id, text] of Object.entries(bot.recipes)) if (!(id in recipes)) recipes[id] = text;

@@ -1,6 +1,8 @@
 // Stable ingredient IDs enable aggregation and future retailer product mappings.
 // Product record: [name, unit, allergens]. Existing IDs must never be renamed or removed:
 // favorites and shopping lists stored on users' devices refer to them.
+// Sulphites (> 10 mg/kg must be declared): wine always; vinegar, mustard and pickled gherkins conservatively,
+// because many Polish brands list sulphites (siarczyny, E220–E228) in the composition.
 export const products = {
   oats:['Płatki owsiane','g',['gluten']], milk:['Mleko','ml',['milk']], apple:['Jabłko','szt.',[]], cinnamon:['Cynamon','łyżeczka',[]],
   egg:['Jajko','szt.',['eggs']], butter:['Masło','g',['milk']], bread:['Chleb','kromka',['gluten']], tomato:['Pomidor','szt.',[]],
@@ -19,7 +21,7 @@ export const products = {
   yellowcheese:['Ser żółty','g',['milk']], mozzarella:['Mozzarella','g',['milk']], oliveoil:['Oliwa z oliwek','ml',[]], basil:['Bazylia świeża','doniczka',[]],
   parsley:['Natka pietruszki','pęczek',[]], zucchini:['Cukinia','szt.',[]], eggplant:['Bakłażan','szt.',[]], cabbage:['Kapusta biała','g',[]],
   mushroom:['Pieczarki','g',[]], orange:['Pomarańcza','szt.',[]], berries:['Owoce leśne mrożone','g',[]], potatostarch:['Mąka ziemniaczana','g',[]],
-  vinegar:['Ocet jabłkowy','ml',[]], tuna:['Tuńczyk w sosie własnym, odsączony','g',['fish']], mincedpork:['Mięso mielone wieprzowe','g',[]],
+  vinegar:['Ocet jabłkowy','ml',['sulphites']], tuna:['Tuńczyk w sosie własnym, odsączony','g',['fish']], mincedpork:['Mięso mielone wieprzowe','g',[]],
   ham:['Szynka gotowana, plastry','g',['gluten','soy','milk','celery','mustard']], sushirice:['Ryż do sushi','g',[]], soysauce:['Sos sojowy','ml',['soy','gluten']],
   miso:['Pasta miso','g',['soy','gluten']], tofu:['Tofu naturalne','g',['soy']], nori:['Nori, arkusz','szt.',[]], sesame:['Sezam, ziarno','g',['sesame']],
   // Added in CNT-033 (dishes over 60 minutes). Processed products are declared conservatively like ham:
@@ -29,9 +31,9 @@ export const products = {
   beef:['Wołowina gulaszowa','g',[]], beefslices:['Wołowina na zrazy, plastry','g',[]], mincedbeef:['Mięso mielone wołowe','g',[]],
   chickenthigh:['Udka z kurczaka, z kością i skórą','g',[]], porkshoulder:['Łopatka wieprzowa bez kości','g',[]],
   bacon:['Boczek wędzony, plastry','g',['gluten','soy','milk','celery','mustard']], sauerkraut:['Kapusta kiszona','g',[]],
-  wine:['Wino czerwone wytrawne','ml',[]], celeriac:['Seler korzeniowy','g',['celery']], parsleyroot:['Pietruszka, korzeń','szt.',[]],
+  wine:['Wino czerwone wytrawne','ml',['sulphites']], celeriac:['Seler korzeniowy','g',['celery']], parsleyroot:['Pietruszka, korzeń','szt.',[]],
   leek:['Por','szt.',[]], bayleaf:['Liść laurowy','szt.',[]], allspice:['Ziele angielskie','szt.',[]],
-  mustard:['Musztarda średnio ostra','g',['mustard']], gherkin:['Ogórek konserwowy','szt.',['mustard']], yeast:['Drożdże świeże','g',[]],
+  mustard:['Musztarda średnio ostra','g',['mustard','sulphites']], gherkin:['Ogórek konserwowy','szt.',['mustard','sulphites']], yeast:['Drożdże świeże','g',[]],
   ginger:['Imbir świeży','g',[]], curry:['Curry, przyprawa mielona','łyżeczka',['mustard','celery']],
   // Added in CNT-038 (popular dishes). Processed products are declared conservatively, as before: raw white sausage
   // like ham and bacon; lacto-fermented cucumbers like gherkins (brine may contain mustard seed); dried pasta sheets
@@ -53,7 +55,9 @@ export const products = {
 // Cuisine of a recipe (CNT-024). Every record carries exactly one of these values.
 // CNT-038: four more cuisines for popular dishes. 'mediterranean' covers Greek and Middle-Eastern dishes.
 // The UI list and labels live in i18n.js (`cuisines`, '<id>' and '<id>Cuisine' keys) and must be extended there.
-export const cuisines = ['polish','italian','german','french','japanese','indian','mexican','american','mediterranean'];
+export const cuisines = ['polish','italian','german','french','japanese','indian','mexican','american','mediterranean',
+  // Regiony dodane dla bota „kucharz” (docs/BOTY.md); zakładka kuchni pojawia się, gdy ma przepisy.
+  'chinese','thai','vietnamese','korean','spanish','portuguese','turkish','hungarian','ukrainian','georgian','british','scandinavian','latinamerican','african'];
 const ORIGIN = 'Autorski przepis redakcji Co na talerz';
 function recipe(id, category, cuisine, name, minutes, vegan, vegetarian, emoji, items, steps, photoAlt) {
   return { id, category, cuisine, name, minutes, vegan, vegetarian, emoji, servings:2,
@@ -182,3 +186,9 @@ export const recipes = [
   recipe('pizza-funghi','dinner','italian','Domowa pizza funghi z pieczarkami',120,false,true,'🍕', [['flour',250],['water',160],['yeast',10],['sugar',3],['salt',1],['oliveoil',20],['passata',150],['oregano',0.5],['mozzarella',125],['mushroom',150]], ['Drożdże rozkrusz do miski, dodaj cukier i ciepłą, ale nie gorącą wodę, wymieszaj. Wsyp mąkę i sól, wlej połowę oliwy. Wyrabiaj 8–10 minut, aż ciasto będzie gładkie i sprężyste, przykryj ściereczką i odstaw w ciepłe miejsce na około godzinę.','Pieczarki oczyść i pokrój w cienkie plasterki. Passatę wymieszaj z oregano i szczyptą soli. Mozzarellę odsącz i porwij na kawałki.','Rozgrzej piekarnik do 250°C razem z blachą. Ciasto rozciągnij dłońmi na papierze do pieczenia w placek o średnicy około 30 cm.','Posmaruj ciasto sosem, rozłóż mozzarellę i pieczarki i skrop resztą oliwy.','Przenieś pizzę razem z papierem na gorącą blachę i piecz 12–14 minut, aż brzegi się zrumienią, a ser roztopi. Podawaj od razu.'], 'Okrągła pizza z sosem pomidorowym, mozzarellą i plasterkami pieczarek'),
   recipe('pizza-z-szynka','dinner','italian','Domowa pizza z szynką i pieczarkami',120,false,false,'🍕', [['flour',250],['water',160],['yeast',10],['sugar',3],['salt',1],['oliveoil',20],['passata',150],['oregano',0.5],['mozzarella',125],['ham',100],['mushroom',100]], ['Drożdże rozkrusz do miski, dodaj cukier i ciepłą, ale nie gorącą wodę, wymieszaj. Wsyp mąkę i sól, wlej połowę oliwy. Wyrabiaj 8–10 minut, aż ciasto będzie gładkie i sprężyste, przykryj ściereczką i odstaw w ciepłe miejsce na około godzinę.','Pieczarki oczyść i pokrój w cienkie plasterki, szynkę pokrój w paski. Passatę wymieszaj z oregano i szczyptą soli. Mozzarellę odsącz i porwij na kawałki.','Rozgrzej piekarnik do 250°C razem z blachą. Ciasto rozciągnij dłońmi na papierze do pieczenia w placek o średnicy około 30 cm.','Posmaruj ciasto sosem, rozłóż mozzarellę, szynkę i pieczarki i skrop resztą oliwy.','Przenieś pizzę razem z papierem na gorącą blachę i piecz 12–14 minut, aż brzegi się zrumienią, a ser roztopi. Podawaj od razu.'], 'Okrągła pizza z mozzarellą, paskami szynki i plasterkami pieczarek'),
 ];
+// Dania dodane przez bota „kucharz” (docs/BOTY.md, scripts/bots/chef.mjs). Dopisywane na końcu katalogu;
+// nie nadpisują istniejących produktów ani przepisów redakcji (review:'bot').
+import { data as bot } from './recipes.bot.pl.js';
+export const botProductKinds = bot.kinds;
+for (const [id, p] of Object.entries(bot.products)) if (!(id in products)) products[id] = p;
+for (const r of bot.recipes) if (!recipes.some(x => x.id === r.id)) recipes.push(r);

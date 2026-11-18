@@ -716,3 +716,7 @@ export const recipes = {
     'Pasa la pizza con el papel a la bandeja caliente y hornéala 12–14 minutos, hasta que los bordes se doren y el queso se funda. Sírvela enseguida.'],
     photoAlt:'Una pizza redonda con mozzarella, tiras de jamón y láminas de champiñón' },
 };
+// Dania dodane przez bota „kucharz” (docs/BOTY.md). Ręczne tłumaczenia powyżej mają pierwszeństwo.
+import { data as bot } from './recipes.bot.es.js';
+for (const [id, name] of Object.entries(bot.products)) if (!(id in products)) products[id] = name;
+for (const [id, text] of Object.entries(bot.recipes)) if (!(id in recipes)) recipes[id] = text;

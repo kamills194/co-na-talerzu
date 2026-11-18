@@ -717,3 +717,7 @@ export const recipes = {
     'Slide the pizza on its paper onto the hot tray and bake for 12–14 minutes until the edges are browned and the cheese has melted. Serve straight away.'],
     photoAlt:'A round pizza with mozzarella, strips of ham and sliced mushrooms' },
 };
+// Dania dodane przez bota „kucharz” (docs/BOTY.md). Ręczne tłumaczenia powyżej mają pierwszeństwo.
+import { data as bot } from './recipes.bot.en.js';
+for (const [id, name] of Object.entries(bot.products)) if (!(id in products)) products[id] = name;
+for (const [id, text] of Object.entries(bot.recipes)) if (!(id in recipes)) recipes[id] = text;

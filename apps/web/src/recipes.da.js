@@ -716,3 +716,7 @@ export const recipes = {
     'Træk pizzaen med papiret over på den varme plade, og bag den i 12–14 minutter, til kanterne er gyldne, og osten er smeltet. Server straks.'],
     photoAlt:'En rund pizza med mozzarella, skinkestrimler og champignonskiver' },
 };
+// Dania dodane przez bota „kucharz” (docs/BOTY.md). Ręczne tłumaczenia powyżej mają pierwszeństwo.
+import { data as bot } from './recipes.bot.da.js';
+for (const [id, name] of Object.entries(bot.products)) if (!(id in products)) products[id] = name;
+for (const [id, text] of Object.entries(bot.recipes)) if (!(id in recipes)) recipes[id] = text;

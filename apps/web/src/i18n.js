@@ -14,7 +14,7 @@ export const messages = {
   app:'Aplikacja', appEyebrow:'APLIKACJA MOBILNA', appTitle:'Co na talerz w Twoim telefonie', appText:'Dodaj aplikację do ekranu głównego. Działa jak zwykła aplikacja, także bez internetu, i nie wymaga sklepu z aplikacjami.', appInstall:'Zainstaluj aplikację', appInstalled:'Aplikacja jest już zainstalowana na tym urządzeniu.', appInstallDone:'Gotowe! Ikona Co na talerz jest na ekranie głównym.', appOpenOnPhone:'Otwórz adres conatalerz.pl na telefonie i wykonaj kroki dla swojego systemu.', appYourDevice:'Twoje urządzenie', appBenefitsTitle:'Co zyskujesz', appBenefit1:'Ikonę na ekranie głównym i pełny ekran bez paska przeglądarki.', appBenefit2:'Przepisy, ulubione i lista zakupów działają bez internetu.', appBenefit3:'Bez konta i pobierania ze sklepu — dane zostają na telefonie.', appBenefit4:'Aktualizacje instalują się same.', appAndroidTitle:'Android', appAndroidBrowser:'W przeglądarce Chrome', appAndroid1:'Otwórz conatalerz.pl w przeglądarce Chrome.', appAndroid2:'Stuknij menu ⋮ w prawym górnym rogu.', appAndroid3:'Wybierz „Zainstaluj aplikację” albo „Dodaj do ekranu głównego”.', appAndroid4:'Potwierdź przyciskiem „Zainstaluj”. Ikona pojawi się na ekranie głównym.', appIosTitle:'iPhone i iPad', appIosBrowser:'W przeglądarce Safari', appIos1:'Otwórz conatalerz.pl w Safari.', appIos2:'Stuknij przycisk Udostępnij — kwadrat ze strzałką w górę.', appIos3:'Przewiń listę i wybierz „Do ekranu początkowego”.', appIos4:'Stuknij „Dodaj”. Ikona pojawi się na ekranie początkowym.', appIosNote:'Od iOS 16.4 aplikację można dodać w ten sam sposób także z Chrome i innych przeglądarek.',
   all:'Wszystkie', breakfast:'Śniadania', snack:'Drugie śniadania', lunch:'Obiady', dinner:'Kolacje', dessert:'Desery', starter:'Przystawki',
   anyDiet:'Bez preferencji', vegetarian:'Wegetariańska', vegan:'Wegańska',
-  gluten:'Gluten', milk:'Mleko', eggs:'Jaja', nuts:'Orzechy', fish:'Ryby', soy:'Soja', celery:'Seler', mustard:'Gorczyca', sesame:'Sezam',
+  gluten:'Gluten', milk:'Mleko', eggs:'Jaja', nuts:'Orzechy', fish:'Ryby', soy:'Soja', celery:'Seler', mustard:'Gorczyca', sesame:'Sezam', crustaceans:'Skorupiaki', molluscs:'Mięczaki', peanuts:'Orzeszki ziemne', lupin:'Łubin', sulphites:'Siarczyny',
   heroLabel:'CODZIENNA KUCHNIA, MAŁE PRZYJEMNOŚCI', heroTitle:'Dziś coś dobrego.\nPo prostu, po domowemu.', heroText:'Znane składniki. Proste kroki. Pomysł na każdy apetyt.',
   surprise:'Zaskocz mnie', surpriseText:'Wybierz, na co masz ochotę. My znajdziemy pomysł.', meal:'Rodzaj posiłku', time:'Maksymalny czas', diet:'Dieta', exclude:'Wyklucz składniki', search:'Szukaj przepisu lub składnika', searchPlaceholder:'Np. pomidorowa, ziemniaki, jabłko…',
   noLimit:'Bez limitu', minutes:'min', noResults:'Nie ma przepisów pasujących do tych filtrów.', reset:'Wyczyść filtry', found:'Pomysły na domowy posiłek', result:'Propozycja dla Ciebie',
@@ -62,11 +62,15 @@ export const messages = {
   hours:'h', promoOn:'W promocji: {list}',
   indian:'Indyjska', mexican:'Meksykańska', american:'Amerykańska', mediterranean:'Śródziemnomorska', asian:'Azjatycka',
   indianCuisine:'Kuchnia indyjska', mexicanCuisine:'Kuchnia meksykańska', americanCuisine:'Kuchnia amerykańska', mediterraneanCuisine:'Kuchnia śródziemnomorska', asianCuisine:'Kuchnia azjatycka',
+  // Bot „kucharz”: nowe regiony kuchni.
+  chinese:'Chińska', thai:'Tajska', vietnamese:'Wietnamska', korean:'Koreańska', spanish:'Hiszpańska', portuguese:'Portugalska', turkish:'Turecka', hungarian:'Węgierska', ukrainian:'Ukraińska', georgian:'Gruzińska', british:'Brytyjska', scandinavian:'Skandynawska', latinamerican:'Latynoamerykańska', african:'Afrykańska',
+  chineseCuisine:'Kuchnia chińska', thaiCuisine:'Kuchnia tajska', vietnameseCuisine:'Kuchnia wietnamska', koreanCuisine:'Kuchnia koreańska', spanishCuisine:'Kuchnia hiszpańska', portugueseCuisine:'Kuchnia portugalska', turkishCuisine:'Kuchnia turecka', hungarianCuisine:'Kuchnia węgierska', ukrainianCuisine:'Kuchnia ukraińska', georgianCuisine:'Kuchnia gruzińska', britishCuisine:'Kuchnia brytyjska', scandinavianCuisine:'Kuchnia skandynawska', latinamericanCuisine:'Kuchnia latynoamerykańska', africanCuisine:'Kuchnia afrykańska',
 };
 export const categories = ['breakfast','snack','lunch','dinner','dessert','starter'];
-export const allergens = ['gluten','milk','eggs','nuts','fish','soy','celery','mustard','sesame'];
+// Full EU list of 14 allergens (Regulation 1169/2011, Annex II); the last five were added with the recipe bot.
+export const allergens = ['gluten','milk','eggs','nuts','fish','soy','celery','mustard','sesame','crustaceans','molluscs','peanuts','lupin','sulphites'];
 // Ordered cuisine tabs. A recipe without `cuisine` counts as 'polish'.
-export const cuisines = ['polish','italian','german','french','japanese','indian','mexican','american','mediterranean','asian'];
+export const cuisines = ['polish','italian','german','french','japanese','indian','mexican','american','mediterranean','asian','chinese','thai','vietnamese','korean','spanish','portuguese','turkish','hungarian','ukrainian','georgian','british','scandinavian','latinamerican','african'];
 
 
 // Stored product unit (recipes.pl.js) → message key. Keys ending in a plural form are looked up with tn().

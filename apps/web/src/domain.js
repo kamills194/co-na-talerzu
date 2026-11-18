@@ -1,4 +1,4 @@
-import { products } from './recipes.pl.js';
+import { products, recipes as catalog } from './recipes.pl.js';
 import { market, marketDate } from './market.js';
 import { nutritionPerServing, MEAT_PRODUCTS } from './nutrition.js';
 export const normalize = s => String(s).toLocaleLowerCase('pl-PL').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ł/g,'l').trim();
@@ -241,4 +241,10 @@ export const VARIANT_GROUPS = [
   ['pierogi-ruskie','pierogi-z-miesem','pierogi-z-kapusta-i-grzybami','pierogi-z-owocami'],
   ['pizza-margherita','pizza-funghi','pizza-z-szynka'],
 ];
-export function variantsOf(id) { const group=VARIANT_GROUPS.find(g=>g.includes(id)); return group?group.filter(x=>x!==id):[]; }
+// Dania bota „kucharz” wskazują danie bazowe polem `variantOf`; dołączają do jego grupy (albo tworzą nową).
+export function variantsOf(id, recipes=catalog) {
+  const base=recipes.find(r=>r.id===id)?.variantOf ?? id;
+  const group=VARIANT_GROUPS.find(g=>g.includes(base)) ?? [base];
+  const all=new Set([...group, ...recipes.filter(r=>r.variantOf&&group.includes(r.variantOf)).map(r=>r.id)].filter(x=>recipes.some(r=>r.id===x)));
+  all.delete(id); return [...all];
+}

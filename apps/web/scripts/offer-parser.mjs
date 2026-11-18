@@ -1,5 +1,6 @@
 import { normalize } from '../src/domain.js';
 import { markets, marketDate } from '../src/market.js';
+import { data as bot } from '../src/recipes.bot.pl.js';
 // CNT-028: explicit keyword table from shop product names to catalog product IDs.
 // Every catalog product is either here or in `excludedProducts` with a reason (checked by
 // tests/promo.test.mjs). Matching is fail-closed: a name must hit an `any` phrase that is not a
@@ -141,6 +142,9 @@ export const excludedProducts = new Map([
   ['salt','Sól: produkt spiżarniany o pomijalnej cenie; nie jest dobierany według promocji'],
   ['water','Woda z kranu jako składnik przepisu; oferty wody butelkowanej nie są składnikiem'],
 ]);
+// Products added by the recipe bot get no shop-name rule automatically (fail-closed: a wrong rule would
+// show a false promotion). The editor can add a rule to productRules later; then the exclusion is skipped.
+for (const id of Object.keys(bot.products)) if (!productRules.some(([p]) => p === id)) excludedProducts.set(id, 'Produkt dodany przez bota „kucharz”: reguła dopasowania ofert czeka na redakcję');
 // Names of derived / non-food / ready products: never a recipe ingredient whatever the keyword.
 const globalExclusions=['soki?','nektar','napoj','syrop','chipsy?','bulion','rosol\\w*','kostka rosolowa','o smaku','aromat\\w*','przyprawa do','karma','dla (?:psa|psow|kota|kotow|zwierzat|niemowlat)','szampon','mydlo','zel','balsam','kosmetyk\\w*','salatk(?:a|i)','pizza','zapiekank\\w*','pierogi','zupa','zupka','krem','lody','baton\\w*','ciast(?:o|ka|eczka)','dzem','konfitur\\w*','herbat\\w*','ketchup','majonez','chrupki','wafle','danie','gotowe','pesto'];
 // Words that make the following keyword an additive or a flavour, not the product itself

@@ -716,3 +716,7 @@ export const recipes = {
     'Die Pizza mit dem Papier auf das heiße Blech ziehen und 12–14 Minuten backen, bis die Ränder gebräunt sind und der Käse geschmolzen ist. Sofort servieren.'],
     photoAlt:'Eine runde Pizza mit Mozzarella, Schinkenstreifen und Champignonscheiben' },
 };
+// Dania dodane przez bota „kucharz” (docs/BOTY.md). Ręczne tłumaczenia powyżej mają pierwszeństwo.
+import { data as bot } from './recipes.bot.de.js';
+for (const [id, name] of Object.entries(bot.products)) if (!(id in products)) products[id] = name;
+for (const [id, text] of Object.entries(bot.recipes)) if (!(id in recipes)) recipes[id] = text;
