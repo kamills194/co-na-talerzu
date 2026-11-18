@@ -21,7 +21,7 @@ const sample = [
 const ids = list => list.map(r => r.id);
 
 test('Lista kuchni ma ustaloną kolejność i każda kuchnia ma etykietę w słowniku', () => {
-  assert.deepEqual(cuisines, ['polish', 'italian', 'german', 'french', 'japanese', 'indian', 'mexican', 'american', 'mediterranean', 'asian']); // CNT-039: etykiety nowych kuchni przed danymi
+  assert.deepEqual(cuisines, ['polish', 'italian', 'german', 'french', 'japanese', 'indian', 'mexican', 'american', 'mediterranean', 'asian', 'chinese', 'thai', 'vietnamese', 'korean', 'spanish', 'portuguese', 'turkish', 'hungarian', 'ukrainian', 'georgian', 'british', 'scandinavian', 'latinamerican', 'african']); // CNT-039 + regiony bota „kucharz”: etykiety nowych kuchni przed danymi
   assert.equal(new Set(cuisines).size, cuisines.length);
   for (const id of cuisines) { assert.ok(messages[id]?.trim(), id); assert.equal(t(id), messages[id]); }
   for (const key of ['cuisine', 'allCuisines', 'cuisineCount']) assert.ok(messages[key]?.trim(), key);

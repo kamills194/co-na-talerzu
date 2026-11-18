@@ -237,7 +237,7 @@ test('7. Przełącznik ma dwa przyciski (Jasny, Ciemny); pierwsza wizyta zapisuj
 
 // ---------- 8. Etykiety nowych kuchni przed danymi ----------
 test('8. Kuchnie: kolejność listy, etykiety (zakładka i karta) w polskim i wszystkich siedmiu językach; zakładki bez przepisów ukryte',async()=>{
-  assert.deepEqual(cuisines,['polish','italian','german','french','japanese','indian','mexican','american','mediterranean','asian']);
+  assert.deepEqual(cuisines,['polish','italian','german','french','japanese','indian','mexican','american','mediterranean','asian','chinese','thai','vietnamese','korean','spanish','portuguese','turkish','hungarian','ukrainian','georgian','british','scandinavian','latinamerican','african']);
   assert.deepEqual(['indian','mexican','american','mediterranean','asian'].map(c=>messages[c]),['Indyjska','Meksykańska','Amerykańska','Śródziemnomorska','Azjatycka']);
   assert.deepEqual(['indian','mexican','american','mediterranean','asian'].map(c=>messages[c+'Cuisine']),['Kuchnia indyjska','Kuchnia meksykańska','Kuchnia amerykańska','Kuchnia śródziemnomorska','Kuchnia azjatycka']);
   for(const code of languageCodes.filter(c=>c!=='pl')){

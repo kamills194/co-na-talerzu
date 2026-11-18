@@ -1,0 +1,51 @@
+{
+  "id": "lecso",
+  "category": "lunch",
+  "cuisine": "hungarian",
+  "minutes": 40,
+  "emoji": "🫑",
+  "vegan": true,
+  "vegetarian": true,
+  "ingredients": [
+    { "product": "pepper", "amount": 4 },
+    { "product": "tomato", "amount": 3 },
+    { "product": "onion", "amount": 1 },
+    { "product": "oil", "amount": 30 },
+    { "product": "paprika", "amount": 1 },
+    { "product": "hotpaprika", "amount": 0.5 },
+    { "product": "salt", "amount": 0.5 }
+  ],
+  "newProducts": {
+    "hotpaprika": {
+      "name": "Papryka ostra mielona", "unit": "łyżeczka", "allergens": [], "kind": "plant",
+      "nutrition": [282, 14, 13, 54], "unitGrams": 2.5,
+      "names": { "en": "Ground hot paprika", "de": "Rosenpaprika, gemahlen", "uk": "Гостра мелена паприка", "fr": "Paprika fort moulu", "da": "Stærk paprika, stødt", "es": "Pimentón picante molido", "it": "Paprika piccante macinata" }
+    }
+  },
+  "texts": {
+    "pl": { "name": "Lecsó, węgierskie duszone papryki z pomidorami",
+      "steps": ["Papryki umyj, usuń gniazda nasienne i pokrój w paski. Cebulę obierz i pokrój w piórka.", "Na patelni rozgrzej olej i szklij cebulę 5 minut na średnim ogniu.", "Dodaj paprykę, oprósz papryką słodką i ostrą, posól i duś pod przykryciem 10 minut.", "Pomidory sparz, obierz, pokrój w kostkę i dodaj do patelni. Duś bez przykrycia 15 minut, aż sos zgęstnieje."],
+      "photoAlt": "Głęboki talerz duszonych pasków papryki w gęstym sosie pomidorowym" },
+    "en": { "name": "Lecsó, Hungarian pepper and tomato stew",
+      "steps": ["Wash the peppers, remove the seeds and cut into strips. Peel the onion and slice it.", "Heat the oil in a frying pan and soften the onion for 5 minutes over a medium heat.", "Add the peppers, sprinkle with sweet and hot paprika, season with salt and braise covered for 10 minutes.", "Scald, peel and dice the tomatoes and add them to the pan. Braise uncovered for 15 minutes until the sauce thickens."],
+      "photoAlt": "A deep plate of braised pepper strips in a thick tomato sauce" },
+    "de": { "name": "Letscho, ungarisches Paprika-Tomaten-Gemüse",
+      "steps": ["Paprika waschen, entkernen und in Streifen schneiden. Zwiebel schälen und in Spalten schneiden.", "Öl in einer Pfanne erhitzen und die Zwiebel 5 Minuten bei mittlerer Hitze glasig dünsten.", "Paprika zugeben, mit Edelsüß- und Rosenpaprika bestäuben, salzen und zugedeckt 10 Minuten schmoren.", "Tomaten überbrühen, häuten, würfeln und zugeben. Ohne Deckel 15 Minuten schmoren, bis die Soße eindickt."],
+      "photoAlt": "Ein tiefer Teller mit geschmorten Paprikastreifen in dicker Tomatensoße" },
+    "uk": { "name": "Лечо, угорське тушковане перцеве рагу з помідорами",
+      "steps": ["Перець помийте, видаліть насіння й наріжте смужками. Цибулю очистьте й наріжте пірʼям.", "На сковороді розігрійте олію й пасеруйте цибулю 5 хвилин на середньому вогні.", "Додайте перець, посипте солодкою й гострою паприкою, посоліть і тушкуйте під кришкою 10 хвилин.", "Помідори ошпарте, очистьте, наріжте кубиками й додайте на сковороду. Тушкуйте без кришки 15 хвилин, доки соус загусне."],
+      "photoAlt": "Глибока тарілка тушкованих смужок перцю в густому томатному соусі" },
+    "fr": { "name": "Lecsó, ragoût hongrois de poivrons et tomates",
+      "steps": ["Lavez les poivrons, épépinez-les et coupez-les en lanières. Épluchez l’oignon et émincez-le.", "Faites chauffer l’huile dans une poêle et faites suer l’oignon 5 minutes à feu moyen.", "Ajoutez les poivrons, saupoudrez de paprika doux et fort, salez et laissez mijoter 10 minutes à couvert.", "Ébouillantez, pelez et coupez les tomates en dés, puis ajoutez-les. Laissez mijoter 15 minutes sans couvercle jusqu’à ce que la sauce épaississe."],
+      "photoAlt": "Une assiette creuse de lanières de poivron mijotées dans une sauce tomate épaisse" },
+    "da": { "name": "Lecsó, ungarsk gryde med peberfrugt og tomat",
+      "steps": ["Skyl peberfrugterne, fjern kernerne og skær dem i strimler. Pil løget og skær det i både.", "Varm olien op på en pande og svits løget i 5 minutter ved middel varme.", "Tilsæt peberfrugt, drys med sød og stærk paprika, salt og lad det simre under låg i 10 minutter.", "Skold, flå og tern tomaterne, og kom dem på panden. Lad det simre uden låg i 15 minutter, til saucen tykner."],
+      "photoAlt": "En dyb tallerken med braiserede peberfrugtstrimler i tyk tomatsauce" },
+    "es": { "name": "Lecsó, guiso húngaro de pimientos y tomate",
+      "steps": ["Lava los pimientos, quítales las semillas y córtalos en tiras. Pela la cebolla y córtala en juliana.", "Calienta el aceite en una sartén y pocha la cebolla 5 minutos a fuego medio.", "Añade los pimientos, espolvorea pimentón dulce y picante, sala y cuece tapado 10 minutos.", "Escalda, pela y trocea los tomates y añádelos a la sartén. Cuece sin tapa 15 minutos hasta que la salsa espese."],
+      "photoAlt": "Un plato hondo de tiras de pimiento guisadas en una espesa salsa de tomate" },
+    "it": { "name": "Lecsó, stufato ungherese di peperoni e pomodori",
+      "steps": ["Lava i peperoni, elimina i semi e tagliali a listarelle. Sbuccia la cipolla e affettala.", "Scalda l’olio in padella e fai appassire la cipolla per 5 minuti a fuoco medio.", "Aggiungi i peperoni, cospargi di paprika dolce e piccante, sala e stufa coperto per 10 minuti.", "Sbollenta, pela e taglia a dadini i pomodori, poi aggiungili. Stufa senza coperchio per 15 minuti finché il sugo si addensa."],
+      "photoAlt": "Un piatto fondo di listarelle di peperone stufate in una densa salsa di pomodoro" }
+  }
+}

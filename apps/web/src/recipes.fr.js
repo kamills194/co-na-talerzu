@@ -680,3 +680,7 @@ export const recipes = {
     'Sauce : mélangez le tahini avec le jus de citron et l’eau mesurée pour obtenir une sauce lisse et fluide. Servez les falafels nappés de sauce.'],
     photoAlt:'Des falafels dorés dans une assiette nappés d’une sauce tahini claire' },
 };
+// Dania dodane przez bota „kucharz” (docs/BOTY.md). Ręczne tłumaczenia powyżej mają pierwszeństwo.
+import { data as bot } from './recipes.bot.fr.js';
+for (const [id, name] of Object.entries(bot.products)) if (!(id in products)) products[id] = name;
+for (const [id, text] of Object.entries(bot.recipes)) if (!(id in recipes)) recipes[id] = text;

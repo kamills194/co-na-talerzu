@@ -680,3 +680,7 @@ export const recipes = {
     'Sovs: Rør tahin med citronsaft og det afmålte vand til en glat, hældbar sovs. Server falaflerne med sovsen over.'],
     photoAlt:'Brune falafler på en tallerken med lys tahinsovs over' },
 };
+// Dania dodane przez bota „kucharz” (docs/BOTY.md). Ręczne tłumaczenia powyżej mają pierwszeństwo.
+import { data as bot } from './recipes.bot.da.js';
+for (const [id, name] of Object.entries(bot.products)) if (!(id in products)) products[id] = name;
+for (const [id, text] of Object.entries(bot.recipes)) if (!(id in recipes)) recipes[id] = text;
