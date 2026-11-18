@@ -1,6 +1,6 @@
 import { writeFile, rename, mkdir } from 'node:fs/promises';
 import { parseAldi, robotsDisallows, extraSources } from './offer-parser.mjs';
-import { lidlList, lidlFlyer, kaufland, carrefour, biedronka, textCards, mainLeaflet, NON_FOOD } from './store-leaflets.mjs';
+import { lidlList, lidlStart, lidlFlyer, kaufland, carrefour, biedronka, textCards, mainLeaflet, NON_FOOD } from './store-leaflets.mjs';
 import { extractPageTexts, parseLeafletTexts, leafletPages, ipaperUrl, leafletTitle, isFoodLeaflet, isRecentLeaflet } from './leaflet-parser.mjs';
 import { validAutomaticOffer } from '../src/domain.js';
 import { market } from '../src/market.js';
@@ -81,7 +81,9 @@ const STORE_SOURCES=[
     for(const f of lidlList(h).filter(f=>!NON_FOOD.test(`${f.title} ${f.id}`)).slice(0,4)) {
       const api=`https://endpoints.leaflets.schwarz/v4/flyer?flyer_identifier=${encodeURIComponent(f.id)}&region_id=0&region_code=0`;
       if(!await allowed(api))continue; await new Promise(r=>setTimeout(r,800));
-      const r=lidlFlyer(JSON.parse(await get(api))); if(r)out.push({title:f.title,url:f.url,from:r.from,until:r.until});
+      let r=null; try{ r=lidlFlyer(JSON.parse(await get(api))); }catch(e){ console.warn('Lidl API:',f.id,e.message,e.cause?.code||''); }
+      if(r)out.push({title:f.title,url:f.url,from:r.from,until:r.until});
+      else { const from=lidlStart(f.title,now); if(from)out.push({title:f.title,url:f.url,from}); }
     }
     return out;
   }},
@@ -99,7 +101,7 @@ for(const src of STORE_SOURCES) {
     const list=await src.parse(await get(src.url)), main=mainLeaflet(list,now);
     if(main)report.stores.push({store:src.id,title:main.title,url:main.url,...(main.from?{from:main.from}:{}),...(main.until?{until:main.until}:{})});
     report.sources.push({source:src.url,status:main?'ok':'empty',kind:'store-leaflet',store:src.id,leaflets:list.length});
-  }catch(e){report.sources.push({source:src.url,status:'error',kind:'store-leaflet',store:src.id,error:e.message});}
+  }catch(e){report.sources.push({source:src.url,status:'error',kind:'store-leaflet',store:src.id,error:[e.message,e.cause?.code||e.cause?.message].filter(Boolean).join(': ')});}
 }
 { const aldi=mainLeaflet(report.leaflets.map(l=>({title:l.title,url:l.viewer||l.url,from:l.from,until:l.until})),now);
   if(aldi)report.stores.push({store:'aldi',title:aldi.title,url:aldi.url,...(aldi.from?{from:aldi.from}:{}),...(aldi.until?{until:aldi.until}:{})}); }
