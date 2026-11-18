@@ -153,7 +153,9 @@ export function isRecentLeaflet(url, range, now = new Date()) {
 export function leafletTitle(url) {
   const name = String(url).split('/').pop().replace(/\.html$/, '');
   const special = /_special_[a-z0-9]+_([a-z-]+)$/i.exec(name);
-  if (special) { const s = special[1].replace(/-/g, ' '); return s.charAt(0).toUpperCase() + s.slice(1); }
+  // Adresy nie mają polskich znaków — znane nazwy z pisownią ze strony ALDI.
+  const KNOWN = { 'ceny-w-dol': 'Ceny w dół', 'wykwintne-smaki': 'Wykwintne smaki', 'zabawki': 'Katalog zabawkowy', 'prezenty': 'Katalog prezentowy', 'dekoracje': 'Katalog dekoracyjny' };
+  if (special) { if (KNOWN[special[1].toLowerCase()]) return KNOWN[special[1].toLowerCase()]; const s = special[1].replace(/-/g, ' '); return s.charAt(0).toUpperCase() + s.slice(1); }
   if (/non-food/i.test(name)) return 'Artykuły przemysłowe i tekstylia';
   if (/weekend/i.test(name)) return 'Okazje na weekend';
   if (/promotion/i.test(name)) return 'Gazetka tygodniowa';
