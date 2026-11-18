@@ -66,6 +66,7 @@ test('Gazetka: tekst stron z HTML iPaper, lista gazetek i tytuły', () => {
   assert.equal(leafletTitle('https://www.aldi.pl/gazetki/2026_cw47_mo_promotion_26k47g01.html'), 'Gazetka tygodniowa');
   assert.equal(leafletTitle('https://www.aldi.pl/gazetki/2026_cw47_we_promotion_non-food_26k47g02.html'), 'Artykuły przemysłowe i tekstylia');
   assert.equal(leafletTitle('https://www.aldi.pl/gazetki/2026_cw47_th_promotion_weekend_26k47g03.html'), 'Okazje na weekend');
+  assert.equal(leafletTitle('https://www.aldi.pl/gazetki/2026_cw38_mo_special_26k38g07_ceny-w-dol.html'), 'Ceny w dół');
   assert.ok(!isFoodLeaflet('https://www.aldi.pl/gazetki/2026_cw44_mo_special_26k44g07_zabawki.html'));
   assert.deepEqual(leafletYearWeek(URL_), { year: 2026, week: 47 });
 });
