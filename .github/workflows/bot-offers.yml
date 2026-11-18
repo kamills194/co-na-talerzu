@@ -34,7 +34,7 @@ jobs:
             const {execSync}=require('child_process');
             const now=require('./apps/web/src/offers.json');
             let old={offers:[],updatedAt:0};try{old=JSON.parse(execSync('git show HEAD:apps/web/src/offers.json'))}catch{}
-            const strip=o=>JSON.stringify([o.offers.map(({fetchedAt,...x})=>x),(o.sources||[]).map(x=>[x.source,x.status])]);
+            const strip=o=>JSON.stringify([o.offers.map(({fetchedAt,...x})=>x),(o.sources||[]).map(x=>[x.source,x.status]),o.stores||[]]);
             console.log(strip(now)!==strip(old)||Date.parse(now.updatedAt)-Date.parse(old.updatedAt)>12*36e5?'yes':'no')")
           if [ "$changed" != yes ]; then echo "Oferty bez zmian"; exit 0; fi
           npm test
