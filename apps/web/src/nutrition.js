@@ -5,6 +5,7 @@
 // while writing (no network) and are NOT readings of any product label. Brands differ; treat every
 // result as an estimate, not a dietitian's assessment or a measurement.
 import { products } from './recipes.pl.js';
+import { data as bot } from './recipes.bot.pl.js';
 export const NUTRITION = {
   oats:[372,13.0,7.0,62.0], milk:[51,3.3,2.0,4.8], apple:[52,0.3,0.2,13.8], cinnamon:[247,4.0,1.2,80.6],
   egg:[143,12.6,9.5,0.7], butter:[735,0.7,81.0,0.7], bread:[250,8.0,2.5,49.0], tomato:[18,0.9,0.2,3.9],
@@ -64,6 +65,10 @@ export const DENSITY = { oil:0.92, oliveoil:0.91 };
 // Products that are meat (CNT-025). Products carry no meat marker, so the list is explicit; a test
 // fails when a product whose name suggests meat is missing here. Fish is detected by the fish allergen.
 export const MEAT_PRODUCTS = ['chicken','ham','mincedpork','beef','beefslices','mincedbeef','chickenthigh','porkshoulder','bacon','porkloin','whitesausage'];
+// Products of the recipe bot carry an explicit kind; its meat products join the list. Bot data never overrides editorial values.
+for (const [id, kind] of Object.entries(bot.kinds)) if (kind === 'meat' && !MEAT_PRODUCTS.includes(id)) MEAT_PRODUCTS.push(id);
+for (const [id, v] of Object.entries(bot.nutrition)) if (!(id in NUTRITION)) NUTRITION[id] = v;
+for (const [id, v] of Object.entries(bot.unitGrams)) if (!(id in UNIT_GRAMS)) UNIT_GRAMS[id] = v;
 // Grams of one unit of a product, or null when unknown.
 export function gramsPerUnit(id) {
   const unit=products[id]?.[1];

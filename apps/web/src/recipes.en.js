@@ -681,3 +681,7 @@ export const recipes = {
     'Sauce: mix the tahini with the lemon juice and the measured water into a smooth, pourable sauce. Serve the falafel drizzled with the sauce.'],
     photoAlt:'Browned falafel on a plate drizzled with pale tahini sauce' },
 };
+// Dania dodane przez bota „kucharz” (docs/BOTY.md). Ręczne tłumaczenia powyżej mają pierwszeństwo.
+import { data as bot } from './recipes.bot.en.js';
+for (const [id, name] of Object.entries(bot.products)) if (!(id in products)) products[id] = name;
+for (const [id, text] of Object.entries(bot.recipes)) if (!(id in recipes)) recipes[id] = text;

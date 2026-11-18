@@ -680,3 +680,7 @@ export const recipes = {
     'Salsa: mescola la tahina con il succo di limone e l’acqua misurata fino a ottenere una salsa liscia e fluida. Servi i falafel con la salsa sopra.'],
     photoAlt:'Falafel dorati in un piatto con una salsa tahina chiara sopra' },
 };
+// Dania dodane przez bota „kucharz” (docs/BOTY.md). Ręczne tłumaczenia powyżej mają pierwszeństwo.
+import { data as bot } from './recipes.bot.it.js';
+for (const [id, name] of Object.entries(bot.products)) if (!(id in products)) products[id] = name;
+for (const [id, text] of Object.entries(bot.recipes)) if (!(id in recipes)) recipes[id] = text;

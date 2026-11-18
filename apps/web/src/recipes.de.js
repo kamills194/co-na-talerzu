@@ -680,3 +680,7 @@ export const recipes = {
     'Soße: Tahini mit Zitronensaft und dem abgemessenen Wasser zu einer glatten, flüssigen Soße verrühren. Falafel mit der Soße beträufelt servieren.'],
     photoAlt:'Gebräunte Falafel auf einem Teller mit heller Tahini-Soße' },
 };
+// Dania dodane przez bota „kucharz” (docs/BOTY.md). Ręczne tłumaczenia powyżej mają pierwszeństwo.
+import { data as bot } from './recipes.bot.de.js';
+for (const [id, name] of Object.entries(bot.products)) if (!(id in products)) products[id] = name;
+for (const [id, text] of Object.entries(bot.recipes)) if (!(id in recipes)) recipes[id] = text;

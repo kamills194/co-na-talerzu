@@ -53,7 +53,9 @@ export const products = {
 // Cuisine of a recipe (CNT-024). Every record carries exactly one of these values.
 // CNT-038: four more cuisines for popular dishes. 'mediterranean' covers Greek and Middle-Eastern dishes.
 // The UI list and labels live in i18n.js (`cuisines`, '<id>' and '<id>Cuisine' keys) and must be extended there.
-export const cuisines = ['polish','italian','german','french','japanese','indian','mexican','american','mediterranean'];
+export const cuisines = ['polish','italian','german','french','japanese','indian','mexican','american','mediterranean',
+  // Regiony dodane dla bota „kucharz” (docs/BOTY.md); zakładka kuchni pojawia się, gdy ma przepisy.
+  'chinese','thai','vietnamese','korean','spanish','portuguese','turkish','hungarian','ukrainian','georgian','british','scandinavian','latinamerican','african'];
 const ORIGIN = 'Autorski przepis redakcji Co na talerz';
 function recipe(id, category, cuisine, name, minutes, vegan, vegetarian, emoji, items, steps, photoAlt) {
   return { id, category, cuisine, name, minutes, vegan, vegetarian, emoji, servings:2,
@@ -176,3 +178,9 @@ export const recipes = [
   recipe('salatka-grecka','starter','mediterranean','Sałatka grecka z fetą i oliwkami',15,false,true,'🥗', [['tomato',2],['cucumber',1],['pepper',1],['onion',0.5],['olives',60],['feta',150],['oliveoil',20],['oregano',0.5],['blackpepper',1]], ['Pomidory i ogórek umyj i pokrój w duże kawałki. Paprykę umyj, usuń gniazdo nasienne i pokrój w paski. Cebulę obierz i pokrój w cienkie piórka.','Warzywa wymieszaj w misce z oliwkami. Nie dosalaj, bo feta i oliwki są słone.','Na wierzchu połóż fetę pokrojoną w kostkę, polej oliwą i posyp oregano i pieprzem. Podawaj od razu.'], 'Miska sałatki z pomidorem, ogórkiem, czarnymi oliwkami i kostkami fety'),
   recipe('falafel','dinner','mediterranean','Falafele z ciecierzycy z sosem tahini',60,true,true,'🧆', [['chickpeas',400],['onion',0.5],['garlic',2],['parsley',0.5],['cumin',1],['salt',0.5],['flour',40],['bakingpowder',0.5],['oil',60],['tahini',40],['lemon',0.5],['water',40]], ['Ciecierzycę odsącz na sitku i dokładnie osusz ręcznikiem papierowym. Cebulę i czosnek obierz, natkę umyj i osusz.','Zmiksuj ciecierzycę z cebulą, czosnkiem, natką, kuminem i solą na grudkowatą masę, nie na gładkie puree. Wmieszaj mąkę i proszek do pieczenia i wstaw masę do lodówki na 20 minut, aby stężała.','Mokrymi dłońmi uformuj około 12 kulek i lekko je spłaszcz. Na patelni rozgrzej olej i smaż falafele partiami 3–4 minuty z każdej strony, aż będą rumiane. Odsącz na ręczniku papierowym.','Sos: tahini wymieszaj z sokiem z cytryny i odmierzoną wodą na gładki, lejący sos. Podawaj falafele polane sosem.'], 'Rumiane falafele na talerzu polane jasnym sosem tahini'),
 ];
+// Dania dodane przez bota „kucharz” (docs/BOTY.md, scripts/bots/chef.mjs). Dopisywane na końcu katalogu;
+// nie nadpisują istniejących produktów ani przepisów redakcji (review:'bot').
+import { data as bot } from './recipes.bot.pl.js';
+export const botProductKinds = bot.kinds;
+for (const [id, p] of Object.entries(bot.products)) if (!(id in products)) products[id] = p;
+for (const r of bot.recipes) if (!recipes.some(x => x.id === r.id)) recipes.push(r);

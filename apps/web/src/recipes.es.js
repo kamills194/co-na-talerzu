@@ -680,3 +680,7 @@ export const recipes = {
     'Salsa: mezcla el tahini con el zumo de limón y el agua medida hasta obtener una salsa lisa y fluida. Sirve los faláfel con la salsa por encima.'],
     photoAlt:'Faláfel dorados en un plato con salsa tahini clara por encima' },
 };
+// Dania dodane przez bota „kucharz” (docs/BOTY.md). Ręczne tłumaczenia powyżej mają pierwszeństwo.
+import { data as bot } from './recipes.bot.es.js';
+for (const [id, name] of Object.entries(bot.products)) if (!(id in products)) products[id] = name;
+for (const [id, text] of Object.entries(bot.recipes)) if (!(id in recipes)) recipes[id] = text;

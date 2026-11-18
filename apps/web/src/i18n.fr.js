@@ -53,4 +53,7 @@ export const messages = {
   hours:'h', promoOn:'En promotion : {list}',
   indian:'Indienne', mexican:'Mexicaine', american:'Américaine', mediterranean:'Méditerranéenne', asian:'Asiatique',
   indianCuisine:'Cuisine indienne', mexicanCuisine:'Cuisine mexicaine', americanCuisine:'Cuisine américaine', mediterraneanCuisine:'Cuisine méditerranéenne', asianCuisine:'Cuisine asiatique',
+  // Bot „kucharz”: nowe regiony kuchni.
+  chinese:'Chinoise', thai:'Thaïlandaise', vietnamese:'Vietnamienne', korean:'Coréenne', spanish:'Espagnole', portuguese:'Portugaise', turkish:'Turque', hungarian:'Hongroise', ukrainian:'Ukrainienne', georgian:'Géorgienne', british:'Britannique', scandinavian:'Scandinave', latinamerican:'Latino-américaine', african:'Africaine',
+  chineseCuisine:'Cuisine chinoise', thaiCuisine:'Cuisine thaïlandaise', vietnameseCuisine:'Cuisine vietnamienne', koreanCuisine:'Cuisine coréenne', spanishCuisine:'Cuisine espagnole', portugueseCuisine:'Cuisine portugaise', turkishCuisine:'Cuisine turque', hungarianCuisine:'Cuisine hongroise', ukrainianCuisine:'Cuisine ukrainienne', georgianCuisine:'Cuisine géorgienne', britishCuisine:'Cuisine britannique', scandinavianCuisine:'Cuisine scandinave', latinamericanCuisine:'Cuisine latino-américaine', africanCuisine:'Cuisine africaine',
 };

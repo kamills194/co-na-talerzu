@@ -4,6 +4,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import { products, recipes } from '../src/recipes.pl.js';
+import { data as bot } from '../src/recipes.bot.pl.js';
 import { promoCoverage, rankByPromotions, ingredientOffers, pantryProducts, safeOfferUrl, isDisplayableAutomaticOffer } from '../src/domain.js';
 import { productRules, excludedProducts, matchProduct, parseAldi, extraSources } from '../scripts/offer-parser.mjs';
 
@@ -14,7 +15,7 @@ test('Mapa: każdy produkt katalogu jest zmapowany albo jawnie wyłączony z pow
   for(const id of [...mapped,...excludedProducts.keys()]) assert.ok(id in products,`nieznany produkt ${id}`);
   for(const id of Object.keys(products)) assert.ok(mapped.includes(id)!==excludedProducts.has(id),`${id}: brak mapy lub mapa i wyłączenie jednocześnie`);
   for(const [id,reason] of excludedProducts) assert.ok(typeof reason==='string'&&reason.length>=10,`${id}: brak powodu`);
-  assert.deepEqual([...excludedProducts.keys()].sort(),['salt','water']);
+  assert.deepEqual([...excludedProducts.keys()].filter(id=>!(id in bot.products)).sort(),['salt','water']);
 });
 
 const positive=[

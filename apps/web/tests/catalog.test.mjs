@@ -1,6 +1,12 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { recipes, products, cuisines } from '../src/recipes.pl.js';
+import { recipes as allRecipes, products as allProducts, cuisines } from '../src/recipes.pl.js';
+import { data as bot } from '../src/recipes.bot.pl.js';
+// These tests pin the editorial catalog (CNT-011…CNT-038). Dishes added by the recipe bot (review:'bot')
+// are checked by catalog-bot.test.mjs with the same rules plus the bot's own validator.
+const recipes = allRecipes.filter(r => r.review !== 'bot');
+const products = Object.fromEntries(Object.entries(allProducts).filter(([id]) => !(id in bot.products)));
+const BOT_CUISINES = ['chinese','thai','vietnamese','korean','spanish','portuguese','turkish','hungarian','ukrainian','georgian','british','scandinavian','latinamerican','african'];
 import { categories, allergens } from '../src/i18n.js';
 import { filterRecipes } from '../src/domain.js';
 // IDs of the 18 pilot recipes. Favorites stored on users' devices refer to them, so they must stay.
@@ -158,7 +164,7 @@ test('Katalog zachowuje 30 wcześniejszych ID przepisów oraz ID i jednostki wcz
   }
 });
 test('Lista kuchni to pięć kuchni startowych i cztery z CNT-038, a każdy przepis ma jedną z nich',()=>{
-  assert.deepEqual(cuisines,[...START_CUISINES,...CNT038_CUISINES]);
+  assert.deepEqual(cuisines,[...START_CUISINES,...CNT038_CUISINES,...BOT_CUISINES]);
   for(const r of recipes) assert.ok(cuisines.includes(r.cuisine),`${r.id}: kuchnia ${r.cuisine}`);
 });
 test('Każda kuchnia startowa ma co najmniej 6 przepisów, a kuchnie inne niż polska obejmują kilka kategorii',()=>{
@@ -288,6 +294,7 @@ test('CNT-038: każda nowa kuchnia ma co najmniej 4 przepisy z co najmniej 3 kat
   assert.deepEqual(Object.fromEntries(CNT038_CUISINES.map(c=>[c,count(c)])),{indian:4,mexican:4,american:4,mediterranean:4});
   assert.ok(count('polish')/recipes.length<=0.55,`udział kuchni polskiej ${count('polish')}/${recipes.length}`);
   assert.equal(cuisines.reduce((n,c)=>n+count(c),0),recipes.length);
+  assert.equal(cuisines.reduce((n,c)=>n+allRecipes.filter(r=>r.cuisine===c).length,0),allRecipes.length);
 });
 test('CNT-038: każdy przepis ma jedną niepustą ikonę emoji (jeden grafem)',()=>{
   for(const r of recipes){

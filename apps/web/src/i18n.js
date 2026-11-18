@@ -61,11 +61,14 @@ export const messages = {
   hours:'h', promoOn:'W promocji: {list}',
   indian:'Indyjska', mexican:'Meksykańska', american:'Amerykańska', mediterranean:'Śródziemnomorska', asian:'Azjatycka',
   indianCuisine:'Kuchnia indyjska', mexicanCuisine:'Kuchnia meksykańska', americanCuisine:'Kuchnia amerykańska', mediterraneanCuisine:'Kuchnia śródziemnomorska', asianCuisine:'Kuchnia azjatycka',
+  // Bot „kucharz”: nowe regiony kuchni.
+  chinese:'Chińska', thai:'Tajska', vietnamese:'Wietnamska', korean:'Koreańska', spanish:'Hiszpańska', portuguese:'Portugalska', turkish:'Turecka', hungarian:'Węgierska', ukrainian:'Ukraińska', georgian:'Gruzińska', british:'Brytyjska', scandinavian:'Skandynawska', latinamerican:'Latynoamerykańska', african:'Afrykańska',
+  chineseCuisine:'Kuchnia chińska', thaiCuisine:'Kuchnia tajska', vietnameseCuisine:'Kuchnia wietnamska', koreanCuisine:'Kuchnia koreańska', spanishCuisine:'Kuchnia hiszpańska', portugueseCuisine:'Kuchnia portugalska', turkishCuisine:'Kuchnia turecka', hungarianCuisine:'Kuchnia węgierska', ukrainianCuisine:'Kuchnia ukraińska', georgianCuisine:'Kuchnia gruzińska', britishCuisine:'Kuchnia brytyjska', scandinavianCuisine:'Kuchnia skandynawska', latinamericanCuisine:'Kuchnia latynoamerykańska', africanCuisine:'Kuchnia afrykańska',
 };
 export const categories = ['breakfast','snack','lunch','dinner','dessert','starter'];
 export const allergens = ['gluten','milk','eggs','nuts','fish','soy','celery','mustard','sesame'];
 // Ordered cuisine tabs. A recipe without `cuisine` counts as 'polish'.
-export const cuisines = ['polish','italian','german','french','japanese','indian','mexican','american','mediterranean','asian'];
+export const cuisines = ['polish','italian','german','french','japanese','indian','mexican','american','mediterranean','asian','chinese','thai','vietnamese','korean','spanish','portuguese','turkish','hungarian','ukrainian','georgian','british','scandinavian','latinamerican','african'];
 
 
 // Stored product unit (recipes.pl.js) → message key. Keys ending in a plural form are looked up with tn().

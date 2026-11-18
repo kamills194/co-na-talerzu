@@ -54,4 +54,7 @@ export const messages = {
   hours:'год', promoOn:'В акції: {list}',
   indian:'Індійська', mexican:'Мексиканська', american:'Американська', mediterranean:'Середземноморська', asian:'Азійська',
   indianCuisine:'Індійська кухня', mexicanCuisine:'Мексиканська кухня', americanCuisine:'Американська кухня', mediterraneanCuisine:'Середземноморська кухня', asianCuisine:'Азійська кухня',
+  // Bot „kucharz”: nowe regiony kuchni.
+  chinese:'Китайська', thai:'Тайська', vietnamese:'Вʼєтнамська', korean:'Корейська', spanish:'Іспанська', portuguese:'Португальська', turkish:'Турецька', hungarian:'Угорська', ukrainian:'Українська', georgian:'Грузинська', british:'Британська', scandinavian:'Скандинавська', latinamerican:'Латиноамериканська', african:'Африканська',
+  chineseCuisine:'Китайська кухня', thaiCuisine:'Тайська кухня', vietnameseCuisine:'Вʼєтнамська кухня', koreanCuisine:'Корейська кухня', spanishCuisine:'Іспанська кухня', portugueseCuisine:'Португальська кухня', turkishCuisine:'Турецька кухня', hungarianCuisine:'Угорська кухня', ukrainianCuisine:'Українська кухня', georgianCuisine:'Грузинська кухня', britishCuisine:'Британська кухня', scandinavianCuisine:'Скандинавська кухня', latinamericanCuisine:'Латиноамериканська кухня', africanCuisine:'Африканська кухня',
 };
