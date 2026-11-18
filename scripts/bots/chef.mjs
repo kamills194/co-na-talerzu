@@ -1,5 +1,5 @@
-// Bot „kucharz”: raz na dobę dopisuje porcję sprawdzonych, zredagowanych dań z wielu regionów, z tekstami we wszystkich
-// 8 językach aplikacji, aż katalog ma co najmniej RECIPE_BOT_TARGET (600) pozycji; potem dalej, mniejszymi porcjami. Dodaje też warianty popularnych dań
+// Bot „kucharz”: dopisuje sprawdzone, zredagowane dania z wielu regionów, z tekstami we wszystkich 8 językach aplikacji —
+// co 2 h, aż katalog ma RECIPE_BOT_TARGET (600) pozycji; potem raz na dobę, mniejszymi porcjami. Dodaje też warianty popularnych dań
 // (np. obok pierogów ruskich: pierogi z mięsem, z jagodami).
 //
 // Przebieg jednego uruchomienia:
@@ -247,15 +247,19 @@ async function round(ctx, report, { region, n, base }) {
   return { accepted, rejectedNow };
 }
 
-// Raz na dobę (workflow bot-chef.yml): kilka rund, aż dojdzie RECIPE_BOT_DAILY dań (domyślnie 20),
-// po osiągnięciu celu RECIPE_BOT_MAINTENANCE (domyślnie 4). Zapis po każdej rundzie — przerwany przebieg nie traci dań.
+// Workflow bot-chef.yml uruchamia bota co 2 h: do osiągnięcia celu RECIPE_BOT_FAST dań na przebieg (domyślnie 10),
+// potem RECIPE_BOT_DAILY (domyślnie 4) raz na dobę. Kilka rund po 5 dań, zapis po każdej rundzie.
 async function main() {
   const report = await readReport();
   let ctx = await loadContext();
   const start = ctx.recipes.length;
   const maintenance = start >= TARGET;
+  // Szybki tryb do osiągnięcia celu: każde uruchomienie (co 2 h) dodaje RECIPE_BOT_FAST dań. Po osiągnięciu celu
+  // dania dochodzą raz na dobę: uruchomienie bez --batch pomija dzień, jeśli w ciągu 20 h już coś dodano.
+  const lastAdded = report.runs.filter(r => r.added > 0).at(-1);
+  if (maintenance && !arg('--batch') && lastAdded && Date.now() - Date.parse(lastAdded.at) < 20 * 36e5) { log(`katalog ma ${start} ≥ ${TARGET}; tryb dzienny — następne dania za dobę`); return 0; }
   if (!KEY) { console.log('::warning::Bot „kucharz”: brak sekretu ANTHROPIC_API_KEY — nic nie dodano (Settings → Secrets and variables → Actions).'); return 0; }
-  const want = Number(arg('--batch') ?? (maintenance ? (process.env.RECIPE_BOT_MAINTENANCE || 4) : (process.env.RECIPE_BOT_DAILY || 20)));
+  const want = Number(arg('--batch') ?? (maintenance ? (process.env.RECIPE_BOT_DAILY || 4) : (process.env.RECIPE_BOT_FAST || 10)));
   log(`katalog: ${start}/${TARGET}, dziś do dodania: ${want}`);
   const allAccepted = [], allRejected = [];
   let rounds = 0;

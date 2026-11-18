@@ -1,20 +1,20 @@
 name: "Bot: kucharz (nowe dania)"
-# Raz na dobę dopisuje porcję sprawdzonych, zredagowanych dań (RECIPE_BOT_DAILY, domyślnie 20) z wielu regionów
-# i warianty popularnych dań, z tekstami we wszystkich 8 językach, aż katalog ma co najmniej RECIPE_BOT_TARGET
-# pozycji (domyślnie 600); potem dalej, po RECIPE_BOT_MAINTENANCE (domyślnie 4) dziennie.
+# Co 2 h dopisuje sprawdzone, zredagowane dania (RECIPE_BOT_FAST, domyślnie 10 na przebieg) z wielu regionów i warianty
+# popularnych dań, z tekstami we wszystkich 8 językach, aż katalog ma RECIPE_BOT_TARGET pozycji (domyślnie 600).
+# Potem dania dochodzą raz na dobę (RECIPE_BOT_DAILY, domyślnie 4) — skrypt sam pomija pozostałe przebiegi dnia.
 # Każde danie: walidacja w kodzie + niezależna weryfikacja z wyszukiwarką; commit tylko po przejściu wszystkich testów.
 # Wymaga sekretu ANTHROPIC_API_KEY (Settings → Secrets and variables → Actions). Opcjonalne zmienne (Variables):
-# RECIPE_BOT_TARGET, RECIPE_BOT_DAILY, RECIPE_BOT_MAINTENANCE, RECIPE_BOT_MODEL, RECIPE_BOT_REVIEW_MODEL, RECIPE_BOT_WEB_SEARCH.
+# RECIPE_BOT_TARGET, RECIPE_BOT_FAST, RECIPE_BOT_DAILY, RECIPE_BOT_MODEL, RECIPE_BOT_REVIEW_MODEL, RECIPE_BOT_WEB_SEARCH.
 on:
   schedule:
-    - cron: '23 2 * * *'   # 03:23 w Polsce (zimą), 04:23 latem
+    - cron: '23 */2 * * *'
   workflow_dispatch:
     inputs:
       region:
         description: 'Kuchnia (puste = najmniej liczna)'
         required: false
       batch:
-        description: 'Liczba dań w przebiegu (puste = dzienna porcja)'
+        description: 'Liczba dań w przebiegu (puste = porcja automatyczna)'
         required: false
 permissions:
   contents: write
@@ -26,7 +26,7 @@ concurrency:
 jobs:
   cook:
     runs-on: ubuntu-latest
-    timeout-minutes: 150
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -37,8 +37,8 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           RECIPE_BOT_TARGET: ${{ vars.RECIPE_BOT_TARGET }}
+          RECIPE_BOT_FAST: ${{ vars.RECIPE_BOT_FAST }}
           RECIPE_BOT_DAILY: ${{ vars.RECIPE_BOT_DAILY }}
-          RECIPE_BOT_MAINTENANCE: ${{ vars.RECIPE_BOT_MAINTENANCE }}
           RECIPE_BOT_MODEL: ${{ vars.RECIPE_BOT_MODEL }}
           RECIPE_BOT_REVIEW_MODEL: ${{ vars.RECIPE_BOT_REVIEW_MODEL }}
           RECIPE_BOT_WEB_SEARCH: ${{ vars.RECIPE_BOT_WEB_SEARCH }}
@@ -50,7 +50,7 @@ jobs:
             gh label create "bot: kucharz" --color FBCA04 --description "Bot dodający dania" 2>/dev/null || true
             if [ -z "$(gh issue list --label 'bot: kucharz' --state open --json number --jq '.[0].number')" ]; then
               gh issue create --label "bot: kucharz" --title "🍳 Bot „kucharz” czeka na klucz API" \
-                --body "Dodaj sekret **ANTHROPIC_API_KEY** w Settings → Secrets and variables → Actions → New repository secret. Bot ruszy przy następnym uruchomieniu (raz na dobę, ok. 3:23) albo od razu: Actions → „Bot: kucharz” → Run workflow."
+                --body "Dodaj sekret **ANTHROPIC_API_KEY** w Settings → Secrets and variables → Actions → New repository secret. Bot ruszy przy następnym uruchomieniu (co 2 godziny) albo od razu: Actions → „Bot: kucharz” → Run workflow."
             fi
           fi
           args=()
