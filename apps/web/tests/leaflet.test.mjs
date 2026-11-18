@@ -54,15 +54,18 @@ test('Gazetka: tekst stron z HTML iPaper, lista gazetek i tytuły', () => {
   const html = `<script>var x={"a":1,"pageTexts":["str 1","Pomidory \\"malinowe\\" ] [x"],"b":[1]};</script>`;
   assert.deepEqual(extractPageTexts(html), ['str 1', 'Pomidory "malinowe" ] [x']);
   assert.equal(extractPageTexts('<html></html>'), null);
-  const list = '<a href="/gazetki/2026_cw47_mo_promotion_26k47g01.html">x</a><a href="https://www.aldi.pl/gazetki/2026_cw47_mo_promotion_26k47g01.html">y</a><a href="/gazetki/raport-marnowanie-zywnosci-2025.html">r</a><a href="/gazetki/2026_cw47_mo_special_26k47g07_wykwintne-smaki.html">w</a>';
+  const list = '<a href="/gazetki/2026_cw47_mo_promotion_26k47g01.html">x</a><a href="https://www.aldi.pl/gazetki/2026_cw47_mo_promotion_26k47g01.html">y</a><a href="/gazetki/raport-marnowanie-zywnosci-2025.html">r</a><a href="/gazetki/24k32g07.html">old</a><a href="/gazetki/2026_cw47_mo_special_26k47g07_wykwintne-smaki.html">w</a>';
   assert.deepEqual(leafletPages(list), ['https://www.aldi.pl/gazetki/2026_cw47_mo_promotion_26k47g01.html', 'https://www.aldi.pl/gazetki/2026_cw47_mo_special_26k47g07_wykwintne-smaki.html']);
   // Linki w danych strony (JSON z ucieczką \/) i bez duplikatów z href.
   const json = '<script id="__NEXT_DATA__">{"link":"\\/gazetki\\/2026_cw47_mo_promotion_26k47g01.html","b":"https:\\/\\/www.aldi.pl\\/gazetki\\/2026_cw47_mo_special_26k47g07_wykwintne-smaki.html","c":"https://gazetki.aldi.pl/gazetki/x.html"}</script>';
   assert.deepEqual(leafletPages(json), ['https://www.aldi.pl/gazetki/2026_cw47_mo_promotion_26k47g01.html', 'https://www.aldi.pl/gazetki/2026_cw47_mo_special_26k47g07_wykwintne-smaki.html']);
+  // Tak zapisuje je strona ALDI (18.11.2026): "reference":{"path":"/gazetki/…"} bez rozszerzenia.
+  assert.deepEqual(leafletPages('{"reference":{"type":"pages","path":"/gazetki/2026_cw47_mo_promotion_26k47g01"},"x":"/gazetki/24k32g07","img":"kafle-gazetki/26KW47_gazetki_all_01.jpg"}'), ['https://www.aldi.pl/gazetki/2026_cw47_mo_promotion_26k47g01.html']);
   assert.equal(ipaperUrl('{"link":"https:\\/\\/gazetki.aldi.pl\\/2026\\/kw47\\/2026_cw47_mo_promotion_26k47g01_tu67\\/"}'), URL_);
   assert.equal(leafletTitle('https://www.aldi.pl/gazetki/2026_cw47_mo_special_26k47g07_wykwintne-smaki.html'), 'Wykwintne smaki');
   assert.equal(leafletTitle('https://www.aldi.pl/gazetki/2026_cw47_mo_promotion_26k47g01.html'), 'Gazetka tygodniowa');
   assert.equal(leafletTitle('https://www.aldi.pl/gazetki/2026_cw47_we_promotion_non-food_26k47g02.html'), 'Artykuły przemysłowe i tekstylia');
+  assert.equal(leafletTitle('https://www.aldi.pl/gazetki/2026_cw47_th_promotion_weekend_26k47g03.html'), 'Okazje na weekend');
   assert.ok(!isFoodLeaflet('https://www.aldi.pl/gazetki/2026_cw44_mo_special_26k44g07_zabawki.html'));
   assert.deepEqual(leafletYearWeek(URL_), { year: 2026, week: 47 });
 });
