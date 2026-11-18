@@ -335,3 +335,8 @@ html[data-theme="dark"] #exclude-options li[aria-selected=true],html[data-theme=
 .store-tile.no-period .store-period{font-weight:500;font-size:.85rem;color:var(--muted)}
 .store-soon{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 8px;border-radius:1em;background:var(--t-chip);color:var(--ink)}
 @media (prefers-reduced-motion: no-preference){.store-tile{transition:transform .15s ease,box-shadow .15s ease}.store-tile:hover,.store-tile:focus-visible{transform:translateY(-2px)}}
+
+/* ---------- CNT-045: czyszczenie listy i „Cofnij” w komunikacie ---------- */
+.shopping-actions .danger{color:var(--orange,#b44f2c);border-color:currentColor}
+#toast.has-action{pointer-events:auto;display:flex;align-items:center;gap:12px}
+.toast-undo{background:transparent;border:1px solid currentColor;color:inherit;border-radius:999px;padding:6px 14px;min-height:36px;font:inherit;font-weight:700;cursor:pointer}
