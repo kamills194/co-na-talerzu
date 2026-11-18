@@ -22,21 +22,17 @@ try { state=load(localStorage); } catch { storageWarning=true; }
 // CNT-035: jasny / ciemny / automatyczny motyw — przed pierwszym renderem, żeby nie mignął niewłaściwy kolor.
 initThemeMode(); bindThemeToggle(document);
 if(state.settings?.language&&state.settings.language!=='pl') await setLanguage(state.settings.language);
-let tab='recipes', filters={query:'',category:'',cuisine:'',maxTime:0,minTime:0,diet:'',excluded:[],excludedProducts:[]}, servings=SERVINGS_DEFAULT, selected, autoOffers=[], leaflets=[], storeLeaflets=[], detailRecipe=false;
-// CNT-043: odświeżenie strony nie wraca na stronę główną. Zakładka i otwarty przepis są w adresie (#favorites, #recipes/pierogi-ruskie),
-// a filtry i pozycja przewinięcia w sessionStorage (tylko ta karta przeglądarki; nic nie trafia do kopii zapasowej).
-const TABS=['recipes','favorites','shopping','offers','app'], SESSION_KEY='co-na-talerz:session';
-function readRoute() { let h=''; try{h=decodeURIComponent(String(globalThis.location?.hash||'').slice(1));}catch{} const [tb,rid]=h.split('/'); return {tab:TABS.includes(tb)?tb:null,recipe:rid&&recipes.some(r=>r.id===rid)?rid:null}; }
+let tab='recipes', filters={query:'',category:'',cuisine:'',maxTime:0,minTime:0,diet:'',excluded:[],excludedProducts:[]}, servings=SERVINGS_DEFAULT, selected, autoOffers=[], leaflets=[], storeLeaflets=[];
+// CNT-044: odświeżenie strony zostaje na tej samej zakładce (#favorites, #shopping…), ale resetuje ją: bez filtrów,
+// bez otwartego przepisu, od góry strony. Zakładka jest tylko w adresie — filtry nie są nigdzie zapamiętywane.
+const TABS=['recipes','favorites','shopping','offers','app'];
+function readRoute() { let h=''; try{h=decodeURIComponent(String(globalThis.location?.hash||'').slice(1));}catch{} const tb=h.split('/')[0]; return {tab:TABS.includes(tb)?tb:null}; }
 function writeRoute() {
   const loc=globalThis.location; if(!loc||!globalThis.history?.replaceState)return;
-  const rid=detailRecipe&&$('#detail')?.open&&selected?selected.id:'';
-  const hash=tab==='recipes'&&!rid?'':`#${tab}${rid?'/'+encodeURIComponent(rid):''}`;
+  const hash=tab==='recipes'?'':`#${tab}`;
   if((loc.hash||'')!==hash)try{history.replaceState(history.state,'',loc.pathname+loc.search+hash);}catch{}
 }
-function readSession() { try{const v=JSON.parse(globalThis.sessionStorage?.getItem(SESSION_KEY)||'null');return v&&typeof v==='object'?v:null;}catch{return null;} }
-function saveSession() { try{globalThis.sessionStorage?.setItem(SESSION_KEY,JSON.stringify({tab,filters,y:globalThis.scrollY??0}));}catch{} }
-{ const saved=readSession()?.filters; if(saved&&typeof saved==='object'){ const str=v=>typeof v==='string'?v:'', arr=v=>Array.isArray(v)?v.filter(x=>typeof x==='string'):[];
-  filters={query:str(saved.query),category:categories.includes(saved.category)?saved.category:'',cuisine:cuisines.includes(saved.cuisine)?saved.cuisine:'',maxTime:Number(saved.maxTime)||0,minTime:Number(saved.minTime)||0,diet:DIETS.includes(saved.diet)?saved.diet:'',excluded:arr(saved.excluded).filter(a=>allergens.includes(a)),excludedProducts:arr(saved.excludedProducts).filter(id=>Object.hasOwn(products,id))}; } }
+try{ if(globalThis.history&&'scrollRestoration' in history)history.scrollRestoration='manual'; }catch{}
 function toast(message) { const d=$('#detail'), host=d.open?d:document.body; if($('#toast').parentNode!==host)host.append($('#toast')); $('#toast').textContent=message; $('#toast').classList.add('visible'); clearTimeout(toast.timer); toast.timer=setTimeout(()=>$('#toast').classList.remove('visible'),3500); }
 function persist() { try { save(localStorage,state); } catch { toast(t('storageError')); } }
 function nav() { $('#nav').innerHTML=['recipes','favorites','shopping','offers','app'].map((key,i)=>`<button data-tab="${key}" ${key===tab?'aria-current="page"':''}><span aria-hidden="true">${['⌂','♡','☷','🏷︎','▯'][i]}</span> ${t(key)}${key==='shopping'&&state.shopping.length?` <b>${state.shopping.filter(i=>!i.done).length}</b>`:''}</button>`).join(''); }
@@ -169,7 +165,7 @@ function excludeProduct(id) {
   if(!filters.excludedProducts.includes(id))filters.excludedProducts=[...filters.excludedProducts,id];
   combo.ids=[]; combo.active=-1; catalog(); const d=$('.exclusions'); if(d)d.open=true; refocus('#exclude-input'); toast(format(t('excludedAdded'),{name:productName(id)}));
 }
-function filterBar() { return `<section class="inspiration" id="inspiration"><div class="section-heading"><div><p class="eyebrow">${t('eyebrowIdea')}</p><h2>${t('surprise')}</h2><p>${t('surpriseText')}</p></div><button class="primary" id="random">${t('surprise')} <span aria-hidden="true">✧</span></button></div><div class="filter-row"><label>${t('meal')}<select id="category"><option value="">${t('all')}</option>${categories.map(c=>`<option value="${c}" ${c===filters.category?'selected':''}>${t(c)}</option>`).join('')}</select></label><label>${t('prepTime')}<select id="time">${['15','30','60','over60','0'].map(v=>`<option value="${v}" ${timeOption(filters)===v?'selected':''}>${v==='0'?t('noLimit'):v==='over60'?format(t('timeOver'),{n:60}):format(t('timeUpTo'),{n:v})}</option>`).join('')}</select></label><label>${t('diet')}<select id="diet">${['',...DIETS].map(d=>`<option value="${d}" ${filters.diet===d?'selected':''}>${t(d||'anyDiet')}</option>`).join('')}</select></label></div><label class="nutrition-toggle"><input type="checkbox" id="show-nutrition" ${showNutrition()?'checked':''}> ${t('showNutrition')}</label>${exclusionsBlock()}</section>`; }
+function filterBar() { return `<section class="inspiration" id="inspiration"><div class="section-heading"><div><p class="eyebrow">${t('eyebrowIdea')}</p><h2>${t('surprise')}</h2><p>${t('surpriseText')}</p></div><button class="primary" id="random">${t('surprise')} <span aria-hidden="true">✧</span></button></div><div class="filter-row"><label>${t('meal')}<select id="category"><option value="">${t('all')}</option>${categories.map(c=>`<option value="${c}" ${c===filters.category?'selected':''}>${t(c)}</option>`).join('')}</select></label><label>${t('prepTime')}<select id="time">${['15','30','60','over60','0'].map(v=>`<option value="${v}" ${timeOption(filters)===v?'selected':''}>${v==='0'?t('noLimit'):v==='over60'?format(t('timeOver'),{n:60}):format(t('timeUpTo'),{n:v})}</option>`).join('')}</select></label><label>${t('diet')}<select id="diet">${['',...DIETS].map(d=>`<option value="${d}" ${filters.diet===d?'selected':''}>${t(d||'anyDiet')}</option>`).join('')}</select></label></div><label class="nutrition-toggle"><input type="checkbox" id="show-nutrition" ${showNutrition()?'checked':''}> ${t('showNutrition')}</label>${exclusionsBlock()}<div class="filters-reset" id="filters-reset"></div></section>`; }
 function card(source,index) { const r=localizeRecipe(source); const favorite=state.favorites.includes(r.id); const photo=shownPhoto(r); return `<article class="recipe-card"><div class="card-art art-${r.category}${photo?' has-photo':''}"><span aria-hidden="true">${r.emoji}</span>${photo?photoImg(r,photo):''}<span class="category-label">${t(r.category)}</span><button class="favorite ${favorite?'active':''}" data-favorite="${r.id}" aria-label="${t(favorite?'removeFavorite':'addFavorite')}: ${esc(r.name)}" aria-pressed="${favorite}">${favorite?'♥':'♡'}</button></div><div class="card-body"><div class="meta"><span>◷ ${timeText(r)}${kcalText(r)}</span><span>${r.vegan?t('vegan'):r.vegetarian?t('vegetarian'):t('easy')}</span></div><h3><button data-recipe="${r.id}"${plLang(r.id,'name')}>${esc(r.name)}</button></h3><p>${r.ingredients.slice(0,3).map(i=>esc(listName(i.product))).join(' · ')}</p><div class="card-bottom"><span class="card-series"><span aria-hidden="true">${String(index+1).padStart(2,'0')} / </span><span class="card-cuisine">${cuisineText(r)}</span></span><button data-recipe="${r.id}" aria-label="${esc(r.name)}">↗</button></div>${promoTag(r)}</div></article>`; }
 function results() {
   const base=tab==='favorites'?recipes.filter(r=>state.favorites.includes(r.id)):recipes;
@@ -177,6 +173,8 @@ function results() {
   const tabsEl=$('#cuisine-tabs'), tabsHtml=cuisineTabs(base); if(tabsEl&&tabsEl.tabsHtml!==tabsHtml){tabsEl.innerHTML=tabsHtml;tabsEl.tabsHtml=tabsHtml;tabsEl.hidden=!tabsHtml;const on=$('#cuisine-tabs [aria-pressed="true"]');if(on&&(on.offsetLeft<tabsEl.scrollLeft||on.offsetLeft+on.offsetWidth>tabsEl.scrollLeft+tabsEl.clientWidth))tabsEl.scrollLeft=on.offsetLeft-6;}
   // CNT-034: the reset button is shown whenever any filter (or the promotions order) is active; the empty state has its own.
   const emptyReset=!list.length&&!(tab==='favorites'&&!base.length), headReset=filtersActive()&&!emptyReset;
+  // CNT-044: „Wyczyść filtry” także w panelu filtrów (nie tylko nad wynikami), gdy jakikolwiek filtr jest aktywny.
+  const top=$('#filters-reset'); if(top){const html=filtersActive()?`<button id="reset-top" class="secondary"><span aria-hidden="true">×</span> ${t('reset')}</button>`:'';if(top.innerHTML!==html)top.innerHTML=html;}
   $('#results').innerHTML=`<div class="results-heading"><p role="status" id="results-count" tabindex="-1">${t(tab==='favorites'?'savedCount':'found')}: ${list.length}</p>${sortControl()}${headReset?`<button id="reset" class="text-button">${t('reset')}</button>`:''}</div>${list.length?`<div class="recipe-grid">${list.map(card).join('')}</div>`:tab==='favorites'&&!base.length?`<div class="empty"><span class="empty-icon" aria-hidden="true">♡</span><p>${t('emptyFavorites')}</p><button class="secondary" data-tab="recipes">${t('browseRecipes')}</button></div>`:`<div class="empty"><span class="empty-icon" aria-hidden="true">⌕</span><p>${t('noResults')}</p><button class="secondary" id="reset">${t('reset')}</button></div>`}`;
 }
 function catalog() { const open=$('.exclusions')?.open; $('#main').innerHTML=`${tab==='recipes'?hero():`<section class="page-title"><p class="eyebrow">${t('eyebrowCollection')}</p><h1>${t('favorites')}</h1></section>`}${filterBar()}<section class="catalog"><div class="section-heading"><h2>${t(tab==='favorites'?'favorites':'recipes')}</h2><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" aria-label="${t('search')}" placeholder="${t('searchPlaceholder')}" value="${esc(filters.query)}"></label></div><div class="cuisine-tabs" id="cuisine-tabs" role="group" aria-label="${t('cuisine')}" hidden></div><div class="category-chips" aria-label="${t('meal')}">${['',...categories].map(c=>`<button data-category="${c}" aria-pressed="${c===filters.category}">${t(c||'all')}</button>`).join('')}</div><div id="results"></div></section>`; if(open)$('.exclusions').open=true; results(); }
@@ -247,17 +245,17 @@ function render() { writeRoute(); nav(); netStatus(); if(tab==='shopping') shopp
 // CNT-034: every recipe opens with 1 serving (amounts scale from recipe.servings); "Draw another" keeps the chosen number.
 function openRecipe(id,random=false,keepServings=false) { selected=recipes.find(r=>r.id===id); if(!selected)return; if(!keepServings)servings=SERVINGS_DEFAULT; detail(random); }
 function detail(random=false) {
-  detailRecipe=true; const r=localizeRecipe(selected); const favorite=state.favorites.includes(r.id); const d=$('#detail'); const photo=shownPhoto(r);
+  const r=localizeRecipe(selected); const favorite=state.favorites.includes(r.id); const d=$('#detail'); const photo=shownPhoto(r);
   const priced=ingredientOffers(r,currentAuto());
   d.innerHTML=`<div class="dialog-head"><span class="eyebrow">${random?t('result'):t(r.category)}</span><button class="close" data-close aria-label="${t('close')}">×</button></div><div class="detail-title${photo?' has-photo':''}">${photo?`<figure class="detail-photo">${photoImg(r,photo)}${photoCredit(photo)}</figure>`:''}<span aria-hidden="true">${r.emoji}</span><h2 id="detail-heading"${plLang(r.id,'name')}>${esc(r.name)}</h2><p class="muted">◷ ${timeText(r)} · ${r.vegan?t('vegan'):r.vegetarian?t('vegetarian'):t('easy')}${cuisineText(r)?` · ${cuisineText(r)}`:''}</p></div><div class="detail-actions"><button class="secondary detail-favorite${favorite?' active':''}" data-favorite="${esc(r.id)}" aria-pressed="${favorite}"><span aria-hidden="true">${favorite?'♥':'♡'}</span> ${t(favorite?'removeFavorite':'addFavorite')}</button></div>${random?rerollBlock():''}${variantsBlock(r)}${servingsControl()}<h3>${t('ingredients')}</h3><ul class="ingredients">${r.ingredients.map((i,k)=>`<li><span>${esc(productName(i.product))}</span><strong data-amount="${i.product}">${esc(amount(i,servings/r.servings))}</strong>${priced[k].offer&&!priced[k].pantry?promoLine(priced[k].offer):''}</li>`).join('')}</ul><button class="primary full" id="add-shopping">${t('addShopping')}</button>${nutritionBlock(r)}<h3>${t('steps')}</h3><ol class="steps"${plLang(r.id,'steps')}>${r.steps.map(s=>`<li>${esc(s)}</li>`).join('')}</ol><div class="allergen-note"><strong>${t('allergens')}: ${r.allergens.length?r.allergens.map(t).join(', '):t('noAllergens')}</strong><p>${t('allergenNote')}</p></div>`;
-  d.scrollTop=0; if(!d.open)d.showModal(); writeRoute();
+  d.scrollTop=0; if(!d.open)d.showModal();
 }
 // CNT-043: inne wersje tego samego dania (np. pierogi ruskie → z mięsem, z kapustą i grzybami, z owocami).
 function variantsBlock(r) { const list=variantsOf(r.id).map(id=>recipes.find(x=>x.id===id)).filter(Boolean).map(localizeRecipe); if(!list.length)return ''; return `<section class="variants" aria-labelledby="variants-heading"><h3 id="variants-heading">${t('variantsTitle')}</h3><ul>${list.map(v=>`<li><button class="variant" data-variant="${esc(v.id)}"${plLang(v.id,'name')}><span aria-hidden="true">${v.emoji}</span> ${esc(v.name)}</button></li>`).join('')}</ul></section>`; }
 document.addEventListener('click',async e=>{
   const b=e.target.closest('button,a,[role="option"]'); if(!b)return;
   if(b.id==='lang-suggest') {await chooseLanguage(b.dataset.lang);return;}
-  if(b.dataset.tab) {tab=b.dataset.tab;render();window.scrollTo({top:0});saveSession();}
+  if(b.dataset.tab) {tab=b.dataset.tab;render();window.scrollTo({top:0});}
   if(b.id==='install-app'&&installPrompt){const p=installPrompt;installPrompt=null;try{await p.prompt();await p.userChoice;}catch{}appPage();return;}
   if(b.dataset.recipe)openRecipe(b.dataset.recipe);
   if(b.dataset.variant){openRecipe(b.dataset.variant,false,true);refocus('#detail-heading');}
@@ -266,9 +264,9 @@ document.addEventListener('click',async e=>{
     if(tab==='recipes'||tab==='favorites')holdScroll(results);
     const fav=$('#detail .detail-favorite'); if(fav&&$('#detail').open&&fav.dataset?.favorite===id){fav.classList?.[now?'add':'remove']?.('active');fav.setAttribute('aria-pressed',String(now));fav.innerHTML=`<span aria-hidden="true">${now?'♥':'♡'}</span> ${t(now?'removeFavorite':'addFavorite')}`;toast(t(now?'favoriteAdded':'favoriteRemoved'));}
     else refocus(`[data-favorite="${CSS.escape(id)}"]`);}
-  if(b.dataset.category!==undefined) {setCategory(b.dataset.category);saveSession();refocus(`.category-chips [data-category="${CSS.escape(filters.category)}"]`);}
-  if(b.dataset.cuisine!==undefined) {filters.cuisine=b.dataset.cuisine;holdScroll(results);saveSession();refocus(`#cuisine-tabs [data-cuisine="${CSS.escape(filters.cuisine)}"]`);}
-  if(b.id==='reset'){filters={query:'',category:'',cuisine:'',maxTime:0,minTime:0,diet:'',excluded:[],excludedProducts:[]};state.settings={...state.settings,sort:'default'};persist();keepPlace(catalog,['#reset','#results-count']);toast(t('filtersCleared'));}
+  if(b.dataset.category!==undefined) {setCategory(b.dataset.category);refocus(`.category-chips [data-category="${CSS.escape(filters.category)}"]`);}
+  if(b.dataset.cuisine!==undefined) {filters.cuisine=b.dataset.cuisine;holdScroll(results);refocus(`#cuisine-tabs [data-cuisine="${CSS.escape(filters.cuisine)}"]`);}
+  if(b.id==='reset'||b.id==='reset-top'){filters={query:'',category:'',cuisine:'',maxTime:0,minTime:0,diet:'',excluded:[],excludedProducts:[]};state.settings={...state.settings,sort:'default'};persist();keepPlace(catalog,['#reset','#results-count']);toast(t('filtersCleared'));}
   if(b.id==='random'||b.id==='hero-random') {const r=drawRandom();if(r)openRecipe(r.id,true);else toast(t('noMatches'));}
   if(b.id==='reroll') {const r=drawRandom();if(r){openRecipe(r.id,true,true);refocus('#reroll');}}
   if(b.id==='servings-dec'||b.id==='servings-inc'){if(b.getAttribute?.('aria-disabled')==='true')return;updateServings(servings+(b.id==='servings-inc'?1:-1),{announce:true});}
@@ -281,14 +279,13 @@ document.addEventListener('click',async e=>{
   if(b.id==='clear-done'){state.shopping=state.shopping.filter(i=>!i.done);persist();render();}
   if(b.id==='copy'){try{await navigator.clipboard.writeText(state.shopping.map(i=>`${i.done?'✓':'□'} ${i.product?productName(i.product):i.name}${i.product?' — '+amount(i):''}`).join('\n'));toast(t('copied'));}catch{toast(t('copyFailed'));}}
   if(b.dataset.offerRemove){state.offers=state.offers.filter(o=>o.id!==b.dataset.offerRemove);persist();offers();}
-  if(b.id==='privacy') {detailRecipe=false;$('#detail').innerHTML=`<div class="dialog-head"><h2 id="detail-heading">${t('privacyTitle')}</h2><button class="close" data-close aria-label="${t('close')}">×</button></div><p>${t('privacyText')}</p><p>${t('privacyErrors')}</p><button class="primary" id="export">${t('export')}</button><p>${t('importNote')}</p><label class="file-label">${t('import')}<input type="file" id="import" accept="application/json,.json" aria-label="${t('importLabel')}"></label>`;$('#detail').showModal();}
+  if(b.id==='privacy') {$('#detail').innerHTML=`<div class="dialog-head"><h2 id="detail-heading">${t('privacyTitle')}</h2><button class="close" data-close aria-label="${t('close')}">×</button></div><p>${t('privacyText')}</p><p>${t('privacyErrors')}</p><button class="primary" id="export">${t('export')}</button><p>${t('importNote')}</p><label class="file-label">${t('import')}<input type="file" id="import" accept="application/json,.json" aria-label="${t('importLabel')}"></label>`;$('#detail').showModal();}
   if(b.id==='export'){const url=URL.createObjectURL(new Blob([JSON.stringify(state,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=`co-na-talerz-${localDate()}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 });
 document.addEventListener('input',e=>{
   if(e.target.id==='search'){filters.query=e.target.value;results();}
   if(e.target.id==='servings'&&selected){const n=parseServings(e.target.value);if(n===null)servingsInvalid();else updateServings(n,{keepInput:true});}
   if(e.target.id==='exclude-input')suggest(e.target.value);
-  if(e.target.id==='search')saveSession();
 });
 // Combobox keys: arrows move through suggestions, Enter adds the active (or first) one, Esc closes the list, then clears the field.
 document.addEventListener('keydown',e=>{
@@ -301,7 +298,7 @@ document.addEventListener('keydown',e=>{
 document.addEventListener('mousedown',e=>{if(e.target?.closest?.('#exclude-options'))e.preventDefault();});
 document.addEventListener('focusout',e=>{if(e.target?.id==='exclude-input')setTimeout(()=>{if(document.activeElement?.id!=='exclude-input')closeSuggestions();},0);});
 document.addEventListener('change',async e=>{
-  const el=e.target; queueMicrotask?.(saveSession);
+  const el=e.target;
   if(el.id==='language'){await chooseLanguage(el.value);return;}
   if(el.id==='category'){setCategory(el.value);refocus('#category');}
   if(el.id==='time'){const o=TIME_OPTIONS[el.value]||TIME_OPTIONS['0'];filters.maxTime=o.maxTime;filters.minTime=o.minTime;holdScroll(results);}
@@ -325,16 +322,12 @@ const outside=(d,e)=>{const r=d.getBoundingClientRect();return e.clientX<r.left|
 let backdropPress=false;
 $('#detail').addEventListener('pointerdown',e=>{backdropPress=e.target===e.currentTarget&&outside(e.currentTarget,e);});
 $('#detail').addEventListener('click',e=>{const d=e.currentTarget;if(backdropPress&&e.target===d&&outside(d,e))d.close();backdropPress=false;});
-$('#detail').addEventListener('close',()=>{document.body.append($('#toast'));detailRecipe=false;writeRoute();});
+$('#detail').addEventListener('close',()=>{document.body.append($('#toast'));});
 window.addEventListener('offline',netStatus);
 window.addEventListener('online',()=>{brokenPhotos.clear();netStatus();toast(t('backOnline'));});
-{ const route=readRoute(), session=readSession(); if(route.tab)tab=route.tab;
-  shell(); render(); if(route.recipe)openRecipe(route.recipe);
-  // Po odświeżeniu wraca też pozycja przewinięcia tej samej zakładki.
-  if(session&&session.tab===tab&&Number(session.y)>0){const y=Number(session.y);(globalThis.requestAnimationFrame||setTimeout)(()=>window.scrollTo?.({top:y,left:0,behavior:'instant'}));} }
+{ const route=readRoute(); if(route.tab)tab=route.tab; shell(); render(); window.scrollTo?.({top:0,left:0}); }
 if(storageWarning)toast(t('storageError'));
-globalThis.addEventListener?.('pagehide',saveSession);
-globalThis.addEventListener?.('hashchange',()=>{const route=readRoute();if(route.tab&&route.tab!==tab){tab=route.tab;render();}if(route.recipe&&(!$('#detail').open||selected?.id!==route.recipe))openRecipe(route.recipe);});
+globalThis.addEventListener?.('hashchange',()=>{const route=readRoute();if(route.tab&&route.tab!==tab){tab=route.tab;render();}});
 fetch('./offers.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(data=>{if(data?.version===1&&Array.isArray(data.offers)){autoOffers=data.offers.filter(o=>isCurrentAutomaticOffer(o)&&typeof o.fetchedAt==='string');leaflets=currentLeaflets(data.leaflets);storeLeaflets=currentStoreLeaflets(data.stores);if(tab==='offers')offers();else if(tab==='recipes'||tab==='favorites')results();}}).catch(()=>{});
 // Automatic updates: the build gives every release a new service-worker cache name. When the new
 // worker takes over, reload so the page runs the new files — but never while the user is typing
