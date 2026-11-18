@@ -48,6 +48,8 @@ export function lidlList(html) {
     if (!out.some(x => x.id === m[2])) out.push({ id: m[2], url: m[1], title: tidyTitle(`${clean(m[3])} ${clean(m[4])}`) });
   return out;
 }
+// Zapas, gdy API okresu nie odpowiada: początek z tytułu kafla („Gazetka 16.11”).
+export function lidlStart(title, now = new Date()) { const m = /(\d{1,2})\.(\d{1,2})\s*$/.exec(String(title)); return m ? iso(guessYear(+m[2], now), +m[2], +m[1]) : null; }
 export function lidlFlyer(json) {
   const f = json?.flyer || json?.flyers?.[0] || json;
   const from = f?.offerStartDate || f?.startDate, until = f?.offerEndDate || f?.endDate;
@@ -113,7 +115,9 @@ export function mainLeaflet(list, now = new Date()) {
   const current = food.filter(l => (!l.from || l.from <= today) && (!l.until || l.until >= today) && (l.from || l.until));
   // Najkrótsza aktualna = zwykle gazetka tygodniowa (katalogi miesięczne trwają dłużej).
   const len = l => (l.from && l.until ? Date.parse(l.until) - Date.parse(l.from) : 1e13);
-  current.sort((a, b) => len(a) - len(b) || String(b.from).localeCompare(String(a.from)));
+  // Pierwszeństwo: gazetka tygodniowa/główna („Gazetka…”, „…oferta…”, „Codziennie niskie ceny”), potem najkrótsza.
+  const main = l => (/gazetka|oferta|codziennie|tygod|supermarket|market\b|od poniedziałku/i.test(l.title) ? 0 : 1);
+  current.sort((a, b) => main(a) - main(b) || len(a) - len(b) || String(b.from).localeCompare(String(a.from)));
   if (current[0]) return current[0];
   const upcoming = food.filter(l => l.from && l.from > today).sort((a, b) => a.from.localeCompare(b.from));
   return upcoming[0] || null;

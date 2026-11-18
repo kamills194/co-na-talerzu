@@ -1,7 +1,7 @@
 // CNT-042: okresy gazetek sieci sklepów — fragmenty w formacie stron sklepów z 18.11.2026.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { parseRange, lidlList, lidlFlyer, kaufland, carrefour, biedronka, textCards, mainLeaflet, tidyTitle } from '../scripts/store-leaflets.mjs';
+import { lidlStart, parseRange, lidlList, lidlFlyer, kaufland, carrefour, biedronka, textCards, mainLeaflet, tidyTitle } from '../scripts/store-leaflets.mjs';
 import { STORES } from '../src/stores.js';
 const now = new Date('2026-11-18T09:00:00Z');
 
@@ -58,6 +58,9 @@ test('Gazetka na kafelek: aktualna, najkrótsza (tygodniowa), spożywcza; inacze
   ];
   assert.equal(mainLeaflet(list, now).url, 'c');
   assert.equal(mainLeaflet(list.slice(0, 1), now).url, 'a', 'przyszła, gdy brak aktualnej');
+  // Kaufland 18.11.2026: „Mocny Start” 16–18.11 jest krótsza, ale na kafelek idzie „Gazetka tygodnia” 12–18.11.
+  assert.equal(mainLeaflet([{ title: 'Mocny Start', url: 'm', from: '2026-11-16', until: '2026-11-18' }, { title: 'Gazetka tygodnia', url: 'g', from: '2026-11-12', until: '2026-11-18' }], now).url, 'g');
+  assert.equal(lidlStart('Gazetka 16.11', now), '2026-11-16'); assert.equal(lidlStart('Katalog zabawek', now), null);
   assert.equal(mainLeaflet([{ title: 'Codziennie niskie ceny', url: 'e', from: '2026-11-16' }], now).url, 'e');
   assert.equal(mainLeaflet([{ title: 'Stara', url: 'f', from: '2026-11-01', until: '2026-11-07' }], now), null);
   assert.equal(tidyTitle('Gazetka Carrefour, Market ACT FOR FOOD'), 'Market ACT FOR FOOD');
