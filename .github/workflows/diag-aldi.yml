@@ -1,0 +1,29 @@
+name: Diagnostyka bota ALDI
+# Jednorazowa diagnostyka (gałąź diag-aldi): pobiera publiczne strony ALDI tak jak bot,
+# zapisuje próbki i wynik bota na gałęzi diag-aldi-wyniki. Nie zmienia main.
+on:
+  push:
+    branches: [diag-aldi]
+permissions:
+  contents: write
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Pobierz próbki
+        run: node .github/diag-aldi.mjs
+      - name: Uruchom bota
+        run: echo skip
+      - name: Zapisz wyniki
+        run: |
+          cp apps/web/src/offers.json diag/offers.json || true
+          cd diag
+          git init -q -b diag-aldi-wyniki
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A && git commit -q -m "Diagnostyka ${GITHUB_SHA}"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" diag-aldi-wyniki
