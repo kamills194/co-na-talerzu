@@ -1,5 +1,6 @@
 import { writeFile, rename, mkdir } from 'node:fs/promises';
 import { parseAldi, robotsDisallows, extraSources } from './offer-parser.mjs';
+import { extractPageTexts, parseLeafletTexts, leafletPages, ipaperUrl, leafletTitle, isFoodLeaflet } from './leaflet-parser.mjs';
 import { validAutomaticOffer } from '../src/domain.js';
 import { market } from '../src/market.js';
 // Sources confirmed by the CNT-040 diagnostic run in GitHub Actions (2026-11-17): the weekly offers
@@ -21,7 +22,7 @@ const sub=['owoce-i-warzywa/warzywa','owoce-i-warzywa/owoce','owoce-i-warzywa/gr
   'mrozonki-i-dania-gotowe/mrozone-warzywa','mrozonki-i-dania-gotowe/mrozone-owoce','slodycze/czekolady','slodycze/biszkopty--herbatniki','kawa/kawa-mielona'];
 const defaultSources=[`${base}/oferty.html`,...sub.map(p=>`${base}/produkty/${p}.html`)];
 const sources=[...new Set([...defaultSources,...extraSources(process.argv.slice(2))])];
-const now=new Date(), report={version:1,market:market.id,currency:market.currency,timeZone:market.timeZone,updatedAt:now.toISOString(),offers:[],sources:[]};
+const now=new Date(), report={version:1,market:market.id,currency:market.currency,timeZone:market.timeZone,updatedAt:now.toISOString(),offers:[],sources:[],leaflets:[]};
 const headers={'User-Agent':'CoNaTalerzMVP/0.1 (public offers reader; no login)'};
 async function get(url) {
   const r=await fetch(url,{headers,signal:AbortSignal.timeout(20000),redirect:'error'});
@@ -42,6 +43,31 @@ try {
     }catch(e){report.sources.push({source,status:'error',error:e.message});}
   }
 }catch(e){report.sources.push({source:'https://www.aldi.pl/robots.txt',status:'error',error:e.message});}
+// CNT-041: gazetki ALDI — lista aktualnych gazetek spożywczych i promocje odczytane z ich tekstu.
+const LEAFLET_LIMIT=6;
+try {
+  const robots=await get('https://www.aldi.pl/robots.txt'), robotsG=await get('https://gazetki.aldi.pl/robots.txt').catch(()=>'');
+  if(robotsDisallows(robots,'/gazetki.html'))throw Error('Odczyt wyłączony przez robots.txt');
+  const pages=leafletPages(await get('https://www.aldi.pl/gazetki.html')).filter(isFoodLeaflet).slice(0,LEAFLET_LIMIT);
+  for(const page of pages) {
+    await new Promise(r=>setTimeout(r,1200));
+    try {
+      if(robotsDisallows(robots,new URL(page).pathname))throw Error('Odczyt wyłączony przez robots.txt');
+      const viewer=ipaperUrl(await get(page)); if(!viewer)throw Error('Brak odnośnika do przeglądarki gazetki');
+      if(robotsDisallows(robotsG,new URL(viewer).pathname))throw Error('Odczyt wyłączony przez robots.txt gazetek');
+      await new Promise(r=>setTimeout(r,1200));
+      const texts=extractPageTexts(await get(viewer)); if(!texts)throw Error('Brak tekstu stron gazetki (pageTexts)');
+      const parsed=parseLeafletTexts(texts,{source:page,leafletUrl:viewer,now});
+      const accepted=parsed.offers.filter(validAutomaticOffer);
+      report.offers.push(...accepted);
+      report.leaflets.push({store:'ALDI',title:leafletTitle(page),url:page,viewer,...(parsed.range||{}),pages:texts.length,offers:accepted.length});
+      report.sources.push({source:viewer,status:'ok',kind:'leaflet',pages:texts.length,productsSeen:parsed.productsSeen,unmapped:parsed.unmapped,skipped:parsed.skipped,rejected:parsed.offers.length-accepted.length});
+    }catch(e){report.sources.push({source:page,status:'error',kind:'leaflet',error:e.message});}
+  }
+}catch(e){report.sources.push({source:'https://www.aldi.pl/gazetki.html',status:'error',kind:'leaflet',error:e.message});}
+// Ta sama promocja ze strony sklepu i z gazetki: zostaje rekord ze strony (pełniejsze dane o cenie).
+const key=o=>`${o.product}|${o.price}|${o.until}`, fromWeb=new Set(report.offers.filter(o=>o.origin!=='leaflet').map(key));
+report.offers=report.offers.filter(o=>o.origin!=='leaflet'||!fromWeb.has(key(o)));
 report.offers=[...new Map(report.offers.map(o=>[o.id,o])).values()];
 const dest=new URL('../src/offers.json',import.meta.url), temp=new URL('../src/offers.json.tmp',import.meta.url);
 await writeFile(temp,JSON.stringify(report,null,2));await rename(temp,dest);
