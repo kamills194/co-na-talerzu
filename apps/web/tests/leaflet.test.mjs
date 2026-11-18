@@ -56,6 +56,9 @@ test('Gazetka: tekst stron z HTML iPaper, lista gazetek i tytuły', () => {
   assert.equal(extractPageTexts('<html></html>'), null);
   const list = '<a href="/gazetki/2026_cw47_mo_promotion_26k47g01.html">x</a><a href="https://www.aldi.pl/gazetki/2026_cw47_mo_promotion_26k47g01.html">y</a><a href="/gazetki/raport-marnowanie-zywnosci-2025.html">r</a><a href="/gazetki/2026_cw47_mo_special_26k47g07_wykwintne-smaki.html">w</a>';
   assert.deepEqual(leafletPages(list), ['https://www.aldi.pl/gazetki/2026_cw47_mo_promotion_26k47g01.html', 'https://www.aldi.pl/gazetki/2026_cw47_mo_special_26k47g07_wykwintne-smaki.html']);
+  // Linki w danych strony (JSON z ucieczką \/) i bez duplikatów z href.
+  const json = '<script id="__NEXT_DATA__">{"link":"\\/gazetki\\/2026_cw47_mo_promotion_26k47g01.html","b":"https:\\/\\/www.aldi.pl\\/gazetki\\/2026_cw47_mo_special_26k47g07_wykwintne-smaki.html","c":"https://gazetki.aldi.pl/gazetki/x.html"}</script>';
+  assert.deepEqual(leafletPages(json), ['https://www.aldi.pl/gazetki/2026_cw47_mo_promotion_26k47g01.html', 'https://www.aldi.pl/gazetki/2026_cw47_mo_special_26k47g07_wykwintne-smaki.html']);
   assert.equal(ipaperUrl('{"link":"https:\\/\\/gazetki.aldi.pl\\/2026\\/kw47\\/2026_cw47_mo_promotion_26k47g01_tu67\\/"}'), URL_);
   assert.equal(leafletTitle('https://www.aldi.pl/gazetki/2026_cw47_mo_special_26k47g07_wykwintne-smaki.html'), 'Wykwintne smaki');
   assert.equal(leafletTitle('https://www.aldi.pl/gazetki/2026_cw47_mo_promotion_26k47g01.html'), 'Gazetka tygodniowa');

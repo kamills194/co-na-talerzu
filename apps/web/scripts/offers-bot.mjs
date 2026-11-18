@@ -49,6 +49,7 @@ try {
   const robots=await get('https://www.aldi.pl/robots.txt'), robotsG=await get('https://gazetki.aldi.pl/robots.txt').catch(()=>'');
   if(robotsDisallows(robots,'/gazetki.html'))throw Error('Odczyt wyłączony przez robots.txt');
   const pages=leafletPages(await get('https://www.aldi.pl/gazetki.html')).filter(isFoodLeaflet).slice(0,LEAFLET_LIMIT);
+  if(!pages.length)throw Error('Nie znaleziono gazetek na stronie gazetki.html; adapter wymaga aktualizacji.');
   for(const page of pages) {
     await new Promise(r=>setTimeout(r,1200));
     try {
