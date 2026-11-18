@@ -10,7 +10,7 @@ test('Literalne klucze komunikatów interfejsu są w słowniku',async()=>{const 
 test('Każdy plik powłoki jest w pamięci offline, a build nadaje jej nazwę z treści',async()=>{
   const src=new URL('../src/',import.meta.url);const sw=await readFile(new URL('sw.js',src),'utf8');
   const listed=new Set([...sw.match(/const ASSETS = (\[[\s\S]*?\]);/)[1].matchAll(/'\.\/([^']*)'/g)].map(m=>m[1]));
-  for(const file of await readdir(src))if(!['sw.js','offers.json'].includes(file))assert.ok(listed.has(file),`${file} nie jest w ASSETS`);
+  for(const file of await readdir(src))if(!['sw.js','offers.json','ads.txt'].includes(file))assert.ok(listed.has(file),`${file} nie jest w ASSETS`);
   const build=spawnSync(process.execPath,[fileURLToPath(new URL('../scripts/build.mjs',import.meta.url))],{encoding:'utf8'});assert.equal(build.status,0,build.stderr);
   const built=await readFile(new URL('../dist/sw.js',import.meta.url),'utf8');assert.match(built,/const CACHE = 'co-na-talerz-[0-9a-f]{12}';/);
 });
