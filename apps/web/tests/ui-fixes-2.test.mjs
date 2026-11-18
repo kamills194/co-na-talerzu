@@ -250,3 +250,21 @@ test('8. Kuchnie: kolejność listy, etykiety (zakładka i karta) w polskim i ws
   const out=runApp({script:`out.tabs=el('#cuisine-tabs').innerHTML;`});
   for(const c of cuisines){const has=recipes.some(r=>(r.cuisine||'polish')===c);assert.equal(out.tabs.includes(`data-cuisine="${c}"`),has,c);}
 });
+
+// CNT-045: „Wyczyść listę” usuwa całą listę jednym kliknięciem; „Cofnij” w komunikacie przywraca ją.
+test('Lista zakupów: jednym kliknięciem cała lista znika, „Cofnij” ją przywraca', () => {
+  const saved={...emptyState(),shopping:[{id:'egg',product:'egg',amount:3,done:false},{id:'c1',name:'Kawa',done:true}]};
+  const out=runApp({saved,script:`
+    await click({dataset:{tab:'shopping'}});
+    out.before=el('#main').innerHTML.includes('id="clear-all"');
+    await click({id:'clear-all'});
+    out.afterClear=JSON.parse(store.get(${JSON.stringify(KEY)})).shopping.length;
+    out.toast=el('#toast').textContent;
+    out.emptyShown=el('#main').innerHTML.includes('class="empty"');
+    await click({id:'toast-undo'});`});
+  assert.equal(out.before,true);
+  assert.equal(out.afterClear,0);
+  assert.equal(out.toast,messages.clearedAll);
+  assert.equal(out.emptyShown,true);
+  assert.deepEqual(out.saved.shopping.map(i=>i.id),['egg','c1']);
+});
