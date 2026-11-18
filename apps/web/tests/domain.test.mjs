@@ -6,7 +6,7 @@ import { normalize, filterRecipes, surprise, addIngredients, matchingOffers, val
 import { emptyState, validateState, load, save, KEY } from '../src/storage.js';
 import { parseAldi, robotsDisallows } from '../scripts/offer-parser.mjs';
 test('Katalog: unikalne ID, wszystkie kategorie, składniki i komplet instrukcji',()=>{
-  assert.equal(recipes.length,110);assert.equal(new Set(recipes.map(r=>r.id)).size,110);
+  assert.equal(recipes.length,115);assert.equal(new Set(recipes.map(r=>r.id)).size,115);
   for(const c of categories) assert.ok(recipes.some(r=>r.category===c));
   for(const r of recipes){assert.ok(r.steps.length>=3);assert.ok(r.minutes>0);assert.ok(r.servings>0);assert.ok(categories.includes(r.category));assert.ok(r.ingredients.every(i=>products[i.product]&&i.amount>0));assert.deepEqual([...r.allergens].sort(),[...new Set(r.ingredients.flatMap(i=>products[i.product][2]))].sort());if(r.vegan)assert.equal(r.vegetarian,true);}
   for(const a of allergens)assert.ok(t(a));

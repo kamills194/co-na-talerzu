@@ -9,6 +9,7 @@ import { initThemeMode, themeToggleHTML, bindThemeToggle } from './theme-mode.js
 import { DIETS, safeOfferUrl } from './domain.js';
 import { promoCoverage, rankByPromotions, ingredientOffers, pantryProducts } from './domain.js';
 import { weightedSurprise, recentWindow, RECENT_MAX, timeBucket } from './domain.js';
+import { variantsOf } from './domain.js';
 import { SERVINGS_MIN, SERVINGS_MAX, SERVINGS_DEFAULT, parseServings, clampServings, TIME_OPTIONS, timeOption, suggestProducts, allergenProducts } from './domain.js';
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -20,7 +21,21 @@ try { state=load(localStorage); } catch { storageWarning=true; }
 // CNT-035: jasny / ciemny / automatyczny motyw — przed pierwszym renderem, żeby nie mignął niewłaściwy kolor.
 initThemeMode(); bindThemeToggle(document);
 if(state.settings?.language&&state.settings.language!=='pl') await setLanguage(state.settings.language);
-let tab='recipes', filters={query:'',category:'',cuisine:'',maxTime:0,minTime:0,diet:'',excluded:[],excludedProducts:[]}, servings=SERVINGS_DEFAULT, selected, autoOffers=[], leaflets=[];
+let tab='recipes', filters={query:'',category:'',cuisine:'',maxTime:0,minTime:0,diet:'',excluded:[],excludedProducts:[]}, servings=SERVINGS_DEFAULT, selected, autoOffers=[], leaflets=[], detailRecipe=false;
+// CNT-043: odświeżenie strony nie wraca na stronę główną. Zakładka i otwarty przepis są w adresie (#favorites, #recipes/pierogi-ruskie),
+// a filtry i pozycja przewinięcia w sessionStorage (tylko ta karta przeglądarki; nic nie trafia do kopii zapasowej).
+const TABS=['recipes','favorites','shopping','offers','app'], SESSION_KEY='co-na-talerz:session';
+function readRoute() { let h=''; try{h=decodeURIComponent(String(globalThis.location?.hash||'').slice(1));}catch{} const [tb,rid]=h.split('/'); return {tab:TABS.includes(tb)?tb:null,recipe:rid&&recipes.some(r=>r.id===rid)?rid:null}; }
+function writeRoute() {
+  const loc=globalThis.location; if(!loc||!globalThis.history?.replaceState)return;
+  const rid=detailRecipe&&$('#detail')?.open&&selected?selected.id:'';
+  const hash=tab==='recipes'&&!rid?'':`#${tab}${rid?'/'+encodeURIComponent(rid):''}`;
+  if((loc.hash||'')!==hash)try{history.replaceState(history.state,'',loc.pathname+loc.search+hash);}catch{}
+}
+function readSession() { try{const v=JSON.parse(globalThis.sessionStorage?.getItem(SESSION_KEY)||'null');return v&&typeof v==='object'?v:null;}catch{return null;} }
+function saveSession() { try{globalThis.sessionStorage?.setItem(SESSION_KEY,JSON.stringify({tab,filters,y:globalThis.scrollY??0}));}catch{} }
+{ const saved=readSession()?.filters; if(saved&&typeof saved==='object'){ const str=v=>typeof v==='string'?v:'', arr=v=>Array.isArray(v)?v.filter(x=>typeof x==='string'):[];
+  filters={query:str(saved.query),category:categories.includes(saved.category)?saved.category:'',cuisine:cuisines.includes(saved.cuisine)?saved.cuisine:'',maxTime:Number(saved.maxTime)||0,minTime:Number(saved.minTime)||0,diet:DIETS.includes(saved.diet)?saved.diet:'',excluded:arr(saved.excluded).filter(a=>allergens.includes(a)),excludedProducts:arr(saved.excludedProducts).filter(id=>Object.hasOwn(products,id))}; } }
 function toast(message) { const d=$('#detail'), host=d.open?d:document.body; if($('#toast').parentNode!==host)host.append($('#toast')); $('#toast').textContent=message; $('#toast').classList.add('visible'); clearTimeout(toast.timer); toast.timer=setTimeout(()=>$('#toast').classList.remove('visible'),3500); }
 function persist() { try { save(localStorage,state); } catch { toast(t('storageError')); } }
 function nav() { $('#nav').innerHTML=['recipes','favorites','shopping','offers','app'].map((key,i)=>`<button data-tab="${key}" ${key===tab?'aria-current="page"':''}><span aria-hidden="true">${['⌂','♡','☷','🏷︎','▯'][i]}</span> ${t(key)}${key==='shopping'&&state.shopping.length?` <b>${state.shopping.filter(i=>!i.done).length}</b>`:''}</button>`).join(''); }
@@ -35,6 +50,13 @@ function keepPlace(rerender,selectors) {
   const target=selectors.map(s=>document.querySelector(s)).find(el=>el&&el.isConnected!==false&&!/^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName||''));
   target?.focus({preventScroll:true});
   if((globalThis.scrollY??0)!==y||(globalThis.scrollX??0)!==x)window.scrollTo?.({top:y,left:x,behavior:'instant'});
+}
+// CNT-043: zmiana filtra (rodzaj posiłku, kuchnia, czas, dieta…) nie przewija strony na górę.
+function holdScroll(rerender) { const y=globalThis.scrollY??0, x=globalThis.scrollX??0; rerender(); if((globalThis.scrollY??0)!==y||(globalThis.scrollX??0)!==x)window.scrollTo?.({top:y,left:x,behavior:'instant'}); }
+function setCategory(c) {
+  filters.category=c; const sel=$('#category'); if(sel)sel.value=c;
+  for(const b of document.querySelectorAll('.category-chips [data-category]'))b.setAttribute('aria-pressed',String(b.dataset.category===c));
+  holdScroll(results);
 }
 const offline=()=>navigator.onLine===false;
 // A small non-blocking notice outside #main: it survives every re-render of the screens.
@@ -193,14 +215,17 @@ function shell() {
   if(root){root.lang=info.code;root.dir=info.dir;}
   document.title=t('docTitle'); $('meta[name="description"]')?.setAttribute('content',t('docDescription'));
   const text=(s,v)=>{const el=$(s);if(el)el.textContent=v;};
-  text('.skip',t('skipLink'));text('.brand small',t('brandTagline'));text('#footer-text',t('footerText'));text('#privacy',t('privacyButton'));
+  text('.skip',t('skipLink'));text('.brand-name',t('brandName'));text('.brand small',t('brandTagline'));text('#footer-text',t('footerText'));text('#privacy',t('privacyButton'));
   $('.brand')?.setAttribute('aria-label',t('brandHome')); $('#nav')?.setAttribute('aria-label',t('navLabel'));
   picker();
 }
 async function chooseLanguage(code) {
   if(!languages.some(l=>l.code===code))return;
   state.settings={...state.settings,language:code}; persist();
-  await setLanguage(code); shell(); render(); refocus('#language');
+  await setLanguage(code); shell(); holdScroll(render);
+  // CNT-043: po wyborze języka lista wyboru ma się schować — fokus wraca na przycisk z flagą zamiast na <select>
+  // (ponowny fokus na <select> na telefonach otwierał listę języków jeszcze raz).
+  const sel=$('#language'); sel?.blur?.(); if(document.activeElement===sel)document.activeElement?.blur?.();
 }
 // CNT-039: zakładka z aplikacją mobilną (PWA) i instrukcją instalacji na Android/iOS.
 let installPrompt=null;
@@ -213,24 +238,31 @@ function appPage() {
 }
 globalThis.addEventListener?.('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;if(tab==='app')appPage();});
 globalThis.addEventListener?.('appinstalled',()=>{installPrompt=null;toast(t('appInstallDone'));if(tab==='app')appPage();});
-function render() { nav(); netStatus(); if(tab==='shopping') shopping(); else if(tab==='offers') offers(); else if(tab==='app') appPage(); else catalog(); }
+function render() { writeRoute(); nav(); netStatus(); if(tab==='shopping') shopping(); else if(tab==='offers') offers(); else if(tab==='app') appPage(); else catalog(); }
 // CNT-034: every recipe opens with 1 serving (amounts scale from recipe.servings); "Draw another" keeps the chosen number.
 function openRecipe(id,random=false,keepServings=false) { selected=recipes.find(r=>r.id===id); if(!selected)return; if(!keepServings)servings=SERVINGS_DEFAULT; detail(random); }
 function detail(random=false) {
-  const r=localizeRecipe(selected); const d=$('#detail'); const photo=shownPhoto(r);
+  detailRecipe=true; const r=localizeRecipe(selected); const favorite=state.favorites.includes(r.id); const d=$('#detail'); const photo=shownPhoto(r);
   const priced=ingredientOffers(r,currentAuto());
-  d.innerHTML=`<div class="dialog-head"><span class="eyebrow">${random?t('result'):t(r.category)}</span><button class="close" data-close aria-label="${t('close')}">×</button></div><div class="detail-title${photo?' has-photo':''}">${photo?`<figure class="detail-photo">${photoImg(r,photo)}${photoCredit(photo)}</figure>`:''}<span aria-hidden="true">${r.emoji}</span><h2 id="detail-heading"${plLang(r.id,'name')}>${esc(r.name)}</h2><p class="muted">◷ ${timeText(r)} · ${r.vegan?t('vegan'):r.vegetarian?t('vegetarian'):t('easy')}${cuisineText(r)?` · ${cuisineText(r)}`:''}</p></div>${random?rerollBlock():''}${servingsControl()}<h3>${t('ingredients')}</h3><ul class="ingredients">${r.ingredients.map((i,k)=>`<li><span>${esc(productName(i.product))}</span><strong data-amount="${i.product}">${esc(amount(i,servings/r.servings))}</strong>${priced[k].offer&&!priced[k].pantry?promoLine(priced[k].offer):''}</li>`).join('')}</ul><button class="primary full" id="add-shopping">${t('addShopping')}</button>${nutritionBlock(r)}<h3>${t('steps')}</h3><ol class="steps"${plLang(r.id,'steps')}>${r.steps.map(s=>`<li>${esc(s)}</li>`).join('')}</ol><div class="allergen-note"><strong>${t('allergens')}: ${r.allergens.length?r.allergens.map(t).join(', '):t('noAllergens')}</strong><p>${t('allergenNote')}</p></div>`;
-  d.scrollTop=0; if(!d.open)d.showModal();
+  d.innerHTML=`<div class="dialog-head"><span class="eyebrow">${random?t('result'):t(r.category)}</span><button class="close" data-close aria-label="${t('close')}">×</button></div><div class="detail-title${photo?' has-photo':''}">${photo?`<figure class="detail-photo">${photoImg(r,photo)}${photoCredit(photo)}</figure>`:''}<span aria-hidden="true">${r.emoji}</span><h2 id="detail-heading"${plLang(r.id,'name')}>${esc(r.name)}</h2><p class="muted">◷ ${timeText(r)} · ${r.vegan?t('vegan'):r.vegetarian?t('vegetarian'):t('easy')}${cuisineText(r)?` · ${cuisineText(r)}`:''}</p></div><div class="detail-actions"><button class="secondary detail-favorite${favorite?' active':''}" data-favorite="${esc(r.id)}" aria-pressed="${favorite}"><span aria-hidden="true">${favorite?'♥':'♡'}</span> ${t(favorite?'removeFavorite':'addFavorite')}</button></div>${random?rerollBlock():''}${variantsBlock(r)}${servingsControl()}<h3>${t('ingredients')}</h3><ul class="ingredients">${r.ingredients.map((i,k)=>`<li><span>${esc(productName(i.product))}</span><strong data-amount="${i.product}">${esc(amount(i,servings/r.servings))}</strong>${priced[k].offer&&!priced[k].pantry?promoLine(priced[k].offer):''}</li>`).join('')}</ul><button class="primary full" id="add-shopping">${t('addShopping')}</button>${nutritionBlock(r)}<h3>${t('steps')}</h3><ol class="steps"${plLang(r.id,'steps')}>${r.steps.map(s=>`<li>${esc(s)}</li>`).join('')}</ol><div class="allergen-note"><strong>${t('allergens')}: ${r.allergens.length?r.allergens.map(t).join(', '):t('noAllergens')}</strong><p>${t('allergenNote')}</p></div>`;
+  d.scrollTop=0; if(!d.open)d.showModal(); writeRoute();
 }
+// CNT-043: inne wersje tego samego dania (np. pierogi ruskie → z mięsem, z kapustą i grzybami, z owocami).
+function variantsBlock(r) { const list=variantsOf(r.id).map(id=>recipes.find(x=>x.id===id)).filter(Boolean).map(localizeRecipe); if(!list.length)return ''; return `<section class="variants" aria-labelledby="variants-heading"><h3 id="variants-heading">${t('variantsTitle')}</h3><ul>${list.map(v=>`<li><button class="variant" data-variant="${esc(v.id)}"${plLang(v.id,'name')}><span aria-hidden="true">${v.emoji}</span> ${esc(v.name)}</button></li>`).join('')}</ul></section>`; }
 document.addEventListener('click',async e=>{
   const b=e.target.closest('button,a,[role="option"]'); if(!b)return;
   if(b.id==='lang-suggest') {await chooseLanguage(b.dataset.lang);return;}
-  if(b.dataset.tab) {tab=b.dataset.tab;render();window.scrollTo({top:0});}
+  if(b.dataset.tab) {tab=b.dataset.tab;render();window.scrollTo({top:0});saveSession();}
   if(b.id==='install-app'&&installPrompt){const p=installPrompt;installPrompt=null;try{await p.prompt();await p.userChoice;}catch{}appPage();return;}
   if(b.dataset.recipe)openRecipe(b.dataset.recipe);
-  if(b.dataset.favorite) {const id=b.dataset.favorite;state.favorites=state.favorites.includes(id)?state.favorites.filter(x=>x!==id):[...state.favorites,id];persist();results();refocus(`[data-favorite="${CSS.escape(id)}"]`);}
-  if(b.dataset.category!==undefined) {filters.category=b.dataset.category;catalog();refocus(`.category-chips [data-category="${CSS.escape(filters.category)}"]`);}
-  if(b.dataset.cuisine!==undefined) {filters.cuisine=b.dataset.cuisine;results();refocus(`#cuisine-tabs [data-cuisine="${CSS.escape(filters.cuisine)}"]`);}
+  if(b.dataset.variant){openRecipe(b.dataset.variant,false,true);refocus('#detail-heading');}
+  if(b.dataset.favorite) {const id=b.dataset.favorite, now=!state.favorites.includes(id);state.favorites=now?[...state.favorites,id]:state.favorites.filter(x=>x!==id);persist();
+    // CNT-043: serduszko jest też w oknie przepisu (także wylosowanego); karta w tle aktualizuje się bez przewijania.
+    if(tab==='recipes'||tab==='favorites')holdScroll(results);
+    const fav=$('#detail .detail-favorite'); if(fav&&$('#detail').open&&fav.dataset?.favorite===id){fav.classList?.[now?'add':'remove']?.('active');fav.setAttribute('aria-pressed',String(now));fav.innerHTML=`<span aria-hidden="true">${now?'♥':'♡'}</span> ${t(now?'removeFavorite':'addFavorite')}`;toast(t(now?'favoriteAdded':'favoriteRemoved'));}
+    else refocus(`[data-favorite="${CSS.escape(id)}"]`);}
+  if(b.dataset.category!==undefined) {setCategory(b.dataset.category);saveSession();refocus(`.category-chips [data-category="${CSS.escape(filters.category)}"]`);}
+  if(b.dataset.cuisine!==undefined) {filters.cuisine=b.dataset.cuisine;holdScroll(results);saveSession();refocus(`#cuisine-tabs [data-cuisine="${CSS.escape(filters.cuisine)}"]`);}
   if(b.id==='reset'){filters={query:'',category:'',cuisine:'',maxTime:0,minTime:0,diet:'',excluded:[],excludedProducts:[]};state.settings={...state.settings,sort:'default'};persist();keepPlace(catalog,['#reset','#results-count']);toast(t('filtersCleared'));}
   if(b.id==='random'||b.id==='hero-random') {const r=drawRandom();if(r)openRecipe(r.id,true);else toast(t('noMatches'));}
   if(b.id==='reroll') {const r=drawRandom();if(r){openRecipe(r.id,true,true);refocus('#reroll');}}
@@ -244,13 +276,14 @@ document.addEventListener('click',async e=>{
   if(b.id==='clear-done'){state.shopping=state.shopping.filter(i=>!i.done);persist();render();}
   if(b.id==='copy'){try{await navigator.clipboard.writeText(state.shopping.map(i=>`${i.done?'✓':'□'} ${i.product?productName(i.product):i.name}${i.product?' — '+amount(i):''}`).join('\n'));toast(t('copied'));}catch{toast(t('copyFailed'));}}
   if(b.dataset.offerRemove){state.offers=state.offers.filter(o=>o.id!==b.dataset.offerRemove);persist();offers();}
-  if(b.id==='privacy') {$('#detail').innerHTML=`<div class="dialog-head"><h2 id="detail-heading">${t('privacyTitle')}</h2><button class="close" data-close aria-label="${t('close')}">×</button></div><p>${t('privacyText')}</p><p>${t('privacyErrors')}</p><button class="primary" id="export">${t('export')}</button><p>${t('importNote')}</p><label class="file-label">${t('import')}<input type="file" id="import" accept="application/json,.json" aria-label="${t('importLabel')}"></label>`;$('#detail').showModal();}
+  if(b.id==='privacy') {detailRecipe=false;$('#detail').innerHTML=`<div class="dialog-head"><h2 id="detail-heading">${t('privacyTitle')}</h2><button class="close" data-close aria-label="${t('close')}">×</button></div><p>${t('privacyText')}</p><p>${t('privacyErrors')}</p><button class="primary" id="export">${t('export')}</button><p>${t('importNote')}</p><label class="file-label">${t('import')}<input type="file" id="import" accept="application/json,.json" aria-label="${t('importLabel')}"></label>`;$('#detail').showModal();}
   if(b.id==='export'){const url=URL.createObjectURL(new Blob([JSON.stringify(state,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=`co-na-talerz-${localDate()}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 });
 document.addEventListener('input',e=>{
   if(e.target.id==='search'){filters.query=e.target.value;results();}
   if(e.target.id==='servings'&&selected){const n=parseServings(e.target.value);if(n===null)servingsInvalid();else updateServings(n,{keepInput:true});}
   if(e.target.id==='exclude-input')suggest(e.target.value);
+  if(e.target.id==='search')saveSession();
 });
 // Combobox keys: arrows move through suggestions, Enter adds the active (or first) one, Esc closes the list, then clears the field.
 document.addEventListener('keydown',e=>{
@@ -263,16 +296,16 @@ document.addEventListener('keydown',e=>{
 document.addEventListener('mousedown',e=>{if(e.target?.closest?.('#exclude-options'))e.preventDefault();});
 document.addEventListener('focusout',e=>{if(e.target?.id==='exclude-input')setTimeout(()=>{if(document.activeElement?.id!=='exclude-input')closeSuggestions();},0);});
 document.addEventListener('change',async e=>{
-  const el=e.target;
+  const el=e.target; queueMicrotask?.(saveSession);
   if(el.id==='language'){await chooseLanguage(el.value);return;}
-  if(el.id==='category'){filters.category=el.value;catalog();refocus('#category');}
-  if(el.id==='time'){const o=TIME_OPTIONS[el.value]||TIME_OPTIONS['0'];filters.maxTime=o.maxTime;filters.minTime=o.minTime;results();}
-  if(el.id==='diet'){filters.diet=el.value;results();}
+  if(el.id==='category'){setCategory(el.value);refocus('#category');}
+  if(el.id==='time'){const o=TIME_OPTIONS[el.value]||TIME_OPTIONS['0'];filters.maxTime=o.maxTime;filters.minTime=o.minTime;holdScroll(results);}
+  if(el.id==='diet'){filters.diet=el.value;holdScroll(results);}
   // Leaving the servings field with an invalid value restores the last valid number.
   if(el.id==='servings'&&selected&&parseServings(el.value)===null)updateServings(servings);
-  if(el.id==='sort'){state.settings={...state.settings,sort:el.value==='promotions'?'promotions':'default'};persist();results();refocus('#sort');}
-  if(el.id==='show-nutrition'){state.settings={...state.settings,showNutrition:el.checked};persist();results();}
-  if(el.closest('.checks')){filters.excluded=[...document.querySelectorAll('.checks input:checked')].map(c=>c.value);catalog();refocus(`.checks input[value="${CSS.escape(String(el.value))}"]`);}
+  if(el.id==='sort'){state.settings={...state.settings,sort:el.value==='promotions'?'promotions':'default'};persist();holdScroll(results);refocus('#sort');}
+  if(el.id==='show-nutrition'){state.settings={...state.settings,showNutrition:el.checked};persist();holdScroll(results);}
+  if(el.closest('.checks')){filters.excluded=[...document.querySelectorAll('.checks input:checked')].map(c=>c.value);holdScroll(catalog);refocus(`.checks input[value="${CSS.escape(String(el.value))}"]`);}
   if(el.dataset.check){const item=state.shopping.find(i=>i.id===el.dataset.check);if(!item)return;item.done=el.checked;persist();render();refocus(`[data-check="${CSS.escape(item.id)}"]`);}
   if(el.id==='import'){try{if(!el.files[0]||el.files[0].size>1000000)throw Error();const imported=validateState(JSON.parse(await el.files[0].text()));state=imported;persist();$('#detail').close();render();toast(t('imported'));}catch{toast(t('invalidBackup'));}}
 });
@@ -287,10 +320,16 @@ const outside=(d,e)=>{const r=d.getBoundingClientRect();return e.clientX<r.left|
 let backdropPress=false;
 $('#detail').addEventListener('pointerdown',e=>{backdropPress=e.target===e.currentTarget&&outside(e.currentTarget,e);});
 $('#detail').addEventListener('click',e=>{const d=e.currentTarget;if(backdropPress&&e.target===d&&outside(d,e))d.close();backdropPress=false;});
-$('#detail').addEventListener('close',()=>{document.body.append($('#toast'));});
+$('#detail').addEventListener('close',()=>{document.body.append($('#toast'));detailRecipe=false;writeRoute();});
 window.addEventListener('offline',netStatus);
 window.addEventListener('online',()=>{brokenPhotos.clear();netStatus();toast(t('backOnline'));});
-shell(); render(); if(storageWarning)toast(t('storageError'));
+{ const route=readRoute(), session=readSession(); if(route.tab)tab=route.tab;
+  shell(); render(); if(route.recipe)openRecipe(route.recipe);
+  // Po odświeżeniu wraca też pozycja przewinięcia tej samej zakładki.
+  if(session&&session.tab===tab&&Number(session.y)>0){const y=Number(session.y);(globalThis.requestAnimationFrame||setTimeout)(()=>window.scrollTo?.({top:y,left:0,behavior:'instant'}));} }
+if(storageWarning)toast(t('storageError'));
+globalThis.addEventListener?.('pagehide',saveSession);
+globalThis.addEventListener?.('hashchange',()=>{const route=readRoute();if(route.tab&&route.tab!==tab){tab=route.tab;render();}if(route.recipe&&(!$('#detail').open||selected?.id!==route.recipe))openRecipe(route.recipe);});
 fetch('./offers.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(data=>{if(data?.version===1&&Array.isArray(data.offers)){autoOffers=data.offers.filter(o=>isCurrentAutomaticOffer(o)&&typeof o.fetchedAt==='string');leaflets=currentLeaflets(data.leaflets);if(tab==='offers')offers();else if(tab==='recipes'||tab==='favorites')results();}}).catch(()=>{});
 // Automatic updates: the build gives every release a new service-worker cache name. When the new
 // worker takes over, reload so the page runs the new files — but never while the user is typing

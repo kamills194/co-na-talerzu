@@ -97,3 +97,9 @@ header .lang-picker{order:3;flex:none;margin-left:0;gap:6px;flex-wrap:nowrap}hea
 /* Reklamy (AdSense auto ads): nie wychodzą poza ekran, nie zasłaniają nagłówka ani okna przepisu */
 ins.adsbygoogle{display:block;max-width:100%;overflow:hidden;margin:1.25rem auto;clear:both}
 header ins.adsbygoogle,nav ins.adsbygoogle,dialog ins.adsbygoogle,.lang-picker ins.adsbygoogle{display:none!important}
+/* CNT-043: serduszko w oknie przepisu i inne wersje dania */
+.detail-actions{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.detail-favorite{min-height:44px}.detail-favorite.active span{color:var(--orange)}
+.variants{margin:14px 0}.variants ul{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.variants .variant{min-height:44px;padding:8px 14px;border:1.5px solid var(--border);border-radius:22px;background:var(--white);color:var(--ink);cursor:pointer;text-align:left}
+.variants .variant:hover{border-color:var(--ink)}

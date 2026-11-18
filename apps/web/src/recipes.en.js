@@ -680,4 +680,40 @@ export const recipes = {
     'With wet hands shape about 12 balls and flatten them slightly. Heat the oil in a frying pan and fry the falafel in batches for 3–4 minutes on each side until browned. Drain on kitchen paper.',
     'Sauce: mix the tahini with the lemon juice and the measured water into a smooth, pourable sauce. Serve the falafel drizzled with the sauce.'],
     photoAlt:'Browned falafel on a plate drizzled with pale tahini sauce' },
+  // CNT-043: other versions of popular dishes. Machine translation, not reviewed by a native speaker.
+  'pierogi-z-miesem':{ name:'Pierogi with meat — Polish dumplings with a pork filling', steps:[
+    'Peel and dice the onion. Heat the rest of the oil in a frying pan and soften half the onion, then add the meat and fry for 10–12 minutes, breaking it up with a spatula, until it is no longer pink. Wash your hands and utensils after handling raw meat.',
+    'Let the meat cool, then mince it or chop it finely with a knife so that the filling holds together. Season with the marjoram, pepper and a pinch of salt and mix.',
+    'Mix the flour with a pinch of salt and pour in the warm water and a tablespoon of the oil. Knead for about 5 minutes until the dough is smooth and elastic, then cover with a bowl for 15 minutes.',
+    'Roll the dough out thinly and cut out circles with a glass. Put a teaspoon of filling on each, fold in half and seal the edges well. You will get about 24 dumplings.',
+    'Cook the dumplings in batches in a large pan of salted water for 3–4 minutes after they float. Brown the remaining onion in the butter and pour it over the dumplings.'],
+    photoAlt:'A plate of meat pierogi topped with butter and browned onion' },
+  'pierogi-z-kapusta-i-grzybami':{ name:'Pierogi with sauerkraut and mushrooms — Polish dumplings', steps:[
+    'Squeeze the juice out of the sauerkraut; if it is very sour, rinse it in cold water. Put it in a pan with a little water and simmer, covered, for 20 minutes until soft. Drain, cool and chop finely.',
+    'Peel and chop the onion; clean the mushrooms and dice them finely. Heat 2 tablespoons of oil in a frying pan and fry the onion and mushrooms for 8–10 minutes until the liquid has evaporated. Mix with the sauerkraut and season with pepper and a pinch of salt.',
+    'Mix the flour with a pinch of salt and pour in the warm water and a tablespoon of the oil. Knead for about 5 minutes until the dough is smooth and elastic, then cover with a bowl for 15 minutes.',
+    'Roll the dough out thinly and cut out circles with a glass. Put a teaspoon of filling on each, fold in half and seal the edges well. You will get about 24 dumplings.',
+    'Cook the dumplings in batches in a large pan of salted water for 2–3 minutes after they float. Lift out with a slotted spoon and serve drizzled with a little oil or browned in a frying pan.'],
+    photoAlt:'A plate of sauerkraut and mushroom pierogi lightly browned in a frying pan' },
+  'pierogi-z-owocami':{ name:'Pierogi with forest berries and sweet cream — Polish fruit dumplings', steps:[
+    'Thaw the berries in a sieve and drain them well so that the filling does not soak the dough. Mix them with the potato starch.',
+    'Mix the flour with a pinch of salt and pour in the warm water and a tablespoon of the oil. Knead for about 5 minutes until the dough is smooth and elastic, then cover with a bowl for 15 minutes.',
+    'Roll the dough out thinly and cut out circles with a glass. Put a teaspoon of berries on each, fold in half and seal the edges very carefully. You will get about 24 dumplings.',
+    'Cook the dumplings in batches in a large pan of lightly salted water for 3 minutes after they float, until the fruit inside is hot.',
+    'Mix the sour cream with the sugar. Lift the dumplings out with a slotted spoon and serve straight away topped with the sweet cream.'],
+    photoAlt:'Forest berry pierogi topped with sweet cream, with purple juice on the plate' },
+  'pizza-funghi':{ name:'Homemade pizza funghi with mushrooms', steps:[
+    'Crumble the yeast into a bowl, add the sugar and warm, but not hot, water and stir. Add the flour and salt and pour in half the olive oil. Knead for 8–10 minutes until the dough is smooth and springy, cover with a tea towel and leave in a warm place for about an hour.',
+    'Clean the mushrooms and slice them thinly. Mix the passata with the oregano and a pinch of salt. Drain the mozzarella and tear it into pieces.',
+    'Preheat the oven to 250°C with the baking tray inside. Stretch the dough by hand on baking paper into a round about 30 cm across.',
+    'Spread the dough with the sauce, scatter over the mozzarella and mushrooms and drizzle with the rest of the olive oil.',
+    'Slide the pizza on its paper onto the hot tray and bake for 12–14 minutes until the edges are browned and the cheese has melted. Serve straight away.'],
+    photoAlt:'A round pizza with tomato sauce, mozzarella and sliced mushrooms' },
+  'pizza-z-szynka':{ name:'Homemade pizza with ham and mushrooms', steps:[
+    'Crumble the yeast into a bowl, add the sugar and warm, but not hot, water and stir. Add the flour and salt and pour in half the olive oil. Knead for 8–10 minutes until the dough is smooth and springy, cover with a tea towel and leave in a warm place for about an hour.',
+    'Clean the mushrooms and slice them thinly; cut the ham into strips. Mix the passata with the oregano and a pinch of salt. Drain the mozzarella and tear it into pieces.',
+    'Preheat the oven to 250°C with the baking tray inside. Stretch the dough by hand on baking paper into a round about 30 cm across.',
+    'Spread the dough with the sauce, scatter over the mozzarella, ham and mushrooms and drizzle with the rest of the olive oil.',
+    'Slide the pizza on its paper onto the hot tray and bake for 12–14 minutes until the edges are browned and the cheese has melted. Serve straight away.'],
+    photoAlt:'A round pizza with mozzarella, strips of ham and sliced mushrooms' },
 };

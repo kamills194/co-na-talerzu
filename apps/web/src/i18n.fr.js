@@ -11,6 +11,7 @@ export const messages = {
   heroLabel:'CUISINE DU QUOTIDIEN, PETITS PLAISIRS', heroTitle:'Aujourd’hui, quelque chose de bon.\nSimple et fait maison.', heroText:'Des ingrédients familiers. Des étapes simples. Une idée pour chaque appétit.',
   surprise:'Surprenez-moi', surpriseText:'Choisissez ce qui vous fait envie. Nous trouverons une idée.', meal:'Type de repas', time:'Temps maximum', diet:'Régime', exclude:'Exclure des ingrédients', search:'Rechercher une recette ou un ingrédient', searchPlaceholder:'Ex. soupe de tomates, pommes de terre, pomme…',
   noLimit:'Sans limite', minutes:'min', noResults:'Aucune recette ne correspond à ces filtres.', reset:'Effacer les filtres', found:'Idées de repas faits maison', result:'Une suggestion pour vous',
+  brandName:'Qu’y a-t-il dans l’assiette', variantsTitle:'Autres versions de ce plat', favoriteAdded:'Ajouté aux favoris', favoriteRemoved:'Retiré des favoris',
   addFavorite:'Ajouter aux favoris', removeFavorite:'Retirer des favoris', emptyFavorites:'Enregistrez des recettes avec le cœur — elles vous attendront ici.',
   portions:'Portions', ingredients:'Ingrédients', steps:'Préparation', allergens:'Allergènes', noAllergens:'Aucun allergène signalé', allergenNote:'Vérifiez les étiquettes des produits et les traces éventuelles d’allergènes. Les filtres se fondent sur les ingrédients de la recette.',
   addShopping:'Ajouter les ingrédients à la liste', added:'Ingrédients ajoutés à la liste de courses.', close:'Fermer', easy:'Recette facile',

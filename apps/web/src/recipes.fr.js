@@ -679,4 +679,40 @@ export const recipes = {
     'Avec les mains mouillées, formez environ 12 boulettes et aplatissez-les légèrement. Faites chauffer l’huile dans une poêle et faites dorer les falafels par fournées 3 à 4 minutes de chaque côté. Égouttez sur du papier absorbant.',
     'Sauce : mélangez le tahini avec le jus de citron et l’eau mesurée pour obtenir une sauce lisse et fluide. Servez les falafels nappés de sauce.'],
     photoAlt:'Des falafels dorés dans une assiette nappés d’une sauce tahini claire' },
+  // CNT-043: other versions of popular dishes. Machine translation, not reviewed by a native speaker.
+  'pierogi-z-miesem':{ name:'Pierogi à la viande — raviolis polonais farcis au porc', steps:[
+    'Épluchez et coupez l’oignon en dés. Faites chauffer le reste de l’huile dans une poêle et faites suer la moitié de l’oignon, puis ajoutez la viande et faites-la revenir 10–12 minutes en l’émiettant à la spatule, jusqu’à ce qu’elle ne soit plus rose. Lavez-vous les mains et les ustensiles après avoir touché la viande crue.',
+    'Laissez refroidir la viande, puis hachez-la finement au hachoir ou au couteau pour que la farce se tienne. Assaisonnez de marjolaine, de poivre et d’une pincée de sel et mélangez.',
+    'Mélangez la farine avec une pincée de sel, versez l’eau tiède et une cuillère à soupe d’huile. Pétrissez environ 5 minutes, jusqu’à ce que la pâte soit lisse et élastique, puis couvrez-la d’un bol pendant 15 minutes.',
+    'Étalez finement la pâte et découpez des disques avec un verre. Déposez une cuillère à café de farce sur chacun, pliez en deux et soudez bien les bords. Vous obtiendrez environ 24 raviolis.',
+    'Faites cuire les raviolis par fournées dans une grande casserole d’eau salée, encore 3–4 minutes après qu’ils sont remontés. Faites dorer le reste de l’oignon dans le beurre et versez-le sur les raviolis.'],
+    photoAlt:'Une assiette de pierogi à la viande nappés de beurre et d’oignon doré' },
+  'pierogi-z-kapusta-i-grzybami':{ name:'Pierogi à la choucroute et aux champignons — raviolis polonais', steps:[
+    'Pressez la choucroute pour en retirer le jus ; si elle est très acide, rincez-la à l’eau froide. Mettez-la dans une casserole avec un peu d’eau et laissez cuire à couvert 20 minutes, jusqu’à ce qu’elle soit tendre. Égouttez, laissez refroidir et hachez finement.',
+    'Épluchez et hachez l’oignon, nettoyez les champignons et coupez-les en petits dés. Faites chauffer 2 cuillères à soupe d’huile dans une poêle et faites revenir l’oignon et les champignons 8–10 minutes, jusqu’à évaporation de l’eau. Mélangez avec la choucroute, poivrez et ajoutez une pincée de sel.',
+    'Mélangez la farine avec une pincée de sel, versez l’eau tiède et une cuillère à soupe d’huile. Pétrissez environ 5 minutes, jusqu’à ce que la pâte soit lisse et élastique, puis couvrez-la d’un bol pendant 15 minutes.',
+    'Étalez finement la pâte et découpez des disques avec un verre. Déposez une cuillère à café de farce sur chacun, pliez en deux et soudez bien les bords. Vous obtiendrez environ 24 raviolis.',
+    'Faites cuire les raviolis par fournées dans une grande casserole d’eau salée, encore 2–3 minutes après qu’ils sont remontés. Sortez-les à l’écumoire et servez-les arrosés d’un filet d’huile ou dorés à la poêle.'],
+    photoAlt:'Une assiette de pierogi à la choucroute et aux champignons légèrement dorés à la poêle' },
+  'pierogi-z-owocami':{ name:'Pierogi aux fruits des bois et à la crème sucrée — raviolis polonais aux fruits', steps:[
+    'Décongelez les fruits dans une passoire et égouttez-les bien pour que la farce ne détrempe pas la pâte. Mélangez-les avec la fécule de pomme de terre.',
+    'Mélangez la farine avec une pincée de sel, versez l’eau tiède et une cuillère à soupe d’huile. Pétrissez environ 5 minutes, jusqu’à ce que la pâte soit lisse et élastique, puis couvrez-la d’un bol pendant 15 minutes.',
+    'Étalez finement la pâte et découpez des disques avec un verre. Déposez une cuillère à café de fruits sur chacun, pliez en deux et soudez très soigneusement les bords. Vous obtiendrez environ 24 raviolis.',
+    'Faites cuire les raviolis par fournées dans une grande casserole d’eau légèrement salée, encore 3 minutes après qu’ils sont remontés, jusqu’à ce que les fruits soient chauds à l’intérieur.',
+    'Mélangez la crème avec le sucre. Sortez les raviolis à l’écumoire et servez-les aussitôt nappés de crème sucrée.'],
+    photoAlt:'Des pierogi aux fruits des bois nappés de crème sucrée, avec du jus violet dans l’assiette' },
+  'pizza-funghi':{ name:'Pizza funghi maison aux champignons de Paris', steps:[
+    'Émiettez la levure dans un saladier, ajoutez le sucre et l’eau tiède, mais pas chaude, et mélangez. Ajoutez la farine et le sel, versez la moitié de l’huile d’olive. Pétrissez 8–10 minutes jusqu’à obtenir une pâte lisse et souple, couvrez d’un torchon et laissez lever environ une heure dans un endroit chaud.',
+    'Nettoyez les champignons et émincez-les finement. Mélangez la passata avec l’origan et une pincée de sel. Égouttez la mozzarella et déchirez-la en morceaux.',
+    'Préchauffez le four à 250°C avec la plaque à l’intérieur. Étirez la pâte à la main sur du papier cuisson en un disque d’environ 30 cm de diamètre.',
+    'Étalez la sauce sur la pâte, répartissez la mozzarella et les champignons et arrosez du reste d’huile d’olive.',
+    'Faites glisser la pizza avec le papier sur la plaque chaude et faites cuire 12–14 minutes, jusqu’à ce que les bords soient dorés et le fromage fondu. Servez aussitôt.'],
+    photoAlt:'Une pizza ronde à la sauce tomate, à la mozzarella et aux lamelles de champignons' },
+  'pizza-z-szynka':{ name:'Pizza maison au jambon et aux champignons', steps:[
+    'Émiettez la levure dans un saladier, ajoutez le sucre et l’eau tiède, mais pas chaude, et mélangez. Ajoutez la farine et le sel, versez la moitié de l’huile d’olive. Pétrissez 8–10 minutes jusqu’à obtenir une pâte lisse et souple, couvrez d’un torchon et laissez lever environ une heure dans un endroit chaud.',
+    'Nettoyez les champignons et émincez-les finement, coupez le jambon en lanières. Mélangez la passata avec l’origan et une pincée de sel. Égouttez la mozzarella et déchirez-la en morceaux.',
+    'Préchauffez le four à 250°C avec la plaque à l’intérieur. Étirez la pâte à la main sur du papier cuisson en un disque d’environ 30 cm de diamètre.',
+    'Étalez la sauce sur la pâte, répartissez la mozzarella, le jambon et les champignons et arrosez du reste d’huile d’olive.',
+    'Faites glisser la pizza avec le papier sur la plaque chaude et faites cuire 12–14 minutes, jusqu’à ce que les bords soient dorés et le fromage fondu. Servez aussitôt.'],
+    photoAlt:'Une pizza ronde à la mozzarella, aux lanières de jambon et aux lamelles de champignons' },
 };

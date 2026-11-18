@@ -235,3 +235,10 @@ export function suggestProducts(query, {nameOf=id=>products[id][0], skip=[], lim
   }
   return scored.sort((a,b)=>a.rank-b.rank||a.name.localeCompare(b.name)).slice(0,limit).map(x=>x.id);
 }
+// CNT-043: wersje jednego dania. Okno przepisu pokazuje pozostałe wersje z tej samej grupy
+// (np. pierogi ruskie → z mięsem, z kapustą i grzybami, z owocami).
+export const VARIANT_GROUPS = [
+  ['pierogi-ruskie','pierogi-z-miesem','pierogi-z-kapusta-i-grzybami','pierogi-z-owocami'],
+  ['pizza-margherita','pizza-funghi','pizza-z-szynka'],
+];
+export function variantsOf(id) { const group=VARIANT_GROUPS.find(g=>g.includes(id)); return group?group.filter(x=>x!==id):[]; }
