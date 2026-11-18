@@ -9,23 +9,25 @@ repozytorium powiadomienia e-mail o nowych zgłoszeniach (Settings → Notificat
 | Monitor strony | `bot-monitor.yml` → `scripts/bots/monitor.mjs` | co 30 min i po każdym wdrożeniu | Sprawdza conatalerz.pl: HTTP 200, przekierowania http→https i www→bez www, wszystkie pliki z listy offline (status i typ MIME), manifest, `offers.json`, `report.php`, blokadę `_reports`, ważność SSL (alarm < 14 dni), zgodność wdrożonej wersji z `main`. Awaria → jedno zgłoszenie `bot: monitor`, zamykane automatycznie po naprawie. |
 | Błędy ze strony | `bot-errors.yml` → `scripts/bots/collect-errors.mjs` | co godzinę | Pobiera przez SFTP zgłoszenia zebrane przez `report.php`, grupuje ten sam błąd i zakłada zgłoszenie `bot: błąd strony` (kolejne wystąpienia jako komentarz; zamknięte zgłoszenie otwiera ponownie, gdy błąd wróci). Pomija szum (rozszerzenia przeglądarek, „Script error.”, zerwane połączenia). |
 | Redaktor treści | `bot-editor.yml` → `scripts/bots/editor.mjs` | codziennie 5:41 (PL) | Bezpieczne poprawki tekstu (podwójne spacje, spacja przed przecinkiem/kropką, „...” → „…”) w pull requeście po przejściu testów (jeśli repozytorium nie pozwala Actions zakładać PR — Settings → Actions → General → „Allow GitHub Actions to create and approve pull requests” — bot zostawia gałąź `bot/redakcja-…` i link do utworzenia PR w zgłoszeniu). Raport braków tłumaczeń, powtórzonych słów, nawiasów, kroków bez kropki, polskiego tekstu w tłumaczeniach i nieaktualnych ofert — w jednym zgłoszeniu `bot: redakcja`. Nie zmienia ilości, czasów, alergenów ani identyfikatorów. |
-| Kucharz (nowe dania) | `bot-chef.yml` → `scripts/bots/chef.mjs` | co godzinę; po osiągnięciu celu raz na dobę | Dopisuje sprawdzone dania z 23 regionów (najpierw najmniej liczne kuchnie) i warianty popularnych dań (np. pierogi z mięsem obok ruskich), aż katalog ma co najmniej 600 pozycji (`RECIPE_BOT_TARGET`). Szczegóły niżej. |
+| Kucharz (nowe dania) | `bot-chef.yml` → `scripts/bots/chef.mjs` | raz na dobę (3:23) | Dopisuje porcję sprawdzonych, zredagowanych dań (20 dziennie, `RECIPE_BOT_DAILY`) z 23 regionów — najpierw najmniej liczne kuchnie — i warianty popularnych dań (np. pierogi z mięsem obok ruskich), z tekstami we wszystkich 8 językach, aż katalog ma co najmniej 600 pozycji (`RECIPE_BOT_TARGET`); potem 4 dziennie. Szczegóły niżej. |
 | Oferty | `bot-offers.yml` → `apps/web/scripts/offers-bot.mjs` | co 6 h | Odczytuje publiczne oferty ALDI (z poszanowaniem robots.txt; pusta kategoria to status `empty`, nie błąd), zapisuje `offers.json` w `main`, gdy oferty się zmienią, i uruchamia wdrożenie. |
 
 ## Bot „kucharz” — jak sprawdza dania
 
 1. **Wybór**: region spośród trzech najmniej licznych kuchni (`cuisines` w `recipes.pl.js`, 23 regiony — m.in. chińska,
    tajska, wietnamska, koreańska, hiszpańska, portugalska, turecka, węgierska, ukraińska, gruzińska, brytyjska,
-   skandynawska, latynoamerykańska, afrykańska). Co drugi przebieg dodaje też 2 warianty losowego dania (pole `variantOf`).
+   skandynawska, latynoamerykańska, afrykańska). Pierwsza runda każdego dnia dodaje też 2 warianty losowego dania (pole `variantOf`). Jeden przebieg to kilka rund po 5 dań, zapis po każdej rundzie.
 2. **Propozycja** (model `RECIPE_BOT_MODEL`, domyślnie `claude-opus-5-5`): danie w formacie katalogu — produkty z katalogu
    albo nowe produkty z alergenami, rodzajem (`plant/dairy/egg/meat/fish/animal`), wartościami odżywczymi i nazwami
    w 7 językach; kroki i nazwy we wszystkich 8 językach.
 3. **Walidacja w kodzie** (`scripts/bots/chef-validate.mjs`): alergeny przepisu i flagi wegańskie/wegetariańskie
-   bot **liczy sam** z produktów (model nie może ich ustawić); odrzuca skorupiaki, mięczaki, orzeszki ziemne, łubin
-   i siarczyny (aplikacja nie ma takich alergenów), duplikaty nazw i ID, złe jednostki, różną liczbę kroków w językach,
+   bot **liczy sam** z produktów (model nie może ich ustawić); nazwa produktu wskazująca na alergen (krewetki, małże,
+   orzeszki ziemne, łubin, wino, pszenica, orzechy…) wymaga tego alergenu — aplikacja oznacza pełną listę 14 alergenów UE;
+   odrzuca duplikaty nazw i ID, złe jednostki, różną liczbę kroków w językach,
    znaki HTML, błędy redakcyjne (te same reguły co redaktor), kcal na porcję spoza 40–1500. Błędny rekord model poprawia raz.
 4. **Weryfikacja** (model `RECIPE_BOT_REVIEW_MODEL`, domyślnie `claude-sonnet-5-5`, z wyszukiwarką internetową):
-   czy to prawdziwe danie regionu, czy proporcje, czas i kroki są zgodne ze źródłami, czy kroki są bezpieczne.
+   czy to prawdziwe danie regionu, czy proporcje, czas i kroki są zgodne ze źródłami, czy kroki są bezpieczne,
+   oraz redakcja językowa tekstu polskiego i nazw w innych językach.
    Danie przechodzi tylko z co najmniej jednym źródłem, którego adres **naprawdę był w wynikach wyszukiwania**
    (zapisane w polu `sources`).
 5. **Zapis**: `apps/web/src/recipes.bot.<język>.js` (pliki generowane, nie edytować ręcznie), raport z odrzuconymi
