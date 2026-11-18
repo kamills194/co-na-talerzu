@@ -1,6 +1,8 @@
 // Stable ingredient IDs enable aggregation and future retailer product mappings.
 // Product record: [name, unit, allergens]. Existing IDs must never be renamed or removed:
 // favorites and shopping lists stored on users' devices refer to them.
+// Sulphites (> 10 mg/kg must be declared): wine always; vinegar, mustard and pickled gherkins conservatively,
+// because many Polish brands list sulphites (siarczyny, E220–E228) in the composition.
 export const products = {
   oats:['Płatki owsiane','g',['gluten']], milk:['Mleko','ml',['milk']], apple:['Jabłko','szt.',[]], cinnamon:['Cynamon','łyżeczka',[]],
   egg:['Jajko','szt.',['eggs']], butter:['Masło','g',['milk']], bread:['Chleb','kromka',['gluten']], tomato:['Pomidor','szt.',[]],
@@ -19,7 +21,7 @@ export const products = {
   yellowcheese:['Ser żółty','g',['milk']], mozzarella:['Mozzarella','g',['milk']], oliveoil:['Oliwa z oliwek','ml',[]], basil:['Bazylia świeża','doniczka',[]],
   parsley:['Natka pietruszki','pęczek',[]], zucchini:['Cukinia','szt.',[]], eggplant:['Bakłażan','szt.',[]], cabbage:['Kapusta biała','g',[]],
   mushroom:['Pieczarki','g',[]], orange:['Pomarańcza','szt.',[]], berries:['Owoce leśne mrożone','g',[]], potatostarch:['Mąka ziemniaczana','g',[]],
-  vinegar:['Ocet jabłkowy','ml',[]], tuna:['Tuńczyk w sosie własnym, odsączony','g',['fish']], mincedpork:['Mięso mielone wieprzowe','g',[]],
+  vinegar:['Ocet jabłkowy','ml',['sulphites']], tuna:['Tuńczyk w sosie własnym, odsączony','g',['fish']], mincedpork:['Mięso mielone wieprzowe','g',[]],
   ham:['Szynka gotowana, plastry','g',['gluten','soy','milk','celery','mustard']], sushirice:['Ryż do sushi','g',[]], soysauce:['Sos sojowy','ml',['soy','gluten']],
   miso:['Pasta miso','g',['soy','gluten']], tofu:['Tofu naturalne','g',['soy']], nori:['Nori, arkusz','szt.',[]], sesame:['Sezam, ziarno','g',['sesame']],
   // Added in CNT-033 (dishes over 60 minutes). Processed products are declared conservatively like ham:
@@ -29,9 +31,9 @@ export const products = {
   beef:['Wołowina gulaszowa','g',[]], beefslices:['Wołowina na zrazy, plastry','g',[]], mincedbeef:['Mięso mielone wołowe','g',[]],
   chickenthigh:['Udka z kurczaka, z kością i skórą','g',[]], porkshoulder:['Łopatka wieprzowa bez kości','g',[]],
   bacon:['Boczek wędzony, plastry','g',['gluten','soy','milk','celery','mustard']], sauerkraut:['Kapusta kiszona','g',[]],
-  wine:['Wino czerwone wytrawne','ml',[]], celeriac:['Seler korzeniowy','g',['celery']], parsleyroot:['Pietruszka, korzeń','szt.',[]],
+  wine:['Wino czerwone wytrawne','ml',['sulphites']], celeriac:['Seler korzeniowy','g',['celery']], parsleyroot:['Pietruszka, korzeń','szt.',[]],
   leek:['Por','szt.',[]], bayleaf:['Liść laurowy','szt.',[]], allspice:['Ziele angielskie','szt.',[]],
-  mustard:['Musztarda średnio ostra','g',['mustard']], gherkin:['Ogórek konserwowy','szt.',['mustard']], yeast:['Drożdże świeże','g',[]],
+  mustard:['Musztarda średnio ostra','g',['mustard','sulphites']], gherkin:['Ogórek konserwowy','szt.',['mustard','sulphites']], yeast:['Drożdże świeże','g',[]],
   ginger:['Imbir świeży','g',[]], curry:['Curry, przyprawa mielona','łyżeczka',['mustard','celery']],
   // Added in CNT-038 (popular dishes). Processed products are declared conservatively, as before: raw white sausage
   // like ham and bacon; lacto-fermented cucumbers like gherkins (brine may contain mustard seed); dried pasta sheets

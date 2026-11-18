@@ -33,12 +33,17 @@ test('Walidator: dieta z modelu niezgodna z produktami, mięso i ryby', () => {
   fish.ingredients.push({ product: 'salmon', amount: 200 });
   assert.match(errorsOf(fish), /rybę/); assert.match(errorsOf(fish), /tekst|krok|składnik|rybę/);
 });
-test('Walidator odrzuca alergeny, których aplikacja nie oznacza, i nieznane alergeny', () => {
-  const c = fresh(); c.newProducts.prawns = { name: 'Krewetki koktajlowe', unit: 'g', allergens: [], kind: 'animal', nutrition: [90, 20, 1, 0], names: Object.fromEntries(LANGS.slice(1).map(l => [l, 'Prawns'])) };
-  c.ingredients.push({ product: 'prawns', amount: 200 });
-  assert.match(errorsOf(c), /skorupiaki/);
-  const d = fresh(); Object.values(d.newProducts)[0].allergens = ['peanuts'];
-  assert.match(errorsOf(d), /alergeny spoza listy/);
+test('Walidator wymaga alergenu wskazanego nazwą (owoce morza, orzeszki ziemne) i zna rodzaj seafood', () => {
+  const prawns = () => ({ name: 'Krewetki koktajlowe', unit: 'g', allergens: [], kind: 'seafood', nutrition: [90, 20, 1, 0], names: Object.fromEntries(LANGS.slice(1).map(l => [l, 'Prawns'])) });
+  const c = fresh(); c.newProducts.prawns = prawns(); c.ingredients.push({ product: 'prawns', amount: 200 });
+  c.texts.pl.steps[2] += ' Dodaj krewetki i smaż 3 minuty.'; c.vegan = false; c.vegetarian = false;
+  assert.match(errorsOf(c), /crustaceans/);
+  c.newProducts.prawns.allergens = ['crustaceans'];
+  const v = validateCandidate(c, ctx); assert.ok(v.ok, v.errors.join('; '));
+  assert.equal(v.recipe.vegetarian, false); assert.ok(v.recipe.allergens.includes('crustaceans'));
+  const d = fresh(); Object.values(d.newProducts)[0].allergens = ['shellfish']; assert.match(errorsOf(d), /alergeny spoza listy/);
+  const pb = fresh(); Object.assign(Object.values(pb.newProducts)[0], { name: 'Masło orzechowe' }); assert.match(errorsOf(pb), /peanuts/);
+  assert.equal(kindOf('wine', products, MEAT_PRODUCTS), 'plant'); assert.ok(products.wine[2].includes('sulphites'));
 });
 test('Walidator: kroki w każdym języku, znaki HTML, duplikaty, jednostki i czas', () => {
   const c = fresh(); c.texts.de.steps.pop(); assert.match(errorsOf(c), /de: liczba kroków/);
@@ -94,7 +99,7 @@ test('Dania bota: kompletne rekordy, źródła, diety i alergeny zgodne z produk
     assert.ok(cuisines.includes(r.cuisine) && categories.includes(r.category), r.id);
     assert.ok(Array.isArray(r.sources) && r.sources.length >= 1 && r.sources.every(u => /^https?:\/\//.test(u)), `${r.id}: brak źródeł`);
     const kinds = r.ingredients.map(i => kindOf(i.product, products, MEAT_PRODUCTS, bot.kinds));
-    assert.equal(r.vegetarian, !kinds.some(k => k === 'meat' || k === 'fish'), `${r.id}: vegetarian`);
+    assert.equal(r.vegetarian, !kinds.some(k => k === 'meat' || k === 'fish' || k === 'seafood'), `${r.id}: vegetarian`);
     assert.equal(r.vegan, kinds.every(k => k === 'plant'), `${r.id}: vegan`);
     assert.deepEqual([...r.allergens].sort(), [...new Set(r.ingredients.flatMap(i => products[i.product][2]))].sort(), `${r.id}: alergeny`);
     const n = nutritionPerServing(r); assert.ok(n && n.kcal >= 40 && n.kcal <= 1500, `${r.id}: kcal`);

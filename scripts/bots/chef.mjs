@@ -1,5 +1,5 @@
-// Bot „kucharz”: dopisuje sprawdzone dania z wielu regionów, aż katalog ma co najmniej RECIPE_BOT_TARGET (600) pozycji,
-// a potem dalej, wolniej, uzupełnia najmniej liczne kuchnie. Dodaje też warianty popularnych dań
+// Bot „kucharz”: raz na dobę dopisuje porcję sprawdzonych, zredagowanych dań z wielu regionów, z tekstami we wszystkich
+// 8 językach aplikacji, aż katalog ma co najmniej RECIPE_BOT_TARGET (600) pozycji; potem dalej, mniejszymi porcjami. Dodaje też warianty popularnych dań
 // (np. obok pierogów ruskich: pierogi z mięsem, z jagodami).
 //
 // Przebieg jednego uruchomienia:
@@ -13,7 +13,7 @@
 // Commit, testy i wdrożenie robi workflow .github/workflows/bot-chef.yml.
 //
 // Wymaga ANTHROPIC_API_KEY (sekret repozytorium). Bez klucza kończy się bez zmian (kod wyjścia 0, ostrzeżenie).
-// Opcje: --dry (nic nie zapisuje), --batch N, --region kuchnia, --force (ignoruje tryb podtrzymania po osiągnięciu celu).
+// Opcje: --dry (nic nie zapisuje), --batch N (dań w tym przebiegu), --region kuchnia.
 import { readFile, writeFile, appendFile } from 'node:fs/promises';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { validateCandidate, acceptedSources, pickRegion, mergeAccepted, LANGS, KINDS, kindOf } from './chef-validate.mjs';
@@ -23,7 +23,6 @@ const SRC = ROOT + 'apps/web/src/';
 const REPORT = ROOT + 'apps/web/reports/chef-bot.json';
 const arg = name => { const i = process.argv.indexOf(name); return i >= 0 ? (process.argv[i + 1] ?? true) : undefined; };
 const DRY = process.argv.includes('--dry');
-const FORCE = process.argv.includes('--force');
 const KEY = process.env.ANTHROPIC_API_KEY;
 const MODEL = process.env.RECIPE_BOT_MODEL || 'claude-opus-5-5';
 const REVIEW_MODEL = process.env.RECIPE_BOT_REVIEW_MODEL || 'claude-sonnet-5-5';
@@ -159,8 +158,8 @@ ${base ? `Dodatkowo zaproponuj 2 warianty dania „${base.name}” (id ${base.id
 ZASADY (wszystkie obowiązkowe):
 1. Tylko prawdziwe, uznane dania tego regionu, opisane w wiarygodnych źródłach (książki kucharskie, instytucje kulinarne, duże serwisy kulinarne). Bez fusion i bez wymyślonych potraw. Każde danie zostanie sprawdzone w internecie; niepotwierdzone odpadną.
 2. Wykonalne w domowej kuchni ze składników dostępnych w polskim supermarkecie. Zachowaj autentyczny charakter.
-3. Ilości na 2 porcje, w jednostce produktu. Najpierw używaj istniejących produktów (lista niżej, format: id | nazwa | jednostka | alergeny | rodzaj). Nowy produkt dodaj w newProducts tylko gdy konieczny (najwyżej 3 na danie), z id w stylu katalogu (małe litery, bez myślników, ang. rdzeń, np. "gochujang"), jednostką z listy ${UNITS.join(', ')}, alergenami tylko z listy ${ctx.allergens.join(', ')} (deklaruj ostrożnie: produkty o zmiennym składzie dostają wszystkie typowe alergeny), rodzajem (${KINDS.join(', ')}; animal = miód itp.), wartościami odżywczymi [kcal, białko, tłuszcz, węglowodany] na 100 g, unitGrams (gramy jednej jednostki, gdy jednostka nie jest g/ml) i nazwami w 7 językach.
-4. NIE używaj skorupiaków, mięczaków, orzeszków ziemnych, łubinu ani produktów z siarczynami jako głównego składnika — aplikacja nie umie oznaczyć tych alergenów. Jeśli tradycyjne danie ich wymaga, wybierz inne danie.
+3. Ilości na 2 porcje, w jednostce produktu. Najpierw używaj istniejących produktów (lista niżej, format: id | nazwa | jednostka | alergeny | rodzaj). Nowy produkt dodaj w newProducts tylko gdy konieczny (najwyżej 3 na danie), z id w stylu katalogu (małe litery, bez myślników, ang. rdzeń, np. "gochujang"), jednostką z listy ${UNITS.join(', ')}, alergenami tylko z listy ${ctx.allergens.join(', ')} (deklaruj ostrożnie: produkty o zmiennym składzie dostają wszystkie typowe alergeny), rodzajem (${KINDS.join(', ')}; seafood = skorupiaki i mięczaki; animal = miód itp.), wartościami odżywczymi [kcal, białko, tłuszcz, węglowodany] na 100 g, unitGrams (gramy jednej jednostki, gdy jednostka nie jest g/ml) i nazwami w 7 językach.
+4. Aplikacja oznacza wszystkie 14 alergenów UE, także skorupiaki (crustaceans), mięczaki (molluscs), orzeszki ziemne (peanuts), łubin (lupin) i siarczyny (sulphites: wino, ocet winny, suszone owoce siarkowane). Owoce morza mają rodzaj seafood. Dania z tymi składnikami są dozwolone, jeśli alergeny są oznaczone.
 5. minutes: łączny czas z czasem biernym (pieczenie, duszenie, wyrastanie), liczba całkowita 5–180.
 6. Kategoria: breakfast (śniadanie), snack (drugie śniadanie/przekąska), lunch (obiad), dinner (kolacja), dessert, starter. W regionie są już: ${JSON.stringify(cats)} — uzupełniaj najmniej liczne, ale nie na siłę.
 7. Kroki: 3–8, tryb rozkazujący, pełne zdania zakończone kropką, z temperaturami i czasami; każdy składnik z listy jest w krokach; mięso i jajka zawsze dogotowane do bezpiecznej temperatury.
@@ -189,8 +188,8 @@ Nazwa EN/UK: ${v.translations.en.recipe.name} / ${v.translations.uk.recipe.name}
 a) czy to prawdziwe, uznane danie podanego regionu (nie wymysł, nie fusion) — potwierdź co najmniej jednym wiarygodnym źródłem;
 b) czy składniki, proporcje na 2 porcje, czas i kroki są zgodne z tradycyjnymi przepisami i dadzą jadalny wynik;
 c) czy kroki są bezpieczne (dogotowanie mięsa, drobiu, jajek; brak niebezpiecznych technik);
-d) czy nowe produkty mają wszystkie typowe alergeny (gluten, mleko, jaja, orzechy, ryby, soja, seler, gorczyca, sezam) i czy danie nie zawiera skorupiaków, mięczaków, orzeszków ziemnych ani łubinu;
-e) czy nazwa polska i tłumaczenia nazwy są poprawne.
+d) czy nowe produkty mają wszystkie typowe alergeny z 14 alergenów UE (gluten, mleko, jaja, orzechy, orzeszki ziemne, ryby, skorupiaki, mięczaki, soja, seler, gorczyca, sezam, łubin, siarczyny);
+e) redakcja: czy polski tekst jest poprawny językowo i stylistycznie (tryb rozkazujący, pełne zdania), a nazwy w innych językach naturalne i poprawne.
 Odrzuć przy jakiejkolwiek wątpliwości. W sources podaj tylko adresy stron, które faktycznie pojawiły się w wynikach wyszukiwania. Na końcu wywołaj submit_review.
 
 ${items.map(show).join('\n\n')}`;
@@ -210,31 +209,16 @@ export async function writeData(pl, langs) {
 async function readReport() { try { return JSON.parse(await readFile(REPORT, 'utf8')); } catch { return { runs: [], rejected: [] }; } }
 
 // ---------- główny przebieg ----------
-async function main() {
-  const report = await readReport();
-  let ctx = await loadContext();
-  const total = ctx.recipes.length;
-  const maintenance = total >= TARGET;
-  const last = report.runs.findLast?.(r => r.added > 0);
-  if (maintenance && !FORCE && last && Date.now() - Date.parse(last.at) < 20 * 36e5) { log(`katalog ma ${total} ≥ ${TARGET}; tryb podtrzymania — następne dania za dobę`); return 0; }
-  if (!KEY) { console.log('::warning::Bot „kucharz”: brak sekretu ANTHROPIC_API_KEY — nic nie dodano (Settings → Secrets and variables → Actions).'); return 0; }
-
-  const regions = ctx.cuisines;
-  const region = arg('--region') ?? pickRegion(regions, ctx.recipes);
-  const n = Number(arg('--batch') ?? (maintenance ? 2 : 6));
-  // Danie bazowe do wariantów: popularne danie mające mniej niż 3 wersje (co drugie uruchomienie).
-  const variantCount = id => ctx.recipes.filter(r => r.variantOf === id).length;
-  const bases = ctx.recipes.filter(r => !r.variantOf && variantCount(r.id) < 3 && !['snack'].includes(r.category));
-  const base = report.runs.length % 2 === 0 && bases.length ? bases[Math.floor(Math.random() * bases.length)] : null;
+// Jedna runda: jeden region (i ewentualnie warianty jednego dania), do 5 dań → walidacja → weryfikacja.
+async function round(ctx, report, { region, n, base }) {
   const rejected = report.rejected.filter(x => x.region === region || (base && x.variantOf === base.id)).map(x => x.name).slice(-60);
-  log(`katalog: ${total}/${TARGET}, region: ${region}, dań: ${n}${base ? `, warianty: ${base.id}` : ''}`);
-
+  log(`runda: region ${region}, dań ${n}${base ? `, warianty: ${base.id}` : ''}`);
   const gen = async content => (await converse({ model: MODEL, max_tokens: 32000, tools: [SUBMIT], tool_choice: { type: 'tool', name: SUBMIT.name },
     messages: [{ role: 'user', content }] }, SUBMIT.name)).input.recipes ?? [];
-  let candidates = await gen(generatorPrompt(ctx, region, n, base, rejected));
+  const candidates = await gen(generatorPrompt(ctx, region, n, base, rejected));
   const ok = [], bad = [], rejectedNow = [];
   const check = list => { for (const c of list) { const v = validateCandidate(c, { ...ctx, recipes: [...ctx.recipes, ...ok.map(o => o.recipe)] });
-    if (v.ok) { v.recipe.variantOf = typeof c.variantOf === 'string' && ctx.recipes.some(r => r.id === c.variantOf) ? c.variantOf : undefined; if (!v.recipe.variantOf) delete v.recipe.variantOf; ok.push(v); } else bad.push({ c, errors: v.errors }); } };
+    if (v.ok) { if (typeof c.variantOf === 'string' && ctx.recipes.some(r => r.id === c.variantOf)) v.recipe.variantOf = c.variantOf; ok.push(v); } else bad.push({ c, errors: v.errors }); } };
   check(candidates);
   if (bad.length) {
     log(`poprawki: ${bad.length} rekordów z błędami walidacji`);
@@ -243,8 +227,6 @@ async function main() {
     check(fixed);
     for (const b of [...retry.filter(r => !ok.some(o => o.recipe.id === r.c?.id)), ...bad]) rejectedNow.push({ name: b.c?.texts?.pl?.name ?? b.c?.id, region: b.c?.cuisine ?? region, variantOf: b.c?.variantOf, stage: 'walidacja', reasons: b.errors.slice(0, 6).join('; ') });
   }
-
-  // Weryfikacja ze źródłami.
   const accepted = [];
   if (ok.length) {
     const searched = new Set();
@@ -258,20 +240,54 @@ async function main() {
       else rejectedNow.push({ name: v.recipe.name, region: v.recipe.cuisine, variantOf: v.recipe.variantOf, stage: 'weryfikacja', reasons: rv ? (rv.verdict === 'accept' ? 'brak źródła z wyników wyszukiwania' : rv.reasons) : 'brak werdyktu' });
     }
   }
-
-  log(`dodane: ${accepted.length}, odrzucone: ${rejectedNow.length}`);
   for (const a of accepted) log(`  + ${a.recipe.id} (${a.recipe.cuisine}) ← ${a.recipe.sources.join(' ')}`);
   for (const r of rejectedNow) log(`  − ${r.name} [${r.stage}]: ${r.reasons}`);
-  report.runs.push({ at: new Date().toISOString(), region, variantsOf: base?.id ?? null, model: MODEL, reviewModel: REVIEW_MODEL, proposed: candidates.length, added: accepted.length, total: total + accepted.length, target: TARGET });
-  report.runs = report.runs.slice(-200);
-  report.rejected = [...report.rejected, ...rejectedNow].slice(-500);
+  report.runs.push({ at: new Date().toISOString(), region, variantsOf: base?.id ?? null, model: MODEL, reviewModel: REVIEW_MODEL, proposed: candidates.length, added: accepted.length, total: ctx.recipes.length + accepted.length, target: TARGET });
+  report.rejected.push(...rejectedNow);
+  return { accepted, rejectedNow };
+}
+
+// Raz na dobę (workflow bot-chef.yml): kilka rund, aż dojdzie RECIPE_BOT_DAILY dań (domyślnie 20),
+// po osiągnięciu celu RECIPE_BOT_MAINTENANCE (domyślnie 4). Zapis po każdej rundzie — przerwany przebieg nie traci dań.
+async function main() {
+  const report = await readReport();
+  let ctx = await loadContext();
+  const start = ctx.recipes.length;
+  const maintenance = start >= TARGET;
+  if (!KEY) { console.log('::warning::Bot „kucharz”: brak sekretu ANTHROPIC_API_KEY — nic nie dodano (Settings → Secrets and variables → Actions).'); return 0; }
+  const want = Number(arg('--batch') ?? (maintenance ? (process.env.RECIPE_BOT_MAINTENANCE || 4) : (process.env.RECIPE_BOT_DAILY || 20)));
+  log(`katalog: ${start}/${TARGET}, dziś do dodania: ${want}`);
+  const allAccepted = [], allRejected = [];
+  let rounds = 0;
+  while (allAccepted.length < want && rounds < Math.ceil(want / 5) + 3) {
+    const region = arg('--region') ?? pickRegion(ctx.cuisines, ctx.recipes);
+    // Warianty popularnego dania (pierogi z mięsem obok ruskich itd.) w pierwszej rundzie dnia.
+    const variantCount = id => ctx.recipes.filter(r => r.variantOf === id).length;
+    const bases = ctx.recipes.filter(r => !r.variantOf && variantCount(r.id) < 3 && r.category !== 'snack');
+    const base = rounds === 0 && bases.length ? bases[Math.floor(Math.random() * bases.length)] : null;
+    const n = Math.min(5, want - allAccepted.length);
+    rounds++;
+    let res;
+    try { res = await round(ctx, report, { region, n, base }); }
+    catch (e) { console.log(`::warning::Runda ${rounds} nieudana: ${e.message}`); if (rounds > 1 && /HTTP 4\d\d/.test(e.message)) break; continue; }
+    allAccepted.push(...res.accepted); allRejected.push(...res.rejectedNow);
+    if (res.accepted.length && !DRY) {
+      const { pl, langs } = mergeAccepted(ctx.botPl, ctx.botLangs, res.accepted); await writeData(pl, langs);
+      // Moduły ES są w pamięci podręcznej importu — kontekst uzupełniamy w miejscu, nie przez ponowny import.
+      ctx = { ...ctx, botPl: pl, botLangs: langs, botKinds: pl.kinds, recipes: [...ctx.recipes, ...res.accepted.map(a => a.recipe)],
+        products: { ...ctx.products, ...pl.products }, nutrition: { ...pl.nutrition, ...ctx.nutrition }, unitGrams: { ...pl.unitGrams, ...ctx.unitGrams },
+        meat: [...new Set([...ctx.meat, ...Object.keys(pl.kinds).filter(id => pl.kinds[id] === 'meat')])] };
+    }
+  }
+  report.runs = report.runs.slice(-400);
+  report.rejected = report.rejected.slice(-800);
   report.updatedAt = new Date().toISOString();
+  log(`dodane dziś: ${allAccepted.length}, odrzucone: ${allRejected.length}, katalog: ${start + allAccepted.length}`);
   if (DRY) { log('[na sucho] bez zapisu'); return 0; }
-  if (accepted.length) { const { pl, langs } = mergeAccepted(ctx.botPl, ctx.botLangs, accepted); await writeData(pl, langs); }
   await writeFile(REPORT, JSON.stringify(report, null, 1) + '\n');
-  if (process.env.GITHUB_OUTPUT) await appendFile(process.env.GITHUB_OUTPUT, `added=${accepted.length}\ntotal=${total + accepted.length}\n`);
+  if (process.env.GITHUB_OUTPUT) await appendFile(process.env.GITHUB_OUTPUT, `added=${allAccepted.length}\ntotal=${start + allAccepted.length}\n`);
   if (process.env.GITHUB_STEP_SUMMARY) await appendFile(process.env.GITHUB_STEP_SUMMARY,
-    `### Bot „kucharz”\nKatalog: **${total + accepted.length}** / ${TARGET} · region: ${region}${base ? ` · warianty: ${base.id}` : ''}\n\n${accepted.map(a => `- ✅ ${a.recipe.name} (${a.recipe.cuisine})`).join('\n')}\n${rejectedNow.map(r => `- ❌ ${r.name} — ${r.stage}: ${r.reasons}`).join('\n')}\n`);
+    `### Bot „kucharz”\nKatalog: **${start + allAccepted.length}** / ${TARGET}\n\n${allAccepted.map(a => `- ✅ ${a.recipe.name} (${a.recipe.cuisine})`).join('\n')}\n${allRejected.map(r => `- ❌ ${r.name} — ${r.stage}: ${r.reasons}`).join('\n')}\n`);
   return 0;
 }
 

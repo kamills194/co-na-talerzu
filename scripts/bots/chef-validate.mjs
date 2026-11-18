@@ -2,13 +2,13 @@
 // Model językowy proponuje danie, ale o wszystkim, co dotyczy bezpieczeństwa, decyduje ten kod:
 //  - alergeny przepisu liczone są z produktów, a flagi vegan/vegetarian z rodzaju produktów (kinds),
 //  - nowe produkty muszą mieć alergeny z listy aplikacji, rodzaj, wartości odżywcze i przeliczenie jednostki,
-//  - produkty z alergenami, których aplikacja nie umie oznaczyć (skorupiaki, mięczaki, orzeszki ziemne,
-//    łubin, siarczyny), są odrzucane,
+//  - nazwa produktu wskazująca na alergen (krewetki, małże, orzeszki ziemne, łubin, wino, pszenica, orzechy…)
+//    wymaga tego alergenu — aplikacja oznacza wszystkie 14 alergenów z listy UE,
 //  - teksty w 8 językach mają tyle samo kroków, bez znaków HTML i bez błędów redakcyjnych.
 import { tidy, lint } from './text-rules.mjs';
 
 export const LANGS = ['pl', 'en', 'de', 'uk', 'fr', 'da', 'es', 'it'];
-export const KINDS = ['plant', 'dairy', 'egg', 'meat', 'fish', 'animal'];
+export const KINDS = ['plant', 'dairy', 'egg', 'meat', 'fish', 'seafood', 'animal'];
 // Rodzaj produktów redakcji (nie mają znacznika rodzaju): mięso z listy MEAT_PRODUCTS, ryby z alergenu,
 // nabiał i jajka z alergenów. Miód i żelatyny nie ma w katalogu redakcji.
 export function kindOf(id, products, meat, botKinds = {}) {
@@ -16,12 +16,21 @@ export function kindOf(id, products, meat, botKinds = {}) {
   const p = products[id]; if (!p) return null;
   if (meat.includes(id)) return 'meat';
   if (p[2].includes('fish')) return 'fish';
+  if (p[2].includes('crustaceans') || p[2].includes('molluscs')) return 'seafood';
   if (p[2].includes('milk')) return 'dairy';
   if (p[2].includes('eggs')) return 'egg';
   return 'plant';
 }
-// Nazwy wskazujące na alergeny spoza listy aplikacji (pl i en). Takie produkty bot odrzuca.
-const UNSUPPORTED = /krewet|krab|homar|langust|raki\b|kalmar|ośmiorni|małż|mul(e|i)\b|ostryg|przegrzeb|orzesz(ek|ki) ziemn|arachid|łubin|siarczyn|shrimp|prawn|crab|lobster|squid|octopus|mussel|oyster|clam|scallop|peanut|lupin|sulphite|sulfite|pasta krewetkowa|shrimp paste/i;
+// Nazwy, które wymagają konkretnego alergenu (pl i en). Produkt o takiej nazwie bez alergenu jest odrzucany.
+export const NAME_ALLERGENS = [
+  [/krewet|krab|homar|langust|\braki\b|shrimp|prawn|crab|lobster|crayfish/i, 'crustaceans'],
+  [/kalmar|ośmiorni|małż|\bmul(e|i)\b|ostryg|przegrzeb|sepi|squid|octopus|mussel|oyster|clam|scallop|cuttlefish/i, 'molluscs'],
+  [/orzesz(ek|ki) ziemn|arachid|masło orzechowe|peanut/i, 'peanuts'],
+  [/łubin|lupin/i, 'lupin'],
+  [/\bwin(o|a)\b|ocet winny|ocet balsamiczny|wine|sherry|porto|suszone morele|dried apricot/i, 'sulphites'],
+  [/pszen|żytn|jęczm|orkisz|kuskus|bulgur|wheat|barley|\brye\b|spelt|couscous/i, 'gluten'],
+  [/orzech|migdał|pistacj|nerkow|laskow|almond|walnut|hazelnut|cashew|pistachio|pecan/i, 'nuts'],
+];
 // Rdzenie nazw mięsa i ryb — produkt o takiej nazwie musi mieć odpowiedni rodzaj (jak test w nutrition.test.mjs).
 const MEAT_STEMS = /kurczak|kurcz|szynk|mięs|mies|wieprz|wołow|wolow|boczek|kiełbas|kielbas|indyk|kaczk|jagnię|baranin|cielęc|chorizo|salami|smalec|żelatyn|bulion drobiow|bulion wołow/i;
 const FISH_STEMS = /ryb|łosoś|losos|dorsz|śledź|śledz|tuńczyk|sardyn|anchois|makrel|pstrąg|halibut|mintaj|morszczuk|szprot/i;
@@ -73,14 +82,16 @@ export function validateCandidate(c, ctx) {
     if (!al || !al.every(a => ctx.allergens.includes(a))) errors.push(`${w}: alergeny spoza listy aplikacji`);
     if (!KINDS.includes(p?.kind)) errors.push(`${w}: nieznany rodzaj ${p?.kind}`);
     const allNames = [name, ...Object.values(p?.names ?? {})].join(' | ');
-    if (UNSUPPORTED.test(allNames)) errors.push(`${w}: zawiera alergen, którego aplikacja nie oznacza (skorupiaki, mięczaki, orzeszki ziemne, łubin, siarczyny)`);
+    for (const [re, a] of NAME_ALLERGENS) if (re.test(allNames) && !al?.includes(a) && !/kokos|coconut|muszkat|nutmeg|bez glutenu|gluten-free/i.test(allNames)) errors.push(`${w}: nazwa wskazuje na alergen ${a}, którego brak`);
+    if (p?.kind === 'seafood' && !al?.some(a => a === 'crustaceans' || a === 'molluscs')) errors.push(`${w}: owoce morza bez alergenu skorupiaki/mięczaki`);
+    if (al?.some(a => a === 'crustaceans' || a === 'molluscs') && p?.kind !== 'seafood') errors.push(`${w}: alergen skorupiaki/mięczaki przy rodzaju ${p?.kind}`);
     if (MEAT_STEMS.test(name) && p?.kind !== 'meat') errors.push(`${w}: nazwa wskazuje na mięso, a rodzaj to ${p?.kind}`);
     if (FISH_STEMS.test(name) && p?.kind !== 'fish') errors.push(`${w}: nazwa wskazuje na rybę, a rodzaj to ${p?.kind}`);
     if (p?.kind === 'fish' && !al?.includes('fish')) errors.push(`${w}: ryba bez alergenu fish`);
     if (al?.includes('fish') && p?.kind !== 'fish') errors.push(`${w}: alergen fish przy rodzaju ${p?.kind}`);
     if (p?.kind === 'dairy' && !al?.includes('milk')) errors.push(`${w}: nabiał bez alergenu milk`);
     if (p?.kind === 'egg' && !al?.includes('eggs')) errors.push(`${w}: jajka bez alergenu eggs`);
-    if (p?.kind === 'plant' && al?.some(a => ['milk', 'eggs', 'fish'].includes(a))) errors.push(`${w}: produkt roślinny z alergenem odzwierzęcym`);
+    if (p?.kind === 'plant' && al?.some(a => ['milk', 'eggs', 'fish', 'crustaceans', 'molluscs'].includes(a))) errors.push(`${w}: produkt roślinny z alergenem odzwierzęcym`);
     const n = p?.nutrition;
     if (!Array.isArray(n) || n.length !== 4 || !n.every(v => Number.isFinite(v) && v >= 0) || n[0] > 900 || n[1] + n[2] + n[3] > 100.5) errors.push(`${w}: wartości odżywcze poza zakresem na 100 g`);
     if (!['g', 'ml'].includes(p?.unit)) {
@@ -110,7 +121,7 @@ export function validateCandidate(c, ctx) {
   // Diety i alergeny — liczone, nie przepisywane z modelu.
   const kindOfItem = pid => kinds[pid] ?? kindOf(pid, ctx.products, ctx.meat, ctx.botKinds);
   const ks = items.filter(i => productOf(i?.product)).map(i => kindOfItem(i.product));
-  const vegetarian = !ks.some(k => k === 'meat' || k === 'fish');
+  const vegetarian = !ks.some(k => k === 'meat' || k === 'fish' || k === 'seafood');
   const vegan = ks.every(k => k === 'plant');
   const allergens = [...new Set(items.filter(i => productOf(i?.product)).flatMap(i => productOf(i.product)[2]))];
   if (c.vegan !== undefined && c.vegan !== vegan) errors.push(`model podał vegan=${c.vegan}, z produktów wynika ${vegan}`);
