@@ -131,7 +131,9 @@ const safeUrl = u => (typeof u === 'string' && /^https:\/\/[^\s"'<>`]+$/.test(u)
 export function leafletPages(html, base = 'https://www.aldi.pl') {
   // Linki są w HTML (href) albo w danych strony (__NEXT_DATA__, także z ucieczką \/), względne lub pełne.
   const text = String(html).replace(/\\\//g, '/');
-  const urls = [...text.matchAll(/(?<![a-z0-9.-])((?:https:\/\/www\.aldi\.pl)?\/gazetki\/[a-z0-9_.-]+\.html)/gi)].map(m => new URL(m[1], base).href);
+  // W danych strony ścieżka bywa bez „.html” ("path":"/gazetki/2026_cw47_mo_promotion_26k47g01").
+  // Tylko gazetki z rokiem i tygodniem w nazwie (RRRR_cwNN_…) — starsze strony specjalne są pomijane.
+  const urls = [...text.matchAll(/(?<![a-z0-9.-])((?:https:\/\/www\.aldi\.pl)?\/gazetki\/(20\d\d_cw\d{1,2}_[a-z0-9_-]+?))(?:\.html)?(?![a-z0-9_-])/gi)].map(m => new URL(m[1] + '.html', base).href);
   return [...new Set(urls)].filter(u => !/raport|marnowanie/i.test(u));
 }
 // Adres przeglądarki iPaper ze strony gazetki na aldi.pl.
@@ -145,6 +147,7 @@ export function leafletTitle(url) {
   const special = /_special_[a-z0-9]+_([a-z-]+)$/i.exec(name);
   if (special) { const s = special[1].replace(/-/g, ' '); return s.charAt(0).toUpperCase() + s.slice(1); }
   if (/non-food/i.test(name)) return 'Artykuły przemysłowe i tekstylia';
+  if (/weekend/i.test(name)) return 'Okazje na weekend';
   if (/promotion/i.test(name)) return 'Gazetka tygodniowa';
   return 'Gazetka';
 }
