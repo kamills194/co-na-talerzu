@@ -33,7 +33,7 @@ function runApp({saved,lang,offers=[],script,dark=false,crypto=false}) {
       focus(opts){focused.push([s,opts]);if(o.tagName==='INPUT')globalThis.scrollY=0;},addEventListener(){},removeEventListener(){},setAttribute(k,v){this.attrs[k]=String(v)},getAttribute(k){return this.attrs[k]??null},removeAttribute(k){delete this.attrs[k]},append(){},hidden:false,style:{},dataset:{}};
       Object.defineProperty(o,'innerHTML',{get:()=>html,set:v=>{html=String(v);if(s==='#main')globalThis.scrollY=0;}});return o;};
     const el=s=>{if(!els.has(s))els.set(s,make(s));return els.get(s);};
-    const always=new Set(['#main','#results','#detail','#toast','#nav','#lang','#cuisine-tabs','#net-status','body','.exclusions','#footer-text','#privacy','.skip','.brand small','.brand','.brand-name','meta[name="description"]']);
+    const always=new Set(['#main','#results','#detail','#toast','#nav','#lang','#cuisine-tabs','#net-status','body','.exclusions','#footer-text','#privacy','.skip','.brand small','.brand','.brand-name','#filters-reset','meta[name="description"]']);
     const exists=s=>{if(always.has(s))return true;const m=/^#([\\w-]+)$/.exec(s);const all=[...els.values()].map(e=>e.innerHTML).join('');if(m)return all.includes('id="'+m[1]+'"');if(s==='.exclusions summary')return all.includes('<summary>');if(s.startsWith('.exclusion-summary'))return all.includes('class="exclusion-summary"');return true;};
     const handlers={},store=new Map(${JSON.stringify(saved?[[KEY,JSON.stringify(saved)]]:[])});
     globalThis.document={querySelector:s=>exists(s)?el(s):null,querySelectorAll:()=>[],addEventListener:(n,f)=>handlers[n]=f,body:el('body'),documentElement:{lang:'pl',dir:'ltr',attrs:{},setAttribute(k,v){this.attrs[k]=v},getAttribute(k){return this.attrs[k]??null},removeAttribute(k){delete this.attrs[k]}},title:''};
@@ -85,10 +85,14 @@ test('CNT-043: okno pierogów ruskich proponuje inne wersje dania, a przycisk ot
   assert.ok(out.html.includes(messages.variantsTitle));
   assert.equal(out.now,recipes.find(r=>r.id==='pierogi-z-owocami').name);
 });
-test('CNT-043: zakładka i otwarty przepis są w adresie, a filtry w sessionStorage — odświeżenie zostaje w tym samym miejscu',async()=>{
+test('CNT-044: odświeżenie zostaje na zakładce (adres), ale resetuje filtry, otwarty przepis i przewinięcie',async()=>{
   const app=await src('app.js');
-  assert.match(app,/history\.replaceState/); assert.match(app,/sessionStorage/);
-  assert.match(app,/const route=readRoute\(\)[^\n]*if\(route\.tab\)tab=route\.tab;/);
-  assert.match(app,/if\(route\.recipe\)openRecipe\(route\.recipe\)/);
-  assert.match(app,/function render\(\) \{ writeRoute\(\);/);
+  assert.match(app,/history\.replaceState/); assert.match(app,/function render\(\) \{ writeRoute\(\);/);
+  assert.match(app,/const route=readRoute\(\); if\(route\.tab\)tab=route\.tab; shell\(\); render\(\); window\.scrollTo/);
+  assert.match(app,/scrollRestoration='manual'/);
+  assert.doesNotMatch(app,/sessionStorage/); assert.doesNotMatch(app,/openRecipe\(route/);
+});
+test('CNT-044: „Wyczyść filtry” jest także w panelu filtrów i czyści wszystkie filtry',()=>{
+  const out=runApp({script:`await click({dataset:{category:'dinner'}});out.top=el('#filters-reset').innerHTML;await click({id:'reset-top'});out.after=el('#filters-reset').innerHTML;out.count=ids(el('#results').innerHTML).length;`});
+  assert.match(out.top,/id="reset-top"/); assert.equal(out.after,''); assert.equal(out.count,recipes.length);
 });

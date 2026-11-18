@@ -82,7 +82,7 @@ test('Ekran katalogu ma zakładki kuchni ze stanem, a reset czyści kuchnię', a
   assert.match(app, /id="cuisine-tabs" role="group" aria-label="\$\{t\('cuisine'\)\}"/);
   assert.match(app, /data-cuisine="\$\{esc\(c\)\}" aria-pressed="\$\{c===filters\.cuisine\}"/);
   assert.match(app, /t\(c\|\|'allCuisines'\)/);
-  assert.match(app, /if\(b\.id==='reset'\)\{filters=\{query:'',category:'',cuisine:'',/);
+  assert.match(app, /if\(b\.id==='reset'\|\|b\.id==='reset-top'\)\{filters=\{query:'',category:'',cuisine:'',/);
   assert.match(app, /refocus\(`#cuisine-tabs \[data-cuisine=/);
   assert.ok(!/import \{[^}]*cuisines[^}]*\} from '\.\/recipes\.pl\.js'/.test(app), 'lista kuchni pochodzi z i18n.js');
   assert.match(css, /\.cuisine-tabs\{[^}]*overflow-x:auto/);

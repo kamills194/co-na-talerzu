@@ -161,7 +161,7 @@ test('3. Każda ścieżka czyszczenia: przycisk w stanie pustym i „Wyczyść�
 });
 test('3. Reset z aktywnym filtrem, gdy przycisk nadal istnieje, zostawia na nim fokus (kod: najpierw #reset)',async()=>{
   const app=await src('app.js');
-  assert.match(app,/if\(b\.id==='reset'\)\{[^\n]*keepPlace\(catalog,\['#reset','#results-count'\]\)/);
+  assert.match(app,/if\(b\.id==='reset'\|\|b\.id==='reset-top'\)\{[^\n]*keepPlace\(catalog,\['#reset','#results-count'\]\)/);
   assert.ok(!/if\(b\.id==='reset'\)[^\n]*refocus\('#search'\)/.test(app));
   assert.match(app,/focus\(\{preventScroll:true\}\)/);
 });

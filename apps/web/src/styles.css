@@ -103,3 +103,5 @@ header ins.adsbygoogle,nav ins.adsbygoogle,dialog ins.adsbygoogle,.lang-picker i
 .variants{margin:14px 0}.variants ul{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
 .variants .variant{min-height:44px;padding:8px 14px;border:1.5px solid var(--border);border-radius:22px;background:var(--white);color:var(--ink);cursor:pointer;text-align:left}
 .variants .variant:hover{border-color:var(--ink)}
+/* CNT-044: „Wyczyść filtry” w panelu filtrów */
+.filters-reset:empty{display:none}.filters-reset{margin-top:12px}.filters-reset button{min-height:44px}
