@@ -3,7 +3,7 @@
   "market": "PL",
   "currency": "PLN",
   "timeZone": "Europe/Warsaw",
-  "updatedAt": "2026-11-18T22:11:00.381Z",
+  "updatedAt": "2026-11-19T04:22:11.219Z",
   "offers": [
     {
       "id": "aldi-497-1794783600",
@@ -19,7 +19,7 @@
       "until": "2026-11-21",
       "from": "2026-11-16",
       "source": "https://www.aldi.pl/produkty/nabial-i-jaja/maslo.html",
-      "fetchedAt": "2026-11-18T22:11:00.381Z",
+      "fetchedAt": "2026-11-19T04:22:11.219Z",
       "name": "Masło ekstra",
       "unit": "Opak. 200 g",
       "regularPrice": 5.99,
@@ -41,7 +41,7 @@
       "until": "2026-11-21",
       "from": "2026-11-16",
       "source": "https://www.aldi.pl/produkty/nabial-i-jaja/jaja.html",
-      "fetchedAt": "2026-11-18T22:11:00.381Z",
+      "fetchedAt": "2026-11-19T04:22:11.219Z",
       "name": "Jaja z wolnego wybiegu L",
       "unit": "Opak. 10 szt.",
       "regularPrice": 12.99,
@@ -63,7 +63,7 @@
       "until": "2026-11-21",
       "from": "2026-11-16",
       "source": "https://www.aldi.pl/produkty/owoce-i-warzywa/warzywa.html",
-      "fetchedAt": "2026-11-18T22:11:00.381Z",
+      "fetchedAt": "2026-11-19T04:22:11.219Z",
       "name": "Pomidory malinowe",
       "unit": "Cena za kg",
       "regularPrice": 17.99,
@@ -85,7 +85,7 @@
       "until": "2026-11-21",
       "from": "2026-11-16",
       "source": "https://www.aldi.pl/produkty/owoce-i-warzywa/warzywa.html",
-      "fetchedAt": "2026-11-18T22:11:00.381Z",
+      "fetchedAt": "2026-11-19T04:22:11.219Z",
       "name": "Ogórki szklarniowe",
       "unit": "Cena za kg",
       "regularPrice": 14.99,
@@ -94,7 +94,7 @@
       "evidence": "{\"validFrom\":1794783600,\"validUntil\":1795301999,\"priceValue\":6.99,\"strikePrice\":{\"strikePriceValue\":14.99},\"priceTagLabels\":{\"promoText1\":\"53% TANIEJ\",\"bestPricesWithin30daysText\":\"14.99 zł to najniższa cena sprzed pierwszej obniżki.\"},\"validFromLocalDate\":\"2026-11-16\",\"validUntilLocalDate\":\"2026-11-21\"}"
     },
     {
-      "id": "aldi-6219-1794697200",
+      "id": "aldi-6219-1795042800",
       "product": "lemon",
       "market": "PL",
       "currency": "PLN",
@@ -104,16 +104,16 @@
       },
       "store": "ALDI",
       "price": 3.99,
-      "until": "2026-11-18",
-      "from": "2026-11-15",
+      "until": "2026-11-21",
+      "from": "2026-11-19",
       "source": "https://www.aldi.pl/produkty/owoce-i-warzywa/owoce.html",
-      "fetchedAt": "2026-11-18T22:11:00.381Z",
+      "fetchedAt": "2026-11-19T04:22:11.219Z",
       "name": "Cytryny",
       "unit": "Opak. 500 g",
       "regularPrice": 5.99,
-      "validUntil": "2026-11-18T22:59:59.000Z",
+      "validUntil": "2026-11-21T22:59:59.000Z",
       "conditions": "33% TANIEJ · 5.99 zł to najniższa cena sprzed pierwszej obniżki.",
-      "evidence": "{\"priceValue\":3.99,\"strikePrice\":{\"strikePriceValue\":5.99},\"basePrice\":[{\"basePriceValue\":7.98,\"basePriceScale\":\"kg\"}],\"priceTagLabels\":{\"promoText1\":\"33% TANIEJ\",\"bestPricesWithin30daysText\":\"5.99 zł to najniższa cena sprzed pierwszej obniżki.\"},\"validFrom\":1794697200,\"validUntil\":1795042799}"
+      "evidence": "{\"validFrom\":1795042800,\"validUntil\":1795301999,\"priceValue\":3.99,\"strikePrice\":{\"strikePriceValue\":5.99},\"basePrice\":[{\"basePriceValue\":7.98,\"basePriceScale\":\"kg\"}],\"priceTagLabels\":{\"promoText1\":\"33% TANIEJ\",\"bestPricesWithin30daysText\":\"5.99 zł to najniższa cena sprzed pierwszej obniżki.\"},\"validFromLocalDate\":\"2026-11-19\",\"validUntilLocalDate\":\"2026-11-21\"}"
     },
     {
       "id": "aldi-6279-1794783600",
@@ -129,7 +129,7 @@
       "until": "2026-11-21",
       "from": "2026-11-16",
       "source": "https://www.aldi.pl/produkty/owoce-i-warzywa/owoce.html",
-      "fetchedAt": "2026-11-18T22:11:00.381Z",
+      "fetchedAt": "2026-11-19T04:22:11.219Z",
       "name": "Awokado",
       "unit": "Sztuka",
       "regularPrice": 5.99,
@@ -151,7 +151,7 @@
       "until": "2026-11-21",
       "from": "2026-11-16",
       "source": "https://www.aldi.pl/oferty.html",
-      "fetchedAt": "2026-11-18T22:11:00.381Z",
+      "fetchedAt": "2026-11-19T04:22:11.219Z",
       "name": "Ser Rycki Edam",
       "unit": "Opak. 135 g",
       "regularPrice": 6.19,
@@ -173,7 +173,7 @@
       "until": "2026-11-21",
       "from": "2026-11-16",
       "source": "https://www.aldi.pl/oferty.html",
-      "fetchedAt": "2026-11-18T22:11:00.381Z",
+      "fetchedAt": "2026-11-19T04:22:11.219Z",
       "name": "Kawa rozpuszczalna Cronat Gold",
       "unit": "Słoik 200 g",
       "regularPrice": 37.89,
@@ -197,7 +197,7 @@
       "until": "2026-11-21",
       "validUntil": "2026-11-21T22:59:59.000Z",
       "source": "https://gazetki.aldi.pl/2026/kw47/2026_cw47_mo_promotion_26k47g01_tu67/#/page/2",
-      "fetchedAt": "2026-11-18T22:11:00.381Z",
+      "fetchedAt": "2026-11-19T04:22:11.219Z",
       "name": "Ziemniaki",
       "unit": "Cena za kg",
       "conditions": "Gazetka ALDI, strona 2: cena sprzed obniżki (najniższa z 30 dni wg gazetki): 1,99 zł. Sprawdź warunki w gazetce i w sklepie.",
@@ -220,7 +220,7 @@
       "until": "2026-11-21",
       "validUntil": "2026-11-21T22:59:59.000Z",
       "source": "https://gazetki.aldi.pl/2026/kw47/2026_cw47_mo_promotion_26k47g01_tu67/#/page/2",
-      "fetchedAt": "2026-11-18T22:11:00.381Z",
+      "fetchedAt": "2026-11-19T04:22:11.219Z",
       "name": "Papryka czerwona",
       "unit": "Cena za kg",
       "conditions": "Gazetka ALDI, strona 2: cena sprzed obniżki (najniższa z 30 dni wg gazetki): 17,99 zł. Sprawdź warunki w gazetce i w sklepie.",
@@ -242,7 +242,7 @@
       "until": "2026-11-21",
       "validUntil": "2026-11-21T22:59:59.000Z",
       "source": "https://gazetki.aldi.pl/2026/kw47/2026_cw47_mo_promotion_26k47g01_tu67/#/page/3",
-      "fetchedAt": "2026-11-18T22:11:00.381Z",
+      "fetchedAt": "2026-11-19T04:22:11.219Z",
       "name": "Jabłka polskie",
       "unit": "Cena za kg",
       "conditions": "Gazetka ALDI, strona 3: cena promocyjna „AKCJA” — gazetka nie podaje ceny sprzed obniżki. Sprawdź warunki w gazetce i w sklepie.",
@@ -265,7 +265,7 @@
       "until": "2026-11-21",
       "validUntil": "2026-11-21T22:59:59.000Z",
       "source": "https://gazetki.aldi.pl/2026/kw47/2026_cw47_mo_promotion_26k47g01_tu67/#/page/4",
-      "fetchedAt": "2026-11-18T22:11:00.381Z",
+      "fetchedAt": "2026-11-19T04:22:11.219Z",
       "name": "Cebula żółta",
       "unit": "Cena za kg",
       "conditions": "Gazetka ALDI, strona 4: cena sprzed obniżki (najniższa z 30 dni wg gazetki): 3,49 zł. Sprawdź warunki w gazetce i w sklepie.",
@@ -288,7 +288,7 @@
       "until": "2026-11-21",
       "validUntil": "2026-11-21T22:59:59.000Z",
       "source": "https://gazetki.aldi.pl/2026/kw47/2026_cw47_mo_promotion_26k47g01_tu67/#/page/6",
-      "fetchedAt": "2026-11-18T22:11:00.381Z",
+      "fetchedAt": "2026-11-19T04:22:11.219Z",
       "name": "Chleb na maślance pszenno-żytni",
       "unit": "Sztuka 550 g (1 kg = 7,25)",
       "conditions": "Gazetka ALDI, strona 6: cena sprzed obniżki (najniższa z 30 dni wg gazetki): 4,49 zł. Sprawdź warunki w gazetce i w sklepie.",
@@ -310,7 +310,7 @@
       "until": "2026-11-21",
       "validUntil": "2026-11-21T22:59:59.000Z",
       "source": "https://gazetki.aldi.pl/2026/kw47/2026_cw47_mo_promotion_26k47g01_tu67/#/page/12",
-      "fetchedAt": "2026-11-18T22:11:00.381Z",
+      "fetchedAt": "2026-11-19T04:22:11.219Z",
       "name": "BASIA Mąka tortowa Extra",
       "unit": "Opak. 2,5 kg (1 kg = 3,40)",
       "conditions": "Gazetka ALDI, strona 12: cena promocyjna „AKCJA” — gazetka nie podaje ceny sprzed obniżki. Sprawdź warunki w gazetce i w sklepie.",
@@ -332,35 +332,12 @@
       "until": "2026-11-21",
       "validUntil": "2026-11-21T22:59:59.000Z",
       "source": "https://gazetki.aldi.pl/2026/kw47/2026_cw47_mo_promotion_26k47g01_tu67/#/page/14",
-      "fetchedAt": "2026-11-18T22:11:00.381Z",
+      "fetchedAt": "2026-11-19T04:22:11.219Z",
       "name": "JACOBS Kawa rozpuszczalna Velvet",
       "unit": "Słoik 200 g (1 kg = 194,95)",
       "conditions": "Gazetka ALDI, strona 14: cena promocyjna „AKCJA” — gazetka nie podaje ceny sprzed obniżki. Sprawdź warunki w gazetce i w sklepie.",
       "origin": "leaflet",
       "evidence": " WYGENEROWANO AI NA EKSPOZYTORZE JACOBS Kawa rozpuszczalna Velvet Słoik 200 g (1 kg = 194,95) AKCJA 38 , 99"
-    },
-    {
-      "id": "aldi-g-2026_cw47_mo_promotion_26k47g01_tu67-39-lemon-2026-11-19",
-      "product": "lemon",
-      "market": "PL",
-      "currency": "PLN",
-      "scope": {
-        "type": "unverified",
-        "note": "Oferta z gazetki ogólnopolskiej sklepu; dostępność w Twoim sklepie niepotwierdzona"
-      },
-      "store": "ALDI",
-      "price": 3.99,
-      "regularPrice": 5.99,
-      "from": "2026-11-19",
-      "until": "2026-11-21",
-      "validUntil": "2026-11-21T22:59:59.000Z",
-      "source": "https://gazetki.aldi.pl/2026/kw47/2026_cw47_mo_promotion_26k47g01_tu67/#/page/39",
-      "fetchedAt": "2026-11-18T22:11:00.381Z",
-      "name": "Cytryny",
-      "unit": "Opak. 500 g (1 kg = 7,98)",
-      "conditions": "Gazetka ALDI, strona 39: cena sprzed obniżki (najniższa z 30 dni wg gazetki): 5,99 zł. Sprawdź warunki w gazetce i w sklepie.",
-      "origin": "leaflet",
-      "evidence": "6219 6266 5624 8006883 8001798 8007186 8021754 8006380 8014369 8023122 czw. 19.11 – sob. 21.11 ŚWIEŻE WARZYWA I OWOCE TANIEJ DO 5 0 % WYGENEROWANO AI p w opar  * Cytryny Opak. 500 g (1 kg = 7,98) klasa I WYGENEROWANO AI 33% 3 , 99 5,99 *"
     },
     {
       "id": "aldi-g-2026_cw47_mo_promotion_26k47g01_tu67-39-banana-2026-11-19",
@@ -378,7 +355,7 @@
       "until": "2026-11-21",
       "validUntil": "2026-11-21T22:59:59.000Z",
       "source": "https://gazetki.aldi.pl/2026/kw47/2026_cw47_mo_promotion_26k47g01_tu67/#/page/39",
-      "fetchedAt": "2026-11-18T22:11:00.381Z",
+      "fetchedAt": "2026-11-19T04:22:11.219Z",
       "name": "BIO Banany",
       "unit": "Cena za kg",
       "conditions": "Gazetka ALDI, strona 39: cena sprzed obniżki (najniższa z 30 dni wg gazetki): 8,99 zł. Sprawdź warunki w gazetce i w sklepie.",
@@ -401,7 +378,7 @@
       "until": "2026-11-21",
       "validUntil": "2026-11-21T22:59:59.000Z",
       "source": "https://gazetki.aldi.pl/2026/kw47/2026_cw47_mo_promotion_26k47g01_tu67/#/page/39",
-      "fetchedAt": "2026-11-18T22:11:00.381Z",
+      "fetchedAt": "2026-11-19T04:22:11.219Z",
       "name": "Marchew",
       "unit": "Cena za kg",
       "conditions": "Gazetka ALDI, strona 39: cena sprzed obniżki (najniższa z 30 dni wg gazetki): 3,99 zł. Sprawdź warunki w gazetce i w sklepie.",
@@ -413,8 +390,8 @@
     {
       "source": "https://www.aldi.pl/oferty.html",
       "status": "ok",
-      "productsSeen": 80,
-      "unmapped": 72,
+      "productsSeen": 77,
+      "unmapped": 69,
       "rejected": 0
     },
     {
@@ -875,14 +852,14 @@
       "status": "ok",
       "kind": "store-leaflet",
       "store": "lidl",
-      "leaflets": 3
+      "leaflets": 2
     },
     {
       "source": "https://sklep.kaufland.pl/gazeta-reklamowa.html",
       "status": "ok",
       "kind": "store-leaflet",
       "store": "kaufland",
-      "leaflets": 13
+      "leaflets": 9
     },
     {
       "source": "https://www.carrefour.pl/gazetka-handlowa",
@@ -910,14 +887,14 @@
       "status": "ok",
       "kind": "store-leaflet",
       "store": "intermarche",
-      "leaflets": 5
+      "leaflets": 3
     },
     {
       "source": "https://stokrotka.pl/oferta/gazetki-promocyjne/",
       "status": "ok",
       "kind": "store-leaflet",
       "store": "stokrotka",
-      "leaflets": 6
+      "leaflets": 5
     }
   ],
   "leaflets": [
@@ -964,22 +941,22 @@
     {
       "store": "biedronka",
       "title": "Codziennie niskie ceny",
-      "url": "https://www.biedronka.pl/pl/press,id,j35d8zcvl,title,codziennie-niskie-ceny-p-oferta-od-16-11",
-      "from": "2026-11-16"
+      "url": "https://www.biedronka.pl/pl/press,id,j39k145ri,title,codziennie-niskie-ceny-p-oferta-od-19-11",
+      "from": "2026-11-19"
     },
     {
       "store": "lidl",
-      "title": "Gazetka 16.11",
-      "url": "https://www.lidl.pl/l/pl/gazetki/gazetka-16-11-pon-kw47/ar/0",
-      "from": "2026-11-16",
-      "until": "2026-11-18"
+      "title": "Gazetka 19.11",
+      "url": "https://www.lidl.pl/l/pl/gazetki/gazetka-19-11-czw-kw47/ar/0",
+      "from": "2026-11-19",
+      "until": "2026-11-21"
     },
     {
       "store": "kaufland",
       "title": "Gazetka tygodnia",
-      "url": "https://leaflets.kaufland.com/pl-PL/PL_pl_KDZ_1060_PL46-LFT/ar/1060",
-      "from": "2026-11-12",
-      "until": "2026-11-18"
+      "url": "https://leaflets.kaufland.com/pl-PL/PL_pl_KDZ_1060_PL47-LFT/ar/1060",
+      "from": "2026-11-19",
+      "until": "2026-11-25"
     },
     {
       "store": "netto",
@@ -997,17 +974,17 @@
     },
     {
       "store": "intermarche",
-      "title": "Gazetka promocyjna od 12 do 18.11",
-      "url": "https://intermarche.pl/g/gazetka-promocyjna-od-12-18-11/",
+      "title": "Nowości w Intermarche",
+      "url": "https://intermarche.pl/g/nowosci-w-intermarche/",
       "from": "2026-11-12",
-      "until": "2026-11-18"
+      "until": "2026-11-25"
     },
     {
       "store": "stokrotka",
-      "title": "Włochy od kuchni",
+      "title": "Supermarket",
       "url": "https://stokrotka.pl/oferta/gazetki-promocyjne/",
-      "from": "2026-10-29",
-      "until": "2026-11-18"
+      "from": "2026-11-19",
+      "until": "2026-11-25"
     },
     {
       "store": "aldi",
