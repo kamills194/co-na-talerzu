@@ -28,23 +28,19 @@ function sourceUrl($url): string {
     return is_string($url) && strlen($url) <= 500 && filter_var($url, FILTER_VALIDATE_URL) &&
         parse_url($url, PHP_URL_SCHEME) === 'https' && parse_url($url, PHP_URL_USER) === null ? $url : '';
 }
-function requestJson(string $url, ?array $data = null, array $headers = []): ?array {
+function requestJson(string $url): ?array {
     $ch = curl_init($url);
     $response = '';
     curl_setopt_array($ch, [
-        CURLOPT_CONNECTTIMEOUT => 3, CURLOPT_TIMEOUT => $data === null ? 6 : 23,
+        CURLOPT_CONNECTTIMEOUT => 8, CURLOPT_TIMEOUT => 12,
         CURLOPT_USERAGENT => 'Co na talerz recipe lookup (https://conatalerz.pl/)',
-        CURLOPT_HTTPHEADER => ['Accept: application/json', ...$headers],
+        CURLOPT_HTTPHEADER => ['Accept: application/json'],
         CURLOPT_WRITEFUNCTION => static function ($handle, string $chunk) use (&$response): int {
             if (strlen($response) + strlen($chunk) > 262144) return 0;
             $response .= $chunk;
             return strlen($chunk);
         },
     ]);
-    if ($data !== null) {
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data, JSON_UNESCAPED_UNICODE));
-    }
     $ok = curl_exec($ch);
     $status = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
     curl_close($ch);
@@ -174,7 +170,7 @@ $rate['clients'][$client] = 1 + ($rate['clients'][$client] ?? 0);
 if (!storeFile($ratePath, $rate)) reply(503, ['error'=>'storage']);
 foreach (glob($dir.'/limits-*.json') ?: [] as $old) if ($old !== $ratePath) @unlink($old);
 // Emit a short reservation so simultaneous requests for the same term use one lookup.
-if (!storeFile($cache, ['until'=>time()+20])) reply(503, ['error'=>'storage']);
+if (!storeFile($cache, ['until'=>time()+30])) reply(503, ['error'=>'storage']);
 if (random_int(1,20) === 1) {
     foreach (glob($dir.'/query-*.json') ?: [] as $old) if (filemtime($old) < time()-86400*30) @unlink($old);
 }
