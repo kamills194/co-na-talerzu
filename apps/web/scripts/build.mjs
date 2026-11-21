@@ -14,7 +14,7 @@ await mkdir(dest, { recursive: true });
 await cp(new URL('../src/', import.meta.url), dest, { recursive: true });
 const supabaseUrl = process.env.CNT_SUPABASE_URL ?? '';
 const supabaseKey = process.env.CNT_SUPABASE_PUBLISHABLE_KEY ?? '';
-const analyticsId = process.env.CNT_GA4_ID ?? '';
+const analyticsId = process.env.CNT_GA4_ID || 'G-QS4ZV5PB3K';
 if (!!supabaseUrl !== !!supabaseKey || (supabaseUrl && !/^https:\/\/[a-z0-9-]+\.supabase\.co$/.test(supabaseUrl)) ||
     (supabaseKey && !/^sb_publishable_[A-Za-z0-9_-]+$/.test(supabaseKey))) {
   throw new Error('Invalid Supabase public configuration. Use a project URL and publishable key.');
