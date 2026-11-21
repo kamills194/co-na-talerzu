@@ -1,4 +1,9 @@
 import { recipes, products } from './recipes.pl.js';
+import { extraRecipes, extraAmount, addWebRecipes, mappedExtraItem } from './extra-catalog.js';
+import { feature, extraCuisines, extraCuisine } from './features-i18n.js';
+import { storeBaskets } from './baskets.js';
+import { initMeasurement, measurePage, measureAction, measurementLabels } from './measurement.js';
+import { initCommunity, communitySection, refreshCommunity, configureAccountButton } from './community.js';
 import { t, tn, format, categories, allergens, cuisines, locale, language, languages, languageInfo, setLanguage, suggestLanguage, productName, localizeRecipe, hasRecipeText, unitLabel, formatNumber } from './i18n.js';
 import { filterRecipes, surprise, addIngredients, matchingOffers, localDate, validOffer, isDisplayableAutomaticOffer as isCurrentAutomaticOffer } from './domain.js'; import { market, marketDate, formatCurrency, currencySymbol, formatMarketDay, formatMarketDateTime } from './market.js';
 import { load, save, emptyState, validateState } from './storage.js';
@@ -28,7 +33,7 @@ let tab='recipes', filters={query:'',category:'',cuisine:'',maxTime:0,minTime:0,
 const TABS=['recipes','favorites','shopping','offers','app'];
 function readRoute() { let h=''; try{h=decodeURIComponent(String(globalThis.location?.hash||'').slice(1));}catch{} const tb=h.split('/')[0]; return {tab:TABS.includes(tb)?tb:null}; }
 function writeRoute() {
-  const loc=globalThis.location; if(!loc||!globalThis.history?.replaceState)return;
+  const loc=globalThis.location; if(!loc||!globalThis.history?.replaceState||/^#share\//i.test(loc.hash||''))return;
   const hash=tab==='recipes'?'':`#${tab}`;
   if((loc.hash||'')!==hash)try{history.replaceState(history.state,'',loc.pathname+loc.search+hash);}catch{}
 }
@@ -69,9 +74,12 @@ function creditLink(text,url) { const href=safeLink(url); return href?`<a href="
 function photoCredit(photo) { return `<figcaption>${t('photoCredit')}: ${creditLink(photo.attribution,photo.sourceUrl)} · ${t('photoLicense')}: ${creditLink(photo.license,photo.licenseUrl)}${photo.modifications?` · ${t('photoChanges')}: ${esc(photo.modifications)}`:''}</figcaption>`; }
 // Cuisine tabs: a recipe without `cuisine` is Polish. The row appears when the catalog has at least two cuisines; a tab is shown for a cuisine that has recipes in the current tab's list (or is the chosen one).
 const cuisineOf=r=>r.cuisine||'polish';
+const catalogRecipes=()=>[...recipes,...extraRecipes(language)];
+const cuisineOptions=[...cuisines,...extraCuisines];
+const recipeText=r=>r.external?r:localizeRecipe(r);
 // CNT-034: the card and the detail name the dish's cuisine ("Kuchnia włoska") instead of one shared "home cooking" label.
-function cuisineText(r) { const c=cuisineOf(r); return cuisines.includes(c)?t(`${c}Cuisine`):''; }
-function cuisineTabs(base) { const count=c=>base.filter(r=>cuisineOf(r)===c).length; if(cuisines.filter(c=>recipes.some(r=>cuisineOf(r)===c)).length<2||!base.length)return ''; return ['',...cuisines.filter(c=>count(c)||c===filters.cuisine)].map(c=>`<button data-cuisine="${esc(c)}" aria-pressed="${c===filters.cuisine}">${t(c||'allCuisines')} <span class="chip-count" title="${t('cuisineCount')}">${c?count(c):base.length}</span></button>`).join(''); }
+function cuisineText(r) { const c=cuisineOf(r); return extraCuisine(c)||(cuisines.includes(c)?t(`${c}Cuisine`):''); }
+function cuisineTabs(base) { const count=c=>base.filter(r=>cuisineOf(r)===c).length; if(cuisineOptions.filter(c=>count(c)).length<2||!base.length)return ''; return ['',...cuisineOptions.filter(c=>count(c)||c===filters.cuisine)].map(c=>`<button data-cuisine="${esc(c)}" aria-pressed="${c===filters.cuisine}">${extraCuisine(c)||t(c||'allCuisines')} <span class="chip-count" title="${t('cuisineCount')}">${c?count(c):base.length}</span></button>`).join(''); }
 // Amounts are shown by weight (owner's decision 17.11.2026): every unit except ml is converted to grams
 // with the same per-unit weights the nutrition estimate uses; pieces also get a "≈ N szt." hint.
 // Stored amounts and units never change — conversion happens only for display.
@@ -85,7 +93,7 @@ function amount(i,factor=1) {
   const pieces=Math.max(0.5,Math.round(n*2)/2); return `${shown} (≈ ${num(pieces)} ${unitLabel(unit,pieces)})`;
 }
 // Recipe/product texts in the UI language. Search also matches them; a Polish fallback is marked lang="pl" for screen readers.
-const searchText=r=>language==='pl'?[]:[localizeRecipe(r).name,...r.ingredients.map(i=>productName(i.product))];
+const searchText=r=>r.external?r.aliases??[]:language==='pl'?[]:[localizeRecipe(r).name,...r.ingredients.map(i=>productName(i.product))];
 const plLang=(id,field)=>language!=='pl'&&!hasRecipeText(id,field)?' lang="pl"':'';
 const listName=id=>languageInfo().keepCase?productName(id):productName(id).toLocaleLowerCase(locale);
 function hero() { return `<section class="hero"><div><p class="eyebrow">${t('heroLabel')}</p><h1>${t('heroTitle').replace('\n','<br>')}</h1><p>${t('heroText')}</p><button class="primary" id="hero-random">${t('surprise')} <span aria-hidden="true">↗</span></button><small class="offline">◌ ${t('offline')}</small></div><div class="hero-art" aria-hidden="true"><div class="art-caption">${t('heroArtCaption')}</div><div class="plate"><div class="food food-1"></div><div class="food food-2"></div><div class="food food-3"></div><div class="leaf l1"></div><div class="leaf l2"></div><div class="leaf l3"></div><div class="tomato tm1"></div><div class="tomato tm2"></div></div><span class="art-note">${t('heroArtNote').replace('\n','<br>')}</span></div></section>`; }
@@ -93,7 +101,7 @@ function hero() { return `<section class="hero"><div><p class="eyebrow">${t('her
 const showNutrition=()=>state.settings?.showNutrition!==false;
 // CNT-039: preparation time in uniform buckets (15 / 30 / 60 min, above that full half hours shown in hours).
 function timeText(r) { const b=timeBucket(r.minutes); return `${esc(num(b.value))} ${t(b.unit==='h'?'hours':'minutes')}`; }
-function kcalText(r) { const n=showNutrition()&&nutritionPerServing(r); return n?` · <span class="sr-only">${t('approxKcal')} </span><span aria-hidden="true">≈</span> ${esc(n.kcal)} ${t('kcal')}`:''; }
+function kcalText(r) { if(r.external)return ''; const n=showNutrition()&&nutritionPerServing(r); return n?` · <span class="sr-only">${t('approxKcal')} </span><span aria-hidden="true">≈</span> ${esc(n.kcal)} ${t('kcal')}`:''; }
 function nutritionBlock(r) { if(!showNutrition())return ''; const n=nutritionPerServing(r); const row=(key,value,unit)=>`<div><dt>${t(key)}</dt><dd>${esc(value)} ${t(unit)}</dd></div>`; return `<section class="nutrition" aria-labelledby="nutrition-heading"><h3 id="nutrition-heading">${t('nutritionTitle')}</h3>${n?`<dl>${row('nutritionEnergy',n.kcal,'kcal')}${row('nutritionProtein',num(n.protein),'grams')}${row('nutritionFat',num(n.fat),'grams')}${row('nutritionCarbs',num(n.carbs),'grams')}</dl>`:`<p>${t('nutritionMissing')}</p>`}<p class="muted small">${t('nutritionNote')}</p></section>`; }
 // CNT-027 / CNT-029: dishes by store promotions, prices next to ingredients. Ranking and prices use only the
 // current automatic offers (currentAuto); a user's own note still marks a card. Prices are per the shop's unit, never summed.
@@ -118,7 +126,11 @@ const shoppingPromo=product=>product?ingredientOffers({ingredients:[{product,amo
 // favorites tab when drawn there). Avoids the recently drawn dishes of the current pool: the last 15, or about 40% of the
 // candidates when the pool is small (recentWindow); if that leaves nothing, the window shrinks step by step.
 const recentRandom=[];
-const randomCandidates=()=>filterRecipes(tab==='favorites'?recipes.filter(x=>state.favorites.includes(x.id)):recipes,filters,{extraText:searchText});
+function randomCandidates() {
+  const matches=filterRecipes(tab==='favorites'?catalogRecipes().filter(x=>state.favorites.includes(x.id)):catalogRecipes(),filters,{extraText:searchText});
+  const editorial=matches.filter(recipe=>!recipe.external);
+  return editorial.length && tab!=='favorites' ? editorial : matches;
+}
 function drawRandom() {
   const pool=randomCandidates(), inPool=new Set(pool.map(r=>r.id)), recent=recentRandom.filter(id=>inPool.has(id));
   for(let k=Math.min(recent.length,recentWindow(pool.length));k>=0;k--){ const r=weightedSurprise(pool,currentAuto(),new Date(),{exclude:k?recent.slice(-k):[]}); if(r){ const at=recentRandom.indexOf(r.id); if(at>=0)recentRandom.splice(at,1); recentRandom.push(r.id); if(recentRandom.length>RECENT_MAX*4)recentRandom.shift(); return r; } }
@@ -169,19 +181,73 @@ function excludeProduct(id) {
   combo.ids=[]; combo.active=-1; catalog(); const d=$('.exclusions'); if(d)d.open=true; refocus('#exclude-input'); toast(format(t('excludedAdded'),{name:productName(id)}));
 }
 function filterBar() { return `<section class="inspiration" id="inspiration"><div class="section-heading"><div><p class="eyebrow">${t('eyebrowIdea')}</p><h2>${t('surprise')}</h2><p>${t('surpriseText')}</p></div><button class="primary" id="random">${t('surprise')} <span aria-hidden="true">✧</span></button></div><div class="filter-row"><label>${t('meal')}<select id="category"><option value="">${t('all')}</option>${categories.map(c=>`<option value="${c}" ${c===filters.category?'selected':''}>${t(c)}</option>`).join('')}</select></label><label>${t('prepTime')}<select id="time">${['15','30','60','over60','0'].map(v=>`<option value="${v}" ${timeOption(filters)===v?'selected':''}>${v==='0'?t('noLimit'):v==='over60'?format(t('timeOver'),{n:60}):format(t('timeUpTo'),{n:v})}</option>`).join('')}</select></label><label>${t('diet')}<select id="diet">${['',...DIETS].map(d=>`<option value="${d}" ${filters.diet===d?'selected':''}>${t(d||'anyDiet')}</option>`).join('')}</select></label></div><label class="nutrition-toggle"><input type="checkbox" id="show-nutrition" ${showNutrition()?'checked':''}> ${t('showNutrition')}</label>${exclusionsBlock()}<div class="filters-reset" id="filters-reset"></div></section>`; }
-function card(source,index) { const r=localizeRecipe(source); const favorite=state.favorites.includes(r.id); const photo=shownPhoto(r); return `<article class="recipe-card"><div class="card-art art-${r.category}${photo?' has-photo':''}"><span aria-hidden="true">${r.emoji}</span>${photo?photoImg(r,photo):''}<span class="category-label">${t(r.category)}</span><button class="favorite ${favorite?'active':''}" data-favorite="${r.id}" aria-label="${t(favorite?'removeFavorite':'addFavorite')}: ${esc(r.name)}" aria-pressed="${favorite}">${favorite?'♥':'♡'}</button></div><div class="card-body"><div class="meta"><span>◷ ${timeText(r)}${kcalText(r)}</span><span>${r.vegan?t('vegan'):r.vegetarian?t('vegetarian'):t('easy')}</span></div><h3><button data-recipe="${r.id}"${plLang(r.id,'name')}>${esc(r.name)}</button></h3><p>${r.ingredients.slice(0,3).map(i=>esc(listName(i.product))).join(' · ')}</p><div class="card-bottom"><span class="card-series"><span aria-hidden="true">${String(index+1).padStart(2,'0')} / </span><span class="card-cuisine">${cuisineText(r)}</span></span><button data-recipe="${r.id}" aria-label="${esc(r.name)}">↗</button></div>${promoTag(r)}</div></article>`; }
+function card(source,index) { const r=recipeText(source); const recipeAttribute=r.external?'data-source-recipe':'data-recipe'; const favorite=state.favorites.includes(r.id); const photo=shownPhoto(r); return `<article class="recipe-card"><div class="card-art art-${r.category}${photo?' has-photo':''}"><span aria-hidden="true">${r.emoji}</span>${photo?photoImg(r,photo):''}<span class="category-label">${t(r.category)}</span><button class="favorite ${favorite?'active':''}" data-favorite="${r.id}" aria-label="${t(favorite?'removeFavorite':'addFavorite')}: ${esc(r.name)}" aria-pressed="${favorite}">${favorite?'♥':'♡'}</button></div><div class="card-body"><div class="meta"><span>◷ ${timeText(r)}${kcalText(r)}</span><span>${r.external?feature('sourceRecipe'):r.vegan?t('vegan'):r.vegetarian?t('vegetarian'):t('easy')}</span></div><h3><button ${recipeAttribute}="${r.id}"${r.external?'':plLang(r.id,'name')}>${esc(r.name)}</button></h3><p>${(r.external?r.items.slice(0,3).map(i=>esc(i[0])):r.ingredients.slice(0,3).map(i=>esc(listName(i.product)))).join(' · ')}</p><div class="card-bottom"><span class="card-series"><span aria-hidden="true">${String(index+1).padStart(2,'0')} / </span><span class="card-cuisine">${cuisineText(r)}</span></span><button ${recipeAttribute}="${r.id}" aria-label="${esc(r.name)}">↗</button></div>${promoTag(r)}</div></article>`; }
+const CATALOG_PAGE=24;
+let resultLimit=CATALOG_PAGE, findTimer, findRequest=null, lookupState=null;
+const sameLookup=(query,code)=>lookupState?.query===query&&lookupState?.code===code;
+const queryPresent=query=>filterRecipes(catalogRecipes(),{query},{extraText:searchText}).length>0;
+function lookupAvailable() {
+  const query=filters.query.trim();
+  return globalThis.location?.hostname==='conatalerz.pl'&&tab==='recipes'&&!offline()&&['pl','en'].includes(language)&&query.length>=3&&query.length<=96&&
+    /^[\p{L}\p{M}][\p{L}\p{M}\p{N} .’'&()+-]+$/u.test(query)&&!queryPresent(query);
+}
+function scheduleLookup(delay=950) {
+  clearTimeout(findTimer);
+  findRequest?.abort();
+  lookupState=null;
+  if(lookupAvailable())findTimer=setTimeout(lookupRecipe,delay);
+}
+async function lookupRecipe() {
+  if(!lookupAvailable())return;
+  clearTimeout(findTimer);
+  findRequest?.abort();
+  const query=filters.query.trim(), code=language, request=new AbortController();
+  findRequest=request;
+  lookupState={query,code,status:'find'};
+  results();
+  try {
+    const response=await fetch('./chef.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({query,lang:code}),signal:request.signal});
+    if(!response.ok)throw Error('recipe search');
+    const {recipes:found}=await response.json();
+    if(request.signal.aborted)return;
+    addWebRecipes(found);
+    lookupState={query,code,status:found?.length?'':'findEmpty'};
+  } catch {
+    if(request.signal.aborted)return;
+    lookupState={query,code,status:'findError'};
+  }
+  if(tab==='recipes'&&filters.query.trim()===query&&language===code)results();
+}
+function lookupStatus() {
+  if(!lookupAvailable())return '';
+  const status=sameLookup(filters.query.trim(),language)?lookupState.status:'';
+  return `<p role="status">${status?feature(status):''}</p>${status==='find'?'':`<button class="secondary" id="recipe-lookup">${feature('findRetry')}</button>`}`;
+}
 function results() {
-  const base=tab==='favorites'?recipes.filter(r=>state.favorites.includes(r.id)):recipes;
+  const all=catalogRecipes();
+  const base=tab==='favorites'?all.filter(r=>state.favorites.includes(r.id)):all;
   const list=sortList(filterRecipes(base,filters,{extraText:searchText}));
+  const editorial=list.filter(recipe=>!recipe.external), fromSources=list.filter(recipe=>recipe.external);
+  const recipesHTML=editorial.length?`<div class="recipe-grid">${editorial.map(card).join('')}</div>`:'';
+  const sourcesHTML=fromSources.length?`<section class="sourced-recipes"><h3>${feature('sourceRecipes')}</h3>
+    <div class="recipe-grid">${fromSources.slice(0,resultLimit).map(card).join('')}</div>
+    ${fromSources.length>resultLimit?`<button class="secondary catalog-more" id="catalog-more">${feature('more')}</button>`:''}</section>`:'';
+
   const tabsEl=$('#cuisine-tabs'), tabsHtml=cuisineTabs(base); if(tabsEl&&tabsEl.tabsHtml!==tabsHtml){tabsEl.innerHTML=tabsHtml;tabsEl.tabsHtml=tabsHtml;tabsEl.hidden=!tabsHtml;const on=$('#cuisine-tabs [aria-pressed="true"]');if(on&&(on.offsetLeft<tabsEl.scrollLeft||on.offsetLeft+on.offsetWidth>tabsEl.scrollLeft+tabsEl.clientWidth))tabsEl.scrollLeft=on.offsetLeft-6;}
   // CNT-034: the reset button is shown whenever any filter (or the promotions order) is active; the empty state has its own.
   const emptyReset=!list.length&&!(tab==='favorites'&&!base.length), headReset=filtersActive()&&!emptyReset;
   // CNT-044: „Wyczyść filtry” także w panelu filtrów (nie tylko nad wynikami), gdy jakikolwiek filtr jest aktywny.
   const top=$('#filters-reset'); if(top){const html=filtersActive()?`<button id="reset-top" class="secondary"><span aria-hidden="true">×</span> ${t('reset')}</button>`:'';if(top.innerHTML!==html)top.innerHTML=html;}
-  $('#results').innerHTML=`<div class="results-heading"><p role="status" id="results-count" tabindex="-1">${t(tab==='favorites'?'savedCount':'found')}: ${list.length}</p>${sortControl()}${headReset?`<button id="reset" class="text-button">${t('reset')}</button>`:''}</div>${list.length?`<div class="recipe-grid">${list.map(card).join('')}</div>`:tab==='favorites'&&!base.length?`<div class="empty"><span class="empty-icon" aria-hidden="true">♡</span><p>${t('emptyFavorites')}</p><button class="secondary" data-tab="recipes">${t('browseRecipes')}</button></div>`:`<div class="empty"><span class="empty-icon" aria-hidden="true">⌕</span><p>${t('noResults')}</p><button class="secondary" id="reset">${t('reset')}</button></div>`}`;
+  $('#results').innerHTML=`<div class="results-heading"><p role="status" id="results-count" tabindex="-1">${t(tab==='favorites'?'savedCount':'found')}: ${list.length}</p>${sortControl()}${headReset?`<button id="reset" class="text-button">${t('reset')}</button>`:''}</div>${list.length?recipesHTML+sourcesHTML:tab==='favorites'&&!base.length?`<div class="empty"><span class="empty-icon" aria-hidden="true">♡</span><p>${t('emptyFavorites')}</p><button class="secondary" data-tab="recipes">${t('browseRecipes')}</button></div>`:`<div class="empty"><span class="empty-icon" aria-hidden="true">⌕</span><p>${t('noResults')}</p>${lookupStatus()}<button class="secondary" id="reset">${t('reset')}</button></div>`}`;
 }
-function catalog() { const open=$('.exclusions')?.open; $('#main').innerHTML=`${tab==='recipes'?hero():`<section class="page-title"><p class="eyebrow">${t('eyebrowCollection')}</p><h1>${t('favorites')}</h1></section>`}${filterBar()}<section class="catalog"><div class="section-heading"><h2>${t(tab==='favorites'?'favorites':'recipes')}</h2><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" aria-label="${t('search')}" placeholder="${t('searchPlaceholder')}" value="${esc(filters.query)}"></label></div><div class="cuisine-tabs" id="cuisine-tabs" role="group" aria-label="${t('cuisine')}" hidden></div><div class="category-chips" aria-label="${t('meal')}">${['',...categories].map(c=>`<button data-category="${c}" aria-pressed="${c===filters.category}">${t(c||'all')}</button>`).join('')}</div><div id="results"></div></section>`; if(open)$('.exclusions').open=true; results(); }
-function shopping() { $('#main').innerHTML=`<section class="page-title"><p class="eyebrow">${t('eyebrowShopping')}</p><h1>${t('shoppingTitle')}</h1><p>${t('shoppingText')}</p></section><section class="panel shopping-panel"><form id="custom"><label for="custom-name">${t('customItem')}</label><div class="inline"><input id="custom-name" required maxlength="120"><button class="primary">${t('add')}</button></div></form>${state.shopping.length?`<div class="shopping-actions"><button class="secondary" id="clear-done">${t('clearDone')}</button><button class="secondary" id="copy">${t('copy')}</button><button class="secondary danger" id="clear-all">${t('clearAll')}</button></div><ul class="shopping-list">${state.shopping.map(i=>`<li class="${i.done?'done':''}"><label><input type="checkbox" data-check="${esc(i.id)}" ${i.done?'checked':''}><span>${esc(i.product?productName(i.product):i.name)}</span>${i.product?`<strong>${esc(amount(i))}</strong>`:''}</label><button class="text-button" data-remove="${esc(i.id)}" aria-label="${t('remove')}: ${esc(i.product?productName(i.product):i.name)}">×</button>${shoppingPromo(i.product)?promoLine(shoppingPromo(i.product)):''}</li>`).join('')}</ul>`:`<div class="empty"><span class="empty-icon" aria-hidden="true">☷</span><p>${t('emptyShopping')}</p><button class="secondary" data-tab="recipes">${t('browseRecipes')}</button></div>`}</section>`; }
+function catalog() { resultLimit=CATALOG_PAGE; const open=$('.exclusions')?.open; $('#main').innerHTML=`${tab==='recipes'?hero():`<section class="page-title"><p class="eyebrow">${t('eyebrowCollection')}</p><h1>${t('favorites')}</h1></section>`}${filterBar()}<section class="catalog"><div class="section-heading"><h2>${t(tab==='favorites'?'favorites':'recipes')}</h2><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" aria-label="${t('search')}" placeholder="${t('searchPlaceholder')}" value="${esc(filters.query)}"></label></div><div class="cuisine-tabs" id="cuisine-tabs" role="group" aria-label="${t('cuisine')}" hidden></div><div class="category-chips" aria-label="${t('meal')}">${['',...categories].map(c=>`<button data-category="${c}" aria-pressed="${c===filters.category}">${t(c||'all')}</button>`).join('')}</div><div id="results"></div></section>${tab==='recipes'?communitySection('recipe'):''}`; if(open)$('.exclusions').open=true; results();void refreshCommunity(); }
+function basketPanel() {
+  if(!state.shopping.some(item=>!item.done))return '';
+  const baskets=storeBaskets(state.shopping,currentAuto());
+  const name=item=>item.product?productName(item.product):item.name;
+  return `<section class="panel baskets"><h2>${feature('baskets')}</h2><p>${feature('basketNote')}</p>${baskets.length?baskets.map(basket=>`<details><summary>${esc(basket.store)} · ${basket.lines.length}/${basket.lines.length+basket.missing.length}${basket.lines.length?` · ${esc(formatCurrency(basket.cents/100,{locale}))}`:''}</summary>${basket.lines.length?`<ul>${basket.lines.map(line=>`<li>${esc(name(line.item))} · ${esc(line.basis||num(line.qty)+' × '+line.offer.unit)} · ${esc(formatCurrency(line.cents/100,{locale}))}</li>`).join('')}</ul><p><strong>${feature('subtotal')} ${esc(formatCurrency(basket.cents/100,{locale}))}</strong></p>`:''}${basket.missing.length?`<h3>${feature('missing')}</h3><ul>${basket.missing.map(({item,conditional})=>`<li>${esc(name(item))}${conditional?' · '+feature('conditions'):''}</li>`).join('')}</ul>`:''}</details>`).join(''):`<p>${feature('basketEmpty')}</p>`}</section>`;
+}
+function shopping() { $('#main').innerHTML=`<section class="page-title"><p class="eyebrow">${t('eyebrowShopping')}</p><h1>${t('shoppingTitle')}</h1><p>${t('shoppingText')}</p></section><section class="panel shopping-panel"><form id="custom"><label for="custom-name">${t('customItem')}</label><div class="inline"><input id="custom-name" required maxlength="120"><button class="primary">${t('add')}</button></div></form>${state.shopping.length?`<div class="shopping-actions"><button class="secondary" id="clear-done">${t('clearDone')}</button><button class="secondary" id="copy">${t('copy')}</button><button class="secondary danger" id="clear-all">${t('clearAll')}</button></div><ul class="shopping-list">${state.shopping.map(i=>`<li class="${i.done?'done':''}"><label><input type="checkbox" data-check="${esc(i.id)}" ${i.done?'checked':''}><span>${esc(i.product?productName(i.product):i.name)}</span>${i.product?`<strong>${esc(amount(i))}</strong>`:''}</label><button class="text-button" data-remove="${esc(i.id)}" aria-label="${t('remove')}: ${esc(i.product?productName(i.product):i.name)}">×</button>${shoppingPromo(i.product)?promoLine(shoppingPromo(i.product)):''}</li>`).join('')}</ul>`:`<div class="empty"><span class="empty-icon" aria-hidden="true">☷</span><p>${t('emptyShopping')}</p><button class="secondary" data-tab="recipes">${t('browseRecipes')}</button></div>`}</section>${basketPanel()}`; }
 function offerEntry(o,automatic=false) { const expired=o.until<marketDate(); const currency=automatic?o.currency:market.currency; const scope=!automatic?(o.region?esc(o.region):t('scopeNotGiven')):o.scope?.type==='nationwide'?t('scopeNationwide'):o.scope?.type==='region'?`${t('scopeRegion')}: ${esc(o.scope.regions.join(', '))}`:`${t('scopeUnverified')}: ${esc(o.scope?.note??'')}`; return `<article class="offer-row"><div><h3>${esc(automatic?o.name:productName(o.product))} · ${esc(formatCurrency(o.price,{currency,locale}))}${automatic?` · ${esc(o.unit)}`:` / ${t('unitPackage')}`}</h3><p>${esc(o.store)} · ${automatic?`${t('validFrom')}: ${esc(formatMarketDay(o.from,locale))} · `:''}${t('until')}: ${esc(formatMarketDay(o.until,locale))} ${expired?`<strong>${t('expired')}</strong>`:''}</p><p class="muted small">${t('scopeLabel')}: ${scope} · ${t('conditionsLabel')}: ${automatic?esc(o.conditions):t('conditionsUser')} · ${t('currencyLabel')}: ${esc(currency)}</p><small>${t('source')}: ${esc(o.source)}${automatic?` · ${t('fetched')}: ${esc(formatMarketDateTime(o.fetchedAt,locale))}`:''}</small></div>${automatic?'':`<button class="text-button" data-offer-remove="${esc(o.id)}">${t('remove')}</button>`}${expired?'':`<div class="offer-matches"><span>${t('matched')}:</span> ${recipes.filter(r=>r.ingredients.some(i=>i.product===o.product)).map(localizeRecipe).map(r=>`<button class="text-button" data-recipe="${r.id}"${plLang(r.id,'name')}>${esc(r.name)}</button>`).join('')}</div>`}</article>`; }
 // CNT-041: gazetki z offers.json — tylko z bezpiecznym adresem https i jeszcze ważne (lub bez daty końca).
 function currentLeaflets(list) { const today=marketDate(); return (Array.isArray(list)?list:[]).filter(l=>l&&typeof l.title==='string'&&safeOfferUrl(l.viewer||l.url)&&(!l.until||l.until>=today)).slice(0,8); }
@@ -190,7 +256,7 @@ function currentStoreLeaflets(list) { const today=marketDate(), ok=d=>typeof d==
 function shortDay(day) { const [y,m,d]=day.split('-').map(Number); return new Intl.DateTimeFormat(locale,{day:'numeric',month:'numeric',timeZone:'UTC'}).format(new Date(Date.UTC(y,m-1,d))); }
 function leafletPeriod(l) { if(l?.from&&l?.until) return `${esc(shortDay(l.from))} – ${esc(shortDay(l.until))}`; if(l?.from) return `${t('leafletFromShort')} ${esc(shortDay(l.from))}`; if(l?.until) return `${t('leafletUntilShort')} ${esc(shortDay(l.until))}`; return t('leafletCheck'); }
 function leafletsPanel() { return `<section class="panel leaflets"><h2>${t('leafletsTitle')}</h2><p>${t('leafletsText')}</p><ul class="store-tiles">${STORES.map(s=>{ const l=storeLeaflets.find(x=>x.store===s.id); const href=safeOfferUrl(l?.url)||s.url; const upcoming=l?.from&&l.from>marketDate(); return `<li><a class="store-tile${l?'':' no-period'}" href="${esc(href)}" target="_blank" rel="noopener noreferrer" style="--store:${s.color};--store-ink:${s.ink}"><span class="store-name">${esc(s.name)}</span><span class="store-period">${upcoming?`<span class="store-soon">${t('leafletSoon')}</span> `:''}${leafletPeriod(l)}</span><span class="sr-only"> — ${t('leafletsTitle')} ${esc(s.name)} ${t('promoNewTab')}</span></a></li>`; }).join('')}</ul></section>`; }
-function offers() { $('#main').innerHTML=`<section class="page-title"><p class="eyebrow">${t('eyebrowOffers')}</p><h1>${t('offersTitle')}</h1><p>${t('offersText')}</p></section><p class="notice">${t('offersNotice')}</p>${leafletsPanel()}<section class="panel"><h2>${t('botTitle')}</h2><p>${t('botDescription')}</p><p class="muted">${currentAuto().length?esc(tn('verifiedOffers',currentAuto().length)):t('botEmpty')}</p>${currentAuto().map(o=>offerEntry(o,true)).join('')}</section><section class="panel"><form id="offer-form"><div class="offer-form"><label>${t('product')}<select name="product">${Object.keys(products).filter(id=>id!=='water').sort((a,b)=>productName(a).localeCompare(productName(b),locale)).map(id=>`<option value="${id}">${esc(productName(id))}</option>`).join('')}</select></label><label>${t('store')}<input name="store" required maxlength="100"></label><label>${t('price')} (${esc(currencySymbol({locale}))})<input name="price" type="number" min="0.01" max="100000" step="0.01" required></label><label>${t('until')}<input name="until" type="date" min="${marketDate()}" required></label><label>${t('regionOptional')}<input name="region" maxlength="100"></label><label class="wide">${t('source')}<input name="source" required maxlength="500"></label></div><button class="primary">${t('offerAdd')}</button></form></section><section class="panel">${state.offers.length?state.offers.map(o=>offerEntry(o)).join(''):`<p class="empty">${t('emptyOffers')}</p>`}</section>`; }
+function offers() { $('#main').innerHTML=`<section class="page-title"><p class="eyebrow">${t('eyebrowOffers')}</p><h1>${t('offersTitle')}</h1><p>${t('offersText')}</p></section><p class="notice">${t('offersNotice')}</p>${leafletsPanel()}<section class="panel"><h2>${t('botTitle')}</h2><p>${t('botDescription')}</p><p class="muted">${currentAuto().length?esc(tn('verifiedOffers',currentAuto().length)):t('botEmpty')}</p>${currentAuto().map(o=>offerEntry(o,true)).join('')}</section><section class="panel"><form id="offer-form"><div class="offer-form"><label>${t('product')}<select name="product">${Object.keys(products).filter(id=>id!=='water').sort((a,b)=>productName(a).localeCompare(productName(b),locale)).map(id=>`<option value="${id}">${esc(productName(id))}</option>`).join('')}</select></label><label>${t('store')}<input name="store" required maxlength="100"></label><label>${t('price')} (${esc(currencySymbol({locale}))})<input name="price" type="number" min="0.01" max="100000" step="0.01" required></label><label>${t('until')}<input name="until" type="date" min="${marketDate()}" required></label><label>${t('regionOptional')}<input name="region" maxlength="100"></label><label class="wide">${t('source')}<input name="source" required maxlength="500"></label></div><button class="primary">${t('offerAdd')}</button></form></section><section class="panel">${state.offers.length?state.offers.map(o=>offerEntry(o)).join(''):`<p class="empty">${t('emptyOffers')}</p>`}</section>${communitySection('offer')}`; void refreshCommunity(); }
 // CNT-030: page shell texts, <html lang/dir> and the language picker follow the UI language.
 const pickerLabel=()=>t('language')==='Language'?'Language':`${t('language')} / Language`;
 const globe='<svg class="globe" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M2.5 12h19M12 2.5c2.6 2.7 3.9 5.9 3.9 9.5s-1.3 6.8-3.9 9.5c-2.6-2.7-3.9-5.9-3.9-9.5s1.3-6.8 3.9-9.5z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>';
@@ -221,14 +287,14 @@ function shell() {
   if(root){root.lang=info.code;root.dir=info.dir;}
   document.title=t('docTitle'); $('meta[name="description"]')?.setAttribute('content',t('docDescription'));
   const text=(s,v)=>{const el=$(s);if(el)el.textContent=v;};
-  text('.skip',t('skipLink'));text('.brand-name',t('brandName'));text('.brand small',t('brandTagline'));text('#footer-text',t('footerText'));text('#privacy',t('privacyButton'));
+  text('.skip',t('skipLink'));text('.brand-name',t('brandName'));text('.brand small',t('brandTagline'));text('#footer-text',t('footerText'));text('#privacy',t('privacyButton'));text('#policy-link',t('privacyPolicyLink'));text('#terms-link',feature('terms'));
   $('.brand')?.setAttribute('aria-label',t('brandHome')); $('#nav')?.setAttribute('aria-label',t('navLabel'));
-  picker();
+  picker();configureAccountButton();measurementLabels();
 }
 async function chooseLanguage(code) {
   if(!languages.some(l=>l.code===code))return;
   state.settings={...state.settings,language:code}; persist();
-  await setLanguage(code); shell(); holdScroll(render);
+  await setLanguage(code); scheduleLookup(); shell(); holdScroll(render);
   // CNT-043: po wyborze języka lista wyboru ma się schować — fokus wraca na przycisk z flagą zamiast na <select>
   // (ponowny fokus na <select> na telefonach otwierał listę języków jeszcze raz).
   const sel=$('#language'); sel?.blur?.(); if(document.activeElement===sel)document.activeElement?.blur?.();
@@ -244,23 +310,56 @@ function appPage() {
 }
 globalThis.addEventListener?.('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;if(tab==='app')appPage();});
 globalThis.addEventListener?.('appinstalled',()=>{installPrompt=null;toast(t('appInstallDone'));if(tab==='app')appPage();});
-function render() { writeRoute(); nav(); netStatus(); if(tab==='shopping') shopping(); else if(tab==='offers') offers(); else if(tab==='app') appPage(); else catalog(); }
+function render() { writeRoute(); nav(); netStatus(); measurePage(tab); if(tab==='shopping') shopping(); else if(tab==='offers') offers(); else if(tab==='app') appPage(); else catalog(); }
 // CNT-034: every recipe opens with 1 serving (amounts scale from recipe.servings); "Draw another" keeps the chosen number.
-function openRecipe(id,random=false,keepServings=false) { selected=recipes.find(r=>r.id===id); if(!selected)return; if(!keepServings)servings=SERVINGS_DEFAULT; detail(random); }
+function openRecipe(id,random=false,keepServings=false) { selected=catalogRecipes().find(r=>r.id===id); if(!selected)return; measureAction('recipe_open'); if(!keepServings)servings=SERVINGS_DEFAULT; detail(random); }
 function detail(random=false) {
+  if(selected.external){externalDetail(selected,random);return;}
   const r=localizeRecipe(selected); const favorite=state.favorites.includes(r.id); const d=$('#detail'); const photo=shownPhoto(r);
   const priced=ingredientOffers(r,currentAuto());
   d.innerHTML=`<div class="dialog-head"><span class="eyebrow">${random?t('result'):t(r.category)}</span><button class="close" data-close aria-label="${t('close')}">×</button></div><div class="detail-title${photo?' has-photo':''}">${photo?`<figure class="detail-photo">${photoImg(r,photo)}${photoCredit(photo)}</figure>`:''}<span aria-hidden="true">${r.emoji}</span><h2 id="detail-heading"${plLang(r.id,'name')}>${esc(r.name)}</h2><p class="muted">◷ ${timeText(r)} · ${r.vegan?t('vegan'):r.vegetarian?t('vegetarian'):t('easy')}${cuisineText(r)?` · ${cuisineText(r)}`:''}</p></div><div class="detail-actions"><button class="secondary detail-favorite${favorite?' active':''}" data-favorite="${esc(r.id)}" aria-pressed="${favorite}"><span aria-hidden="true">${favorite?'♥':'♡'}</span> ${t(favorite?'removeFavorite':'addFavorite')}</button></div>${random?rerollBlock():''}${variantsBlock(r)}${servingsControl()}<h3>${t('ingredients')}</h3><ul class="ingredients">${r.ingredients.map((i,k)=>`<li><span>${esc(productName(i.product))}</span><strong data-amount="${i.product}">${esc(amount(i,servings/r.servings))}</strong>${priced[k].offer&&!priced[k].pantry?promoLine(priced[k].offer):''}</li>`).join('')}</ul><button class="primary full" id="add-shopping">${t('addShopping')}</button>${nutritionBlock(r)}<h3>${t('steps')}</h3><ol class="steps"${plLang(r.id,'steps')}>${r.steps.map(s=>`<li>${esc(s)}</li>`).join('')}</ol><div class="allergen-note"><strong>${t('allergens')}: ${r.allergens.length?r.allergens.map(t).join(', '):t('noAllergens')}</strong><p>${t('allergenNote')}</p></div>`;
   d.scrollTop=0; if(!d.open)d.showModal();
+}
+function externalDetail(r,random) {
+  const d=$('#detail'), favorite=state.favorites.includes(r.id);
+  const localeChanges=r.changes==='structured into fields and edited for clarity'&&language==='pl'?'Uporządkowano i zredagowano treść':r.changes;
+  const labels=r.allergens.filter(a=>allergens.includes(a)).map(t);
+  const source=safeLink(r.source), history=safeLink(r.history);
+  const license=r.license==='CC-BY-SA-4.0'?'https://creativecommons.org/licenses/by-sa/4.0/':'';
+  d.innerHTML=`<div class="dialog-head"><span class="eyebrow">${feature('sourceRecipe')}</span><button class="close" data-close aria-label="${t('close')}">×</button></div>
+  <div class="detail-title"><span aria-hidden="true">${r.emoji}</span><h2 id="detail-heading" tabindex="-1">${esc(r.name)}</h2><p>${esc(r.summary??'')}</p><p class="muted">${r.minutes>0?timeText(r)+' · ':''}${esc(cuisineText(r))}</p></div>
+  <div class="detail-actions"><button class="secondary detail-favorite${favorite?' active':''}" data-favorite="${esc(r.id)}" aria-pressed="${favorite}"><span aria-hidden="true">${favorite?'♥':'♡'}</span> ${t(favorite?'removeFavorite':'addFavorite')}</button></div>${random?rerollBlock():''}
+  ${r.servings>0?`<p>${feature('portions')} ${esc(num(r.servings))}</p>`:''}
+  <h3>${t('ingredients')}</h3><ul class="ingredients">${r.items.map(item=>`<li><span>${esc(item[0])}${item[3]?` <small>(${esc(item[3])})</small>`:''}</span><strong>${esc(extraAmount(item,language,num))}</strong></li>`).join('')}</ul>
+  <button class="primary full" id="add-external-shopping">${t('addShopping')}</button>
+  <h3>${t('steps')}</h3><ol class="steps">${r.steps.map(step=>`<li>${esc(step)}</li>`).join('')}</ol>
+  <div class="allergen-note">${labels.length?`<strong>${t('allergens')} · ${esc(labels.join(', '))}</strong>`:''}<p>${feature('allergy')}</p></div>
+  <p class="muted small">${r.credit?creditLink(r.credit,source):''}${history?' · '+creditLink(language==='pl'?'Historia źródła':'Source history',history):''}${r.license?' · '+creditLink(r.license,license):''}${localeChanges?' · '+esc(localeChanges):''}${language==='en'&&(r.pl||r.machineTranslated)?' · '+feature('translated'):''}</p>`;
+  d.scrollTop=0;
+  if(!d.open)d.showModal();
 }
 // CNT-043: inne wersje tego samego dania (np. pierogi ruskie → z mięsem, z kapustą i grzybami, z owocami).
 function variantsBlock(r) { const list=variantsOf(r.id).map(id=>recipes.find(x=>x.id===id)).filter(Boolean).map(localizeRecipe); if(!list.length)return ''; return `<section class="variants" aria-labelledby="variants-heading"><h3 id="variants-heading">${t('variantsTitle')}</h3><ul>${list.map(v=>`<li><button class="variant" data-variant="${esc(v.id)}"${plLang(v.id,'name')}><span aria-hidden="true">${v.emoji}</span> ${esc(v.name)}</button></li>`).join('')}</ul></section>`; }
 document.addEventListener('click',async e=>{
   const b=e.target.closest('button,a,[role="option"]'); if(!b)return;
   if(b.id==='lang-suggest') {await chooseLanguage(b.dataset.lang);return;}
-  if(b.dataset.tab) {tab=b.dataset.tab;render();window.scrollTo({top:0});}
+  if(b.dataset.tab) {tab=b.dataset.tab;clearTimeout(findTimer);findRequest?.abort();render();if(tab==='offers')measureAction('offers_view');if(tab==='app')measureAction('install_open');window.scrollTo({top:0});}
   if(b.id==='install-app'&&installPrompt){const p=installPrompt;installPrompt=null;try{await p.prompt();await p.userChoice;}catch{}appPage();return;}
-  if(b.dataset.recipe)openRecipe(b.dataset.recipe);
+  if(b.id==='catalog-more'){const previous=resultLimit;resultLimit+=CATALOG_PAGE;results();refocus(`.sourced-recipes .recipe-card:nth-child(${previous+1}) [data-source-recipe]`);return;}
+  if(b.id==='recipe-lookup'){lookupRecipe();return;}
+  if(b.id==='add-external-shopping'&&selected?.external){
+    const lookup=new Map(Object.entries(products).map(([id,[,unit]])=>[productName(id).normalize('NFC').trim().toLocaleLowerCase('pl'),[id,unit]]));
+    const recognized=[];
+    for(const item of selected.items){
+      const mapped=mappedExtraItem(item,lookup);
+      if(mapped){recognized.push(mapped);continue;}
+      const name=[extraAmount(item,language,num),item[0]].filter(Boolean).join(' ').slice(0,120);
+      if(!state.shopping.some(row=>!row.product && row.name===name))state.shopping.push({id:newId(),name,done:false});
+    }
+    state.shopping=addIngredients(state.shopping,{ingredients:recognized,servings:1},1);
+    persist();nav();measureAction('shopping_add');toast(t('added'));return;
+  }
+  if(b.dataset.sourceRecipe||b.dataset.recipe)openRecipe(b.dataset.sourceRecipe||b.dataset.recipe);
   if(b.dataset.variant){openRecipe(b.dataset.variant,false,true);refocus('#detail-heading');}
   if(b.dataset.favorite) {const id=b.dataset.favorite, now=!state.favorites.includes(id);state.favorites=now?[...state.favorites,id]:state.favorites.filter(x=>x!==id);persist();
     // CNT-043: serduszko jest też w oknie przepisu (także wylosowanego); karta w tle aktualizuje się bez przewijania.
@@ -270,14 +369,14 @@ document.addEventListener('click',async e=>{
   if(b.dataset.category!==undefined) {setCategory(b.dataset.category);refocus(`.category-chips [data-category="${CSS.escape(filters.category)}"]`);}
   if(b.dataset.cuisine!==undefined) {filters.cuisine=b.dataset.cuisine;holdScroll(results);refocus(`#cuisine-tabs [data-cuisine="${CSS.escape(filters.cuisine)}"]`);}
   if(b.id==='reset'||b.id==='reset-top'){filters={query:'',category:'',cuisine:'',maxTime:0,minTime:0,diet:'',excluded:[],excludedProducts:[]};state.settings={...state.settings,sort:'default'};persist();keepPlace(catalog,['#reset','#results-count']);toast(t('filtersCleared'));}
-  if(b.id==='random'||b.id==='hero-random') {const r=drawRandom();if(r)openRecipe(r.id,true);else toast(t('noMatches'));}
+  if(b.id==='random'||b.id==='hero-random') {measureAction('surprise_click');const r=drawRandom();if(r)openRecipe(r.id,true);else toast(t('noMatches'));}
   if(b.id==='reroll') {const r=drawRandom();if(r){openRecipe(r.id,true,true);refocus('#reroll');}}
   if(b.id==='servings-dec'||b.id==='servings-inc'){if(b.getAttribute?.('aria-disabled')==='true')return;updateServings(servings+(b.id==='servings-inc'?1:-1),{announce:true});}
   if(b.dataset.excludeProduct)excludeProduct(b.dataset.excludeProduct);
   if(b.dataset.unexclude!==undefined||b.dataset.unexcludeAllergen!==undefined){const p=b.dataset.unexclude,a=b.dataset.unexcludeAllergen;if(p!==undefined)filters.excludedProducts=filters.excludedProducts.filter(x=>x!==p);else filters.excluded=filters.excluded.filter(x=>x!==a);keepPlace(catalog,['.exclusion-summary .exclude-chip','.exclusions summary']);toast(format(t('excludedRemoved'),{name:p!==undefined?productName(p):t(a)}));}
   if(b.id==='clear-exclusions'){filters.excluded=[];filters.excludedProducts=[];keepPlace(catalog,['.exclusions summary','#results-count']);}
   if(b.hasAttribute('data-close'))$('#detail').close();
-  if(b.id==='add-shopping'){const n=parseServings($('#servings')?.value);if(n===null){servingsInvalid();refocus('#servings');return;}updateServings(n,{keepInput:true});state.shopping=addIngredients(state.shopping,selected,n);persist();nav();toast(t('added'));}
+  if(b.id==='add-shopping'){const n=parseServings($('#servings')?.value);if(n===null){servingsInvalid();refocus('#servings');return;}updateServings(n,{keepInput:true});state.shopping=addIngredients(state.shopping,selected,n);persist();nav();measureAction('shopping_add');toast(t('added'));}
   if(b.dataset.remove){state.shopping=state.shopping.filter(i=>i.id!==b.dataset.remove);persist();render();}
   if(b.id==='clear-done'){state.shopping=state.shopping.filter(i=>!i.done);persist();render();}
   if(b.id==='clear-all'){const before=state.shopping;state.shopping=[];persist();render();toastUndo(t('clearedAll'),()=>{state.shopping=before;persist();render();});}
@@ -288,7 +387,7 @@ document.addEventListener('click',async e=>{
   if(b.id==='export'){const url=URL.createObjectURL(new Blob([JSON.stringify(state,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=`co-na-talerz-${localDate()}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 });
 document.addEventListener('input',e=>{
-  if(e.target.id==='search'){filters.query=e.target.value;results();}
+  if(e.target.id==='search'){filters.query=e.target.value;resultLimit=CATALOG_PAGE;scheduleLookup();results();}
   if(e.target.id==='servings'&&selected){const n=parseServings(e.target.value);if(n===null)servingsInvalid();else updateServings(n,{keepInput:true});}
   if(e.target.id==='exclude-input')suggest(e.target.value);
 });
@@ -332,8 +431,41 @@ window.addEventListener('offline',netStatus);
 window.addEventListener('online',()=>{brokenPhotos.clear();netStatus();toast(t('backOnline'));});
 { const route=readRoute(); if(route.tab)tab=route.tab; shell(); render(); window.scrollTo?.({top:0,left:0}); }
 if(storageWarning)toast(t('storageError'));
+initMeasurement(()=>tab);
+initCommunity({
+  snapshot:kind=>state[kind].slice(0,250),
+  import:(kind,items)=>{
+    if(!['favorites','shopping'].includes(kind))throw Error('Unknown collection');
+    const candidate=validateState({...emptyState(),[kind]:items});
+    if(kind==='favorites'){state={...state,favorites:[...new Set([...state.favorites,...candidate.favorites])].slice(0,2000)};loadSharedFavorites();}
+    else {
+      const current=new Map(state.shopping.map(item=>[item.id,item]));
+      for(const item of candidate.shopping)if(!current.has(item.id))current.set(item.id,item);
+      state={...state,shopping:[...current.values()].slice(0,2000)};
+    }
+    persist();
+    tab=kind;
+    render();
+  }
+});
 globalThis.addEventListener?.('hashchange',()=>{const route=readRoute();if(route.tab&&route.tab!==tab){tab=route.tab;render();}});
-fetch('./offers.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(data=>{if(data?.version===1&&Array.isArray(data.offers)){autoOffers=data.offers.filter(o=>isCurrentAutomaticOffer(o)&&typeof o.fetchedAt==='string');leaflets=currentLeaflets(data.leaflets);storeLeaflets=currentStoreLeaflets(data.stores);if(tab==='offers')offers();else if(tab==='recipes'||tab==='favorites')results();}}).catch(()=>{});
+async function loadWebRecipes(ids=[]) {
+  if(globalThis.location?.hostname!=='conatalerz.pl')return;
+  const suffix=ids.length?'?ids='+encodeURIComponent(ids.join(',')):'';
+  try {
+    const response=await fetch('./chef.php'+suffix,{cache:'no-store'});
+    if(!response.ok)return;
+    addWebRecipes((await response.json()).recipes);
+    if(tab==='recipes'||tab==='favorites')results();
+  }catch{/* Previously downloaded recipes stay visible. */}
+}
+function loadSharedFavorites() {
+  const ids=state.favorites.filter(id=>id.startsWith('web-'));
+  for(let i=0;i<ids.length;i+=50)void loadWebRecipes(ids.slice(i,i+50));
+}
+void loadWebRecipes();
+loadSharedFavorites();
+fetch('./offers.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(data=>{if(data?.version===1&&Array.isArray(data.offers)){autoOffers=data.offers.filter(o=>isCurrentAutomaticOffer(o)&&typeof o.fetchedAt==='string');leaflets=currentLeaflets(data.leaflets);storeLeaflets=currentStoreLeaflets(data.stores);if(tab==='offers')offers();else if(tab==='recipes'||tab==='favorites')results();else if(tab==='shopping')shopping();}}).catch(()=>{});
 // Automatic updates: the build gives every release a new service-worker cache name. When the new
 // worker takes over, reload so the page runs the new files — but never while the user is typing
 // or has a dialog open; then wait until the app goes to the background or the dialog closes.

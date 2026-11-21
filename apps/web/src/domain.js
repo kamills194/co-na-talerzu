@@ -14,7 +14,7 @@ const dietRules = {
   light: r => { const n=nutritionPerServing(r); return !!n && n.kcal<=450; },
 };
 // '' = no preference; 'vegetarian'/'vegan' (and any other key) keep the original recipe-flag rule.
-export function matchesDiet(r, diet) { return !diet || (Object.hasOwn(dietRules,diet) ? dietRules[diet](r) : r[diet]===true); }
+export function matchesDiet(r, diet) { return !diet || (!r.external && (Object.hasOwn(dietRules,diet) ? dietRules[diet](r) : r[diet]===true)); }
 // `extraText(recipe)` (optional, CNT-030) returns more searchable strings, e.g. the recipe and product names in
 // the UI language; the Polish names are always searched as well.
 // `minTime` (CNT-034, optional): only recipes taking at least that many minutes (e.g. 61 = "over 60 min");
@@ -24,7 +24,7 @@ export function matchesDiet(r, diet) { return !diet || (Object.hasOwn(dietRules,
 export function filterRecipes(recipes, {query='',category='',cuisine='',maxTime=0,minTime=0,diet='',excluded=[],excludedProducts=[]}={}, {extraText}={}) {
   const q=normalize(query);
   // A recipe without `cuisine` belongs to the Polish catalog (records older than CNT-024).
-  return recipes.filter(r => (!category || r.category===category) && (!cuisine || (r.cuisine||'polish')===cuisine) && (!Number(maxTime) || timeBucket(r.minutes).minutes<=Number(maxTime)) && (!Number(minTime) || timeBucket(r.minutes).minutes>=Number(minTime)) && matchesDiet(r,diet) && !r.allergens.some(a=>excluded.includes(a)) && !r.ingredients.some(i=>excludedProducts.includes(i.product)) && (!q || normalize([r.name,...r.ingredients.map(i=>products[i.product][0]),...(extraText?extraText(r):[])].join(' ')).includes(q)));
+  return recipes.filter(r => (!category || r.category===category) && (!cuisine || (r.cuisine||'polish')===cuisine) && (!Number(maxTime) || timeBucket(r.minutes).minutes<=Number(maxTime)) && (!Number(minTime) || timeBucket(r.minutes).minutes>=Number(minTime)) && matchesDiet(r,diet) && (!r.external || (!excluded.length && !excludedProducts.length)) && !r.allergens.some(a=>excluded.includes(a)) && !r.ingredients.some(i=>excludedProducts.includes(i.product)) && (!q || normalize([r.name,...(r.external ? r.items.map(i=>i[0]) : r.ingredients.map(i=>products[i.product][0])),...(extraText?extraText(r):[])].join(' ')).includes(q)));
 }
 export function surprise(recipes, filters, previousId, rng=Math.random) {
   const matches=filterRecipes(recipes,filters);

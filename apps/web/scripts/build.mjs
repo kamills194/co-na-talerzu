@@ -12,6 +12,16 @@ const dest = new URL('../dist/', import.meta.url);
 await rm(dest, { recursive: true, force: true });
 await mkdir(dest, { recursive: true });
 await cp(new URL('../src/', import.meta.url), dest, { recursive: true });
+const supabaseUrl = process.env.CNT_SUPABASE_URL ?? '';
+const supabaseKey = process.env.CNT_SUPABASE_PUBLISHABLE_KEY ?? '';
+const analyticsId = process.env.CNT_GA4_ID ?? '';
+if (!!supabaseUrl !== !!supabaseKey || (supabaseUrl && !/^https:\/\/[a-z0-9-]+\.supabase\.co$/.test(supabaseUrl)) ||
+    (supabaseKey && !/^sb_publishable_[A-Za-z0-9_-]+$/.test(supabaseKey))) {
+  throw new Error('Invalid Supabase public configuration. Use a project URL and publishable key.');
+}
+if (analyticsId && !/^G-[A-Z0-9]{6,20}$/.test(analyticsId)) throw new Error('Invalid Google Analytics measurement ID.');
+const settings = {supabaseUrl,supabaseKey,analyticsId,adsReady:process.env.CNT_ADS_CMP_READY === 'true'};
+await writeFile(new URL('site-settings.js', dest), 'export default Object.freeze(' + JSON.stringify(settings) + ');\n');
 // Cache-first service worker: without a new cache name installed users keep the old files.
 const swPath = new URL('sw.js', dest), sw = await readFile(swPath, 'utf8');
 const hash = createHash('sha256');

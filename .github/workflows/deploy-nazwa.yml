@@ -61,10 +61,15 @@ jobs:
                  const repo=JSON.parse(fs.readFileSync('apps/web/src/offers.json','utf8'));if(!(Date.parse(d.updatedAt)>Date.parse(repo.updatedAt||0)))process.exit(1)"; then
             cp /tmp/offers.json apps/web/src/offers.json; echo "Użyto nowszych ofert z gh-pages"; else echo "Oferty z repozytorium są nowsze (lub brak gh-pages) — używam pliku z repozytorium"; fi
       - run: npm run build
+        env:
+          CNT_SUPABASE_URL: ${{ vars.CNT_SUPABASE_URL }}
+          CNT_SUPABASE_PUBLISHABLE_KEY: ${{ vars.CNT_SUPABASE_PUBLISHABLE_KEY }}
+          CNT_GA4_ID: ${{ vars.CNT_GA4_ID }}
+          CNT_ADS_CMP_READY: ${{ vars.CNT_ADS_CMP_READY }}
         if: steps.cfg.outputs.ready == 'true'
-      - name: Dodaj .htaccess i report.php
+      - name: Dodaj pliki serwera PHP
         if: steps.cfg.outputs.ready == 'true'
-        run: cp deploy/nazwa.pl/.htaccess deploy/nazwa.pl/report.php apps/web/dist/
+        run: cp deploy/nazwa.pl/.htaccess deploy/nazwa.pl/report.php deploy/nazwa.pl/chef.php apps/web/dist/
       - name: Wyślij na nazwa.pl (SFTP)
         if: steps.cfg.outputs.ready == 'true'
         env:
@@ -77,7 +82,7 @@ jobs:
           # Bez --delete: nie usuwa plików, których nie ma w dist (np. .well-known).
           lftp -c "set sftp:auto-confirm yes; set net:max-retries 3; set net:timeout 30; \
             open --env-password -u \"$USER\" sftp://$SERVER; \
-            mirror --reverse --verbose --parallel=4 --exclude-glob .git* --exclude _reports/ ./apps/web/dist/ \"$DIR\""
+            mirror --reverse --verbose --parallel=4 --exclude-glob .git* --exclude _reports/ --exclude _chef/ ./apps/web/dist/ \"$DIR\""
       - name: Sprawdź stronę
         if: steps.cfg.outputs.ready == 'true'
         run: |

@@ -1,7 +1,7 @@
 <?php
 // Co na talerz — odbiór automatycznych zgłoszeń błędów ze strony (src/errors.js).
 // Zapisuje jedną linię JSON na błąd do _reports/errors-RRRR-MM-DD.jsonl (katalog niedostępny z WWW).
-// Bot .github/workflows/bot-errors.yml co godzinę pobiera te pliki przez SFTP i zakłada zgłoszenia na GitHubie.
+// Bot .github/workflows/bot-site-analyst.yml pobiera te pliki przez SFTP i zakłada zgłoszenia na GitHubie.
 // Nie zapisuje adresu IP. Limit: 30 zgłoszeń na adres na godzinę (licznik po skrócie SHA-256 z dobową solą)
 // i 5000 linii na dobę.
 declare(strict_types=1);

@@ -129,7 +129,7 @@ test('Wygasła oferta znika po chwili końca ważności bez nowego pobrania (kar
 test('Lista zakupów: cena i link przy produktach z aktualną ofertą; własne pozycje bez ceny',()=>{
   const saved={...emptyState(),shopping:[{id:'tomato',product:'tomato',amount:2,done:false},{id:'bread',product:'bread',amount:4,done:false},{id:'local-x',name:`Pomidory ${evil}`,done:false}]};
   const out=runApp({saved,script:`click({dataset:{tab:'shopping'}});out.html=el('#main').innerHTML;`});
-  const html=plain(out.html), items=html.split('<li').slice(1);
+  const html=plain(out.html), items=html.split('<ul class="shopping-list">')[1].split('</ul>')[0].split('<li').slice(1);
   assert.equal(items.length,3);
   assert.ok(items[0].includes('<span class="promo-price">0,99 zł</span> · Cena za kg · ALDI: Pomidory malinowe · <span class="promo-until">do 17 lis 2026</span>'),items[0]);
   assert.ok(items[0].includes('href="https://www.aldi.pl/produkty/tomato.html" target="_blank" rel="noopener noreferrer"'));

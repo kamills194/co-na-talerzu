@@ -33,6 +33,13 @@ export function group(records) {
   }
   return [...groups.values()].sort((a, b) => b.count - a.count);
 }
+function redact(value) {
+  return String(value ?? '')
+    .replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi,'[e-mail]')
+    .replace(/(?:eyJ[A-Za-z0-9_-]+)(?:\.[A-Za-z0-9_-]+){1,2}/g,'[token]')
+    .replace(/\b[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}\b/gi,'[id]')
+    .replace(/([?&#](?:code|token|access_token|refresh_token|email)=)[^\s&#)'"]+/gi,'$1[redacted]');
+}
 const browsers = g => [...g.browsers].sort((a, b) => b[1] - a[1]).map(([b, n]) => `${safe(b)} (${n})`).join(', ');
 function body(g) {
   const e = g.sample;
@@ -42,14 +49,14 @@ Bot wykrył błąd na **https://conatalerz.pl** zgłoszony automatycznie z przeg
 | | |
 |---|---|
 | Rodzaj | \`${safe(e.kind)}\` |
-| Komunikat | ${safe(e.message).replace(/\|/g, '\\|').replace(/\n/g, ' ')} |
-| Plik | \`${safe(e.source) || '—'}\`${e.line ? ` wiersz ${e.line}:${e.col}` : ''} |
+| Komunikat | ${safe(redact(e.message)).replace(/\|/g, '\\|').replace(/\n/g, ' ')} |
+| Plik | \`${safe(redact(e.source)) || '—'}\`${e.line ? ` wiersz ${e.line}:${e.col}` : ''} |
 | Wystąpienia | ${g.count} (${safe(g.first)} – ${safe(g.last)}) |
 | Przeglądarki | ${browsers(g)} |
 | Z zainstalowanej aplikacji | ${g.installed} |
 | Język strony | ${safe(e.lang) || '—'} |
 
-${e.stack ? '```\n' + safe(e.stack) + '\n```' : ''}
+${e.stack ? '```\n' + safe(redact(e.stack)) + '\n```' : ''}
 
 Zamknij zgłoszenie po wdrożeniu poprawki — jeśli błąd wróci, bot otworzy je ponownie.
 Przebieg bota: ${runUrl()}`;
@@ -70,7 +77,7 @@ async function main() {
   for (const g of groups.slice(0, 20)) {
     const found = findByMarker(issues, 'error-' + g.id);
     const note = `Ponownie: **${g.count}×** (${safe(g.first)} – ${safe(g.last)}). Przeglądarki: ${browsers(g)}. Przebieg: ${runUrl()}`;
-    if (!found) { await createIssue(`Błąd na stronie: ${String(g.sample.message || g.sample.kind).replace(/\s+/g, ' ').slice(0, 90)}`, body(g), [LABEL]); console.log('Nowe zgłoszenie', g.id); }
+    if (!found) { await createIssue(`Błąd na stronie: ${redact(g.sample.message || g.sample.kind).replace(/\s+/g, ' ').slice(0, 90)}`, body(g), [LABEL]); console.log('Nowe zgłoszenie', g.id); }
     else if (found.state === 'closed') { await updateIssue(found.number, { state: 'open' }); await comment(found.number, '🔁 Błąd wrócił po zamknięciu zgłoszenia. ' + note); console.log('Otwarte ponownie #' + found.number); }
     else { await comment(found.number, note); console.log('Dopisano do #' + found.number); }
   }

@@ -1,0 +1,79 @@
+name: "Bot: analityk strony i błędów"
+on:
+  schedule:
+    - cron: '7,37 * * * *'
+  workflow_dispatch:
+  workflow_run:
+    workflows: ['Deploy conatalerz.pl (nazwa.pl)']
+    types: [completed]
+permissions:
+  contents: read
+  issues: write
+concurrency:
+  group: bot-site-analyst
+  cancel-in-progress: false
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm run build
+        env:
+          CNT_SUPABASE_URL: ${{ vars.CNT_SUPABASE_URL }}
+          CNT_SUPABASE_PUBLISHABLE_KEY: ${{ vars.CNT_SUPABASE_PUBLISHABLE_KEY }}
+          CNT_GA4_ID: ${{ vars.CNT_GA4_ID }}
+          CNT_ADS_CMP_READY: ${{ vars.CNT_ADS_CMP_READY }}
+      - name: Sprawdź conatalerz.pl
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/bots/monitor.mjs --expect-sw apps/web/dist/sw.js
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Pobierz zgłoszenia z serwera (SFTP)
+        env:
+          SERVER: ${{ secrets.NAZWA_FTP_SERVER }}
+          USER: ${{ secrets.NAZWA_FTP_USERNAME }}
+          LFTP_PASSWORD: ${{ secrets.NAZWA_FTP_PASSWORD }}
+          DIR: ${{ vars.NAZWA_FTP_DIR }}
+        run: |
+          mkdir -p incoming
+          if [ -z "$SERVER" ] || [ -z "$USER" ] || [ -z "$LFTP_PASSWORD" ]; then echo "::warning::Brak danych SFTP"; exit 0; fi
+          sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+          OPEN="set sftp:auto-confirm yes; set net:max-retries 2; set net:timeout 30; open --env-password -u \"$USER\" sftp://$SERVER; cd \"$DIR\""
+          files=$(lftp -c "$OPEN; cls -1 _reports/" 2>/dev/null | sed 's#.*/##' | grep -E '^errors-[0-9-]+\.jsonl$' || true)
+          for f in $files; do
+            taken="taken-${GITHUB_RUN_ID}-$f"
+            # Zmiana nazwy jest atomowa: report.php od razu zaczyna nowy plik, nic nie ginie ani się nie dubluje.
+            lftp -c "$OPEN; set cmd:fail-exit yes; mv _reports/$f _reports/$taken; get _reports/$taken -o incoming/$taken"
+          done
+          # Pozostałości po przerwanym przebiegu
+          for f in $(lftp -c "$OPEN; cls -1 _reports/" 2>/dev/null | sed 's#.*/##' | grep -E '^taken-[0-9]+-errors-[0-9-]+\.jsonl$' || true); do
+            [ -e "incoming/$f" ] || lftp -c "$OPEN; set cmd:fail-exit yes; get _reports/$f -o incoming/$f"
+          done
+          ls -la incoming
+      - name: Zgłoś błędy na GitHubie
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/bots/collect-errors.mjs incoming
+      - name: Potwierdź przetworzone zgłoszenia
+        env:
+          SERVER: ${{ secrets.NAZWA_FTP_SERVER }}
+          USER: ${{ secrets.NAZWA_FTP_USERNAME }}
+          LFTP_PASSWORD: ${{ secrets.NAZWA_FTP_PASSWORD }}
+          DIR: ${{ vars.NAZWA_FTP_DIR }}
+        run: |
+          OPEN="set sftp:auto-confirm yes; set net:max-retries 2; set net:timeout 30; open --env-password -u \"$USER\" sftp://$SERVER; cd \"$DIR\""
+          for path in incoming/taken-*.jsonl; do
+            [ -f "$path" ] || continue
+            lftp -c "$OPEN; set cmd:fail-exit yes; rm _reports/${path##*/}"
+          done
