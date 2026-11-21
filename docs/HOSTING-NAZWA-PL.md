@@ -66,7 +66,7 @@ Ustaw publiczne wartości jako **Actions variables**. Sekretów SMTP i OAuth nie
 | --- | --- |
 | `CNT_SUPABASE_URL` | Adres projektu `https://…supabase.co`. |
 | `CNT_SUPABASE_PUBLISHABLE_KEY` | Klucz klienta `sb_publishable_…`. |
-| `CNT_GA4_ID` | Identyfikator strumienia webowego `G-…` dla conatalerz.pl. |
+| `CNT_GA4_ID` | Opcjonalny identyfikator zastępujący domyślne `G-QS4ZV5PB3K` dla conatalerz.pl. |
 | `CNT_ADS_CMP_READY` | `true` po weryfikacji domeny w AdSense i opublikowaniu komunikatu Google Privacy & Messaging. |
 
 ### Konfiguracja kont
