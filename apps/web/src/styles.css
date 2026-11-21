@@ -105,3 +105,19 @@ header ins.adsbygoogle,nav ins.adsbygoogle,dialog ins.adsbygoogle,.lang-picker i
 .variants .variant:hover{border-color:var(--ink)}
 /* CNT-044: „Wyczyść filtry” w panelu filtrów */
 .filters-reset:empty{display:none}.filters-reset{margin-top:12px}.filters-reset button{min-height:44px}
+
+.brand img.brand-icon { display:block; object-fit:contain; border-radius:0; padding:0; background:none; box-shadow:none; }
+#account-button { justify-self:end; }
+.catalog-more { display:block; margin:1.25rem auto 0; }
+.baskets details, #community-section details { border-top:1px solid currentColor; margin-top:.6rem; padding:.65rem 0; }
+.baskets summary, #community-section summary { font-weight:700; cursor:pointer; }
+.baskets details h3 { font-size:1rem; }
+.account-form { display:grid; gap:.75rem; margin:1rem 0; }
+.account-form label { display:grid; gap:.25rem; }
+.account-form label:has(input[type="checkbox"]) { display:flex; align-items:center; gap:.5rem; }
+.account-form textarea { font:inherit; min-height:6rem; padding:.6rem; color:inherit; background:transparent; border:1px solid currentColor; border-radius:.5rem; }
+.account-actions { display:flex; flex-wrap:wrap; gap:.55rem; margin:.8rem 0; }
+.preserve-lines { white-space:pre-wrap; overflow-wrap:anywhere; }
+.analytics-panel { width:min(35rem,calc(100% - 2rem)); position:fixed; z-index:5; bottom:1rem; right:1rem; padding:1rem; box-shadow:0 .3rem 2rem #0004; }
+.analytics-panel[hidden], #account-button[hidden], #analytics-settings[hidden] { display:none; }
+footer a { color:inherit; }

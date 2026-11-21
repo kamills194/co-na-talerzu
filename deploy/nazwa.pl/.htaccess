@@ -50,4 +50,5 @@ AddCharset utf-8 .js .css .json .webmanifest .html
   RewriteRule "(^|/)\.(?!well-known/)" - [F]
   # Zgłoszenia błędów (report.php) — tylko dla bota przez SFTP
   RewriteRule "^_reports(/|$)" - [F]
+  RewriteRule "^_chef(/|$)" - [F]
 </IfModule>

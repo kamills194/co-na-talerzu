@@ -55,3 +55,28 @@ Potem Actions → *Deploy conatalerz.pl (nazwa.pl)* → **Run workflow**.
   katalog WWW domeny: `/conatalerz` (CloudHosting Panel → Domeny → Modyfikuj domenę).
 - Konto SFTP: `server705424_conatalerz`, ograniczone do katalogu `conatalerz/` → `NAZWA_FTP_DIR=./`.
 - Sekrety GitHub ustawione: `NAZWA_FTP_SERVER`, `NAZWA_FTP_USERNAME`, `NAZWA_FTP_PASSWORD`; zmienna `NAZWA_FTP_DIR`.
+
+## Kucharz, konta, analityka i reklamy
+
+Produkcja dostaje `chef.php` z katalogiem danych `_chef/` blokowanym dla WWW. Główna lista i filtry nadal działają na kopiach statycznych. Po wdrożeniu sprawdź `curl -fsS https://conatalerz.pl/chef.php` oraz anonimowy odczyt `_chef`, który powinien zwracać 403. Test wyszukiwania wykonaj w aplikacji dla nazwy dania spoza katalogu.
+
+Ustaw publiczne wartości jako **Actions variables**. Sekretów SMTP i OAuth nie wpisuj do repozytorium ani do kompilacji webowej.
+
+| Zmienna | Wartość |
+| --- | --- |
+| `CNT_SUPABASE_URL` | Adres projektu `https://…supabase.co`. |
+| `CNT_SUPABASE_PUBLISHABLE_KEY` | Klucz klienta `sb_publishable_…`. |
+| `CNT_GA4_ID` | Identyfikator strumienia webowego `G-…` dla conatalerz.pl. |
+| `CNT_ADS_CMP_READY` | `true` po weryfikacji domeny w AdSense i opublikowaniu komunikatu Google Privacy & Messaging. |
+
+### Konfiguracja kont
+
+1. Zastosuj `supabase/migrations/202611210001_community.sql` w projekcie testowym, potem produkcyjnym. Sprawdź reguły z użytkownikami A i B oraz anonimowymi żądaniami.
+2. Ustaw Site URL i listę dozwolonych przekierowań na adres produkcji. Włącz dostawcę E-mail i własny SMTP. Umieść `{{ .Token }}` w szablonach rejestracji i logowania e-mailem, aby wiadomości zawierały kod jednorazowy.
+3. Włącz Google i Facebook w Supabase. Zarejestruj w każdym panelu OAuth dokładny callback wskazany przez Supabase i dodaj sekrety dostawców w panelu Auth. Publikowanie treści zaczyna się od kolejki `pending`. Operator może zatwierdzić lub odrzucić rekord po sprawdzeniu źródła, treści i warunków promocji.
+4. Zaplanuj bieżące usuwanie wygasłych kopii z tabeli `cnt_shares`, np. przez Supabase Cron raz dziennie. Uzupełnij politykę o tożsamość i prywatny kontakt administratora, dostawców wiadomości, region projektu i okresy retencji.
+5. Zweryfikuj logowanie trzema kanałami, link z innego konta, cofnięcie linku, brak publikacji bez sesji i usuwanie konta. Etykiety panelu konta są po polsku i angielsku.
+
+### Konfiguracja pomiaru
+
+Zatwierdź CMP w panelu AdSense dla EOG, Wielkiej Brytanii i Szwajcarii. Identyfikator wydawcy jest już w metadanych strony i pliku `ads.txt`. Konfiguracja aplikacji włącza skrypt reklamowy dopiero po ustawieniu `CNT_ADS_CMP_READY`. W GA4 wyłącz automatyczny pomiar interakcji zawierających hasła wyszukiwania lub pełne adresy i zweryfikuj zdarzenia w DebugView. Integracja wysyła wyłącznie nazwę zakładki i typ działania po zgodzie użytkownika. Można mierzyć `install_open` jako otwarcie instrukcji instalacji, a `shopping_add` jako dodanie składników.

@@ -1,3 +1,4 @@
+import { extraRecipes } from '../src/extra-catalog.js';
 // CNT-039: poprawki po teście właściciela na telefonie (17.11.2026, 20:34) — większa losowość, czas w przedziałach
 // 15/30/60 min i pełnych półgodzinach, czyszczenie filtrów bez skoku do wyszukiwarki, nazwy produktów w promocji
 // zamiast „%”, przerywnik kuchenny zamiast chorągiewek, flagi przy językach, tylko dwa motywy, etykiety nowych kuchni.
@@ -248,7 +249,7 @@ test('8. Kuchnie: kolejność listy, etykiety (zakładka i karta) w polskim i ws
     assert.equal(new Set(cuisines.map(c=>ui[c])).size,cuisines.length,`${code}: różne etykiety kuchni`);
   }
   const out=runApp({script:`out.tabs=el('#cuisine-tabs').innerHTML;`});
-  for(const c of cuisines){const has=recipes.some(r=>(r.cuisine||'polish')===c);assert.equal(out.tabs.includes(`data-cuisine="${c}"`),has,c);}
+  for(const c of cuisines){const has=[...recipes,...extraRecipes('pl')].some(r=>(r.cuisine||'polish')===c);assert.equal(out.tabs.includes(`data-cuisine="${c}"`),has,c);}
 });
 
 // CNT-045: „Wyczyść listę” usuwa całą listę jednym kliknięciem; „Cofnij” w komunikacie przywraca ją.
