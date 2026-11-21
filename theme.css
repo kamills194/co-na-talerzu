@@ -1,0 +1,342 @@
+/* CNT-035 · „Bajkowa książeczka” — motyw jasny (papier) i ciemny (neutralna ciemna szarość).
+   Warstwa nakładana PO styles.css. Właściciel: CNT-035 (pierwotnie CNT-031, wariant B).
+   - Paleta w zmiennych CSS. CNT-039: tylko dwa motywy — jasny (:root / html[data-theme="light"]) i ciemny
+     (html[data-theme="dark"]). Atrybut ustawia zawsze skrypt w <head> index.html przed pierwszym malowaniem
+     (pierwsza wizyta: raz według prefers-color-scheme, potem wybór użytkownika) i theme-mode.js.
+     Dlatego nie ma już zdublowanego bloku @media (prefers-color-scheme:dark).
+   - CNT-039 (uwaga właściciela nr 10, „usuń dekoracje zewsząd”): bez ozdobników — bez girlandy, gwiazdek, gałązek,
+     falek pod nagłówkami, wzorków tła, wstążek przy ilustracji, inicjału i „drukowanych” cieni. Zostają: ilustracja
+     talerza, emoji dań, ikony w przyciskach, obramowania oddzielające treść, kolory i kroje pisma.
+   - Układ płynny (min/clamp/flex-wrap/grid), bez stałych wysokości kontenerów tekstu — także przy powiększeniu 200%. */
+
+/* ---------- 1. Paleta ---------- */
+:root{
+  color-scheme:light;
+  --green:#9a3824;
+  --ink:#3a2a1d;
+  --paper:#fbf3e1;
+  --muted:#65513f;
+  --border:#d9c6a3;
+  --orange:#2c5875;
+  --white:#fffaf0;
+  --t-on-primary:#ffffff;
+  --t-primary-hover:#7f2b1a;
+  --t-ui-border:#3a2a1d;
+  --t-focus:#2c5875;
+  --t-line:#c8ad7f;
+  --t-field:#fffdf7;
+  --t-shadow-c:#3a2a1d24;
+  --t-shadow-strong:#3a2a1d40;
+  --t-notice:#f6e6bd;
+  --t-soft:#f4ead3;
+  --t-chip:#f1e2c2;
+  --t-label:#fffaf0;
+  --t-plate:#fffdf6;
+  --t-offer-bg:#f6e6dc;
+  --t-toast-bg:#3a2a1d;
+  --t-toast-fg:#fffaf0;
+  --t-art-breakfast:#f6e6bd;
+  --t-art-snack:#f1e2c2;
+  --t-art-lunch:#dfe7cc;
+  --t-art-dinner:#d7e6ee;
+  --t-art-dessert:#f3d9cc;
+  --t-art-starter:#ece4cf;
+  --t-sketch:12px;
+  --t-card:16px;
+  --t-wobble:10px;
+  --t-shadow:4px 5px 0 var(--t-shadow-c);
+  --t-serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua","URW Palladio L","TeX Gyre Pagella",Georgia,serif;
+  --t-hand:"Segoe Print","Bradley Hand","Chalkboard SE","Comic Sans MS",cursive;
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  color:var(--ink);background:var(--paper);
+}
+/* Ciemny motyw: zwykła, neutralna ciemna szarość (decyzja właściciela 17.11 wieczorem — bez imitacji nocy, gwiazd i granatu). */
+html[data-theme="dark"]{
+  color-scheme:dark;
+  --green:#e8846b;
+  --ink:#ececec;
+  --paper:#121212;
+  --muted:#b5b5b5;
+  --border:#3a3a3a;
+  --orange:#8fbfe0;
+  --white:#1e1e1e;
+  --t-on-primary:#121212;
+  --t-primary-hover:#f09a84;
+  --t-ui-border:#8a8a8a;
+  --t-focus:#ffd27a;
+  --t-line:#4a4a4a;
+  --t-field:#181818;
+  --t-shadow-c:#00000059;
+  --t-shadow-strong:#00000080;
+  --t-notice:#2a2622;
+  --t-soft:#262626;
+  --t-chip:#2c2c2c;
+  --t-label:#1e1e1e;
+  --t-plate:#e4ded4;
+  --t-offer-bg:#33241f;
+  --t-toast-bg:#ececec;
+  --t-toast-fg:#121212;
+  --t-art-breakfast:#2a2622;
+  --t-art-snack:#262428;
+  --t-art-lunch:#232826;
+  --t-art-dinner:#24262a;
+  --t-art-dessert:#2a2426;
+  --t-art-starter:#242826;
+}
+
+/* ---------- 2. Skala pisma (rem: szanuje ustawienia i powiększenie przeglądarki) ---------- */
+body{font-size:.9375rem;line-height:1.55;background:var(--paper);color:var(--ink)}
+@media (min-width:601px){body{font-size:1rem}}
+p{line-height:1.6}
+h1,h2,h3,.brand{font-family:var(--t-serif);font-weight:600;letter-spacing:-.2px;line-height:1.2}
+h1,.page-title h1{font-size:clamp(1.35rem,.9rem + 4vw,2.6rem);letter-spacing:-.5px;margin-bottom:.6em}
+.hero h1{font-size:clamp(1.45rem,1rem + 4vw,2.9rem);letter-spacing:-.6px}
+h2,.inspiration h2,.catalog h2{font-size:clamp(1.2rem,.95rem + 2.2vw,1.85rem)}
+.panel h2{font-size:clamp(1.25rem,1.1rem + .7vw,1.55rem)}
+h3,dialog h3{font-size:clamp(1.1rem,1rem + .45vw,1.3rem)}
+.card-body h3{font-size:clamp(1.12rem,1.02rem + .4vw,1.3rem)}
+.offer-row h3{font-size:1.15rem}
+.dialog-head h2{font-size:1.25rem}
+.detail-title h2{font-size:clamp(1.3rem,1rem + 2.4vw,2rem);margin:.5em 0}
+.detail-title>span{font-size:2.6rem}
+.brand{font-size:clamp(1.3rem,1.05rem + 1.1vw,1.65rem)}
+.brand small{font-size:.75rem}
+.brand-icon{font-size:2rem;line-height:1}
+.eyebrow,.hero .eyebrow{font-size:.75rem;letter-spacing:.14em;margin-bottom:.9rem}
+.hero>div>p:not(.eyebrow){font-size:clamp(.9375rem,.88rem + .3vw,1.0625rem)}
+label,.exclusions,.muted,.section-heading p,.results-heading p,.text-button,.secondary,.sort-control,.offer-matches,
+.lang-suggest,.allergen-note,.net-status,footer,.category-chips button,.cuisine-tabs button,.card-body>p{font-size:.8125rem}
+.small,.offline,.meta,.card-bottom span,.category-label,.cuisine-label,.offer-tag,.chip-count,.offer-row small,
+.sort-hint,.promo-line,.detail-photo figcaption,.nutrition dt,.lang-picker label,nav b{font-size:.75rem}
+.panel p,.notice,.ingredients li,.nutrition-toggle,#toast,.primary,.reroll .secondary,.shopping-list label,.shopping-list strong{font-size:.875rem}
+.steps li{font-size:.9375rem;line-height:1.65}
+.nutrition h3{font-size:1.1rem}.nutrition dd{font-size:1rem}
+.search span{font-size:1.3rem}
+.favorite{font-size:1.4rem}.card-bottom button{font-size:1.3rem}
+.empty-icon{font-size:1.9rem}
+@media (min-width:601px){.search input:not([type=checkbox]){font-size:.875rem}.sort-control select,.lang-picker select{font-size:.875rem}}
+
+/* ---------- 3. Nagłówek: cienka linia pod spodem, nawigacja nigdy nie nachodzi na treść ---------- */
+header{flex-wrap:wrap;row-gap:12px;min-height:0;border-bottom:1px solid var(--t-line);padding-bottom:14px}
+.brand{flex:1 1 auto;min-width:0;white-space:normal}
+.brand>span:last-child{min-width:0;overflow-wrap:anywhere}
+.brand-icon{color:var(--green)}
+.brand small{color:var(--muted);font-family:var(--t-serif);font-style:italic;letter-spacing:.04em;margin-top:2px}
+nav{flex-wrap:wrap;gap:4px;min-width:0}
+nav button{border-radius:var(--t-sketch);border:2px solid transparent;font-weight:600;font-size:.8125rem;line-height:1.25}
+nav button span{font-size:1.1rem}
+nav button:hover{border-color:var(--t-line)}
+nav button[aria-current]{background:var(--green);color:var(--t-on-primary);border-color:var(--green)}
+nav b{color:inherit;display:inline-block;min-width:1.4em;padding:0 .35em;border-radius:1em;background:var(--t-chip);color:var(--ink);line-height:1.5}
+nav button[aria-current] b{background:var(--t-on-primary);color:var(--green)}
+.lang-picker{flex-wrap:wrap;justify-content:flex-end;row-gap:6px}
+.lang-picker label{color:var(--ink)}
+.lang-suggest{border-color:var(--t-ui-border);border-style:solid;color:var(--ink)}
+@media (max-width:900px){nav{order:3;flex:1 1 100%}}
+@media (max-width:600px){
+  header{padding:14px clamp(10px,4vw,20px) 12px;gap:10px}
+  nav{display:flex;flex-wrap:wrap;gap:4px;width:100%}
+  nav button{flex:1 1 0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:6px 4px;min-height:54px;font-size:.75rem;text-align:center;overflow-wrap:break-word;min-width:0}
+  nav button span{margin:0;font-size:1.15rem;line-height:1}
+}
+
+/* ---------- 4. Przełącznik motywu (markup z theme-mode.js) ---------- */
+.theme-toggle{display:inline-flex;align-items:center;gap:2px;padding:2px;border:2px solid var(--t-ui-border);border-radius:var(--t-sketch);background:var(--white);max-width:100%}
+.theme-toggle button{display:inline-flex;align-items:center;justify-content:center;gap:4px;min-width:44px;min-height:44px;padding:4px 10px;border:0;border-radius:var(--t-sketch);background:transparent;color:var(--ink);font-size:.8125rem;font-weight:600;line-height:1.2}
+.theme-toggle button[aria-pressed="true"]{background:var(--green);color:var(--t-on-primary)}
+.theme-toggle button span[aria-hidden]{font-size:1rem;line-height:1}
+@media (max-width:600px){.theme-toggle-text{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}}
+
+/* ---------- 5. Nadtytuły i odnośniki ---------- */
+.eyebrow{color:var(--orange)}
+.dialog-head .eyebrow{flex:1 1 0;min-width:0;overflow-wrap:anywhere}
+.text-button{color:var(--ink);text-decoration-color:var(--green);text-underline-offset:4px}
+a{text-decoration-color:var(--green)}
+
+/* ---------- 6. Przyciski i pola ---------- */
+.primary{border:2px solid var(--green);border-radius:var(--t-sketch);background:var(--green);color:var(--t-on-primary);box-shadow:none;font-weight:700;gap:clamp(10px,4vw,28px);padding:12px 22px;max-width:100%;text-align:center;flex-wrap:wrap}
+.primary:hover{background:var(--t-primary-hover)}
+.secondary,.close{border:2px solid var(--t-ui-border);border-radius:var(--t-sketch);background:var(--white);color:var(--ink);font-weight:600}
+.close{border-radius:50%}
+label{color:var(--ink)}
+select,input:not([type=checkbox]):not([type=file]){border:2px solid var(--t-ui-border);border-radius:var(--t-wobble);background:var(--t-field);color:var(--ink);max-width:100%;text-overflow:ellipsis}
+select option{background:var(--t-field);color:var(--ink)}
+input::placeholder{color:var(--muted);opacity:1}
+input[type=checkbox]{accent-color:var(--green)}
+input[type=file]{color:var(--ink)}
+input[type=file]::file-selector-button{border:2px solid var(--t-ui-border);border-radius:var(--t-wobble);background:var(--white);color:var(--ink)}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--t-focus);outline-offset:3px}
+.recipe-card:has(h3 button:focus-visible){outline:3px solid var(--t-focus);outline-offset:5px}
+.reroll .secondary{border-color:var(--t-ui-border);color:var(--ink);background:var(--white)}
+.reroll .secondary:hover:not(:disabled){background:var(--t-soft)}
+
+/* ---------- 7. Bohater: sama ilustracja talerza, bez ramki, łąki i wstążek ---------- */
+.hero{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);min-height:0;padding:clamp(24px,5vw,56px) 0 clamp(20px,4vw,44px)}
+.hero>div{min-width:0}
+.hero>div>p:not(.eyebrow){color:var(--muted);font-family:var(--t-serif)}
+.offline{color:var(--muted)}
+.hero-art{container:art/inline-size;display:grid;place-items:center;min-height:0;width:100%;margin:0;padding:clamp(8px,2vw,16px);
+  border:0;border-radius:0;background:none;box-shadow:none}
+.plate{margin:4px 0;transform:rotate(-12deg);background:var(--t-plate);
+  box-shadow:inset 0 0 0 3px #3a2a1d,inset 0 0 0 14px var(--t-plate),inset 0 0 0 16px #2c5875,inset 0 0 0 19px var(--t-plate),inset 0 0 0 20px #2c587599}
+@container art (max-width:340px){.plate{zoom:.75}}
+@container art (max-width:250px){.plate{zoom:.56}}
+@container art (max-width:190px){.plate{zoom:.42}}
+@container art (max-width:140px){.plate{zoom:.32}}
+.food{border:2px solid #3a2a1d}
+.food-1{background:#d79a49;outline:2px dashed #a8722d;outline-offset:-10px}
+.food-2{background:#f0d27a}.food-3{background:#f3dc95}
+.leaf{background:#7f9c4f;border:2px solid #3a2a1d}.l2{background:#9ab565}.l3{background:#6a8a40}
+.tomato{background:#c8452a;border:2px solid #3a2a1d;box-shadow:inset 0 0 0 3px #e98a63}
+/* wstążka i karteczka przy ilustracji to ozdobniki (aria-hidden) — ukryte */
+.art-caption,.art-note{display:none}
+@media (max-width:600px){.hero{grid-template-columns:minmax(0,1fr)}.hero-art{margin:4px 0 8px}}
+
+/* ---------- 8. Panel „Zaskocz mnie” ---------- */
+.inspiration{position:relative;border:1px solid var(--t-line);border-radius:var(--t-card);background:var(--white);box-shadow:none;padding:clamp(16px,4vw,32px)}
+.filter-row{grid-template-columns:repeat(auto-fit,minmax(min(100%,13rem),1fr));gap:12px 18px}
+.exclusions summary{font-weight:600}
+.checks{gap:0 16px}
+.product-checks{grid-template-columns:repeat(auto-fit,minmax(min(100%,11rem),1fr))}
+.muted,.section-heading p,.results-heading p{color:var(--muted)}
+.section-heading{flex-wrap:wrap}
+.section-heading>*{min-width:0}
+
+/* ---------- 9. Wyszukiwarka, kuchnie, kategorie ---------- */
+.search{border-bottom:1px solid var(--t-ui-border);max-width:100%}
+.search input:not([type=checkbox]):not([type=file]){border:0;background:none;margin:0;min-width:0}
+.category-chips button,.cuisine-tabs button{border:2px solid var(--t-ui-border);border-radius:var(--t-sketch);background:var(--white);color:var(--ink);font-weight:600}
+.category-chips button{max-width:100%;overflow-wrap:break-word}
+.category-chips button[aria-pressed=true],.cuisine-tabs button[aria-pressed=true]{background:var(--green);color:var(--t-on-primary);border-color:var(--green);box-shadow:none}
+.chip-count{background:var(--t-chip);color:var(--ink);border:1px solid var(--t-line)}
+.cuisine-tabs button[aria-pressed=true] .chip-count{background:var(--t-on-primary);color:var(--green);border-color:transparent}
+.results-heading>*{min-width:0}
+.sort-control{flex-wrap:wrap}
+.sort-control select{background:var(--t-field);flex:1 1 7rem;min-width:0}
+@media (max-width:420px){select{padding-left:10px;padding-right:6px}}
+
+/* ---------- 10. Karty: etykiety w siatce (nie na sercu), jednolite tła kategorii ---------- */
+.recipe-grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,17rem),1fr));gap:clamp(14px,2.5vw,26px)}
+.recipe-card{border:1px solid var(--t-line);border-radius:var(--t-card);background:var(--white);box-shadow:none;min-width:0}
+.card-art{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto 1fr auto;grid-template-areas:"cat fav" "art art" "cui cui";
+  align-items:start;gap:6px;height:auto;min-height:11rem;padding:12px;border-bottom:1px solid var(--t-line);background:var(--t-art-snack)}
+/* flex z zawijaniem: gdy brak miejsca, serce schodzi do nowego wiersza zamiast nachodzić na etykietę */
+.card-art{display:flex;flex-wrap:wrap;align-items:center;align-content:space-between}
+.card-art .photo{z-index:0}
+.card-art>span:first-child{order:3;position:relative;z-index:1;width:6.5rem;height:6.5rem;font-size:3.6rem;margin:4px max(0px,calc(50% - 3.25rem));
+  background:var(--t-plate);border:1px solid var(--t-line);box-shadow:none;filter:none;transform:none;border-radius:50%}
+.category-label,.cuisine-label{position:relative;inset:auto;z-index:1;justify-self:start;max-width:100%;overflow-wrap:break-word;line-height:1.3;
+  background:var(--t-label);color:var(--ink);border:1px solid var(--t-line);border-radius:var(--t-sketch);font-weight:600;padding:4px 10px}
+.category-label{order:1}
+.cuisine-label{order:4}
+.favorite{order:2;margin-left:auto;flex:none;position:relative;inset:auto;z-index:2;background:var(--t-label);color:var(--ink);border:2px solid var(--ink);display:grid;place-items:center;line-height:1}
+.favorite.active{color:var(--green)}
+.art-breakfast{background:var(--t-art-breakfast)}
+.art-snack{background:var(--t-art-snack)}
+.art-lunch{background:var(--t-art-lunch)}
+.art-dinner{background:var(--t-art-dinner)}
+.art-dessert{background:var(--t-art-dessert)}
+.art-starter{background:var(--t-art-starter)}
+.card-body{padding:clamp(14px,4%,22px)}
+.card-body h3 button{color:var(--ink);overflow-wrap:anywhere}
+/* cała karta klikalna; serce i strzałka leżą nad tą warstwą */
+.card-body h3 button:after{inset:0}
+.meta{color:var(--muted);flex-wrap:wrap;row-gap:2px}
+.card-body>p{color:var(--muted);font-family:var(--t-serif);font-style:italic}
+.card-bottom{border-top:1px solid var(--t-line);gap:8px}
+.card-bottom span{color:var(--muted);font-family:var(--t-serif);font-style:italic;letter-spacing:.03em;min-width:0}
+.card-bottom button{color:var(--green)}
+.offer-tag{color:var(--green);background:var(--t-offer-bg);font-weight:700}
+
+/* ---------- 11. Pozostałe ekrany ---------- */
+.page-title{padding:clamp(20px,5vw,48px) 0 16px}
+.page-title p:not(.eyebrow){color:var(--muted);font-family:var(--t-serif)}
+.panel{border:1px solid var(--t-line);border-radius:var(--t-card);background:var(--white);box-shadow:none;padding:clamp(16px,4vw,28px)}
+.notice,.net-status{background:var(--t-notice);border:1px solid var(--t-line);border-left:4px solid var(--orange);border-radius:10px;color:var(--ink)}
+.shopping-list li,.offer-row{border-top:1px solid var(--t-line)}
+.shopping-list .done label{opacity:.72}
+.shopping-list label{flex-wrap:wrap;row-gap:2px;min-width:0}
+.shopping-list strong{white-space:normal;overflow-wrap:anywhere;text-align:right}
+.shopping-actions{flex-wrap:wrap}
+.inline{flex-wrap:wrap}
+.inline .primary{flex:0 0 auto}
+.offer-form{grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr))}
+.offer-row>div{flex:1 1 14rem}
+.empty-icon{color:var(--muted)}
+.allergen-note{background:var(--t-notice);color:var(--ink);border:1px solid var(--t-line);border-radius:12px}
+.steps li::marker{color:var(--green);font-family:var(--t-serif)}
+.ingredients li{border-bottom:1px solid var(--t-line);gap:4px 16px}
+.ingredients strong{white-space:normal;text-align:right}
+.promo-line{color:var(--muted)}
+.promo-price,.promo-scope{color:var(--orange)}
+.promo-link{color:var(--green)}
+.nutrition{background:var(--white);border:1px solid var(--t-line);border-radius:var(--t-wobble)}
+.nutrition dl{grid-template-columns:repeat(auto-fit,minmax(min(100%,6.5rem),1fr))}
+.nutrition dl div{background:var(--t-soft);min-width:0}
+.nutrition dd{white-space:normal;overflow-wrap:anywhere}
+.detail-photo .photo{background:var(--t-soft)}
+footer{border-top:1px solid var(--t-line);color:var(--muted);font-family:var(--t-serif);font-style:italic;flex-wrap:wrap;gap:6px 16px}
+footer .text-button{font-style:normal}
+main{min-width:0}
+@media (max-width:600px){main,footer,.net-status{margin-left:clamp(10px,4vw,18px);margin-right:clamp(10px,4vw,18px)}}
+
+/* ---------- 12. Okno przepisu ---------- */
+dialog{border:1px solid var(--t-line);border-radius:var(--t-card);background:var(--paper);color:var(--ink);box-shadow:0 12px 40px var(--t-shadow-strong);width:min(640px,calc(100% - 20px))}
+dialog::backdrop{background:#2b1e14b3}
+.dialog-head{background:var(--paper);border-bottom:1px solid var(--t-line);gap:10px}
+.dialog-head h2{min-width:0;flex:1 1 0;overflow-wrap:anywhere}
+.portions{flex-wrap:wrap;gap:8px 16px}
+@media (max-width:400px){dialog{--dp:clamp(12px,4vw,20px)}}
+#toast{background:var(--t-toast-bg);color:var(--t-toast-fg);border-radius:var(--t-sketch);box-shadow:none;max-width:calc(100% - 24px)}
+.skip{background:var(--white);color:var(--ink);border:2px solid var(--ink)}
+html[data-theme="dark"] dialog::backdrop{background:#000000a6}
+
+/* ---------- 13. Noc: ilustracje lekko przygaszone, by nie raziły ---------- */
+html[data-theme="dark"] .plate{filter:brightness(.92)}
+
+/* ---------- 14. Ruch (tylko zmiana koloru) dla osób, które go nie wyłączyły ---------- */
+@media (prefers-reduced-motion:no-preference){
+  .primary,.secondary,nav button,.category-chips button,.cuisine-tabs button,.favorite,.card-bottom button,.close,.theme-toggle button{transition:background-color .18s ease,border-color .18s ease,color .18s ease}
+}
+@media (prefers-reduced-motion:reduce){
+  .primary,.secondary,nav button,.category-chips button,.cuisine-tabs button,.favorite,.card-bottom button,.close,.theme-toggle button{transition:none}
+}
+
+/* CNT-035 po scaleniu z CNT-034: kolory zapisane na sztywno w bloku CNT-034 (styles.css) czytelne w trybie ciemnym. */
+html[data-theme="dark"] .field-error{color:#ffb4a9}
+html[data-theme="dark"] #servings[aria-invalid=true]{border-color:#ffb4a9}
+html[data-theme="dark"] #exclude-options li[aria-selected=true],html[data-theme="dark"] #exclude-options li:hover{color:var(--t-on-primary)}
+
+/* ---------- 15. CNT-039: flaga języka, produkty w promocji na karcie ---------- */
+.lang-code{display:inline-flex;align-items:center}
+.lang-code .flag,.suggest-short .flag{display:inline-block;vertical-align:middle;width:21px;height:14px;border-radius:2px;box-shadow:0 0 0 1px var(--t-ui-border)}
+.offer-tag{display:block;width:fit-content;max-width:100%;margin:10px 0 0;padding:4px 10px;border-radius:12px;line-height:1.45;overflow-wrap:anywhere}
+/* Logo nie łamie się litera po literze na 320 px: przy braku miejsca wybór motywu i języka przechodzi do nowego wiersza. */
+@media (max-width:600px){header .brand{min-width:min(100%,7.5rem)}}
+
+/* ---------- CNT-039: zakładka „Aplikacja” ---------- */
+.app-benefits ul{margin:.5em 0 0;padding-left:1.2em;display:grid;gap:6px}
+.app-guides{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;margin-top:16px}
+.app-os h2{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.app-browser{color:var(--muted);margin:.25em 0 .75em}
+.app-steps{margin:0;padding-left:1.4em;display:grid;gap:8px}
+.app-steps li::marker{font-weight:700;color:var(--green)}
+.badge{display:inline-block;padding:2px 10px;border-radius:1em;background:var(--t-chip);color:var(--ink);font-size:.75rem;font-weight:600;font-family:inherit}
+#install-app{margin-top:12px}
+.page-title .notice{margin-top:12px;padding:10px 14px}
+
+/* ---------- CNT-042: kafelki gazetek sklepów ---------- */
+.store-tiles{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,150px),1fr));gap:12px}
+.store-tile{display:flex;flex-direction:column;height:100%;min-height:96px;border-radius:14px;overflow:hidden;text-decoration:none;color:var(--ink);background:var(--t-surface,var(--paper));border:1px solid var(--t-line)}
+.store-tile:hover,.store-tile:focus-visible{box-shadow:0 6px 18px rgb(0 0 0 / .14)}
+.store-tile:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+.store-name{background:var(--store);color:var(--store-ink);font-weight:800;font-size:1.05rem;letter-spacing:.01em;padding:12px 14px}
+.store-period{flex:1;display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:12px 14px;font-weight:700;font-variant-numeric:tabular-nums;font-size:1rem}
+.store-tile.no-period .store-period{font-weight:500;font-size:.85rem;color:var(--muted)}
+.store-soon{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 8px;border-radius:1em;background:var(--t-chip);color:var(--ink)}
+@media (prefers-reduced-motion: no-preference){.store-tile{transition:transform .15s ease,box-shadow .15s ease}.store-tile:hover,.store-tile:focus-visible{transform:translateY(-2px)}}
+
+/* ---------- CNT-045: czyszczenie listy i „Cofnij” w komunikacie ---------- */
+.shopping-actions .danger{color:var(--orange,#b44f2c);border-color:currentColor}
+#toast.has-action{pointer-events:auto;display:flex;align-items:center;gap:12px}
+.toast-undo{background:transparent;border:1px solid currentColor;color:inherit;border-radius:999px;padding:6px 14px;min-height:36px;font:inherit;font-weight:700;cursor:pointer}

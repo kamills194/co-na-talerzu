@@ -1,0 +1,30 @@
+{
+  "id": "./",
+  "name": "Co na talerz",
+  "short_name": "Co na talerz",
+  "lang": "pl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#faf8f2",
+  "theme_color": "#9a3824",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "type": "image/png",
+      "src": "./icon-192.png",
+      "sizes": "192x192"
+    },
+    {
+      "purpose": "any maskable",
+      "type": "image/png",
+      "src": "./icon-512.png",
+      "sizes": "512x512"
+    }
+  ]
+}

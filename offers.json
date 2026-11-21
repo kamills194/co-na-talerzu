@@ -1,0 +1,997 @@
+{
+  "version": 1,
+  "market": "PL",
+  "currency": "PLN",
+  "timeZone": "Europe/Warsaw",
+  "updatedAt": "2026-11-21T04:14:38.310Z",
+  "offers": [
+    {
+      "id": "aldi-497-1794783600",
+      "product": "butter",
+      "market": "PL",
+      "currency": "PLN",
+      "scope": {
+        "type": "unverified",
+        "note": "Oferta ze strony ogólnopolskiej sklepu; dostępność regionalna niepotwierdzona"
+      },
+      "store": "ALDI",
+      "price": 3.99,
+      "until": "2026-11-21",
+      "from": "2026-11-16",
+      "source": "https://www.aldi.pl/produkty/nabial-i-jaja/maslo.html",
+      "fetchedAt": "2026-11-21T04:14:38.310Z",
+      "name": "Masło ekstra",
+      "unit": "Opak. 200 g",
+      "regularPrice": 5.99,
+      "validUntil": "2026-11-21T22:59:59.000Z",
+      "conditions": "Cena przy zakupie 2 szt. · -33% PRZY ZAKUPIE 2 SZT. · Limit: 6 szt. na klienta",
+      "evidence": "{\"validFrom\":1794783600,\"validUntil\":1795301999,\"priceValue\":3.99,\"basePrice\":[{\"basePriceValue\":19.95,\"basePriceScale\":\"kg\",\"basePriceAdditionalInformation\":\"CENA PRZY ZAKUPIE 2 SZT. / Cena regularna: 5,99 zł/szt. (kg=29,95 zł)\"}],\"priceTagLabels\":{\"promoText1\":\"-33% PRZY ZAKUPIE 2 SZT.\",\"textualAddition\":\"szt.\",\"bestPricesWithin30daysText\":\"5.99 zł to najniższa cena sprzed pierwszej obniżki.\"},\"validFromLocalDate\":\"2026-11-16\",\"validUntilLocalDate\":\"2026-11-21\"}"
+    },
+    {
+      "id": "aldi-3059-1794783600",
+      "product": "egg",
+      "market": "PL",
+      "currency": "PLN",
+      "scope": {
+        "type": "unverified",
+        "note": "Oferta ze strony ogólnopolskiej sklepu; dostępność regionalna niepotwierdzona"
+      },
+      "store": "ALDI",
+      "price": 9.74,
+      "until": "2026-11-21",
+      "from": "2026-11-16",
+      "source": "https://www.aldi.pl/produkty/nabial-i-jaja/jaja.html",
+      "fetchedAt": "2026-11-21T04:14:38.310Z",
+      "name": "Jaja z wolnego wybiegu L",
+      "unit": "Opak. 10 szt.",
+      "regularPrice": 12.99,
+      "validUntil": "2026-11-21T22:59:59.000Z",
+      "conditions": "Średnio przy zakupie 2 szt. (druga za 6,49 zł) · -50% CO DRUGA SZT.",
+      "evidence": "{\"validFrom\":1794783600,\"validUntil\":1795301999,\"priceValue\":6.49,\"basePrice\":[{\"basePriceValue\":0.65,\"basePriceScale\":\"szt.\",\"basePriceAdditionalInformation\":\"CENA REGULARNA: 12,99 zł/szt. (szt.=1,30 zł)\"}],\"priceTagLabels\":{\"promoText1\":\"-50% CO DRUGA SZT.\",\"textualAddition\":\"co druga\",\"bestPricesWithin30daysText\":\"12.99 zł to najniższa cena sprzed pierwszej obniżki.\"},\"validFromLocalDate\":\"2026-11-16\",\"validUntilLocalDate\":\"2026-11-21\"}"
+    },
+    {
+      "id": "aldi-3791-1794783600",
+      "product": "tomato",
+      "market": "PL",
+      "currency": "PLN",
+      "scope": {
+        "type": "unverified",
+        "note": "Oferta ze strony ogólnopolskiej sklepu; dostępność regionalna niepotwierdzona"
+      },
+      "store": "ALDI",
+      "price": 11.99,
+      "until": "2026-11-21",
+      "from": "2026-11-16",
+      "source": "https://www.aldi.pl/produkty/owoce-i-warzywa/warzywa.html",
+      "fetchedAt": "2026-11-21T04:14:38.310Z",
+      "name": "Pomidory malinowe",
+      "unit": "Cena za kg",
+      "regularPrice": 17.99,
+      "validUntil": "2026-11-21T22:59:59.000Z",
+      "conditions": "33% TANIEJ · 17.99 zł to najniższa cena sprzed pierwszej obniżki.",
+      "evidence": "{\"validFrom\":1794783600,\"validUntil\":1795301999,\"priceValue\":11.99,\"strikePrice\":{\"strikePriceValue\":17.99},\"priceTagLabels\":{\"promoText1\":\"33% TANIEJ\",\"bestPricesWithin30daysText\":\"17.99 zł to najniższa cena sprzed pierwszej obniżki.\"},\"validFromLocalDate\":\"2026-11-16\",\"validUntilLocalDate\":\"2026-11-21\"}"
+    },
+    {
+      "id": "aldi-6173-1794783600",
+      "product": "cucumber",
+      "market": "PL",
+      "currency": "PLN",
+      "scope": {
+        "type": "unverified",
+        "note": "Oferta ze strony ogólnopolskiej sklepu; dostępność regionalna niepotwierdzona"
+      },
+      "store": "ALDI",
+      "price": 6.99,
+      "until": "2026-11-21",
+      "from": "2026-11-16",
+      "source": "https://www.aldi.pl/produkty/owoce-i-warzywa/warzywa.html",
+      "fetchedAt": "2026-11-21T04:14:38.310Z",
+      "name": "Ogórki szklarniowe",
+      "unit": "Cena za kg",
+      "regularPrice": 14.99,
+      "validUntil": "2026-11-21T22:59:59.000Z",
+      "conditions": "53% TANIEJ · 14.99 zł to najniższa cena sprzed pierwszej obniżki.",
+      "evidence": "{\"validFrom\":1794783600,\"validUntil\":1795301999,\"priceValue\":6.99,\"strikePrice\":{\"strikePriceValue\":14.99},\"priceTagLabels\":{\"promoText1\":\"53% TANIEJ\",\"bestPricesWithin30daysText\":\"14.99 zł to najniższa cena sprzed pierwszej obniżki.\"},\"validFromLocalDate\":\"2026-11-16\",\"validUntilLocalDate\":\"2026-11-21\"}"
+    },
+    {
+      "id": "aldi-6219-1795042800",
+      "product": "lemon",
+      "market": "PL",
+      "currency": "PLN",
+      "scope": {
+        "type": "unverified",
+        "note": "Oferta ze strony ogólnopolskiej sklepu; dostępność regionalna niepotwierdzona"
+      },
+      "store": "ALDI",
+      "price": 3.99,
+      "until": "2026-11-21",
+      "from": "2026-11-19",
+      "source": "https://www.aldi.pl/produkty/owoce-i-warzywa/owoce.html",
+      "fetchedAt": "2026-11-21T04:14:38.310Z",
+      "name": "Cytryny",
+      "unit": "Opak. 500 g",
+      "regularPrice": 5.99,
+      "validUntil": "2026-11-21T22:59:59.000Z",
+      "conditions": "33% TANIEJ · 5.99 zł to najniższa cena sprzed pierwszej obniżki.",
+      "evidence": "{\"validFrom\":1795042800,\"validUntil\":1795301999,\"priceValue\":3.99,\"strikePrice\":{\"strikePriceValue\":5.99},\"basePrice\":[{\"basePriceValue\":7.98,\"basePriceScale\":\"kg\"}],\"priceTagLabels\":{\"promoText1\":\"33% TANIEJ\",\"bestPricesWithin30daysText\":\"5.99 zł to najniższa cena sprzed pierwszej obniżki.\"},\"validFromLocalDate\":\"2026-11-19\",\"validUntilLocalDate\":\"2026-11-21\"}"
+    },
+    {
+      "id": "aldi-6279-1794783600",
+      "product": "avocado",
+      "market": "PL",
+      "currency": "PLN",
+      "scope": {
+        "type": "unverified",
+        "note": "Oferta ze strony ogólnopolskiej sklepu; dostępność regionalna niepotwierdzona"
+      },
+      "store": "ALDI",
+      "price": 3.99,
+      "until": "2026-11-21",
+      "from": "2026-11-16",
+      "source": "https://www.aldi.pl/produkty/owoce-i-warzywa/owoce.html",
+      "fetchedAt": "2026-11-21T04:14:38.310Z",
+      "name": "Awokado",
+      "unit": "Sztuka",
+      "regularPrice": 5.99,
+      "validUntil": "2026-11-21T22:59:59.000Z",
+      "conditions": "33% TANIEJ · 5.99 zł to najniższa cena sprzed pierwszej obniżki.",
+      "evidence": "{\"validFrom\":1794783600,\"validUntil\":1795301999,\"priceValue\":3.99,\"strikePrice\":{\"strikePriceValue\":5.99},\"priceTagLabels\":{\"promoText1\":\"33% TANIEJ\",\"bestPricesWithin30daysText\":\"5.99 zł to najniższa cena sprzed pierwszej obniżki.\"},\"validFromLocalDate\":\"2026-11-16\",\"validUntilLocalDate\":\"2026-11-21\"}"
+    },
+    {
+      "id": "aldi-6616-1794783600",
+      "product": "yellowcheese",
+      "market": "PL",
+      "currency": "PLN",
+      "scope": {
+        "type": "unverified",
+        "note": "Oferta ze strony ogólnopolskiej sklepu; dostępność regionalna niepotwierdzona"
+      },
+      "store": "ALDI",
+      "price": 3.99,
+      "until": "2026-11-21",
+      "from": "2026-11-16",
+      "source": "https://www.aldi.pl/oferty.html",
+      "fetchedAt": "2026-11-21T04:14:38.310Z",
+      "name": "Ser Rycki Edam",
+      "unit": "Opak. 135 g",
+      "regularPrice": 6.19,
+      "validUntil": "2026-11-21T22:59:59.000Z",
+      "conditions": "Średnio przy zakupie 2 szt. (druga za 1,79 zł) · -71% CO DRUGA SZT. · Limit: 6 szt. na klienta",
+      "evidence": "{\"validFrom\":1794783600,\"validUntil\":1795301999,\"priceValue\":1.79,\"basePrice\":[{\"basePriceValue\":13.26,\"basePriceScale\":\"kg\",\"basePriceAdditionalInformation\":\"CENA REGULARNA: 6,19 zł/szt. (kg=45,85 zł)\"}],\"priceTagLabels\":{\"promoText1\":\"-71% CO DRUGA SZT.\",\"textualAddition\":\"co druga\",\"bestPricesWithin30daysText\":\"6.19 zł to najniższa cena sprzed pierwszej obniżki.\"},\"validFromLocalDate\":\"2026-11-16\",\"validUntilLocalDate\":\"2026-11-21\"}"
+    },
+    {
+      "id": "aldi-7215-1794783600",
+      "product": "coffee",
+      "market": "PL",
+      "currency": "PLN",
+      "scope": {
+        "type": "unverified",
+        "note": "Oferta ze strony ogólnopolskiej sklepu; dostępność regionalna niepotwierdzona"
+      },
+      "store": "ALDI",
+      "price": 24.99,
+      "until": "2026-11-21",
+      "from": "2026-11-16",
+      "source": "https://www.aldi.pl/oferty.html",
+      "fetchedAt": "2026-11-21T04:14:38.310Z",
+      "name": "Kawa rozpuszczalna Cronat Gold",
+      "unit": "Słoik 200 g",
+      "regularPrice": 37.89,
+      "validUntil": "2026-11-21T22:59:59.000Z",
+      "conditions": "Cena przy zakupie 2 szt. · -34% PRZY ZAKUPIE 2 SZT.",
+      "evidence": "{\"validFrom\":1794783600,\"validUntil\":1795301999,\"priceValue\":24.99,\"basePrice\":[{\"basePriceValue\":124.95,\"basePriceScale\":\"kg\",\"basePriceAdditionalInformation\":\"CENA PRZY ZAKUPIE 2 SZT. / Cena regularna: 37,89 zł/szt. (kg=189,45 zł)\"}],\"priceTagLabels\":{\"promoText1\":\"-34% PRZY ZAKUPIE 2 SZT.\",\"textualAddition\":\"szt.\",\"bestPricesWithin30daysText\":\"37.89 zł to najniższa cena z 30 dni przed obniżką.\"},\"validFromLocalDate\":\"2026-11-16\",\"validUntilLocalDate\":\"2026-11-21\"}"
+    },
+    {
+      "id": "aldi-g-2026_cw47_mo_promotion_26k47g01_tu67-2-potato-2026-11-16",
+      "product": "potato",
+      "market": "PL",
+      "currency": "PLN",
+      "scope": {
+        "type": "unverified",
+        "note": "Oferta z gazetki ogólnopolskiej sklepu; dostępność w Twoim sklepie niepotwierdzona"
+      },
+      "store": "ALDI",
+      "price": 0.99,
+      "regularPrice": 1.99,
+      "from": "2026-11-16",
+      "until": "2026-11-21",
+      "validUntil": "2026-11-21T22:59:59.000Z",
+      "source": "https://gazetki.aldi.pl/2026/kw47/2026_cw47_mo_promotion_26k47g01_tu67/#/page/2",
+      "fetchedAt": "2026-11-21T04:14:38.310Z",
+      "name": "Ziemniaki",
+      "unit": "Cena za kg",
+      "conditions": "Gazetka ALDI, strona 2: cena sprzed obniżki (najniższa z 30 dni wg gazetki): 1,99 zł. Sprawdź warunki w gazetce i w sklepie.",
+      "origin": "leaflet",
+      "evidence": " Ziemniaki Cena za kg 50% 0 , 99 1,99 *"
+    },
+    {
+      "id": "aldi-g-2026_cw47_mo_promotion_26k47g01_tu67-2-pepper-2026-11-16",
+      "product": "pepper",
+      "market": "PL",
+      "currency": "PLN",
+      "scope": {
+        "type": "unverified",
+        "note": "Oferta z gazetki ogólnopolskiej sklepu; dostępność w Twoim sklepie niepotwierdzona"
+      },
+      "store": "ALDI",
+      "price": 11.99,
+      "regularPrice": 17.99,
+      "from": "2026-11-16",
+      "until": "2026-11-21",
+      "validUntil": "2026-11-21T22:59:59.000Z",
+      "source": "https://gazetki.aldi.pl/2026/kw47/2026_cw47_mo_promotion_26k47g01_tu67/#/page/2",
+      "fetchedAt": "2026-11-21T04:14:38.310Z",
+      "name": "Papryka czerwona",
+      "unit": "Cena za kg",
+      "conditions": "Gazetka ALDI, strona 2: cena sprzed obniżki (najniższa z 30 dni wg gazetki): 17,99 zł. Sprawdź warunki w gazetce i w sklepie.",
+      "origin": "leaflet",
+      "evidence": " Papryka czerwona Cena za kg klasa I 33% 11 , 99 17,99 *"
+    },
+    {
+      "id": "aldi-g-2026_cw47_mo_promotion_26k47g01_tu67-3-apple-2026-11-16",
+      "product": "apple",
+      "market": "PL",
+      "currency": "PLN",
+      "scope": {
+        "type": "unverified",
+        "note": "Oferta z gazetki ogólnopolskiej sklepu; dostępność w Twoim sklepie niepotwierdzona"
+      },
+      "store": "ALDI",
+      "price": 2.49,
+      "from": "2026-11-16",
+      "until": "2026-11-21",
+      "validUntil": "2026-11-21T22:59:59.000Z",
+      "source": "https://gazetki.aldi.pl/2026/kw47/2026_cw47_mo_promotion_26k47g01_tu67/#/page/3",
+      "fetchedAt": "2026-11-21T04:14:38.310Z",
+      "name": "Jabłka polskie",
+      "unit": "Cena za kg",
+      "conditions": "Gazetka ALDI, strona 3: cena promocyjna „AKCJA” — gazetka nie podaje ceny sprzed obniżki. Sprawdź warunki w gazetce i w sklepie.",
+      "origin": "leaflet",
+      "evidence": " AKCJA Jabłka polskie Cena za kg klasa I 2 , 49"
+    },
+    {
+      "id": "aldi-g-2026_cw47_mo_promotion_26k47g01_tu67-4-onion-2026-11-16",
+      "product": "onion",
+      "market": "PL",
+      "currency": "PLN",
+      "scope": {
+        "type": "unverified",
+        "note": "Oferta z gazetki ogólnopolskiej sklepu; dostępność w Twoim sklepie niepotwierdzona"
+      },
+      "store": "ALDI",
+      "price": 2.99,
+      "regularPrice": 3.49,
+      "from": "2026-11-16",
+      "until": "2026-11-21",
+      "validUntil": "2026-11-21T22:59:59.000Z",
+      "source": "https://gazetki.aldi.pl/2026/kw47/2026_cw47_mo_promotion_26k47g01_tu67/#/page/4",
+      "fetchedAt": "2026-11-21T04:14:38.310Z",
+      "name": "Cebula żółta",
+      "unit": "Cena za kg",
+      "conditions": "Gazetka ALDI, strona 4: cena sprzed obniżki (najniższa z 30 dni wg gazetki): 3,49 zł. Sprawdź warunki w gazetce i w sklepie.",
+      "origin": "leaflet",
+      "evidence": " p w opar  * Cebula żółta Cena za kg 14% 2 , 99 3,49 *"
+    },
+    {
+      "id": "aldi-g-2026_cw47_mo_promotion_26k47g01_tu67-6-bread-2026-11-16",
+      "product": "bread",
+      "market": "PL",
+      "currency": "PLN",
+      "scope": {
+        "type": "unverified",
+        "note": "Oferta z gazetki ogólnopolskiej sklepu; dostępność w Twoim sklepie niepotwierdzona"
+      },
+      "store": "ALDI",
+      "price": 3.99,
+      "regularPrice": 4.49,
+      "from": "2026-11-16",
+      "until": "2026-11-21",
+      "validUntil": "2026-11-21T22:59:59.000Z",
+      "source": "https://gazetki.aldi.pl/2026/kw47/2026_cw47_mo_promotion_26k47g01_tu67/#/page/6",
+      "fetchedAt": "2026-11-21T04:14:38.310Z",
+      "name": "Chleb na maślance pszenno-żytni",
+      "unit": "Sztuka 550 g (1 kg = 7,25)",
+      "conditions": "Gazetka ALDI, strona 6: cena sprzed obniżki (najniższa z 30 dni wg gazetki): 4,49 zł. Sprawdź warunki w gazetce i w sklepie.",
+      "origin": "leaflet",
+      "evidence": " Chleb na maślance pszenno-żytni Sztuka 550 g (1 kg = 7,25) *Stara cena regularna / najniższa cena z 30 dni przed obniżką. NOWA CENA REGULARNA 11% 3 , 99 4,49 *"
+    },
+    {
+      "id": "aldi-g-2026_cw47_mo_promotion_26k47g01_tu67-14-flour-2026-11-16",
+      "product": "flour",
+      "market": "PL",
+      "currency": "PLN",
+      "scope": {
+        "type": "unverified",
+        "note": "Oferta z gazetki ogólnopolskiej sklepu; dostępność w Twoim sklepie niepotwierdzona"
+      },
+      "store": "ALDI",
+      "price": 8.49,
+      "from": "2026-11-16",
+      "until": "2026-11-21",
+      "validUntil": "2026-11-21T22:59:59.000Z",
+      "source": "https://gazetki.aldi.pl/2026/kw47/2026_cw47_mo_promotion_26k47g01_tu67/#/page/14",
+      "fetchedAt": "2026-11-21T04:14:38.310Z",
+      "name": "BASIA Mąka tortowa Extra",
+      "unit": "Opak. 2,5 kg (1 kg = 3,40)",
+      "conditions": "Gazetka ALDI, strona 14: cena promocyjna „AKCJA” — gazetka nie podaje ceny sprzed obniżki. Sprawdź warunki w gazetce i w sklepie.",
+      "origin": "leaflet",
+      "evidence": " AŻ 2,5 kg AKCJA BASIA Mąka tortowa Extra Opak. 2,5 kg (1 kg = 3,40) 8 , 49"
+    },
+    {
+      "id": "aldi-g-2026_cw47_mo_promotion_26k47g01_tu67-16-coffee-2026-11-16",
+      "product": "coffee",
+      "market": "PL",
+      "currency": "PLN",
+      "scope": {
+        "type": "unverified",
+        "note": "Oferta z gazetki ogólnopolskiej sklepu; dostępność w Twoim sklepie niepotwierdzona"
+      },
+      "store": "ALDI",
+      "price": 38.99,
+      "from": "2026-11-16",
+      "until": "2026-11-21",
+      "validUntil": "2026-11-21T22:59:59.000Z",
+      "source": "https://gazetki.aldi.pl/2026/kw47/2026_cw47_mo_promotion_26k47g01_tu67/#/page/16",
+      "fetchedAt": "2026-11-21T04:14:38.310Z",
+      "name": "JACOBS Kawa rozpuszczalna Velvet",
+      "unit": "Słoik 200 g (1 kg = 194,95)",
+      "conditions": "Gazetka ALDI, strona 16: cena promocyjna „AKCJA” — gazetka nie podaje ceny sprzed obniżki. Sprawdź warunki w gazetce i w sklepie.",
+      "origin": "leaflet",
+      "evidence": " WYGENEROWANO AI NA EKSPOZYTORZE JACOBS Kawa rozpuszczalna Velvet Słoik 200 g (1 kg = 194,95) AKCJA 38 , 99"
+    },
+    {
+      "id": "aldi-g-2026_cw47_mo_promotion_26k47g01_tu67-41-banana-2026-11-19",
+      "product": "banana",
+      "market": "PL",
+      "currency": "PLN",
+      "scope": {
+        "type": "unverified",
+        "note": "Oferta z gazetki ogólnopolskiej sklepu; dostępność w Twoim sklepie niepotwierdzona"
+      },
+      "store": "ALDI",
+      "price": 5.99,
+      "regularPrice": 8.99,
+      "from": "2026-11-19",
+      "until": "2026-11-21",
+      "validUntil": "2026-11-21T22:59:59.000Z",
+      "source": "https://gazetki.aldi.pl/2026/kw47/2026_cw47_mo_promotion_26k47g01_tu67/#/page/41",
+      "fetchedAt": "2026-11-21T04:14:38.310Z",
+      "name": "BIO Banany",
+      "unit": "Cena za kg",
+      "conditions": "Gazetka ALDI, strona 41: cena sprzed obniżki (najniższa z 30 dni wg gazetki): 8,99 zł. Sprawdź warunki w gazetce i w sklepie.",
+      "origin": "leaflet",
+      "evidence": " BIO Banany Cena za kg 33% 5 , 99 8,99 *"
+    },
+    {
+      "id": "aldi-g-2026_cw47_mo_promotion_26k47g01_tu67-41-carrot-2026-11-19",
+      "product": "carrot",
+      "market": "PL",
+      "currency": "PLN",
+      "scope": {
+        "type": "unverified",
+        "note": "Oferta z gazetki ogólnopolskiej sklepu; dostępność w Twoim sklepie niepotwierdzona"
+      },
+      "store": "ALDI",
+      "price": 1.99,
+      "regularPrice": 3.99,
+      "from": "2026-11-19",
+      "until": "2026-11-21",
+      "validUntil": "2026-11-21T22:59:59.000Z",
+      "source": "https://gazetki.aldi.pl/2026/kw47/2026_cw47_mo_promotion_26k47g01_tu67/#/page/41",
+      "fetchedAt": "2026-11-21T04:14:38.310Z",
+      "name": "Marchew",
+      "unit": "Cena za kg",
+      "conditions": "Gazetka ALDI, strona 41: cena sprzed obniżki (najniższa z 30 dni wg gazetki): 3,99 zł. Sprawdź warunki w gazetce i w sklepie.",
+      "origin": "leaflet",
+      "evidence": " Marchew Cena za kg 50% 1 , 99 3,99 *"
+    }
+  ],
+  "sources": [
+    {
+      "source": "https://www.aldi.pl/oferty.html",
+      "status": "ok",
+      "productsSeen": 77,
+      "unmapped": 69,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/owoce-i-warzywa/warzywa.html",
+      "status": "ok",
+      "productsSeen": 80,
+      "unmapped": 30,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/owoce-i-warzywa/owoce.html",
+      "status": "ok",
+      "productsSeen": 44,
+      "unmapped": 24,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/owoce-i-warzywa/grzyby.html",
+      "status": "ok",
+      "productsSeen": 4,
+      "unmapped": 4,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/owoce-i-warzywa/swieze-ziola-i-kielki.html",
+      "status": "ok",
+      "productsSeen": 3,
+      "unmapped": 2,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/owoce-i-warzywa/bakalie.html",
+      "status": "ok",
+      "productsSeen": 9,
+      "unmapped": 9,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/nabial-i-jaja/mleko.html",
+      "status": "ok",
+      "productsSeen": 9,
+      "unmapped": 5,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/nabial-i-jaja/smietana.html",
+      "status": "ok",
+      "productsSeen": 4,
+      "unmapped": 2,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/nabial-i-jaja/jogurty.html",
+      "status": "ok",
+      "productsSeen": 2,
+      "unmapped": 2,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/nabial-i-jaja/kefiry-i-maslanki.html",
+      "status": "ok",
+      "productsSeen": 3,
+      "unmapped": 1,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/nabial-i-jaja/maslo.html",
+      "status": "ok",
+      "productsSeen": 6,
+      "unmapped": 0,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/nabial-i-jaja/jaja.html",
+      "status": "ok",
+      "productsSeen": 5,
+      "unmapped": 0,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/sery-i-twarogi/sery-zolte.html",
+      "status": "ok",
+      "productsSeen": 28,
+      "unmapped": 14,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/sery-i-twarogi/sery-salatkowe-i-kanapkowe.html",
+      "status": "empty",
+      "productsSeen": 0,
+      "unmapped": 0,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/sery-i-twarogi/twarog.html",
+      "status": "ok",
+      "productsSeen": 10,
+      "unmapped": 6,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/sery-i-twarogi/serki-wiejskie.html",
+      "status": "empty",
+      "productsSeen": 0,
+      "unmapped": 0,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/wedliny-i-mieso/mieso-drobiowe.html",
+      "status": "ok",
+      "productsSeen": 29,
+      "unmapped": 25,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/wedliny-i-mieso/mieso-wieprzowe.html",
+      "status": "ok",
+      "productsSeen": 12,
+      "unmapped": 6,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/wedliny-i-mieso/mieso-wolowe.html",
+      "status": "ok",
+      "productsSeen": 6,
+      "unmapped": 4,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/wedliny-i-mieso/kielbasy-i-kaszanki.html",
+      "status": "ok",
+      "productsSeen": 17,
+      "unmapped": 17,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/wedliny-i-mieso/szynki--wedzonki.html",
+      "status": "ok",
+      "productsSeen": 14,
+      "unmapped": 13,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/ryby/ryby-swieze.html",
+      "status": "ok",
+      "productsSeen": 4,
+      "unmapped": 4,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/ryby/ryby-mrozone.html",
+      "status": "ok",
+      "productsSeen": 7,
+      "unmapped": 7,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/ryby/ryby-wedzone.html",
+      "status": "ok",
+      "productsSeen": 9,
+      "unmapped": 8,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/ryby/konserwy-rybne--przetwory-rybne.html",
+      "status": "ok",
+      "productsSeen": 24,
+      "unmapped": 24,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/pieczywo/chleb.html",
+      "status": "ok",
+      "productsSeen": 15,
+      "unmapped": 0,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/pieczywo/bulki-i-bagietki.html",
+      "status": "ok",
+      "productsSeen": 24,
+      "unmapped": 23,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/pieczywo/pieczywo-tostowe.html",
+      "status": "ok",
+      "productsSeen": 3,
+      "unmapped": 3,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/produkty-sypkie-i-zbozowe/makarony.html",
+      "status": "ok",
+      "productsSeen": 18,
+      "unmapped": 18,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/produkty-sypkie-i-zbozowe/kasze.html",
+      "status": "ok",
+      "productsSeen": 9,
+      "unmapped": 7,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/produkty-sypkie-i-zbozowe/ryz.html",
+      "status": "ok",
+      "productsSeen": 8,
+      "unmapped": 1,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/produkty-sypkie-i-zbozowe/maka.html",
+      "status": "ok",
+      "productsSeen": 7,
+      "unmapped": 1,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/produkty-sypkie-i-zbozowe/straczki.html",
+      "status": "ok",
+      "productsSeen": 3,
+      "unmapped": 1,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/produkty-sypkie-i-zbozowe/cukier.html",
+      "status": "ok",
+      "productsSeen": 1,
+      "unmapped": 1,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/produkty-sniadaniowe/platki.html",
+      "status": "ok",
+      "productsSeen": 14,
+      "unmapped": 12,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/przetwory/ogorki.html",
+      "status": "ok",
+      "productsSeen": 6,
+      "unmapped": 0,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/przetwory/oliwki.html",
+      "status": "ok",
+      "productsSeen": 3,
+      "unmapped": 3,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/przetwory/groszek--kukurydza--fasolka.html",
+      "status": "ok",
+      "productsSeen": 4,
+      "unmapped": 1,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/przetwory/dzemy--konfitury--powidla.html",
+      "status": "ok",
+      "productsSeen": 10,
+      "unmapped": 10,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/przetwory/miody.html",
+      "status": "ok",
+      "productsSeen": 4,
+      "unmapped": 4,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/tluszcze-i-octy/maslo--margaryna.html",
+      "status": "empty",
+      "productsSeen": 0,
+      "unmapped": 0,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/tluszcze-i-octy/olej.html",
+      "status": "ok",
+      "productsSeen": 1,
+      "unmapped": 1,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/tluszcze-i-octy/oliwa-z-oliwek.html",
+      "status": "ok",
+      "productsSeen": 4,
+      "unmapped": 1,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/tluszcze-i-octy/ocet.html",
+      "status": "ok",
+      "productsSeen": 2,
+      "unmapped": 2,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/przyprawy/ziola--mieszanki-ziolowe.html",
+      "status": "ok",
+      "productsSeen": 11,
+      "unmapped": 5,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/przyprawy/inne-przyprawy.html",
+      "status": "ok",
+      "productsSeen": 23,
+      "unmapped": 20,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/przyprawy/przyprawy-w-plynie.html",
+      "status": "ok",
+      "productsSeen": 1,
+      "unmapped": 1,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/sosy--dressingi-i-przeciery/koncentraty--przeciery.html",
+      "status": "empty",
+      "productsSeen": 0,
+      "unmapped": 0,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/sosy--dressingi-i-przeciery/pesto.html",
+      "status": "ok",
+      "productsSeen": 1,
+      "unmapped": 1,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/sosy--dressingi-i-przeciery/musztarda.html",
+      "status": "ok",
+      "productsSeen": 2,
+      "unmapped": 0,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/produkty-do-pieczenia/proszek-do-pieczenia--soda.html",
+      "status": "ok",
+      "productsSeen": 2,
+      "unmapped": 1,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/produkty-do-pieczenia/drozdze.html",
+      "status": "ok",
+      "productsSeen": 1,
+      "unmapped": 1,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/produkty-do-pieczenia/kisiele--budynie.html",
+      "status": "ok",
+      "productsSeen": 1,
+      "unmapped": 1,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/produkty-do-pieczenia/kakao.html",
+      "status": "ok",
+      "productsSeen": 2,
+      "unmapped": 2,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/mrozonki-i-dania-gotowe/mrozone-warzywa.html",
+      "status": "ok",
+      "productsSeen": 20,
+      "unmapped": 19,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/mrozonki-i-dania-gotowe/mrozone-owoce.html",
+      "status": "ok",
+      "productsSeen": 3,
+      "unmapped": 3,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/slodycze/czekolady.html",
+      "status": "ok",
+      "productsSeen": 34,
+      "unmapped": 32,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/slodycze/biszkopty--herbatniki.html",
+      "status": "ok",
+      "productsSeen": 12,
+      "unmapped": 12,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.aldi.pl/produkty/kawa/kawa-mielona.html",
+      "status": "ok",
+      "productsSeen": 9,
+      "unmapped": 9,
+      "rejected": 0
+    },
+    {
+      "source": "https://gazetki.aldi.pl/2026/kw47/2026_cw47_mo_promotion_26k47g01_tu67/",
+      "status": "ok",
+      "kind": "leaflet",
+      "pages": 53,
+      "productsSeen": 115,
+      "unmapped": 100,
+      "skipped": 13,
+      "rejected": 0
+    },
+    {
+      "source": "https://gazetki.aldi.pl/2026/kw38/2026_cw38_mo_special_26k38g07_ceny-w-dol/",
+      "status": "ok",
+      "kind": "leaflet",
+      "pages": 15,
+      "productsSeen": 47,
+      "unmapped": 42,
+      "skipped": 5,
+      "rejected": 0
+    },
+    {
+      "source": "https://gazetki.aldi.pl/2026/kw47/2026_cw47_th_promotion_weekend_26k47g03/",
+      "status": "ok",
+      "kind": "leaflet",
+      "pages": 14,
+      "productsSeen": 33,
+      "unmapped": 24,
+      "skipped": 1,
+      "rejected": 0
+    },
+    {
+      "source": "https://gazetki.aldi.pl/2026/kw47/2026_cw47_mo_special_26k47g07_wykwintne-smaki/",
+      "status": "ok",
+      "kind": "leaflet",
+      "pages": 6,
+      "productsSeen": 42,
+      "unmapped": 42,
+      "skipped": 0,
+      "rejected": 0
+    },
+    {
+      "source": "https://www.biedronka.pl/pl/gazetki",
+      "status": "ok",
+      "kind": "store-leaflet",
+      "store": "biedronka",
+      "leaflets": 2
+    },
+    {
+      "source": "https://www.lidl.pl/c/nasze-gazetki/s10008614",
+      "status": "ok",
+      "kind": "store-leaflet",
+      "store": "lidl",
+      "leaflets": 2
+    },
+    {
+      "source": "https://sklep.kaufland.pl/gazeta-reklamowa.html",
+      "status": "ok",
+      "kind": "store-leaflet",
+      "store": "kaufland",
+      "leaflets": 9
+    },
+    {
+      "source": "https://www.carrefour.pl/gazetka-handlowa",
+      "status": "error",
+      "kind": "store-leaflet",
+      "store": "carrefour",
+      "error": "Odczyt wyłączony przez robots.txt"
+    },
+    {
+      "source": "https://netto.pl/gazetka-netto/",
+      "status": "ok",
+      "kind": "store-leaflet",
+      "store": "netto",
+      "leaflets": 2
+    },
+    {
+      "source": "https://marketdino.pl/gazetki/lista/standard",
+      "status": "ok",
+      "kind": "store-leaflet",
+      "store": "dino",
+      "leaflets": 4
+    },
+    {
+      "source": "https://intermarche.pl/gazetki-promocyjne/",
+      "status": "ok",
+      "kind": "store-leaflet",
+      "store": "intermarche",
+      "leaflets": 3
+    },
+    {
+      "source": "https://stokrotka.pl/oferta/gazetki-promocyjne/",
+      "status": "ok",
+      "kind": "store-leaflet",
+      "store": "stokrotka",
+      "leaflets": 5
+    }
+  ],
+  "leaflets": [
+    {
+      "store": "ALDI",
+      "title": "Gazetka tygodniowa",
+      "url": "https://www.aldi.pl/gazetki/2026_cw47_mo_promotion_26k47g01.html",
+      "viewer": "https://gazetki.aldi.pl/2026/kw47/2026_cw47_mo_promotion_26k47g01_tu67/",
+      "from": "2026-11-16",
+      "until": "2026-11-21",
+      "pages": 53,
+      "offers": 14
+    },
+    {
+      "store": "ALDI",
+      "title": "Ceny w dół",
+      "url": "https://www.aldi.pl/gazetki/2026_cw38_mo_special_26k38g07_ceny-w-dol.html",
+      "viewer": "https://gazetki.aldi.pl/2026/kw38/2026_cw38_mo_special_26k38g07_ceny-w-dol/",
+      "pages": 15,
+      "offers": 0
+    },
+    {
+      "store": "ALDI",
+      "title": "Okazje na weekend",
+      "url": "https://www.aldi.pl/gazetki/2026_cw47_th_promotion_weekend_26k47g03.html",
+      "viewer": "https://gazetki.aldi.pl/2026/kw47/2026_cw47_th_promotion_weekend_26k47g03/",
+      "from": "2026-11-19",
+      "until": "2026-11-21",
+      "pages": 14,
+      "offers": 9
+    },
+    {
+      "store": "ALDI",
+      "title": "Wykwintne smaki",
+      "url": "https://www.aldi.pl/gazetki/2026_cw47_mo_special_26k47g07_wykwintne-smaki.html",
+      "viewer": "https://gazetki.aldi.pl/2026/kw47/2026_cw47_mo_special_26k47g07_wykwintne-smaki/",
+      "from": "2026-11-16",
+      "until": "2026-11-21",
+      "pages": 6,
+      "offers": 0
+    }
+  ],
+  "stores": [
+    {
+      "store": "biedronka",
+      "title": "Codziennie niskie ceny",
+      "url": "https://www.biedronka.pl/pl/press,id,j39k145ri,title,codziennie-niskie-ceny-p-oferta-od-19-11",
+      "from": "2026-11-19"
+    },
+    {
+      "store": "lidl",
+      "title": "Gazetka 19.11",
+      "url": "https://www.lidl.pl/l/pl/gazetki/gazetka-19-11-czw-kw47/ar/0",
+      "from": "2026-11-19",
+      "until": "2026-11-21"
+    },
+    {
+      "store": "kaufland",
+      "title": "Gazetka tygodnia",
+      "url": "https://leaflets.kaufland.com/pl-PL/PL_pl_KDZ_1060_PL47-LFT/ar/1060",
+      "from": "2026-11-19",
+      "until": "2026-11-25"
+    },
+    {
+      "store": "netto",
+      "title": "Od poniedziałku w sklepach",
+      "url": "https://netto.pl/gazetka-netto/",
+      "from": "2026-11-16",
+      "until": "2026-11-21"
+    },
+    {
+      "store": "dino",
+      "title": "Gazetka 47 / 2026",
+      "url": "https://marketdino.pl/gazetki/lista/standard",
+      "from": "2026-11-18",
+      "until": "2026-11-24"
+    },
+    {
+      "store": "intermarche",
+      "title": "Nowości w Intermarche",
+      "url": "https://intermarche.pl/g/nowosci-w-intermarche/",
+      "from": "2026-11-12",
+      "until": "2026-11-25"
+    },
+    {
+      "store": "stokrotka",
+      "title": "Supermarket",
+      "url": "https://stokrotka.pl/oferta/gazetki-promocyjne/",
+      "from": "2026-11-19",
+      "until": "2026-11-25"
+    },
+    {
+      "store": "aldi",
+      "title": "Gazetka tygodniowa",
+      "url": "https://gazetki.aldi.pl/2026/kw47/2026_cw47_mo_promotion_26k47g01_tu67/",
+      "from": "2026-11-16",
+      "until": "2026-11-21"
+    }
+  ]
+}
